@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > Fm::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Fm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "agents")
     {
-        auto c = std::make_shared<Fm::Agents>();
-        c->parent = this;
-        agents.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents>();
+        ent_->parent = this;
+        agents.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : agents.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : agents.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void Fm::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Fm::clone_ptr() const
+std::shared_ptr<ydk::Entity> Fm::clone_ptr() const
 {
     return std::make_shared<Fm>();
 }
@@ -214,7 +214,7 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fm_initials")
     {
@@ -264,36 +264,36 @@ std::shared_ptr<Entity> Fm::Agents::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fm_initials != nullptr)
     {
-        children["fm_initials"] = fm_initials;
+        _children["fm_initials"] = fm_initials;
     }
 
     if(fm_table != nullptr)
     {
-        children["fm_table"] = fm_table;
+        _children["fm_table"] = fm_table;
     }
 
     if(fm_internals != nullptr)
     {
-        children["fm_internals"] = fm_internals;
+        _children["fm_internals"] = fm_internals;
     }
 
     if(fm_alarm_mapping != nullptr)
     {
-        children["fm_alarm_mapping"] = fm_alarm_mapping;
+        _children["fm_alarm_mapping"] = fm_alarm_mapping;
     }
 
     if(fm_statistics != nullptr)
     {
-        children["fm_statistics"] = fm_statistics;
+        _children["fm_statistics"] = fm_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Fm::Agents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -420,16 +420,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmInitials::get_name_
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmInitials::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmInitials::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmInitials::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmInitials::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmInitials::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -587,50 +587,50 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief")
     {
-        auto c = std::make_shared<Fm::Agents::FmTable::Brief>();
-        c->parent = this;
-        brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmTable::Brief>();
+        ent_->parent = this;
+        brief.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "entry")
     {
-        auto c = std::make_shared<Fm::Agents::FmTable::Entry>();
-        c->parent = this;
-        entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmTable::Entry>();
+        ent_->parent = this;
+        entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : entry.entities())
+    count_ = 0;
+    for (auto ent_ : entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fm::Agents::FmTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -704,16 +704,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Brief::get_n
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Brief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Brief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -891,7 +891,7 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::get_n
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
@@ -904,42 +904,42 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::get_child_by_name(const std:
 
     if(child_yang_name == "causal_list")
     {
-        auto c = std::make_shared<Fm::Agents::FmTable::Entry::CausalList>();
-        c->parent = this;
-        causal_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmTable::Entry::CausalList>();
+        ent_->parent = this;
+        causal_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "dependency_list")
     {
-        auto c = std::make_shared<Fm::Agents::FmTable::Entry::DependencyList>();
-        c->parent = this;
-        dependency_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmTable::Entry::DependencyList>();
+        ent_->parent = this;
+        dependency_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "propagation_list")
     {
-        auto c = std::make_shared<Fm::Agents::FmTable::Entry::PropagationList>();
-        c->parent = this;
-        propagation_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmTable::Entry::PropagationList>();
+        ent_->parent = this;
+        propagation_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "notification_list")
     {
-        auto c = std::make_shared<Fm::Agents::FmTable::Entry::NotificationList>();
-        c->parent = this;
-        notification_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmTable::Entry::NotificationList>();
+        ent_->parent = this;
+        notification_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "escalation_list")
     {
-        auto c = std::make_shared<Fm::Agents::FmTable::Entry::EscalationList>();
-        c->parent = this;
-        escalation_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmTable::Entry::EscalationList>();
+        ent_->parent = this;
+        escalation_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "faults")
@@ -963,71 +963,71 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    count = 0;
-    for (auto c : causal_list.entities())
+    count_ = 0;
+    for (auto ent_ : causal_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : dependency_list.entities())
+    count_ = 0;
+    for (auto ent_ : dependency_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : propagation_list.entities())
+    count_ = 0;
+    for (auto ent_ : propagation_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : notification_list.entities())
+    count_ = 0;
+    for (auto ent_ : notification_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : escalation_list.entities())
+    count_ = 0;
+    for (auto ent_ : escalation_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(faults != nullptr)
     {
-        children["faults"] = faults;
+        _children["faults"] = faults;
     }
 
     if(waiting_list != nullptr)
     {
-        children["waiting_list"] = waiting_list;
+        _children["waiting_list"] = waiting_list;
     }
 
-    return children;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1140,16 +1140,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Detai
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1289,16 +1289,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Causa
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::CausalList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::CausalList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::CausalList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::CausalList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::CausalList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1398,16 +1398,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Depen
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::DependencyList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::DependencyList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::DependencyList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::DependencyList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::DependencyList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1511,16 +1511,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Propa
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::PropagationList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::PropagationList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::PropagationList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::PropagationList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::PropagationList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1634,16 +1634,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Notif
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::NotificationList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::NotificationList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::NotificationList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::NotificationList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::NotificationList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1757,16 +1757,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Escal
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::EscalationList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::EscalationList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::EscalationList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::EscalationList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::EscalationList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1869,7 +1869,7 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Fault
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::Faults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::Faults::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active")
     {
@@ -1892,21 +1892,21 @@ std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::Faults::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Faults::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::Faults::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(active != nullptr)
     {
-        children["active"] = active;
+        _children["active"] = active;
     }
 
     if(history != nullptr)
     {
-        children["history"] = history;
+        _children["history"] = history;
     }
 
-    return children;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::Faults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1984,50 +1984,50 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Fault
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::Faults::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::Faults::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief")
     {
-        auto c = std::make_shared<Fm::Agents::FmTable::Entry::Faults::Active::Brief>();
-        c->parent = this;
-        brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmTable::Entry::Faults::Active::Brief>();
+        ent_->parent = this;
+        brief.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "detail")
     {
-        auto c = std::make_shared<Fm::Agents::FmTable::Entry::Faults::Active::Detail>();
-        c->parent = this;
-        detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmTable::Entry::Faults::Active::Detail>();
+        ent_->parent = this;
+        detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Faults::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::Faults::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : detail.entities())
+    count_ = 0;
+    for (auto ent_ : detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::Faults::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2091,16 +2091,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Fault
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::Faults::Active::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::Faults::Active::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Faults::Active::Brief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::Faults::Active::Brief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::Faults::Active::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2248,16 +2248,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Fault
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::Faults::Active::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::Faults::Active::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Faults::Active::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::Faults::Active::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::Faults::Active::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2515,50 +2515,50 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Fault
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::Faults::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::Faults::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief")
     {
-        auto c = std::make_shared<Fm::Agents::FmTable::Entry::Faults::History::Brief>();
-        c->parent = this;
-        brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmTable::Entry::Faults::History::Brief>();
+        ent_->parent = this;
+        brief.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "detail")
     {
-        auto c = std::make_shared<Fm::Agents::FmTable::Entry::Faults::History::Detail>();
-        c->parent = this;
-        detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmTable::Entry::Faults::History::Detail>();
+        ent_->parent = this;
+        detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Faults::History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::Faults::History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : detail.entities())
+    count_ = 0;
+    for (auto ent_ : detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::Faults::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2622,16 +2622,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Fault
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::Faults::History::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::Faults::History::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Faults::History::Brief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::Faults::History::Brief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::Faults::History::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2779,16 +2779,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Fault
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::Faults::History::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::Faults::History::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::Faults::History::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::Faults::History::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::Faults::History::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3046,50 +3046,50 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Waiti
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::WaitingList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::WaitingList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief")
     {
-        auto c = std::make_shared<Fm::Agents::FmTable::Entry::WaitingList::Brief>();
-        c->parent = this;
-        brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmTable::Entry::WaitingList::Brief>();
+        ent_->parent = this;
+        brief.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "entry")
     {
-        auto c = std::make_shared<Fm::Agents::FmTable::Entry::WaitingList::Entry_>();
-        c->parent = this;
-        entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmTable::Entry::WaitingList::Entry_>();
+        ent_->parent = this;
+        entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::WaitingList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::WaitingList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : entry.entities())
+    count_ = 0;
+    for (auto ent_ : entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::WaitingList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3179,16 +3179,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Waiti
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::WaitingList::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::WaitingList::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::WaitingList::Brief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::WaitingList::Brief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::WaitingList::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3358,16 +3358,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmTable::Entry::Waiti
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmTable::Entry::WaitingList::Entry_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmTable::Entry::WaitingList::Entry_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmTable::Entry::WaitingList::Entry_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmTable::Entry::WaitingList::Entry_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmTable::Entry::WaitingList::Entry_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3514,33 +3514,33 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmInternals::get_name
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmInternals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmInternals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
-        auto c = std::make_shared<Fm::Agents::FmInternals::Detail>();
-        c->parent = this;
-        detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmInternals::Detail>();
+        ent_->parent = this;
+        detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmInternals::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmInternals::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fm::Agents::FmInternals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3662,33 +3662,33 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmInternals::Detail::
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmInternals::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmInternals::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rules")
     {
-        auto c = std::make_shared<Fm::Agents::FmInternals::Detail::Rules>();
-        c->parent = this;
-        rules.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmInternals::Detail::Rules>();
+        ent_->parent = this;
+        rules.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmInternals::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmInternals::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rules.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rules.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fm::Agents::FmInternals::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3881,16 +3881,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmInternals::Detail::
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmInternals::Detail::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmInternals::Detail::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmInternals::Detail::Rules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmInternals::Detail::Rules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmInternals::Detail::Rules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3977,33 +3977,33 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmAlarmMapping::get_n
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmAlarmMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmAlarmMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
-        auto c = std::make_shared<Fm::Agents::FmAlarmMapping::Detail>();
-        c->parent = this;
-        detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmAlarmMapping::Detail>();
+        ent_->parent = this;
+        detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmAlarmMapping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmAlarmMapping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fm::Agents::FmAlarmMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4081,16 +4081,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmAlarmMapping::Detai
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmAlarmMapping::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmAlarmMapping::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmAlarmMapping::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmAlarmMapping::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmAlarmMapping::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4207,33 +4207,33 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmStatistics::get_nam
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
-        auto c = std::make_shared<Fm::Agents::FmStatistics::Detail>();
-        c->parent = this;
-        detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fm::Agents::FmStatistics::Detail>();
+        ent_->parent = this;
+        detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fm::Agents::FmStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4327,16 +4327,16 @@ std::vector<std::pair<std::string, LeafData> > Fm::Agents::FmStatistics::Detail:
 
 }
 
-std::shared_ptr<Entity> Fm::Agents::FmStatistics::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fm::Agents::FmStatistics::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fm::Agents::FmStatistics::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fm::Agents::FmStatistics::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fm::Agents::FmStatistics::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

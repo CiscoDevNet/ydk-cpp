@@ -66,16 +66,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -142,7 +142,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -156,16 +156,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -235,16 +235,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Nlpid::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -311,7 +311,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "extended-ipv4-reachability-prefixes")
     {
@@ -325,16 +325,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(extended_ipv4_reachability_prefixes != nullptr)
     {
-        children["extended-ipv4-reachability-prefixes"] = extended_ipv4_reachability_prefixes;
+        _children["extended-ipv4-reachability-prefixes"] = extended_ipv4_reachability_prefixes;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -401,33 +401,33 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "extended-ipv4-reachability-prefixe")
     {
-        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe>();
-        c->parent = this;
-        extended_ipv4_reachability_prefixe.append(c);
-        return c;
+        auto ent_ = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe>();
+        ent_->parent = this;
+        extended_ipv4_reachability_prefixe.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : extended_ipv4_reachability_prefixe.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : extended_ipv4_reachability_prefixe.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -500,7 +500,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefixes-state")
     {
@@ -532,26 +532,26 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefixes_state != nullptr)
     {
-        children["prefixes-state"] = prefixes_state;
+        _children["prefixes-state"] = prefixes_state;
     }
 
     if(prefixes_subtlvs != nullptr)
     {
-        children["prefixes-subtlvs"] = prefixes_subtlvs;
+        _children["prefixes-subtlvs"] = prefixes_subtlvs;
     }
 
     if(prefixes_undefined_subtlvs != nullptr)
     {
-        children["prefixes-undefined-subtlvs"] = prefixes_undefined_subtlvs;
+        _children["prefixes-undefined-subtlvs"] = prefixes_undefined_subtlvs;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -632,16 +632,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -748,33 +748,33 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefixes-subtlv")
     {
-        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv>();
-        c->parent = this;
-        prefixes_subtlv.append(c);
-        return c;
+        auto ent_ = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv>();
+        ent_->parent = this;
+        prefixes_subtlv.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prefixes_subtlv.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prefixes_subtlv.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -863,7 +863,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tag")
     {
@@ -931,46 +931,46 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tag != nullptr)
     {
-        children["tag"] = tag;
+        _children["tag"] = tag;
     }
 
     if(ipv4_source_router_id != nullptr)
     {
-        children["ipv4-source-router-id"] = ipv4_source_router_id;
+        _children["ipv4-source-router-id"] = ipv4_source_router_id;
     }
 
     if(ipv6_source_router_id != nullptr)
     {
-        children["ipv6-source-router-id"] = ipv6_source_router_id;
+        _children["ipv6-source-router-id"] = ipv6_source_router_id;
     }
 
     if(prefixes_subtlvs_state != nullptr)
     {
-        children["prefixes-subtlvs-state"] = prefixes_subtlvs_state;
+        _children["prefixes-subtlvs-state"] = prefixes_subtlvs_state;
     }
 
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
     if(tag64 != nullptr)
     {
-        children["tag64"] = tag64;
+        _children["tag64"] = tag64;
     }
 
     if(prefix_sids != nullptr)
     {
-        children["prefix-sids"] = prefix_sids;
+        _children["prefix-sids"] = prefix_sids;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1039,7 +1039,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -1053,16 +1053,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1132,16 +1132,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1208,7 +1208,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -1222,16 +1222,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1294,16 +1294,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1382,7 +1382,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -1396,16 +1396,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1468,16 +1468,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1556,16 +1556,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixesSubtlvsState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1634,7 +1634,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -1648,16 +1648,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1730,16 +1730,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Flags::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1816,7 +1816,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -1830,16 +1830,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1909,16 +1909,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Tag64::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1993,33 +1993,33 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-sid")
     {
-        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid>();
-        c->parent = this;
-        prefix_sid.append(c);
-        return c;
+        auto ent_ = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid>();
+        ent_->parent = this;
+        prefix_sid.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prefix_sid.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prefix_sid.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2084,7 +2084,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -2098,16 +2098,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2194,16 +2194,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::PrefixSids::PrefixSid::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2298,33 +2298,33 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefixes-undefined-subtlv")
     {
-        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv>();
-        c->parent = this;
-        prefixes_undefined_subtlv.append(c);
-        return c;
+        auto ent_ = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv>();
+        ent_->parent = this;
+        prefixes_undefined_subtlv.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prefixes_undefined_subtlv.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prefixes_undefined_subtlv.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2389,7 +2389,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -2403,16 +2403,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2489,16 +2489,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesUndefinedSubtlvs::PrefixesUndefinedSubtlv::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2587,7 +2587,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "topologies")
     {
@@ -2601,16 +2601,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(topologies != nullptr)
     {
-        children["topologies"] = topologies;
+        _children["topologies"] = topologies;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2677,33 +2677,33 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "topology")
     {
-        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::Topology>();
-        c->parent = this;
-        topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::Topology>();
+        ent_->parent = this;
+        topology.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : topology.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2768,7 +2768,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -2782,16 +2782,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::Topology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::Topology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2864,16 +2864,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::Topology::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::Topology::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::Topology::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::Topology::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MultiTopology::Topologies::Topology::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2952,7 +2952,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-external-reachability-prefixes")
     {
@@ -2966,16 +2966,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_external_reachability_prefixes != nullptr)
     {
-        children["ipv4-external-reachability-prefixes"] = ipv4_external_reachability_prefixes;
+        _children["ipv4-external-reachability-prefixes"] = ipv4_external_reachability_prefixes;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3042,33 +3042,33 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-external-reachability-prefixe")
     {
-        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe>();
-        c->parent = this;
-        ipv4_external_reachability_prefixe.append(c);
-        return c;
+        auto ent_ = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe>();
+        ent_->parent = this;
+        ipv4_external_reachability_prefixe.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4_external_reachability_prefixe.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4_external_reachability_prefixe.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3149,7 +3149,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -3199,36 +3199,36 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(default_metric != nullptr)
     {
-        children["default-metric"] = default_metric;
+        _children["default-metric"] = default_metric;
     }
 
     if(delay_metric != nullptr)
     {
-        children["delay-metric"] = delay_metric;
+        _children["delay-metric"] = delay_metric;
     }
 
     if(expense_metric != nullptr)
     {
-        children["expense-metric"] = expense_metric;
+        _children["expense-metric"] = expense_metric;
     }
 
     if(error_metric != nullptr)
     {
-        children["error-metric"] = error_metric;
+        _children["error-metric"] = error_metric;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3301,16 +3301,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3389,7 +3389,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -3403,16 +3403,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3475,16 +3475,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3563,7 +3563,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DelayMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DelayMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -3577,16 +3577,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DelayMetric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DelayMetric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DelayMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3659,16 +3659,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DelayMetric::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DelayMetric::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DelayMetric::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DelayMetric::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DelayMetric::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3745,7 +3745,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ExpenseMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ExpenseMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -3759,16 +3759,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ExpenseMetric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ExpenseMetric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ExpenseMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3841,16 +3841,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ExpenseMetric::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ExpenseMetric::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ExpenseMetric::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ExpenseMetric::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ExpenseMetric::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3927,7 +3927,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ErrorMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ErrorMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -3941,16 +3941,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ErrorMetric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ErrorMetric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ErrorMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4023,16 +4023,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ErrorMetric::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ErrorMetric::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ErrorMetric::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ErrorMetric::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::ErrorMetric::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4109,7 +4109,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mt-ipv6-reachability-prefixes")
     {
@@ -4123,16 +4123,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mt_ipv6_reachability_prefixes != nullptr)
     {
-        children["mt-ipv6-reachability-prefixes"] = mt_ipv6_reachability_prefixes;
+        _children["mt-ipv6-reachability-prefixes"] = mt_ipv6_reachability_prefixes;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4199,33 +4199,33 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mt-ipv6-reachability-prefixe")
     {
-        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe>();
-        c->parent = this;
-        mt_ipv6_reachability_prefixe.append(c);
-        return c;
+        auto ent_ = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe>();
+        ent_->parent = this;
+        mt_ipv6_reachability_prefixe.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mt_ipv6_reachability_prefixe.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mt_ipv6_reachability_prefixe.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4301,7 +4301,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mt-ipv6-reachability-prefixes-state")
     {
@@ -4333,26 +4333,26 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mt_ipv6_reachability_prefixes_state != nullptr)
     {
-        children["mt-ipv6-reachability-prefixes-state"] = mt_ipv6_reachability_prefixes_state;
+        _children["mt-ipv6-reachability-prefixes-state"] = mt_ipv6_reachability_prefixes_state;
     }
 
     if(mt_ipv6_reachability_prefixes_subtlvs != nullptr)
     {
-        children["mt-ipv6-reachability-prefixes-subtlvs"] = mt_ipv6_reachability_prefixes_subtlvs;
+        _children["mt-ipv6-reachability-prefixes-subtlvs"] = mt_ipv6_reachability_prefixes_subtlvs;
     }
 
     if(mt_ipv6_reachability_prefixes_undefined_subtlvs != nullptr)
     {
-        children["mt-ipv6-reachability-prefixes-undefined-subtlvs"] = mt_ipv6_reachability_prefixes_undefined_subtlvs;
+        _children["mt-ipv6-reachability-prefixes-undefined-subtlvs"] = mt_ipv6_reachability_prefixes_undefined_subtlvs;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4451,16 +4451,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4587,33 +4587,33 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mt-ipv6-reachability-prefixes-subtlv")
     {
-        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv>();
-        c->parent = this;
-        mt_ipv6_reachability_prefixes_subtlv.append(c);
-        return c;
+        auto ent_ = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv>();
+        ent_->parent = this;
+        mt_ipv6_reachability_prefixes_subtlv.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mt_ipv6_reachability_prefixes_subtlv.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mt_ipv6_reachability_prefixes_subtlv.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4702,7 +4702,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mt-ipv6-reachability-prefixes-subtlvs-prefix-sids")
     {
@@ -4770,46 +4770,46 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mt_ipv6_reachability_prefixes_subtlvs_prefix_sids != nullptr)
     {
-        children["mt-ipv6-reachability-prefixes-subtlvs-prefix-sids"] = mt_ipv6_reachability_prefixes_subtlvs_prefix_sids;
+        _children["mt-ipv6-reachability-prefixes-subtlvs-prefix-sids"] = mt_ipv6_reachability_prefixes_subtlvs_prefix_sids;
     }
 
     if(mt_ipv6_reachability_prefixes_subtlvs_flags != nullptr)
     {
-        children["mt-ipv6-reachability-prefixes-subtlvs-flags"] = mt_ipv6_reachability_prefixes_subtlvs_flags;
+        _children["mt-ipv6-reachability-prefixes-subtlvs-flags"] = mt_ipv6_reachability_prefixes_subtlvs_flags;
     }
 
     if(mt_ipv6_reachability_prefixes_subtlvs_ipv4_source_router_id != nullptr)
     {
-        children["mt-ipv6-reachability-prefixes-subtlvs-ipv4-source-router-id"] = mt_ipv6_reachability_prefixes_subtlvs_ipv4_source_router_id;
+        _children["mt-ipv6-reachability-prefixes-subtlvs-ipv4-source-router-id"] = mt_ipv6_reachability_prefixes_subtlvs_ipv4_source_router_id;
     }
 
     if(mt_ipv6_reachability_prefixes_subtlvs_tag64 != nullptr)
     {
-        children["mt-ipv6-reachability-prefixes-subtlvs-tag64"] = mt_ipv6_reachability_prefixes_subtlvs_tag64;
+        _children["mt-ipv6-reachability-prefixes-subtlvs-tag64"] = mt_ipv6_reachability_prefixes_subtlvs_tag64;
     }
 
     if(mt_ipv6_reachability_prefixes_subtlvs_ipv6_source_router_id != nullptr)
     {
-        children["mt-ipv6-reachability-prefixes-subtlvs-ipv6-source-router-id"] = mt_ipv6_reachability_prefixes_subtlvs_ipv6_source_router_id;
+        _children["mt-ipv6-reachability-prefixes-subtlvs-ipv6-source-router-id"] = mt_ipv6_reachability_prefixes_subtlvs_ipv6_source_router_id;
     }
 
     if(mt_ipv6_reachability_prefixes_subtlvs_tag != nullptr)
     {
-        children["mt-ipv6-reachability-prefixes-subtlvs-tag"] = mt_ipv6_reachability_prefixes_subtlvs_tag;
+        _children["mt-ipv6-reachability-prefixes-subtlvs-tag"] = mt_ipv6_reachability_prefixes_subtlvs_tag;
     }
 
     if(mt_ipv6_reachability_prefixes_subtlvs_state != nullptr)
     {
-        children["mt-ipv6-reachability-prefixes-subtlvs-state"] = mt_ipv6_reachability_prefixes_subtlvs_state;
+        _children["mt-ipv6-reachability-prefixes-subtlvs-state"] = mt_ipv6_reachability_prefixes_subtlvs_state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4886,33 +4886,33 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mt-ipv6-reachability-prefixes-subtlvs-prefix-sid")
     {
-        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::MtIpv6ReachabilityPrefixesSubtlvsPrefixSid>();
-        c->parent = this;
-        mt_ipv6_reachability_prefixes_subtlvs_prefix_sid.append(c);
-        return c;
+        auto ent_ = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::MtIpv6ReachabilityPrefixesSubtlvsPrefixSid>();
+        ent_->parent = this;
+        mt_ipv6_reachability_prefixes_subtlvs_prefix_sid.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mt_ipv6_reachability_prefixes_subtlvs_prefix_sid.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mt_ipv6_reachability_prefixes_subtlvs_prefix_sid.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4977,7 +4977,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::MtIpv6ReachabilityPrefixesSubtlvsPrefixSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::MtIpv6ReachabilityPrefixesSubtlvsPrefixSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -4991,16 +4991,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::MtIpv6ReachabilityPrefixesSubtlvsPrefixSid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::MtIpv6ReachabilityPrefixesSubtlvsPrefixSid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::MtIpv6ReachabilityPrefixesSubtlvsPrefixSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5087,16 +5087,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::MtIpv6ReachabilityPrefixesSubtlvsPrefixSid::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::MtIpv6ReachabilityPrefixesSubtlvsPrefixSid::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::MtIpv6ReachabilityPrefixesSubtlvsPrefixSid::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::MtIpv6ReachabilityPrefixesSubtlvsPrefixSid::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsPrefixSids::MtIpv6ReachabilityPrefixesSubtlvsPrefixSid::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5183,7 +5183,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -5197,16 +5197,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5279,16 +5279,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsFlags::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsFlags::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsFlags::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsFlags::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsFlags::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5365,7 +5365,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -5379,16 +5379,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5451,16 +5451,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5539,7 +5539,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag64::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag64::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -5553,16 +5553,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag64::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag64::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag64::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5632,16 +5632,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag64::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag64::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag64::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag64::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag64::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5708,7 +5708,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -5722,16 +5722,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5794,16 +5794,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5882,7 +5882,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -5896,16 +5896,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5975,16 +5975,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsTag::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6051,16 +6051,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6137,33 +6137,33 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mt-ipv6-reachability-prefixes-undefined-subtlv")
     {
-        auto c = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::MtIpv6ReachabilityPrefixesUndefinedSubtlv>();
-        c->parent = this;
-        mt_ipv6_reachability_prefixes_undefined_subtlv.append(c);
-        return c;
+        auto ent_ = std::make_shared<OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::MtIpv6ReachabilityPrefixesUndefinedSubtlv>();
+        ent_->parent = this;
+        mt_ipv6_reachability_prefixes_undefined_subtlv.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mt_ipv6_reachability_prefixes_undefined_subtlv.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mt_ipv6_reachability_prefixes_undefined_subtlv.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6228,7 +6228,7 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::MtIpv6ReachabilityPrefixesUndefinedSubtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::MtIpv6ReachabilityPrefixesUndefinedSubtlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -6242,16 +6242,16 @@ std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::MtIpv6ReachabilityPrefixesUndefinedSubtlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::MtIpv6ReachabilityPrefixesUndefinedSubtlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::MtIpv6ReachabilityPrefixesUndefinedSubtlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6328,16 +6328,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::MtIpv6ReachabilityPrefixesUndefinedSubtlv::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::MtIpv6ReachabilityPrefixesUndefinedSubtlv::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::MtIpv6ReachabilityPrefixesUndefinedSubtlv::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::MtIpv6ReachabilityPrefixesUndefinedSubtlv::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesUndefinedSubtlvs::MtIpv6ReachabilityPrefixesUndefinedSubtlv::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6438,16 +6438,16 @@ std::vector<std::pair<std::string, LeafData> > OcniIsis::NetworkInstances::Netwo
 
 }
 
-std::shared_ptr<Entity> OcniIsis::NetworkInstances::NetworkInstance::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniIsis::NetworkInstances::NetworkInstance::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniIsis::NetworkInstances::NetworkInstance::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniIsis::NetworkInstances::NetworkInstance::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniIsis::NetworkInstances::NetworkInstance::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6546,7 +6546,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instances")
     {
@@ -6560,16 +6560,16 @@ std::shared_ptr<Entity> Isis::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(instances != nullptr)
     {
-        children["instances"] = instances;
+        _children["instances"] = instances;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6580,7 +6580,7 @@ void Isis::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Isis::clone_ptr() const
+std::shared_ptr<ydk::Entity> Isis::clone_ptr() const
 {
     return std::make_shared<Isis>();
 }
@@ -6668,33 +6668,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance")
     {
-        auto c = std::make_shared<Isis::Instances::Instance>();
-        c->parent = this;
-        instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance>();
+        ent_->parent = this;
+        instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6838,7 +6838,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::get_na
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbors")
     {
@@ -7014,106 +7014,106 @@ std::shared_ptr<Entity> Isis::Instances::Instance::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(neighbors != nullptr)
     {
-        children["neighbors"] = neighbors;
+        _children["neighbors"] = neighbors;
     }
 
     if(host_names != nullptr)
     {
-        children["host-names"] = host_names;
+        _children["host-names"] = host_names;
     }
 
     if(statistics_global != nullptr)
     {
-        children["statistics-global"] = statistics_global;
+        _children["statistics-global"] = statistics_global;
     }
 
     if(levels != nullptr)
     {
-        children["levels"] = levels;
+        _children["levels"] = levels;
     }
 
     if(topologies != nullptr)
     {
-        children["topologies"] = topologies;
+        _children["topologies"] = topologies;
     }
 
     if(nsr_status != nullptr)
     {
-        children["nsr-status"] = nsr_status;
+        _children["nsr-status"] = nsr_status;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(checkpoint_adjacencies != nullptr)
     {
-        children["checkpoint-adjacencies"] = checkpoint_adjacencies;
+        _children["checkpoint-adjacencies"] = checkpoint_adjacencies;
     }
 
     if(flex_algos != nullptr)
     {
-        children["flex-algos"] = flex_algos;
+        _children["flex-algos"] = flex_algos;
     }
 
     if(srms != nullptr)
     {
-        children["srms"] = srms;
+        _children["srms"] = srms;
     }
 
     if(error_log != nullptr)
     {
-        children["error-log"] = error_log;
+        _children["error-log"] = error_log;
     }
 
     if(checkpoint_interfaces != nullptr)
     {
-        children["checkpoint-interfaces"] = checkpoint_interfaces;
+        _children["checkpoint-interfaces"] = checkpoint_interfaces;
     }
 
     if(interface_statistics != nullptr)
     {
-        children["interface-statistics"] = interface_statistics;
+        _children["interface-statistics"] = interface_statistics;
     }
 
     if(protocol != nullptr)
     {
-        children["protocol"] = protocol;
+        _children["protocol"] = protocol;
     }
 
     if(neighbor_summaries != nullptr)
     {
-        children["neighbor-summaries"] = neighbor_summaries;
+        _children["neighbor-summaries"] = neighbor_summaries;
     }
 
     if(checkpoint_lsps != nullptr)
     {
-        children["checkpoint-lsps"] = checkpoint_lsps;
+        _children["checkpoint-lsps"] = checkpoint_lsps;
     }
 
     if(mesh_groups != nullptr)
     {
-        children["mesh-groups"] = mesh_groups;
+        _children["mesh-groups"] = mesh_groups;
     }
 
     if(nsr_statistics != nullptr)
     {
-        children["nsr-statistics"] = nsr_statistics;
+        _children["nsr-statistics"] = nsr_statistics;
     }
 
     if(checkpoint_te_tunnels != nullptr)
     {
-        children["checkpoint-te-tunnels"] = checkpoint_te_tunnels;
+        _children["checkpoint-te-tunnels"] = checkpoint_te_tunnels;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7190,33 +7190,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7357,67 +7357,67 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-active-area-address")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborActiveAreaAddress>();
-        c->parent = this;
-        neighbor_active_area_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborActiveAreaAddress>();
+        ent_->parent = this;
+        neighbor_active_area_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "topologies-supported")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported>();
-        c->parent = this;
-        topologies_supported.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported>();
+        ent_->parent = this;
+        topologies_supported.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "neighbor-per-address-family-data")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData>();
-        c->parent = this;
-        neighbor_per_address_family_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData>();
+        ent_->parent = this;
+        neighbor_per_address_family_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor_active_area_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor_active_area_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : topologies_supported.entities())
+    count_ = 0;
+    for (auto ent_ : topologies_supported.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : neighbor_per_address_family_data.entities())
+    count_ = 0;
+    for (auto ent_ : neighbor_per_address_family_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7606,16 +7606,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborActiveAreaAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborActiveAreaAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborActiveAreaAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborActiveAreaAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborActiveAreaAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7696,16 +7696,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7813,7 +7813,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -7836,21 +7836,21 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::Neighbor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7961,7 +7961,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adjacency-sid")
     {
@@ -7983,73 +7983,73 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::Neighbor
 
     if(child_yang_name == "interface-address")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::InterfaceAddress>();
-        c->parent = this;
-        interface_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::InterfaceAddress>();
+        ent_->parent = this;
+        interface_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "underlying-adjacency-sid")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid>();
-        c->parent = this;
-        underlying_adjacency_sid.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid>();
+        ent_->parent = this;
+        underlying_adjacency_sid.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "underlying-interface")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingInterface>();
-        c->parent = this;
-        underlying_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingInterface>();
+        ent_->parent = this;
+        underlying_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(adjacency_sid != nullptr)
     {
-        children["adjacency-sid"] = adjacency_sid;
+        _children["adjacency-sid"] = adjacency_sid;
     }
 
     if(non_frr_adjacency_sid != nullptr)
     {
-        children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
+        _children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
     }
 
-    count = 0;
-    for (auto c : interface_address.entities())
+    count_ = 0;
+    for (auto ent_ : interface_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : underlying_adjacency_sid.entities())
+    count_ = 0;
+    for (auto ent_ : underlying_adjacency_sid.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : underlying_interface.entities())
+    count_ = 0;
+    for (auto ent_ : underlying_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8127,7 +8127,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adjacency-sid-backup")
     {
@@ -8150,21 +8150,21 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::Neighbor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(adjacency_sid_backup != nullptr)
     {
-        children["adjacency-sid-backup"] = adjacency_sid_backup;
+        _children["adjacency-sid-backup"] = adjacency_sid_backup;
     }
 
     if(adjacency_sid_backup_te != nullptr)
     {
-        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
+        _children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8257,33 +8257,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backup-label-stack")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack>();
+        ent_->parent = this;
+        backup_label_stack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : backup_label_stack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8382,16 +8382,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackup::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8484,33 +8484,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backup-label-stack")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack>();
+        ent_->parent = this;
+        backup_label_stack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : backup_label_stack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8609,16 +8609,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8696,7 +8696,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adjacency-sid-backup")
     {
@@ -8719,21 +8719,21 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::Neighbor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(adjacency_sid_backup != nullptr)
     {
-        children["adjacency-sid-backup"] = adjacency_sid_backup;
+        _children["adjacency-sid-backup"] = adjacency_sid_backup;
     }
 
     if(adjacency_sid_backup_te != nullptr)
     {
-        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
+        _children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8826,33 +8826,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backup-label-stack")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack>();
+        ent_->parent = this;
+        backup_label_stack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : backup_label_stack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8951,16 +8951,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9053,33 +9053,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backup-label-stack")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack>();
+        ent_->parent = this;
+        backup_label_stack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : backup_label_stack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9178,16 +9178,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9256,16 +9256,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::InterfaceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::InterfaceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::InterfaceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9334,16 +9334,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingAdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9416,16 +9416,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv4::UnderlyingInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9554,7 +9554,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adjacency-sid")
     {
@@ -9594,83 +9594,83 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::Neighbor
 
     if(child_yang_name == "interface-address")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::InterfaceAddress>();
-        c->parent = this;
-        interface_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::InterfaceAddress>();
+        ent_->parent = this;
+        interface_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "underlying-adjacency-sid")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid>();
-        c->parent = this;
-        underlying_adjacency_sid.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid>();
+        ent_->parent = this;
+        underlying_adjacency_sid.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "underlying-interface")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingInterface>();
-        c->parent = this;
-        underlying_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingInterface>();
+        ent_->parent = this;
+        underlying_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(adjacency_sid != nullptr)
     {
-        children["adjacency-sid"] = adjacency_sid;
+        _children["adjacency-sid"] = adjacency_sid;
     }
 
     if(non_frr_adjacency_sid != nullptr)
     {
-        children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
+        _children["non-frr-adjacency-sid"] = non_frr_adjacency_sid;
     }
 
     if(end_xsid != nullptr)
     {
-        children["end-xsid"] = end_xsid;
+        _children["end-xsid"] = end_xsid;
     }
 
     if(non_frr_end_xsid != nullptr)
     {
-        children["non-frr-end-xsid"] = non_frr_end_xsid;
+        _children["non-frr-end-xsid"] = non_frr_end_xsid;
     }
 
-    count = 0;
-    for (auto c : interface_address.entities())
+    count_ = 0;
+    for (auto ent_ : interface_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : underlying_adjacency_sid.entities())
+    count_ = 0;
+    for (auto ent_ : underlying_adjacency_sid.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : underlying_interface.entities())
+    count_ = 0;
+    for (auto ent_ : underlying_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9748,7 +9748,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adjacency-sid-backup")
     {
@@ -9771,21 +9771,21 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::Neighbor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(adjacency_sid_backup != nullptr)
     {
-        children["adjacency-sid-backup"] = adjacency_sid_backup;
+        _children["adjacency-sid-backup"] = adjacency_sid_backup;
     }
 
     if(adjacency_sid_backup_te != nullptr)
     {
-        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
+        _children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9878,33 +9878,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backup-label-stack")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack>();
+        ent_->parent = this;
+        backup_label_stack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : backup_label_stack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10003,16 +10003,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackup::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10105,33 +10105,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backup-label-stack")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack>();
+        ent_->parent = this;
+        backup_label_stack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : backup_label_stack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10230,16 +10230,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::AdjacencySid::AdjacencySidBackupTe::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10317,7 +10317,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adjacency-sid-backup")
     {
@@ -10340,21 +10340,21 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::Neighbor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(adjacency_sid_backup != nullptr)
     {
-        children["adjacency-sid-backup"] = adjacency_sid_backup;
+        _children["adjacency-sid-backup"] = adjacency_sid_backup;
     }
 
     if(adjacency_sid_backup_te != nullptr)
     {
-        children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
+        _children["adjacency-sid-backup-te"] = adjacency_sid_backup_te;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10447,33 +10447,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backup-label-stack")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack>();
+        ent_->parent = this;
+        backup_label_stack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : backup_label_stack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10572,16 +10572,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackup::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10674,33 +10674,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backup-label-stack")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack>();
-        c->parent = this;
-        backup_label_stack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack>();
+        ent_->parent = this;
+        backup_label_stack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_label_stack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : backup_label_stack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10799,16 +10799,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrAdjacencySid::AdjacencySidBackupTe::BackupLabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10886,7 +10886,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "end-xsid")
     {
@@ -10909,21 +10909,21 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::Neighbor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(end_xsid != nullptr)
     {
-        children["end-xsid"] = end_xsid;
+        _children["end-xsid"] = end_xsid;
     }
 
     if(end_xsid_backup != nullptr)
     {
-        children["end-xsid-backup"] = end_xsid_backup;
+        _children["end-xsid-backup"] = end_xsid_backup;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10996,16 +10996,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsid_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11108,33 +11108,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backup-stack")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack>();
-        c->parent = this;
-        backup_stack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack>();
+        ent_->parent = this;
+        backup_stack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_stack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : backup_stack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11237,16 +11237,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::EndXsid::EndXsidBackup::BackupStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11334,7 +11334,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "end-xsid")
     {
@@ -11357,21 +11357,21 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::Neighbor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(end_xsid != nullptr)
     {
-        children["end-xsid"] = end_xsid;
+        _children["end-xsid"] = end_xsid;
     }
 
     if(end_xsid_backup != nullptr)
     {
-        children["end-xsid-backup"] = end_xsid_backup;
+        _children["end-xsid-backup"] = end_xsid_backup;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11444,16 +11444,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11556,33 +11556,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backup-stack")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack>();
-        c->parent = this;
-        backup_stack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack>();
+        ent_->parent = this;
+        backup_stack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backup_stack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : backup_stack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11685,16 +11685,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::NonFrrEndXsid::EndXsidBackup::BackupStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11773,16 +11773,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::InterfaceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::InterfaceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::InterfaceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11851,16 +11851,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingAdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11933,16 +11933,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Neighb
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFamilyData::Ipv6::UnderlyingInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12029,33 +12029,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::HostNa
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::HostNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::HostNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "host-name")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::HostNames::HostName>();
-        c->parent = this;
-        host_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::HostNames::HostName>();
+        ent_->parent = this;
+        host_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::HostNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::HostNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : host_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : host_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::HostNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12127,16 +12127,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::HostNa
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::HostNames::HostName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::HostNames::HostName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::HostNames::HostName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::HostNames::HostName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::HostNames::HostName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12246,7 +12246,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -12259,34 +12259,34 @@ std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::get_child_b
 
     if(child_yang_name == "per-area-data")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::PerAreaData>();
-        c->parent = this;
-        per_area_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::PerAreaData>();
+        ent_->parent = this;
+        per_area_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    count = 0;
-    for (auto c : per_area_data.entities())
+    count_ = 0;
+    for (auto ent_ : per_area_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12458,7 +12458,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "avg-hello-process-time")
     {
@@ -12535,51 +12535,51 @@ std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(avg_hello_process_time != nullptr)
     {
-        children["avg-hello-process-time"] = avg_hello_process_time;
+        _children["avg-hello-process-time"] = avg_hello_process_time;
     }
 
     if(avg_csnp_process_time != nullptr)
     {
-        children["avg-csnp-process-time"] = avg_csnp_process_time;
+        _children["avg-csnp-process-time"] = avg_csnp_process_time;
     }
 
     if(avg_psnp_process_time != nullptr)
     {
-        children["avg-psnp-process-time"] = avg_psnp_process_time;
+        _children["avg-psnp-process-time"] = avg_psnp_process_time;
     }
 
     if(avg_lsp_process_time != nullptr)
     {
-        children["avg-lsp-process-time"] = avg_lsp_process_time;
+        _children["avg-lsp-process-time"] = avg_lsp_process_time;
     }
 
     if(avg_hello_transmit_time != nullptr)
     {
-        children["avg-hello-transmit-time"] = avg_hello_transmit_time;
+        _children["avg-hello-transmit-time"] = avg_hello_transmit_time;
     }
 
     if(avg_csnp_transmit_time != nullptr)
     {
-        children["avg-csnp-transmit-time"] = avg_csnp_transmit_time;
+        _children["avg-csnp-transmit-time"] = avg_csnp_transmit_time;
     }
 
     if(avg_psnp_transmit_time != nullptr)
     {
-        children["avg-psnp-transmit-time"] = avg_psnp_transmit_time;
+        _children["avg-psnp-transmit-time"] = avg_psnp_transmit_time;
     }
 
     if(avg_lsp_transmit_time != nullptr)
     {
-        children["avg-lsp-transmit-time"] = avg_lsp_transmit_time;
+        _children["avg-lsp-transmit-time"] = avg_lsp_transmit_time;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12852,16 +12852,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloProcessTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloProcessTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloProcessTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloProcessTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloProcessTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12944,16 +12944,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpProcessTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpProcessTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpProcessTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpProcessTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpProcessTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13036,16 +13036,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpProcessTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpProcessTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpProcessTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpProcessTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpProcessTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13128,16 +13128,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspProcessTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspProcessTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspProcessTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspProcessTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspProcessTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13220,16 +13220,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloTransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloTransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloTransmitTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloTransmitTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgHelloTransmitTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13312,16 +13312,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpTransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpTransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpTransmitTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpTransmitTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgCsnpTransmitTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13404,16 +13404,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTransmitTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTransmitTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgPsnpTransmitTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13496,16 +13496,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspTransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspTransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspTransmitTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspTransmitTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::Statistics::AvgLspTransmitTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13600,7 +13600,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -13613,34 +13613,34 @@ std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData
 
     if(child_yang_name == "per-topology-data")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData>();
-        c->parent = this;
-        per_topology_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData>();
+        ent_->parent = this;
+        per_topology_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    count = 0;
-    for (auto c : per_topology_data.entities())
+    count_ = 0;
+    for (auto ent_ : per_topology_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::PerAreaData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13713,16 +13713,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::PerAreaData::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13805,7 +13805,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "id")
     {
@@ -13828,21 +13828,21 @@ std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(id != nullptr)
     {
-        children["id"] = id;
+        _children["id"] = id;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13913,16 +13913,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Id::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Id::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14037,16 +14037,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Statis
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopologyData::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14163,33 +14163,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "level")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level>();
-        c->parent = this;
-        level.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Levels::Level>();
+        ent_->parent = this;
+        level.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : level.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : level.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14278,7 +14278,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adjacency-log")
     {
@@ -14346,46 +14346,46 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(adjacency_log != nullptr)
     {
-        children["adjacency-log"] = adjacency_log;
+        _children["adjacency-log"] = adjacency_log;
     }
 
     if(lsp_table_summary != nullptr)
     {
-        children["lsp-table-summary"] = lsp_table_summary;
+        _children["lsp-table-summary"] = lsp_table_summary;
     }
 
     if(adjacencies != nullptr)
     {
-        children["adjacencies"] = adjacencies;
+        _children["adjacencies"] = adjacencies;
     }
 
     if(detailed_lsps != nullptr)
     {
-        children["detailed-lsps"] = detailed_lsps;
+        _children["detailed-lsps"] = detailed_lsps;
     }
 
     if(lsps != nullptr)
     {
-        children["lsps"] = lsps;
+        _children["lsps"] = lsps;
     }
 
     if(lsp_log != nullptr)
     {
-        children["lsp-log"] = lsp_log;
+        _children["lsp-log"] = lsp_log;
     }
 
     if(database_log != nullptr)
     {
-        children["database-log"] = database_log;
+        _children["database-log"] = database_log;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14462,33 +14462,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-entry")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry>();
-        c->parent = this;
-        log_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry>();
+        ent_->parent = this;
+        log_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::AdjacencyLog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14579,7 +14579,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "generic-data")
     {
@@ -14592,34 +14592,34 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::
 
     if(child_yang_name == "adjacency-per-topology-change")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange>();
-        c->parent = this;
-        adjacency_per_topology_change.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange>();
+        ent_->parent = this;
+        adjacency_per_topology_change.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(generic_data != nullptr)
     {
-        children["generic-data"] = generic_data;
+        _children["generic-data"] = generic_data;
     }
 
-    count = 0;
-    for (auto c : adjacency_per_topology_change.entities())
+    count_ = 0;
+    for (auto ent_ : adjacency_per_topology_change.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14728,7 +14728,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "timestamp")
     {
@@ -14742,16 +14742,16 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(timestamp != nullptr)
     {
-        children["timestamp"] = timestamp;
+        _children["timestamp"] = timestamp;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14814,16 +14814,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::Timestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::Timestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::Timestamp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::Timestamp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::GenericData::Timestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14907,7 +14907,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "id")
     {
@@ -14921,16 +14921,16 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(id != nullptr)
     {
-        children["id"] = id;
+        _children["id"] = id;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15011,16 +15011,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::AdjacencyPerTopologyChange::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15123,7 +15123,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fragment0lsp-stats")
     {
@@ -15146,21 +15146,21 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fragment0lsp_stats != nullptr)
     {
-        children["fragment0lsp-stats"] = fragment0lsp_stats;
+        _children["fragment0lsp-stats"] = fragment0lsp_stats;
     }
 
     if(all_fragment_lsp_stats != nullptr)
     {
-        children["all-fragment-lsp-stats"] = all_fragment_lsp_stats;
+        _children["all-fragment-lsp-stats"] = all_fragment_lsp_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::LspTableSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15230,7 +15230,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node-counters")
     {
@@ -15243,34 +15243,34 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummar
 
     if(child_yang_name == "per-topology-counter")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter>();
-        c->parent = this;
-        per_topology_counter.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter>();
+        ent_->parent = this;
+        per_topology_counter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(node_counters != nullptr)
     {
-        children["node-counters"] = node_counters;
+        _children["node-counters"] = node_counters;
     }
 
-    count = 0;
-    for (auto c : per_topology_counter.entities())
+    count_ = 0;
+    for (auto ent_ : per_topology_counter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15333,7 +15333,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route-lsp-count")
     {
@@ -15356,21 +15356,21 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(route_lsp_count != nullptr)
     {
-        children["route-lsp-count"] = route_lsp_count;
+        _children["route-lsp-count"] = route_lsp_count;
     }
 
     if(pseudo_node_lsp_count != nullptr)
     {
-        children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
+        _children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15433,16 +15433,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::RouteLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::RouteLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::RouteLspCount::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::RouteLspCount::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::RouteLspCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15525,16 +15525,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::PseudoNodeLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::PseudoNodeLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::PseudoNodeLspCount::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::PseudoNodeLspCount::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::NodeCounters::PseudoNodeLspCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15621,7 +15621,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "id")
     {
@@ -15653,26 +15653,26 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(id != nullptr)
     {
-        children["id"] = id;
+        _children["id"] = id;
     }
 
     if(overloaded_lsp_count != nullptr)
     {
-        children["overloaded-lsp-count"] = overloaded_lsp_count;
+        _children["overloaded-lsp-count"] = overloaded_lsp_count;
     }
 
     if(attached_lsp_count != nullptr)
     {
-        children["attached-lsp-count"] = attached_lsp_count;
+        _children["attached-lsp-count"] = attached_lsp_count;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15743,16 +15743,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::Id::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::Id::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15855,16 +15855,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::OverloadedLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::OverloadedLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::OverloadedLspCount::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::OverloadedLspCount::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::OverloadedLspCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15947,16 +15947,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::AttachedLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::AttachedLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::AttachedLspCount::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::AttachedLspCount::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0lspStats::PerTopologyCounter::AttachedLspCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16035,7 +16035,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node-counters")
     {
@@ -16049,16 +16049,16 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(node_counters != nullptr)
     {
-        children["node-counters"] = node_counters;
+        _children["node-counters"] = node_counters;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16121,7 +16121,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route-lsp-count")
     {
@@ -16144,21 +16144,21 @@ std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(route_lsp_count != nullptr)
     {
-        children["route-lsp-count"] = route_lsp_count;
+        _children["route-lsp-count"] = route_lsp_count;
     }
 
     if(pseudo_node_lsp_count != nullptr)
     {
-        children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
+        _children["pseudo-node-lsp-count"] = pseudo_node_lsp_count;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16221,16 +16221,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::RouteLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::RouteLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::RouteLspCount::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::RouteLspCount::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::RouteLspCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16313,16 +16313,16 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::PseudoNodeLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::PseudoNodeLspCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::PseudoNodeLspCount::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::PseudoNodeLspCount::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::LspTableSummary::AllFragmentLspStats::NodeCounters::PseudoNodeLspCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16409,33 +16409,33 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adjacency")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency>();
-        c->parent = this;
-        adjacency.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency>();
+        ent_->parent = this;
+        adjacency.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : adjacency.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : adjacency.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::Adjacencies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16628,67 +16628,67 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Levels
 
 }
 
-std::shared_ptr<Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adjacency-area-address")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress>();
-        c->parent = this;
-        adjacency_area_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress>();
+        ent_->parent = this;
+        adjacency_area_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "adjacency-topology")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology>();
-        c->parent = this;
-        adjacency_topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology>();
+        ent_->parent = this;
+        adjacency_topology.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "adjacency-per-address-family-data")
     {
-        auto c = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData>();
-        c->parent = this;
-        adjacency_per_address_family_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData>();
+        ent_->parent = this;
+        adjacency_per_address_family_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : adjacency_area_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : adjacency_area_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : adjacency_topology.entities())
+    count_ = 0;
+    for (auto ent_ : adjacency_topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : adjacency_per_address_family_data.entities())
+    count_ = 0;
+    for (auto ent_ : adjacency_per_address_family_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

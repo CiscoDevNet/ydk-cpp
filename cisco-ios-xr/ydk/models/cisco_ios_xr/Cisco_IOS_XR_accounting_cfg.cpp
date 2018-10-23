@@ -57,7 +57,7 @@ std::vector<std::pair<std::string, LeafData> > Accounting::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -71,16 +71,16 @@ std::shared_ptr<Entity> Accounting::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -101,7 +101,7 @@ void Accounting::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Accounting::clone_ptr() const
+std::shared_ptr<ydk::Entity> Accounting::clone_ptr() const
 {
     return std::make_shared<Accounting>();
 }
@@ -190,7 +190,7 @@ std::vector<std::pair<std::string, LeafData> > Accounting::Interfaces::get_name_
 
 }
 
-std::shared_ptr<Entity> Accounting::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Accounting::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mpls")
     {
@@ -213,21 +213,21 @@ std::shared_ptr<Entity> Accounting::Interfaces::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Accounting::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Accounting::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mpls != nullptr)
     {
-        children["mpls"] = mpls;
+        _children["mpls"] = mpls;
     }
 
     if(segment_routing != nullptr)
     {
-        children["segment-routing"] = segment_routing;
+        _children["segment-routing"] = segment_routing;
     }
 
-    return children;
+    return _children;
 }
 
 void Accounting::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -307,16 +307,16 @@ std::vector<std::pair<std::string, LeafData> > Accounting::Interfaces::Mpls::get
 
 }
 
-std::shared_ptr<Entity> Accounting::Interfaces::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Accounting::Interfaces::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Accounting::Interfaces::Mpls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Accounting::Interfaces::Mpls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Accounting::Interfaces::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -410,16 +410,16 @@ std::vector<std::pair<std::string, LeafData> > Accounting::Interfaces::SegmentRo
 
 }
 
-std::shared_ptr<Entity> Accounting::Interfaces::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Accounting::Interfaces::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Accounting::Interfaces::SegmentRouting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Accounting::Interfaces::SegmentRouting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Accounting::Interfaces::SegmentRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

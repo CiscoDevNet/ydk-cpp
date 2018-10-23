@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BGP4MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> BGP4MIB::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BGP4MIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
     if(bgppeertable != nullptr)
     {
-        children["bgpPeerTable"] = bgppeertable;
+        _children["bgpPeerTable"] = bgppeertable;
     }
 
     if(bgprcvdpathattrtable != nullptr)
     {
-        children["bgpRcvdPathAttrTable"] = bgprcvdpathattrtable;
+        _children["bgpRcvdPathAttrTable"] = bgprcvdpathattrtable;
     }
 
     if(bgp4pathattrtable != nullptr)
     {
-        children["bgp4PathAttrTable"] = bgp4pathattrtable;
+        _children["bgp4PathAttrTable"] = bgp4pathattrtable;
     }
 
-    return children;
+    return _children;
 }
 
 void BGP4MIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void BGP4MIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> BGP4MIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> BGP4MIB::clone_ptr() const
 {
     return std::make_shared<BGP4MIB>();
 }
@@ -228,16 +228,16 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgp::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BGP4MIB::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BGP4MIB::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BGP4MIB::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -341,33 +341,33 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::BgpPeerTable::get_name_l
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::BgpPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BGP4MIB::BgpPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgpPeerEntry")
     {
-        auto c = std::make_shared<BGP4MIB::BgpPeerTable::BgpPeerEntry>();
-        c->parent = this;
-        bgppeerentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<BGP4MIB::BgpPeerTable::BgpPeerEntry>();
+        ent_->parent = this;
+        bgppeerentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::BgpPeerTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BGP4MIB::BgpPeerTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bgppeerentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bgppeerentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void BGP4MIB::BgpPeerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -558,16 +558,16 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::BgpPeerTable::BgpPeerEnt
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::BgpPeerTable::BgpPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BGP4MIB::BgpPeerTable::BgpPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::BgpPeerTable::BgpPeerEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BGP4MIB::BgpPeerTable::BgpPeerEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BGP4MIB::BgpPeerTable::BgpPeerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -961,33 +961,33 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::BgpRcvdPathAttrTable::ge
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::BgpRcvdPathAttrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BGP4MIB::BgpRcvdPathAttrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgpPathAttrEntry")
     {
-        auto c = std::make_shared<BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry>();
-        c->parent = this;
-        bgppathattrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry>();
+        ent_->parent = this;
+        bgppathattrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::BgpRcvdPathAttrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BGP4MIB::BgpRcvdPathAttrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bgppathattrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bgppathattrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void BGP4MIB::BgpRcvdPathAttrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1075,16 +1075,16 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::BgpRcvdPathAttrTable::Bg
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1218,33 +1218,33 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgp4PathAttrTable::get_n
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::Bgp4PathAttrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BGP4MIB::Bgp4PathAttrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp4PathAttrEntry")
     {
-        auto c = std::make_shared<BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry>();
-        c->parent = this;
-        bgp4pathattrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry>();
+        ent_->parent = this;
+        bgp4pathattrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgp4PathAttrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BGP4MIB::Bgp4PathAttrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bgp4pathattrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bgp4pathattrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void BGP4MIB::Bgp4PathAttrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1365,16 +1365,16 @@ std::vector<std::pair<std::string, LeafData> > BGP4MIB::Bgp4PathAttrTable::Bgp4P
 
 }
 
-std::shared_ptr<Entity> BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

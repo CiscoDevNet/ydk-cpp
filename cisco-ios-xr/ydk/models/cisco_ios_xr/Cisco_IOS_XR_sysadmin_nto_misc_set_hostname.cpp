@@ -52,16 +52,16 @@ std::vector<std::pair<std::string, LeafData> > Hostname::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> Hostname::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Hostname::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Hostname::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Hostname::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Hostname::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -82,7 +82,7 @@ void Hostname::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Hostname::clone_ptr() const
+std::shared_ptr<ydk::Entity> Hostname::clone_ptr() const
 {
     return std::make_shared<Hostname>();
 }

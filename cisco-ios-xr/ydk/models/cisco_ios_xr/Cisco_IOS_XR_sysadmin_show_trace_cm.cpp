@@ -63,14 +63,14 @@ std::vector<std::pair<std::string, LeafData> > Cm::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Cm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace")
     {
-        auto c = std::make_shared<Cm::Trace>();
-        c->parent = this;
-        trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cm::Trace>();
+        ent_->parent = this;
+        trace.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-sysadmin-cm:lsp")
@@ -85,25 +85,25 @@ std::shared_ptr<Entity> Cm::get_child_by_name(const std::string & child_yang_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(lsp != nullptr)
     {
-        children["Cisco-IOS-XR-sysadmin-cm:lsp"] = lsp;
+        _children["Cisco-IOS-XR-sysadmin-cm:lsp"] = lsp;
     }
 
-    return children;
+    return _children;
 }
 
 void Cm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -114,7 +114,7 @@ void Cm::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Cm::clone_ptr() const
+std::shared_ptr<ydk::Entity> Cm::clone_ptr() const
 {
     return std::make_shared<Cm>();
 }
@@ -207,33 +207,33 @@ std::vector<std::pair<std::string, LeafData> > Cm::Trace::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> Cm::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cm::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Cm::Trace::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cm::Trace::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cm::Trace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cm::Trace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cm::Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -315,33 +315,33 @@ std::vector<std::pair<std::string, LeafData> > Cm::Trace::Location::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Cm::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cm::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-options")
     {
-        auto c = std::make_shared<Cm::Trace::Location::AllOptions>();
-        c->parent = this;
-        all_options.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cm::Trace::Location::AllOptions>();
+        ent_->parent = this;
+        all_options.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cm::Trace::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cm::Trace::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_options.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_options.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cm::Trace::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -423,33 +423,33 @@ std::vector<std::pair<std::string, LeafData> > Cm::Trace::Location::AllOptions::
 
 }
 
-std::shared_ptr<Entity> Cm::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cm::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace-blocks")
     {
-        auto c = std::make_shared<Cm::Trace::Location::AllOptions::TraceBlocks>();
-        c->parent = this;
-        trace_blocks.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cm::Trace::Location::AllOptions::TraceBlocks>();
+        ent_->parent = this;
+        trace_blocks.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cm::Trace::Location::AllOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cm::Trace::Location::AllOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace_blocks.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace_blocks.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cm::Trace::Location::AllOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -518,16 +518,16 @@ std::vector<std::pair<std::string, LeafData> > Cm::Trace::Location::AllOptions::
 
 }
 
-std::shared_ptr<Entity> Cm::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cm::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cm::Trace::Location::AllOptions::TraceBlocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cm::Trace::Location::AllOptions::TraceBlocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Cm::Trace::Location::AllOptions::TraceBlocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -611,33 +611,33 @@ std::vector<std::pair<std::string, LeafData> > Cm::Lsp::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> Cm::Lsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cm::Lsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lspdb_locations")
     {
-        auto c = std::make_shared<Cm::Lsp::LspdbLocations>();
-        c->parent = this;
-        lspdb_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cm::Lsp::LspdbLocations>();
+        ent_->parent = this;
+        lspdb_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cm::Lsp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cm::Lsp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lspdb_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lspdb_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cm::Lsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -716,33 +716,33 @@ std::vector<std::pair<std::string, LeafData> > Cm::Lsp::LspdbLocations::get_name
 
 }
 
-std::shared_ptr<Entity> Cm::Lsp::LspdbLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cm::Lsp::LspdbLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lspdbi")
     {
-        auto c = std::make_shared<Cm::Lsp::LspdbLocations::Lspdbi>();
-        c->parent = this;
-        lspdbi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cm::Lsp::LspdbLocations::Lspdbi>();
+        ent_->parent = this;
+        lspdbi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cm::Lsp::LspdbLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cm::Lsp::LspdbLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lspdbi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lspdbi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cm::Lsp::LspdbLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -839,16 +839,16 @@ std::vector<std::pair<std::string, LeafData> > Cm::Lsp::LspdbLocations::Lspdbi::
 
 }
 
-std::shared_ptr<Entity> Cm::Lsp::LspdbLocations::Lspdbi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cm::Lsp::LspdbLocations::Lspdbi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cm::Lsp::LspdbLocations::Lspdbi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cm::Lsp::LspdbLocations::Lspdbi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Cm::Lsp::LspdbLocations::Lspdbi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

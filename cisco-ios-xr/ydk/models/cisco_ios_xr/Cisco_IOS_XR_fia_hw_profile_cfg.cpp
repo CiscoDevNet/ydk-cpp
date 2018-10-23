@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::get_name_l
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "profile")
     {
@@ -118,36 +118,36 @@ std::shared_ptr<Entity> HwModuleProfileConfig::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(profile != nullptr)
     {
-        children["profile"] = profile;
+        _children["profile"] = profile;
     }
 
     if(fib_scale != nullptr)
     {
-        children["fib-scale"] = fib_scale;
+        _children["fib-scale"] = fib_scale;
     }
 
     if(orchestrated_linecard_reload != nullptr)
     {
-        children["orchestrated-linecard-reload"] = orchestrated_linecard_reload;
+        _children["orchestrated-linecard-reload"] = orchestrated_linecard_reload;
     }
 
     if(tcam != nullptr)
     {
-        children["tcam"] = tcam;
+        _children["tcam"] = tcam;
     }
 
     if(qosqppb != nullptr)
     {
-        children["qosqppb"] = qosqppb;
+        _children["qosqppb"] = qosqppb;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -158,7 +158,7 @@ void HwModuleProfileConfig::set_filter(const std::string & value_path, YFilter y
 {
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::clone_ptr() const
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::clone_ptr() const
 {
     return std::make_shared<HwModuleProfileConfig>();
 }
@@ -274,7 +274,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::g
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcam-table")
     {
@@ -369,61 +369,61 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tcam_table != nullptr)
     {
-        children["tcam-table"] = tcam_table;
+        _children["tcam-table"] = tcam_table;
     }
 
     if(netflow != nullptr)
     {
-        children["netflow"] = netflow;
+        _children["netflow"] = netflow;
     }
 
     if(flowspecs != nullptr)
     {
-        children["flowspecs"] = flowspecs;
+        _children["flowspecs"] = flowspecs;
     }
 
     if(segment_routings != nullptr)
     {
-        children["segment-routings"] = segment_routings;
+        _children["segment-routings"] = segment_routings;
     }
 
     if(load_balance != nullptr)
     {
-        children["load-balance"] = load_balance;
+        _children["load-balance"] = load_balance;
     }
 
     if(stats != nullptr)
     {
-        children["stats"] = stats;
+        _children["stats"] = stats;
     }
 
     if(profile_acl != nullptr)
     {
-        children["profile-acl"] = profile_acl;
+        _children["profile-acl"] = profile_acl;
     }
 
     if(bundle_scale != nullptr)
     {
-        children["bundle-scale"] = bundle_scale;
+        _children["bundle-scale"] = bundle_scale;
     }
 
     if(profile_tcam != nullptr)
     {
-        children["profile-tcam"] = profile_tcam;
+        _children["profile-tcam"] = profile_tcam;
     }
 
     if(qos != nullptr)
     {
-        children["qos"] = qos;
+        _children["qos"] = qos;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -489,7 +489,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::T
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::TcamTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fib-table")
     {
@@ -503,16 +503,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::TcamTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fib_table != nullptr)
     {
-        children["fib-table"] = fib_table;
+        _children["fib-table"] = fib_table;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::TcamTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -582,7 +582,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::T
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-address")
     {
@@ -605,21 +605,21 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_address != nullptr)
     {
-        children["ipv4-address"] = ipv4_address;
+        _children["ipv4-address"] = ipv4_address;
     }
 
     if(ipv6_address != nullptr)
     {
-        children["ipv6-address"] = ipv6_address;
+        _children["ipv6-address"] = ipv6_address;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::TcamTable::FibTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -685,7 +685,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::T
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-unicast")
     {
@@ -699,16 +699,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_unicast != nullptr)
     {
-        children["ipv4-unicast"] = ipv4_unicast;
+        _children["ipv4-unicast"] = ipv4_unicast;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -779,7 +779,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::T
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-unicast-prefix-lengths")
     {
@@ -793,16 +793,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_unicast_prefix_lengths != nullptr)
     {
-        children["ipv4-unicast-prefix-lengths"] = ipv4_unicast_prefix_lengths;
+        _children["ipv4-unicast-prefix-lengths"] = ipv4_unicast_prefix_lengths;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -886,33 +886,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::T
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-unicast-prefix-length")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::Ipv4UnicastPrefixLength>();
-        c->parent = this;
-        ipv4_unicast_prefix_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::Ipv4UnicastPrefixLength>();
+        ent_->parent = this;
+        ipv4_unicast_prefix_length.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4_unicast_prefix_length.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4_unicast_prefix_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -983,16 +983,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::T
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::Ipv4UnicastPrefixLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::Ipv4UnicastPrefixLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::Ipv4UnicastPrefixLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::Ipv4UnicastPrefixLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv4Address::Ipv4Unicast::Ipv4UnicastPrefixLengths::Ipv4UnicastPrefixLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1078,7 +1078,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::T
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-unicast")
     {
@@ -1092,16 +1092,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6_unicast != nullptr)
     {
-        children["ipv6-unicast"] = ipv6_unicast;
+        _children["ipv6-unicast"] = ipv6_unicast;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1172,7 +1172,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::T
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-unicast-prefix-lengths")
     {
@@ -1186,16 +1186,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6_unicast_prefix_lengths != nullptr)
     {
-        children["ipv6-unicast-prefix-lengths"] = ipv6_unicast_prefix_lengths;
+        _children["ipv6-unicast-prefix-lengths"] = ipv6_unicast_prefix_lengths;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1279,33 +1279,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::T
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-unicast-prefix-length")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::Ipv6UnicastPrefixLength>();
-        c->parent = this;
-        ipv6_unicast_prefix_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::Ipv6UnicastPrefixLength>();
+        ent_->parent = this;
+        ipv6_unicast_prefix_length.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv6_unicast_prefix_length.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv6_unicast_prefix_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1376,16 +1376,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::T
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::Ipv6UnicastPrefixLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::Ipv6UnicastPrefixLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::Ipv6UnicastPrefixLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::Ipv6UnicastPrefixLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::TcamTable::FibTable::Ipv6Address::Ipv6Unicast::Ipv6UnicastPrefixLengths::Ipv6UnicastPrefixLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1475,7 +1475,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::N
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Netflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Netflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "netflow-locations")
     {
@@ -1498,21 +1498,21 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Netflow::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Netflow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Netflow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(netflow_locations != nullptr)
     {
-        children["netflow-locations"] = netflow_locations;
+        _children["netflow-locations"] = netflow_locations;
     }
 
     if(location_all != nullptr)
     {
-        children["location-all"] = location_all;
+        _children["location-all"] = location_all;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Netflow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1586,33 +1586,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::N
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Netflow::NetflowLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Netflow::NetflowLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "netflow-location")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation>();
-        c->parent = this;
-        netflow_location.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation>();
+        ent_->parent = this;
+        netflow_location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Netflow::NetflowLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Netflow::NetflowLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : netflow_location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : netflow_location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Netflow::NetflowLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1691,33 +1691,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::N
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "netflow-location-leaf")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation::NetflowLocationLeaf>();
-        c->parent = this;
-        netflow_location_leaf.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation::NetflowLocationLeaf>();
+        ent_->parent = this;
+        netflow_location_leaf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : netflow_location_leaf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : netflow_location_leaf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1791,16 +1791,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::N
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation::NetflowLocationLeaf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation::NetflowLocationLeaf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation::NetflowLocationLeaf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation::NetflowLocationLeaf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Netflow::NetflowLocations::NetflowLocation::NetflowLocationLeaf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1886,16 +1886,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::N
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Netflow::LocationAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Netflow::LocationAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Netflow::LocationAll::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Netflow::LocationAll::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Netflow::LocationAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1979,33 +1979,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::F
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Flowspecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Flowspecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flowspec")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::Profile::Flowspecs::Flowspec>();
-        c->parent = this;
-        flowspec.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::Flowspecs::Flowspec>();
+        ent_->parent = this;
+        flowspec.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Flowspecs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Flowspecs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : flowspec.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flowspec.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Flowspecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2086,16 +2086,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::F
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Flowspecs::Flowspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Flowspecs::Flowspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Flowspecs::Flowspec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Flowspecs::Flowspec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Flowspecs::Flowspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2209,33 +2209,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::S
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::SegmentRoutings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::SegmentRoutings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "segment-routing")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::Profile::SegmentRoutings::SegmentRouting>();
-        c->parent = this;
-        segment_routing.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::SegmentRoutings::SegmentRouting>();
+        ent_->parent = this;
+        segment_routing.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::SegmentRoutings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::SegmentRoutings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : segment_routing.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : segment_routing.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::SegmentRoutings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2306,16 +2306,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::S
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::SegmentRoutings::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::SegmentRoutings::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::SegmentRoutings::SegmentRouting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::SegmentRoutings::SegmentRouting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::SegmentRoutings::SegmentRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2401,16 +2401,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::L
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::LoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::LoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::LoadBalance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::LoadBalance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::LoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2486,7 +2486,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::S
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stats-profile-modes")
     {
@@ -2500,16 +2500,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Stats::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stats_profile_modes != nullptr)
     {
-        children["stats-profile-modes"] = stats_profile_modes;
+        _children["stats-profile-modes"] = stats_profile_modes;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2583,33 +2583,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::S
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Stats::StatsProfileModes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Stats::StatsProfileModes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stats-profile-mode")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::Profile::Stats::StatsProfileModes::StatsProfileMode>();
-        c->parent = this;
-        stats_profile_mode.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::Stats::StatsProfileModes::StatsProfileMode>();
+        ent_->parent = this;
+        stats_profile_mode.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Stats::StatsProfileModes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Stats::StatsProfileModes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stats_profile_mode.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stats_profile_mode.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Stats::StatsProfileModes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2680,16 +2680,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::S
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Stats::StatsProfileModes::StatsProfileMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Stats::StatsProfileModes::StatsProfileMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Stats::StatsProfileModes::StatsProfileMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Stats::StatsProfileModes::StatsProfileMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Stats::StatsProfileModes::StatsProfileMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2775,16 +2775,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::P
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::ProfileAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::ProfileAcl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::ProfileAcl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::ProfileAcl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2860,16 +2860,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::B
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::BundleScale::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::BundleScale::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::BundleScale::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::BundleScale::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::BundleScale::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2945,7 +2945,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::P
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::ProfileTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-format")
     {
@@ -2959,16 +2959,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::ProfileTcam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::ProfileTcam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_format != nullptr)
     {
-        children["key-format"] = key_format;
+        _children["key-format"] = key_format;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::ProfileTcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3034,7 +3034,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::P
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-format-acl-table")
     {
@@ -3048,16 +3048,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_format_acl_table != nullptr)
     {
-        children["key-format-acl-table"] = key_format_acl_table;
+        _children["key-format-acl-table"] = key_format_acl_table;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3127,7 +3127,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::P
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-acl-tables")
     {
@@ -3150,21 +3150,21 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6_acl_tables != nullptr)
     {
-        children["ipv6-acl-tables"] = ipv6_acl_tables;
+        _children["ipv6-acl-tables"] = ipv6_acl_tables;
     }
 
     if(ipv4_acl_tables != nullptr)
     {
-        children["ipv4-acl-tables"] = ipv4_acl_tables;
+        _children["ipv4-acl-tables"] = ipv4_acl_tables;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3238,33 +3238,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::P
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv6AclTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv6AclTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-acl-table")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv6AclTables::Ipv6AclTable>();
-        c->parent = this;
-        ipv6_acl_table.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv6AclTables::Ipv6AclTable>();
+        ent_->parent = this;
+        ipv6_acl_table.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv6AclTables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv6AclTables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv6_acl_table.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv6_acl_table.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv6AclTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3416,16 +3416,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::P
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv6AclTables::Ipv6AclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv6AclTables::Ipv6AclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv6AclTables::Ipv6AclTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv6AclTables::Ipv6AclTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv6AclTables::Ipv6AclTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3719,33 +3719,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::P
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv4AclTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv4AclTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-acl-table")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv4AclTables::Ipv4AclTable>();
-        c->parent = this;
-        ipv4_acl_table.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv4AclTables::Ipv4AclTable>();
+        ent_->parent = this;
+        ipv4_acl_table.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv4AclTables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv4AclTables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4_acl_table.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4_acl_table.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv4AclTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3905,16 +3905,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::P
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv4AclTables::Ipv4AclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv4AclTables::Ipv4AclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv4AclTables::Ipv4AclTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv4AclTables::Ipv4AclTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::ProfileTcam::KeyFormat::KeyFormatAclTable::Ipv4AclTables::Ipv4AclTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4236,7 +4236,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Q
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hqos-enable-all")
     {
@@ -4286,36 +4286,36 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Qos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(hqos_enable_all != nullptr)
     {
-        children["hqos-enable-all"] = hqos_enable_all;
+        _children["hqos-enable-all"] = hqos_enable_all;
     }
 
     if(ingress_model_root_def != nullptr)
     {
-        children["ingress-model-root-def"] = ingress_model_root_def;
+        _children["ingress-model-root-def"] = ingress_model_root_def;
     }
 
     if(ingress_models != nullptr)
     {
-        children["ingress-models"] = ingress_models;
+        _children["ingress-models"] = ingress_models;
     }
 
     if(class_maps_root_def != nullptr)
     {
-        children["class-maps-root-def"] = class_maps_root_def;
+        _children["class-maps-root-def"] = class_maps_root_def;
     }
 
     if(class_maps != nullptr)
     {
-        children["class-maps"] = class_maps;
+        _children["class-maps"] = class_maps;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Qos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4381,16 +4381,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Q
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::HqosEnableAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Qos::HqosEnableAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::HqosEnableAll::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Qos::HqosEnableAll::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Qos::HqosEnableAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4466,16 +4466,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Q
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::IngressModelRootDef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Qos::IngressModelRootDef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::IngressModelRootDef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Qos::IngressModelRootDef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Qos::IngressModelRootDef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4559,33 +4559,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Q
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::IngressModels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Qos::IngressModels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ingress-model")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel>();
-        c->parent = this;
-        ingress_model.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel>();
+        ent_->parent = this;
+        ingress_model.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::IngressModels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Qos::IngressModels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ingress_model.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ingress_model.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Qos::IngressModels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4664,33 +4664,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Q
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ingress-model-leaf")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::IngressModelLeaf>();
-        c->parent = this;
-        ingress_model_leaf.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::IngressModelLeaf>();
+        ent_->parent = this;
+        ingress_model_leaf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ingress_model_leaf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ingress_model_leaf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4764,16 +4764,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Q
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::IngressModelLeaf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::IngressModelLeaf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::IngressModelLeaf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::IngressModelLeaf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Qos::IngressModels::IngressModel::IngressModelLeaf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4859,16 +4859,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Q
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::ClassMapsRootDef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Qos::ClassMapsRootDef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::ClassMapsRootDef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Qos::ClassMapsRootDef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Qos::ClassMapsRootDef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4952,33 +4952,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Q
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::ClassMaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Qos::ClassMaps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-map")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap>();
-        c->parent = this;
-        class_map.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap>();
+        ent_->parent = this;
+        class_map.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::ClassMaps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Qos::ClassMaps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_map.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_map.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Qos::ClassMaps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5057,33 +5057,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Q
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-map-size")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::ClassMapSize>();
-        c->parent = this;
-        class_map_size.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::ClassMapSize>();
+        ent_->parent = this;
+        class_map_size.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_map_size.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_map_size.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5157,16 +5157,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Profile::Q
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::ClassMapSize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::ClassMapSize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::ClassMapSize::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::ClassMapSize::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Profile::Qos::ClassMaps::ClassMap::ClassMapSize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5256,7 +5256,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::FibScale::
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::FibScale::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::FibScale::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-unicast-scale-no-tcam")
     {
@@ -5279,21 +5279,21 @@ std::shared_ptr<Entity> HwModuleProfileConfig::FibScale::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::FibScale::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::FibScale::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6_unicast_scale_no_tcam != nullptr)
     {
-        children["ipv6-unicast-scale-no-tcam"] = ipv6_unicast_scale_no_tcam;
+        _children["ipv6-unicast-scale-no-tcam"] = ipv6_unicast_scale_no_tcam;
     }
 
     if(ipv4_unicast_scale_no_tcam != nullptr)
     {
-        children["ipv4-unicast-scale-no-tcam"] = ipv4_unicast_scale_no_tcam;
+        _children["ipv4-unicast-scale-no-tcam"] = ipv4_unicast_scale_no_tcam;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::FibScale::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5359,7 +5359,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::FibScale::
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "scale-ipv6-no-tcam")
     {
@@ -5373,16 +5373,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(scale_ipv6_no_tcam != nullptr)
     {
-        children["scale-ipv6-no-tcam"] = scale_ipv6_no_tcam;
+        _children["scale-ipv6-no-tcam"] = scale_ipv6_no_tcam;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5448,16 +5448,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::FibScale::
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam::ScaleIpv6NoTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam::ScaleIpv6NoTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam::ScaleIpv6NoTcam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam::ScaleIpv6NoTcam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::FibScale::Ipv6UnicastScaleNoTcam::ScaleIpv6NoTcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5533,7 +5533,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::FibScale::
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "scale-ipv4-no-tcam")
     {
@@ -5547,16 +5547,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(scale_ipv4_no_tcam != nullptr)
     {
-        children["scale-ipv4-no-tcam"] = scale_ipv4_no_tcam;
+        _children["scale-ipv4-no-tcam"] = scale_ipv4_no_tcam;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5622,16 +5622,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::FibScale::
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::FibScale::Ipv4UnicastScaleNoTcam::ScaleIpv4NoTcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5707,7 +5707,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Orchestrat
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::OrchestratedLinecardReload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::OrchestratedLinecardReload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "plane-table-entries")
     {
@@ -5721,16 +5721,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::OrchestratedLinecardReload::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::OrchestratedLinecardReload::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::OrchestratedLinecardReload::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(plane_table_entries != nullptr)
     {
-        children["plane-table-entries"] = plane_table_entries;
+        _children["plane-table-entries"] = plane_table_entries;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::OrchestratedLinecardReload::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5804,33 +5804,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Orchestrat
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "plane-table-entry")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry>();
-        c->parent = this;
-        plane_table_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry>();
+        ent_->parent = this;
+        plane_table_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : plane_table_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : plane_table_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5902,7 +5902,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Orchestrat
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack-table-entries")
     {
@@ -5916,16 +5916,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::OrchestratedLinecardReload::Plane
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rack_table_entries != nullptr)
     {
-        children["rack-table-entries"] = rack_table_entries;
+        _children["rack-table-entries"] = rack_table_entries;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6002,33 +6002,33 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Orchestrat
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::RackTableEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::RackTableEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack-table-entry")
     {
-        auto c = std::make_shared<HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::RackTableEntries::RackTableEntry>();
-        c->parent = this;
-        rack_table_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::RackTableEntries::RackTableEntry>();
+        ent_->parent = this;
+        rack_table_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::RackTableEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::RackTableEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rack_table_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rack_table_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::RackTableEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6092,16 +6092,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Orchestrat
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::RackTableEntries::RackTableEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::RackTableEntries::RackTableEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::RackTableEntries::RackTableEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::RackTableEntries::RackTableEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::OrchestratedLinecardReload::PlaneTableEntries::PlaneTableEntry::RackTableEntries::RackTableEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6187,7 +6187,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Tcam::get_
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fib-tcam-scale")
     {
@@ -6201,16 +6201,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Tcam::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Tcam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Tcam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fib_tcam_scale != nullptr)
     {
-        children["fib-tcam-scale"] = fib_tcam_scale;
+        _children["fib-tcam-scale"] = fib_tcam_scale;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6276,7 +6276,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Tcam::FibT
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Tcam::FibTcamScale::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Tcam::FibTcamScale::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-unicast-scale")
     {
@@ -6290,16 +6290,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Tcam::FibTcamScale::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Tcam::FibTcamScale::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Tcam::FibTcamScale::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_unicast_scale != nullptr)
     {
-        children["ipv4-unicast-scale"] = ipv4_unicast_scale;
+        _children["ipv4-unicast-scale"] = ipv4_unicast_scale;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Tcam::FibTcamScale::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6365,16 +6365,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Tcam::FibT
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Tcam::FibTcamScale::Ipv4UnicastScale::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Tcam::FibTcamScale::Ipv4UnicastScale::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Tcam::FibTcamScale::Ipv4UnicastScale::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Tcam::FibTcamScale::Ipv4UnicastScale::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Tcam::FibTcamScale::Ipv4UnicastScale::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6450,7 +6450,7 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Qosqppb::g
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Qosqppb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Qosqppb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-scale")
     {
@@ -6464,16 +6464,16 @@ std::shared_ptr<Entity> HwModuleProfileConfig::Qosqppb::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Qosqppb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Qosqppb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6_scale != nullptr)
     {
-        children["ipv6-scale"] = ipv6_scale;
+        _children["ipv6-scale"] = ipv6_scale;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModuleProfileConfig::Qosqppb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6539,16 +6539,16 @@ std::vector<std::pair<std::string, LeafData> > HwModuleProfileConfig::Qosqppb::I
 
 }
 
-std::shared_ptr<Entity> HwModuleProfileConfig::Qosqppb::Ipv6Scale::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModuleProfileConfig::Qosqppb::Ipv6Scale::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModuleProfileConfig::Qosqppb::Ipv6Scale::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModuleProfileConfig::Qosqppb::Ipv6Scale::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModuleProfileConfig::Qosqppb::Ipv6Scale::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

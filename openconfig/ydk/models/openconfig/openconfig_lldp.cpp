@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > Lldp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Lldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> Lldp::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Lldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void Lldp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Lldp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Lldp::clone_ptr() const
 {
     return std::make_shared<Lldp>();
 }
@@ -236,16 +236,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Config::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Lldp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -419,7 +419,7 @@ std::vector<std::pair<std::string, LeafData> > Lldp::State::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Lldp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -433,16 +433,16 @@ std::shared_ptr<Entity> Lldp::State::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
-    return children;
+    return _children;
 }
 
 void Lldp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -609,16 +609,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::State::Counters::get_name_l
 
 }
 
-std::shared_ptr<Entity> Lldp::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::State::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::State::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::State::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -782,33 +782,33 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Lldp::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Lldp::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Lldp::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -888,7 +888,7 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::get_
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -920,26 +920,26 @@ std::shared_ptr<Entity> Lldp::Interfaces::Interface::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(neighbors != nullptr)
     {
-        children["neighbors"] = neighbors;
+        _children["neighbors"] = neighbors;
     }
 
-    return children;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1012,16 +1012,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Conf
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1109,7 +1109,7 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Stat
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -1123,16 +1123,16 @@ std::shared_ptr<Entity> Lldp::Interfaces::Interface::State::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
-    return children;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1239,16 +1239,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Stat
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::State::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::State::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::State::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1395,33 +1395,33 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Neig
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::Neighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1498,7 +1498,7 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Neig
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1539,31 +1539,31 @@ std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(custom_tlvs != nullptr)
     {
-        children["custom-tlvs"] = custom_tlvs;
+        _children["custom-tlvs"] = custom_tlvs;
     }
 
     if(capabilities != nullptr)
     {
-        children["capabilities"] = capabilities;
+        _children["capabilities"] = capabilities;
     }
 
-    return children;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1628,16 +1628,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Neig
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::Neighbors::Neighbor::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1738,16 +1738,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Neig
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::Neighbors::Neighbor::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1934,33 +1934,33 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Neig
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tlv")
     {
-        auto c = std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv>();
-        c->parent = this;
-        tlv.append(c);
-        return c;
+        auto ent_ = std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv>();
+        ent_->parent = this;
+        tlv.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tlv.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tlv.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2039,7 +2039,7 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Neig
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2062,21 +2062,21 @@ std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Custom
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2161,16 +2161,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Neig
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2239,16 +2239,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Neig
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::Neighbors::Neighbor::CustomTlvs::Tlv::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2355,33 +2355,33 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Neig
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "capability")
     {
-        auto c = std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability>();
-        c->parent = this;
-        capability.append(c);
-        return c;
+        auto ent_ = std::make_shared<Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability>();
+        ent_->parent = this;
+        capability.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : capability.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : capability.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2450,7 +2450,7 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Neig
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2473,21 +2473,21 @@ std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2552,16 +2552,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Neig
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2622,16 +2622,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::Interfaces::Interface::Neig
 
 }
 
-std::shared_ptr<Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::Interfaces::Interface::Neighbors::Neighbor::Capabilities::Capability::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

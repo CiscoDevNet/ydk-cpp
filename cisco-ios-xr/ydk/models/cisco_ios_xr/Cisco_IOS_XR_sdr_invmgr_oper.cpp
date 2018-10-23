@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > SdrInventory::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> SdrInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrInventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "racks")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> SdrInventory::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrInventory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrInventory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(racks != nullptr)
     {
-        children["racks"] = racks;
+        _children["racks"] = racks;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrInventory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void SdrInventory::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> SdrInventory::clone_ptr() const
+std::shared_ptr<ydk::Entity> SdrInventory::clone_ptr() const
 {
     return std::make_shared<SdrInventory>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > SdrInventory::Racks::get_name_lea
 
 }
 
-std::shared_ptr<Entity> SdrInventory::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrInventory::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack")
     {
-        auto c = std::make_shared<SdrInventory::Racks::Rack>();
-        c->parent = this;
-        rack.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrInventory::Racks::Rack>();
+        ent_->parent = this;
+        rack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrInventory::Racks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrInventory::Racks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrInventory::Racks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -279,33 +279,33 @@ std::vector<std::pair<std::string, LeafData> > SdrInventory::Racks::Rack::get_na
 
 }
 
-std::shared_ptr<Entity> SdrInventory::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrInventory::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slot")
     {
-        auto c = std::make_shared<SdrInventory::Racks::Rack::Slot>();
-        c->parent = this;
-        slot.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrInventory::Racks::Rack::Slot>();
+        ent_->parent = this;
+        slot.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrInventory::Racks::Rack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrInventory::Racks::Rack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : slot.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : slot.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrInventory::Racks::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -387,33 +387,33 @@ std::vector<std::pair<std::string, LeafData> > SdrInventory::Racks::Rack::Slot::
 
 }
 
-std::shared_ptr<Entity> SdrInventory::Racks::Rack::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrInventory::Racks::Rack::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "card")
     {
-        auto c = std::make_shared<SdrInventory::Racks::Rack::Slot::Card>();
-        c->parent = this;
-        card.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrInventory::Racks::Rack::Slot::Card>();
+        ent_->parent = this;
+        card.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrInventory::Racks::Rack::Slot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrInventory::Racks::Rack::Slot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : card.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : card.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrInventory::Racks::Rack::Slot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -488,7 +488,7 @@ std::vector<std::pair<std::string, LeafData> > SdrInventory::Racks::Rack::Slot::
 
 }
 
-std::shared_ptr<Entity> SdrInventory::Racks::Rack::Slot::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrInventory::Racks::Rack::Slot::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "attributes")
     {
@@ -502,16 +502,16 @@ std::shared_ptr<Entity> SdrInventory::Racks::Rack::Slot::Card::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrInventory::Racks::Rack::Slot::Card::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrInventory::Racks::Rack::Slot::Card::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(attributes != nullptr)
     {
-        children["attributes"] = attributes;
+        _children["attributes"] = attributes;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrInventory::Racks::Rack::Slot::Card::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -632,16 +632,16 @@ std::vector<std::pair<std::string, LeafData> > SdrInventory::Racks::Rack::Slot::
 
 }
 
-std::shared_ptr<Entity> SdrInventory::Racks::Rack::Slot::Card::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrInventory::Racks::Rack::Slot::Card::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrInventory::Racks::Rack::Slot::Card::Attributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrInventory::Racks::Rack::Slot::Card::Attributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrInventory::Racks::Rack::Slot::Card::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

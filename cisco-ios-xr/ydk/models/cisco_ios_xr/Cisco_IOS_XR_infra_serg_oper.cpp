@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyManager::get_nam
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> SessionRedundancyManager::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyManager::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyManager::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(groups != nullptr)
     {
-        children["groups"] = groups;
+        _children["groups"] = groups;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void SessionRedundancyManager::set_filter(const std::string & value_path, YFilte
 {
 }
 
-std::shared_ptr<Entity> SessionRedundancyManager::clone_ptr() const
+std::shared_ptr<ydk::Entity> SessionRedundancyManager::clone_ptr() const
 {
     return std::make_shared<SessionRedundancyManager>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyManager::Interfa
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyManager::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyManager::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<SessionRedundancyManager::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyManager::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyManager::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyManager::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyManager::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -323,16 +323,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyManager::Interfa
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyManager::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyManager::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyManager::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyManager::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyManager::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -466,33 +466,33 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyManager::Groups:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyManager::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyManager::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group")
     {
-        auto c = std::make_shared<SessionRedundancyManager::Groups::Group>();
-        c->parent = this;
-        group.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyManager::Groups::Group>();
+        ent_->parent = this;
+        group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyManager::Groups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyManager::Groups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyManager::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -603,16 +603,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyManager::Groups:
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyManager::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyManager::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyManager::Groups::Group::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyManager::Groups::Group::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyManager::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -862,16 +862,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyManager::Summary
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyManager::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyManager::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyManager::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyManager::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyManager::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1100,7 +1100,7 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::get_name_
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -1114,16 +1114,16 @@ std::shared_ptr<Entity> SessionRedundancyAgent::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyAgent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1134,7 +1134,7 @@ void SessionRedundancyAgent::set_filter(const std::string & value_path, YFilter 
 {
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::clone_ptr() const
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::clone_ptr() const
 {
     return std::make_shared<SessionRedundancyAgent>();
 }
@@ -1222,33 +1222,33 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::ge
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1344,7 +1344,7 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-id-xr")
     {
@@ -1412,46 +1412,46 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(group_id_xr != nullptr)
     {
-        children["group-id-xr"] = group_id_xr;
+        _children["group-id-xr"] = group_id_xr;
     }
 
     if(client_ids != nullptr)
     {
-        children["client-ids"] = client_ids;
+        _children["client-ids"] = client_ids;
     }
 
     if(memory != nullptr)
     {
-        children["memory"] = memory;
+        _children["memory"] = memory;
     }
 
     if(group_ids != nullptr)
     {
-        children["group-ids"] = group_ids;
+        _children["group-ids"] = group_ids;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(stats_global != nullptr)
     {
-        children["stats-global"] = stats_global;
+        _children["stats-global"] = stats_global;
     }
 
     if(group_summaries != nullptr)
     {
-        children["group-summaries"] = group_summaries;
+        _children["group-summaries"] = group_summaries;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1528,33 +1528,33 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-id")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId>();
-        c->parent = this;
-        group_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId>();
+        ent_->parent = this;
+        group_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIdXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::GroupIdXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::GroupIdXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1657,50 +1657,50 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-detailed-information")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation>();
-        c->parent = this;
-        session_detailed_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation>();
+        ent_->parent = this;
+        session_detailed_information.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "session-sync-error-information")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation>();
-        c->parent = this;
-        session_sync_error_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation>();
+        ent_->parent = this;
+        session_sync_error_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_detailed_information.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_detailed_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : session_sync_error_information.entities())
+    count_ = 0;
+    for (auto ent_ : session_sync_error_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1835,16 +1835,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1961,16 +1961,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2067,33 +2067,33 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::ClientIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::ClientIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client-id")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId>();
-        c->parent = this;
-        client_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId>();
+        ent_->parent = this;
+        client_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::ClientIds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::ClientIds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : client_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : client_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::ClientIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2361,16 +2361,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2989,67 +2989,67 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Memory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::Memory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "memory-info")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo>();
-        c->parent = this;
-        memory_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo>();
+        ent_->parent = this;
+        memory_info.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "edm-memory-info")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo>();
-        c->parent = this;
-        edm_memory_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo>();
+        ent_->parent = this;
+        edm_memory_info.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "string-memory-info")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo>();
-        c->parent = this;
-        string_memory_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo>();
+        ent_->parent = this;
+        string_memory_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Memory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::Memory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : memory_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : memory_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : edm_memory_info.entities())
+    count_ = 0;
+    for (auto ent_ : edm_memory_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : string_memory_info.entities())
+    count_ = 0;
+    for (auto ent_ : string_memory_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::Memory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3132,16 +3132,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3282,16 +3282,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3402,16 +3402,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3518,33 +3518,33 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-id")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId>();
-        c->parent = this;
-        group_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId>();
+        ent_->parent = this;
+        group_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::GroupIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3778,67 +3778,67 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client-session-count")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount>();
-        c->parent = this;
-        client_session_count.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount>();
+        ent_->parent = this;
+        client_session_count.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "pool")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool>();
-        c->parent = this;
-        pool.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool>();
+        ent_->parent = this;
+        pool.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : client_session_count.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : client_session_count.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : interface.entities())
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : pool.entities())
+    count_ = 0;
+    for (auto ent_ : pool.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4261,16 +4261,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessionCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4361,16 +4361,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4469,16 +4469,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4555,33 +4555,33 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4705,7 +4705,7 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-oper")
     {
@@ -4727,39 +4727,39 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interfa
 
     if(child_yang_name == "client-status")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus>();
-        c->parent = this;
-        client_status.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus>();
+        ent_->parent = this;
+        client_status.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_oper != nullptr)
     {
-        children["interface-oper"] = interface_oper;
+        _children["interface-oper"] = interface_oper;
     }
 
     if(interface_status != nullptr)
     {
-        children["interface-status"] = interface_status;
+        _children["interface-status"] = interface_status;
     }
 
-    count = 0;
-    for (auto c : client_status.entities())
+    count_ = 0;
+    for (auto ent_ : client_status.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4954,16 +4954,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5100,16 +5100,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5260,16 +5260,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5546,7 +5546,7 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "intf-status-statistics")
     {
@@ -5568,73 +5568,73 @@ std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_ch
 
     if(child_yang_name == "client-status")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus>();
-        c->parent = this;
-        client_status.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus>();
+        ent_->parent = this;
+        client_status.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "opaque-memory-status")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus>();
-        c->parent = this;
-        opaque_memory_status.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus>();
+        ent_->parent = this;
+        opaque_memory_status.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "tx-list-over-tcp-status")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus>();
-        c->parent = this;
-        tx_list_over_tcp_status.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus>();
+        ent_->parent = this;
+        tx_list_over_tcp_status.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(intf_status_statistics != nullptr)
     {
-        children["intf-status-statistics"] = intf_status_statistics;
+        _children["intf-status-statistics"] = intf_status_statistics;
     }
 
     if(tx_list_statistics != nullptr)
     {
-        children["tx-list-statistics"] = tx_list_statistics;
+        _children["tx-list-statistics"] = tx_list_statistics;
     }
 
-    count = 0;
-    for (auto c : client_status.entities())
+    count_ = 0;
+    for (auto ent_ : client_status.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : opaque_memory_status.entities())
+    count_ = 0;
+    for (auto ent_ : opaque_memory_status.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : tx_list_over_tcp_status.entities())
+    count_ = 0;
+    for (auto ent_ : tx_list_over_tcp_status.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::StatsGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6059,16 +6059,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::StatsGlobal::IntfStatusStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6209,16 +6209,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6391,16 +6391,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6545,16 +6545,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6747,16 +6747,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7043,33 +7043,33 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::GroupSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-summary")
     {
-        auto c = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary>();
-        c->parent = this;
-        group_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary>();
+        ent_->parent = this;
+        group_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::GroupSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::GroupSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7177,16 +7177,16 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
 
 }
 
-std::shared_ptr<Entity> SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -69,14 +69,14 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> AsicErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance")
     {
-        auto c = std::make_shared<AsicErrors::Instance>();
-        c->parent = this;
-        instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance>();
+        ent_->parent = this;
+        instance.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "show-all-instances")
@@ -91,25 +91,25 @@ std::shared_ptr<Entity> AsicErrors::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(show_all_instances != nullptr)
     {
-        children["show-all-instances"] = show_all_instances;
+        _children["show-all-instances"] = show_all_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -130,7 +130,7 @@ void AsicErrors::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> AsicErrors::clone_ptr() const
+std::shared_ptr<ydk::Entity> AsicErrors::clone_ptr() const
 {
     return std::make_shared<AsicErrors>();
 }
@@ -277,7 +277,7 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::get_name_le
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sbe")
     {
@@ -444,101 +444,101 @@ std::shared_ptr<Entity> AsicErrors::Instance::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sbe != nullptr)
     {
-        children["sbe"] = sbe;
+        _children["sbe"] = sbe;
     }
 
     if(mbe != nullptr)
     {
-        children["mbe"] = mbe;
+        _children["mbe"] = mbe;
     }
 
     if(parity != nullptr)
     {
-        children["parity"] = parity;
+        _children["parity"] = parity;
     }
 
     if(generic != nullptr)
     {
-        children["generic"] = generic;
+        _children["generic"] = generic;
     }
 
     if(crc != nullptr)
     {
-        children["crc"] = crc;
+        _children["crc"] = crc;
     }
 
     if(reset != nullptr)
     {
-        children["reset"] = reset;
+        _children["reset"] = reset;
     }
 
     if(barrier != nullptr)
     {
-        children["barrier"] = barrier;
+        _children["barrier"] = barrier;
     }
 
     if(unexpected != nullptr)
     {
-        children["unexpected"] = unexpected;
+        _children["unexpected"] = unexpected;
     }
 
     if(link != nullptr)
     {
-        children["link"] = link;
+        _children["link"] = link;
     }
 
     if(oor_thresh != nullptr)
     {
-        children["oor-thresh"] = oor_thresh;
+        _children["oor-thresh"] = oor_thresh;
     }
 
     if(bp != nullptr)
     {
-        children["bp"] = bp;
+        _children["bp"] = bp;
     }
 
     if(io != nullptr)
     {
-        children["io"] = io;
+        _children["io"] = io;
     }
 
     if(ucode != nullptr)
     {
-        children["ucode"] = ucode;
+        _children["ucode"] = ucode;
     }
 
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(indirect != nullptr)
     {
-        children["indirect"] = indirect;
+        _children["indirect"] = indirect;
     }
 
     if(nonerr != nullptr)
     {
-        children["nonerr"] = nonerr;
+        _children["nonerr"] = nonerr;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -615,33 +615,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Sbe::get_na
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Sbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Sbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Sbe::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Sbe::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Sbe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Sbe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Sbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -713,33 +713,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Sbe::Locati
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Sbe::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Sbe::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Sbe::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Sbe::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Sbe::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Sbe::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Sbe::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -808,16 +808,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Sbe::Locati
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Sbe::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Sbe::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Sbe::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Sbe::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Sbe::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -894,33 +894,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Mbe::get_na
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Mbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Mbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Mbe::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Mbe::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Mbe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Mbe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Mbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -992,33 +992,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Mbe::Locati
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Mbe::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Mbe::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Mbe::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Mbe::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Mbe::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Mbe::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Mbe::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1087,16 +1087,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Mbe::Locati
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Mbe::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Mbe::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Mbe::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Mbe::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Mbe::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1173,33 +1173,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Parity::get
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Parity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Parity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Parity::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Parity::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Parity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Parity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Parity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1271,33 +1271,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Parity::Loc
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Parity::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Parity::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Parity::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Parity::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Parity::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Parity::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Parity::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1366,16 +1366,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Parity::Loc
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Parity::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Parity::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Parity::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Parity::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Parity::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1452,33 +1452,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Generic::ge
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Generic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Generic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Generic::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Generic::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Generic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Generic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Generic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1550,33 +1550,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Generic::Lo
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Generic::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Generic::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Generic::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Generic::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Generic::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Generic::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Generic::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1645,16 +1645,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Generic::Lo
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Generic::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Generic::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Generic::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Generic::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Generic::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1731,33 +1731,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Crc::get_na
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Crc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Crc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Crc::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Crc::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Crc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Crc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Crc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1829,33 +1829,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Crc::Locati
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Crc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Crc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Crc::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Crc::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Crc::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Crc::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Crc::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1924,16 +1924,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Crc::Locati
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Crc::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Crc::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Crc::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Crc::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Crc::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2010,33 +2010,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Reset::get_
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Reset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Reset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Reset::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Reset::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Reset::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Reset::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Reset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2108,33 +2108,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Reset::Loca
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Reset::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Reset::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Reset::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Reset::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Reset::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Reset::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Reset::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2203,16 +2203,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Reset::Loca
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Reset::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Reset::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Reset::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Reset::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Reset::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2289,33 +2289,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Barrier::ge
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Barrier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Barrier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Barrier::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Barrier::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Barrier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Barrier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Barrier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2387,33 +2387,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Barrier::Lo
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Barrier::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Barrier::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Barrier::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Barrier::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Barrier::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Barrier::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Barrier::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2482,16 +2482,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Barrier::Lo
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Barrier::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Barrier::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Barrier::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Barrier::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Barrier::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2568,33 +2568,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Unexpected:
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Unexpected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Unexpected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Unexpected::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Unexpected::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Unexpected::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Unexpected::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Unexpected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2666,33 +2666,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Unexpected:
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Unexpected::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Unexpected::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Unexpected::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Unexpected::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Unexpected::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Unexpected::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Unexpected::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2761,16 +2761,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Unexpected:
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Unexpected::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Unexpected::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Unexpected::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Unexpected::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Unexpected::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2847,33 +2847,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Link::get_n
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Link::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Link::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2945,33 +2945,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Link::Locat
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Link::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Link::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Link::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Link::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Link::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Link::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Link::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3040,16 +3040,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Link::Locat
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Link::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Link::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Link::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Link::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Link::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3126,33 +3126,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::OorThresh::
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::OorThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::OorThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::OorThresh::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::OorThresh::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::OorThresh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::OorThresh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::OorThresh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3224,33 +3224,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::OorThresh::
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::OorThresh::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::OorThresh::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::OorThresh::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::OorThresh::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::OorThresh::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::OorThresh::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::OorThresh::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3319,16 +3319,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::OorThresh::
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::OorThresh::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::OorThresh::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::OorThresh::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::OorThresh::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::OorThresh::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3405,33 +3405,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Bp::get_nam
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Bp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Bp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Bp::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Bp::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Bp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Bp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Bp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3503,33 +3503,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Bp::Locatio
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Bp::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Bp::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Bp::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Bp::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Bp::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Bp::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Bp::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3598,16 +3598,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Bp::Locatio
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Bp::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Bp::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Bp::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Bp::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Bp::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3684,33 +3684,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Io::get_nam
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Io::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Io::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Io::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Io::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Io::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Io::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Io::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3782,33 +3782,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Io::Locatio
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Io::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Io::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Io::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Io::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Io::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Io::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Io::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3877,16 +3877,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Io::Locatio
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Io::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Io::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Io::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Io::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Io::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3963,33 +3963,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Ucode::get_
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Ucode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Ucode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Ucode::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Ucode::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Ucode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Ucode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Ucode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4061,33 +4061,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Ucode::Loca
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Ucode::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Ucode::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Ucode::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Ucode::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Ucode::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Ucode::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Ucode::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4156,16 +4156,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Ucode::Loca
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Ucode::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Ucode::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Ucode::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Ucode::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Ucode::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4242,33 +4242,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Config::get
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Config::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Config::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4340,33 +4340,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Config::Loc
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Config::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Config::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Config::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Config::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Config::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Config::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Config::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4435,16 +4435,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Config::Loc
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Config::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Config::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Config::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Config::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Config::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4521,33 +4521,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Indirect::g
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Indirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Indirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Indirect::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Indirect::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Indirect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Indirect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Indirect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4619,33 +4619,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Indirect::L
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Indirect::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Indirect::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Indirect::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Indirect::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Indirect::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Indirect::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Indirect::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4714,16 +4714,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Indirect::L
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Indirect::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Indirect::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Indirect::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Indirect::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Indirect::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4800,33 +4800,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Nonerr::get
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Nonerr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Nonerr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Nonerr::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Nonerr::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Nonerr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Nonerr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Nonerr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4898,33 +4898,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Nonerr::Loc
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Nonerr::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Nonerr::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Nonerr::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Nonerr::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Nonerr::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Nonerr::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Nonerr::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4993,16 +4993,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Nonerr::Loc
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Nonerr::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Nonerr::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Nonerr::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Nonerr::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Nonerr::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5079,33 +5079,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Summary::ge
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Summary::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Summary::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5177,33 +5177,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Summary::Lo
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Summary::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Summary::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::Summary::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::Summary::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Summary::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Summary::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::Summary::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5272,16 +5272,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::Summary::Lo
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::Summary::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::Summary::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Summary::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::Summary::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::Summary::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5361,7 +5361,7 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::All::get_na
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "history")
     {
@@ -5374,34 +5374,34 @@ std::shared_ptr<Entity> AsicErrors::Instance::All::get_child_by_name(const std::
 
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::All::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::All::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(history != nullptr)
     {
-        children["history"] = history;
+        _children["history"] = history;
     }
 
-    count = 0;
-    for (auto c : location.entities())
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5468,33 +5468,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::All::Histor
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::All::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::All::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::Instance::All::History::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::All::History::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::All::History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::All::History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::All::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5566,33 +5566,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::All::Histor
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::All::History::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::All::History::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::All::History::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::All::History::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::All::History::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::All::History::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::All::History::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5661,16 +5661,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::All::Histor
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::All::History::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::All::History::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::All::History::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::All::History::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::All::History::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5752,33 +5752,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::All::Locati
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::All::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::All::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::Instance::All::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::Instance::All::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::All::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::All::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::Instance::All::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5847,16 +5847,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::Instance::All::Locati
 
 }
 
-std::shared_ptr<Entity> AsicErrors::Instance::All::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::Instance::All::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::All::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::Instance::All::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::Instance::All::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5993,7 +5993,7 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::get
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sbe")
     {
@@ -6160,101 +6160,101 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sbe != nullptr)
     {
-        children["sbe"] = sbe;
+        _children["sbe"] = sbe;
     }
 
     if(mbe != nullptr)
     {
-        children["mbe"] = mbe;
+        _children["mbe"] = mbe;
     }
 
     if(parity != nullptr)
     {
-        children["parity"] = parity;
+        _children["parity"] = parity;
     }
 
     if(generic != nullptr)
     {
-        children["generic"] = generic;
+        _children["generic"] = generic;
     }
 
     if(crc != nullptr)
     {
-        children["crc"] = crc;
+        _children["crc"] = crc;
     }
 
     if(reset != nullptr)
     {
-        children["reset"] = reset;
+        _children["reset"] = reset;
     }
 
     if(barrier != nullptr)
     {
-        children["barrier"] = barrier;
+        _children["barrier"] = barrier;
     }
 
     if(unexpected != nullptr)
     {
-        children["unexpected"] = unexpected;
+        _children["unexpected"] = unexpected;
     }
 
     if(link != nullptr)
     {
-        children["link"] = link;
+        _children["link"] = link;
     }
 
     if(oor_thresh != nullptr)
     {
-        children["oor-thresh"] = oor_thresh;
+        _children["oor-thresh"] = oor_thresh;
     }
 
     if(bp != nullptr)
     {
-        children["bp"] = bp;
+        _children["bp"] = bp;
     }
 
     if(io != nullptr)
     {
-        children["io"] = io;
+        _children["io"] = io;
     }
 
     if(ucode != nullptr)
     {
-        children["ucode"] = ucode;
+        _children["ucode"] = ucode;
     }
 
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(indirect != nullptr)
     {
-        children["indirect"] = indirect;
+        _children["indirect"] = indirect;
     }
 
     if(nonerr != nullptr)
     {
-        children["nonerr"] = nonerr;
+        _children["nonerr"] = nonerr;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6321,33 +6321,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Sbe
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Sbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Sbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Sbe::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Sbe::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Sbe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Sbe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Sbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6419,33 +6419,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Sbe
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Sbe::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Sbe::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Sbe::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Sbe::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Sbe::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Sbe::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Sbe::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6514,16 +6514,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Sbe
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Sbe::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Sbe::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Sbe::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Sbe::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Sbe::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6600,33 +6600,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Mbe
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Mbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Mbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Mbe::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Mbe::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Mbe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Mbe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Mbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6698,33 +6698,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Mbe
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Mbe::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Mbe::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Mbe::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Mbe::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Mbe::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Mbe::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Mbe::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6793,16 +6793,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Mbe
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Mbe::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Mbe::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Mbe::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Mbe::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Mbe::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6879,33 +6879,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Par
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Parity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Parity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Parity::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Parity::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Parity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Parity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Parity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6977,33 +6977,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Par
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Parity::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Parity::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Parity::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Parity::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Parity::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Parity::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Parity::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7072,16 +7072,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Par
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Parity::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Parity::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Parity::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Parity::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Parity::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7158,33 +7158,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Gen
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Generic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Generic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Generic::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Generic::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Generic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Generic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Generic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7256,33 +7256,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Gen
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Generic::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Generic::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Generic::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Generic::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Generic::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Generic::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Generic::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7351,16 +7351,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Gen
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Generic::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Generic::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Generic::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Generic::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Generic::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7437,33 +7437,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Crc
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Crc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Crc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Crc::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Crc::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Crc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Crc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Crc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7535,33 +7535,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Crc
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Crc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Crc::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Crc::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Crc::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Crc::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Crc::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Crc::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7630,16 +7630,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Crc
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Crc::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Crc::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Crc::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Crc::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Crc::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7716,33 +7716,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Res
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Reset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Reset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Reset::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Reset::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Reset::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Reset::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Reset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7814,33 +7814,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Res
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Reset::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Reset::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Reset::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Reset::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Reset::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Reset::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Reset::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7909,16 +7909,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Res
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Reset::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Reset::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Reset::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Reset::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Reset::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7995,33 +7995,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Bar
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Barrier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Barrier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Barrier::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Barrier::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Barrier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Barrier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Barrier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8093,33 +8093,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Bar
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Barrier::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Barrier::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Barrier::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Barrier::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Barrier::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Barrier::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Barrier::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8188,16 +8188,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Bar
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Barrier::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Barrier::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Barrier::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Barrier::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Barrier::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8274,33 +8274,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Une
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Unexpected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Unexpected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Unexpected::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Unexpected::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Unexpected::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Unexpected::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Unexpected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8372,33 +8372,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Une
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Unexpected::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Unexpected::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Unexpected::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Unexpected::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Unexpected::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Unexpected::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Unexpected::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8467,16 +8467,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Une
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Unexpected::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Unexpected::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Unexpected::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Unexpected::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Unexpected::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8553,33 +8553,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Lin
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Link::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Link::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8651,33 +8651,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Lin
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Link::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Link::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Link::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Link::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Link::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Link::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Link::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8746,16 +8746,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Lin
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Link::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Link::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Link::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Link::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Link::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8832,33 +8832,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Oor
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::OorThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::OorThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::OorThresh::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::OorThresh::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::OorThresh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::OorThresh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::OorThresh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8930,33 +8930,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Oor
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::OorThresh::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::OorThresh::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::OorThresh::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::OorThresh::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::OorThresh::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::OorThresh::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::OorThresh::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9025,16 +9025,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Oor
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::OorThresh::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::OorThresh::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::OorThresh::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::OorThresh::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::OorThresh::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9111,33 +9111,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Bp:
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Bp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Bp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Bp::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Bp::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Bp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Bp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Bp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9209,33 +9209,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Bp:
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Bp::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Bp::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Bp::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Bp::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Bp::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Bp::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Bp::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9304,16 +9304,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Bp:
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Bp::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Bp::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Bp::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Bp::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Bp::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9390,33 +9390,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Io:
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Io::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Io::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Io::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Io::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Io::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Io::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Io::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9488,33 +9488,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Io:
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Io::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Io::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Io::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Io::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Io::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Io::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Io::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9583,16 +9583,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Io:
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Io::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Io::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Io::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Io::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Io::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9669,33 +9669,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Uco
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Ucode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Ucode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Ucode::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Ucode::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Ucode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Ucode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Ucode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9767,33 +9767,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Uco
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Ucode::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Ucode::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Ucode::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Ucode::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Ucode::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Ucode::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Ucode::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9862,16 +9862,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Uco
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Ucode::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Ucode::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Ucode::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Ucode::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Ucode::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9948,33 +9948,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Con
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Config::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Config::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10046,33 +10046,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Con
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Config::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Config::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Config::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Config::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Config::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Config::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Config::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10141,16 +10141,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Con
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Config::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Config::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Config::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Config::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Config::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10227,33 +10227,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Ind
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Indirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Indirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Indirect::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Indirect::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Indirect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Indirect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Indirect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10325,33 +10325,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Ind
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Indirect::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Indirect::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Indirect::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Indirect::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Indirect::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Indirect::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Indirect::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10420,16 +10420,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Ind
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Indirect::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Indirect::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Indirect::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Indirect::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Indirect::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10506,33 +10506,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Non
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Nonerr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Nonerr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Nonerr::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Nonerr::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Nonerr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Nonerr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Nonerr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10604,33 +10604,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Non
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Nonerr::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Nonerr::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Nonerr::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Nonerr::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Nonerr::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Nonerr::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Nonerr::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10699,16 +10699,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Non
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Nonerr::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Nonerr::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Nonerr::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Nonerr::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Nonerr::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10785,33 +10785,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Sum
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Summary::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Summary::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10883,33 +10883,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Sum
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Summary::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Summary::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::Summary::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::Summary::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Summary::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Summary::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Summary::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10978,16 +10978,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::Sum
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Summary::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::Summary::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Summary::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::Summary::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::Summary::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11064,33 +11064,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::All
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::All::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::All::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11162,33 +11162,33 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::All
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::All::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::All::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-lst")
     {
-        auto c = std::make_shared<AsicErrors::ShowAllInstances::All::Location::LogLst>();
-        c->parent = this;
-        log_lst.append(c);
-        return c;
+        auto ent_ = std::make_shared<AsicErrors::ShowAllInstances::All::Location::LogLst>();
+        ent_->parent = this;
+        log_lst.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::All::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::All::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log_lst.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log_lst.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::All::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11257,16 +11257,16 @@ std::vector<std::pair<std::string, LeafData> > AsicErrors::ShowAllInstances::All
 
 }
 
-std::shared_ptr<Entity> AsicErrors::ShowAllInstances::All::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AsicErrors::ShowAllInstances::All::Location::LogLst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::All::Location::LogLst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AsicErrors::ShowAllInstances::All::Location::LogLst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AsicErrors::ShowAllInstances::All::Location::LogLst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

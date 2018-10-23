@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Dot1x::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1x-profile")
     {
-        auto c = std::make_shared<Dot1x::Dot1xProfile>();
-        c->parent = this;
-        dot1x_profile.append(c);
-        return c;
+        auto ent_ = std::make_shared<Dot1x::Dot1xProfile>();
+        ent_->parent = this;
+        dot1x_profile.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dot1x_profile.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dot1x_profile.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void Dot1x::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Dot1x::clone_ptr() const
+std::shared_ptr<ydk::Entity> Dot1x::clone_ptr() const
 {
     return std::make_shared<Dot1x>();
 }
@@ -191,7 +191,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Dot1xProfile::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Dot1x::Dot1xProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Dot1xProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "supplicant")
     {
@@ -214,21 +214,21 @@ std::shared_ptr<Entity> Dot1x::Dot1xProfile::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Dot1xProfile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Dot1xProfile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(supplicant != nullptr)
     {
-        children["supplicant"] = supplicant;
+        _children["supplicant"] = supplicant;
     }
 
     if(authenticator != nullptr)
     {
-        children["authenticator"] = authenticator;
+        _children["authenticator"] = authenticator;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Dot1xProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -307,16 +307,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Dot1xProfile::Supplicant::
 
 }
 
-std::shared_ptr<Entity> Dot1x::Dot1xProfile::Supplicant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Dot1xProfile::Supplicant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Dot1xProfile::Supplicant::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Dot1xProfile::Supplicant::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Dot1xProfile::Supplicant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -390,7 +390,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Dot1xProfile::Authenticato
 
 }
 
-std::shared_ptr<Entity> Dot1x::Dot1xProfile::Authenticator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Dot1xProfile::Authenticator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "timers")
     {
@@ -404,16 +404,16 @@ std::shared_ptr<Entity> Dot1x::Dot1xProfile::Authenticator::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Dot1xProfile::Authenticator::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Dot1xProfile::Authenticator::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(timers != nullptr)
     {
-        children["timers"] = timers;
+        _children["timers"] = timers;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Dot1xProfile::Authenticator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -482,7 +482,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Dot1xProfile::Authenticato
 
 }
 
-std::shared_ptr<Entity> Dot1x::Dot1xProfile::Authenticator::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Dot1xProfile::Authenticator::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reauth-time")
     {
@@ -496,16 +496,16 @@ std::shared_ptr<Entity> Dot1x::Dot1xProfile::Authenticator::Timers::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Dot1xProfile::Authenticator::Timers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Dot1xProfile::Authenticator::Timers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(reauth_time != nullptr)
     {
-        children["reauth-time"] = reauth_time;
+        _children["reauth-time"] = reauth_time;
     }
 
-    return children;
+    return _children;
 }
 
 void Dot1x::Dot1xProfile::Authenticator::Timers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -568,16 +568,16 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Dot1xProfile::Authenticato
 
 }
 
-std::shared_ptr<Entity> Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -664,33 +664,33 @@ std::vector<std::pair<std::string, LeafData> > Eap::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Eap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Eap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eap-profile")
     {
-        auto c = std::make_shared<Eap::EapProfile>();
-        c->parent = this;
-        eap_profile.append(c);
-        return c;
+        auto ent_ = std::make_shared<Eap::EapProfile>();
+        ent_->parent = this;
+        eap_profile.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Eap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Eap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : eap_profile.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : eap_profile.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Eap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -701,7 +701,7 @@ void Eap::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Eap::clone_ptr() const
+std::shared_ptr<ydk::Entity> Eap::clone_ptr() const
 {
     return std::make_shared<Eap>();
 }
@@ -791,7 +791,7 @@ std::vector<std::pair<std::string, LeafData> > Eap::EapProfile::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Eap::EapProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Eap::EapProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eaptls")
     {
@@ -805,16 +805,16 @@ std::shared_ptr<Entity> Eap::EapProfile::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Eap::EapProfile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Eap::EapProfile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(eaptls != nullptr)
     {
-        children["eaptls"] = eaptls;
+        _children["eaptls"] = eaptls;
     }
 
-    return children;
+    return _children;
 }
 
 void Eap::EapProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -893,16 +893,16 @@ std::vector<std::pair<std::string, LeafData> > Eap::EapProfile::Eaptls::get_name
 
 }
 
-std::shared_ptr<Entity> Eap::EapProfile::Eaptls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Eap::EapProfile::Eaptls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Eap::EapProfile::Eaptls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Eap::EapProfile::Eaptls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Eap::EapProfile::Eaptls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

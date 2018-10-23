@@ -88,7 +88,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::get_name_lea
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtLicenseConfiguration")
     {
@@ -183,61 +183,61 @@ std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(clmgmtlicenseconfiguration != nullptr)
     {
-        children["clmgmtLicenseConfiguration"] = clmgmtlicenseconfiguration;
+        _children["clmgmtLicenseConfiguration"] = clmgmtlicenseconfiguration;
     }
 
     if(clmgmtlicensedeviceinformation != nullptr)
     {
-        children["clmgmtLicenseDeviceInformation"] = clmgmtlicensedeviceinformation;
+        _children["clmgmtLicenseDeviceInformation"] = clmgmtlicensedeviceinformation;
     }
 
     if(clmgmtlicensenotifobjects != nullptr)
     {
-        children["clmgmtLicenseNotifObjects"] = clmgmtlicensenotifobjects;
+        _children["clmgmtLicenseNotifObjects"] = clmgmtlicensenotifobjects;
     }
 
     if(clmgmtlicenseactiontable != nullptr)
     {
-        children["clmgmtLicenseActionTable"] = clmgmtlicenseactiontable;
+        _children["clmgmtLicenseActionTable"] = clmgmtlicenseactiontable;
     }
 
     if(clmgmtlicenseactionresulttable != nullptr)
     {
-        children["clmgmtLicenseActionResultTable"] = clmgmtlicenseactionresulttable;
+        _children["clmgmtLicenseActionResultTable"] = clmgmtlicenseactionresulttable;
     }
 
     if(clmgmtlicensestoreinfotable != nullptr)
     {
-        children["clmgmtLicenseStoreInfoTable"] = clmgmtlicensestoreinfotable;
+        _children["clmgmtLicenseStoreInfoTable"] = clmgmtlicensestoreinfotable;
     }
 
     if(clmgmtlicensedeviceinfotable != nullptr)
     {
-        children["clmgmtLicenseDeviceInfoTable"] = clmgmtlicensedeviceinfotable;
+        _children["clmgmtLicenseDeviceInfoTable"] = clmgmtlicensedeviceinfotable;
     }
 
     if(clmgmtlicenseinfotable != nullptr)
     {
-        children["clmgmtLicenseInfoTable"] = clmgmtlicenseinfotable;
+        _children["clmgmtLicenseInfoTable"] = clmgmtlicenseinfotable;
     }
 
     if(clmgmtlicensablefeaturetable != nullptr)
     {
-        children["clmgmtLicensableFeatureTable"] = clmgmtlicensablefeaturetable;
+        _children["clmgmtLicensableFeatureTable"] = clmgmtlicensablefeaturetable;
     }
 
     if(clmgmtdevcredexportactiontable != nullptr)
     {
-        children["clmgmtDevCredExportActionTable"] = clmgmtdevcredexportactiontable;
+        _children["clmgmtDevCredExportActionTable"] = clmgmtdevcredexportactiontable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -248,7 +248,7 @@ void CISCOLICENSEMGMTMIB::set_filter(const std::string & value_path, YFilter yfi
 {
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::clone_ptr() const
 {
     return std::make_shared<CISCOLICENSEMGMTMIB>();
 }
@@ -328,16 +328,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicenseConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -413,16 +413,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -506,16 +506,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicenseNotifObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -619,33 +619,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtLicenseActionEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry>();
-        c->parent = this;
-        clmgmtlicenseactionentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry>();
+        ent_->parent = this;
+        clmgmtlicenseactionentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clmgmtlicenseactionentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clmgmtlicenseactionentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -796,16 +796,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicenseActionTable::ClmgmtLicenseActionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1099,33 +1099,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtLicenseActionResultEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry>();
-        c->parent = this;
-        clmgmtlicenseactionresultentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry>();
+        ent_->parent = this;
+        clmgmtlicenseactionresultentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clmgmtlicenseactionresultentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clmgmtlicenseactionresultentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1205,16 +1205,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicenseActionResultTable::ClmgmtLicenseActionResultEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1328,33 +1328,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtLicenseStoreInfoEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry>();
-        c->parent = this;
-        clmgmtlicensestoreinfoentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry>();
+        ent_->parent = this;
+        clmgmtlicensestoreinfoentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clmgmtlicensestoreinfoentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clmgmtlicensestoreinfoentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1438,16 +1438,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicenseStoreInfoTable::ClmgmtLicenseStoreInfoEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1571,33 +1571,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtLicenseDeviceInfoEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry>();
-        c->parent = this;
-        clmgmtlicensedeviceinfoentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry>();
+        ent_->parent = this;
+        clmgmtlicensedeviceinfoentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clmgmtlicensedeviceinfoentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clmgmtlicensedeviceinfoentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1668,16 +1668,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicenseDeviceInfoTable::ClmgmtLicenseDeviceInfoEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1771,33 +1771,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtLicenseInfoEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry>();
-        c->parent = this;
-        clmgmtlicenseinfoentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry>();
+        ent_->parent = this;
+        clmgmtlicenseinfoentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clmgmtlicenseinfoentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clmgmtlicenseinfoentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1934,16 +1934,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicenseInfoTable::ClmgmtLicenseInfoEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2197,33 +2197,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtLicensableFeatureEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry>();
-        c->parent = this;
-        clmgmtlicensablefeatureentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry>();
+        ent_->parent = this;
+        clmgmtlicensablefeatureentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clmgmtlicensablefeatureentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clmgmtlicensablefeatureentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2323,16 +2323,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtLicens
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtLicensableFeatureTable::ClmgmtLicensableFeatureEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2496,33 +2496,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtDevCre
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clmgmtDevCredExportActionEntry")
     {
-        auto c = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry>();
-        c->parent = this;
-        clmgmtdevcredexportactionentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry>();
+        ent_->parent = this;
+        clmgmtdevcredexportactionentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clmgmtdevcredexportactionentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clmgmtdevcredexportactionentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2637,16 +2637,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOLICENSEMGMTMIB::ClmgmtDevCre
 
 }
 
-std::shared_ptr<Entity> CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOLICENSEMGMTMIB::ClmgmtDevCredExportActionTable::ClmgmtDevCredExportActionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

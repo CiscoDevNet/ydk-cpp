@@ -85,7 +85,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::get_name_le
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "groups")
     {
@@ -108,21 +108,21 @@ std::shared_ptr<Entity> SubscriberRedundancy::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(groups != nullptr)
     {
-        children["groups"] = groups;
+        _children["groups"] = groups;
     }
 
     if(revertive_timer != nullptr)
     {
-        children["revertive-timer"] = revertive_timer;
+        _children["revertive-timer"] = revertive_timer;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -203,7 +203,7 @@ void SubscriberRedundancy::set_filter(const std::string & value_path, YFilter yf
     }
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::clone_ptr() const
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::clone_ptr() const
 {
     return std::make_shared<SubscriberRedundancy>();
 }
@@ -291,33 +291,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::get
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group")
     {
-        auto c = std::make_shared<SubscriberRedundancy::Groups::Group>();
-        c->parent = this;
-        group.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancy::Groups::Group>();
+        ent_->parent = this;
+        group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -448,7 +448,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-list")
     {
@@ -498,36 +498,36 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_list != nullptr)
     {
-        children["interface-list"] = interface_list;
+        _children["interface-list"] = interface_list;
     }
 
     if(peer != nullptr)
     {
-        children["peer"] = peer;
+        _children["peer"] = peer;
     }
 
     if(revertive_timer != nullptr)
     {
-        children["revertive-timer"] = revertive_timer;
+        _children["revertive-timer"] = revertive_timer;
     }
 
     if(virtual_mac != nullptr)
     {
-        children["virtual-mac"] = virtual_mac;
+        _children["virtual-mac"] = virtual_mac;
     }
 
     if(state_control_route != nullptr)
     {
-        children["state-control-route"] = state_control_route;
+        _children["state-control-route"] = state_control_route;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -715,7 +715,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::InterfaceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -738,21 +738,21 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(interface_ranges != nullptr)
     {
-        children["interface-ranges"] = interface_ranges;
+        _children["interface-ranges"] = interface_ranges;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -829,33 +829,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -919,16 +919,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1015,33 +1015,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-range")
     {
-        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange>();
-        c->parent = this;
-        interface_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange>();
+        ent_->parent = this;
+        interface_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_range.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1119,16 +1119,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1242,7 +1242,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipaddress")
     {
@@ -1256,16 +1256,16 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::Peer::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::Peer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::Peer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipaddress != nullptr)
     {
-        children["ipaddress"] = ipaddress;
+        _children["ipaddress"] = ipaddress;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1338,16 +1338,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::Peer::Ipaddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::Peer::Ipaddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::Peer::Ipaddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::Peer::Ipaddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::Peer::Ipaddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1430,16 +1430,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::RevertiveTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::RevertiveTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::RevertiveTimer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::RevertiveTimer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::RevertiveTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1522,16 +1522,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::VirtualMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::VirtualMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::VirtualMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::VirtualMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::VirtualMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1614,7 +1614,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-routes")
     {
@@ -1637,21 +1637,21 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_routes != nullptr)
     {
-        children["ipv4-routes"] = ipv4_routes;
+        _children["ipv4-routes"] = ipv4_routes;
     }
 
     if(ipv6_route != nullptr)
     {
-        children["ipv6-route"] = ipv6_route;
+        _children["ipv6-route"] = ipv6_route;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::StateControlRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1718,33 +1718,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-route")
     {
-        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route>();
-        c->parent = this;
-        ipv4_route.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route>();
+        ent_->parent = this;
+        ipv4_route.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4_route.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4_route.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1818,16 +1818,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1930,7 +1930,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6na-routes")
     {
@@ -1953,21 +1953,21 @@ std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6na_routes != nullptr)
     {
-        children["ipv6na-routes"] = ipv6na_routes;
+        _children["ipv6na-routes"] = ipv6na_routes;
     }
 
     if(ipv6pd_routes != nullptr)
     {
-        children["ipv6pd-routes"] = ipv6pd_routes;
+        _children["ipv6pd-routes"] = ipv6pd_routes;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2034,33 +2034,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6na-route")
     {
-        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute>();
-        c->parent = this;
-        ipv6na_route.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute>();
+        ent_->parent = this;
+        ipv6na_route.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv6na_route.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv6na_route.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2134,16 +2134,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6naRoutes::Ipv6naRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2250,33 +2250,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6pd-route")
     {
-        auto c = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute>();
-        c->parent = this;
-        ipv6pd_route.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute>();
+        ent_->parent = this;
+        ipv6pd_route.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv6pd_route.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv6pd_route.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2350,16 +2350,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::Groups::Gro
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6pdRoutes::Ipv6pdRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2469,16 +2469,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::RevertiveTi
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancy::RevertiveTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancy::RevertiveTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancy::RevertiveTimer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancy::RevertiveTimer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancy::RevertiveTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

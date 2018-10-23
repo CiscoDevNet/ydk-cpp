@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> HeadlessFuncData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HeadlessFuncData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otn-port-names")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> HeadlessFuncData::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HeadlessFuncData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(otn_port_names != nullptr)
     {
-        children["otn-port-names"] = otn_port_names;
+        _children["otn-port-names"] = otn_port_names;
     }
 
     if(ethernet_port_names != nullptr)
     {
-        children["ethernet-port-names"] = ethernet_port_names;
+        _children["ethernet-port-names"] = ethernet_port_names;
     }
 
-    return children;
+    return _children;
 }
 
 void HeadlessFuncData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void HeadlessFuncData::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> HeadlessFuncData::clone_ptr() const
+std::shared_ptr<ydk::Entity> HeadlessFuncData::clone_ptr() const
 {
     return std::make_shared<HeadlessFuncData>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::OtnPortNames::g
 
 }
 
-std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HeadlessFuncData::OtnPortNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otn-port-name")
     {
-        auto c = std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName>();
-        c->parent = this;
-        otn_port_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName>();
+        ent_->parent = this;
+        otn_port_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HeadlessFuncData::OtnPortNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otn_port_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otn_port_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HeadlessFuncData::OtnPortNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -306,7 +306,7 @@ std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::OtnPortNames::O
 
 }
 
-std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HeadlessFuncData::OtnPortNames::OtnPortName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otn-statistics")
     {
@@ -329,21 +329,21 @@ std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(otn_statistics != nullptr)
     {
-        children["otn-statistics"] = otn_statistics;
+        _children["otn-statistics"] = otn_statistics;
     }
 
     if(prbs_statistics != nullptr)
     {
-        children["prbs-statistics"] = prbs_statistics;
+        _children["prbs-statistics"] = prbs_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void HeadlessFuncData::OtnPortNames::OtnPortName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -454,16 +454,16 @@ std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::OtnPortNames::O
 
 }
 
-std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -566,16 +566,16 @@ std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::OtnPortNames::O
 
 }
 
-std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -669,33 +669,33 @@ std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::EthernetPortNam
 
 }
 
-std::shared_ptr<Entity> HeadlessFuncData::EthernetPortNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HeadlessFuncData::EthernetPortNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-port-name")
     {
-        auto c = std::make_shared<HeadlessFuncData::EthernetPortNames::EthernetPortName>();
-        c->parent = this;
-        ethernet_port_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<HeadlessFuncData::EthernetPortNames::EthernetPortName>();
+        ent_->parent = this;
+        ethernet_port_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::EthernetPortNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HeadlessFuncData::EthernetPortNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ethernet_port_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ethernet_port_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HeadlessFuncData::EthernetPortNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -779,7 +779,7 @@ std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::EthernetPortNam
 
 }
 
-std::shared_ptr<Entity> HeadlessFuncData::EthernetPortNames::EthernetPortName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HeadlessFuncData::EthernetPortNames::EthernetPortName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ether-statistics")
     {
@@ -793,16 +793,16 @@ std::shared_ptr<Entity> HeadlessFuncData::EthernetPortNames::EthernetPortName::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::EthernetPortNames::EthernetPortName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HeadlessFuncData::EthernetPortNames::EthernetPortName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ether_statistics != nullptr)
     {
-        children["ether-statistics"] = ether_statistics;
+        _children["ether-statistics"] = ether_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void HeadlessFuncData::EthernetPortNames::EthernetPortName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1025,16 +1025,16 @@ std::vector<std::pair<std::string, LeafData> > HeadlessFuncData::EthernetPortNam
 
 }
 
-std::shared_ptr<Entity> HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

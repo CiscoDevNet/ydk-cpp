@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > IPFORWARDMIB::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> IPFORWARDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPFORWARDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipForward")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> IPFORWARDMIB::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPFORWARDMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPFORWARDMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipforward != nullptr)
     {
-        children["ipForward"] = ipforward;
+        _children["ipForward"] = ipforward;
     }
 
     if(ipforwardtable != nullptr)
     {
-        children["ipForwardTable"] = ipforwardtable;
+        _children["ipForwardTable"] = ipforwardtable;
     }
 
     if(ipcidrroutetable != nullptr)
     {
-        children["ipCidrRouteTable"] = ipcidrroutetable;
+        _children["ipCidrRouteTable"] = ipcidrroutetable;
     }
 
-    return children;
+    return _children;
 }
 
 void IPFORWARDMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void IPFORWARDMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> IPFORWARDMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> IPFORWARDMIB::clone_ptr() const
 {
     return std::make_shared<IPFORWARDMIB>();
 }
@@ -206,16 +206,16 @@ std::vector<std::pair<std::string, LeafData> > IPFORWARDMIB::IpForward::get_name
 
 }
 
-std::shared_ptr<Entity> IPFORWARDMIB::IpForward::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPFORWARDMIB::IpForward::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPFORWARDMIB::IpForward::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPFORWARDMIB::IpForward::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPFORWARDMIB::IpForward::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -309,33 +309,33 @@ std::vector<std::pair<std::string, LeafData> > IPFORWARDMIB::IpForwardTable::get
 
 }
 
-std::shared_ptr<Entity> IPFORWARDMIB::IpForwardTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPFORWARDMIB::IpForwardTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipForwardEntry")
     {
-        auto c = std::make_shared<IPFORWARDMIB::IpForwardTable::IpForwardEntry>();
-        c->parent = this;
-        ipforwardentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPFORWARDMIB::IpForwardTable::IpForwardEntry>();
+        ent_->parent = this;
+        ipforwardentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPFORWARDMIB::IpForwardTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPFORWARDMIB::IpForwardTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipforwardentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipforwardentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPFORWARDMIB::IpForwardTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -461,16 +461,16 @@ std::vector<std::pair<std::string, LeafData> > IPFORWARDMIB::IpForwardTable::IpF
 
 }
 
-std::shared_ptr<Entity> IPFORWARDMIB::IpForwardTable::IpForwardEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPFORWARDMIB::IpForwardTable::IpForwardEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPFORWARDMIB::IpForwardTable::IpForwardEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPFORWARDMIB::IpForwardTable::IpForwardEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPFORWARDMIB::IpForwardTable::IpForwardEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -694,33 +694,33 @@ std::vector<std::pair<std::string, LeafData> > IPFORWARDMIB::IpCidrRouteTable::g
 
 }
 
-std::shared_ptr<Entity> IPFORWARDMIB::IpCidrRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPFORWARDMIB::IpCidrRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipCidrRouteEntry")
     {
-        auto c = std::make_shared<IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry>();
-        c->parent = this;
-        ipcidrrouteentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry>();
+        ent_->parent = this;
+        ipcidrrouteentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPFORWARDMIB::IpCidrRouteTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPFORWARDMIB::IpCidrRouteTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipcidrrouteentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipcidrrouteentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IPFORWARDMIB::IpCidrRouteTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -850,16 +850,16 @@ std::vector<std::pair<std::string, LeafData> > IPFORWARDMIB::IpCidrRouteTable::I
 
 }
 
-std::shared_ptr<Entity> IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

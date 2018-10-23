@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> MplsStatic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> MplsStatic::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(local_labels != nullptr)
     {
-        children["local-labels"] = local_labels;
+        _children["local-labels"] = local_labels;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void MplsStatic::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MplsStatic::clone_ptr() const
+std::shared_ptr<ydk::Entity> MplsStatic::clone_ptr() const
 {
     return std::make_shared<MplsStatic>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<MplsStatic::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsStatic::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -312,7 +312,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::get_name_l
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsps")
     {
@@ -335,21 +335,21 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsps != nullptr)
     {
-        children["lsps"] = lsps;
+        _children["lsps"] = lsps;
     }
 
     if(local_labels != nullptr)
     {
-        children["local-labels"] = local_labels;
+        _children["local-labels"] = local_labels;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -426,33 +426,33 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::Lsps::get_
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::Lsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsp")
     {
-        auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp>();
-        c->parent = this;
-        lsp.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp>();
+        ent_->parent = this;
+        lsp.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::Lsps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lsp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lsp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::Lsps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -521,7 +521,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::Lsps::Lsp:
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "label")
     {
@@ -535,16 +535,16 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(label != nullptr)
     {
-        children["label"] = label;
+        _children["label"] = label;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::Lsps::Lsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -682,7 +682,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::Lsps::Lsp:
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
@@ -713,61 +713,61 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::get_child_by_na
 
     if(child_yang_name == "path-info")
     {
-        auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo>();
-        c->parent = this;
-        path_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo>();
+        ent_->parent = this;
+        path_info.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "backup-path-info")
     {
-        auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo>();
-        c->parent = this;
-        backup_path_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo>();
+        ent_->parent = this;
+        backup_path_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
     if(pathset_resolve_nh != nullptr)
     {
-        children["pathset-resolve-nh"] = pathset_resolve_nh;
+        _children["pathset-resolve-nh"] = pathset_resolve_nh;
     }
 
     if(backup_pathset_resolve_nh != nullptr)
     {
-        children["backup-pathset-resolve-nh"] = backup_pathset_resolve_nh;
+        _children["backup-pathset-resolve-nh"] = backup_pathset_resolve_nh;
     }
 
-    count = 0;
-    for (auto c : path_info.entities())
+    count_ = 0;
+    for (auto ent_ : path_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : backup_path_info.entities())
+    count_ = 0;
+    for (auto ent_ : backup_path_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -901,7 +901,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::Lsps::Lsp:
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
@@ -915,16 +915,16 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1001,16 +1001,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::Lsps::Lsp:
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1107,16 +1107,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::Lsps::Lsp:
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1213,16 +1213,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::Lsps::Lsp:
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1336,7 +1336,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::Lsps::Lsp:
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nexthop")
     {
@@ -1350,16 +1350,16 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nexthop != nullptr)
     {
-        children["nexthop"] = nexthop;
+        _children["nexthop"] = nexthop;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1491,7 +1491,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::Lsps::Lsp:
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -1505,16 +1505,16 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexth
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1611,16 +1611,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::Lsps::Lsp:
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1734,7 +1734,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::Lsps::Lsp:
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nexthop")
     {
@@ -1748,16 +1748,16 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nexthop != nullptr)
     {
-        children["nexthop"] = nexthop;
+        _children["nexthop"] = nexthop;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1889,7 +1889,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::Lsps::Lsp:
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -1903,16 +1903,16 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2009,16 +2009,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::Lsps::Lsp:
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2115,33 +2115,33 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::LocalLabel
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::LocalLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-label")
     {
-        auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel>();
-        c->parent = this;
-        local_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel>();
+        ent_->parent = this;
+        local_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : local_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : local_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::LocalLabels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2264,7 +2264,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::LocalLabel
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
@@ -2295,61 +2295,61 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_chil
 
     if(child_yang_name == "path-info")
     {
-        auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo>();
-        c->parent = this;
-        path_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo>();
+        ent_->parent = this;
+        path_info.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "backup-path-info")
     {
-        auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo>();
-        c->parent = this;
-        backup_path_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo>();
+        ent_->parent = this;
+        backup_path_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
     if(pathset_resolve_nh != nullptr)
     {
-        children["pathset-resolve-nh"] = pathset_resolve_nh;
+        _children["pathset-resolve-nh"] = pathset_resolve_nh;
     }
 
     if(backup_pathset_resolve_nh != nullptr)
     {
-        children["backup-pathset-resolve-nh"] = backup_pathset_resolve_nh;
+        _children["backup-pathset-resolve-nh"] = backup_pathset_resolve_nh;
     }
 
-    count = 0;
-    for (auto c : path_info.entities())
+    count_ = 0;
+    for (auto ent_ : path_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : backup_path_info.entities())
+    count_ = 0;
+    for (auto ent_ : backup_path_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2493,7 +2493,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::LocalLabel
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
@@ -2507,16 +2507,16 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2593,16 +2593,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::LocalLabel
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2699,16 +2699,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::LocalLabel
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2805,16 +2805,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::LocalLabel
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2928,7 +2928,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::LocalLabel
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nexthop")
     {
@@ -2942,16 +2942,16 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nexthop != nullptr)
     {
-        children["nexthop"] = nexthop;
+        _children["nexthop"] = nexthop;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3083,7 +3083,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::LocalLabel
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -3097,16 +3097,16 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3203,16 +3203,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::LocalLabel
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3326,7 +3326,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::LocalLabel
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nexthop")
     {
@@ -3340,16 +3340,16 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nexthop != nullptr)
     {
-        children["nexthop"] = nexthop;
+        _children["nexthop"] = nexthop;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3481,7 +3481,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::LocalLabel
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -3495,16 +3495,16 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3601,16 +3601,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Vrfs::Vrf::LocalLabel
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3766,16 +3766,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::Summary::get_name_lea
 
 }
 
-std::shared_ptr<Entity> MplsStatic::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4009,33 +4009,33 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::LocalLabels::get_name
 
 }
 
-std::shared_ptr<Entity> MplsStatic::LocalLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::LocalLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-label")
     {
-        auto c = std::make_shared<MplsStatic::LocalLabels::LocalLabel>();
-        c->parent = this;
-        local_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsStatic::LocalLabels::LocalLabel>();
+        ent_->parent = this;
+        local_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::LocalLabels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : local_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : local_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::LocalLabels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4165,7 +4165,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::LocalLabels::LocalLab
 
 }
 
-std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::LocalLabels::LocalLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
@@ -4196,61 +4196,61 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::get_child_by_name(c
 
     if(child_yang_name == "path-info")
     {
-        auto c = std::make_shared<MplsStatic::LocalLabels::LocalLabel::PathInfo>();
-        c->parent = this;
-        path_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsStatic::LocalLabels::LocalLabel::PathInfo>();
+        ent_->parent = this;
+        path_info.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "backup-path-info")
     {
-        auto c = std::make_shared<MplsStatic::LocalLabels::LocalLabel::BackupPathInfo>();
-        c->parent = this;
-        backup_path_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsStatic::LocalLabels::LocalLabel::BackupPathInfo>();
+        ent_->parent = this;
+        backup_path_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::LocalLabels::LocalLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
     if(pathset_resolve_nh != nullptr)
     {
-        children["pathset-resolve-nh"] = pathset_resolve_nh;
+        _children["pathset-resolve-nh"] = pathset_resolve_nh;
     }
 
     if(backup_pathset_resolve_nh != nullptr)
     {
-        children["backup-pathset-resolve-nh"] = backup_pathset_resolve_nh;
+        _children["backup-pathset-resolve-nh"] = backup_pathset_resolve_nh;
     }
 
-    count = 0;
-    for (auto c : path_info.entities())
+    count_ = 0;
+    for (auto ent_ : path_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : backup_path_info.entities())
+    count_ = 0;
+    for (auto ent_ : backup_path_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::LocalLabels::LocalLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4394,7 +4394,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::LocalLabels::LocalLab
 
 }
 
-std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::LocalLabels::LocalLabel::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
@@ -4408,16 +4408,16 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::Prefix::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::LocalLabels::LocalLabel::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::LocalLabels::LocalLabel::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4494,16 +4494,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::LocalLabels::LocalLab
 
 }
 
-std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4600,16 +4600,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::LocalLabels::LocalLab
 
 }
 
-std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4706,16 +4706,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::LocalLabels::LocalLab
 
 }
 
-std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4829,7 +4829,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::LocalLabels::LocalLab
 
 }
 
-std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::PathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::LocalLabels::LocalLabel::PathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nexthop")
     {
@@ -4843,16 +4843,16 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::PathInfo::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::PathInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::LocalLabels::LocalLabel::PathInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nexthop != nullptr)
     {
-        children["nexthop"] = nexthop;
+        _children["nexthop"] = nexthop;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::LocalLabels::LocalLabel::PathInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4984,7 +4984,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::LocalLabels::LocalLab
 
 }
 
-std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -4998,16 +4998,16 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5104,16 +5104,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::LocalLabels::LocalLab
 
 }
 
-std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5227,7 +5227,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::LocalLabels::LocalLab
 
 }
 
-std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nexthop")
     {
@@ -5241,16 +5241,16 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nexthop != nullptr)
     {
-        children["nexthop"] = nexthop;
+        _children["nexthop"] = nexthop;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5382,7 +5382,7 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::LocalLabels::LocalLab
 
 }
 
-std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -5396,16 +5396,16 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nex
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5502,16 +5502,16 @@ std::vector<std::pair<std::string, LeafData> > MplsStatic::LocalLabels::LocalLab
 
 }
 
-std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

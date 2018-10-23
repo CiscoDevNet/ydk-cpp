@@ -96,7 +96,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::get_na
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubJob")
     {
@@ -209,71 +209,71 @@ std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(csubjob != nullptr)
     {
-        children["csubJob"] = csubjob;
+        _children["csubJob"] = csubjob;
     }
 
     if(csubaggthresh != nullptr)
     {
-        children["csubAggThresh"] = csubaggthresh;
+        _children["csubAggThresh"] = csubaggthresh;
     }
 
     if(csubsessiontable != nullptr)
     {
-        children["csubSessionTable"] = csubsessiontable;
+        _children["csubSessionTable"] = csubsessiontable;
     }
 
     if(csubsessionbytypetable != nullptr)
     {
-        children["csubSessionByTypeTable"] = csubsessionbytypetable;
+        _children["csubSessionByTypeTable"] = csubsessionbytypetable;
     }
 
     if(csubaggstatstable != nullptr)
     {
-        children["csubAggStatsTable"] = csubaggstatstable;
+        _children["csubAggStatsTable"] = csubaggstatstable;
     }
 
     if(csubaggstatsinttable != nullptr)
     {
-        children["csubAggStatsIntTable"] = csubaggstatsinttable;
+        _children["csubAggStatsIntTable"] = csubaggstatsinttable;
     }
 
     if(csubaggstatsthreshtable != nullptr)
     {
-        children["csubAggStatsThreshTable"] = csubaggstatsthreshtable;
+        _children["csubAggStatsThreshTable"] = csubaggstatsthreshtable;
     }
 
     if(csubjobtable != nullptr)
     {
-        children["csubJobTable"] = csubjobtable;
+        _children["csubJobTable"] = csubjobtable;
     }
 
     if(csubjobmatchparamstable != nullptr)
     {
-        children["csubJobMatchParamsTable"] = csubjobmatchparamstable;
+        _children["csubJobMatchParamsTable"] = csubjobmatchparamstable;
     }
 
     if(csubjobqueryparamstable != nullptr)
     {
-        children["csubJobQueryParamsTable"] = csubjobqueryparamstable;
+        _children["csubJobQueryParamsTable"] = csubjobqueryparamstable;
     }
 
     if(csubjobqueuetable != nullptr)
     {
-        children["csubJobQueueTable"] = csubjobqueuetable;
+        _children["csubJobQueueTable"] = csubjobqueuetable;
     }
 
     if(csubjobreporttable != nullptr)
     {
-        children["csubJobReportTable"] = csubjobreporttable;
+        _children["csubJobReportTable"] = csubjobreporttable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -284,7 +284,7 @@ void CISCOSUBSCRIBERSESSIONMIB::set_filter(const std::string & value_path, YFilt
 {
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::clone_ptr() const
 {
     return std::make_shared<CISCOSUBSCRIBERSESSIONMIB>();
 }
@@ -384,16 +384,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJob::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJob::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJob::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJob::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubJob::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -517,16 +517,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAg
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -610,33 +610,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubSe
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubSessionEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry>();
-        c->parent = this;
-        csubsessionentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry>();
+        ent_->parent = this;
+        csubsessionentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csubsessionentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csubsessionentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -851,16 +851,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubSe
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1312,33 +1312,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubSe
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubSessionByTypeEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry>();
-        c->parent = this;
-        csubsessionbytypeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry>();
+        ent_->parent = this;
+        csubsessionbytypeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csubsessionbytypeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csubsessionbytypeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1410,16 +1410,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubSe
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1513,33 +1513,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAg
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubAggStatsEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry>();
-        c->parent = this;
-        csubaggstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry>();
+        ent_->parent = this;
+        csubaggstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csubaggstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csubaggstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1748,16 +1748,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAg
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2191,33 +2191,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAg
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubAggStatsIntEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry>();
-        c->parent = this;
-        csubaggstatsintentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry>();
+        ent_->parent = this;
+        csubaggstatsintentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csubaggstatsintentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csubaggstatsintentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2323,16 +2323,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAg
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2506,33 +2506,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAg
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubAggStatsThreshEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry>();
-        c->parent = this;
-        csubaggstatsthreshentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry>();
+        ent_->parent = this;
+        csubaggstatsthreshentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csubaggstatsthreshentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csubaggstatsthreshentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2611,16 +2611,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAg
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2734,33 +2734,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubJobEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry>();
-        c->parent = this;
-        csubjobentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry>();
+        ent_->parent = this;
+        csubjobentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csubjobentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csubjobentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2859,16 +2859,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3032,33 +3032,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubJobMatchParamsEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry>();
-        c->parent = this;
-        csubjobmatchparamsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry>();
+        ent_->parent = this;
+        csubjobmatchparamsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csubjobmatchparamsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csubjobmatchparamsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3245,16 +3245,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3634,33 +3634,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubJobQueryParamsEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry>();
-        c->parent = this;
-        csubjobqueryparamsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry>();
+        ent_->parent = this;
+        csubjobqueryparamsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csubjobqueryparamsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csubjobqueryparamsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3743,16 +3743,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3876,33 +3876,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubJobQueueEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry>();
-        c->parent = this;
-        csubjobqueueentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry>();
+        ent_->parent = this;
+        csubjobqueueentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csubjobqueueentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csubjobqueueentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3973,16 +3973,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4076,33 +4076,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubJobReportEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry>();
-        c->parent = this;
-        csubjobreportentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry>();
+        ent_->parent = this;
+        csubjobreportentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csubjobreportentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csubjobreportentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4178,16 +4178,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

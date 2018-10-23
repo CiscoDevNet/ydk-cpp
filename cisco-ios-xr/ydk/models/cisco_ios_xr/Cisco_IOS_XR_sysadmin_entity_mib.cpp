@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > ENTITYMIB::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> ENTITYMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entityGeneral")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> ENTITYMIB::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(entitygeneral != nullptr)
     {
-        children["entityGeneral"] = entitygeneral;
+        _children["entityGeneral"] = entitygeneral;
     }
 
     if(entphysicaltable != nullptr)
     {
-        children["entPhysicalTable"] = entphysicaltable;
+        _children["entPhysicalTable"] = entphysicaltable;
     }
 
     if(entlogicaltable != nullptr)
     {
-        children["entLogicalTable"] = entlogicaltable;
+        _children["entLogicalTable"] = entlogicaltable;
     }
 
     if(entlpmappingtable != nullptr)
     {
-        children["entLPMappingTable"] = entlpmappingtable;
+        _children["entLPMappingTable"] = entlpmappingtable;
     }
 
     if(entaliasmappingtable != nullptr)
     {
-        children["entAliasMappingTable"] = entaliasmappingtable;
+        _children["entAliasMappingTable"] = entaliasmappingtable;
     }
 
     if(entphysicalcontainstable != nullptr)
     {
-        children["entPhysicalContainsTable"] = entphysicalcontainstable;
+        _children["entPhysicalContainsTable"] = entphysicalcontainstable;
     }
 
-    return children;
+    return _children;
 }
 
 void ENTITYMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void ENTITYMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ENTITYMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> ENTITYMIB::clone_ptr() const
 {
     return std::make_shared<ENTITYMIB>();
 }
@@ -256,16 +256,16 @@ std::vector<std::pair<std::string, LeafData> > ENTITYMIB::EntityGeneral::get_nam
 
 }
 
-std::shared_ptr<Entity> ENTITYMIB::EntityGeneral::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYMIB::EntityGeneral::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::EntityGeneral::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYMIB::EntityGeneral::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ENTITYMIB::EntityGeneral::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -349,33 +349,33 @@ std::vector<std::pair<std::string, LeafData> > ENTITYMIB::EntPhysicalTable::get_
 
 }
 
-std::shared_ptr<Entity> ENTITYMIB::EntPhysicalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYMIB::EntPhysicalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entPhysicalEntry")
     {
-        auto c = std::make_shared<ENTITYMIB::EntPhysicalTable::EntPhysicalEntry>();
-        c->parent = this;
-        entphysicalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ENTITYMIB::EntPhysicalTable::EntPhysicalEntry>();
+        ent_->parent = this;
+        entphysicalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::EntPhysicalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYMIB::EntPhysicalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : entphysicalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : entphysicalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ENTITYMIB::EntPhysicalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -502,16 +502,16 @@ std::vector<std::pair<std::string, LeafData> > ENTITYMIB::EntPhysicalTable::EntP
 
 }
 
-std::shared_ptr<Entity> ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -745,33 +745,33 @@ std::vector<std::pair<std::string, LeafData> > ENTITYMIB::EntLogicalTable::get_n
 
 }
 
-std::shared_ptr<Entity> ENTITYMIB::EntLogicalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYMIB::EntLogicalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entLogicalEntry")
     {
-        auto c = std::make_shared<ENTITYMIB::EntLogicalTable::EntLogicalEntry>();
-        c->parent = this;
-        entlogicalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ENTITYMIB::EntLogicalTable::EntLogicalEntry>();
+        ent_->parent = this;
+        entlogicalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::EntLogicalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYMIB::EntLogicalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : entlogicalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : entlogicalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ENTITYMIB::EntLogicalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -866,16 +866,16 @@ std::vector<std::pair<std::string, LeafData> > ENTITYMIB::EntLogicalTable::EntLo
 
 }
 
-std::shared_ptr<Entity> ENTITYMIB::EntLogicalTable::EntLogicalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYMIB::EntLogicalTable::EntLogicalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::EntLogicalTable::EntLogicalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYMIB::EntLogicalTable::EntLogicalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ENTITYMIB::EntLogicalTable::EntLogicalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1029,33 +1029,33 @@ std::vector<std::pair<std::string, LeafData> > ENTITYMIB::EntLPMappingTable::get
 
 }
 
-std::shared_ptr<Entity> ENTITYMIB::EntLPMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYMIB::EntLPMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entLPMappingEntry")
     {
-        auto c = std::make_shared<ENTITYMIB::EntLPMappingTable::EntLPMappingEntry>();
-        c->parent = this;
-        entlpmappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ENTITYMIB::EntLPMappingTable::EntLPMappingEntry>();
+        ent_->parent = this;
+        entlpmappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::EntLPMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYMIB::EntLPMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : entlpmappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : entlpmappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ENTITYMIB::EntLPMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1127,16 +1127,16 @@ std::vector<std::pair<std::string, LeafData> > ENTITYMIB::EntLPMappingTable::Ent
 
 }
 
-std::shared_ptr<Entity> ENTITYMIB::EntLPMappingTable::EntLPMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYMIB::EntLPMappingTable::EntLPMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::EntLPMappingTable::EntLPMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYMIB::EntLPMappingTable::EntLPMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ENTITYMIB::EntLPMappingTable::EntLPMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1230,33 +1230,33 @@ std::vector<std::pair<std::string, LeafData> > ENTITYMIB::EntAliasMappingTable::
 
 }
 
-std::shared_ptr<Entity> ENTITYMIB::EntAliasMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYMIB::EntAliasMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entAliasMappingEntry")
     {
-        auto c = std::make_shared<ENTITYMIB::EntAliasMappingTable::EntAliasMappingEntry>();
-        c->parent = this;
-        entaliasmappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ENTITYMIB::EntAliasMappingTable::EntAliasMappingEntry>();
+        ent_->parent = this;
+        entaliasmappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::EntAliasMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYMIB::EntAliasMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : entaliasmappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : entaliasmappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ENTITYMIB::EntAliasMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1332,16 +1332,16 @@ std::vector<std::pair<std::string, LeafData> > ENTITYMIB::EntAliasMappingTable::
 
 }
 
-std::shared_ptr<Entity> ENTITYMIB::EntAliasMappingTable::EntAliasMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYMIB::EntAliasMappingTable::EntAliasMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::EntAliasMappingTable::EntAliasMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYMIB::EntAliasMappingTable::EntAliasMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ENTITYMIB::EntAliasMappingTable::EntAliasMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1445,33 +1445,33 @@ std::vector<std::pair<std::string, LeafData> > ENTITYMIB::EntPhysicalContainsTab
 
 }
 
-std::shared_ptr<Entity> ENTITYMIB::EntPhysicalContainsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYMIB::EntPhysicalContainsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entPhysicalContainsEntry")
     {
-        auto c = std::make_shared<ENTITYMIB::EntPhysicalContainsTable::EntPhysicalContainsEntry>();
-        c->parent = this;
-        entphysicalcontainsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ENTITYMIB::EntPhysicalContainsTable::EntPhysicalContainsEntry>();
+        ent_->parent = this;
+        entphysicalcontainsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::EntPhysicalContainsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYMIB::EntPhysicalContainsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : entphysicalcontainsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : entphysicalcontainsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ENTITYMIB::EntPhysicalContainsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1543,16 +1543,16 @@ std::vector<std::pair<std::string, LeafData> > ENTITYMIB::EntPhysicalContainsTab
 
 }
 
-std::shared_ptr<Entity> ENTITYMIB::EntPhysicalContainsTable::EntPhysicalContainsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYMIB::EntPhysicalContainsTable::EntPhysicalContainsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::EntPhysicalContainsTable::EntPhysicalContainsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYMIB::EntPhysicalContainsTable::EntPhysicalContainsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ENTITYMIB::EntPhysicalContainsTable::EntPhysicalContainsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

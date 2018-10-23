@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > L3vpn::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> L3vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L3vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "invalid-vrfs")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> L3vpn::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3vpn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L3vpn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(invalid_vrfs != nullptr)
     {
-        children["invalid-vrfs"] = invalid_vrfs;
+        _children["invalid-vrfs"] = invalid_vrfs;
     }
 
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
-    return children;
+    return _children;
 }
 
 void L3vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void L3vpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> L3vpn::clone_ptr() const
+std::shared_ptr<ydk::Entity> L3vpn::clone_ptr() const
 {
     return std::make_shared<L3vpn>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > L3vpn::InvalidVrfs::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> L3vpn::InvalidVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L3vpn::InvalidVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "invalid-vrf")
     {
-        auto c = std::make_shared<L3vpn::InvalidVrfs::InvalidVrf>();
-        c->parent = this;
-        invalid_vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<L3vpn::InvalidVrfs::InvalidVrf>();
+        ent_->parent = this;
+        invalid_vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3vpn::InvalidVrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L3vpn::InvalidVrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : invalid_vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : invalid_vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L3vpn::InvalidVrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -324,50 +324,50 @@ std::vector<std::pair<std::string, LeafData> > L3vpn::InvalidVrfs::InvalidVrf::g
 
 }
 
-std::shared_ptr<Entity> L3vpn::InvalidVrfs::InvalidVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L3vpn::InvalidVrfs::InvalidVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L3vpn::InvalidVrfs::InvalidVrf::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<L3vpn::InvalidVrfs::InvalidVrf::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "af")
     {
-        auto c = std::make_shared<L3vpn::InvalidVrfs::InvalidVrf::Af>();
-        c->parent = this;
-        af.append(c);
-        return c;
+        auto ent_ = std::make_shared<L3vpn::InvalidVrfs::InvalidVrf::Af>();
+        ent_->parent = this;
+        af.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3vpn::InvalidVrfs::InvalidVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L3vpn::InvalidVrfs::InvalidVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : af.entities())
+    count_ = 0;
+    for (auto ent_ : af.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L3vpn::InvalidVrfs::InvalidVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -476,16 +476,16 @@ std::vector<std::pair<std::string, LeafData> > L3vpn::InvalidVrfs::InvalidVrf::I
 
 }
 
-std::shared_ptr<Entity> L3vpn::InvalidVrfs::InvalidVrf::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L3vpn::InvalidVrfs::InvalidVrf::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3vpn::InvalidVrfs::InvalidVrf::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L3vpn::InvalidVrfs::InvalidVrf::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L3vpn::InvalidVrfs::InvalidVrf::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -578,33 +578,33 @@ std::vector<std::pair<std::string, LeafData> > L3vpn::InvalidVrfs::InvalidVrf::A
 
 }
 
-std::shared_ptr<Entity> L3vpn::InvalidVrfs::InvalidVrf::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L3vpn::InvalidVrfs::InvalidVrf::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route-target")
     {
-        auto c = std::make_shared<L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget>();
-        c->parent = this;
-        route_target.append(c);
-        return c;
+        auto ent_ = std::make_shared<L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget>();
+        ent_->parent = this;
+        route_target.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3vpn::InvalidVrfs::InvalidVrf::Af::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L3vpn::InvalidVrfs::InvalidVrf::Af::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : route_target.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : route_target.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L3vpn::InvalidVrfs::InvalidVrf::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -715,16 +715,16 @@ std::vector<std::pair<std::string, LeafData> > L3vpn::InvalidVrfs::InvalidVrf::A
 
 }
 
-std::shared_ptr<Entity> L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -838,33 +838,33 @@ std::vector<std::pair<std::string, LeafData> > L3vpn::Vrfs::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> L3vpn::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L3vpn::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<L3vpn::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<L3vpn::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3vpn::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L3vpn::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L3vpn::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -970,50 +970,50 @@ std::vector<std::pair<std::string, LeafData> > L3vpn::Vrfs::Vrf::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> L3vpn::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L3vpn::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<L3vpn::Vrfs::Vrf::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<L3vpn::Vrfs::Vrf::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "af")
     {
-        auto c = std::make_shared<L3vpn::Vrfs::Vrf::Af>();
-        c->parent = this;
-        af.append(c);
-        return c;
+        auto ent_ = std::make_shared<L3vpn::Vrfs::Vrf::Af>();
+        ent_->parent = this;
+        af.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3vpn::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L3vpn::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : af.entities())
+    count_ = 0;
+    for (auto ent_ : af.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L3vpn::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1122,16 +1122,16 @@ std::vector<std::pair<std::string, LeafData> > L3vpn::Vrfs::Vrf::Interface::get_
 
 }
 
-std::shared_ptr<Entity> L3vpn::Vrfs::Vrf::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L3vpn::Vrfs::Vrf::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3vpn::Vrfs::Vrf::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L3vpn::Vrfs::Vrf::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L3vpn::Vrfs::Vrf::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1224,33 +1224,33 @@ std::vector<std::pair<std::string, LeafData> > L3vpn::Vrfs::Vrf::Af::get_name_le
 
 }
 
-std::shared_ptr<Entity> L3vpn::Vrfs::Vrf::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L3vpn::Vrfs::Vrf::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route-target")
     {
-        auto c = std::make_shared<L3vpn::Vrfs::Vrf::Af::RouteTarget>();
-        c->parent = this;
-        route_target.append(c);
-        return c;
+        auto ent_ = std::make_shared<L3vpn::Vrfs::Vrf::Af::RouteTarget>();
+        ent_->parent = this;
+        route_target.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3vpn::Vrfs::Vrf::Af::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L3vpn::Vrfs::Vrf::Af::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : route_target.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : route_target.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L3vpn::Vrfs::Vrf::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1361,16 +1361,16 @@ std::vector<std::pair<std::string, LeafData> > L3vpn::Vrfs::Vrf::Af::RouteTarget
 
 }
 
-std::shared_ptr<Entity> L3vpn::Vrfs::Vrf::Af::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L3vpn::Vrfs::Vrf::Af::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L3vpn::Vrfs::Vrf::Af::RouteTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L3vpn::Vrfs::Vrf::Af::RouteTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L3vpn::Vrfs::Vrf::Af::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

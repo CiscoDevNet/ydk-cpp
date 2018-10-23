@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > LptsPa::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> LptsPa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entry-xr")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> LptsPa::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(entry_xr != nullptr)
     {
-        children["entry-xr"] = entry_xr;
+        _children["entry-xr"] = entry_xr;
     }
 
     if(entries != nullptr)
     {
-        children["entries"] = entries;
+        _children["entries"] = entries;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void LptsPa::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> LptsPa::clone_ptr() const
+std::shared_ptr<ydk::Entity> LptsPa::clone_ptr() const
 {
     return std::make_shared<LptsPa>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > LptsPa::EntryXr::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> LptsPa::EntryXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPa::EntryXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entry")
     {
-        auto c = std::make_shared<LptsPa::EntryXr::Entry>();
-        c->parent = this;
-        entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LptsPa::EntryXr::Entry>();
+        ent_->parent = this;
+        entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPa::EntryXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPa::EntryXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPa::EntryXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -378,7 +378,7 @@ std::vector<std::pair<std::string, LeafData> > LptsPa::EntryXr::Entry::get_name_
 
 }
 
-std::shared_ptr<Entity> LptsPa::EntryXr::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPa::EntryXr::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ctime")
     {
@@ -401,21 +401,21 @@ std::shared_ptr<Entity> LptsPa::EntryXr::Entry::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPa::EntryXr::Entry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPa::EntryXr::Entry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ctime != nullptr)
     {
-        children["ctime"] = ctime;
+        _children["ctime"] = ctime;
     }
 
     if(utime != nullptr)
     {
-        children["utime"] = utime;
+        _children["utime"] = utime;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPa::EntryXr::Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -698,16 +698,16 @@ std::vector<std::pair<std::string, LeafData> > LptsPa::EntryXr::Entry::Ctime::ge
 
 }
 
-std::shared_ptr<Entity> LptsPa::EntryXr::Entry::Ctime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPa::EntryXr::Entry::Ctime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPa::EntryXr::Entry::Ctime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPa::EntryXr::Entry::Ctime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LptsPa::EntryXr::Entry::Ctime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -790,16 +790,16 @@ std::vector<std::pair<std::string, LeafData> > LptsPa::EntryXr::Entry::Utime::ge
 
 }
 
-std::shared_ptr<Entity> LptsPa::EntryXr::Entry::Utime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPa::EntryXr::Entry::Utime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPa::EntryXr::Entry::Utime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPa::EntryXr::Entry::Utime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LptsPa::EntryXr::Entry::Utime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -893,33 +893,33 @@ std::vector<std::pair<std::string, LeafData> > LptsPa::Entries::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> LptsPa::Entries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPa::Entries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entry")
     {
-        auto c = std::make_shared<LptsPa::Entries::Entry>();
-        c->parent = this;
-        entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LptsPa::Entries::Entry>();
+        ent_->parent = this;
+        entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPa::Entries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPa::Entries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LptsPa::Entries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1006,16 +1006,16 @@ std::vector<std::pair<std::string, LeafData> > LptsPa::Entries::Entry::get_name_
 
 }
 
-std::shared_ptr<Entity> LptsPa::Entries::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LptsPa::Entries::Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LptsPa::Entries::Entry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LptsPa::Entries::Entry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LptsPa::Entries::Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

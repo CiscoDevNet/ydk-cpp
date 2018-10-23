@@ -76,7 +76,7 @@ std::vector<std::pair<std::string, LeafData> > GetSchema::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> GetSchema::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GetSchema::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -99,21 +99,21 @@ std::shared_ptr<Entity> GetSchema::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSchema::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GetSchema::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void GetSchema::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -124,7 +124,7 @@ void GetSchema::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> GetSchema::clone_ptr() const
+std::shared_ptr<ydk::Entity> GetSchema::clone_ptr() const
 {
     return std::make_shared<GetSchema>();
 }
@@ -212,16 +212,16 @@ std::vector<std::pair<std::string, LeafData> > GetSchema::Input::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> GetSchema::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GetSchema::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSchema::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GetSchema::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GetSchema::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -317,16 +317,16 @@ std::vector<std::pair<std::string, LeafData> > GetSchema::Output::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> GetSchema::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GetSchema::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSchema::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GetSchema::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GetSchema::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -411,7 +411,7 @@ std::vector<std::pair<std::string, LeafData> > NetconfState::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> NetconfState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "capabilities")
     {
@@ -461,36 +461,36 @@ std::shared_ptr<Entity> NetconfState::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(capabilities != nullptr)
     {
-        children["capabilities"] = capabilities;
+        _children["capabilities"] = capabilities;
     }
 
     if(datastores != nullptr)
     {
-        children["datastores"] = datastores;
+        _children["datastores"] = datastores;
     }
 
     if(schemas != nullptr)
     {
-        children["schemas"] = schemas;
+        _children["schemas"] = schemas;
     }
 
     if(sessions != nullptr)
     {
-        children["sessions"] = sessions;
+        _children["sessions"] = sessions;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void NetconfState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -501,7 +501,7 @@ void NetconfState::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> NetconfState::clone_ptr() const
+std::shared_ptr<ydk::Entity> NetconfState::clone_ptr() const
 {
     return std::make_shared<NetconfState>();
 }
@@ -592,16 +592,16 @@ std::vector<std::pair<std::string, LeafData> > NetconfState::Capabilities::get_n
 
 }
 
-std::shared_ptr<Entity> NetconfState::Capabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfState::Capabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfState::Capabilities::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfState::Capabilities::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetconfState::Capabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -683,33 +683,33 @@ std::vector<std::pair<std::string, LeafData> > NetconfState::Datastores::get_nam
 
 }
 
-std::shared_ptr<Entity> NetconfState::Datastores::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfState::Datastores::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "datastore")
     {
-        auto c = std::make_shared<NetconfState::Datastores::Datastore>();
-        c->parent = this;
-        datastore.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetconfState::Datastores::Datastore>();
+        ent_->parent = this;
+        datastore.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfState::Datastores::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : datastore.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : datastore.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetconfState::Datastores::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -780,7 +780,7 @@ std::vector<std::pair<std::string, LeafData> > NetconfState::Datastores::Datasto
 
 }
 
-std::shared_ptr<Entity> NetconfState::Datastores::Datastore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfState::Datastores::Datastore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "locks")
     {
@@ -794,16 +794,16 @@ std::shared_ptr<Entity> NetconfState::Datastores::Datastore::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datastore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfState::Datastores::Datastore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(locks != nullptr)
     {
-        children["locks"] = locks;
+        _children["locks"] = locks;
     }
 
-    return children;
+    return _children;
 }
 
 void NetconfState::Datastores::Datastore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -883,7 +883,7 @@ std::vector<std::pair<std::string, LeafData> > NetconfState::Datastores::Datasto
 
 }
 
-std::shared_ptr<Entity> NetconfState::Datastores::Datastore::Locks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfState::Datastores::Datastore::Locks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global-lock")
     {
@@ -896,34 +896,34 @@ std::shared_ptr<Entity> NetconfState::Datastores::Datastore::Locks::get_child_by
 
     if(child_yang_name == "partial-lock")
     {
-        auto c = std::make_shared<NetconfState::Datastores::Datastore::Locks::PartialLock>();
-        c->parent = this;
-        partial_lock.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetconfState::Datastores::Datastore::Locks::PartialLock>();
+        ent_->parent = this;
+        partial_lock.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datastore::Locks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfState::Datastores::Datastore::Locks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(global_lock != nullptr)
     {
-        children["global-lock"] = global_lock;
+        _children["global-lock"] = global_lock;
     }
 
-    count = 0;
-    for (auto c : partial_lock.entities())
+    count_ = 0;
+    for (auto ent_ : partial_lock.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetconfState::Datastores::Datastore::Locks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -986,16 +986,16 @@ std::vector<std::pair<std::string, LeafData> > NetconfState::Datastores::Datasto
 
 }
 
-std::shared_ptr<Entity> NetconfState::Datastores::Datastore::Locks::GlobalLock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfState::Datastores::Datastore::Locks::GlobalLock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datastore::Locks::GlobalLock::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfState::Datastores::Datastore::Locks::GlobalLock::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetconfState::Datastores::Datastore::Locks::GlobalLock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1111,16 +1111,16 @@ std::vector<std::pair<std::string, LeafData> > NetconfState::Datastores::Datasto
 
 }
 
-std::shared_ptr<Entity> NetconfState::Datastores::Datastore::Locks::PartialLock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfState::Datastores::Datastore::Locks::PartialLock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datastore::Locks::PartialLock::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfState::Datastores::Datastore::Locks::PartialLock::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetconfState::Datastores::Datastore::Locks::PartialLock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1240,33 +1240,33 @@ std::vector<std::pair<std::string, LeafData> > NetconfState::Schemas::get_name_l
 
 }
 
-std::shared_ptr<Entity> NetconfState::Schemas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfState::Schemas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "schema")
     {
-        auto c = std::make_shared<NetconfState::Schemas::Schema>();
-        c->parent = this;
-        schema.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetconfState::Schemas::Schema>();
+        ent_->parent = this;
+        schema.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfState::Schemas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfState::Schemas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : schema.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : schema.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetconfState::Schemas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1361,16 +1361,16 @@ std::vector<std::pair<std::string, LeafData> > NetconfState::Schemas::Schema::ge
 
 }
 
-std::shared_ptr<Entity> NetconfState::Schemas::Schema::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfState::Schemas::Schema::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfState::Schemas::Schema::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfState::Schemas::Schema::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetconfState::Schemas::Schema::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1492,33 +1492,33 @@ std::vector<std::pair<std::string, LeafData> > NetconfState::Sessions::get_name_
 
 }
 
-std::shared_ptr<Entity> NetconfState::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfState::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
-        auto c = std::make_shared<NetconfState::Sessions::Session>();
-        c->parent = this;
-        session.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetconfState::Sessions::Session>();
+        ent_->parent = this;
+        session.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfState::Sessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfState::Sessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetconfState::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1617,16 +1617,16 @@ std::vector<std::pair<std::string, LeafData> > NetconfState::Sessions::Session::
 
 }
 
-std::shared_ptr<Entity> NetconfState::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfState::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfState::Sessions::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfState::Sessions::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetconfState::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1810,16 +1810,16 @@ std::vector<std::pair<std::string, LeafData> > NetconfState::Statistics::get_nam
 
 }
 
-std::shared_ptr<Entity> NetconfState::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetconfState::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetconfState::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfState::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetconfState::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

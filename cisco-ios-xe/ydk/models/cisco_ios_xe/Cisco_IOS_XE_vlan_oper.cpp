@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > Vlans::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Vlans::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vlans::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan")
     {
-        auto c = std::make_shared<Vlans::Vlan>();
-        c->parent = this;
-        vlan.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vlans::Vlan>();
+        ent_->parent = this;
+        vlan.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vlans::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vlans::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vlan.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vlan.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vlans::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void Vlans::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Vlans::clone_ptr() const
+std::shared_ptr<ydk::Entity> Vlans::clone_ptr() const
 {
     return std::make_shared<Vlans>();
 }
@@ -209,50 +209,50 @@ std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Vlans::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vlans::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ports")
     {
-        auto c = std::make_shared<Vlans::Vlan::Ports>();
-        c->parent = this;
-        ports.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vlans::Vlan::Ports>();
+        ent_->parent = this;
+        ports.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "vlan-interfaces")
     {
-        auto c = std::make_shared<Vlans::Vlan::VlanInterfaces>();
-        c->parent = this;
-        vlan_interfaces.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vlans::Vlan::VlanInterfaces>();
+        ent_->parent = this;
+        vlan_interfaces.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vlans::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ports.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ports.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : vlan_interfaces.entities())
+    count_ = 0;
+    for (auto ent_ : vlan_interfaces.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vlans::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -345,16 +345,16 @@ std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::Ports::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Vlans::Vlan::Ports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vlans::Vlan::Ports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Ports::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vlans::Vlan::Ports::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vlans::Vlan::Ports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -438,16 +438,16 @@ std::vector<std::pair<std::string, LeafData> > Vlans::Vlan::VlanInterfaces::get_
 
 }
 
-std::shared_ptr<Entity> Vlans::Vlan::VlanInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vlans::Vlan::VlanInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::VlanInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vlans::Vlan::VlanInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vlans::Vlan::VlanInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

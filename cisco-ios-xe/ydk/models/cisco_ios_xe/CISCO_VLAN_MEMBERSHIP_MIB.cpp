@@ -84,7 +84,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::get_name_
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vmVmps")
     {
@@ -170,56 +170,56 @@ std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vmvmps != nullptr)
     {
-        children["vmVmps"] = vmvmps;
+        _children["vmVmps"] = vmvmps;
     }
 
     if(vmmembership != nullptr)
     {
-        children["vmMembership"] = vmmembership;
+        _children["vmMembership"] = vmmembership;
     }
 
     if(vmstatistics != nullptr)
     {
-        children["vmStatistics"] = vmstatistics;
+        _children["vmStatistics"] = vmstatistics;
     }
 
     if(vmstatus != nullptr)
     {
-        children["vmStatus"] = vmstatus;
+        _children["vmStatus"] = vmstatus;
     }
 
     if(vmvmpstable != nullptr)
     {
-        children["vmVmpsTable"] = vmvmpstable;
+        _children["vmVmpsTable"] = vmvmpstable;
     }
 
     if(vmmembershipsummarytable != nullptr)
     {
-        children["vmMembershipSummaryTable"] = vmmembershipsummarytable;
+        _children["vmMembershipSummaryTable"] = vmmembershipsummarytable;
     }
 
     if(vmmembershiptable != nullptr)
     {
-        children["vmMembershipTable"] = vmmembershiptable;
+        _children["vmMembershipTable"] = vmmembershiptable;
     }
 
     if(vmmembershipsummaryexttable != nullptr)
     {
-        children["vmMembershipSummaryExtTable"] = vmmembershipsummaryexttable;
+        _children["vmMembershipSummaryExtTable"] = vmmembershipsummaryexttable;
     }
 
     if(vmvoicevlantable != nullptr)
     {
-        children["vmVoiceVlanTable"] = vmvoicevlantable;
+        _children["vmVoiceVlanTable"] = vmvoicevlantable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -230,7 +230,7 @@ void CISCOVLANMEMBERSHIPMIB::set_filter(const std::string & value_path, YFilter 
 {
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::clone_ptr() const
 {
     return std::make_shared<CISCOVLANMEMBERSHIPMIB>();
 }
@@ -330,16 +330,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmVmps::g
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmVmps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmVmps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmVmps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmVmps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmVmps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -465,16 +465,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembership::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmMembership::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembership::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmMembership::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmMembership::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -578,16 +578,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmStatist
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -733,16 +733,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmStatus:
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -826,33 +826,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmVmpsTab
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmVmpsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmVmpsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vmVmpsEntry")
     {
-        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry>();
-        c->parent = this;
-        vmvmpsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry>();
+        ent_->parent = this;
+        vmvmpsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmVmpsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmVmpsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vmvmpsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vmvmpsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmVmpsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -927,16 +927,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmVmpsTab
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmVmpsTable::VmVmpsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1040,33 +1040,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vmMembershipSummaryEntry")
     {
-        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry>();
-        c->parent = this;
-        vmmembershipsummaryentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry>();
+        ent_->parent = this;
+        vmmembershipsummaryentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vmmembershipsummaryentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vmmembershipsummaryentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1141,16 +1141,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryTable::VmMembershipSummaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1254,33 +1254,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vmMembershipEntry")
     {
-        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry>();
-        c->parent = this;
-        vmmembershipentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry>();
+        ent_->parent = this;
+        vmmembershipentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vmmembershipentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vmmembershipentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmMembershipTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1375,16 +1375,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmMembershipTable::VmMembershipEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1538,33 +1538,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vmMembershipSummaryExtEntry")
     {
-        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry>();
-        c->parent = this;
-        vmmembershipsummaryextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry>();
+        ent_->parent = this;
+        vmmembershipsummaryextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vmmembershipsummaryextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vmmembershipsummaryextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1640,16 +1640,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmMembers
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmMembershipSummaryExtTable::VmMembershipSummaryExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1753,33 +1753,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmVoiceVl
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vmVoiceVlanEntry")
     {
-        auto c = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry>();
-        c->parent = this;
-        vmvoicevlanentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry>();
+        ent_->parent = this;
+        vmvoicevlanentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vmvoicevlanentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vmvoicevlanentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1854,16 +1854,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVLANMEMBERSHIPMIB::VmVoiceVl
 
 }
 
-std::shared_ptr<Entity> CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVLANMEMBERSHIPMIB::VmVoiceVlanTable::VmVoiceVlanEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

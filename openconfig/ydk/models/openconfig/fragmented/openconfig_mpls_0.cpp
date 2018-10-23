@@ -69,7 +69,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global")
     {
@@ -119,36 +119,36 @@ std::shared_ptr<Entity> Mpls::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
     if(te_global_attributes != nullptr)
     {
-        children["te-global-attributes"] = te_global_attributes;
+        _children["te-global-attributes"] = te_global_attributes;
     }
 
     if(te_interface_attributes != nullptr)
     {
-        children["te-interface-attributes"] = te_interface_attributes;
+        _children["te-interface-attributes"] = te_interface_attributes;
     }
 
     if(signaling_protocols != nullptr)
     {
-        children["signaling-protocols"] = signaling_protocols;
+        _children["signaling-protocols"] = signaling_protocols;
     }
 
     if(lsps != nullptr)
     {
-        children["lsps"] = lsps;
+        _children["lsps"] = lsps;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -159,7 +159,7 @@ void Mpls::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Mpls::clone_ptr() const
+std::shared_ptr<ydk::Entity> Mpls::clone_ptr() const
 {
     return std::make_shared<Mpls>();
 }
@@ -251,7 +251,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -292,31 +292,31 @@ std::shared_ptr<Entity> Mpls::Global::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_attributes != nullptr)
     {
-        children["interface-attributes"] = interface_attributes;
+        _children["interface-attributes"] = interface_attributes;
     }
 
     if(reserved_label_blocks != nullptr)
     {
-        children["reserved-label-blocks"] = reserved_label_blocks;
+        _children["reserved-label-blocks"] = reserved_label_blocks;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -382,16 +382,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::Config::get_name_le
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Global::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -467,16 +467,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::State::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Global::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -560,33 +560,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::InterfaceAttributes
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::InterfaceAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::InterfaceAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Mpls::Global::InterfaceAttributes::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::Global::InterfaceAttributes::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::InterfaceAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::InterfaceAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Global::InterfaceAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -666,7 +666,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::InterfaceAttributes
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::InterfaceAttributes::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::InterfaceAttributes::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -698,26 +698,26 @@ std::shared_ptr<Entity> Mpls::Global::InterfaceAttributes::Interface::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::InterfaceAttributes::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::InterfaceAttributes::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Global::InterfaceAttributes::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -790,16 +790,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::InterfaceAttributes
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::InterfaceAttributes::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::InterfaceAttributes::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::InterfaceAttributes::Interface::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::InterfaceAttributes::Interface::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Global::InterfaceAttributes::Interface::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -882,16 +882,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::InterfaceAttributes
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::InterfaceAttributes::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::InterfaceAttributes::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::InterfaceAttributes::Interface::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::InterfaceAttributes::Interface::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Global::InterfaceAttributes::Interface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -974,7 +974,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::InterfaceAttributes
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -997,21 +997,21 @@ std::shared_ptr<Entity> Mpls::Global::InterfaceAttributes::Interface::InterfaceR
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1074,16 +1074,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::InterfaceAttributes
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1166,16 +1166,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::InterfaceAttributes
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Global::InterfaceAttributes::Interface::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1269,33 +1269,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::ReservedLabelBlocks
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::ReservedLabelBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::ReservedLabelBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reserved-label-block")
     {
-        auto c = std::make_shared<Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock>();
-        c->parent = this;
-        reserved_label_block.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock>();
+        ent_->parent = this;
+        reserved_label_block.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::ReservedLabelBlocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::ReservedLabelBlocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : reserved_label_block.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : reserved_label_block.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Global::ReservedLabelBlocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1371,7 +1371,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::ReservedLabelBlocks
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1394,21 +1394,21 @@ std::shared_ptr<Entity> Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1485,16 +1485,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::ReservedLabelBlocks
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1591,16 +1591,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Global::ReservedLabelBlocks
 
 }
 
-std::shared_ptr<Entity> Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Global::ReservedLabelBlocks::ReservedLabelBlock::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1704,7 +1704,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::get_nam
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srlgs")
     {
@@ -1736,26 +1736,26 @@ std::shared_ptr<Entity> Mpls::TeGlobalAttributes::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(srlgs != nullptr)
     {
-        children["srlgs"] = srlgs;
+        _children["srlgs"] = srlgs;
     }
 
     if(mpls_admin_groups != nullptr)
     {
-        children["mpls-admin-groups"] = mpls_admin_groups;
+        _children["mpls-admin-groups"] = mpls_admin_groups;
     }
 
     if(te_lsp_timers != nullptr)
     {
-        children["te-lsp-timers"] = te_lsp_timers;
+        _children["te-lsp-timers"] = te_lsp_timers;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1829,33 +1829,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::Srlgs::
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::Srlgs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::Srlgs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srlg")
     {
-        auto c = std::make_shared<Mpls::TeGlobalAttributes::Srlgs::Srlg>();
-        c->parent = this;
-        srlg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::TeGlobalAttributes::Srlgs::Srlg>();
+        ent_->parent = this;
+        srlg.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlgs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::Srlgs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : srlg.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : srlg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::Srlgs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1935,7 +1935,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::Srlgs::
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1967,26 +1967,26 @@ std::shared_ptr<Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(static_srlg_members != nullptr)
     {
-        children["static-srlg-members"] = static_srlg_members;
+        _children["static-srlg-members"] = static_srlg_members;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::Srlgs::Srlg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2067,16 +2067,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::Srlgs::
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::Srlgs::Srlg::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2187,16 +2187,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::Srlgs::
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::Srlgs::Srlg::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2303,33 +2303,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::Srlgs::
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "members-list")
     {
-        auto c = std::make_shared<Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList>();
-        c->parent = this;
-        members_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList>();
+        ent_->parent = this;
+        members_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : members_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : members_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2398,7 +2398,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::Srlgs::
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2421,21 +2421,21 @@ std::shared_ptr<Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2508,16 +2508,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::Srlgs::
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2600,16 +2600,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::Srlgs::
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::Srlgs::Srlg::StaticSrlgMembers::MembersList::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2703,33 +2703,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::MplsAdm
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::MplsAdminGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::MplsAdminGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "admin-group")
     {
-        auto c = std::make_shared<Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup>();
-        c->parent = this;
-        admin_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup>();
+        ent_->parent = this;
+        admin_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::MplsAdminGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::MplsAdminGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : admin_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : admin_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::MplsAdminGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2805,7 +2805,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::MplsAdm
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2828,21 +2828,21 @@ std::shared_ptr<Entity> Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2915,16 +2915,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::MplsAdm
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3007,16 +3007,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::MplsAdm
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3106,7 +3106,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::TeLspTi
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::TeLspTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::TeLspTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3129,21 +3129,21 @@ std::shared_ptr<Entity> Mpls::TeGlobalAttributes::TeLspTimers::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::TeLspTimers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::TeLspTimers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::TeLspTimers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3217,16 +3217,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::TeLspTi
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::TeLspTimers::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::TeLspTimers::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::TeLspTimers::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::TeLspTimers::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::TeLspTimers::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3330,16 +3330,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeGlobalAttributes::TeLspTi
 
 }
 
-std::shared_ptr<Entity> Mpls::TeGlobalAttributes::TeLspTimers::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeGlobalAttributes::TeLspTimers::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::TeLspTimers::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeGlobalAttributes::TeLspTimers::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeGlobalAttributes::TeLspTimers::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3443,33 +3443,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeInterfaceAttributes::get_
 
 }
 
-std::shared_ptr<Entity> Mpls::TeInterfaceAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeInterfaceAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Mpls::TeInterfaceAttributes::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::TeInterfaceAttributes::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeInterfaceAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::TeInterfaceAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3553,7 +3553,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeInterfaceAttributes::Inte
 
 }
 
-std::shared_ptr<Entity> Mpls::TeInterfaceAttributes::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeInterfaceAttributes::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3594,31 +3594,31 @@ std::shared_ptr<Entity> Mpls::TeInterfaceAttributes::Interface::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeInterfaceAttributes::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
     if(igp_flooding_bandwidth != nullptr)
     {
-        children["igp-flooding-bandwidth"] = igp_flooding_bandwidth;
+        _children["igp-flooding-bandwidth"] = igp_flooding_bandwidth;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::TeInterfaceAttributes::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3719,16 +3719,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeInterfaceAttributes::Inte
 
 }
 
-std::shared_ptr<Entity> Mpls::TeInterfaceAttributes::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeInterfaceAttributes::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Interface::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeInterfaceAttributes::Interface::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeInterfaceAttributes::Interface::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3855,16 +3855,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeInterfaceAttributes::Inte
 
 }
 
-std::shared_ptr<Entity> Mpls::TeInterfaceAttributes::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeInterfaceAttributes::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Interface::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeInterfaceAttributes::Interface::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeInterfaceAttributes::Interface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3963,7 +3963,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeInterfaceAttributes::Inte
 
 }
 
-std::shared_ptr<Entity> Mpls::TeInterfaceAttributes::Interface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeInterfaceAttributes::Interface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3986,21 +3986,21 @@ std::shared_ptr<Entity> Mpls::TeInterfaceAttributes::Interface::InterfaceRef::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Interface::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeInterfaceAttributes::Interface::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::TeInterfaceAttributes::Interface::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4063,16 +4063,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeInterfaceAttributes::Inte
 
 }
 
-std::shared_ptr<Entity> Mpls::TeInterfaceAttributes::Interface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeInterfaceAttributes::Interface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Interface::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeInterfaceAttributes::Interface::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeInterfaceAttributes::Interface::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4155,16 +4155,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeInterfaceAttributes::Inte
 
 }
 
-std::shared_ptr<Entity> Mpls::TeInterfaceAttributes::Interface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeInterfaceAttributes::Interface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Interface::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeInterfaceAttributes::Interface::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeInterfaceAttributes::Interface::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4247,7 +4247,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeInterfaceAttributes::Inte
 
 }
 
-std::shared_ptr<Entity> Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -4270,21 +4270,21 @@ std::shared_ptr<Entity> Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandw
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4393,16 +4393,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeInterfaceAttributes::Inte
 
 }
 
-std::shared_ptr<Entity> Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4565,16 +4565,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::TeInterfaceAttributes::Inte
 
 }
 
-std::shared_ptr<Entity> Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4702,7 +4702,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::get_nam
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvp-te")
     {
@@ -4734,26 +4734,26 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvp_te != nullptr)
     {
-        children["rsvp-te"] = rsvp_te;
+        _children["rsvp-te"] = rsvp_te;
     }
 
     if(ldp != nullptr)
     {
-        children["ldp"] = ldp;
+        _children["ldp"] = ldp;
     }
 
     if(segment_routing != nullptr)
     {
-        children["segment-routing"] = segment_routing;
+        _children["segment-routing"] = segment_routing;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4831,7 +4831,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sessions")
     {
@@ -4872,31 +4872,31 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sessions != nullptr)
     {
-        children["sessions"] = sessions;
+        _children["sessions"] = sessions;
     }
 
     if(neighbors != nullptr)
     {
-        children["neighbors"] = neighbors;
+        _children["neighbors"] = neighbors;
     }
 
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
     if(interface_attributes != nullptr)
     {
-        children["interface-attributes"] = interface_attributes;
+        _children["interface-attributes"] = interface_attributes;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4970,33 +4970,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
-        auto c = std::make_shared<Mpls::SignalingProtocols::RsvpTe::Sessions::Session>();
-        c->parent = this;
-        session.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::SignalingProtocols::RsvpTe::Sessions::Session>();
+        ent_->parent = this;
+        session.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5072,7 +5072,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "record-route-objects")
     {
@@ -5095,21 +5095,21 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(record_route_objects != nullptr)
     {
-        children["record-route-objects"] = record_route_objects;
+        _children["record-route-objects"] = record_route_objects;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5186,33 +5186,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "record-route-object")
     {
-        auto c = std::make_shared<Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject>();
-        c->parent = this;
-        record_route_object.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject>();
+        ent_->parent = this;
+        record_route_object.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : record_route_object.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : record_route_object.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5277,7 +5277,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -5291,16 +5291,16 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::Rec
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5381,16 +5381,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Sessions::Session::RecordRouteObjects::RecordRouteObject::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5534,7 +5534,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender-tspec")
     {
@@ -5548,16 +5548,16 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::Sta
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sender_tspec != nullptr)
     {
-        children["sender-tspec"] = sender_tspec;
+        _children["sender-tspec"] = sender_tspec;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5734,16 +5734,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5847,33 +5847,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Neighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Neighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5945,7 +5945,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -5959,16 +5959,16 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6049,16 +6049,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbor::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6176,7 +6176,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "graceful-restart")
     {
@@ -6217,31 +6217,31 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(graceful_restart != nullptr)
     {
-        children["graceful-restart"] = graceful_restart;
+        _children["graceful-restart"] = graceful_restart;
     }
 
     if(soft_preemption != nullptr)
     {
-        children["soft-preemption"] = soft_preemption;
+        _children["soft-preemption"] = soft_preemption;
     }
 
     if(hellos != nullptr)
     {
-        children["hellos"] = hellos;
+        _children["hellos"] = hellos;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6311,7 +6311,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -6334,21 +6334,21 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6422,16 +6422,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6535,16 +6535,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6644,7 +6644,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -6667,21 +6667,21 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6751,16 +6751,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6850,16 +6850,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6949,7 +6949,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::Hellos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Global::Hellos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -6972,21 +6972,21 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::Hellos::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Global::Hellos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Global::Hellos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Global::Hellos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7056,16 +7056,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7155,16 +7155,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7250,7 +7250,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Global::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -7264,16 +7264,16 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::State::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Global::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Global::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Global::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7419,16 +7419,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7712,33 +7712,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7838,7 +7838,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -7915,51 +7915,51 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
     if(bandwidth_reservations != nullptr)
     {
-        children["bandwidth-reservations"] = bandwidth_reservations;
+        _children["bandwidth-reservations"] = bandwidth_reservations;
     }
 
     if(hellos != nullptr)
     {
-        children["hellos"] = hellos;
+        _children["hellos"] = hellos;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(subscription != nullptr)
     {
-        children["subscription"] = subscription;
+        _children["subscription"] = subscription;
     }
 
     if(protection != nullptr)
     {
-        children["protection"] = protection;
+        _children["protection"] = protection;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8028,16 +8028,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8111,7 +8111,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -8125,16 +8125,16 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8271,16 +8271,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8523,7 +8523,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -8546,21 +8546,21 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8623,16 +8623,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8715,16 +8715,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8811,33 +8811,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bandwidth-reservation")
     {
-        auto c = std::make_shared<Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation>();
-        c->parent = this;
-        bandwidth_reservation.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation>();
+        ent_->parent = this;
+        bandwidth_reservation.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bandwidth_reservation.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bandwidth_reservation.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8902,7 +8902,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -8916,16 +8916,16 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9010,16 +9010,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::BandwidthReservations::BandwidthReservation::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9132,7 +9132,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -9155,21 +9155,21 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9232,16 +9232,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9324,16 +9324,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9416,7 +9416,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -9439,21 +9439,21 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9516,16 +9516,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9608,16 +9608,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9700,7 +9700,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -9723,21 +9723,21 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9796,16 +9796,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9878,16 +9878,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9970,7 +9970,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -9993,21 +9993,21 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10070,16 +10070,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10162,16 +10162,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::RsvpTe:
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10253,16 +10253,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Ldp::ge
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::Ldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::Ldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::Ldp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::Ldp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::Ldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10330,7 +10330,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aggregate-sid-counters")
     {
@@ -10353,21 +10353,21 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aggregate_sid_counters != nullptr)
     {
-        children["aggregate-sid-counters"] = aggregate_sid_counters;
+        _children["aggregate-sid-counters"] = aggregate_sid_counters;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10441,33 +10441,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aggregate-sid-counter")
     {
-        auto c = std::make_shared<Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter>();
-        c->parent = this;
-        aggregate_sid_counter.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter>();
+        ent_->parent = this;
+        aggregate_sid_counter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : aggregate_sid_counter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : aggregate_sid_counter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10539,7 +10539,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -10553,16 +10553,16 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::AggregateSidCo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10647,16 +10647,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::AggregateSidCounters::AggregateSidCounter::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10780,33 +10780,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10890,7 +10890,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -10931,31 +10931,31 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(sid_counters != nullptr)
     {
-        children["sid-counters"] = sid_counters;
+        _children["sid-counters"] = sid_counters;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11024,16 +11024,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11118,16 +11118,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11244,33 +11244,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sid-counter")
     {
-        auto c = std::make_shared<Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter>();
-        c->parent = this;
-        sid_counter.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter>();
+        ent_->parent = this;
+        sid_counter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sid_counter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sid_counter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11339,7 +11339,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -11362,21 +11362,21 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(forwarding_classes != nullptr)
     {
-        children["forwarding-classes"] = forwarding_classes;
+        _children["forwarding-classes"] = forwarding_classes;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11461,16 +11461,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11587,33 +11587,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forwarding-class")
     {
-        auto c = std::make_shared<Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass>();
-        c->parent = this;
-        forwarding_class.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass>();
+        ent_->parent = this;
+        forwarding_class.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : forwarding_class.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : forwarding_class.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11678,7 +11678,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -11692,16 +11692,16 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11786,16 +11786,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11908,7 +11908,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -11931,21 +11931,21 @@ std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12008,16 +12008,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12100,16 +12100,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::SignalingProtocols::Segment
 
 }
 
-std::shared_ptr<Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12203,7 +12203,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "constrained-path")
     {
@@ -12235,26 +12235,26 @@ std::shared_ptr<Entity> Mpls::Lsps::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(constrained_path != nullptr)
     {
-        children["constrained-path"] = constrained_path;
+        _children["constrained-path"] = constrained_path;
     }
 
     if(unconstrained_path != nullptr)
     {
-        children["unconstrained-path"] = unconstrained_path;
+        _children["unconstrained-path"] = unconstrained_path;
     }
 
     if(static_lsps != nullptr)
     {
-        children["static-lsps"] = static_lsps;
+        _children["static-lsps"] = static_lsps;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12324,7 +12324,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::get_
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "named-explicit-paths")
     {
@@ -12347,21 +12347,21 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(named_explicit_paths != nullptr)
     {
-        children["named-explicit-paths"] = named_explicit_paths;
+        _children["named-explicit-paths"] = named_explicit_paths;
     }
 
     if(tunnels != nullptr)
     {
-        children["tunnels"] = tunnels;
+        _children["tunnels"] = tunnels;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12435,33 +12435,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Name
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "named-explicit-path")
     {
-        auto c = std::make_shared<Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath>();
-        c->parent = this;
-        named_explicit_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath>();
+        ent_->parent = this;
+        named_explicit_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : named_explicit_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : named_explicit_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12541,7 +12541,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Name
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -12573,26 +12573,26 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedEx
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(explicit_route_objects != nullptr)
     {
-        children["explicit-route-objects"] = explicit_route_objects;
+        _children["explicit-route-objects"] = explicit_route_objects;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12669,16 +12669,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Name
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12775,16 +12775,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Name
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12881,33 +12881,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Name
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "explicit-route-object")
     {
-        auto c = std::make_shared<Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject>();
-        c->parent = this;
-        explicit_route_object.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject>();
+        ent_->parent = this;
+        explicit_route_object.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : explicit_route_object.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : explicit_route_object.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12976,7 +12976,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Name
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -12999,21 +12999,21 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedEx
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13090,16 +13090,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Name
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13196,16 +13196,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Name
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13309,33 +13309,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnel")
     {
-        auto c = std::make_shared<Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel>();
-        c->parent = this;
-        tunnel.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel>();
+        ent_->parent = this;
+        tunnel.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tunnel.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tunnel.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13419,7 +13419,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -13460,31 +13460,31 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(bandwidth != nullptr)
     {
-        children["bandwidth"] = bandwidth;
+        _children["bandwidth"] = bandwidth;
     }
 
     if(p2p_tunnel_attributes != nullptr)
     {
-        children["p2p-tunnel-attributes"] = p2p_tunnel_attributes;
+        _children["p2p-tunnel-attributes"] = p2p_tunnel_attributes;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13609,16 +13609,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13896,7 +13896,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -13910,16 +13910,16 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14172,16 +14172,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14318,7 +14318,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -14350,26 +14350,26 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(auto_bandwidth != nullptr)
     {
-        children["auto-bandwidth"] = auto_bandwidth;
+        _children["auto-bandwidth"] = auto_bandwidth;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14432,16 +14432,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14528,16 +14528,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14638,7 +14638,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -14679,31 +14679,31 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(overflow != nullptr)
     {
-        children["overflow"] = overflow;
+        _children["overflow"] = overflow;
     }
 
     if(underflow != nullptr)
     {
-        children["underflow"] = underflow;
+        _children["underflow"] = underflow;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14778,16 +14778,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14912,16 +14912,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15034,7 +15034,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -15057,21 +15057,21 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15138,16 +15138,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15244,16 +15244,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15346,7 +15346,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -15369,21 +15369,21 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15450,16 +15450,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15556,16 +15556,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15666,7 +15666,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -15707,31 +15707,31 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(p2p_primary_path != nullptr)
     {
-        children["p2p-primary-path"] = p2p_primary_path;
+        _children["p2p-primary-path"] = p2p_primary_path;
     }
 
     if(p2p_secondary_paths != nullptr)
     {
-        children["p2p-secondary-paths"] = p2p_secondary_paths;
+        _children["p2p-secondary-paths"] = p2p_secondary_paths;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15790,16 +15790,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15868,16 +15868,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15954,33 +15954,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "p2p-primary-path")
     {
-        auto c = std::make_shared<Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_>();
-        c->parent = this;
-        p2p_primary_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_>();
+        ent_->parent = this;
+        p2p_primary_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : p2p_primary_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : p2p_primary_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16057,7 +16057,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -16098,31 +16098,31 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(candidate_secondary_paths != nullptr)
     {
-        children["candidate-secondary-paths"] = candidate_secondary_paths;
+        _children["candidate-secondary-paths"] = candidate_secondary_paths;
     }
 
     if(admin_groups != nullptr)
     {
-        children["admin-groups"] = admin_groups;
+        _children["admin-groups"] = admin_groups;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16227,16 +16227,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16435,16 +16435,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16621,33 +16621,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "candidate-secondary-path")
     {
-        auto c = std::make_shared<Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath>();
-        c->parent = this;
-        candidate_secondary_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath>();
+        ent_->parent = this;
+        candidate_secondary_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : candidate_secondary_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : candidate_secondary_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16716,7 +16716,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -16739,21 +16739,21 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16826,16 +16826,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16922,16 +16922,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17024,7 +17024,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -17047,21 +17047,21 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17159,16 +17159,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17290,16 +17290,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17390,33 +17390,33 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "p2p-secondary-path")
     {
-        auto c = std::make_shared<Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath>();
-        c->parent = this;
-        p2p_secondary_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath>();
+        ent_->parent = this;
+        p2p_secondary_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : p2p_secondary_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : p2p_secondary_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17489,7 +17489,7 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -17521,26 +17521,26 @@ std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(admin_groups != nullptr)
     {
-        children["admin-groups"] = admin_groups;
+        _children["admin-groups"] = admin_groups;
     }
 
-    return children;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17645,16 +17645,16 @@ std::vector<std::pair<std::string, LeafData> > Mpls::Lsps::ConstrainedPath::Tunn
 
 }
 
-std::shared_ptr<Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

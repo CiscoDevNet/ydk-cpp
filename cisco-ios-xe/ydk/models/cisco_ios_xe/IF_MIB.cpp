@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> IFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -118,36 +118,36 @@ std::shared_ptr<Entity> IFMIB::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IFMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(ifmibobjects != nullptr)
     {
-        children["ifMIBObjects"] = ifmibobjects;
+        _children["ifMIBObjects"] = ifmibobjects;
     }
 
     if(iftable != nullptr)
     {
-        children["ifTable"] = iftable;
+        _children["ifTable"] = iftable;
     }
 
     if(ifstacktable != nullptr)
     {
-        children["ifStackTable"] = ifstacktable;
+        _children["ifStackTable"] = ifstacktable;
     }
 
     if(ifrcvaddresstable != nullptr)
     {
-        children["ifRcvAddressTable"] = ifrcvaddresstable;
+        _children["ifRcvAddressTable"] = ifrcvaddresstable;
     }
 
-    return children;
+    return _children;
 }
 
 void IFMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -158,7 +158,7 @@ void IFMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> IFMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> IFMIB::clone_ptr() const
 {
     return std::make_shared<IFMIB>();
 }
@@ -238,16 +238,16 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::Interfaces::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> IFMIB::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IFMIB::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IFMIB::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IFMIB::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -327,16 +327,16 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::IfMIBObjects::get_name_lea
 
 }
 
-std::shared_ptr<Entity> IFMIB::IfMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IFMIB::IfMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfMIBObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IFMIB::IfMIBObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IFMIB::IfMIBObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -430,33 +430,33 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::IfTable::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> IFMIB::IfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IFMIB::IfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ifEntry")
     {
-        auto c = std::make_shared<IFMIB::IfTable::IfEntry>();
-        c->parent = this;
-        ifentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IFMIB::IfTable::IfEntry>();
+        ent_->parent = this;
+        ifentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IFMIB::IfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ifentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ifentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IFMIB::IfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -707,16 +707,16 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::IfTable::IfEntry::get_name
 
 }
 
-std::shared_ptr<Entity> IFMIB::IfTable::IfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IFMIB::IfTable::IfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfTable::IfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IFMIB::IfTable::IfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IFMIB::IfTable::IfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1260,33 +1260,33 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::IfStackTable::get_name_lea
 
 }
 
-std::shared_ptr<Entity> IFMIB::IfStackTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IFMIB::IfStackTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ifStackEntry")
     {
-        auto c = std::make_shared<IFMIB::IfStackTable::IfStackEntry>();
-        c->parent = this;
-        ifstackentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IFMIB::IfStackTable::IfStackEntry>();
+        ent_->parent = this;
+        ifstackentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfStackTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IFMIB::IfStackTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ifstackentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ifstackentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IFMIB::IfStackTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1362,16 +1362,16 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::IfStackTable::IfStackEntry
 
 }
 
-std::shared_ptr<Entity> IFMIB::IfStackTable::IfStackEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IFMIB::IfStackTable::IfStackEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfStackTable::IfStackEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IFMIB::IfStackTable::IfStackEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IFMIB::IfStackTable::IfStackEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1475,33 +1475,33 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::IfRcvAddressTable::get_nam
 
 }
 
-std::shared_ptr<Entity> IFMIB::IfRcvAddressTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IFMIB::IfRcvAddressTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ifRcvAddressEntry")
     {
-        auto c = std::make_shared<IFMIB::IfRcvAddressTable::IfRcvAddressEntry>();
-        c->parent = this;
-        ifrcvaddressentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<IFMIB::IfRcvAddressTable::IfRcvAddressEntry>();
+        ent_->parent = this;
+        ifrcvaddressentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfRcvAddressTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IFMIB::IfRcvAddressTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ifrcvaddressentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ifrcvaddressentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IFMIB::IfRcvAddressTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1581,16 +1581,16 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::IfRcvAddressTable::IfRcvAd
 
 }
 
-std::shared_ptr<Entity> IFMIB::IfRcvAddressTable::IfRcvAddressEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IFMIB::IfRcvAddressTable::IfRcvAddressEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfRcvAddressTable::IfRcvAddressEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IFMIB::IfRcvAddressTable::IfRcvAddressEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IFMIB::IfRcvAddressTable::IfRcvAddressEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

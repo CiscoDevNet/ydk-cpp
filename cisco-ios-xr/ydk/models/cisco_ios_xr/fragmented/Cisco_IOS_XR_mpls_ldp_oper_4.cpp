@@ -69,7 +69,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::AtoMdbTa
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aii1")
     {
@@ -92,21 +92,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTable
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aii1 != nullptr)
     {
-        children["aii1"] = aii1;
+        _children["aii1"] = aii1;
     }
 
     if(aii2 != nullptr)
     {
-        children["aii2"] = aii2;
+        _children["aii2"] = aii2;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -182,16 +182,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::AtoMdbTa
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -275,16 +275,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::AtoMdbTa
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Saii::Aii2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -389,7 +389,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::AtoMdbTa
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aii1")
     {
@@ -412,21 +412,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTable
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aii1 != nullptr)
     {
-        children["aii1"] = aii1;
+        _children["aii1"] = aii1;
     }
 
     if(aii2 != nullptr)
     {
-        children["aii2"] = aii2;
+        _children["aii2"] = aii2;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -502,16 +502,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::AtoMdbTa
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -595,16 +595,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::AtoMdbTa
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec129::Taii::Aii2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -704,7 +704,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::AtoMdbTa
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "agi")
     {
@@ -727,21 +727,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTable
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(agi != nullptr)
     {
-        children["agi"] = agi;
+        _children["agi"] = agi;
     }
 
     if(saii != nullptr)
     {
-        children["saii"] = saii;
+        _children["saii"] = saii;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -812,7 +812,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::AtoMdbTa
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "agi1")
     {
@@ -826,16 +826,16 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTable
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(agi1 != nullptr)
     {
-        children["agi1"] = agi1;
+        _children["agi1"] = agi1;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -911,16 +911,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::AtoMdbTa
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::Agi1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::Agi1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::Agi1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::Agi1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Agi::Agi1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1005,7 +1005,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::AtoMdbTa
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aii1")
     {
@@ -1028,21 +1028,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTable
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aii1 != nullptr)
     {
-        children["aii1"] = aii1;
+        _children["aii1"] = aii1;
     }
 
     if(aii2 != nullptr)
     {
-        children["aii2"] = aii2;
+        _children["aii2"] = aii2;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1118,16 +1118,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::AtoMdbTa
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1211,16 +1211,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::AtoMdbTa
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::AtoMdbTableEntries::AtoMdbTableEntry::FecInfo::Fec130::Saii::Aii2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1320,7 +1320,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::NsrSumma
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::NsrSummaryAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::NsrSummaryAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -1343,21 +1343,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::NsrSummaryAll::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::NsrSummaryAll::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::NsrSummaryAll::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
     if(sessions != nullptr)
     {
-        children["sessions"] = sessions;
+        _children["sessions"] = sessions;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::NsrSummaryAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1427,16 +1427,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::NsrSumma
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::NsrSummaryAll::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::NsrSummaryAll::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::NsrSummaryAll::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::NsrSummaryAll::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::NsrSummaryAll::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1558,16 +1558,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::NsrSumma
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::NsrSummaryAll::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::NsrSummaryAll::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::NsrSummaryAll::Sessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::NsrSummaryAll::Sessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::NsrSummaryAll::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1834,7 +1834,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Summary:
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common")
     {
@@ -1848,16 +1848,16 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Summary::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common != nullptr)
     {
-        children["common"] = common;
+        _children["common"] = common;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2257,16 +2257,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Summary:
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Summary::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Summary::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Summary::Common::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Summary::Common::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Summary::Common::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2560,33 +2560,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::ge
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2710,7 +2710,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "graceful-restart")
     {
@@ -2841,81 +2841,81 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(graceful_restart != nullptr)
     {
-        children["graceful-restart"] = graceful_restart;
+        _children["graceful-restart"] = graceful_restart;
     }
 
     if(capabilities != nullptr)
     {
-        children["capabilities"] = capabilities;
+        _children["capabilities"] = capabilities;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(afs != nullptr)
     {
-        children["afs"] = afs;
+        _children["afs"] = afs;
     }
 
     if(neighbor_briefs != nullptr)
     {
-        children["neighbor-briefs"] = neighbor_briefs;
+        _children["neighbor-briefs"] = neighbor_briefs;
     }
 
     if(backoff_parameters != nullptr)
     {
-        children["backoff-parameters"] = backoff_parameters;
+        _children["backoff-parameters"] = backoff_parameters;
     }
 
     if(backoffs != nullptr)
     {
-        children["backoffs"] = backoffs;
+        _children["backoffs"] = backoffs;
     }
 
     if(nsr != nullptr)
     {
-        children["nsr"] = nsr;
+        _children["nsr"] = nsr;
     }
 
     if(parameters != nullptr)
     {
-        children["parameters"] = parameters;
+        _children["parameters"] = parameters;
     }
 
     if(issu != nullptr)
     {
-        children["issu"] = issu;
+        _children["issu"] = issu;
     }
 
     if(neighbor_capabilities != nullptr)
     {
-        children["neighbor-capabilities"] = neighbor_capabilities;
+        _children["neighbor-capabilities"] = neighbor_capabilities;
     }
 
     if(neighbors != nullptr)
     {
-        children["neighbors"] = neighbors;
+        _children["neighbors"] = neighbors;
     }
 
     if(ldp_id != nullptr)
     {
-        children["ldp-id"] = ldp_id;
+        _children["ldp-id"] = ldp_id;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3004,7 +3004,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -3017,34 +3017,34 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::get
 
     if(child_yang_name == "graceful-restartable-neighbor")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor>();
-        c->parent = this;
-        graceful_restartable_neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor>();
+        ent_->parent = this;
+        graceful_restartable_neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    count = 0;
-    for (auto c : graceful_restartable_neighbor.entities())
+    count_ = 0;
+    for (auto ent_ : graceful_restartable_neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3127,16 +3127,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3274,7 +3274,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "gr-peer")
     {
@@ -3287,51 +3287,51 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::Gra
 
     if(child_yang_name == "down-nbr-interface")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrInterface>();
-        c->parent = this;
-        down_nbr_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrInterface>();
+        ent_->parent = this;
+        down_nbr_interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "down-nbr-address")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrAddress>();
-        c->parent = this;
-        down_nbr_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrAddress>();
+        ent_->parent = this;
+        down_nbr_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(gr_peer != nullptr)
     {
-        children["gr-peer"] = gr_peer;
+        _children["gr-peer"] = gr_peer;
     }
 
-    count = 0;
-    for (auto c : down_nbr_interface.entities())
+    count_ = 0;
+    for (auto ent_ : down_nbr_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : down_nbr_address.entities())
+    count_ = 0;
+    for (auto ent_ : down_nbr_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3488,16 +3488,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::GrPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::GrPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::GrPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::GrPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::GrPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3590,16 +3590,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3690,16 +3690,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::GracefulRestart::GracefulRestartableNeighbor::DownNbrAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3806,33 +3806,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "capability")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::Capability>();
-        c->parent = this;
-        capability.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::Capability>();
+        ent_->parent = this;
+        capability.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : capability.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : capability.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3901,7 +3901,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "capability")
     {
@@ -3915,16 +3915,16 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::Capabi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::Capability::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::Capability::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(capability != nullptr)
     {
-        children["capability"] = capability;
+        _children["capability"] = capability;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::Capability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4015,16 +4015,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::Capability::Capability_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::Capability::Capability_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::Capability::Capability_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::Capability::Capability_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Capabilities::Capability::Capability_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4127,7 +4127,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -4150,21 +4150,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Summary::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
     if(common != nullptr)
     {
-        children["common"] = common;
+        _children["common"] = common;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4227,16 +4227,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Summary::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Summary::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Summary::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Summary::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Summary::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4399,16 +4399,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Summary::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Summary::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Summary::Common::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Summary::Common::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Summary::Common::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4695,33 +4695,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "af")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af>();
-        c->parent = this;
-        af.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af>();
+        ent_->parent = this;
+        af.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : af.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : af.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4818,7 +4818,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-summary")
     {
@@ -4904,56 +4904,56 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_summary != nullptr)
     {
-        children["interface-summary"] = interface_summary;
+        _children["interface-summary"] = interface_summary;
     }
 
     if(bindings != nullptr)
     {
-        children["bindings"] = bindings;
+        _children["bindings"] = bindings;
     }
 
     if(igp != nullptr)
     {
-        children["igp"] = igp;
+        _children["igp"] = igp;
     }
 
     if(bindings_summary != nullptr)
     {
-        children["bindings-summary"] = bindings_summary;
+        _children["bindings-summary"] = bindings_summary;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(discovery != nullptr)
     {
-        children["discovery"] = discovery;
+        _children["discovery"] = discovery;
     }
 
     if(forwardings != nullptr)
     {
-        children["forwardings"] = forwardings;
+        _children["forwardings"] = forwardings;
     }
 
     if(bindings_advertise_spec != nullptr)
     {
-        children["bindings-advertise-spec"] = bindings_advertise_spec;
+        _children["bindings-advertise-spec"] = bindings_advertise_spec;
     }
 
     if(forwarding_summary != nullptr)
     {
-        children["forwarding-summary"] = forwarding_summary;
+        _children["forwarding-summary"] = forwarding_summary;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5050,16 +5050,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::InterfaceSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::InterfaceSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::InterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5206,33 +5206,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "binding")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding>();
-        c->parent = this;
-        binding.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding>();
+        ent_->parent = this;
+        binding.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : binding.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : binding.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5374,7 +5374,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -5396,73 +5396,73 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::B
 
     if(child_yang_name == "remote-binding")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding>();
-        c->parent = this;
-        remote_binding.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding>();
+        ent_->parent = this;
+        remote_binding.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "peers-advertised-to")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo>();
-        c->parent = this;
-        peers_advertised_to.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo>();
+        ent_->parent = this;
+        peers_advertised_to.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "peers-acked")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked>();
-        c->parent = this;
-        peers_acked.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked>();
+        ent_->parent = this;
+        peers_acked.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
     if(prefix_xr != nullptr)
     {
-        children["prefix-xr"] = prefix_xr;
+        _children["prefix-xr"] = prefix_xr;
     }
 
-    count = 0;
-    for (auto c : remote_binding.entities())
+    count_ = 0;
+    for (auto ent_ : remote_binding.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : peers_advertised_to.entities())
+    count_ = 0;
+    for (auto ent_ : peers_advertised_to.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : peers_acked.entities())
+    count_ = 0;
+    for (auto ent_ : peers_acked.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5635,16 +5635,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5735,16 +5735,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PrefixXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5856,7 +5856,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "assigning-peer-ldp-ident")
     {
@@ -5870,16 +5870,16 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::B
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(assigning_peer_ldp_ident != nullptr)
     {
-        children["assigning-peer-ldp-ident"] = assigning_peer_ldp_ident;
+        _children["assigning-peer-ldp-ident"] = assigning_peer_ldp_ident;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5976,16 +5976,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6082,16 +6082,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAdvertisedTo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6188,16 +6188,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Bindings::Binding::PeersAcked::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6290,7 +6290,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "syncs")
     {
@@ -6313,21 +6313,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(syncs != nullptr)
     {
-        children["syncs"] = syncs;
+        _children["syncs"] = syncs;
     }
 
     if(sync_delay_restart != nullptr)
     {
-        children["sync-delay-restart"] = sync_delay_restart;
+        _children["sync-delay-restart"] = sync_delay_restart;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6394,33 +6394,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sync")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync>();
-        c->parent = this;
-        sync.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync>();
+        ent_->parent = this;
+        sync.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sync.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sync.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6531,7 +6531,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -6544,51 +6544,51 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs:
 
     if(child_yang_name == "peers")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers>();
-        c->parent = this;
-        peers.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers>();
+        ent_->parent = this;
+        peers.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "gr-only-peer")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer>();
-        c->parent = this;
-        gr_only_peer.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer>();
+        ent_->parent = this;
+        gr_only_peer.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    count = 0;
-    for (auto c : peers.entities())
+    count_ = 0;
+    for (auto ent_ : peers.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : gr_only_peer.entities())
+    count_ = 0;
+    for (auto ent_ : gr_only_peer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6721,16 +6721,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6813,16 +6813,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6905,16 +6905,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::Syncs::Sync::GrOnlyPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7005,16 +7005,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Igp::SyncDelayRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7165,7 +7165,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -7178,34 +7178,34 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSum
 
     if(child_yang_name == "bind-af")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::BindAf>();
-        c->parent = this;
-        bind_af.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::BindAf>();
+        ent_->parent = this;
+        bind_af.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    count = 0;
-    for (auto c : bind_af.entities())
+    count_ = 0;
+    for (auto ent_ : bind_af.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7368,16 +7368,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7476,16 +7476,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::BindAf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::BindAf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::BindAf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::BindAf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsSummary::BindAf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7612,33 +7612,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7749,7 +7749,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -7762,51 +7762,51 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces:
 
     if(child_yang_name == "te-mesh-grp")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::TeMeshGrp>();
-        c->parent = this;
-        te_mesh_grp.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::TeMeshGrp>();
+        ent_->parent = this;
+        te_mesh_grp.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "auto-config")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::AutoConfig>();
-        c->parent = this;
-        auto_config.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::AutoConfig>();
+        ent_->parent = this;
+        auto_config.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    count = 0;
-    for (auto c : te_mesh_grp.entities())
+    count_ = 0;
+    for (auto ent_ : te_mesh_grp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : auto_config.entities())
+    count_ = 0;
+    for (auto ent_ : auto_config.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7939,16 +7939,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8035,16 +8035,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::TeMeshGrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::TeMeshGrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::TeMeshGrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::TeMeshGrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::TeMeshGrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8133,16 +8133,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::AutoConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::AutoConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::AutoConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::AutoConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Interfaces::Interface::AutoConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8227,7 +8227,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-hellos")
     {
@@ -8277,36 +8277,36 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(link_hellos != nullptr)
     {
-        children["link-hellos"] = link_hellos;
+        _children["link-hellos"] = link_hellos;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(targeted_hellos != nullptr)
     {
-        children["targeted-hellos"] = targeted_hellos;
+        _children["targeted-hellos"] = targeted_hellos;
     }
 
     if(brief != nullptr)
     {
-        children["brief"] = brief;
+        _children["brief"] = brief;
     }
 
     if(stats != nullptr)
     {
-        children["stats"] = stats;
+        _children["stats"] = stats;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8373,33 +8373,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-hello")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello>();
-        c->parent = this;
-        link_hello.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello>();
+        ent_->parent = this;
+        link_hello.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : link_hello.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : link_hello.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8502,7 +8502,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -8515,51 +8515,51 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::
 
     if(child_yang_name == "hello-information")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation>();
-        c->parent = this;
-        hello_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation>();
+        ent_->parent = this;
+        hello_information.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "discovery-link-af")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf>();
-        c->parent = this;
-        discovery_link_af.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf>();
+        ent_->parent = this;
+        discovery_link_af.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    count = 0;
-    for (auto c : hello_information.entities())
+    count_ = 0;
+    for (auto ent_ : hello_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : discovery_link_af.entities())
+    count_ = 0;
+    for (auto ent_ : discovery_link_af.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8672,16 +8672,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8824,7 +8824,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-src-address")
     {
@@ -8855,44 +8855,44 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::
 
     if(child_yang_name == "last-session-down-info")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::LastSessionDownInfo>();
-        c->parent = this;
-        last_session_down_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::LastSessionDownInfo>();
+        ent_->parent = this;
+        last_session_down_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(neighbor_src_address != nullptr)
     {
-        children["neighbor-src-address"] = neighbor_src_address;
+        _children["neighbor-src-address"] = neighbor_src_address;
     }
 
     if(neighbor_transport_address != nullptr)
     {
-        children["neighbor-transport-address"] = neighbor_transport_address;
+        _children["neighbor-transport-address"] = neighbor_transport_address;
     }
 
     if(target != nullptr)
     {
-        children["target"] = target;
+        _children["target"] = target;
     }
 
-    count = 0;
-    for (auto c : last_session_down_info.entities())
+    count_ = 0;
+    for (auto ent_ : last_session_down_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9073,16 +9073,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::NeighborSrcAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::NeighborSrcAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::NeighborSrcAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::NeighborSrcAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::NeighborSrcAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9193,16 +9193,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::NeighborTransportAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::NeighborTransportAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::NeighborTransportAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::NeighborTransportAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::NeighborTransportAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9313,16 +9313,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::Target::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::Target::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::Target::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9429,16 +9429,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::LastSessionDownInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::LastSessionDownInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::LastSessionDownInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::LastSessionDownInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::HelloInformation::LastSessionDownInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9536,7 +9536,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-src-address")
     {
@@ -9559,21 +9559,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(local_src_address != nullptr)
     {
-        children["local-src-address"] = local_src_address;
+        _children["local-src-address"] = local_src_address;
     }
 
     if(local_transport_address != nullptr)
     {
-        children["local-transport-address"] = local_transport_address;
+        _children["local-transport-address"] = local_transport_address;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9654,16 +9654,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::LocalSrcAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::LocalSrcAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::LocalSrcAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::LocalSrcAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::LocalSrcAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9774,16 +9774,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::LocalTransportAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::LocalTransportAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::LocalTransportAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::LocalTransportAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::LinkHellos::LinkHello::DiscoveryLinkAf::LocalTransportAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9931,7 +9931,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -9945,16 +9945,16 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10137,16 +10137,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Summary::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Summary::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Summary::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Summary::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Summary::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10233,33 +10233,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "targeted-hello")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello>();
-        c->parent = this;
-        targeted_hello.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello>();
+        ent_->parent = this;
+        targeted_hello.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : targeted_hello.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : targeted_hello.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10394,7 +10394,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcb-local-address")
     {
@@ -10416,39 +10416,39 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::
 
     if(child_yang_name == "last-session-down-info")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::LastSessionDownInfo>();
-        c->parent = this;
-        last_session_down_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::LastSessionDownInfo>();
+        ent_->parent = this;
+        last_session_down_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dhcb_local_address != nullptr)
     {
-        children["dhcb-local-address"] = dhcb_local_address;
+        _children["dhcb-local-address"] = dhcb_local_address;
     }
 
     if(dhcb_target_address != nullptr)
     {
-        children["dhcb-target-address"] = dhcb_target_address;
+        _children["dhcb-target-address"] = dhcb_target_address;
     }
 
-    count = 0;
-    for (auto c : last_session_down_info.entities())
+    count_ = 0;
+    for (auto ent_ : last_session_down_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10669,16 +10669,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::DhcbLocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::DhcbLocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::DhcbLocalAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::DhcbLocalAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::DhcbLocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10789,16 +10789,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::DhcbTargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::DhcbTargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::DhcbTargetAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::DhcbTargetAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::DhcbTargetAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10905,16 +10905,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::LastSessionDownInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::LastSessionDownInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::LastSessionDownInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::LastSessionDownInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::TargetedHellos::TargetedHello::LastSessionDownInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11007,7 +11007,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-hello-briefs")
     {
@@ -11030,21 +11030,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(link_hello_briefs != nullptr)
     {
-        children["link-hello-briefs"] = link_hello_briefs;
+        _children["link-hello-briefs"] = link_hello_briefs;
     }
 
     if(targeted_hello_briefs != nullptr)
     {
-        children["targeted-hello-briefs"] = targeted_hello_briefs;
+        _children["targeted-hello-briefs"] = targeted_hello_briefs;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11111,33 +11111,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-hello-brief")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief>();
-        c->parent = this;
-        link_hello_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief>();
+        ent_->parent = this;
+        link_hello_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : link_hello_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : link_hello_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11229,7 +11229,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -11242,34 +11242,34 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::
 
     if(child_yang_name == "hello-information")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::HelloInformation>();
-        c->parent = this;
-        hello_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::HelloInformation>();
+        ent_->parent = this;
+        hello_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    count = 0;
-    for (auto c : hello_information.entities())
+    count_ = 0;
+    for (auto ent_ : hello_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11382,16 +11382,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11478,16 +11478,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::HelloInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::HelloInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::HelloInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::HelloInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::LinkHelloBriefs::LinkHelloBrief::HelloInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11584,33 +11584,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "targeted-hello-brief")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief>();
-        c->parent = this;
-        targeted_hello_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief>();
+        ent_->parent = this;
+        targeted_hello_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : targeted_hello_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : targeted_hello_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11697,7 +11697,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -11719,39 +11719,39 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::
 
     if(child_yang_name == "hello-information")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::HelloInformation>();
-        c->parent = this;
-        hello_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::HelloInformation>();
+        ent_->parent = this;
+        hello_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
     if(dhcb_target_address != nullptr)
     {
-        children["dhcb-target-address"] = dhcb_target_address;
+        _children["dhcb-target-address"] = dhcb_target_address;
     }
 
-    count = 0;
-    for (auto c : hello_information.entities())
+    count_ = 0;
+    for (auto ent_ : hello_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11844,16 +11844,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11944,16 +11944,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::DhcbTargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::DhcbTargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::DhcbTargetAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::DhcbTargetAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::DhcbTargetAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12060,16 +12060,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::HelloInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::HelloInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::HelloInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::HelloInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Brief::TargetedHelloBriefs::TargetedHelloBrief::HelloInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12166,33 +12166,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stat")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Stats::Stat>();
-        c->parent = this;
-        stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Stats::Stat>();
+        ent_->parent = this;
+        stat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stat.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12271,16 +12271,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Stats::Stat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Stats::Stat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Stats::Stat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Stats::Stat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Discovery::Stats::Stat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12407,33 +12407,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forwarding")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding>();
-        c->parent = this;
-        forwarding.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding>();
+        ent_->parent = this;
+        forwarding.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : forwarding.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : forwarding.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12525,7 +12525,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -12556,44 +12556,44 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings
 
     if(child_yang_name == "paths")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths>();
-        c->parent = this;
-        paths.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths>();
+        ent_->parent = this;
+        paths.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
     if(prefix_xr != nullptr)
     {
-        children["prefix-xr"] = prefix_xr;
+        _children["prefix-xr"] = prefix_xr;
     }
 
     if(route != nullptr)
     {
-        children["route"] = route;
+        _children["route"] = route;
     }
 
-    count = 0;
-    for (auto c : paths.entities())
+    count_ = 0;
+    for (auto ent_ : paths.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12686,16 +12686,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12786,16 +12786,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::PrefixXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::PrefixXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::PrefixXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::PrefixXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::PrefixXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12898,7 +12898,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "routing")
     {
@@ -12921,21 +12921,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(routing != nullptr)
     {
-        children["routing"] = routing;
+        _children["routing"] = routing;
     }
 
     if(mpls != nullptr)
     {
-        children["mpls"] = mpls;
+        _children["mpls"] = mpls;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13034,16 +13034,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Routing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Routing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Routing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Routing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Routing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13224,16 +13224,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Mpls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Mpls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Route::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13336,7 +13336,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "routing")
     {
@@ -13359,21 +13359,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(routing != nullptr)
     {
-        children["routing"] = routing;
+        _children["routing"] = routing;
     }
 
     if(mpls != nullptr)
     {
-        children["mpls"] = mpls;
+        _children["mpls"] = mpls;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13477,7 +13477,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -13500,21 +13500,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
     if(remote_lfa != nullptr)
     {
-        children["remote-lfa"] = remote_lfa;
+        _children["remote-lfa"] = remote_lfa;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13685,16 +13685,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13810,7 +13810,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "remote-p-node-id")
     {
@@ -13833,21 +13833,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(remote_p_node_id != nullptr)
     {
-        children["remote-p-node-id"] = remote_p_node_id;
+        _children["remote-p-node-id"] = remote_p_node_id;
     }
 
     if(remote_q_node_id != nullptr)
     {
-        children["remote-q-node-id"] = remote_q_node_id;
+        _children["remote-q-node-id"] = remote_q_node_id;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13948,16 +13948,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemotePNodeId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemotePNodeId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemotePNodeId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemotePNodeId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemotePNodeId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14068,16 +14068,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemoteQNodeId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemoteQNodeId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemoteQNodeId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemoteQNodeId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Routing::RemoteLfa::RemoteQNodeId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14180,7 +14180,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mpls-outgoing-info")
     {
@@ -14203,21 +14203,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mpls_outgoing_info != nullptr)
     {
-        children["mpls-outgoing-info"] = mpls_outgoing_info;
+        _children["mpls-outgoing-info"] = mpls_outgoing_info;
     }
 
     if(remote_lfa != nullptr)
     {
-        children["remote-lfa"] = remote_lfa;
+        _children["remote-lfa"] = remote_lfa;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14301,7 +14301,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nexthop-peer-ldp-ident")
     {
@@ -14315,16 +14315,16 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nexthop_peer_ldp_ident != nullptr)
     {
-        children["nexthop-peer-ldp-ident"] = nexthop_peer_ldp_ident;
+        _children["nexthop-peer-ldp-ident"] = nexthop_peer_ldp_ident;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14451,16 +14451,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14554,7 +14554,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mpls-outgoing-info")
     {
@@ -14568,16 +14568,16 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mpls_outgoing_info != nullptr)
     {
-        children["mpls-outgoing-info"] = mpls_outgoing_info;
+        _children["mpls-outgoing-info"] = mpls_outgoing_info;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14654,33 +14654,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stack")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack>();
-        c->parent = this;
-        stack.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack>();
+        ent_->parent = this;
+        stack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14764,7 +14764,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nexthop-peer-ldp-ident")
     {
@@ -14778,16 +14778,16 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nexthop_peer_ldp_ident != nullptr)
     {
-        children["nexthop-peer-ldp-ident"] = nexthop_peer_ldp_ident;
+        _children["nexthop-peer-ldp-ident"] = nexthop_peer_ldp_ident;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14914,16 +14914,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::NexthopPeerLdpIdent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::NexthopPeerLdpIdent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::NexthopPeerLdpIdent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::NexthopPeerLdpIdent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::Forwardings::Forwarding::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::Stack::NexthopPeerLdpIdent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15023,7 +15023,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "allocation-acl")
     {
@@ -15036,34 +15036,34 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdv
 
     if(child_yang_name == "advt-acl")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl>();
-        c->parent = this;
-        advt_acl.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl>();
+        ent_->parent = this;
+        advt_acl.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(allocation_acl != nullptr)
     {
-        children["allocation-acl"] = allocation_acl;
+        _children["allocation-acl"] = allocation_acl;
     }
 
-    count = 0;
-    for (auto c : advt_acl.entities())
+    count_ = 0;
+    for (auto ent_ : advt_acl.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15130,16 +15130,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AllocationAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AllocationAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AllocationAcl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AllocationAcl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AllocationAcl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15232,16 +15232,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::BindingsAdvertiseSpec::AdvtAcl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15341,7 +15341,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -15364,21 +15364,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingS
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
     if(rws != nullptr)
     {
-        children["rws"] = rws;
+        _children["rws"] = rws;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15481,16 +15481,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15573,7 +15573,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pfxs")
     {
@@ -15596,21 +15596,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingS
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pfxs != nullptr)
     {
-        children["pfxs"] = pfxs;
+        _children["pfxs"] = pfxs;
     }
 
     if(nhs != nullptr)
     {
-        children["nhs"] = nhs;
+        _children["nhs"] = nhs;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15690,7 +15690,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled-pfxs-aggr")
     {
@@ -15722,26 +15722,26 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingS
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(labeled_pfxs_aggr != nullptr)
     {
-        children["labeled-pfxs-aggr"] = labeled_pfxs_aggr;
+        _children["labeled-pfxs-aggr"] = labeled_pfxs_aggr;
     }
 
     if(labeled_pfxs_primary != nullptr)
     {
-        children["labeled-pfxs-primary"] = labeled_pfxs_primary;
+        _children["labeled-pfxs-primary"] = labeled_pfxs_primary;
     }
 
     if(labeled_pfxs_backup != nullptr)
     {
-        children["labeled-pfxs-backup"] = labeled_pfxs_backup;
+        _children["labeled-pfxs-backup"] = labeled_pfxs_backup;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15838,16 +15838,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsAggr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsAggr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsAggr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsAggr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsAggr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15944,16 +15944,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsPrimary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsPrimary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsPrimary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsPrimary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsPrimary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16050,16 +16050,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsBackup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsBackup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsBackup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Pfxs::LabeledPfxsBackup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16168,16 +16168,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Nhs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Nhs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Nhs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Nhs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Afs::Af::ForwardingSummary::Rws::Nhs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16304,33 +16304,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-brief")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief>();
-        c->parent = this;
-        neighbor_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief>();
+        ent_->parent = this;
+        neighbor_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16421,7 +16421,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -16434,34 +16434,34 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::Neig
 
     if(child_yang_name == "nbr-br-af-info")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo>();
-        c->parent = this;
-        nbr_br_af_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo>();
+        ent_->parent = this;
+        nbr_br_af_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    count = 0;
-    for (auto c : nbr_br_af_info.entities())
+    count_ = 0;
+    for (auto ent_ : nbr_br_af_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16574,16 +16574,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16674,16 +16674,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::NeighborBriefs::NeighborBrief::NbrBrAfInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16786,16 +16786,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::BackoffParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::BackoffParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::BackoffParameters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::BackoffParameters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::BackoffParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16882,33 +16882,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Backoffs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Backoffs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backoff")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Backoffs::Backoff>();
-        c->parent = this;
-        backoff.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Backoffs::Backoff>();
+        ent_->parent = this;
+        backoff.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Backoffs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Backoffs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : backoff.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : backoff.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Backoffs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16979,16 +16979,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Backoffs::Backoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Backoffs::Backoff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Backoffs::Backoff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Backoffs::Backoff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Backoffs::Backoff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17095,7 +17095,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsr-pending")
     {
@@ -17127,26 +17127,26 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nsr_pending != nullptr)
     {
-        children["nsr-pending"] = nsr_pending;
+        _children["nsr-pending"] = nsr_pending;
     }
 
     if(ha_summary != nullptr)
     {
-        children["ha-summary"] = ha_summary;
+        _children["ha-summary"] = ha_summary;
     }
 
     if(ha_statistics != nullptr)
     {
-        children["ha-statistics"] = ha_statistics;
+        _children["ha-statistics"] = ha_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17205,7 +17205,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ha-neighbors")
     {
@@ -17219,16 +17219,16 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ha_neighbors != nullptr)
     {
-        children["ha-neighbors"] = ha_neighbors;
+        _children["ha-neighbors"] = ha_neighbors;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17295,33 +17295,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ha-neighbor")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor>();
-        c->parent = this;
-        ha_neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor>();
+        ent_->parent = this;
+        ha_neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ha_neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ha_neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17409,7 +17409,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "init-sync-info")
     {
@@ -17432,21 +17432,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaN
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(init_sync_info != nullptr)
     {
-        children["init-sync-info"] = init_sync_info;
+        _children["init-sync-info"] = init_sync_info;
     }
 
     if(steady_state_sync_info != nullptr)
     {
-        children["steady-state-sync-info"] = steady_state_sync_info;
+        _children["steady-state-sync-info"] = steady_state_sync_info;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17597,16 +17597,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::InitSyncInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::InitSyncInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::InitSyncInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::InitSyncInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::InitSyncInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17775,16 +17775,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::NsrPending::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17907,7 +17907,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -17930,21 +17930,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
     if(sessions != nullptr)
     {
-        children["sessions"] = sessions;
+        _children["sessions"] = sessions;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18007,16 +18007,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18131,16 +18131,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::Sessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::Sessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaSummary::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18303,7 +18303,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ha-global")
     {
@@ -18326,21 +18326,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ha_global != nullptr)
     {
-        children["ha-global"] = ha_global;
+        _children["ha-global"] = ha_global;
     }
 
     if(ha_neighbors != nullptr)
     {
-        children["ha-neighbors"] = ha_neighbors;
+        _children["ha-neighbors"] = ha_neighbors;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18399,7 +18399,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "init-sync")
     {
@@ -18413,16 +18413,16 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::H
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaGlobal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaGlobal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(init_sync != nullptr)
     {
-        children["init-sync"] = init_sync;
+        _children["init-sync"] = init_sync;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18565,16 +18565,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaGlobal::InitSync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaGlobal::InitSync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaGlobal::InitSync::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaGlobal::InitSync::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaGlobal::InitSync::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18861,33 +18861,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ha-neighbor")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor>();
-        c->parent = this;
-        ha_neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor>();
+        ent_->parent = this;
+        ha_neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ha_neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ha_neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18975,7 +18975,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "init-sync-info")
     {
@@ -18998,21 +18998,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::H
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(init_sync_info != nullptr)
     {
-        children["init-sync-info"] = init_sync_info;
+        _children["init-sync-info"] = init_sync_info;
     }
 
     if(steady_state_sync_info != nullptr)
     {
-        children["steady-state-sync-info"] = steady_state_sync_info;
+        _children["steady-state-sync-info"] = steady_state_sync_info;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19163,16 +19163,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::InitSyncInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::InitSyncInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::InitSyncInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::InitSyncInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::InitSyncInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19341,16 +19341,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Nsr::HaStatistics::HaNeighbors::HaNeighbor::SteadyStateSyncInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19577,7 +19577,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "graceful-restart-information")
     {
@@ -19590,34 +19590,34 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::get_chil
 
     if(child_yang_name == "address-family-parameter")
     {
-        auto c = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Parameters::AddressFamilyParameter>();
-        c->parent = this;
-        address_family_parameter.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLdp::Global::Active::Vrfs::Vrf::Parameters::AddressFamilyParameter>();
+        ent_->parent = this;
+        address_family_parameter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(graceful_restart_information != nullptr)
     {
-        children["graceful-restart-information"] = graceful_restart_information;
+        _children["graceful-restart-information"] = graceful_restart_information;
     }
 
-    count = 0;
-    for (auto c : address_family_parameter.entities())
+    count_ = 0;
+    for (auto ent_ : address_family_parameter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19924,16 +19924,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::GracefulRestartInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::GracefulRestartInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::GracefulRestartInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::GracefulRestartInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Parameters::GracefulRestartInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20043,7 +20043,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::AddressFamilyParameter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::AddressFamilyParameter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "discovery-transport-address")
     {
@@ -20057,16 +20057,16 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::AddressF
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::AddressFamilyParameter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::AddressFamilyParameter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(discovery_transport_address != nullptr)
     {
-        children["discovery-transport-address"] = discovery_transport_address;
+        _children["discovery-transport-address"] = discovery_transport_address;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Parameters::AddressFamilyParameter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20187,16 +20187,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::AddressFamilyParameter::DiscoveryTransportAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::AddressFamilyParameter::DiscoveryTransportAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::AddressFamilyParameter::DiscoveryTransportAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Parameters::AddressFamilyParameter::DiscoveryTransportAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Parameters::AddressFamilyParameter::DiscoveryTransportAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20299,7 +20299,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Issu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Issu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ha-summary")
     {
@@ -20322,21 +20322,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Issu::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Issu::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Issu::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ha_summary != nullptr)
     {
-        children["ha-summary"] = ha_summary;
+        _children["ha-summary"] = ha_summary;
     }
 
     if(ha_statistics != nullptr)
     {
-        children["ha-statistics"] = ha_statistics;
+        _children["ha-statistics"] = ha_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Issu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20399,7 +20399,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
@@ -20422,21 +20422,21 @@ std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
     if(sessions != nullptr)
     {
-        children["sessions"] = sessions;
+        _children["sessions"] = sessions;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20499,16 +20499,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::Vrf_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::Vrf_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::Vrf_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::Vrf_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20623,16 +20623,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLdp::Global::Active::Vrfs::Vr
 
 }
 
-std::shared_ptr<Entity> MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::Sessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::Sessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLdp::Global::Active::Vrfs::Vrf::Issu::HaSummary::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -96,7 +96,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::get_name_
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmCurStatChangePVclTable")
     {
@@ -209,71 +209,71 @@ std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(catmcurstatchangepvcltable != nullptr)
     {
-        children["catmCurStatChangePVclTable"] = catmcurstatchangepvcltable;
+        _children["catmCurStatChangePVclTable"] = catmcurstatchangepvcltable;
     }
 
     if(catmstatuschangepvclrangetable != nullptr)
     {
-        children["catmStatusChangePVclRangeTable"] = catmstatuschangepvclrangetable;
+        _children["catmStatusChangePVclRangeTable"] = catmstatuschangepvclrangetable;
     }
 
     if(catmsegccstatuschpvclrangetable != nullptr)
     {
-        children["catmSegCCStatusChPVclRangeTable"] = catmsegccstatuschpvclrangetable;
+        _children["catmSegCCStatusChPVclRangeTable"] = catmsegccstatuschpvclrangetable;
     }
 
     if(catmendccstatuschpvclrangetable != nullptr)
     {
-        children["catmEndCCStatusChPVclRangeTable"] = catmendccstatuschpvclrangetable;
+        _children["catmEndCCStatusChPVclRangeTable"] = catmendccstatuschpvclrangetable;
     }
 
     if(catmaisrdistatuschpvclrangetable != nullptr)
     {
-        children["catmAISRDIStatusChPVclRangeTable"] = catmaisrdistatuschpvclrangetable;
+        _children["catmAISRDIStatusChPVclRangeTable"] = catmaisrdistatuschpvclrangetable;
     }
 
     if(catmdownpvclrangetable != nullptr)
     {
-        children["catmDownPVclRangeTable"] = catmdownpvclrangetable;
+        _children["catmDownPVclRangeTable"] = catmdownpvclrangetable;
     }
 
     if(catmcurstatusuppvcltable != nullptr)
     {
-        children["catmCurStatusUpPVclTable"] = catmcurstatusuppvcltable;
+        _children["catmCurStatusUpPVclTable"] = catmcurstatusuppvcltable;
     }
 
     if(catmstatusuppvclrangetable != nullptr)
     {
-        children["catmStatusUpPVclRangeTable"] = catmstatusuppvclrangetable;
+        _children["catmStatusUpPVclRangeTable"] = catmstatusuppvclrangetable;
     }
 
     if(catmsegccstatusuppvclrangetable != nullptr)
     {
-        children["catmSegCCStatusUpPVclRangeTable"] = catmsegccstatusuppvclrangetable;
+        _children["catmSegCCStatusUpPVclRangeTable"] = catmsegccstatusuppvclrangetable;
     }
 
     if(catmendccstatusuppvclrangetable != nullptr)
     {
-        children["catmEndCCStatusUpPVclRangeTable"] = catmendccstatusuppvclrangetable;
+        _children["catmEndCCStatusUpPVclRangeTable"] = catmendccstatusuppvclrangetable;
     }
 
     if(catmaisrdistatusuppvclrangetable != nullptr)
     {
-        children["catmAISRDIStatusUpPVclRangeTable"] = catmaisrdistatusuppvclrangetable;
+        _children["catmAISRDIStatusUpPVclRangeTable"] = catmaisrdistatusuppvclrangetable;
     }
 
     if(catmuppvclrangetable != nullptr)
     {
-        children["catmUpPVclRangeTable"] = catmuppvclrangetable;
+        _children["catmUpPVclRangeTable"] = catmuppvclrangetable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -284,7 +284,7 @@ void CISCOATMPVCTRAPEXTNMIB::set_filter(const std::string & value_path, YFilter 
 {
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::clone_ptr() const
 {
     return std::make_shared<CISCOATMPVCTRAPEXTNMIB>();
 }
@@ -372,33 +372,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmCurSt
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmCurStatChangePVclEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry>();
-        c->parent = this;
-        catmcurstatchangepvclentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry>();
+        ent_->parent = this;
+        catmcurstatchangepvclentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : catmcurstatchangepvclentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : catmcurstatchangepvclentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -535,16 +535,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmCurSt
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmCurStatChangePVclTable::CatmCurStatChangePVclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -798,33 +798,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmStatu
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmStatusChangePVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry>();
-        c->parent = this;
-        catmstatuschangepvclrangeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry>();
+        ent_->parent = this;
+        catmstatuschangepvclrangeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : catmstatuschangepvclrangeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : catmstatuschangepvclrangeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -917,16 +917,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmStatu
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmStatusChangePVclRangeTable::CatmStatusChangePVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1070,33 +1070,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmSegCC
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmSegCCStatusChPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry>();
-        c->parent = this;
-        catmsegccstatuschpvclrangeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry>();
+        ent_->parent = this;
+        catmsegccstatuschpvclrangeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : catmsegccstatuschpvclrangeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : catmsegccstatuschpvclrangeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1189,16 +1189,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmSegCC
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusChPVclRangeTable::CatmSegCCStatusChPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1342,33 +1342,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmEndCC
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmEndCCStatusChPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry>();
-        c->parent = this;
-        catmendccstatuschpvclrangeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry>();
+        ent_->parent = this;
+        catmendccstatuschpvclrangeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : catmendccstatuschpvclrangeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : catmendccstatuschpvclrangeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1461,16 +1461,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmEndCC
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusChPVclRangeTable::CatmEndCCStatusChPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1614,33 +1614,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmAISRD
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmAISRDIStatusChPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry>();
-        c->parent = this;
-        catmaisrdistatuschpvclrangeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry>();
+        ent_->parent = this;
+        catmaisrdistatuschpvclrangeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : catmaisrdistatuschpvclrangeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : catmaisrdistatuschpvclrangeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1733,16 +1733,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmAISRD
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusChPVclRangeTable::CatmAISRDIStatusChPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1886,33 +1886,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmDownP
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmDownPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry>();
-        c->parent = this;
-        catmdownpvclrangeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry>();
+        ent_->parent = this;
+        catmdownpvclrangeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : catmdownpvclrangeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : catmdownpvclrangeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2017,16 +2017,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmDownP
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmDownPVclRangeTable::CatmDownPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2200,33 +2200,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmCurSt
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmCurStatusUpPVclEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry>();
-        c->parent = this;
-        catmcurstatusuppvclentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry>();
+        ent_->parent = this;
+        catmcurstatusuppvclentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : catmcurstatusuppvclentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : catmcurstatusuppvclentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2363,16 +2363,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmCurSt
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmCurStatusUpPVclTable::CatmCurStatusUpPVclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2626,33 +2626,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmStatu
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmStatusUpPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry>();
-        c->parent = this;
-        catmstatusuppvclrangeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry>();
+        ent_->parent = this;
+        catmstatusuppvclrangeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : catmstatusuppvclrangeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : catmstatusuppvclrangeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2745,16 +2745,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmStatu
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmStatusUpPVclRangeTable::CatmStatusUpPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2898,33 +2898,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmSegCC
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmSegCCStatusUpPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry>();
-        c->parent = this;
-        catmsegccstatusuppvclrangeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry>();
+        ent_->parent = this;
+        catmsegccstatusuppvclrangeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : catmsegccstatusuppvclrangeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : catmsegccstatusuppvclrangeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3017,16 +3017,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmSegCC
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmSegCCStatusUpPVclRangeTable::CatmSegCCStatusUpPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3170,33 +3170,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmEndCC
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmEndCCStatusUpPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry>();
-        c->parent = this;
-        catmendccstatusuppvclrangeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry>();
+        ent_->parent = this;
+        catmendccstatusuppvclrangeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : catmendccstatusuppvclrangeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : catmendccstatusuppvclrangeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3289,16 +3289,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmEndCC
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmEndCCStatusUpPVclRangeTable::CatmEndCCStatusUpPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3442,33 +3442,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmAISRD
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmAISRDIStatusUpPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry>();
-        c->parent = this;
-        catmaisrdistatusuppvclrangeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry>();
+        ent_->parent = this;
+        catmaisrdistatusuppvclrangeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : catmaisrdistatusuppvclrangeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : catmaisrdistatusuppvclrangeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3561,16 +3561,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmAISRD
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmAISRDIStatusUpPVclRangeTable::CatmAISRDIStatusUpPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3714,33 +3714,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmUpPVc
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "catmUpPVclRangeEntry")
     {
-        auto c = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry>();
-        c->parent = this;
-        catmuppvclrangeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry>();
+        ent_->parent = this;
+        catmuppvclrangeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : catmuppvclrangeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : catmuppvclrangeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3845,16 +3845,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMPVCTRAPEXTNMIB::CatmUpPVc
 
 }
 
-std::shared_ptr<Entity> CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMPVCTRAPEXTNMIB::CatmUpPVclRangeTable::CatmUpPVclRangeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

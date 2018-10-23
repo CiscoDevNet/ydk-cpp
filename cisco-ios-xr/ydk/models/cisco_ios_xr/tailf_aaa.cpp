@@ -75,7 +75,7 @@ std::vector<std::pair<std::string, LeafData> > Aaa::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication")
     {
@@ -143,46 +143,46 @@ std::shared_ptr<Entity> Aaa::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(authorization != nullptr)
     {
-        children["authorization"] = authorization;
+        _children["authorization"] = authorization;
     }
 
     if(ios != nullptr)
     {
-        children["ios"] = ios;
+        _children["ios"] = ios;
     }
 
     if(privileged_access != nullptr)
     {
-        children["Cisco-IOS-XR-sysadmin-aaa-aaa-show:privileged-access"] = privileged_access;
+        _children["Cisco-IOS-XR-sysadmin-aaa-aaa-show:privileged-access"] = privileged_access;
     }
 
     if(accounting != nullptr)
     {
-        children["Cisco-IOS-XR-sysadmin-aaa-aaa-show:accounting"] = accounting;
+        _children["Cisco-IOS-XR-sysadmin-aaa-aaa-show:accounting"] = accounting;
     }
 
     if(user_group != nullptr)
     {
-        children["Cisco-IOS-XR-sysadmin-aaa-aaa-show:user-group"] = user_group;
+        _children["Cisco-IOS-XR-sysadmin-aaa-aaa-show:user-group"] = user_group;
     }
 
     if(disaster_recovery != nullptr)
     {
-        children["Cisco-IOS-XR-sysadmin-aaa-disaster-recovery:disaster-recovery"] = disaster_recovery;
+        _children["Cisco-IOS-XR-sysadmin-aaa-disaster-recovery:disaster-recovery"] = disaster_recovery;
     }
 
-    return children;
+    return _children;
 }
 
 void Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -193,7 +193,7 @@ void Aaa::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Aaa::clone_ptr() const
+std::shared_ptr<ydk::Entity> Aaa::clone_ptr() const
 {
     return std::make_shared<Aaa>();
 }
@@ -277,7 +277,7 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Authentication::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Aaa::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "users")
     {
@@ -300,21 +300,21 @@ std::shared_ptr<Entity> Aaa::Authentication::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(users != nullptr)
     {
-        children["users"] = users;
+        _children["users"] = users;
     }
 
     if(groups != nullptr)
     {
-        children["groups"] = groups;
+        _children["groups"] = groups;
     }
 
-    return children;
+    return _children;
 }
 
 void Aaa::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -388,33 +388,33 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Authentication::Users::get_n
 
 }
 
-std::shared_ptr<Entity> Aaa::Authentication::Users::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Authentication::Users::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "user")
     {
-        auto c = std::make_shared<Aaa::Authentication::Users::User>();
-        c->parent = this;
-        user.append(c);
-        return c;
+        auto ent_ = std::make_shared<Aaa::Authentication::Users::User>();
+        ent_->parent = this;
+        user.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Authentication::Users::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authentication::Users::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : user.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : user.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Aaa::Authentication::Users::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -501,16 +501,16 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Authentication::Users::User:
 
 }
 
-std::shared_ptr<Entity> Aaa::Authentication::Users::User::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Authentication::Users::User::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Authentication::Users::User::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authentication::Users::User::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aaa::Authentication::Users::User::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -644,33 +644,33 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Authentication::Groups::get_
 
 }
 
-std::shared_ptr<Entity> Aaa::Authentication::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Authentication::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group")
     {
-        auto c = std::make_shared<Aaa::Authentication::Groups::Group>();
-        c->parent = this;
-        group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Aaa::Authentication::Groups::Group>();
+        ent_->parent = this;
+        group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Authentication::Groups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authentication::Groups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Aaa::Authentication::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -745,16 +745,16 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Authentication::Groups::Grou
 
 }
 
-std::shared_ptr<Entity> Aaa::Authentication::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Authentication::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Authentication::Groups::Group::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authentication::Groups::Group::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aaa::Authentication::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -854,7 +854,7 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Authorization::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Aaa::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmdrules")
     {
@@ -877,21 +877,21 @@ std::shared_ptr<Entity> Aaa::Authorization::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Authorization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authorization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cmdrules != nullptr)
     {
-        children["cmdrules"] = cmdrules;
+        _children["cmdrules"] = cmdrules;
     }
 
     if(datarules != nullptr)
     {
-        children["datarules"] = datarules;
+        _children["datarules"] = datarules;
     }
 
-    return children;
+    return _children;
 }
 
 void Aaa::Authorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -965,33 +965,33 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Authorization::Cmdrules::get
 
 }
 
-std::shared_ptr<Entity> Aaa::Authorization::Cmdrules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Authorization::Cmdrules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmdrule")
     {
-        auto c = std::make_shared<Aaa::Authorization::Cmdrules::Cmdrule>();
-        c->parent = this;
-        cmdrule.append(c);
-        return c;
+        auto ent_ = std::make_shared<Aaa::Authorization::Cmdrules::Cmdrule>();
+        ent_->parent = this;
+        cmdrule.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Authorization::Cmdrules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authorization::Cmdrules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmdrule.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmdrule.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Aaa::Authorization::Cmdrules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1078,16 +1078,16 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Authorization::Cmdrules::Cmd
 
 }
 
-std::shared_ptr<Entity> Aaa::Authorization::Cmdrules::Cmdrule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Authorization::Cmdrules::Cmdrule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Authorization::Cmdrules::Cmdrule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authorization::Cmdrules::Cmdrule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aaa::Authorization::Cmdrules::Cmdrule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1221,33 +1221,33 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Authorization::Datarules::ge
 
 }
 
-std::shared_ptr<Entity> Aaa::Authorization::Datarules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Authorization::Datarules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "datarule")
     {
-        auto c = std::make_shared<Aaa::Authorization::Datarules::Datarule>();
-        c->parent = this;
-        datarule.append(c);
-        return c;
+        auto ent_ = std::make_shared<Aaa::Authorization::Datarules::Datarule>();
+        ent_->parent = this;
+        datarule.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Authorization::Datarules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authorization::Datarules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : datarule.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : datarule.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Aaa::Authorization::Datarules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1338,16 +1338,16 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Authorization::Datarules::Da
 
 }
 
-std::shared_ptr<Entity> Aaa::Authorization::Datarules::Datarule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Authorization::Datarules::Datarule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Authorization::Datarules::Datarule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authorization::Datarules::Datarule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aaa::Authorization::Datarules::Datarule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1502,50 +1502,50 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Ios::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> Aaa::Ios::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Ios::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "level")
     {
-        auto c = std::make_shared<Aaa::Ios::Level>();
-        c->parent = this;
-        level.append(c);
-        return c;
+        auto ent_ = std::make_shared<Aaa::Ios::Level>();
+        ent_->parent = this;
+        level.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "privilege")
     {
-        auto c = std::make_shared<Aaa::Ios::Privilege>();
-        c->parent = this;
-        privilege.append(c);
-        return c;
+        auto ent_ = std::make_shared<Aaa::Ios::Privilege>();
+        ent_->parent = this;
+        privilege.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Ios::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Ios::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : level.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : level.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : privilege.entities())
+    count_ = 0;
+    for (auto ent_ : privilege.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Aaa::Ios::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1624,16 +1624,16 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Ios::Level::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Aaa::Ios::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Ios::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Ios::Level::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Ios::Level::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aaa::Ios::Level::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1752,33 +1752,33 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Ios::Privilege::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Aaa::Ios::Privilege::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Ios::Privilege::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "level")
     {
-        auto c = std::make_shared<Aaa::Ios::Privilege::Level>();
-        c->parent = this;
-        level.append(c);
-        return c;
+        auto ent_ = std::make_shared<Aaa::Ios::Privilege::Level>();
+        ent_->parent = this;
+        level.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Ios::Privilege::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Ios::Privilege::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : level.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : level.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Aaa::Ios::Privilege::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1860,33 +1860,33 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Ios::Privilege::Level::get_n
 
 }
 
-std::shared_ptr<Entity> Aaa::Ios::Privilege::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Ios::Privilege::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "command")
     {
-        auto c = std::make_shared<Aaa::Ios::Privilege::Level::Command>();
-        c->parent = this;
-        command.append(c);
-        return c;
+        auto ent_ = std::make_shared<Aaa::Ios::Privilege::Level::Command>();
+        ent_->parent = this;
+        command.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Ios::Privilege::Level::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Ios::Privilege::Level::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : command.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : command.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Aaa::Ios::Privilege::Level::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1956,16 +1956,16 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Ios::Privilege::Level::Comma
 
 }
 
-std::shared_ptr<Entity> Aaa::Ios::Privilege::Level::Command::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Ios::Privilege::Level::Command::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Ios::Privilege::Level::Command::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Ios::Privilege::Level::Command::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aaa::Ios::Privilege::Level::Command::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2053,16 +2053,16 @@ std::vector<std::pair<std::string, LeafData> > Aaa::PrivilegedAccess::get_name_l
 
 }
 
-std::shared_ptr<Entity> Aaa::PrivilegedAccess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::PrivilegedAccess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::PrivilegedAccess::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::PrivilegedAccess::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aaa::PrivilegedAccess::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2168,16 +2168,16 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Accounting::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Aaa::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Accounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aaa::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2253,16 +2253,16 @@ std::vector<std::pair<std::string, LeafData> > Aaa::UserGroup::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Aaa::UserGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::UserGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::UserGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::UserGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aaa::UserGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2342,16 +2342,16 @@ std::vector<std::pair<std::string, LeafData> > Aaa::DisasterRecovery::get_name_l
 
 }
 
-std::shared_ptr<Entity> Aaa::DisasterRecovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::DisasterRecovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Aaa::DisasterRecovery::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::DisasterRecovery::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Aaa::DisasterRecovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2435,16 +2435,16 @@ std::vector<std::pair<std::string, LeafData> > Alias::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Alias::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Alias::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Alias::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Alias::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Alias::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2475,7 +2475,7 @@ void Alias::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Alias::clone_ptr() const
+std::shared_ptr<ydk::Entity> Alias::clone_ptr() const
 {
     return std::make_shared<Alias>();
 }
@@ -2584,16 +2584,16 @@ std::vector<std::pair<std::string, LeafData> > Session::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2704,7 +2704,7 @@ void Session::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Session::clone_ptr() const
+std::shared_ptr<ydk::Entity> Session::clone_ptr() const
 {
     return std::make_shared<Session>();
 }
@@ -2798,14 +2798,14 @@ std::vector<std::pair<std::string, LeafData> > User::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> User::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> User::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alias")
     {
-        auto c = std::make_shared<User::Alias>();
-        c->parent = this;
-        alias.append(c);
-        return c;
+        auto ent_ = std::make_shared<User::Alias>();
+        ent_->parent = this;
+        alias.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "session")
@@ -2820,25 +2820,25 @@ std::shared_ptr<Entity> User::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> User::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> User::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : alias.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : alias.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
-    return children;
+    return _children;
 }
 
 void User::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2869,7 +2869,7 @@ void User::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> User::clone_ptr() const
+std::shared_ptr<ydk::Entity> User::clone_ptr() const
 {
     return std::make_shared<User>();
 }
@@ -2947,16 +2947,16 @@ std::vector<std::pair<std::string, LeafData> > User::Alias::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> User::Alias::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> User::Alias::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> User::Alias::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> User::Alias::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void User::Alias::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3071,16 +3071,16 @@ std::vector<std::pair<std::string, LeafData> > User::Session::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> User::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> User::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> User::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> User::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void User::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

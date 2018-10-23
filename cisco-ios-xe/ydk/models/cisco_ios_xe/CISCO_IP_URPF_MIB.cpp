@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> CISCOIPURPFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPURPFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipUrpfScalar")
     {
@@ -118,36 +118,36 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPURPFMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cipurpfscalar != nullptr)
     {
-        children["cipUrpfScalar"] = cipurpfscalar;
+        _children["cipUrpfScalar"] = cipurpfscalar;
     }
 
     if(cipurpftable != nullptr)
     {
-        children["cipUrpfTable"] = cipurpftable;
+        _children["cipUrpfTable"] = cipurpftable;
     }
 
     if(cipurpfifmontable != nullptr)
     {
-        children["cipUrpfIfMonTable"] = cipurpfifmontable;
+        _children["cipUrpfIfMonTable"] = cipurpfifmontable;
     }
 
     if(cipurpfvrfiftable != nullptr)
     {
-        children["cipUrpfVrfIfTable"] = cipurpfvrfiftable;
+        _children["cipUrpfVrfIfTable"] = cipurpfvrfiftable;
     }
 
     if(cipurpfvrftable != nullptr)
     {
-        children["cipUrpfVrfTable"] = cipurpfvrftable;
+        _children["cipUrpfVrfTable"] = cipurpfvrftable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPURPFMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -158,7 +158,7 @@ void CISCOIPURPFMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOIPURPFMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIPURPFMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIPURPFMIB>();
 }
@@ -246,16 +246,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::CipUrpfScalar::ge
 
 }
 
-std::shared_ptr<Entity> CISCOIPURPFMIB::CipUrpfScalar::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPURPFMIB::CipUrpfScalar::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::CipUrpfScalar::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPURPFMIB::CipUrpfScalar::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPURPFMIB::CipUrpfScalar::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -359,33 +359,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::CipUrpfTable::get
 
 }
 
-std::shared_ptr<Entity> CISCOIPURPFMIB::CipUrpfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPURPFMIB::CipUrpfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipUrpfEntry")
     {
-        auto c = std::make_shared<CISCOIPURPFMIB::CipUrpfTable::CipUrpfEntry>();
-        c->parent = this;
-        cipurpfentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPURPFMIB::CipUrpfTable::CipUrpfEntry>();
+        ent_->parent = this;
+        cipurpfentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::CipUrpfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPURPFMIB::CipUrpfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipurpfentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipurpfentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPURPFMIB::CipUrpfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -460,16 +460,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::CipUrpfTable::Cip
 
 }
 
-std::shared_ptr<Entity> CISCOIPURPFMIB::CipUrpfTable::CipUrpfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPURPFMIB::CipUrpfTable::CipUrpfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::CipUrpfTable::CipUrpfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPURPFMIB::CipUrpfTable::CipUrpfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPURPFMIB::CipUrpfTable::CipUrpfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -573,33 +573,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::CipUrpfIfMonTable
 
 }
 
-std::shared_ptr<Entity> CISCOIPURPFMIB::CipUrpfIfMonTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPURPFMIB::CipUrpfIfMonTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipUrpfIfMonEntry")
     {
-        auto c = std::make_shared<CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry>();
-        c->parent = this;
-        cipurpfifmonentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry>();
+        ent_->parent = this;
+        cipurpfifmonentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::CipUrpfIfMonTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPURPFMIB::CipUrpfIfMonTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipurpfifmonentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipurpfifmonentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPURPFMIB::CipUrpfIfMonTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -711,16 +711,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::CipUrpfIfMonTable
 
 }
 
-std::shared_ptr<Entity> CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPURPFMIB::CipUrpfIfMonTable::CipUrpfIfMonEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -914,33 +914,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::CipUrpfVrfIfTable
 
 }
 
-std::shared_ptr<Entity> CISCOIPURPFMIB::CipUrpfVrfIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPURPFMIB::CipUrpfVrfIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipUrpfVrfIfEntry")
     {
-        auto c = std::make_shared<CISCOIPURPFMIB::CipUrpfVrfIfTable::CipUrpfVrfIfEntry>();
-        c->parent = this;
-        cipurpfvrfifentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPURPFMIB::CipUrpfVrfIfTable::CipUrpfVrfIfEntry>();
+        ent_->parent = this;
+        cipurpfvrfifentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::CipUrpfVrfIfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPURPFMIB::CipUrpfVrfIfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipurpfvrfifentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipurpfvrfifentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPURPFMIB::CipUrpfVrfIfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1020,16 +1020,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::CipUrpfVrfIfTable
 
 }
 
-std::shared_ptr<Entity> CISCOIPURPFMIB::CipUrpfVrfIfTable::CipUrpfVrfIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPURPFMIB::CipUrpfVrfIfTable::CipUrpfVrfIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::CipUrpfVrfIfTable::CipUrpfVrfIfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPURPFMIB::CipUrpfVrfIfTable::CipUrpfVrfIfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPURPFMIB::CipUrpfVrfIfTable::CipUrpfVrfIfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1143,33 +1143,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::CipUrpfVrfTable::
 
 }
 
-std::shared_ptr<Entity> CISCOIPURPFMIB::CipUrpfVrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPURPFMIB::CipUrpfVrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipUrpfVrfEntry")
     {
-        auto c = std::make_shared<CISCOIPURPFMIB::CipUrpfVrfTable::CipUrpfVrfEntry>();
-        c->parent = this;
-        cipurpfvrfentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPURPFMIB::CipUrpfVrfTable::CipUrpfVrfEntry>();
+        ent_->parent = this;
+        cipurpfvrfentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::CipUrpfVrfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPURPFMIB::CipUrpfVrfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipurpfvrfentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipurpfvrfentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPURPFMIB::CipUrpfVrfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1236,16 +1236,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPURPFMIB::CipUrpfVrfTable::
 
 }
 
-std::shared_ptr<Entity> CISCOIPURPFMIB::CipUrpfVrfTable::CipUrpfVrfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPURPFMIB::CipUrpfVrfTable::CipUrpfVrfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::CipUrpfVrfTable::CipUrpfVrfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPURPFMIB::CipUrpfVrfTable::CipUrpfVrfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPURPFMIB::CipUrpfVrfTable::CipUrpfVrfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

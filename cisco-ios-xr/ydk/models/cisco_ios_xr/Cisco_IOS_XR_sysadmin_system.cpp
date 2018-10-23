@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > Mgmt::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Mgmt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mgmt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> Mgmt::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mgmt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mgmt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
-    return children;
+    return _children;
 }
 
 void Mgmt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void Mgmt::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Mgmt::clone_ptr() const
+std::shared_ptr<ydk::Entity> Mgmt::clone_ptr() const
 {
     return std::make_shared<Mgmt>();
 }
@@ -188,16 +188,16 @@ std::vector<std::pair<std::string, LeafData> > Mgmt::Ipv4::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Mgmt::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mgmt::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mgmt::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mgmt::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mgmt::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -287,16 +287,16 @@ std::vector<std::pair<std::string, LeafData> > Mgmt::Ipv6::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Mgmt::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Mgmt::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Mgmt::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mgmt::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Mgmt::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

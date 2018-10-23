@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > SyslogService::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> SyslogService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SyslogService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "timestamps")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> SyslogService::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SyslogService::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SyslogService::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(timestamps != nullptr)
     {
-        children["timestamps"] = timestamps;
+        _children["timestamps"] = timestamps;
     }
 
-    return children;
+    return _children;
 }
 
 void SyslogService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void SyslogService::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> SyslogService::clone_ptr() const
+std::shared_ptr<ydk::Entity> SyslogService::clone_ptr() const
 {
     return std::make_shared<SyslogService>();
 }
@@ -175,7 +175,7 @@ std::vector<std::pair<std::string, LeafData> > SyslogService::Timestamps::get_na
 
 }
 
-std::shared_ptr<Entity> SyslogService::Timestamps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SyslogService::Timestamps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log")
     {
@@ -198,21 +198,21 @@ std::shared_ptr<Entity> SyslogService::Timestamps::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SyslogService::Timestamps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(log != nullptr)
     {
-        children["log"] = log;
+        _children["log"] = log;
     }
 
     if(debug != nullptr)
     {
-        children["debug"] = debug;
+        _children["debug"] = debug;
     }
 
-    return children;
+    return _children;
 }
 
 void SyslogService::Timestamps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -297,7 +297,7 @@ std::vector<std::pair<std::string, LeafData> > SyslogService::Timestamps::Log::g
 
 }
 
-std::shared_ptr<Entity> SyslogService::Timestamps::Log::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SyslogService::Timestamps::Log::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-datetime")
     {
@@ -311,16 +311,16 @@ std::shared_ptr<Entity> SyslogService::Timestamps::Log::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::Log::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SyslogService::Timestamps::Log::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(log_datetime != nullptr)
     {
-        children["log-datetime"] = log_datetime;
+        _children["log-datetime"] = log_datetime;
     }
 
-    return children;
+    return _children;
 }
 
 void SyslogService::Timestamps::Log::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -406,7 +406,7 @@ std::vector<std::pair<std::string, LeafData> > SyslogService::Timestamps::Log::L
 
 }
 
-std::shared_ptr<Entity> SyslogService::Timestamps::Log::LogDatetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SyslogService::Timestamps::Log::LogDatetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log-datetime-value")
     {
@@ -420,16 +420,16 @@ std::shared_ptr<Entity> SyslogService::Timestamps::Log::LogDatetime::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::Log::LogDatetime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SyslogService::Timestamps::Log::LogDatetime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(log_datetime_value != nullptr)
     {
-        children["log-datetime-value"] = log_datetime_value;
+        _children["log-datetime-value"] = log_datetime_value;
     }
 
-    return children;
+    return _children;
 }
 
 void SyslogService::Timestamps::Log::LogDatetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -507,16 +507,16 @@ std::vector<std::pair<std::string, LeafData> > SyslogService::Timestamps::Log::L
 
 }
 
-std::shared_ptr<Entity> SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SyslogService::Timestamps::Log::LogDatetime::LogDatetimeValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -631,7 +631,7 @@ std::vector<std::pair<std::string, LeafData> > SyslogService::Timestamps::Debug:
 
 }
 
-std::shared_ptr<Entity> SyslogService::Timestamps::Debug::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SyslogService::Timestamps::Debug::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "debug-datetime")
     {
@@ -645,16 +645,16 @@ std::shared_ptr<Entity> SyslogService::Timestamps::Debug::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::Debug::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SyslogService::Timestamps::Debug::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(debug_datetime != nullptr)
     {
-        children["debug-datetime"] = debug_datetime;
+        _children["debug-datetime"] = debug_datetime;
     }
 
-    return children;
+    return _children;
 }
 
 void SyslogService::Timestamps::Debug::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -740,7 +740,7 @@ std::vector<std::pair<std::string, LeafData> > SyslogService::Timestamps::Debug:
 
 }
 
-std::shared_ptr<Entity> SyslogService::Timestamps::Debug::DebugDatetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SyslogService::Timestamps::Debug::DebugDatetime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "datetime-value")
     {
@@ -754,16 +754,16 @@ std::shared_ptr<Entity> SyslogService::Timestamps::Debug::DebugDatetime::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::Debug::DebugDatetime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SyslogService::Timestamps::Debug::DebugDatetime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(datetime_value != nullptr)
     {
-        children["datetime-value"] = datetime_value;
+        _children["datetime-value"] = datetime_value;
     }
 
-    return children;
+    return _children;
 }
 
 void SyslogService::Timestamps::Debug::DebugDatetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -841,16 +841,16 @@ std::vector<std::pair<std::string, LeafData> > SyslogService::Timestamps::Debug:
 
 }
 
-std::shared_ptr<Entity> SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SyslogService::Timestamps::Debug::DebugDatetime::DatetimeValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1022,7 +1022,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "monitor-logging")
     {
@@ -1162,86 +1162,86 @@ std::shared_ptr<Entity> Syslog::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(monitor_logging != nullptr)
     {
-        children["monitor-logging"] = monitor_logging;
+        _children["monitor-logging"] = monitor_logging;
     }
 
     if(history_logging != nullptr)
     {
-        children["history-logging"] = history_logging;
+        _children["history-logging"] = history_logging;
     }
 
     if(logging_facilities != nullptr)
     {
-        children["logging-facilities"] = logging_facilities;
+        _children["logging-facilities"] = logging_facilities;
     }
 
     if(trap_logging != nullptr)
     {
-        children["trap-logging"] = trap_logging;
+        _children["trap-logging"] = trap_logging;
     }
 
     if(buffered_logging != nullptr)
     {
-        children["buffered-logging"] = buffered_logging;
+        _children["buffered-logging"] = buffered_logging;
     }
 
     if(host_server != nullptr)
     {
-        children["host-server"] = host_server;
+        _children["host-server"] = host_server;
     }
 
     if(console_logging != nullptr)
     {
-        children["console-logging"] = console_logging;
+        _children["console-logging"] = console_logging;
     }
 
     if(files != nullptr)
     {
-        children["files"] = files;
+        _children["files"] = files;
     }
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(archive != nullptr)
     {
-        children["archive"] = archive;
+        _children["archive"] = archive;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(source_interface_table != nullptr)
     {
-        children["source-interface-table"] = source_interface_table;
+        _children["source-interface-table"] = source_interface_table;
     }
 
     if(correlator != nullptr)
     {
-        children["Cisco-IOS-XR-infra-correlator-cfg:correlator"] = correlator;
+        _children["Cisco-IOS-XR-infra-correlator-cfg:correlator"] = correlator;
     }
 
     if(suppression != nullptr)
     {
-        children["Cisco-IOS-XR-infra-correlator-cfg:suppression"] = suppression;
+        _children["Cisco-IOS-XR-infra-correlator-cfg:suppression"] = suppression;
     }
 
     if(alarm_logger != nullptr)
     {
-        children["Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger"] = alarm_logger;
+        _children["Cisco-IOS-XR-infra-alarm-logger-cfg:alarm-logger"] = alarm_logger;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1292,7 +1292,7 @@ void Syslog::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Syslog::clone_ptr() const
+std::shared_ptr<ydk::Entity> Syslog::clone_ptr() const
 {
     return std::make_shared<Syslog>();
 }
@@ -1377,7 +1377,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::MonitorLogging::get_name_
 
 }
 
-std::shared_ptr<Entity> Syslog::MonitorLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::MonitorLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "monitor-discriminator")
     {
@@ -1391,16 +1391,16 @@ std::shared_ptr<Entity> Syslog::MonitorLogging::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::MonitorLogging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::MonitorLogging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(monitor_discriminator != nullptr)
     {
-        children["monitor-discriminator"] = monitor_discriminator;
+        _children["monitor-discriminator"] = monitor_discriminator;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::MonitorLogging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1496,16 +1496,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::MonitorLogging::MonitorDi
 
 }
 
-std::shared_ptr<Entity> Syslog::MonitorLogging::MonitorDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::MonitorLogging::MonitorDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::MonitorLogging::MonitorDiscriminator::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::MonitorLogging::MonitorDiscriminator::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::MonitorLogging::MonitorDiscriminator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1635,16 +1635,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HistoryLogging::get_name_
 
 }
 
-std::shared_ptr<Entity> Syslog::HistoryLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HistoryLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HistoryLogging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HistoryLogging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::HistoryLogging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1730,16 +1730,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::LoggingFacilities::get_na
 
 }
 
-std::shared_ptr<Entity> Syslog::LoggingFacilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::LoggingFacilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingFacilities::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::LoggingFacilities::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::LoggingFacilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1815,16 +1815,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::TrapLogging::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Syslog::TrapLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::TrapLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::TrapLogging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::TrapLogging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::TrapLogging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1909,7 +1909,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::BufferedLogging::get_name
 
 }
 
-std::shared_ptr<Entity> Syslog::BufferedLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::BufferedLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "buffered-discriminator")
     {
@@ -1923,16 +1923,16 @@ std::shared_ptr<Entity> Syslog::BufferedLogging::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::BufferedLogging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::BufferedLogging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(buffered_discriminator != nullptr)
     {
-        children["buffered-discriminator"] = buffered_discriminator;
+        _children["buffered-discriminator"] = buffered_discriminator;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::BufferedLogging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2038,16 +2038,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::BufferedLogging::Buffered
 
 }
 
-std::shared_ptr<Entity> Syslog::BufferedLogging::BufferedDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::BufferedLogging::BufferedDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::BufferedLogging::BufferedDiscriminator::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::BufferedLogging::BufferedDiscriminator::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::BufferedLogging::BufferedDiscriminator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2173,7 +2173,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
@@ -2187,16 +2187,16 @@ std::shared_ptr<Entity> Syslog::HostServer::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::HostServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2270,33 +2270,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::get_nam
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::HostServer::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2376,7 +2376,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::ge
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6s")
     {
@@ -2408,26 +2408,26 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6s != nullptr)
     {
-        children["ipv6s"] = ipv6s;
+        _children["ipv6s"] = ipv6s;
     }
 
     if(hosts != nullptr)
     {
-        children["hosts"] = hosts;
+        _children["hosts"] = hosts;
     }
 
     if(ipv4s != nullptr)
     {
-        children["ipv4s"] = ipv4s;
+        _children["ipv4s"] = ipv4s;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2504,33 +2504,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6")
     {
-        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6>();
-        c->parent = this;
-        ipv6.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6>();
+        ent_->parent = this;
+        ipv6.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv6.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv6.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Ipv6s::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2598,7 +2598,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-severity-port")
     {
@@ -2621,21 +2621,21 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6_severity_port != nullptr)
     {
-        children["ipv6-severity-port"] = ipv6_severity_port;
+        _children["ipv6-severity-port"] = ipv6_severity_port;
     }
 
     if(ipv6_severity_levels != nullptr)
     {
-        children["ipv6-severity-levels"] = ipv6_severity_levels;
+        _children["ipv6-severity-levels"] = ipv6_severity_levels;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2708,16 +2708,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2804,33 +2804,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-severity-level")
     {
-        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel>();
-        c->parent = this;
-        ipv6_severity_level.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel>();
+        ent_->parent = this;
+        ipv6_severity_level.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv6_severity_level.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv6_severity_level.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2890,16 +2890,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Ipv6s::Ipv6::Ipv6SeverityLevels::Ipv6SeverityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2976,33 +2976,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ho
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "host")
     {
-        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host>();
-        c->parent = this;
-        host.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host>();
+        ent_->parent = this;
+        host.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : host.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : host.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Hosts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3070,7 +3070,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ho
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "host-name-severities")
     {
@@ -3093,21 +3093,21 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(host_name_severities != nullptr)
     {
-        children["host-name-severities"] = host_name_severities;
+        _children["host-name-severities"] = host_name_severities;
     }
 
     if(host_severity_port != nullptr)
     {
-        children["host-severity-port"] = host_severity_port;
+        _children["host-severity-port"] = host_severity_port;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Hosts::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3184,33 +3184,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ho
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "host-name-severity")
     {
-        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity>();
-        c->parent = this;
-        host_name_severity.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity>();
+        ent_->parent = this;
+        host_name_severity.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : host_name_severity.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : host_name_severity.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3270,16 +3270,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ho
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostNameSeverities::HostNameSeverity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3352,16 +3352,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ho
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Hosts::Host::HostSeverityPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3448,33 +3448,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
-        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4>();
-        c->parent = this;
-        ipv4.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4>();
+        ent_->parent = this;
+        ipv4.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Ipv4s::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3542,7 +3542,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-severity-levels")
     {
@@ -3565,21 +3565,21 @@ std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_severity_levels != nullptr)
     {
-        children["ipv4-severity-levels"] = ipv4_severity_levels;
+        _children["ipv4-severity-levels"] = ipv4_severity_levels;
     }
 
     if(ipv4_severity_port != nullptr)
     {
-        children["ipv4-severity-port"] = ipv4_severity_port;
+        _children["ipv4-severity-port"] = ipv4_severity_port;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3656,33 +3656,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-severity-level")
     {
-        auto c = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel>();
-        c->parent = this;
-        ipv4_severity_level.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel>();
+        ent_->parent = this;
+        ipv4_severity_level.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4_severity_level.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4_severity_level.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3742,16 +3742,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityLevels::Ipv4SeverityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3824,16 +3824,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::HostServer::Vrfs::Vrf::Ip
 
 }
 
-std::shared_ptr<Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::HostServer::Vrfs::Vrf::Ipv4s::Ipv4::Ipv4SeverityPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3924,7 +3924,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::ConsoleLogging::get_name_
 
 }
 
-std::shared_ptr<Entity> Syslog::ConsoleLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::ConsoleLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "console-discriminator")
     {
@@ -3938,16 +3938,16 @@ std::shared_ptr<Entity> Syslog::ConsoleLogging::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::ConsoleLogging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::ConsoleLogging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(console_discriminator != nullptr)
     {
-        children["console-discriminator"] = console_discriminator;
+        _children["console-discriminator"] = console_discriminator;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::ConsoleLogging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4043,16 +4043,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::ConsoleLogging::ConsoleDi
 
 }
 
-std::shared_ptr<Entity> Syslog::ConsoleLogging::ConsoleDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::ConsoleLogging::ConsoleDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::ConsoleLogging::ConsoleDiscriminator::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::ConsoleLogging::ConsoleDiscriminator::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::ConsoleLogging::ConsoleDiscriminator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4186,33 +4186,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Files::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Syslog::Files::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Files::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "file")
     {
-        auto c = std::make_shared<Syslog::Files::File>();
-        c->parent = this;
-        file.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Files::File>();
+        ent_->parent = this;
+        file.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Files::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Files::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : file.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : file.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Files::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4288,7 +4288,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Files::File::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Syslog::Files::File::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Files::File::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "file-specification")
     {
@@ -4311,21 +4311,21 @@ std::shared_ptr<Entity> Syslog::Files::File::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Files::File::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Files::File::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(file_specification != nullptr)
     {
-        children["file-specification"] = file_specification;
+        _children["file-specification"] = file_specification;
     }
 
     if(file_log_discriminator != nullptr)
     {
-        children["file-log-discriminator"] = file_log_discriminator;
+        _children["file-log-discriminator"] = file_log_discriminator;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Files::File::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4402,16 +4402,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Files::File::FileSpecific
 
 }
 
-std::shared_ptr<Entity> Syslog::Files::File::FileSpecification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Files::File::FileSpecification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Files::File::FileSpecification::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Files::File::FileSpecification::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Files::File::FileSpecification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4520,16 +4520,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Files::File::FileLogDiscr
 
 }
 
-std::shared_ptr<Entity> Syslog::Files::File::FileLogDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Files::File::FileLogDiscriminator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Files::File::FileLogDiscriminator::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Files::File::FileLogDiscriminator::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Files::File::FileLogDiscriminator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4661,7 +4661,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Ipv4::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Syslog::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dscp")
     {
@@ -4693,26 +4693,26 @@ std::shared_ptr<Entity> Syslog::Ipv4::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dscp != nullptr)
     {
-        children["dscp"] = dscp;
+        _children["dscp"] = dscp;
     }
 
     if(tos != nullptr)
     {
-        children["tos"] = tos;
+        _children["tos"] = tos;
     }
 
     if(precedence != nullptr)
     {
-        children["precedence"] = precedence;
+        _children["precedence"] = precedence;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4786,16 +4786,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Ipv4::Dscp::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Syslog::Ipv4::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Ipv4::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv4::Dscp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Ipv4::Dscp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Ipv4::Dscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4899,16 +4899,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Ipv4::Tos::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Syslog::Ipv4::Tos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Ipv4::Tos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv4::Tos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Ipv4::Tos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Ipv4::Tos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5012,16 +5012,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Ipv4::Precedence::get_nam
 
 }
 
-std::shared_ptr<Entity> Syslog::Ipv4::Precedence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Ipv4::Precedence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv4::Precedence::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Ipv4::Precedence::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Ipv4::Precedence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5141,16 +5141,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Archive::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Syslog::Archive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Archive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Archive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Archive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Archive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5292,7 +5292,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Ipv6::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Syslog::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dscp")
     {
@@ -5324,26 +5324,26 @@ std::shared_ptr<Entity> Syslog::Ipv6::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dscp != nullptr)
     {
-        children["dscp"] = dscp;
+        _children["dscp"] = dscp;
     }
 
     if(traffic_class != nullptr)
     {
-        children["traffic-class"] = traffic_class;
+        _children["traffic-class"] = traffic_class;
     }
 
     if(precedence != nullptr)
     {
-        children["precedence"] = precedence;
+        _children["precedence"] = precedence;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5417,16 +5417,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Ipv6::Dscp::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Syslog::Ipv6::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Ipv6::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv6::Dscp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Ipv6::Dscp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Ipv6::Dscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5530,16 +5530,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Ipv6::TrafficClass::get_n
 
 }
 
-std::shared_ptr<Entity> Syslog::Ipv6::TrafficClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Ipv6::TrafficClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv6::TrafficClass::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Ipv6::TrafficClass::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Ipv6::TrafficClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5643,16 +5643,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Ipv6::Precedence::get_nam
 
 }
 
-std::shared_ptr<Entity> Syslog::Ipv6::Precedence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Ipv6::Precedence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Ipv6::Precedence::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Ipv6::Precedence::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Ipv6::Precedence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5748,7 +5748,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::SourceInterfaceTable::get
 
 }
 
-std::shared_ptr<Entity> Syslog::SourceInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::SourceInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source-interface-values")
     {
@@ -5762,16 +5762,16 @@ std::shared_ptr<Entity> Syslog::SourceInterfaceTable::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::SourceInterfaceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::SourceInterfaceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source_interface_values != nullptr)
     {
-        children["source-interface-values"] = source_interface_values;
+        _children["source-interface-values"] = source_interface_values;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::SourceInterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5845,33 +5845,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::SourceInterfaceTable::Sou
 
 }
 
-std::shared_ptr<Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source-interface-value")
     {
-        auto c = std::make_shared<Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue>();
-        c->parent = this;
-        source_interface_value.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue>();
+        ent_->parent = this;
+        source_interface_value.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::SourceInterfaceTable::SourceInterfaceValues::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::SourceInterfaceTable::SourceInterfaceValues::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : source_interface_value.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : source_interface_value.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::SourceInterfaceTable::SourceInterfaceValues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5943,7 +5943,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::SourceInterfaceTable::Sou
 
 }
 
-std::shared_ptr<Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source-interface-vrfs")
     {
@@ -5957,16 +5957,16 @@ std::shared_ptr<Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::Sou
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source_interface_vrfs != nullptr)
     {
-        children["source-interface-vrfs"] = source_interface_vrfs;
+        _children["source-interface-vrfs"] = source_interface_vrfs;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6043,33 +6043,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::SourceInterfaceTable::Sou
 
 }
 
-std::shared_ptr<Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source-interface-vrf")
     {
-        auto c = std::make_shared<Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf>();
-        c->parent = this;
-        source_interface_vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf>();
+        ent_->parent = this;
+        source_interface_vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : source_interface_vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : source_interface_vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6129,16 +6129,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::SourceInterfaceTable::Sou
 
 }
 
-std::shared_ptr<Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::SourceInterfaceTable::SourceInterfaceValues::SourceInterfaceValue::SourceInterfaceVrfs::SourceInterfaceVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6223,7 +6223,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rules")
     {
@@ -6246,21 +6246,21 @@ std::shared_ptr<Entity> Syslog::Correlator::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rules != nullptr)
     {
-        children["rules"] = rules;
+        _children["rules"] = rules;
     }
 
     if(rule_sets != nullptr)
     {
-        children["rule-sets"] = rule_sets;
+        _children["rule-sets"] = rule_sets;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6344,33 +6344,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::get_na
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule")
     {
-        auto c = std::make_shared<Syslog::Correlator::Rules::Rule>();
-        c->parent = this;
-        rule.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Correlator::Rules::Rule>();
+        ent_->parent = this;
+        rule.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rule.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rule.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6458,7 +6458,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "definition")
     {
@@ -6508,36 +6508,36 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(definition != nullptr)
     {
-        children["definition"] = definition;
+        _children["definition"] = definition;
     }
 
     if(non_stateful != nullptr)
     {
-        children["non-stateful"] = non_stateful;
+        _children["non-stateful"] = non_stateful;
     }
 
     if(stateful != nullptr)
     {
-        children["stateful"] = stateful;
+        _children["stateful"] = stateful;
     }
 
     if(apply_to != nullptr)
     {
-        children["apply-to"] = apply_to;
+        _children["apply-to"] = apply_to;
     }
 
     if(applied_to != nullptr)
     {
-        children["applied-to"] = applied_to;
+        _children["applied-to"] = applied_to;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6726,16 +6726,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::Definition::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::Definition::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::Definition::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::Definition::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::Definition::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7121,7 +7121,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::NonStateful::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::NonStateful::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "non-root-causes")
     {
@@ -7144,21 +7144,21 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::NonStateful::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::NonStateful::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::NonStateful::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(non_root_causes != nullptr)
     {
-        children["non-root-causes"] = non_root_causes;
+        _children["non-root-causes"] = non_root_causes;
     }
 
     if(root_cause != nullptr)
     {
-        children["root-cause"] = root_cause;
+        _children["root-cause"] = root_cause;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::NonStateful::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7255,33 +7255,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "non-root-cause")
     {
-        auto c = std::make_shared<Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause>();
-        c->parent = this;
-        non_root_cause.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause>();
+        ent_->parent = this;
+        non_root_cause.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : non_root_cause.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : non_root_cause.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7351,16 +7351,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7457,16 +7457,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::NonStateful::RootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::NonStateful::RootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::NonStateful::RootCause::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::NonStateful::RootCause::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::NonStateful::RootCause::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7580,7 +7580,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::Stateful::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::Stateful::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "non-root-causes")
     {
@@ -7603,21 +7603,21 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::Stateful::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::Stateful::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::Stateful::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(non_root_causes != nullptr)
     {
-        children["non-root-causes"] = non_root_causes;
+        _children["non-root-causes"] = non_root_causes;
     }
 
     if(root_cause != nullptr)
     {
-        children["root-cause"] = root_cause;
+        _children["root-cause"] = root_cause;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::Stateful::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7734,33 +7734,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "non-root-cause")
     {
-        auto c = std::make_shared<Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause>();
-        c->parent = this;
-        non_root_cause.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause>();
+        ent_->parent = this;
+        non_root_cause.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : non_root_cause.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : non_root_cause.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7830,16 +7830,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::Stateful::NonRootCauses::NonRootCause::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7936,16 +7936,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::Stateful::RootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::Stateful::RootCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::Stateful::RootCause::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::Stateful::RootCause::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::Stateful::RootCause::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8043,7 +8043,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::ApplyTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::ApplyTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "contexts")
     {
@@ -8066,21 +8066,21 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::ApplyTo::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::ApplyTo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::ApplyTo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(contexts != nullptr)
     {
-        children["contexts"] = contexts;
+        _children["contexts"] = contexts;
     }
 
     if(locations != nullptr)
     {
-        children["locations"] = locations;
+        _children["locations"] = locations;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::ApplyTo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8160,16 +8160,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::ApplyTo::Contexts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8247,16 +8247,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::ApplyTo::Locations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::ApplyTo::Locations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::ApplyTo::Locations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::ApplyTo::Locations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::ApplyTo::Locations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8332,7 +8332,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::AppliedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "contexts")
     {
@@ -8355,21 +8355,21 @@ std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(contexts != nullptr)
     {
-        children["contexts"] = contexts;
+        _children["contexts"] = contexts;
     }
 
     if(locations != nullptr)
     {
-        children["locations"] = locations;
+        _children["locations"] = locations;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::AppliedTo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8446,33 +8446,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context")
     {
-        auto c = std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context>();
-        c->parent = this;
-        context.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context>();
+        ent_->parent = this;
+        context.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : context.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : context.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8532,16 +8532,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::AppliedTo::Contexts::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8618,33 +8618,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::AppliedTo::Locations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8704,16 +8704,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::Rules::Rule::
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Correlator::Rules::Rule::AppliedTo::Locations::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8797,33 +8797,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::RuleSets::get
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::RuleSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::RuleSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule-set")
     {
-        auto c = std::make_shared<Syslog::Correlator::RuleSets::RuleSet>();
-        c->parent = this;
-        rule_set.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Correlator::RuleSets::RuleSet>();
+        ent_->parent = this;
+        rule_set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::RuleSets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rule_set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rule_set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::RuleSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8899,7 +8899,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::RuleSets::Rul
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::RuleSets::RuleSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rulenames")
     {
@@ -8922,21 +8922,21 @@ std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::RuleSets::RuleSet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rulenames != nullptr)
     {
-        children["rulenames"] = rulenames;
+        _children["rulenames"] = rulenames;
     }
 
     if(applied_to != nullptr)
     {
-        children["applied-to"] = applied_to;
+        _children["applied-to"] = applied_to;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::RuleSets::RuleSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9013,33 +9013,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::RuleSets::Rul
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rulename")
     {
-        auto c = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename>();
-        c->parent = this;
-        rulename.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename>();
+        ent_->parent = this;
+        rulename.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::RuleSets::RuleSet::Rulenames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rulename.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rulename.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::RuleSets::RuleSet::Rulenames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9099,16 +9099,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::RuleSets::Rul
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Correlator::RuleSets::RuleSet::Rulenames::Rulename::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9186,7 +9186,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::RuleSets::Rul
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "contexts")
     {
@@ -9209,21 +9209,21 @@ std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(contexts != nullptr)
     {
-        children["contexts"] = contexts;
+        _children["contexts"] = contexts;
     }
 
     if(locations != nullptr)
     {
-        children["locations"] = locations;
+        _children["locations"] = locations;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::RuleSets::RuleSet::AppliedTo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9300,33 +9300,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::RuleSets::Rul
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context")
     {
-        auto c = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context>();
-        c->parent = this;
-        context.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context>();
+        ent_->parent = this;
+        context.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : context.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : context.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9386,16 +9386,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::RuleSets::Rul
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Contexts::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9472,33 +9472,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::RuleSets::Rul
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9558,16 +9558,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Correlator::RuleSets::Rul
 
 }
 
-std::shared_ptr<Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Correlator::RuleSets::RuleSet::AppliedTo::Locations::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9643,7 +9643,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Suppression::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Syslog::Suppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Suppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rules")
     {
@@ -9657,16 +9657,16 @@ std::shared_ptr<Entity> Syslog::Suppression::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Suppression::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rules != nullptr)
     {
-        children["rules"] = rules;
+        _children["rules"] = rules;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Suppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9740,33 +9740,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Suppression::Rules::get_n
 
 }
 
-std::shared_ptr<Entity> Syslog::Suppression::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Suppression::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule")
     {
-        auto c = std::make_shared<Syslog::Suppression::Rules::Rule>();
-        c->parent = this;
-        rule.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Suppression::Rules::Rule>();
+        ent_->parent = this;
+        rule.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Suppression::Rules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rule.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rule.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Suppression::Rules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9846,7 +9846,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Suppression::Rules::Rule:
 
 }
 
-std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Suppression::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "applied-to")
     {
@@ -9869,21 +9869,21 @@ std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Suppression::Rules::Rule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(applied_to != nullptr)
     {
-        children["applied-to"] = applied_to;
+        _children["applied-to"] = applied_to;
     }
 
     if(alarm_causes != nullptr)
     {
-        children["alarm-causes"] = alarm_causes;
+        _children["alarm-causes"] = alarm_causes;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Suppression::Rules::Rule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9967,7 +9967,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Suppression::Rules::Rule:
 
 }
 
-std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AppliedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Suppression::Rules::Rule::AppliedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sources")
     {
@@ -9981,16 +9981,16 @@ std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AppliedTo::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule::AppliedTo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Suppression::Rules::Rule::AppliedTo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sources != nullptr)
     {
-        children["sources"] = sources;
+        _children["sources"] = sources;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Suppression::Rules::Rule::AppliedTo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10067,33 +10067,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Suppression::Rules::Rule:
 
 }
 
-std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
-        auto c = std::make_shared<Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source>();
-        c->parent = this;
-        source.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source>();
+        ent_->parent = this;
+        source.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : source.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : source.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Suppression::Rules::Rule::AppliedTo::Sources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10153,16 +10153,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Suppression::Rules::Rule:
 
 }
 
-std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Suppression::Rules::Rule::AppliedTo::Sources::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10239,33 +10239,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Suppression::Rules::Rule:
 
 }
 
-std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AlarmCauses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Suppression::Rules::Rule::AlarmCauses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alarm-cause")
     {
-        auto c = std::make_shared<Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause>();
-        c->parent = this;
-        alarm_cause.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause>();
+        ent_->parent = this;
+        alarm_cause.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule::AlarmCauses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Suppression::Rules::Rule::AlarmCauses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : alarm_cause.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : alarm_cause.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::Suppression::Rules::Rule::AlarmCauses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10335,16 +10335,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::Suppression::Rules::Rule:
 
 }
 
-std::shared_ptr<Entity> Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10465,7 +10465,7 @@ std::vector<std::pair<std::string, LeafData> > Syslog::AlarmLogger::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Syslog::AlarmLogger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::AlarmLogger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alarm-filter-strings")
     {
@@ -10479,16 +10479,16 @@ std::shared_ptr<Entity> Syslog::AlarmLogger::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::AlarmLogger::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::AlarmLogger::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(alarm_filter_strings != nullptr)
     {
-        children["alarm-filter-strings"] = alarm_filter_strings;
+        _children["alarm-filter-strings"] = alarm_filter_strings;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::AlarmLogger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10622,33 +10622,33 @@ std::vector<std::pair<std::string, LeafData> > Syslog::AlarmLogger::AlarmFilterS
 
 }
 
-std::shared_ptr<Entity> Syslog::AlarmLogger::AlarmFilterStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::AlarmLogger::AlarmFilterStrings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alarm-filter-string")
     {
-        auto c = std::make_shared<Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString>();
-        c->parent = this;
-        alarm_filter_string.append(c);
-        return c;
+        auto ent_ = std::make_shared<Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString>();
+        ent_->parent = this;
+        alarm_filter_string.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::AlarmLogger::AlarmFilterStrings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::AlarmLogger::AlarmFilterStrings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : alarm_filter_string.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : alarm_filter_string.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Syslog::AlarmLogger::AlarmFilterStrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10715,16 +10715,16 @@ std::vector<std::pair<std::string, LeafData> > Syslog::AlarmLogger::AlarmFilterS
 
 }
 
-std::shared_ptr<Entity> Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Syslog::AlarmLogger::AlarmFilterStrings::AlarmFilterString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

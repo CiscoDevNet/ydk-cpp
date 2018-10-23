@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > Obfl::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Obfl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Obfl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "obfl_mgr")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> Obfl::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Obfl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Obfl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(obfl_mgr != nullptr)
     {
-        children["obfl_mgr"] = obfl_mgr;
+        _children["obfl_mgr"] = obfl_mgr;
     }
 
     if(obfl_show != nullptr)
     {
-        children["obfl_show"] = obfl_show;
+        _children["obfl_show"] = obfl_show;
     }
 
-    return children;
+    return _children;
 }
 
 void Obfl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void Obfl::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Obfl::clone_ptr() const
+std::shared_ptr<ydk::Entity> Obfl::clone_ptr() const
 {
     return std::make_shared<Obfl>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > Obfl::ObflMgr::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Obfl::ObflMgr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Obfl::ObflMgr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace")
     {
-        auto c = std::make_shared<Obfl::ObflMgr::Trace>();
-        c->parent = this;
-        trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<Obfl::ObflMgr::Trace>();
+        ent_->parent = this;
+        trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflMgr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Obfl::ObflMgr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Obfl::ObflMgr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -297,33 +297,33 @@ std::vector<std::pair<std::string, LeafData> > Obfl::ObflMgr::Trace::get_name_le
 
 }
 
-std::shared_ptr<Entity> Obfl::ObflMgr::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Obfl::ObflMgr::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Obfl::ObflMgr::Trace::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Obfl::ObflMgr::Trace::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflMgr::Trace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Obfl::ObflMgr::Trace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Obfl::ObflMgr::Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -405,33 +405,33 @@ std::vector<std::pair<std::string, LeafData> > Obfl::ObflMgr::Trace::Location::g
 
 }
 
-std::shared_ptr<Entity> Obfl::ObflMgr::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Obfl::ObflMgr::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-options")
     {
-        auto c = std::make_shared<Obfl::ObflMgr::Trace::Location::AllOptions>();
-        c->parent = this;
-        all_options.append(c);
-        return c;
+        auto ent_ = std::make_shared<Obfl::ObflMgr::Trace::Location::AllOptions>();
+        ent_->parent = this;
+        all_options.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflMgr::Trace::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Obfl::ObflMgr::Trace::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_options.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_options.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Obfl::ObflMgr::Trace::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -513,33 +513,33 @@ std::vector<std::pair<std::string, LeafData> > Obfl::ObflMgr::Trace::Location::A
 
 }
 
-std::shared_ptr<Entity> Obfl::ObflMgr::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Obfl::ObflMgr::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace-blocks")
     {
-        auto c = std::make_shared<Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks>();
-        c->parent = this;
-        trace_blocks.append(c);
-        return c;
+        auto ent_ = std::make_shared<Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks>();
+        ent_->parent = this;
+        trace_blocks.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflMgr::Trace::Location::AllOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Obfl::ObflMgr::Trace::Location::AllOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace_blocks.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace_blocks.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Obfl::ObflMgr::Trace::Location::AllOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -608,16 +608,16 @@ std::vector<std::pair<std::string, LeafData> > Obfl::ObflMgr::Trace::Location::A
 
 }
 
-std::shared_ptr<Entity> Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -701,33 +701,33 @@ std::vector<std::pair<std::string, LeafData> > Obfl::ObflShow::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Obfl::ObflShow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Obfl::ObflShow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace")
     {
-        auto c = std::make_shared<Obfl::ObflShow::Trace>();
-        c->parent = this;
-        trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<Obfl::ObflShow::Trace>();
+        ent_->parent = this;
+        trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflShow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Obfl::ObflShow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Obfl::ObflShow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -806,33 +806,33 @@ std::vector<std::pair<std::string, LeafData> > Obfl::ObflShow::Trace::get_name_l
 
 }
 
-std::shared_ptr<Entity> Obfl::ObflShow::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Obfl::ObflShow::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Obfl::ObflShow::Trace::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Obfl::ObflShow::Trace::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflShow::Trace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Obfl::ObflShow::Trace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Obfl::ObflShow::Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -914,33 +914,33 @@ std::vector<std::pair<std::string, LeafData> > Obfl::ObflShow::Trace::Location::
 
 }
 
-std::shared_ptr<Entity> Obfl::ObflShow::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Obfl::ObflShow::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-options")
     {
-        auto c = std::make_shared<Obfl::ObflShow::Trace::Location::AllOptions>();
-        c->parent = this;
-        all_options.append(c);
-        return c;
+        auto ent_ = std::make_shared<Obfl::ObflShow::Trace::Location::AllOptions>();
+        ent_->parent = this;
+        all_options.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflShow::Trace::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Obfl::ObflShow::Trace::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_options.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_options.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Obfl::ObflShow::Trace::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1022,33 +1022,33 @@ std::vector<std::pair<std::string, LeafData> > Obfl::ObflShow::Trace::Location::
 
 }
 
-std::shared_ptr<Entity> Obfl::ObflShow::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Obfl::ObflShow::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace-blocks")
     {
-        auto c = std::make_shared<Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks>();
-        c->parent = this;
-        trace_blocks.append(c);
-        return c;
+        auto ent_ = std::make_shared<Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks>();
+        ent_->parent = this;
+        trace_blocks.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflShow::Trace::Location::AllOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Obfl::ObflShow::Trace::Location::AllOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace_blocks.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace_blocks.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Obfl::ObflShow::Trace::Location::AllOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1117,16 +1117,16 @@ std::vector<std::pair<std::string, LeafData> > Obfl::ObflShow::Trace::Location::
 
 }
 
-std::shared_ptr<Entity> Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -89,16 +89,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -167,7 +167,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -181,16 +181,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -253,16 +253,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -341,7 +341,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -355,16 +355,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -423,16 +423,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -501,7 +501,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -515,16 +515,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -583,16 +583,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -661,7 +661,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -675,16 +675,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -743,16 +743,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -821,7 +821,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "police")
     {
@@ -835,16 +835,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(police != nullptr)
     {
-        children["police"] = police;
+        _children["police"] = police;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -920,7 +920,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "actions")
     {
@@ -934,16 +934,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(actions != nullptr)
     {
-        children["actions"] = actions;
+        _children["actions"] = actions;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1202,7 +1202,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-set-clp-transmit")
     {
@@ -1576,216 +1576,216 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_set_clp_transmit != nullptr)
     {
-        children["conform-set-clp-transmit"] = conform_set_clp_transmit;
+        _children["conform-set-clp-transmit"] = conform_set_clp_transmit;
     }
 
     if(conform_set_cos_transmit != nullptr)
     {
-        children["conform-set-cos-transmit"] = conform_set_cos_transmit;
+        _children["conform-set-cos-transmit"] = conform_set_cos_transmit;
     }
 
     if(conform_set_cos_transmit_table != nullptr)
     {
-        children["conform-set-cos-transmit-table"] = conform_set_cos_transmit_table;
+        _children["conform-set-cos-transmit-table"] = conform_set_cos_transmit_table;
     }
 
     if(conform_set_discard_class_transmit != nullptr)
     {
-        children["conform-set-discard-class-transmit"] = conform_set_discard_class_transmit;
+        _children["conform-set-discard-class-transmit"] = conform_set_discard_class_transmit;
     }
 
     if(conform_set_dscp_transmit != nullptr)
     {
-        children["conform-set-dscp-transmit"] = conform_set_dscp_transmit;
+        _children["conform-set-dscp-transmit"] = conform_set_dscp_transmit;
     }
 
     if(conform_set_dscp_transmit_table != nullptr)
     {
-        children["conform-set-dscp-transmit-table"] = conform_set_dscp_transmit_table;
+        _children["conform-set-dscp-transmit-table"] = conform_set_dscp_transmit_table;
     }
 
     if(conform_set_frde_transmit != nullptr)
     {
-        children["conform-set-frde-transmit"] = conform_set_frde_transmit;
+        _children["conform-set-frde-transmit"] = conform_set_frde_transmit;
     }
 
     if(conform_set_mpls_exp_imposition_transmit != nullptr)
     {
-        children["conform-set-mpls-exp-imposition-transmit"] = conform_set_mpls_exp_imposition_transmit;
+        _children["conform-set-mpls-exp-imposition-transmit"] = conform_set_mpls_exp_imposition_transmit;
     }
 
     if(conform_set_mpls_exp_imposition_transmit_table != nullptr)
     {
-        children["conform-set-mpls-exp-imposition-transmit-table"] = conform_set_mpls_exp_imposition_transmit_table;
+        _children["conform-set-mpls-exp-imposition-transmit-table"] = conform_set_mpls_exp_imposition_transmit_table;
     }
 
     if(conform_set_mpls_exp_topmost_transmit != nullptr)
     {
-        children["conform-set-mpls-exp-topmost-transmit"] = conform_set_mpls_exp_topmost_transmit;
+        _children["conform-set-mpls-exp-topmost-transmit"] = conform_set_mpls_exp_topmost_transmit;
     }
 
     if(conform_set_mpls_exp_topmost_transmit_table != nullptr)
     {
-        children["conform-set-mpls-exp-topmost-transmit-table"] = conform_set_mpls_exp_topmost_transmit_table;
+        _children["conform-set-mpls-exp-topmost-transmit-table"] = conform_set_mpls_exp_topmost_transmit_table;
     }
 
     if(conform_set_prec_transmit != nullptr)
     {
-        children["conform-set-prec-transmit"] = conform_set_prec_transmit;
+        _children["conform-set-prec-transmit"] = conform_set_prec_transmit;
     }
 
     if(conform_set_prec_transmit_table != nullptr)
     {
-        children["conform-set-prec-transmit-table"] = conform_set_prec_transmit_table;
+        _children["conform-set-prec-transmit-table"] = conform_set_prec_transmit_table;
     }
 
     if(conform_set_qos_transmit != nullptr)
     {
-        children["conform-set-qos-transmit"] = conform_set_qos_transmit;
+        _children["conform-set-qos-transmit"] = conform_set_qos_transmit;
     }
 
     if(conform_set_qos_transmit_table != nullptr)
     {
-        children["conform-set-qos-transmit-table"] = conform_set_qos_transmit_table;
+        _children["conform-set-qos-transmit-table"] = conform_set_qos_transmit_table;
     }
 
     if(conform_transmit != nullptr)
     {
-        children["conform-transmit"] = conform_transmit;
+        _children["conform-transmit"] = conform_transmit;
     }
 
     if(conform_drop != nullptr)
     {
-        children["conform-drop"] = conform_drop;
+        _children["conform-drop"] = conform_drop;
     }
 
     if(exceed_dscp != nullptr)
     {
-        children["exceed-dscp"] = exceed_dscp;
+        _children["exceed-dscp"] = exceed_dscp;
     }
 
     if(exceed_set_clp_transmit != nullptr)
     {
-        children["exceed-set-clp-transmit"] = exceed_set_clp_transmit;
+        _children["exceed-set-clp-transmit"] = exceed_set_clp_transmit;
     }
 
     if(exceed_set_cos_transmit != nullptr)
     {
-        children["exceed-set-cos-transmit"] = exceed_set_cos_transmit;
+        _children["exceed-set-cos-transmit"] = exceed_set_cos_transmit;
     }
 
     if(exceed_set_discard_class_transmit != nullptr)
     {
-        children["exceed-set-discard-class-transmit"] = exceed_set_discard_class_transmit;
+        _children["exceed-set-discard-class-transmit"] = exceed_set_discard_class_transmit;
     }
 
     if(exceed_set_dscp_transmit != nullptr)
     {
-        children["exceed-set-dscp-transmit"] = exceed_set_dscp_transmit;
+        _children["exceed-set-dscp-transmit"] = exceed_set_dscp_transmit;
     }
 
     if(exceed_set_dscp_transmit_table != nullptr)
     {
-        children["exceed-set-dscp-transmit-table"] = exceed_set_dscp_transmit_table;
+        _children["exceed-set-dscp-transmit-table"] = exceed_set_dscp_transmit_table;
     }
 
     if(exceed_set_frde_transmit != nullptr)
     {
-        children["exceed-set-frde-transmit"] = exceed_set_frde_transmit;
+        _children["exceed-set-frde-transmit"] = exceed_set_frde_transmit;
     }
 
     if(exceed_set_mpls_exp_imposition_transmit != nullptr)
     {
-        children["exceed-set-mpls-exp-imposition-transmit"] = exceed_set_mpls_exp_imposition_transmit;
+        _children["exceed-set-mpls-exp-imposition-transmit"] = exceed_set_mpls_exp_imposition_transmit;
     }
 
     if(exceed_set_mpls_exp_topmost_transmit != nullptr)
     {
-        children["exceed-set-mpls-exp-topmost-transmit"] = exceed_set_mpls_exp_topmost_transmit;
+        _children["exceed-set-mpls-exp-topmost-transmit"] = exceed_set_mpls_exp_topmost_transmit;
     }
 
     if(exceed_set_prec_transmit != nullptr)
     {
-        children["exceed-set-prec-transmit"] = exceed_set_prec_transmit;
+        _children["exceed-set-prec-transmit"] = exceed_set_prec_transmit;
     }
 
     if(exceed_set_qos_transmit != nullptr)
     {
-        children["exceed-set-qos-transmit"] = exceed_set_qos_transmit;
+        _children["exceed-set-qos-transmit"] = exceed_set_qos_transmit;
     }
 
     if(exceed_transmit != nullptr)
     {
-        children["exceed-transmit"] = exceed_transmit;
+        _children["exceed-transmit"] = exceed_transmit;
     }
 
     if(exceed_drop != nullptr)
     {
-        children["exceed-drop"] = exceed_drop;
+        _children["exceed-drop"] = exceed_drop;
     }
 
     if(violate_set_clp_transmit != nullptr)
     {
-        children["violate-set-clp-transmit"] = violate_set_clp_transmit;
+        _children["violate-set-clp-transmit"] = violate_set_clp_transmit;
     }
 
     if(violate_set_cos_transmit != nullptr)
     {
-        children["violate-set-cos-transmit"] = violate_set_cos_transmit;
+        _children["violate-set-cos-transmit"] = violate_set_cos_transmit;
     }
 
     if(violate_set_discard_class_transmit != nullptr)
     {
-        children["violate-set-discard-class-transmit"] = violate_set_discard_class_transmit;
+        _children["violate-set-discard-class-transmit"] = violate_set_discard_class_transmit;
     }
 
     if(violate_set_dscp_transmit != nullptr)
     {
-        children["violate-set-dscp-transmit"] = violate_set_dscp_transmit;
+        _children["violate-set-dscp-transmit"] = violate_set_dscp_transmit;
     }
 
     if(violate_set_frde_transmit != nullptr)
     {
-        children["violate-set-frde-transmit"] = violate_set_frde_transmit;
+        _children["violate-set-frde-transmit"] = violate_set_frde_transmit;
     }
 
     if(violate_set_mpls_exp_imposition_transmit != nullptr)
     {
-        children["violate-set-mpls-exp-imposition-transmit"] = violate_set_mpls_exp_imposition_transmit;
+        _children["violate-set-mpls-exp-imposition-transmit"] = violate_set_mpls_exp_imposition_transmit;
     }
 
     if(violate_set_mpls_exp_topmost_transmit != nullptr)
     {
-        children["violate-set-mpls-exp-topmost-transmit"] = violate_set_mpls_exp_topmost_transmit;
+        _children["violate-set-mpls-exp-topmost-transmit"] = violate_set_mpls_exp_topmost_transmit;
     }
 
     if(violate_set_prec_transmit != nullptr)
     {
-        children["violate-set-prec-transmit"] = violate_set_prec_transmit;
+        _children["violate-set-prec-transmit"] = violate_set_prec_transmit;
     }
 
     if(violate_set_qos_transmit != nullptr)
     {
-        children["violate-set-qos-transmit"] = violate_set_qos_transmit;
+        _children["violate-set-qos-transmit"] = violate_set_qos_transmit;
     }
 
     if(violate_transmit != nullptr)
     {
-        children["violate-transmit"] = violate_transmit;
+        _children["violate-transmit"] = violate_transmit;
     }
 
     if(violate_drop != nullptr)
     {
-        children["violate-drop"] = violate_drop;
+        _children["violate-drop"] = violate_drop;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1844,7 +1844,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -1858,16 +1858,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1926,16 +1926,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2004,7 +2004,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -2018,16 +2018,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2086,16 +2086,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2164,7 +2164,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -2178,16 +2178,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2250,16 +2250,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2338,7 +2338,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -2352,16 +2352,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2420,16 +2420,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2498,7 +2498,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -2512,16 +2512,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2580,16 +2580,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2658,7 +2658,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -2672,16 +2672,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2744,16 +2744,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2832,7 +2832,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -2846,16 +2846,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2914,16 +2914,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2992,7 +2992,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -3006,16 +3006,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3074,16 +3074,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3152,7 +3152,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -3166,16 +3166,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3238,16 +3238,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3326,7 +3326,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -3340,16 +3340,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3408,16 +3408,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3486,7 +3486,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -3500,16 +3500,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3572,16 +3572,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3660,7 +3660,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -3674,16 +3674,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3742,16 +3742,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3820,7 +3820,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -3834,16 +3834,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3906,16 +3906,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3994,7 +3994,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -4008,16 +4008,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4076,16 +4076,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4154,7 +4154,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -4168,16 +4168,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4240,16 +4240,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4328,7 +4328,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -4342,16 +4342,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4410,16 +4410,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4488,7 +4488,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "conform-action")
     {
@@ -4502,16 +4502,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(conform_action != nullptr)
     {
-        children["conform-action"] = conform_action;
+        _children["conform-action"] = conform_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4570,16 +4570,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4648,7 +4648,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exceed-action")
     {
@@ -4662,16 +4662,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exceed_action != nullptr)
     {
-        children["exceed-action"] = exceed_action;
+        _children["exceed-action"] = exceed_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4730,16 +4730,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4808,7 +4808,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exceed-action")
     {
@@ -4822,16 +4822,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exceed_action != nullptr)
     {
-        children["exceed-action"] = exceed_action;
+        _children["exceed-action"] = exceed_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4890,16 +4890,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4968,7 +4968,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exceed-action")
     {
@@ -4982,16 +4982,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exceed_action != nullptr)
     {
-        children["exceed-action"] = exceed_action;
+        _children["exceed-action"] = exceed_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5054,16 +5054,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5142,7 +5142,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exceed-action")
     {
@@ -5156,16 +5156,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exceed_action != nullptr)
     {
-        children["exceed-action"] = exceed_action;
+        _children["exceed-action"] = exceed_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5224,16 +5224,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5302,7 +5302,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exceed-action")
     {
@@ -5316,16 +5316,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exceed_action != nullptr)
     {
-        children["exceed-action"] = exceed_action;
+        _children["exceed-action"] = exceed_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5384,7 +5384,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "set-dscp-transmit")
     {
@@ -5398,16 +5398,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(set_dscp_transmit != nullptr)
     {
-        children["set-dscp-transmit"] = set_dscp_transmit;
+        _children["set-dscp-transmit"] = set_dscp_transmit;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5466,7 +5466,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dscp")
     {
@@ -5480,16 +5480,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dscp != nullptr)
     {
-        children["dscp"] = dscp;
+        _children["dscp"] = dscp;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5548,16 +5548,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5626,7 +5626,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exceed-action")
     {
@@ -5640,16 +5640,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exceed_action != nullptr)
     {
-        children["exceed-action"] = exceed_action;
+        _children["exceed-action"] = exceed_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5712,16 +5712,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5800,7 +5800,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exceed-action")
     {
@@ -5814,16 +5814,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exceed_action != nullptr)
     {
-        children["exceed-action"] = exceed_action;
+        _children["exceed-action"] = exceed_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5882,16 +5882,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5960,7 +5960,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exceed-action")
     {
@@ -5974,16 +5974,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exceed_action != nullptr)
     {
-        children["exceed-action"] = exceed_action;
+        _children["exceed-action"] = exceed_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6042,16 +6042,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6120,7 +6120,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exceed-action")
     {
@@ -6134,16 +6134,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exceed_action != nullptr)
     {
-        children["exceed-action"] = exceed_action;
+        _children["exceed-action"] = exceed_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6202,16 +6202,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6280,7 +6280,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exceed-action")
     {
@@ -6294,16 +6294,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exceed_action != nullptr)
     {
-        children["exceed-action"] = exceed_action;
+        _children["exceed-action"] = exceed_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6366,16 +6366,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6454,7 +6454,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exceed-action")
     {
@@ -6468,16 +6468,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exceed_action != nullptr)
     {
-        children["exceed-action"] = exceed_action;
+        _children["exceed-action"] = exceed_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6536,16 +6536,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6614,7 +6614,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exceed-action")
     {
@@ -6628,16 +6628,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exceed_action != nullptr)
     {
-        children["exceed-action"] = exceed_action;
+        _children["exceed-action"] = exceed_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6696,16 +6696,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6774,7 +6774,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exceed-action")
     {
@@ -6788,16 +6788,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exceed_action != nullptr)
     {
-        children["exceed-action"] = exceed_action;
+        _children["exceed-action"] = exceed_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6856,16 +6856,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6934,7 +6934,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -6948,16 +6948,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7016,16 +7016,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7094,7 +7094,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -7108,16 +7108,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7180,16 +7180,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7268,7 +7268,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -7282,16 +7282,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7350,16 +7350,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7428,7 +7428,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -7442,16 +7442,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7514,16 +7514,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7602,7 +7602,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -7616,16 +7616,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7684,16 +7684,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7762,7 +7762,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -7776,16 +7776,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7844,16 +7844,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7922,7 +7922,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -7936,16 +7936,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8004,16 +8004,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8082,7 +8082,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -8096,16 +8096,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8168,16 +8168,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8256,7 +8256,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -8270,16 +8270,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8338,16 +8338,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8416,7 +8416,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -8430,16 +8430,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8498,16 +8498,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8576,7 +8576,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "violate-action")
     {
@@ -8590,16 +8590,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCata
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(violate_action != nullptr)
     {
-        children["violate-action"] = violate_action;
+        _children["violate-action"] = violate_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8658,16 +8658,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8736,7 +8736,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "police")
     {
@@ -8750,16 +8750,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceSwit
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(police != nullptr)
     {
-        children["police"] = police;
+        _children["police"] = police;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8826,16 +8826,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8936,16 +8936,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Priority::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Priority::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9044,16 +9044,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::QueueBuffers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::QueueBuffers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::QueueBuffers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::QueueBuffers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::QueueBuffers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9126,16 +9126,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::QueueLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::QueueLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::QueueLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::QueueLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::QueueLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9222,33 +9222,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dscp")
     {
-        auto c = std::make_shared<Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp>();
-        c->parent = this;
-        dscp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp>();
+        ent_->parent = this;
+        dscp.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dscp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dscp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9320,16 +9320,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9475,7 +9475,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aggregate")
     {
@@ -9506,10 +9506,10 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDete
 
     if(child_yang_name == "dscp")
     {
-        auto c = std::make_shared<Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp>();
-        c->parent = this;
-        dscp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp>();
+        ent_->parent = this;
+        dscp.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "precedence")
@@ -9524,40 +9524,40 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDete
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aggregate != nullptr)
     {
-        children["aggregate"] = aggregate;
+        _children["aggregate"] = aggregate;
     }
 
     if(cos != nullptr)
     {
-        children["cos"] = cos;
+        _children["cos"] = cos;
     }
 
     if(discard_class != nullptr)
     {
-        children["discard-class"] = discard_class;
+        _children["discard-class"] = discard_class;
     }
 
-    count = 0;
-    for (auto c : dscp.entities())
+    count_ = 0;
+    for (auto ent_ : dscp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(precedence != nullptr)
     {
-        children["precedence"] = precedence;
+        _children["precedence"] = precedence;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::RandomDetect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9688,16 +9688,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Aggregate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Aggregate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Aggregate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Aggregate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Aggregate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9816,16 +9816,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9964,16 +9964,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10113,16 +10113,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10261,16 +10261,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10418,7 +10418,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Set::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cos")
     {
@@ -10468,36 +10468,36 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cos != nullptr)
     {
-        children["cos"] = cos;
+        _children["cos"] = cos;
     }
 
     if(dscp != nullptr)
     {
-        children["dscp"] = dscp;
+        _children["dscp"] = dscp;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
     if(mpls != nullptr)
     {
-        children["mpls"] = mpls;
+        _children["mpls"] = mpls;
     }
 
     if(qos_group != nullptr)
     {
-        children["qos-group"] = qos_group;
+        _children["qos-group"] = qos_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10598,16 +10598,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Cos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Cos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Cos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Cos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Set::Cos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10714,7 +10714,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dscp")
     {
@@ -10728,16 +10728,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Dscp:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dscp != nullptr)
     {
-        children["dscp"] = dscp;
+        _children["dscp"] = dscp;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10816,16 +10816,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10897,7 +10897,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dscp")
     {
@@ -10920,21 +10920,21 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Ip::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dscp != nullptr)
     {
-        children["dscp"] = dscp;
+        _children["dscp"] = dscp;
     }
 
     if(precedence != nullptr)
     {
-        children["precedence"] = precedence;
+        _children["precedence"] = precedence;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Set::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10997,16 +10997,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11085,16 +11085,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Precedence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Precedence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Precedence::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Precedence::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Precedence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11163,7 +11163,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "experimental")
     {
@@ -11177,16 +11177,16 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(experimental != nullptr)
     {
-        children["experimental"] = experimental;
+        _children["experimental"] = experimental;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11249,7 +11249,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "imposition")
     {
@@ -11272,21 +11272,21 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(imposition != nullptr)
     {
-        children["imposition"] = imposition;
+        _children["imposition"] = imposition;
     }
 
     if(topmost != nullptr)
     {
-        children["topmost"] = topmost;
+        _children["topmost"] = topmost;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11345,16 +11345,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Imposition::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Imposition::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Imposition::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Imposition::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Imposition::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11423,16 +11423,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Topmost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Topmost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Topmost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Topmost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Set::Mpls::Experimental::Topmost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11501,16 +11501,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Set::QosGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Set::QosGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::QosGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Set::QosGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Set::QosGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11595,7 +11595,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "average")
     {
@@ -11618,21 +11618,21 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Shape::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Shape::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Shape::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(average != nullptr)
     {
-        children["average"] = average;
+        _children["average"] = average;
     }
 
     if(fr_voice_adapt != nullptr)
     {
-        children["fr-voice-adapt"] = fr_voice_adapt;
+        _children["fr-voice-adapt"] = fr_voice_adapt;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11750,7 +11750,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Shape::Average::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Shape::Average::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "account")
     {
@@ -11773,21 +11773,21 @@ std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Shape::Ave
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Shape::Average::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Shape::Average::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(account != nullptr)
     {
-        children["account"] = account;
+        _children["account"] = account;
     }
 
     if(bse != nullptr)
     {
-        children["bse"] = bse;
+        _children["bse"] = bse;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Shape::Average::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11906,16 +11906,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Account::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Account::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Account::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Account::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Account::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11988,16 +11988,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Bse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Bse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Bse::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Bse::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Shape::Average::Bse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12076,16 +12076,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Policy::PolicyMap::Class:
 
 }
 
-std::shared_ptr<Entity> Native::Policy::PolicyMap::Class::ActionList::Shape::FrVoiceAdapt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Policy::PolicyMap::Class::ActionList::Shape::FrVoiceAdapt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Policy::PolicyMap::Class::ActionList::Shape::FrVoiceAdapt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Policy::PolicyMap::Class::ActionList::Shape::FrVoiceAdapt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Policy::PolicyMap::Class::ActionList::Shape::FrVoiceAdapt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12580,30 +12580,30 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "AppNav-Compress")
     {
-        auto c = std::make_shared<Native::Interface::AppNavCompress>();
-        c->parent = this;
-        appnav_compress.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::AppNavCompress>();
+        ent_->parent = this;
+        appnav_compress.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "AppNav-UnCompress")
     {
-        auto c = std::make_shared<Native::Interface::AppNavUnCompress>();
-        c->parent = this;
-        appnav_uncompress.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::AppNavUnCompress>();
+        ent_->parent = this;
+        appnav_uncompress.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ATM")
     {
-        auto c = std::make_shared<Native::Interface::ATM>();
-        c->parent = this;
-        atm.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::ATM>();
+        ent_->parent = this;
+        atm.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ATM-subinterface")
@@ -12617,10 +12617,10 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
 
     if(child_yang_name == "ATM-ACR")
     {
-        auto c = std::make_shared<Native::Interface::ATMACR>();
-        c->parent = this;
-        atm_acr.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::ATMACR>();
+        ent_->parent = this;
+        atm_acr.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ATM-ACRsubinterface")
@@ -12634,146 +12634,146 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
 
     if(child_yang_name == "BDI")
     {
-        auto c = std::make_shared<Native::Interface::BDI>();
-        c->parent = this;
-        bdi.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::BDI>();
+        ent_->parent = this;
+        bdi.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "CEM")
     {
-        auto c = std::make_shared<Native::Interface::CEM>();
-        c->parent = this;
-        cem.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::CEM>();
+        ent_->parent = this;
+        cem.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "CEM-ACR")
     {
-        auto c = std::make_shared<Native::Interface::CEMACR>();
-        c->parent = this;
-        cem_acr.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::CEMACR>();
+        ent_->parent = this;
+        cem_acr.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Embedded-Service-Engine")
     {
-        auto c = std::make_shared<Native::Interface::EmbeddedServiceEngine>();
-        c->parent = this;
-        embedded_service_engine.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::EmbeddedServiceEngine>();
+        ent_->parent = this;
+        embedded_service_engine.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Ethernet")
     {
-        auto c = std::make_shared<Native::Interface::Ethernet>();
-        c->parent = this;
-        ethernet.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::Ethernet>();
+        ent_->parent = this;
+        ethernet.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "FastEthernet")
     {
-        auto c = std::make_shared<Native::Interface::FastEthernet>();
-        c->parent = this;
-        fastethernet.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::FastEthernet>();
+        ent_->parent = this;
+        fastethernet.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ucse")
     {
-        auto c = std::make_shared<Native::Interface::Ucse>();
-        c->parent = this;
-        ucse.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::Ucse>();
+        ent_->parent = this;
+        ucse.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Ethernet-Internal")
     {
-        auto c = std::make_shared<Native::Interface::EthernetInternal>();
-        c->parent = this;
-        ethernet_internal.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::EthernetInternal>();
+        ent_->parent = this;
+        ethernet_internal.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Service-Engine")
     {
-        auto c = std::make_shared<Native::Interface::ServiceEngine>();
-        c->parent = this;
-        service_engine.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::ServiceEngine>();
+        ent_->parent = this;
+        service_engine.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "GigabitEthernet")
     {
-        auto c = std::make_shared<Native::Interface::GigabitEthernet>();
-        c->parent = this;
-        gigabitethernet.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::GigabitEthernet>();
+        ent_->parent = this;
+        gigabitethernet.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "TwoGigabitEthernet")
     {
-        auto c = std::make_shared<Native::Interface::TwoGigabitEthernet>();
-        c->parent = this;
-        twogigabitethernet.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::TwoGigabitEthernet>();
+        ent_->parent = this;
+        twogigabitethernet.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "FiveGigabitEthernet")
     {
-        auto c = std::make_shared<Native::Interface::FiveGigabitEthernet>();
-        c->parent = this;
-        fivegigabitethernet.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::FiveGigabitEthernet>();
+        ent_->parent = this;
+        fivegigabitethernet.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "TenGigabitEthernet")
     {
-        auto c = std::make_shared<Native::Interface::TenGigabitEthernet>();
-        c->parent = this;
-        tengigabitethernet.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::TenGigabitEthernet>();
+        ent_->parent = this;
+        tengigabitethernet.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "TwentyFiveGigE")
     {
-        auto c = std::make_shared<Native::Interface::TwentyFiveGigE>();
-        c->parent = this;
-        twentyfivegige.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::TwentyFiveGigE>();
+        ent_->parent = this;
+        twentyfivegige.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "FortyGigabitEthernet")
     {
-        auto c = std::make_shared<Native::Interface::FortyGigabitEthernet>();
-        c->parent = this;
-        fortygigabitethernet.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::FortyGigabitEthernet>();
+        ent_->parent = this;
+        fortygigabitethernet.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "HundredGigE")
     {
-        auto c = std::make_shared<Native::Interface::HundredGigE>();
-        c->parent = this;
-        hundredgige.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::HundredGigE>();
+        ent_->parent = this;
+        hundredgige.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Loopback")
     {
-        auto c = std::make_shared<Native::Interface::Loopback>();
-        c->parent = this;
-        loopback.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::Loopback>();
+        ent_->parent = this;
+        loopback.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "LISP")
     {
-        auto c = std::make_shared<Native::Interface::LISP>();
-        c->parent = this;
-        lisp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::LISP>();
+        ent_->parent = this;
+        lisp.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "LISP-subinterface")
@@ -12787,26 +12787,26 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
 
     if(child_yang_name == "nve")
     {
-        auto c = std::make_shared<Native::Interface::Nve>();
-        c->parent = this;
-        nve.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::Nve>();
+        ent_->parent = this;
+        nve.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "overlay")
     {
-        auto c = std::make_shared<Native::Interface::Overlay>();
-        c->parent = this;
-        overlay.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::Overlay>();
+        ent_->parent = this;
+        overlay.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Port-channel")
     {
-        auto c = std::make_shared<Native::Interface::PortChannel>();
-        c->parent = this;
-        port_channel.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::PortChannel>();
+        ent_->parent = this;
+        port_channel.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Port-channel-subinterface")
@@ -12820,461 +12820,461 @@ std::shared_ptr<Entity> Native::Interface::get_child_by_name(const std::string &
 
     if(child_yang_name == "pseudowire")
     {
-        auto c = std::make_shared<Native::Interface::Pseudowire>();
-        c->parent = this;
-        pseudowire.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::Pseudowire>();
+        ent_->parent = this;
+        pseudowire.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "SM")
     {
-        auto c = std::make_shared<Native::Interface::SM>();
-        c->parent = this;
-        sm.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::SM>();
+        ent_->parent = this;
+        sm.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Cellular")
     {
-        auto c = std::make_shared<Native::Interface::Cellular>();
-        c->parent = this;
-        cellular.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::Cellular>();
+        ent_->parent = this;
+        cellular.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Vlan")
     {
-        auto c = std::make_shared<Native::Interface::Vlan>();
-        c->parent = this;
-        vlan.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::Vlan>();
+        ent_->parent = this;
+        vlan.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Group-Async")
     {
-        auto c = std::make_shared<Native::Interface::GroupAsync>();
-        c->parent = this;
-        group_async.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::GroupAsync>();
+        ent_->parent = this;
+        group_async.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Multilink")
     {
-        auto c = std::make_shared<Native::Interface::Multilink>();
-        c->parent = this;
-        multilink.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::Multilink>();
+        ent_->parent = this;
+        multilink.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Serial")
     {
-        auto c = std::make_shared<Native::Interface::Serial>();
-        c->parent = this;
-        serial.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::Serial>();
+        ent_->parent = this;
+        serial.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Tunnel")
     {
-        auto c = std::make_shared<Native::Interface::Tunnel>();
-        c->parent = this;
-        tunnel.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::Tunnel>();
+        ent_->parent = this;
+        tunnel.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Virtual-Template")
     {
-        auto c = std::make_shared<Native::Interface::VirtualTemplate>();
-        c->parent = this;
-        virtual_template.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::VirtualTemplate>();
+        ent_->parent = this;
+        virtual_template.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "VirtualPortGroup")
     {
-        auto c = std::make_shared<Native::Interface::VirtualPortGroup>();
-        c->parent = this;
-        virtualportgroup.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::VirtualPortGroup>();
+        ent_->parent = this;
+        virtualportgroup.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "vasileft")
     {
-        auto c = std::make_shared<Native::Interface::Vasileft>();
-        c->parent = this;
-        vasileft.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::Vasileft>();
+        ent_->parent = this;
+        vasileft.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "vasiright")
     {
-        auto c = std::make_shared<Native::Interface::Vasiright>();
-        c->parent = this;
-        vasiright.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::Vasiright>();
+        ent_->parent = this;
+        vasiright.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : appnav_compress.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : appnav_compress.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : appnav_uncompress.entities())
+    count_ = 0;
+    for (auto ent_ : appnav_uncompress.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : atm.entities())
+    count_ = 0;
+    for (auto ent_ : atm.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(atm_subinterface != nullptr)
     {
-        children["ATM-subinterface"] = atm_subinterface;
+        _children["ATM-subinterface"] = atm_subinterface;
     }
 
-    count = 0;
-    for (auto c : atm_acr.entities())
+    count_ = 0;
+    for (auto ent_ : atm_acr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(atm_acrsubinterface != nullptr)
     {
-        children["ATM-ACRsubinterface"] = atm_acrsubinterface;
+        _children["ATM-ACRsubinterface"] = atm_acrsubinterface;
     }
 
-    count = 0;
-    for (auto c : bdi.entities())
+    count_ = 0;
+    for (auto ent_ : bdi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : cem.entities())
+    count_ = 0;
+    for (auto ent_ : cem.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : cem_acr.entities())
+    count_ = 0;
+    for (auto ent_ : cem_acr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : embedded_service_engine.entities())
+    count_ = 0;
+    for (auto ent_ : embedded_service_engine.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ethernet.entities())
+    count_ = 0;
+    for (auto ent_ : ethernet.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : fastethernet.entities())
+    count_ = 0;
+    for (auto ent_ : fastethernet.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ucse.entities())
+    count_ = 0;
+    for (auto ent_ : ucse.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ethernet_internal.entities())
+    count_ = 0;
+    for (auto ent_ : ethernet_internal.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : service_engine.entities())
+    count_ = 0;
+    for (auto ent_ : service_engine.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : gigabitethernet.entities())
+    count_ = 0;
+    for (auto ent_ : gigabitethernet.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : twogigabitethernet.entities())
+    count_ = 0;
+    for (auto ent_ : twogigabitethernet.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : fivegigabitethernet.entities())
+    count_ = 0;
+    for (auto ent_ : fivegigabitethernet.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : tengigabitethernet.entities())
+    count_ = 0;
+    for (auto ent_ : tengigabitethernet.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : twentyfivegige.entities())
+    count_ = 0;
+    for (auto ent_ : twentyfivegige.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : fortygigabitethernet.entities())
+    count_ = 0;
+    for (auto ent_ : fortygigabitethernet.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : hundredgige.entities())
+    count_ = 0;
+    for (auto ent_ : hundredgige.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : loopback.entities())
+    count_ = 0;
+    for (auto ent_ : loopback.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : lisp.entities())
+    count_ = 0;
+    for (auto ent_ : lisp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(lisp_subinterface != nullptr)
     {
-        children["LISP-subinterface"] = lisp_subinterface;
+        _children["LISP-subinterface"] = lisp_subinterface;
     }
 
-    count = 0;
-    for (auto c : nve.entities())
+    count_ = 0;
+    for (auto ent_ : nve.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : overlay.entities())
+    count_ = 0;
+    for (auto ent_ : overlay.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : port_channel.entities())
+    count_ = 0;
+    for (auto ent_ : port_channel.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(port_channel_subinterface != nullptr)
     {
-        children["Port-channel-subinterface"] = port_channel_subinterface;
+        _children["Port-channel-subinterface"] = port_channel_subinterface;
     }
 
-    count = 0;
-    for (auto c : pseudowire.entities())
+    count_ = 0;
+    for (auto ent_ : pseudowire.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : sm.entities())
+    count_ = 0;
+    for (auto ent_ : sm.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : cellular.entities())
+    count_ = 0;
+    for (auto ent_ : cellular.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : vlan.entities())
+    count_ = 0;
+    for (auto ent_ : vlan.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : group_async.entities())
+    count_ = 0;
+    for (auto ent_ : group_async.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : multilink.entities())
+    count_ = 0;
+    for (auto ent_ : multilink.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : serial.entities())
+    count_ = 0;
+    for (auto ent_ : serial.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : tunnel.entities())
+    count_ = 0;
+    for (auto ent_ : tunnel.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : virtual_template.entities())
+    count_ = 0;
+    for (auto ent_ : virtual_template.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : virtualportgroup.entities())
+    count_ = 0;
+    for (auto ent_ : virtualportgroup.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : vasileft.entities())
+    count_ = 0;
+    for (auto ent_ : vasileft.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : vasiright.entities())
+    count_ = 0;
+    for (auto ent_ : vasiright.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13536,7 +13536,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "switchport-conf")
     {
@@ -13702,10 +13702,10 @@ std::shared_ptr<Entity> Native::Interface::AppNavCompress::get_child_by_name(con
 
     if(child_yang_name == "hold-queue")
     {
-        auto c = std::make_shared<Native::Interface::AppNavCompress::HoldQueue>();
-        c->parent = this;
-        hold_queue.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::AppNavCompress::HoldQueue>();
+        ent_->parent = this;
+        hold_queue.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "mpls")
@@ -13873,200 +13873,200 @@ std::shared_ptr<Entity> Native::Interface::AppNavCompress::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(switchport_conf != nullptr)
     {
-        children["switchport-conf"] = switchport_conf;
+        _children["switchport-conf"] = switchport_conf;
     }
 
     if(switchport != nullptr)
     {
-        children["switchport"] = switchport;
+        _children["switchport"] = switchport;
     }
 
     if(stackwise_virtual != nullptr)
     {
-        children["stackwise-virtual"] = stackwise_virtual;
+        _children["stackwise-virtual"] = stackwise_virtual;
     }
 
     if(arp != nullptr)
     {
-        children["arp"] = arp;
+        _children["arp"] = arp;
     }
 
     if(backup != nullptr)
     {
-        children["backup"] = backup;
+        _children["backup"] = backup;
     }
 
     if(cemoudp != nullptr)
     {
-        children["cemoudp"] = cemoudp;
+        _children["cemoudp"] = cemoudp;
     }
 
     if(cws_tunnel != nullptr)
     {
-        children["cws-tunnel"] = cws_tunnel;
+        _children["cws-tunnel"] = cws_tunnel;
     }
 
     if(l2protocol_tunnel != nullptr)
     {
-        children["l2protocol-tunnel"] = l2protocol_tunnel;
+        _children["l2protocol-tunnel"] = l2protocol_tunnel;
     }
 
     if(encapsulation != nullptr)
     {
-        children["encapsulation"] = encapsulation;
+        _children["encapsulation"] = encapsulation;
     }
 
     if(fair_queue_conf != nullptr)
     {
-        children["fair-queue-conf"] = fair_queue_conf;
+        _children["fair-queue-conf"] = fair_queue_conf;
     }
 
     if(fair_queue != nullptr)
     {
-        children["fair-queue"] = fair_queue;
+        _children["fair-queue"] = fair_queue;
     }
 
     if(flowcontrol != nullptr)
     {
-        children["flowcontrol"] = flowcontrol;
+        _children["flowcontrol"] = flowcontrol;
     }
 
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(keepalive_settings != nullptr)
     {
-        children["keepalive-settings"] = keepalive_settings;
+        _children["keepalive-settings"] = keepalive_settings;
     }
 
     if(bfd != nullptr)
     {
-        children["bfd"] = bfd;
+        _children["bfd"] = bfd;
     }
 
     if(bandwidth != nullptr)
     {
-        children["bandwidth"] = bandwidth;
+        _children["bandwidth"] = bandwidth;
     }
 
     if(dampening != nullptr)
     {
-        children["dampening"] = dampening;
+        _children["dampening"] = dampening;
     }
 
     if(domain != nullptr)
     {
-        children["domain"] = domain;
+        _children["domain"] = domain;
     }
 
-    count = 0;
-    for (auto c : hold_queue.entities())
+    count_ = 0;
+    for (auto ent_ : hold_queue.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(mpls != nullptr)
     {
-        children["mpls"] = mpls;
+        _children["mpls"] = mpls;
     }
 
     if(ip_vrf != nullptr)
     {
-        children["ip-vrf"] = ip_vrf;
+        _children["ip-vrf"] = ip_vrf;
     }
 
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(logging != nullptr)
     {
-        children["logging"] = logging;
+        _children["logging"] = logging;
     }
 
     if(mdix != nullptr)
     {
-        children["mdix"] = mdix;
+        _children["mdix"] = mdix;
     }
 
     if(mop != nullptr)
     {
-        children["mop"] = mop;
+        _children["mop"] = mop;
     }
 
     if(interface_qos != nullptr)
     {
-        children["interface_qos"] = interface_qos;
+        _children["interface_qos"] = interface_qos;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
     if(standby != nullptr)
     {
-        children["standby"] = standby;
+        _children["standby"] = standby;
     }
 
     if(access_session != nullptr)
     {
-        children["access-session"] = access_session;
+        _children["access-session"] = access_session;
     }
 
     if(storm_control != nullptr)
     {
-        children["storm-control"] = storm_control;
+        _children["storm-control"] = storm_control;
     }
 
     if(trust != nullptr)
     {
-        children["trust"] = trust;
+        _children["trust"] = trust;
     }
 
     if(priority_queue != nullptr)
     {
-        children["priority-queue"] = priority_queue;
+        _children["priority-queue"] = priority_queue;
     }
 
     if(rcv_queue != nullptr)
     {
-        children["rcv-queue"] = rcv_queue;
+        _children["rcv-queue"] = rcv_queue;
     }
 
     if(peer != nullptr)
     {
-        children["peer"] = peer;
+        _children["peer"] = peer;
     }
 
     if(pm_path != nullptr)
     {
-        children["pm-path"] = pm_path;
+        _children["pm-path"] = pm_path;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14235,16 +14235,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::SwitchportConf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::SwitchportConf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::SwitchportConf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::SwitchportConf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::SwitchportConf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14309,16 +14309,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Switchport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Switchport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Switchport::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Switchport::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Switchport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14379,16 +14379,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::StackwiseVirtual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::StackwiseVirtual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::StackwiseVirtual::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::StackwiseVirtual::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::StackwiseVirtual::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14467,16 +14467,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Arp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Arp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Arp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Arp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Arp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14553,7 +14553,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delay")
     {
@@ -14585,26 +14585,26 @@ std::shared_ptr<Entity> Native::Interface::AppNavCompress::Backup::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Backup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Backup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delay != nullptr)
     {
-        children["delay"] = delay;
+        _children["delay"] = delay;
     }
 
     if(interface != nullptr)
     {
-        children["interface"] = interface;
+        _children["interface"] = interface;
     }
 
     if(load != nullptr)
     {
-        children["load"] = load;
+        _children["load"] = load;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Backup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14667,16 +14667,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Backup::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Backup::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Backup::Delay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Backup::Delay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Backup::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14900,7 +14900,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Backup::Interface_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Backup::Interface_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ATM-subinterface")
     {
@@ -14941,31 +14941,31 @@ std::shared_ptr<Entity> Native::Interface::AppNavCompress::Backup::Interface_::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Backup::Interface_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Backup::Interface_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(atm_subinterface != nullptr)
     {
-        children["ATM-subinterface"] = atm_subinterface;
+        _children["ATM-subinterface"] = atm_subinterface;
     }
 
     if(atm_acrsubinterface != nullptr)
     {
-        children["ATM-ACRsubinterface"] = atm_acrsubinterface;
+        _children["ATM-ACRsubinterface"] = atm_acrsubinterface;
     }
 
     if(lisp_subinterface != nullptr)
     {
-        children["LISP-subinterface"] = lisp_subinterface;
+        _children["LISP-subinterface"] = lisp_subinterface;
     }
 
     if(port_channel_subinterface != nullptr)
     {
-        children["Port-channel-subinterface"] = port_channel_subinterface;
+        _children["Port-channel-subinterface"] = port_channel_subinterface;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Backup::Interface_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15354,16 +15354,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Backup::Interface_::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Backup::Interface_::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Backup::Interface_::ATMSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Backup::Interface_::ATMSubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Backup::Interface_::ATMSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15432,16 +15432,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Backup::Interface_::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Backup::Interface_::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Backup::Interface_::ATMACRsubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Backup::Interface_::ATMACRsubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Backup::Interface_::ATMACRsubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15510,16 +15510,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Backup::Interface_::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Backup::Interface_::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Backup::Interface_::LISPSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Backup::Interface_::LISPSubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Backup::Interface_::LISPSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15588,16 +15588,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Backup::Interface_::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Backup::Interface_::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Backup::Interface_::PortChannelSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Backup::Interface_::PortChannelSubinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Backup::Interface_::PortChannelSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15670,16 +15670,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Backup::Load::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Backup::Load::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Backup::Load::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Backup::Load::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Backup::Load::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15758,7 +15758,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Cemoudp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Cemoudp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reserve")
     {
@@ -15772,16 +15772,16 @@ std::shared_ptr<Entity> Native::Interface::AppNavCompress::Cemoudp::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Cemoudp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Cemoudp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(reserve != nullptr)
     {
-        children["reserve"] = reserve;
+        _children["reserve"] = reserve;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Cemoudp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15840,16 +15840,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Cemoudp::Reserve::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Cemoudp::Reserve::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Cemoudp::Reserve::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Cemoudp::Reserve::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Cemoudp::Reserve::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15923,7 +15923,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::CwsTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::CwsTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "out")
     {
@@ -15937,16 +15937,16 @@ std::shared_ptr<Entity> Native::Interface::AppNavCompress::CwsTunnel::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::CwsTunnel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::CwsTunnel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(out != nullptr)
     {
-        children["out"] = out;
+        _children["out"] = out;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::CwsTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16015,16 +16015,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::CwsTunnel::Out::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::CwsTunnel::Out::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::CwsTunnel::Out::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::CwsTunnel::Out::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::CwsTunnel::Out::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16110,7 +16110,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::L2protocolTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::L2protocolTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "drop-threshold")
     {
@@ -16133,21 +16133,21 @@ std::shared_ptr<Entity> Native::Interface::AppNavCompress::L2protocolTunnel::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::L2protocolTunnel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::L2protocolTunnel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(drop_threshold != nullptr)
     {
-        children["drop-threshold"] = drop_threshold;
+        _children["drop-threshold"] = drop_threshold;
     }
 
     if(shutdown_threshold != nullptr)
     {
-        children["shutdown-threshold"] = shutdown_threshold;
+        _children["shutdown-threshold"] = shutdown_threshold;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::L2protocolTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16248,16 +16248,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::L2protocolTunnel::DropThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::L2protocolTunnel::DropThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::L2protocolTunnel::DropThreshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::L2protocolTunnel::DropThreshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::L2protocolTunnel::DropThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16368,16 +16368,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::L2protocolTunnel::ShutdownThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::L2protocolTunnel::ShutdownThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::L2protocolTunnel::ShutdownThreshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::L2protocolTunnel::ShutdownThreshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::L2protocolTunnel::ShutdownThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16489,7 +16489,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Encapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Encapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1Q")
     {
@@ -16539,36 +16539,36 @@ std::shared_ptr<Entity> Native::Interface::AppNavCompress::Encapsulation::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Encapsulation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Encapsulation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dot1q != nullptr)
     {
-        children["dot1Q"] = dot1q;
+        _children["dot1Q"] = dot1q;
     }
 
     if(isl != nullptr)
     {
-        children["isl"] = isl;
+        _children["isl"] = isl;
     }
 
     if(ppp != nullptr)
     {
-        children["ppp"] = ppp;
+        _children["ppp"] = ppp;
     }
 
     if(slip != nullptr)
     {
-        children["slip"] = slip;
+        _children["slip"] = slip;
     }
 
     if(frame_relay != nullptr)
     {
-        children["frame-relay"] = frame_relay;
+        _children["frame-relay"] = frame_relay;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Encapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16631,16 +16631,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Encapsulation::Dot1Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Encapsulation::Dot1Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Encapsulation::Dot1Q::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Encapsulation::Dot1Q::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Encapsulation::Dot1Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16719,16 +16719,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::AppNavCompress
 
 }
 
-std::shared_ptr<Entity> Native::Interface::AppNavCompress::Encapsulation::Isl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::AppNavCompress::Encapsulation::Isl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::AppNavCompress::Encapsulation::Isl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::AppNavCompress::Encapsulation::Isl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::AppNavCompress::Encapsulation::Isl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

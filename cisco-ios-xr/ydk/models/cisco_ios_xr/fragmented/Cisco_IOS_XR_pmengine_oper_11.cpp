@@ -82,16 +82,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24fecHistories::DwdmHour24fecHistory::DwdmHour24fecTimeLineInstances::DwdmHour24fecTimeLineInstance::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24fecHistories::DwdmHour24fecHistory::DwdmHour24fecTimeLineInstances::DwdmHour24fecTimeLineInstance::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24fecHistories::DwdmHour24fecHistory::DwdmHour24fecTimeLineInstances::DwdmHour24fecTimeLineInstance::Qmargin::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24fecHistories::DwdmHour24fecHistory::DwdmHour24fecTimeLineInstances::DwdmHour24fecTimeLineInstance::Qmargin::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24fecHistories::DwdmHour24fecHistory::DwdmHour24fecTimeLineInstances::DwdmHour24fecTimeLineInstance::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -238,33 +238,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dwdm-hour24-optics-history")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory>();
-        c->parent = this;
-        dwdm_hour24_optics_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory>();
+        ent_->parent = this;
+        dwdm_hour24_optics_history.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dwdm_hour24_optics_history.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dwdm_hour24_optics_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -329,7 +329,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dwdm-hour24-optics-time-line-instances")
     {
@@ -343,16 +343,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHist
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dwdm_hour24_optics_time_line_instances != nullptr)
     {
-        children["dwdm-hour24-optics-time-line-instances"] = dwdm_hour24_optics_time_line_instances;
+        _children["dwdm-hour24-optics-time-line-instances"] = dwdm_hour24_optics_time_line_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -429,33 +429,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dwdm-hour24-optics-time-line-instance")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance>();
-        c->parent = this;
-        dwdm_hour24_optics_time_line_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance>();
+        ent_->parent = this;
+        dwdm_hour24_optics_time_line_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dwdm_hour24_optics_time_line_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dwdm_hour24_optics_time_line_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -612,7 +612,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lbc")
     {
@@ -761,91 +761,91 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHist
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lbc != nullptr)
     {
-        children["lbc"] = lbc;
+        _children["lbc"] = lbc;
     }
 
     if(lbc_pc != nullptr)
     {
-        children["lbc-pc"] = lbc_pc;
+        _children["lbc-pc"] = lbc_pc;
     }
 
     if(opt != nullptr)
     {
-        children["opt"] = opt;
+        _children["opt"] = opt;
     }
 
     if(opr != nullptr)
     {
-        children["opr"] = opr;
+        _children["opr"] = opr;
     }
 
     if(cd != nullptr)
     {
-        children["cd"] = cd;
+        _children["cd"] = cd;
     }
 
     if(dgd != nullptr)
     {
-        children["dgd"] = dgd;
+        _children["dgd"] = dgd;
     }
 
     if(pmd != nullptr)
     {
-        children["pmd"] = pmd;
+        _children["pmd"] = pmd;
     }
 
     if(osnr != nullptr)
     {
-        children["osnr"] = osnr;
+        _children["osnr"] = osnr;
     }
 
     if(center_wavelength != nullptr)
     {
-        children["center-wavelength"] = center_wavelength;
+        _children["center-wavelength"] = center_wavelength;
     }
 
     if(pdl != nullptr)
     {
-        children["pdl"] = pdl;
+        _children["pdl"] = pdl;
     }
 
     if(pcr != nullptr)
     {
-        children["pcr"] = pcr;
+        _children["pcr"] = pcr;
     }
 
     if(pn != nullptr)
     {
-        children["pn"] = pn;
+        _children["pn"] = pn;
     }
 
     if(rx_sig_pow != nullptr)
     {
-        children["rx-sig-pow"] = rx_sig_pow;
+        _children["rx-sig-pow"] = rx_sig_pow;
     }
 
     if(low_sig_freq_off != nullptr)
     {
-        children["low-sig-freq-off"] = low_sig_freq_off;
+        _children["low-sig-freq-off"] = low_sig_freq_off;
     }
 
     if(ampli_gain != nullptr)
     {
-        children["ampli-gain"] = ampli_gain;
+        _children["ampli-gain"] = ampli_gain;
     }
 
     if(ampli_gain_tilt != nullptr)
     {
-        children["ampli-gain-tilt"] = ampli_gain_tilt;
+        _children["ampli-gain-tilt"] = ampli_gain_tilt;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1030,16 +1030,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Lbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Lbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1234,16 +1234,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::LbcPc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::LbcPc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::LbcPc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::LbcPc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::LbcPc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1438,16 +1438,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Opt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Opt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Opt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Opt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Opt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1642,16 +1642,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Opr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Opr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Opr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Opr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Opr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1846,16 +1846,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Cd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Cd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Cd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Cd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Cd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2050,16 +2050,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Dgd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Dgd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Dgd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Dgd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Dgd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2254,16 +2254,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pmd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pmd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pmd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pmd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pmd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2458,16 +2458,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Osnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Osnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Osnr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Osnr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Osnr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2662,16 +2662,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::CenterWavelength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::CenterWavelength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::CenterWavelength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::CenterWavelength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::CenterWavelength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2866,16 +2866,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pdl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pdl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pdl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pdl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pdl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3070,16 +3070,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pcr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pcr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pcr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pcr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pcr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3274,16 +3274,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::Pn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3478,16 +3478,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::RxSigPow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::RxSigPow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::RxSigPow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::RxSigPow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::RxSigPow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3682,16 +3682,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::LowSigFreqOff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::LowSigFreqOff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::LowSigFreqOff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::LowSigFreqOff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::LowSigFreqOff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3886,16 +3886,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::AmpliGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::AmpliGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::AmpliGain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::AmpliGain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::AmpliGain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4090,16 +4090,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::AmpliGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::AmpliGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::AmpliGainTilt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::AmpliGainTilt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::DwdmHistory::DwdmPortHistories::DwdmPortHistory::DwdmHour24History::DwdmHour24OpticsHistories::DwdmHour24OpticsHistory::DwdmHour24OpticsTimeLineInstances::DwdmHour24OpticsTimeLineInstance::AmpliGainTilt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4265,7 +4265,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-port-histories")
     {
@@ -4279,16 +4279,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stm_port_histories != nullptr)
     {
-        children["stm-port-histories"] = stm_port_histories;
+        _children["stm-port-histories"] = stm_port_histories;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4362,33 +4362,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-port-history")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory>();
-        c->parent = this;
-        stm_port_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory>();
+        ent_->parent = this;
+        stm_port_history.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stm_port_history.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stm_port_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4464,7 +4464,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-hour24-history")
     {
@@ -4487,21 +4487,21 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stm_hour24_history != nullptr)
     {
-        children["stm-hour24-history"] = stm_hour24_history;
+        _children["stm-hour24-history"] = stm_hour24_history;
     }
 
     if(stm_minute15_history != nullptr)
     {
-        children["stm-minute15-history"] = stm_minute15_history;
+        _children["stm-minute15-history"] = stm_minute15_history;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4570,7 +4570,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-hour24stm-histories")
     {
@@ -4584,16 +4584,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stm_hour24stm_histories != nullptr)
     {
-        children["stm-hour24stm-histories"] = stm_hour24stm_histories;
+        _children["stm-hour24stm-histories"] = stm_hour24stm_histories;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4660,33 +4660,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-hour24stm-history")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory>();
-        c->parent = this;
-        stm_hour24stm_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory>();
+        ent_->parent = this;
+        stm_hour24stm_history.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stm_hour24stm_history.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stm_hour24stm_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4751,7 +4751,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-hour24stm-time-line-instances")
     {
@@ -4765,16 +4765,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stm_hour24stm_time_line_instances != nullptr)
     {
-        children["stm-hour24stm-time-line-instances"] = stm_hour24stm_time_line_instances;
+        _children["stm-hour24stm-time-line-instances"] = stm_hour24stm_time_line_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4851,33 +4851,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-hour24stm-time-line-instance")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance>();
-        c->parent = this;
-        stm_hour24stm_time_line_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance>();
+        ent_->parent = this;
+        stm_hour24stm_time_line_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stm_hour24stm_time_line_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stm_hour24stm_time_line_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4974,7 +4974,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section")
     {
@@ -5006,26 +5006,26 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(section != nullptr)
     {
-        children["section"] = section;
+        _children["section"] = section;
     }
 
     if(line != nullptr)
     {
-        children["line"] = line;
+        _children["line"] = line;
     }
 
     if(fe_line != nullptr)
     {
-        children["fe-line"] = fe_line;
+        _children["fe-line"] = fe_line;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5187,7 +5187,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section-e-ss")
     {
@@ -5264,51 +5264,51 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(section_e_ss != nullptr)
     {
-        children["section-e-ss"] = section_e_ss;
+        _children["section-e-ss"] = section_e_ss;
     }
 
     if(section_es_rs != nullptr)
     {
-        children["section-es-rs"] = section_es_rs;
+        _children["section-es-rs"] = section_es_rs;
     }
 
     if(section_bb_es != nullptr)
     {
-        children["section-bb-es"] = section_bb_es;
+        _children["section-bb-es"] = section_bb_es;
     }
 
     if(section_bbe_rs != nullptr)
     {
-        children["section-bbe-rs"] = section_bbe_rs;
+        _children["section-bbe-rs"] = section_bbe_rs;
     }
 
     if(section_se_ss != nullptr)
     {
-        children["section-se-ss"] = section_se_ss;
+        _children["section-se-ss"] = section_se_ss;
     }
 
     if(section_ses_rs != nullptr)
     {
-        children["section-ses-rs"] = section_ses_rs;
+        _children["section-ses-rs"] = section_ses_rs;
     }
 
     if(section_ua_ss != nullptr)
     {
-        children["section-ua-ss"] = section_ua_ss;
+        _children["section-ua-ss"] = section_ua_ss;
     }
 
     if(section_e_bs != nullptr)
     {
-        children["section-e-bs"] = section_e_bs;
+        _children["section-e-bs"] = section_e_bs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5385,16 +5385,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5491,16 +5491,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionEsRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionEsRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5597,16 +5597,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionBbEs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionBbEs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionBbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5703,16 +5703,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionBbeRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionBbeRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5809,16 +5809,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5915,16 +5915,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionSesRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionSesRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6021,16 +6021,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6127,16 +6127,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionEBs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionEBs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Section::SectionEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6258,7 +6258,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "line-e-ss")
     {
@@ -6335,51 +6335,51 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(line_e_ss != nullptr)
     {
-        children["line-e-ss"] = line_e_ss;
+        _children["line-e-ss"] = line_e_ss;
     }
 
     if(line_es_rs != nullptr)
     {
-        children["line-es-rs"] = line_es_rs;
+        _children["line-es-rs"] = line_es_rs;
     }
 
     if(line_bb_es != nullptr)
     {
-        children["line-bb-es"] = line_bb_es;
+        _children["line-bb-es"] = line_bb_es;
     }
 
     if(line_bbe_rs != nullptr)
     {
-        children["line-bbe-rs"] = line_bbe_rs;
+        _children["line-bbe-rs"] = line_bbe_rs;
     }
 
     if(line_se_ss != nullptr)
     {
-        children["line-se-ss"] = line_se_ss;
+        _children["line-se-ss"] = line_se_ss;
     }
 
     if(line_ses_rs != nullptr)
     {
-        children["line-ses-rs"] = line_ses_rs;
+        _children["line-ses-rs"] = line_ses_rs;
     }
 
     if(line_ua_ss != nullptr)
     {
-        children["line-ua-ss"] = line_ua_ss;
+        _children["line-ua-ss"] = line_ua_ss;
     }
 
     if(line_e_bs != nullptr)
     {
-        children["line-e-bs"] = line_e_bs;
+        _children["line-e-bs"] = line_e_bs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6456,16 +6456,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6562,16 +6562,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineEsRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineEsRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6668,16 +6668,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineBbEs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineBbEs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineBbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6774,16 +6774,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineBbeRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineBbeRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6880,16 +6880,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6986,16 +6986,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineSesRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineSesRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7092,16 +7092,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7198,16 +7198,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineEBs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineEBs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::Line::LineEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7324,7 +7324,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "far-end-line-e-ss")
     {
@@ -7401,51 +7401,51 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(far_end_line_e_ss != nullptr)
     {
-        children["far-end-line-e-ss"] = far_end_line_e_ss;
+        _children["far-end-line-e-ss"] = far_end_line_e_ss;
     }
 
     if(far_end_line_es_rs != nullptr)
     {
-        children["far-end-line-es-rs"] = far_end_line_es_rs;
+        _children["far-end-line-es-rs"] = far_end_line_es_rs;
     }
 
     if(far_end_line_ebb_es != nullptr)
     {
-        children["far-end-line-ebb-es"] = far_end_line_ebb_es;
+        _children["far-end-line-ebb-es"] = far_end_line_ebb_es;
     }
 
     if(far_end_line_bbe_rs != nullptr)
     {
-        children["far-end-line-bbe-rs"] = far_end_line_bbe_rs;
+        _children["far-end-line-bbe-rs"] = far_end_line_bbe_rs;
     }
 
     if(far_end_line_se_ss != nullptr)
     {
-        children["far-end-line-se-ss"] = far_end_line_se_ss;
+        _children["far-end-line-se-ss"] = far_end_line_se_ss;
     }
 
     if(far_end_line_ses_rs != nullptr)
     {
-        children["far-end-line-ses-rs"] = far_end_line_ses_rs;
+        _children["far-end-line-ses-rs"] = far_end_line_ses_rs;
     }
 
     if(far_end_line_ua_ss != nullptr)
     {
-        children["far-end-line-ua-ss"] = far_end_line_ua_ss;
+        _children["far-end-line-ua-ss"] = far_end_line_ua_ss;
     }
 
     if(far_end_line_e_bs != nullptr)
     {
-        children["far-end-line-e-bs"] = far_end_line_e_bs;
+        _children["far-end-line-e-bs"] = far_end_line_e_bs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7512,16 +7512,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7618,16 +7618,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEsRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEsRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7724,16 +7724,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEbbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEbbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEbbEs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEbbEs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEbbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7830,16 +7830,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineBbeRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineBbeRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7936,16 +7936,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8042,16 +8042,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineSesRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineSesRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8148,16 +8148,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8254,16 +8254,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEBs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEBs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmHour24History::StmHour24stmHistories::StmHour24stmHistory::StmHour24stmTimeLineInstances::StmHour24stmTimeLineInstance::FeLine::FarEndLineEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8352,7 +8352,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-minute15stm-histories")
     {
@@ -8366,16 +8366,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stm_minute15stm_histories != nullptr)
     {
-        children["stm-minute15stm-histories"] = stm_minute15stm_histories;
+        _children["stm-minute15stm-histories"] = stm_minute15stm_histories;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8442,33 +8442,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-minute15stm-history")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory>();
-        c->parent = this;
-        stm_minute15stm_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory>();
+        ent_->parent = this;
+        stm_minute15stm_history.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stm_minute15stm_history.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stm_minute15stm_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8533,7 +8533,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-minute15stm-time-line-instances")
     {
@@ -8547,16 +8547,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stm_minute15stm_time_line_instances != nullptr)
     {
-        children["stm-minute15stm-time-line-instances"] = stm_minute15stm_time_line_instances;
+        _children["stm-minute15stm-time-line-instances"] = stm_minute15stm_time_line_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8633,33 +8633,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stm-minute15stm-time-line-instance")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance>();
-        c->parent = this;
-        stm_minute15stm_time_line_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance>();
+        ent_->parent = this;
+        stm_minute15stm_time_line_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stm_minute15stm_time_line_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stm_minute15stm_time_line_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8756,7 +8756,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section")
     {
@@ -8788,26 +8788,26 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(section != nullptr)
     {
-        children["section"] = section;
+        _children["section"] = section;
     }
 
     if(line != nullptr)
     {
-        children["line"] = line;
+        _children["line"] = line;
     }
 
     if(fe_line != nullptr)
     {
-        children["fe-line"] = fe_line;
+        _children["fe-line"] = fe_line;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8969,7 +8969,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section-e-ss")
     {
@@ -9046,51 +9046,51 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(section_e_ss != nullptr)
     {
-        children["section-e-ss"] = section_e_ss;
+        _children["section-e-ss"] = section_e_ss;
     }
 
     if(section_es_rs != nullptr)
     {
-        children["section-es-rs"] = section_es_rs;
+        _children["section-es-rs"] = section_es_rs;
     }
 
     if(section_bb_es != nullptr)
     {
-        children["section-bb-es"] = section_bb_es;
+        _children["section-bb-es"] = section_bb_es;
     }
 
     if(section_bbe_rs != nullptr)
     {
-        children["section-bbe-rs"] = section_bbe_rs;
+        _children["section-bbe-rs"] = section_bbe_rs;
     }
 
     if(section_se_ss != nullptr)
     {
-        children["section-se-ss"] = section_se_ss;
+        _children["section-se-ss"] = section_se_ss;
     }
 
     if(section_ses_rs != nullptr)
     {
-        children["section-ses-rs"] = section_ses_rs;
+        _children["section-ses-rs"] = section_ses_rs;
     }
 
     if(section_ua_ss != nullptr)
     {
-        children["section-ua-ss"] = section_ua_ss;
+        _children["section-ua-ss"] = section_ua_ss;
     }
 
     if(section_e_bs != nullptr)
     {
-        children["section-e-bs"] = section_e_bs;
+        _children["section-e-bs"] = section_e_bs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9167,16 +9167,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9273,16 +9273,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionEsRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionEsRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9379,16 +9379,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionBbEs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionBbEs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionBbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9485,16 +9485,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionBbeRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionBbeRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9591,16 +9591,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9697,16 +9697,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionSesRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionSesRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9803,16 +9803,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9909,16 +9909,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionEBs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionEBs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Section::SectionEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10040,7 +10040,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "line-e-ss")
     {
@@ -10117,51 +10117,51 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(line_e_ss != nullptr)
     {
-        children["line-e-ss"] = line_e_ss;
+        _children["line-e-ss"] = line_e_ss;
     }
 
     if(line_es_rs != nullptr)
     {
-        children["line-es-rs"] = line_es_rs;
+        _children["line-es-rs"] = line_es_rs;
     }
 
     if(line_bb_es != nullptr)
     {
-        children["line-bb-es"] = line_bb_es;
+        _children["line-bb-es"] = line_bb_es;
     }
 
     if(line_bbe_rs != nullptr)
     {
-        children["line-bbe-rs"] = line_bbe_rs;
+        _children["line-bbe-rs"] = line_bbe_rs;
     }
 
     if(line_se_ss != nullptr)
     {
-        children["line-se-ss"] = line_se_ss;
+        _children["line-se-ss"] = line_se_ss;
     }
 
     if(line_ses_rs != nullptr)
     {
-        children["line-ses-rs"] = line_ses_rs;
+        _children["line-ses-rs"] = line_ses_rs;
     }
 
     if(line_ua_ss != nullptr)
     {
-        children["line-ua-ss"] = line_ua_ss;
+        _children["line-ua-ss"] = line_ua_ss;
     }
 
     if(line_e_bs != nullptr)
     {
-        children["line-e-bs"] = line_e_bs;
+        _children["line-e-bs"] = line_e_bs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10238,16 +10238,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10344,16 +10344,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineEsRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineEsRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10450,16 +10450,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineBbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineBbEs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineBbEs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineBbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10556,16 +10556,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineBbeRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineBbeRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10662,16 +10662,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10768,16 +10768,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineSesRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineSesRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10874,16 +10874,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10980,16 +10980,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineEBs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineEBs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::Line::LineEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11106,7 +11106,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "far-end-line-e-ss")
     {
@@ -11183,51 +11183,51 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHisto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(far_end_line_e_ss != nullptr)
     {
-        children["far-end-line-e-ss"] = far_end_line_e_ss;
+        _children["far-end-line-e-ss"] = far_end_line_e_ss;
     }
 
     if(far_end_line_es_rs != nullptr)
     {
-        children["far-end-line-es-rs"] = far_end_line_es_rs;
+        _children["far-end-line-es-rs"] = far_end_line_es_rs;
     }
 
     if(far_end_line_ebb_es != nullptr)
     {
-        children["far-end-line-ebb-es"] = far_end_line_ebb_es;
+        _children["far-end-line-ebb-es"] = far_end_line_ebb_es;
     }
 
     if(far_end_line_bbe_rs != nullptr)
     {
-        children["far-end-line-bbe-rs"] = far_end_line_bbe_rs;
+        _children["far-end-line-bbe-rs"] = far_end_line_bbe_rs;
     }
 
     if(far_end_line_se_ss != nullptr)
     {
-        children["far-end-line-se-ss"] = far_end_line_se_ss;
+        _children["far-end-line-se-ss"] = far_end_line_se_ss;
     }
 
     if(far_end_line_ses_rs != nullptr)
     {
-        children["far-end-line-ses-rs"] = far_end_line_ses_rs;
+        _children["far-end-line-ses-rs"] = far_end_line_ses_rs;
     }
 
     if(far_end_line_ua_ss != nullptr)
     {
-        children["far-end-line-ua-ss"] = far_end_line_ua_ss;
+        _children["far-end-line-ua-ss"] = far_end_line_ua_ss;
     }
 
     if(far_end_line_e_bs != nullptr)
     {
-        children["far-end-line-e-bs"] = far_end_line_e_bs;
+        _children["far-end-line-e-bs"] = far_end_line_e_bs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11294,16 +11294,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11400,16 +11400,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEsRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEsRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEsRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11506,16 +11506,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEbbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEbbEs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEbbEs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEbbEs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEbbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11612,16 +11612,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineBbeRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineBbeRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineBbeRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11718,16 +11718,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11824,16 +11824,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineSesRs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineSesRs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineSesRs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11930,16 +11930,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12036,16 +12036,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEBs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEBs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEBs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::StmHistory::StmPortHistories::StmPortHistory::StmMinute15History::StmMinute15stmHistories::StmMinute15stmHistory::StmMinute15stmTimeLineInstances::StmMinute15stmTimeLineInstance::FeLine::FarEndLineEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12141,7 +12141,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-port-histories")
     {
@@ -12155,16 +12155,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec_port_histories != nullptr)
     {
-        children["macsec-port-histories"] = macsec_port_histories;
+        _children["macsec-port-histories"] = macsec_port_histories;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12238,33 +12238,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-port-history")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory>();
-        c->parent = this;
-        macsec_port_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory>();
+        ent_->parent = this;
+        macsec_port_history.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macsec_port_history.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macsec_port_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12344,7 +12344,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15-history")
     {
@@ -12376,26 +12376,26 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec_minute15_history != nullptr)
     {
-        children["macsec-minute15-history"] = macsec_minute15_history;
+        _children["macsec-minute15-history"] = macsec_minute15_history;
     }
 
     if(macsec_hour24_history != nullptr)
     {
-        children["macsec-hour24-history"] = macsec_hour24_history;
+        _children["macsec-hour24-history"] = macsec_hour24_history;
     }
 
     if(macsec_second30_history != nullptr)
     {
-        children["macsec-second30-history"] = macsec_second30_history;
+        _children["macsec-second30-history"] = macsec_second30_history;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12476,7 +12476,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15secyrx-histories")
     {
@@ -12517,31 +12517,31 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec_minute15secyrx_histories != nullptr)
     {
-        children["macsec-minute15secyrx-histories"] = macsec_minute15secyrx_histories;
+        _children["macsec-minute15secyrx-histories"] = macsec_minute15secyrx_histories;
     }
 
     if(macsec_minute15_ether_histories != nullptr)
     {
-        children["macsec-minute15-ether-histories"] = macsec_minute15_ether_histories;
+        _children["macsec-minute15-ether-histories"] = macsec_minute15_ether_histories;
     }
 
     if(macsec_minute15secytx_histories != nullptr)
     {
-        children["macsec-minute15secytx-histories"] = macsec_minute15secytx_histories;
+        _children["macsec-minute15secytx-histories"] = macsec_minute15secytx_histories;
     }
 
     if(macsec_minute15secyif_histories != nullptr)
     {
-        children["macsec-minute15secyif-histories"] = macsec_minute15secyif_histories;
+        _children["macsec-minute15secyif-histories"] = macsec_minute15secyif_histories;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12608,33 +12608,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15secyrx-history")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory>();
-        c->parent = this;
-        macsec_minute15secyrx_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory>();
+        ent_->parent = this;
+        macsec_minute15secyrx_history.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macsec_minute15secyrx_history.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macsec_minute15secyrx_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12699,7 +12699,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15secyrx-time-line-instances")
     {
@@ -12713,16 +12713,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec_minute15secyrx_time_line_instances != nullptr)
     {
-        children["macsec-minute15secyrx-time-line-instances"] = macsec_minute15secyrx_time_line_instances;
+        _children["macsec-minute15secyrx-time-line-instances"] = macsec_minute15secyrx_time_line_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12799,33 +12799,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15secyrx-time-line-instance")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance>();
-        c->parent = this;
-        macsec_minute15secyrx_time_line_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance>();
+        ent_->parent = this;
+        macsec_minute15secyrx_time_line_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macsec_minute15secyrx_time_line_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macsec_minute15secyrx_time_line_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12966,7 +12966,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "in-pkts-unchecked")
     {
@@ -13070,66 +13070,66 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(in_pkts_unchecked != nullptr)
     {
-        children["in-pkts-unchecked"] = in_pkts_unchecked;
+        _children["in-pkts-unchecked"] = in_pkts_unchecked;
     }
 
     if(in_pkts_delayed != nullptr)
     {
-        children["in-pkts-delayed"] = in_pkts_delayed;
+        _children["in-pkts-delayed"] = in_pkts_delayed;
     }
 
     if(in_pkts_late != nullptr)
     {
-        children["in-pkts-late"] = in_pkts_late;
+        _children["in-pkts-late"] = in_pkts_late;
     }
 
     if(in_pkts_ok != nullptr)
     {
-        children["in-pkts-ok"] = in_pkts_ok;
+        _children["in-pkts-ok"] = in_pkts_ok;
     }
 
     if(in_pkts_invalid != nullptr)
     {
-        children["in-pkts-invalid"] = in_pkts_invalid;
+        _children["in-pkts-invalid"] = in_pkts_invalid;
     }
 
     if(in_pkts_not_valid != nullptr)
     {
-        children["in-pkts-not-valid"] = in_pkts_not_valid;
+        _children["in-pkts-not-valid"] = in_pkts_not_valid;
     }
 
     if(in_pkts_not_using_sa != nullptr)
     {
-        children["in-pkts-not-using-sa"] = in_pkts_not_using_sa;
+        _children["in-pkts-not-using-sa"] = in_pkts_not_using_sa;
     }
 
     if(in_pkts_unused_sa != nullptr)
     {
-        children["in-pkts-unused-sa"] = in_pkts_unused_sa;
+        _children["in-pkts-unused-sa"] = in_pkts_unused_sa;
     }
 
     if(in_pkts_untagged_hit != nullptr)
     {
-        children["in-pkts-untagged-hit"] = in_pkts_untagged_hit;
+        _children["in-pkts-untagged-hit"] = in_pkts_untagged_hit;
     }
 
     if(in_octets_validated != nullptr)
     {
-        children["in-octets-validated"] = in_octets_validated;
+        _children["in-octets-validated"] = in_octets_validated;
     }
 
     if(in_octets_decrypted != nullptr)
     {
-        children["in-octets-decrypted"] = in_octets_decrypted;
+        _children["in-octets-decrypted"] = in_octets_decrypted;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13300,16 +13300,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUnchecked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUnchecked::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUnchecked::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUnchecked::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUnchecked::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13420,16 +13420,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsDelayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsDelayed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsDelayed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsDelayed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsDelayed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13540,16 +13540,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsLate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsLate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsLate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsLate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsLate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13660,16 +13660,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsOk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsOk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsOk::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsOk::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsOk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13780,16 +13780,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsInvalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsInvalid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsInvalid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsInvalid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsInvalid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13900,16 +13900,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsNotValid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsNotValid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsNotValid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsNotValid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsNotValid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14020,16 +14020,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsNotUsingSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsNotUsingSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsNotUsingSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsNotUsingSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsNotUsingSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14140,16 +14140,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUnusedSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUnusedSa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUnusedSa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUnusedSa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUnusedSa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14260,16 +14260,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUntaggedHit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUntaggedHit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUntaggedHit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUntaggedHit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InPktsUntaggedHit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14380,16 +14380,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InOctetsValidated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InOctetsValidated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InOctetsValidated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InOctetsValidated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14500,16 +14500,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InOctetsDecrypted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InOctetsDecrypted::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InOctetsDecrypted::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15secyrxHistories::MacsecMinute15secyrxHistory::MacsecMinute15secyrxTimeLineInstances::MacsecMinute15secyrxTimeLineInstance::InOctetsDecrypted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14616,33 +14616,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15-ether-history")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory>();
-        c->parent = this;
-        macsec_minute15_ether_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory>();
+        ent_->parent = this;
+        macsec_minute15_ether_history.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macsec_minute15_ether_history.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macsec_minute15_ether_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14707,7 +14707,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15-ether-time-line-instances")
     {
@@ -14721,16 +14721,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macsec_minute15_ether_time_line_instances != nullptr)
     {
-        children["macsec-minute15-ether-time-line-instances"] = macsec_minute15_ether_time_line_instances;
+        _children["macsec-minute15-ether-time-line-instances"] = macsec_minute15_ether_time_line_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14807,33 +14807,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macsec-minute15-ether-time-line-instance")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance>();
-        c->parent = this;
-        macsec_minute15_ether_time_line_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance>();
+        ent_->parent = this;
+        macsec_minute15_ether_time_line_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macsec_minute15_ether_time_line_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macsec_minute15_ether_time_line_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15226,7 +15226,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rx-pkt")
     {
@@ -15906,386 +15906,386 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rx_pkt != nullptr)
     {
-        children["rx-pkt"] = rx_pkt;
+        _children["rx-pkt"] = rx_pkt;
     }
 
     if(stat_pkt != nullptr)
     {
-        children["stat-pkt"] = stat_pkt;
+        _children["stat-pkt"] = stat_pkt;
     }
 
     if(octet_stat != nullptr)
     {
-        children["octet-stat"] = octet_stat;
+        _children["octet-stat"] = octet_stat;
     }
 
     if(oversize_pkt_stat != nullptr)
     {
-        children["oversize-pkt-stat"] = oversize_pkt_stat;
+        _children["oversize-pkt-stat"] = oversize_pkt_stat;
     }
 
     if(fcs_errors_stat != nullptr)
     {
-        children["fcs-errors-stat"] = fcs_errors_stat;
+        _children["fcs-errors-stat"] = fcs_errors_stat;
     }
 
     if(long_frames_stat != nullptr)
     {
-        children["long-frames-stat"] = long_frames_stat;
+        _children["long-frames-stat"] = long_frames_stat;
     }
 
     if(jabber_stat != nullptr)
     {
-        children["jabber-stat"] = jabber_stat;
+        _children["jabber-stat"] = jabber_stat;
     }
 
     if(ether64_octets != nullptr)
     {
-        children["ether64-octets"] = ether64_octets;
+        _children["ether64-octets"] = ether64_octets;
     }
 
     if(ether65127_octet != nullptr)
     {
-        children["ether65127-octet"] = ether65127_octet;
+        _children["ether65127-octet"] = ether65127_octet;
     }
 
     if(ether128255_octet != nullptr)
     {
-        children["ether128255-octet"] = ether128255_octet;
+        _children["ether128255-octet"] = ether128255_octet;
     }
 
     if(ether256511_octet != nullptr)
     {
-        children["ether256511-octet"] = ether256511_octet;
+        _children["ether256511-octet"] = ether256511_octet;
     }
 
     if(ether5121023_octet != nullptr)
     {
-        children["ether5121023-octet"] = ether5121023_octet;
+        _children["ether5121023-octet"] = ether5121023_octet;
     }
 
     if(ether10241518_octet != nullptr)
     {
-        children["ether10241518-octet"] = ether10241518_octet;
+        _children["ether10241518-octet"] = ether10241518_octet;
     }
 
     if(in_ucast_pkt != nullptr)
     {
-        children["in-ucast-pkt"] = in_ucast_pkt;
+        _children["in-ucast-pkt"] = in_ucast_pkt;
     }
 
     if(in_mcast_pkt != nullptr)
     {
-        children["in-mcast-pkt"] = in_mcast_pkt;
+        _children["in-mcast-pkt"] = in_mcast_pkt;
     }
 
     if(in_bcast_pkt != nullptr)
     {
-        children["in-bcast-pkt"] = in_bcast_pkt;
+        _children["in-bcast-pkt"] = in_bcast_pkt;
     }
 
     if(out_ucast_pkt != nullptr)
     {
-        children["out-ucast-pkt"] = out_ucast_pkt;
+        _children["out-ucast-pkt"] = out_ucast_pkt;
     }
 
     if(out_bcast_pkt != nullptr)
     {
-        children["out-bcast-pkt"] = out_bcast_pkt;
+        _children["out-bcast-pkt"] = out_bcast_pkt;
     }
 
     if(out_mcast_pkt != nullptr)
     {
-        children["out-mcast-pkt"] = out_mcast_pkt;
+        _children["out-mcast-pkt"] = out_mcast_pkt;
     }
 
     if(tx_pkt != nullptr)
     {
-        children["tx-pkt"] = tx_pkt;
+        _children["tx-pkt"] = tx_pkt;
     }
 
     if(if_in_errors != nullptr)
     {
-        children["if-in-errors"] = if_in_errors;
+        _children["if-in-errors"] = if_in_errors;
     }
 
     if(if_in_octets != nullptr)
     {
-        children["if-in-octets"] = if_in_octets;
+        _children["if-in-octets"] = if_in_octets;
     }
 
     if(ether_stat_multicast_pkt != nullptr)
     {
-        children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
+        _children["ether-stat-multicast-pkt"] = ether_stat_multicast_pkt;
     }
 
     if(ether_stat_broadcast_pkt != nullptr)
     {
-        children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
+        _children["ether-stat-broadcast-pkt"] = ether_stat_broadcast_pkt;
     }
 
     if(ether_stat_undersized_pkt != nullptr)
     {
-        children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
+        _children["ether-stat-undersized-pkt"] = ether_stat_undersized_pkt;
     }
 
     if(out_octets != nullptr)
     {
-        children["out-octets"] = out_octets;
+        _children["out-octets"] = out_octets;
     }
 
     if(in_pause_frame != nullptr)
     {
-        children["in-pause-frame"] = in_pause_frame;
+        _children["in-pause-frame"] = in_pause_frame;
     }
 
     if(in_good_bytes != nullptr)
     {
-        children["in-good-bytes"] = in_good_bytes;
+        _children["in-good-bytes"] = in_good_bytes;
     }
 
     if(in8021q_frames != nullptr)
     {
-        children["in8021q-frames"] = in8021q_frames;
+        _children["in8021q-frames"] = in8021q_frames;
     }
 
     if(in_pkts1519_max_octets != nullptr)
     {
-        children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
+        _children["in-pkts1519-max-octets"] = in_pkts1519_max_octets;
     }
 
     if(in_good_pkts != nullptr)
     {
-        children["in-good-pkts"] = in_good_pkts;
+        _children["in-good-pkts"] = in_good_pkts;
     }
 
     if(in_drop_overrun != nullptr)
     {
-        children["in-drop-overrun"] = in_drop_overrun;
+        _children["in-drop-overrun"] = in_drop_overrun;
     }
 
     if(in_drop_abort != nullptr)
     {
-        children["in-drop-abort"] = in_drop_abort;
+        _children["in-drop-abort"] = in_drop_abort;
     }
 
     if(in_drop_invalid_vlan != nullptr)
     {
-        children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
+        _children["in-drop-invalid-vlan"] = in_drop_invalid_vlan;
     }
 
     if(in_drop_invalid_dmac != nullptr)
     {
-        children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
+        _children["in-drop-invalid-dmac"] = in_drop_invalid_dmac;
     }
 
     if(in_drop_invalid_encap != nullptr)
     {
-        children["in-drop-invalid-encap"] = in_drop_invalid_encap;
+        _children["in-drop-invalid-encap"] = in_drop_invalid_encap;
     }
 
     if(in_drop_other != nullptr)
     {
-        children["in-drop-other"] = in_drop_other;
+        _children["in-drop-other"] = in_drop_other;
     }
 
     if(in_mib_giant != nullptr)
     {
-        children["in-mib-giant"] = in_mib_giant;
+        _children["in-mib-giant"] = in_mib_giant;
     }
 
     if(in_mib_jabber != nullptr)
     {
-        children["in-mib-jabber"] = in_mib_jabber;
+        _children["in-mib-jabber"] = in_mib_jabber;
     }
 
     if(in_mibcrc != nullptr)
     {
-        children["in-mibcrc"] = in_mibcrc;
+        _children["in-mibcrc"] = in_mibcrc;
     }
 
     if(in_error_collisions != nullptr)
     {
-        children["in-error-collisions"] = in_error_collisions;
+        _children["in-error-collisions"] = in_error_collisions;
     }
 
     if(in_error_symbol != nullptr)
     {
-        children["in-error-symbol"] = in_error_symbol;
+        _children["in-error-symbol"] = in_error_symbol;
     }
 
     if(out_good_bytes != nullptr)
     {
-        children["out-good-bytes"] = out_good_bytes;
+        _children["out-good-bytes"] = out_good_bytes;
     }
 
     if(out8021q_frames != nullptr)
     {
-        children["out8021q-frames"] = out8021q_frames;
+        _children["out8021q-frames"] = out8021q_frames;
     }
 
     if(out_pause_frames != nullptr)
     {
-        children["out-pause-frames"] = out_pause_frames;
+        _children["out-pause-frames"] = out_pause_frames;
     }
 
     if(out_pkts1519_max_octets != nullptr)
     {
-        children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
+        _children["out-pkts1519-max-octets"] = out_pkts1519_max_octets;
     }
 
     if(out_good_pkts != nullptr)
     {
-        children["out-good-pkts"] = out_good_pkts;
+        _children["out-good-pkts"] = out_good_pkts;
     }
 
     if(out_drop_underrun != nullptr)
     {
-        children["out-drop-underrun"] = out_drop_underrun;
+        _children["out-drop-underrun"] = out_drop_underrun;
     }
 
     if(out_drop_abort != nullptr)
     {
-        children["out-drop-abort"] = out_drop_abort;
+        _children["out-drop-abort"] = out_drop_abort;
     }
 
     if(out_drop_other != nullptr)
     {
-        children["out-drop-other"] = out_drop_other;
+        _children["out-drop-other"] = out_drop_other;
     }
 
     if(out_error_other != nullptr)
     {
-        children["out-error-other"] = out_error_other;
+        _children["out-error-other"] = out_error_other;
     }
 
     if(in_error_giant != nullptr)
     {
-        children["in-error-giant"] = in_error_giant;
+        _children["in-error-giant"] = in_error_giant;
     }
 
     if(in_error_runt != nullptr)
     {
-        children["in-error-runt"] = in_error_runt;
+        _children["in-error-runt"] = in_error_runt;
     }
 
     if(in_error_jabbers != nullptr)
     {
-        children["in-error-jabbers"] = in_error_jabbers;
+        _children["in-error-jabbers"] = in_error_jabbers;
     }
 
     if(in_error_fragments != nullptr)
     {
-        children["in-error-fragments"] = in_error_fragments;
+        _children["in-error-fragments"] = in_error_fragments;
     }
 
     if(in_error_other != nullptr)
     {
-        children["in-error-other"] = in_error_other;
+        _children["in-error-other"] = in_error_other;
     }
 
     if(in_pkt64_octet != nullptr)
     {
-        children["in-pkt64-octet"] = in_pkt64_octet;
+        _children["in-pkt64-octet"] = in_pkt64_octet;
     }
 
     if(in_pkts65_to127_octets != nullptr)
     {
-        children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
+        _children["in-pkts65-to127-octets"] = in_pkts65_to127_octets;
     }
 
     if(in_pkts128_to255_octets != nullptr)
     {
-        children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
+        _children["in-pkts128-to255-octets"] = in_pkts128_to255_octets;
     }
 
     if(in_pkts256_to511_octets != nullptr)
     {
-        children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
+        _children["in-pkts256-to511-octets"] = in_pkts256_to511_octets;
     }
 
     if(in_pkts512_to1023_octets != nullptr)
     {
-        children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
+        _children["in-pkts512-to1023-octets"] = in_pkts512_to1023_octets;
     }
 
     if(in_pkts1024_to1518_octets != nullptr)
     {
-        children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
+        _children["in-pkts1024-to1518-octets"] = in_pkts1024_to1518_octets;
     }
 
     if(outpkt64octet != nullptr)
     {
-        children["outpkt64octet"] = outpkt64octet;
+        _children["outpkt64octet"] = outpkt64octet;
     }
 
     if(out_pkts65127_octets != nullptr)
     {
-        children["out-pkts65127-octets"] = out_pkts65127_octets;
+        _children["out-pkts65127-octets"] = out_pkts65127_octets;
     }
 
     if(out_pkts128255_octets != nullptr)
     {
-        children["out-pkts128255-octets"] = out_pkts128255_octets;
+        _children["out-pkts128255-octets"] = out_pkts128255_octets;
     }
 
     if(out_pkts256511_octets != nullptr)
     {
-        children["out-pkts256511-octets"] = out_pkts256511_octets;
+        _children["out-pkts256511-octets"] = out_pkts256511_octets;
     }
 
     if(out_pkts5121023_octets != nullptr)
     {
-        children["out-pkts5121023-octets"] = out_pkts5121023_octets;
+        _children["out-pkts5121023-octets"] = out_pkts5121023_octets;
     }
 
     if(out_pkts10241518_octets != nullptr)
     {
-        children["out-pkts10241518-octets"] = out_pkts10241518_octets;
+        _children["out-pkts10241518-octets"] = out_pkts10241518_octets;
     }
 
     if(rx_util != nullptr)
     {
-        children["rx-util"] = rx_util;
+        _children["rx-util"] = rx_util;
     }
 
     if(tx_util != nullptr)
     {
-        children["tx-util"] = tx_util;
+        _children["tx-util"] = tx_util;
     }
 
     if(tx_undersized_pkt != nullptr)
     {
-        children["tx-undersized-pkt"] = tx_undersized_pkt;
+        _children["tx-undersized-pkt"] = tx_undersized_pkt;
     }
 
     if(tx_oversized_pkt != nullptr)
     {
-        children["tx-oversized-pkt"] = tx_oversized_pkt;
+        _children["tx-oversized-pkt"] = tx_oversized_pkt;
     }
 
     if(tx_fragments != nullptr)
     {
-        children["tx-fragments"] = tx_fragments;
+        _children["tx-fragments"] = tx_fragments;
     }
 
     if(tx_jabber != nullptr)
     {
-        children["tx-jabber"] = tx_jabber;
+        _children["tx-jabber"] = tx_jabber;
     }
 
     if(tx_bad_fcs != nullptr)
     {
-        children["tx-bad-fcs"] = tx_bad_fcs;
+        _children["tx-bad-fcs"] = tx_bad_fcs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16446,16 +16446,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::RxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::RxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::RxPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::RxPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::RxPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16566,16 +16566,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::StatPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::StatPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::StatPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::StatPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::StatPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16686,16 +16686,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OctetStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OctetStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OctetStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OctetStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OctetStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16806,16 +16806,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OversizePktStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OversizePktStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OversizePktStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OversizePktStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OversizePktStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16926,16 +16926,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::FcsErrorsStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::FcsErrorsStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::FcsErrorsStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::FcsErrorsStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::FcsErrorsStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17046,16 +17046,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::LongFramesStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::LongFramesStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::LongFramesStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::LongFramesStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::LongFramesStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17166,16 +17166,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::JabberStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::JabberStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::JabberStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::JabberStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::JabberStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17286,16 +17286,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether64Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether64Octets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether64Octets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether64Octets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether64Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17406,16 +17406,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether65127Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether65127Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether65127Octet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether65127Octet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether65127Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17526,16 +17526,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether128255Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether128255Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether128255Octet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether128255Octet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether128255Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17646,16 +17646,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether256511Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether256511Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether256511Octet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether256511Octet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether256511Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17766,16 +17766,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether5121023Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether5121023Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether5121023Octet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether5121023Octet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether5121023Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17886,16 +17886,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether10241518Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether10241518Octet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether10241518Octet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether10241518Octet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether10241518Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18006,16 +18006,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InUcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InUcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InUcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InUcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InUcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18126,16 +18126,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18246,16 +18246,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InBcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InBcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InBcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InBcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InBcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18366,16 +18366,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutUcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutUcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutUcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutUcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutUcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18486,16 +18486,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutBcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutBcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutBcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutBcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutBcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18606,16 +18606,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutMcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutMcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutMcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutMcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutMcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18726,16 +18726,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::TxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::TxPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::TxPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::TxPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::TxPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18846,16 +18846,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::IfInErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::IfInErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::IfInErrors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::IfInErrors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::IfInErrors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18966,16 +18966,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::IfInOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::IfInOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::IfInOctets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::IfInOctets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::IfInOctets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19086,16 +19086,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatMulticastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatMulticastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatMulticastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatMulticastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatMulticastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19206,16 +19206,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatBroadcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatBroadcastPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatBroadcastPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatBroadcastPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatBroadcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19326,16 +19326,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatUndersizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatUndersizedPkt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatUndersizedPkt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatUndersizedPkt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatUndersizedPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19446,16 +19446,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutOctets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutOctets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutOctets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19566,16 +19566,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPauseFrame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPauseFrame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPauseFrame::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPauseFrame::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPauseFrame::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19686,16 +19686,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InGoodBytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InGoodBytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InGoodBytes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InGoodBytes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InGoodBytes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19806,16 +19806,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::In8021qFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::In8021qFrames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::In8021qFrames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::In8021qFrames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::In8021qFrames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19926,16 +19926,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPkts1519MaxOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPkts1519MaxOctets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPkts1519MaxOctets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPkts1519MaxOctets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPkts1519MaxOctets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20046,16 +20046,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InGoodPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InGoodPkts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InGoodPkts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InGoodPkts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InGoodPkts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20166,16 +20166,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropOverrun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropOverrun::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropOverrun::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropOverrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20286,16 +20286,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropAbort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropAbort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropAbort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropAbort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropAbort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20406,16 +20406,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidVlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidVlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidVlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20526,16 +20526,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidDmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidDmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidDmac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidDmac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidDmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20646,16 +20646,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidEncap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidEncap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidEncap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20766,16 +20766,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropOther::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropOther::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropOther::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropOther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20886,16 +20886,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMibGiant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMibGiant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMibGiant::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMibGiant::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMibGiant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21006,16 +21006,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMibJabber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMibJabber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMibJabber::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMibJabber::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMibJabber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

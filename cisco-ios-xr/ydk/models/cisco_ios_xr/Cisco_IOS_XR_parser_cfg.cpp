@@ -88,7 +88,7 @@ std::vector<std::pair<std::string, LeafData> > Parser::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> Parser::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "indentation")
     {
@@ -183,61 +183,61 @@ std::shared_ptr<Entity> Parser::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(indentation != nullptr)
     {
-        children["indentation"] = indentation;
+        _children["indentation"] = indentation;
     }
 
     if(alias != nullptr)
     {
-        children["alias"] = alias;
+        _children["alias"] = alias;
     }
 
     if(history != nullptr)
     {
-        children["history"] = history;
+        _children["history"] = history;
     }
 
     if(interactive != nullptr)
     {
-        children["interactive"] = interactive;
+        _children["interactive"] = interactive;
     }
 
     if(commit_optimized != nullptr)
     {
-        children["commit-optimized"] = commit_optimized;
+        _children["commit-optimized"] = commit_optimized;
     }
 
     if(sysadmin_login_banner != nullptr)
     {
-        children["sysadmin-login-banner"] = sysadmin_login_banner;
+        _children["sysadmin-login-banner"] = sysadmin_login_banner;
     }
 
     if(interface_display != nullptr)
     {
-        children["interface-display"] = interface_display;
+        _children["interface-display"] = interface_display;
     }
 
     if(netmask_format != nullptr)
     {
-        children["netmask-format"] = netmask_format;
+        _children["netmask-format"] = netmask_format;
     }
 
     if(configuration != nullptr)
     {
-        children["configuration"] = configuration;
+        _children["configuration"] = configuration;
     }
 
     if(submode_exit != nullptr)
     {
-        children["submode-exit"] = submode_exit;
+        _children["submode-exit"] = submode_exit;
     }
 
-    return children;
+    return _children;
 }
 
 void Parser::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -248,7 +248,7 @@ void Parser::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Parser::clone_ptr() const
+std::shared_ptr<ydk::Entity> Parser::clone_ptr() const
 {
     return std::make_shared<Parser>();
 }
@@ -328,16 +328,16 @@ std::vector<std::pair<std::string, LeafData> > Parser::Indentation::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Parser::Indentation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::Indentation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::Indentation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::Indentation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Parser::Indentation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -421,7 +421,7 @@ std::vector<std::pair<std::string, LeafData> > Parser::Alias::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Parser::Alias::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::Alias::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "execs")
     {
@@ -453,26 +453,26 @@ std::shared_ptr<Entity> Parser::Alias::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::Alias::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(execs != nullptr)
     {
-        children["execs"] = execs;
+        _children["execs"] = execs;
     }
 
     if(configurations != nullptr)
     {
-        children["configurations"] = configurations;
+        _children["configurations"] = configurations;
     }
 
     if(alls != nullptr)
     {
-        children["alls"] = alls;
+        _children["alls"] = alls;
     }
 
-    return children;
+    return _children;
 }
 
 void Parser::Alias::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -546,33 +546,33 @@ std::vector<std::pair<std::string, LeafData> > Parser::Alias::Execs::get_name_le
 
 }
 
-std::shared_ptr<Entity> Parser::Alias::Execs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::Alias::Execs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exec")
     {
-        auto c = std::make_shared<Parser::Alias::Execs::Exec>();
-        c->parent = this;
-        exec.append(c);
-        return c;
+        auto ent_ = std::make_shared<Parser::Alias::Execs::Exec>();
+        ent_->parent = this;
+        exec.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Execs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::Alias::Execs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : exec.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : exec.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Parser::Alias::Execs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -643,16 +643,16 @@ std::vector<std::pair<std::string, LeafData> > Parser::Alias::Execs::Exec::get_n
 
 }
 
-std::shared_ptr<Entity> Parser::Alias::Execs::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::Alias::Execs::Exec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Execs::Exec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::Alias::Execs::Exec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Parser::Alias::Execs::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -746,33 +746,33 @@ std::vector<std::pair<std::string, LeafData> > Parser::Alias::Configurations::ge
 
 }
 
-std::shared_ptr<Entity> Parser::Alias::Configurations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::Alias::Configurations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "configuration")
     {
-        auto c = std::make_shared<Parser::Alias::Configurations::Configuration>();
-        c->parent = this;
-        configuration.append(c);
-        return c;
+        auto ent_ = std::make_shared<Parser::Alias::Configurations::Configuration>();
+        ent_->parent = this;
+        configuration.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Configurations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::Alias::Configurations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : configuration.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : configuration.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Parser::Alias::Configurations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -843,16 +843,16 @@ std::vector<std::pair<std::string, LeafData> > Parser::Alias::Configurations::Co
 
 }
 
-std::shared_ptr<Entity> Parser::Alias::Configurations::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::Alias::Configurations::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Configurations::Configuration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::Alias::Configurations::Configuration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Parser::Alias::Configurations::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -946,33 +946,33 @@ std::vector<std::pair<std::string, LeafData> > Parser::Alias::Alls::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Parser::Alias::Alls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::Alias::Alls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
-        auto c = std::make_shared<Parser::Alias::Alls::All>();
-        c->parent = this;
-        all.append(c);
-        return c;
+        auto ent_ = std::make_shared<Parser::Alias::Alls::All>();
+        ent_->parent = this;
+        all.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Alls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::Alias::Alls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Parser::Alias::Alls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1043,16 +1043,16 @@ std::vector<std::pair<std::string, LeafData> > Parser::Alias::Alls::All::get_nam
 
 }
 
-std::shared_ptr<Entity> Parser::Alias::Alls::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::Alias::Alls::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Alls::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::Alias::Alls::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Parser::Alias::Alls::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1138,16 +1138,16 @@ std::vector<std::pair<std::string, LeafData> > Parser::History::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Parser::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Parser::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1223,16 +1223,16 @@ std::vector<std::pair<std::string, LeafData> > Parser::Interactive::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Parser::Interactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::Interactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::Interactive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::Interactive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Parser::Interactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1308,16 +1308,16 @@ std::vector<std::pair<std::string, LeafData> > Parser::CommitOptimized::get_name
 
 }
 
-std::shared_ptr<Entity> Parser::CommitOptimized::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::CommitOptimized::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::CommitOptimized::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::CommitOptimized::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Parser::CommitOptimized::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1393,16 +1393,16 @@ std::vector<std::pair<std::string, LeafData> > Parser::SysadminLoginBanner::get_
 
 }
 
-std::shared_ptr<Entity> Parser::SysadminLoginBanner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::SysadminLoginBanner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::SysadminLoginBanner::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::SysadminLoginBanner::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Parser::SysadminLoginBanner::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1478,16 +1478,16 @@ std::vector<std::pair<std::string, LeafData> > Parser::InterfaceDisplay::get_nam
 
 }
 
-std::shared_ptr<Entity> Parser::InterfaceDisplay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::InterfaceDisplay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::InterfaceDisplay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::InterfaceDisplay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Parser::InterfaceDisplay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1563,16 +1563,16 @@ std::vector<std::pair<std::string, LeafData> > Parser::NetmaskFormat::get_name_l
 
 }
 
-std::shared_ptr<Entity> Parser::NetmaskFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::NetmaskFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::NetmaskFormat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::NetmaskFormat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Parser::NetmaskFormat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1648,7 +1648,7 @@ std::vector<std::pair<std::string, LeafData> > Parser::Configuration::get_name_l
 
 }
 
-std::shared_ptr<Entity> Parser::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disable")
     {
@@ -1662,16 +1662,16 @@ std::shared_ptr<Entity> Parser::Configuration::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::Configuration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::Configuration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disable != nullptr)
     {
-        children["disable"] = disable;
+        _children["disable"] = disable;
     }
 
-    return children;
+    return _children;
 }
 
 void Parser::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1737,16 +1737,16 @@ std::vector<std::pair<std::string, LeafData> > Parser::Configuration::Disable::g
 
 }
 
-std::shared_ptr<Entity> Parser::Configuration::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::Configuration::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::Configuration::Disable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::Configuration::Disable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Parser::Configuration::Disable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1822,16 +1822,16 @@ std::vector<std::pair<std::string, LeafData> > Parser::SubmodeExit::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Parser::SubmodeExit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Parser::SubmodeExit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Parser::SubmodeExit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::SubmodeExit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Parser::SubmodeExit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

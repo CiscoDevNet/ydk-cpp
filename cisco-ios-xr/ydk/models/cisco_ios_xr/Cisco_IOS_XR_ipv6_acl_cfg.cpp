@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::get_name_le
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefixes")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefixes != nullptr)
     {
-        children["prefixes"] = prefixes;
+        _children["prefixes"] = prefixes;
     }
 
     if(log_update != nullptr)
     {
-        children["log-update"] = log_update;
+        _children["log-update"] = log_update;
     }
 
     if(accesses != nullptr)
     {
-        children["accesses"] = accesses;
+        _children["accesses"] = accesses;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void Ipv6AclAndPrefixList::set_filter(const std::string & value_path, YFilter yf
 {
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::clone_ptr() const
 {
     return std::make_shared<Ipv6AclAndPrefixList>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Prefixes::g
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
-        auto c = std::make_shared<Ipv6AclAndPrefixList::Prefixes::Prefix>();
-        c->parent = this;
-        prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv6AclAndPrefixList::Prefixes::Prefix>();
+        ent_->parent = this;
+        prefix.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Prefixes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Prefixes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prefix.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Prefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -308,7 +308,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Prefixes::P
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Prefixes::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Prefixes::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-list-entries")
     {
@@ -322,16 +322,16 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Prefixes::Prefix::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Prefixes::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Prefixes::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_list_entries != nullptr)
     {
-        children["prefix-list-entries"] = prefix_list_entries;
+        _children["prefix-list-entries"] = prefix_list_entries;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Prefixes::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -408,33 +408,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Prefixes::P
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-list-entry")
     {
-        auto c = std::make_shared<Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry>();
-        c->parent = this;
-        prefix_list_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry>();
+        ent_->parent = this;
+        prefix_list_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prefix_list_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prefix_list_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -542,16 +542,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Prefixes::P
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -751,16 +751,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::LogUpdate::
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::LogUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::LogUpdate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::LogUpdate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::LogUpdate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::LogUpdate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -854,33 +854,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::g
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access")
     {
-        auto c = std::make_shared<Ipv6AclAndPrefixList::Accesses::Access>();
-        c->parent = this;
-        access.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv6AclAndPrefixList::Accesses::Access>();
+        ent_->parent = this;
+        access.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -952,7 +952,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-list-entries")
     {
@@ -966,16 +966,16 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_list_entries != nullptr)
     {
-        children["access-list-entries"] = access_list_entries;
+        _children["access-list-entries"] = access_list_entries;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1052,33 +1052,33 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-list-entry")
     {
-        auto c = std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry>();
-        c->parent = this;
-        access_list_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry>();
+        ent_->parent = this;
+        access_list_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_list_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_list_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1259,7 +1259,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source-network")
     {
@@ -1363,66 +1363,66 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntrie
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source_network != nullptr)
     {
-        children["source-network"] = source_network;
+        _children["source-network"] = source_network;
     }
 
     if(destination_network != nullptr)
     {
-        children["destination-network"] = destination_network;
+        _children["destination-network"] = destination_network;
     }
 
     if(source_port != nullptr)
     {
-        children["source-port"] = source_port;
+        _children["source-port"] = source_port;
     }
 
     if(destination_port != nullptr)
     {
-        children["destination-port"] = destination_port;
+        _children["destination-port"] = destination_port;
     }
 
     if(icmp != nullptr)
     {
-        children["icmp"] = icmp;
+        _children["icmp"] = icmp;
     }
 
     if(tcp != nullptr)
     {
-        children["tcp"] = tcp;
+        _children["tcp"] = tcp;
     }
 
     if(packet_length != nullptr)
     {
-        children["packet-length"] = packet_length;
+        _children["packet-length"] = packet_length;
     }
 
     if(time_to_live != nullptr)
     {
-        children["time-to-live"] = time_to_live;
+        _children["time-to-live"] = time_to_live;
     }
 
     if(dscpvalues != nullptr)
     {
-        children["DSCPValues"] = dscpvalues;
+        _children["DSCPValues"] = dscpvalues;
     }
 
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
     if(header_flags != nullptr)
     {
-        children["header-flags"] = header_flags;
+        _children["header-flags"] = header_flags;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1689,16 +1689,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1795,16 +1795,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1901,16 +1901,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2007,16 +2007,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2105,16 +2105,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2191,16 +2191,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2293,16 +2293,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2399,16 +2399,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2505,16 +2505,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2616,7 +2616,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop-1")
     {
@@ -2648,26 +2648,26 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntrie
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop_1 != nullptr)
     {
-        children["next-hop-1"] = next_hop_1;
+        _children["next-hop-1"] = next_hop_1;
     }
 
     if(next_hop_2 != nullptr)
     {
-        children["next-hop-2"] = next_hop_2;
+        _children["next-hop-2"] = next_hop_2;
     }
 
     if(next_hop_3 != nullptr)
     {
-        children["next-hop-3"] = next_hop_3;
+        _children["next-hop-3"] = next_hop_3;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2744,16 +2744,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2850,16 +2850,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2956,16 +2956,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3070,16 +3070,16 @@ std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::A
 
 }
 
-std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::HeaderFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::HeaderFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::HeaderFlags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::HeaderFlags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::HeaderFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

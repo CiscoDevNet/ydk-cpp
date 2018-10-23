@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > ArpData::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> ArpData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "arp-vrf")
     {
-        auto c = std::make_shared<ArpData::ArpVrf>();
-        c->parent = this;
-        arp_vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<ArpData::ArpVrf>();
+        ent_->parent = this;
+        arp_vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : arp_vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : arp_vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ArpData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void ArpData::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ArpData::clone_ptr() const
+std::shared_ptr<ydk::Entity> ArpData::clone_ptr() const
 {
     return std::make_shared<ArpData>();
 }
@@ -190,33 +190,33 @@ std::vector<std::pair<std::string, LeafData> > ArpData::ArpVrf::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> ArpData::ArpVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpData::ArpVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "arp-oper")
     {
-        auto c = std::make_shared<ArpData::ArpVrf::ArpOper>();
-        c->parent = this;
-        arp_oper.append(c);
-        return c;
+        auto ent_ = std::make_shared<ArpData::ArpVrf::ArpOper>();
+        ent_->parent = this;
+        arp_oper.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpData::ArpVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpData::ArpVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : arp_oper.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : arp_oper.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ArpData::ArpVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -314,16 +314,16 @@ std::vector<std::pair<std::string, LeafData> > ArpData::ArpVrf::ArpOper::get_nam
 
 }
 
-std::shared_ptr<Entity> ArpData::ArpVrf::ArpOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ArpData::ArpVrf::ArpOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ArpData::ArpVrf::ArpOper::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ArpData::ArpVrf::ArpOper::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ArpData::ArpVrf::ArpOper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

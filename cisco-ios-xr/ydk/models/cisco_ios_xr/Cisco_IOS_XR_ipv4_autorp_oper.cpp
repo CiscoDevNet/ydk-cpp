@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> AutoRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "standby")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> AutoRp::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(standby != nullptr)
     {
-        children["standby"] = standby;
+        _children["standby"] = standby;
     }
 
     if(active != nullptr)
     {
-        children["active"] = active;
+        _children["active"] = active;
     }
 
-    return children;
+    return _children;
 }
 
 void AutoRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void AutoRp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> AutoRp::clone_ptr() const
+std::shared_ptr<ydk::Entity> AutoRp::clone_ptr() const
 {
     return std::make_shared<AutoRp>();
 }
@@ -188,7 +188,7 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Standby::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> AutoRp::Standby::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Standby::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "candidate-rp")
     {
@@ -211,21 +211,21 @@ std::shared_ptr<Entity> AutoRp::Standby::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Standby::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(candidate_rp != nullptr)
     {
-        children["candidate-rp"] = candidate_rp;
+        _children["candidate-rp"] = candidate_rp;
     }
 
     if(mapping_agent != nullptr)
     {
-        children["mapping-agent"] = mapping_agent;
+        _children["mapping-agent"] = mapping_agent;
     }
 
-    return children;
+    return _children;
 }
 
 void AutoRp::Standby::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -295,7 +295,7 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Standby::CandidateRp::get
 
 }
 
-std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Standby::CandidateRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "traffic")
     {
@@ -318,21 +318,21 @@ std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Standby::CandidateRp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(traffic != nullptr)
     {
-        children["traffic"] = traffic;
+        _children["traffic"] = traffic;
     }
 
     if(rps != nullptr)
     {
-        children["rps"] = rps;
+        _children["rps"] = rps;
     }
 
-    return children;
+    return _children;
 }
 
 void AutoRp::Standby::CandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -402,16 +402,16 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Standby::CandidateRp::Tra
 
 }
 
-std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Standby::CandidateRp::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::Traffic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Standby::CandidateRp::Traffic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AutoRp::Standby::CandidateRp::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -505,33 +505,33 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Standby::CandidateRp::Rps
 
 }
 
-std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::Rps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Standby::CandidateRp::Rps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rp")
     {
-        auto c = std::make_shared<AutoRp::Standby::CandidateRp::Rps::Rp>();
-        c->parent = this;
-        rp.append(c);
-        return c;
+        auto ent_ = std::make_shared<AutoRp::Standby::CandidateRp::Rps::Rp>();
+        ent_->parent = this;
+        rp.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::Rps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Standby::CandidateRp::Rps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AutoRp::Standby::CandidateRp::Rps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -621,16 +621,16 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Standby::CandidateRp::Rps
 
 }
 
-std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::Rps::Rp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Standby::CandidateRp::Rps::Rp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::Rps::Rp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Standby::CandidateRp::Rps::Rp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AutoRp::Standby::CandidateRp::Rps::Rp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -774,7 +774,7 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Standby::MappingAgent::ge
 
 }
 
-std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Standby::MappingAgent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "traffic")
     {
@@ -806,26 +806,26 @@ std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Standby::MappingAgent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(traffic != nullptr)
     {
-        children["traffic"] = traffic;
+        _children["traffic"] = traffic;
     }
 
     if(rp_addresses != nullptr)
     {
-        children["rp-addresses"] = rp_addresses;
+        _children["rp-addresses"] = rp_addresses;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
-    return children;
+    return _children;
 }
 
 void AutoRp::Standby::MappingAgent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -903,16 +903,16 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Standby::MappingAgent::Tr
 
 }
 
-std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Standby::MappingAgent::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::Traffic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Standby::MappingAgent::Traffic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AutoRp::Standby::MappingAgent::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1026,33 +1026,33 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Standby::MappingAgent::Rp
 
 }
 
-std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Standby::MappingAgent::RpAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rp-address")
     {
-        auto c = std::make_shared<AutoRp::Standby::MappingAgent::RpAddresses::RpAddress>();
-        c->parent = this;
-        rp_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<AutoRp::Standby::MappingAgent::RpAddresses::RpAddress>();
+        ent_->parent = this;
+        rp_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::RpAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Standby::MappingAgent::RpAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rp_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rp_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AutoRp::Standby::MappingAgent::RpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1143,33 +1143,33 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Standby::MappingAgent::Rp
 
 }
 
-std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : range.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1292,16 +1292,16 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Standby::MappingAgent::Rp
 
 }
 
-std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1445,16 +1445,16 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Standby::MappingAgent::Su
 
 }
 
-std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Standby::MappingAgent::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Standby::MappingAgent::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AutoRp::Standby::MappingAgent::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1554,7 +1554,7 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Active::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> AutoRp::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "candidate-rp")
     {
@@ -1577,21 +1577,21 @@ std::shared_ptr<Entity> AutoRp::Active::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(candidate_rp != nullptr)
     {
-        children["candidate-rp"] = candidate_rp;
+        _children["candidate-rp"] = candidate_rp;
     }
 
     if(mapping_agent != nullptr)
     {
-        children["mapping-agent"] = mapping_agent;
+        _children["mapping-agent"] = mapping_agent;
     }
 
-    return children;
+    return _children;
 }
 
 void AutoRp::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1661,7 +1661,7 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Active::CandidateRp::get_
 
 }
 
-std::shared_ptr<Entity> AutoRp::Active::CandidateRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Active::CandidateRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "traffic")
     {
@@ -1684,21 +1684,21 @@ std::shared_ptr<Entity> AutoRp::Active::CandidateRp::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Active::CandidateRp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(traffic != nullptr)
     {
-        children["traffic"] = traffic;
+        _children["traffic"] = traffic;
     }
 
     if(rps != nullptr)
     {
-        children["rps"] = rps;
+        _children["rps"] = rps;
     }
 
-    return children;
+    return _children;
 }
 
 void AutoRp::Active::CandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1768,16 +1768,16 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Active::CandidateRp::Traf
 
 }
 
-std::shared_ptr<Entity> AutoRp::Active::CandidateRp::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Active::CandidateRp::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::Traffic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Active::CandidateRp::Traffic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AutoRp::Active::CandidateRp::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1871,33 +1871,33 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Active::CandidateRp::Rps:
 
 }
 
-std::shared_ptr<Entity> AutoRp::Active::CandidateRp::Rps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Active::CandidateRp::Rps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rp")
     {
-        auto c = std::make_shared<AutoRp::Active::CandidateRp::Rps::Rp>();
-        c->parent = this;
-        rp.append(c);
-        return c;
+        auto ent_ = std::make_shared<AutoRp::Active::CandidateRp::Rps::Rp>();
+        ent_->parent = this;
+        rp.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::Rps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Active::CandidateRp::Rps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AutoRp::Active::CandidateRp::Rps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1987,16 +1987,16 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Active::CandidateRp::Rps:
 
 }
 
-std::shared_ptr<Entity> AutoRp::Active::CandidateRp::Rps::Rp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Active::CandidateRp::Rps::Rp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::Rps::Rp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Active::CandidateRp::Rps::Rp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AutoRp::Active::CandidateRp::Rps::Rp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2140,7 +2140,7 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Active::MappingAgent::get
 
 }
 
-std::shared_ptr<Entity> AutoRp::Active::MappingAgent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Active::MappingAgent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "traffic")
     {
@@ -2172,26 +2172,26 @@ std::shared_ptr<Entity> AutoRp::Active::MappingAgent::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Active::MappingAgent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(traffic != nullptr)
     {
-        children["traffic"] = traffic;
+        _children["traffic"] = traffic;
     }
 
     if(rp_addresses != nullptr)
     {
-        children["rp-addresses"] = rp_addresses;
+        _children["rp-addresses"] = rp_addresses;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
-    return children;
+    return _children;
 }
 
 void AutoRp::Active::MappingAgent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2269,16 +2269,16 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Active::MappingAgent::Tra
 
 }
 
-std::shared_ptr<Entity> AutoRp::Active::MappingAgent::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Active::MappingAgent::Traffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::Traffic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Active::MappingAgent::Traffic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AutoRp::Active::MappingAgent::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2392,33 +2392,33 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Active::MappingAgent::RpA
 
 }
 
-std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Active::MappingAgent::RpAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rp-address")
     {
-        auto c = std::make_shared<AutoRp::Active::MappingAgent::RpAddresses::RpAddress>();
-        c->parent = this;
-        rp_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<AutoRp::Active::MappingAgent::RpAddresses::RpAddress>();
+        ent_->parent = this;
+        rp_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Active::MappingAgent::RpAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rp_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rp_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AutoRp::Active::MappingAgent::RpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2509,33 +2509,33 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Active::MappingAgent::RpA
 
 }
 
-std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : range.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AutoRp::Active::MappingAgent::RpAddresses::RpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2658,16 +2658,16 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Active::MappingAgent::RpA
 
 }
 
-std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2811,16 +2811,16 @@ std::vector<std::pair<std::string, LeafData> > AutoRp::Active::MappingAgent::Sum
 
 }
 
-std::shared_ptr<Entity> AutoRp::Active::MappingAgent::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AutoRp::Active::MappingAgent::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AutoRp::Active::MappingAgent::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AutoRp::Active::MappingAgent::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

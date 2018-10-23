@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Interfaces::clone_ptr() const
+std::shared_ptr<ydk::Entity> Interfaces::clone_ptr() const
 {
     return std::make_shared<Interfaces>();
 }
@@ -343,7 +343,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::get_name_l
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -356,10 +356,10 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
 
     if(child_yang_name == "diffserv-info")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo>();
-        c->parent = this;
-        diffserv_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo>();
+        ent_->parent = this;
+        diffserv_info.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "v4-protocol-stats")
@@ -382,10 +382,10 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
 
     if(child_yang_name == "lag-aggregate-state")
     {
-        auto c = std::make_shared<Interfaces::Interface::LagAggregateState>();
-        c->parent = this;
-        lag_aggregate_state.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::LagAggregateState>();
+        ent_->parent = this;
+        lag_aggregate_state.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ether-state")
@@ -427,64 +427,64 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    count = 0;
-    for (auto c : diffserv_info.entities())
+    count_ = 0;
+    for (auto ent_ : diffserv_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(v4_protocol_stats != nullptr)
     {
-        children["v4-protocol-stats"] = v4_protocol_stats;
+        _children["v4-protocol-stats"] = v4_protocol_stats;
     }
 
     if(v6_protocol_stats != nullptr)
     {
-        children["v6-protocol-stats"] = v6_protocol_stats;
+        _children["v6-protocol-stats"] = v6_protocol_stats;
     }
 
-    count = 0;
-    for (auto c : lag_aggregate_state.entities())
+    count_ = 0;
+    for (auto ent_ : lag_aggregate_state.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(ether_state != nullptr)
     {
-        children["ether-state"] = ether_state;
+        _children["ether-state"] = ether_state;
     }
 
     if(ether_stats != nullptr)
     {
-        children["ether-stats"] = ether_stats;
+        _children["ether-stats"] = ether_stats;
     }
 
     if(serial_state != nullptr)
     {
-        children["serial-state"] = serial_state;
+        _children["serial-state"] = serial_state;
     }
 
     if(serial_stats != nullptr)
     {
-        children["serial-stats"] = serial_stats;
+        _children["serial-stats"] = serial_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -833,16 +833,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Statistics
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1130,50 +1130,50 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "diffserv-target-classifier-stats")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats>();
-        c->parent = this;
-        diffserv_target_classifier_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats>();
+        ent_->parent = this;
+        diffserv_target_classifier_stats.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "priority-oper-list")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList>();
-        c->parent = this;
-        priority_oper_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList>();
+        ent_->parent = this;
+        priority_oper_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : diffserv_target_classifier_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : diffserv_target_classifier_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : priority_oper_list.entities())
+    count_ = 0;
+    for (auto ent_ : priority_oper_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1293,7 +1293,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "classifier-entry-stats")
     {
@@ -1306,10 +1306,10 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
 
     if(child_yang_name == "meter-stats")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats>();
-        c->parent = this;
-        meter_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats>();
+        ent_->parent = this;
+        meter_stats.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queuing-stats")
@@ -1323,10 +1323,10 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
 
     if(child_yang_name == "subclass-list")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList>();
-        c->parent = this;
-        subclass_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList>();
+        ent_->parent = this;
+        subclass_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "marking-stats")
@@ -1341,44 +1341,44 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(classifier_entry_stats != nullptr)
     {
-        children["classifier-entry-stats"] = classifier_entry_stats;
+        _children["classifier-entry-stats"] = classifier_entry_stats;
     }
 
-    count = 0;
-    for (auto c : meter_stats.entities())
+    count_ = 0;
+    for (auto ent_ : meter_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(queuing_stats != nullptr)
     {
-        children["queuing-stats"] = queuing_stats;
+        _children["queuing-stats"] = queuing_stats;
     }
 
-    count = 0;
-    for (auto c : subclass_list.entities())
+    count_ = 0;
+    for (auto ent_ : subclass_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(marking_stats != nullptr)
     {
-        children["marking-stats"] = marking_stats;
+        _children["marking-stats"] = marking_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1465,16 +1465,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::ClassifierEntryStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::ClassifierEntryStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::ClassifierEntryStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::ClassifierEntryStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::ClassifierEntryStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1580,16 +1580,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1727,7 +1727,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "wred-stats")
     {
@@ -1750,21 +1750,21 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(wred_stats != nullptr)
     {
-        children["wred-stats"] = wred_stats;
+        _children["wred-stats"] = wred_stats;
     }
 
     if(cac_stats != nullptr)
     {
-        children["cac-stats"] = cac_stats;
+        _children["cac-stats"] = cac_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1927,16 +1927,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::WredStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::WredStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::WredStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::WredStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::WredStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2119,16 +2119,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::CacStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::CacStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::CacStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2314,14 +2314,14 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cos-counters")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosCounters>();
-        c->parent = this;
-        cos_counters.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosCounters>();
+        ent_->parent = this;
+        cos_counters.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "cos-default")
@@ -2335,10 +2335,10 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
 
     if(child_yang_name == "dscp-counters")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpCounters>();
-        c->parent = this;
-        dscp_counters.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpCounters>();
+        ent_->parent = this;
+        dscp_counters.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "dscp-default")
@@ -2352,10 +2352,10 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
 
     if(child_yang_name == "discard-class-counters")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscardClassCounters>();
-        c->parent = this;
-        discard_class_counters.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscardClassCounters>();
+        ent_->parent = this;
+        discard_class_counters.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "disc-class-default")
@@ -2369,10 +2369,10 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
 
     if(child_yang_name == "precedence-counters")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecedenceCounters>();
-        c->parent = this;
-        precedence_counters.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecedenceCounters>();
+        ent_->parent = this;
+        precedence_counters.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "prec-default")
@@ -2386,10 +2386,10 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
 
     if(child_yang_name == "mpls-exp-counters")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpCounters>();
-        c->parent = this;
-        mpls_exp_counters.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpCounters>();
+        ent_->parent = this;
+        mpls_exp_counters.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "mpls-exp-default")
@@ -2403,10 +2403,10 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
 
     if(child_yang_name == "dei-counters")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCounters>();
-        c->parent = this;
-        dei_counters.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCounters>();
+        ent_->parent = this;
+        dei_counters.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "dei-counts-default")
@@ -2420,10 +2420,10 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
 
     if(child_yang_name == "clp-counters")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpCounters>();
-        c->parent = this;
-        clp_counters.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpCounters>();
+        ent_->parent = this;
+        clp_counters.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "clp-default")
@@ -2438,109 +2438,109 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cos_counters.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cos_counters.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(cos_default != nullptr)
     {
-        children["cos-default"] = cos_default;
+        _children["cos-default"] = cos_default;
     }
 
-    count = 0;
-    for (auto c : dscp_counters.entities())
+    count_ = 0;
+    for (auto ent_ : dscp_counters.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(dscp_default != nullptr)
     {
-        children["dscp-default"] = dscp_default;
+        _children["dscp-default"] = dscp_default;
     }
 
-    count = 0;
-    for (auto c : discard_class_counters.entities())
+    count_ = 0;
+    for (auto ent_ : discard_class_counters.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(disc_class_default != nullptr)
     {
-        children["disc-class-default"] = disc_class_default;
+        _children["disc-class-default"] = disc_class_default;
     }
 
-    count = 0;
-    for (auto c : precedence_counters.entities())
+    count_ = 0;
+    for (auto ent_ : precedence_counters.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(prec_default != nullptr)
     {
-        children["prec-default"] = prec_default;
+        _children["prec-default"] = prec_default;
     }
 
-    count = 0;
-    for (auto c : mpls_exp_counters.entities())
+    count_ = 0;
+    for (auto ent_ : mpls_exp_counters.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(mpls_exp_default != nullptr)
     {
-        children["mpls-exp-default"] = mpls_exp_default;
+        _children["mpls-exp-default"] = mpls_exp_default;
     }
 
-    count = 0;
-    for (auto c : dei_counters.entities())
+    count_ = 0;
+    for (auto ent_ : dei_counters.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(dei_counts_default != nullptr)
     {
-        children["dei-counts-default"] = dei_counts_default;
+        _children["dei-counts-default"] = dei_counts_default;
     }
 
-    count = 0;
-    for (auto c : clp_counters.entities())
+    count_ = 0;
+    for (auto ent_ : clp_counters.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(clp_default != nullptr)
     {
-        children["clp-default"] = clp_default;
+        _children["clp-default"] = clp_default;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2639,16 +2639,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2807,16 +2807,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosDefault::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosDefault::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosDefault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2965,16 +2965,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3133,16 +3133,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpDefault::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpDefault::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpDefault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3291,16 +3291,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscardClassCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscardClassCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscardClassCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscardClassCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscardClassCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3459,16 +3459,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscClassDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscClassDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscClassDefault::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscClassDefault::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscClassDefault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3617,16 +3617,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecedenceCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecedenceCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecedenceCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecedenceCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecedenceCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3785,16 +3785,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecDefault::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecDefault::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecDefault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3943,16 +3943,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4111,16 +4111,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpDefault::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpDefault::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpDefault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4269,16 +4269,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4437,16 +4437,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCountsDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCountsDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCountsDefault::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCountsDefault::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCountsDefault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4590,16 +4590,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4748,16 +4748,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpDefault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpDefault::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpDefault::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpDefault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4944,7 +4944,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "marking-dscp-stats-val")
     {
@@ -5111,101 +5111,101 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(marking_dscp_stats_val != nullptr)
     {
-        children["marking-dscp-stats-val"] = marking_dscp_stats_val;
+        _children["marking-dscp-stats-val"] = marking_dscp_stats_val;
     }
 
     if(marking_dscp_tunnel_stats_val != nullptr)
     {
-        children["marking-dscp-tunnel-stats-val"] = marking_dscp_tunnel_stats_val;
+        _children["marking-dscp-tunnel-stats-val"] = marking_dscp_tunnel_stats_val;
     }
 
     if(marking_cos_stats_val != nullptr)
     {
-        children["marking-cos-stats-val"] = marking_cos_stats_val;
+        _children["marking-cos-stats-val"] = marking_cos_stats_val;
     }
 
     if(marking_cos_inner_stats_val != nullptr)
     {
-        children["marking-cos-inner-stats-val"] = marking_cos_inner_stats_val;
+        _children["marking-cos-inner-stats-val"] = marking_cos_inner_stats_val;
     }
 
     if(marking_discard_class_stats_val != nullptr)
     {
-        children["marking-discard-class-stats-val"] = marking_discard_class_stats_val;
+        _children["marking-discard-class-stats-val"] = marking_discard_class_stats_val;
     }
 
     if(marking_qos_grp_stats_val != nullptr)
     {
-        children["marking-qos-grp-stats-val"] = marking_qos_grp_stats_val;
+        _children["marking-qos-grp-stats-val"] = marking_qos_grp_stats_val;
     }
 
     if(marking_prec_stats_val != nullptr)
     {
-        children["marking-prec-stats-val"] = marking_prec_stats_val;
+        _children["marking-prec-stats-val"] = marking_prec_stats_val;
     }
 
     if(marking_prec_tunnel_stats_val != nullptr)
     {
-        children["marking-prec-tunnel-stats-val"] = marking_prec_tunnel_stats_val;
+        _children["marking-prec-tunnel-stats-val"] = marking_prec_tunnel_stats_val;
     }
 
     if(marking_mpls_exp_imp_stats_val != nullptr)
     {
-        children["marking-mpls-exp-imp-stats-val"] = marking_mpls_exp_imp_stats_val;
+        _children["marking-mpls-exp-imp-stats-val"] = marking_mpls_exp_imp_stats_val;
     }
 
     if(marking_mpls_exp_top_stats_val != nullptr)
     {
-        children["marking-mpls-exp-top-stats-val"] = marking_mpls_exp_top_stats_val;
+        _children["marking-mpls-exp-top-stats-val"] = marking_mpls_exp_top_stats_val;
     }
 
     if(marking_fr_de_stats_val != nullptr)
     {
-        children["marking-fr-de-stats-val"] = marking_fr_de_stats_val;
+        _children["marking-fr-de-stats-val"] = marking_fr_de_stats_val;
     }
 
     if(marking_fr_fecn_becn_stats_val != nullptr)
     {
-        children["marking-fr-fecn-becn-stats-val"] = marking_fr_fecn_becn_stats_val;
+        _children["marking-fr-fecn-becn-stats-val"] = marking_fr_fecn_becn_stats_val;
     }
 
     if(marking_atm_clp_stats_val != nullptr)
     {
-        children["marking-atm-clp-stats-val"] = marking_atm_clp_stats_val;
+        _children["marking-atm-clp-stats-val"] = marking_atm_clp_stats_val;
     }
 
     if(marking_vlan_inner_stats_val != nullptr)
     {
-        children["marking-vlan-inner-stats-val"] = marking_vlan_inner_stats_val;
+        _children["marking-vlan-inner-stats-val"] = marking_vlan_inner_stats_val;
     }
 
     if(marking_dei_stats_val != nullptr)
     {
-        children["marking-dei-stats-val"] = marking_dei_stats_val;
+        _children["marking-dei-stats-val"] = marking_dei_stats_val;
     }
 
     if(marking_dei_imp_stats_val != nullptr)
     {
-        children["marking-dei-imp-stats-val"] = marking_dei_imp_stats_val;
+        _children["marking-dei-imp-stats-val"] = marking_dei_imp_stats_val;
     }
 
     if(marking_srp_priority_stats_val != nullptr)
     {
-        children["marking-srp-priority-stats-val"] = marking_srp_priority_stats_val;
+        _children["marking-srp-priority-stats-val"] = marking_srp_priority_stats_val;
     }
 
     if(marking_wlan_user_priority_stats_val != nullptr)
     {
-        children["marking-wlan-user-priority-stats-val"] = marking_wlan_user_priority_stats_val;
+        _children["marking-wlan-user-priority-stats-val"] = marking_wlan_user_priority_stats_val;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5268,16 +5268,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5360,16 +5360,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpTunnelStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpTunnelStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpTunnelStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpTunnelStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpTunnelStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5452,16 +5452,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5544,16 +5544,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosInnerStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosInnerStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosInnerStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosInnerStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosInnerStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5636,16 +5636,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDiscardClassStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDiscardClassStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDiscardClassStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDiscardClassStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDiscardClassStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5728,16 +5728,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingQosGrpStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingQosGrpStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingQosGrpStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingQosGrpStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingQosGrpStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5820,16 +5820,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5912,16 +5912,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecTunnelStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecTunnelStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecTunnelStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecTunnelStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecTunnelStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6004,16 +6004,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpImpStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpImpStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpImpStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpImpStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpImpStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6096,16 +6096,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpTopStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpTopStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpTopStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpTopStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpTopStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6188,16 +6188,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrDeStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrDeStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrDeStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrDeStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrDeStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6280,16 +6280,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrFecnBecnStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrFecnBecnStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrFecnBecnStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrFecnBecnStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrFecnBecnStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6372,16 +6372,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingAtmClpStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingAtmClpStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingAtmClpStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingAtmClpStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingAtmClpStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6464,16 +6464,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingVlanInnerStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingVlanInnerStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingVlanInnerStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingVlanInnerStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingVlanInnerStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6556,16 +6556,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6648,16 +6648,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiImpStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiImpStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiImpStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiImpStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiImpStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6740,16 +6740,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingSrpPriorityStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingSrpPriorityStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingSrpPriorityStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingSrpPriorityStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingSrpPriorityStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6832,16 +6832,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingWlanUserPriorityStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingWlanUserPriorityStatsVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingWlanUserPriorityStatsVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingWlanUserPriorityStatsVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingWlanUserPriorityStatsVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6985,7 +6985,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "agg-priority-stats")
     {
@@ -7007,107 +7007,107 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::g
 
     if(child_yang_name == "qlimit-cos-thresh-list")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList>();
-        c->parent = this;
-        qlimit_cos_thresh_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList>();
+        ent_->parent = this;
+        qlimit_cos_thresh_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "qlimit-disc-class-thresh-list")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList>();
-        c->parent = this;
-        qlimit_disc_class_thresh_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList>();
+        ent_->parent = this;
+        qlimit_disc_class_thresh_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "qlimit-qos-grp-thresh-list")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList>();
-        c->parent = this;
-        qlimit_qos_grp_thresh_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList>();
+        ent_->parent = this;
+        qlimit_qos_grp_thresh_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "qlimit-mpls-exp-thresh-list")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList>();
-        c->parent = this;
-        qlimit_mpls_exp_thresh_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList>();
+        ent_->parent = this;
+        qlimit_mpls_exp_thresh_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "qlimit-dscp-thresh-list")
     {
-        auto c = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList>();
-        c->parent = this;
-        qlimit_dscp_thresh_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList>();
+        ent_->parent = this;
+        qlimit_dscp_thresh_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(agg_priority_stats != nullptr)
     {
-        children["agg-priority-stats"] = agg_priority_stats;
+        _children["agg-priority-stats"] = agg_priority_stats;
     }
 
     if(qlimit_default_thresh != nullptr)
     {
-        children["qlimit-default-thresh"] = qlimit_default_thresh;
+        _children["qlimit-default-thresh"] = qlimit_default_thresh;
     }
 
-    count = 0;
-    for (auto c : qlimit_cos_thresh_list.entities())
+    count_ = 0;
+    for (auto ent_ : qlimit_cos_thresh_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : qlimit_disc_class_thresh_list.entities())
+    count_ = 0;
+    for (auto ent_ : qlimit_disc_class_thresh_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : qlimit_qos_grp_thresh_list.entities())
+    count_ = 0;
+    for (auto ent_ : qlimit_qos_grp_thresh_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : qlimit_mpls_exp_thresh_list.entities())
+    count_ = 0;
+    for (auto ent_ : qlimit_mpls_exp_thresh_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : qlimit_dscp_thresh_list.entities())
+    count_ = 0;
+    for (auto ent_ : qlimit_dscp_thresh_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::PriorityOperList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7204,16 +7204,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::AggPriorityStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::AggPriorityStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::AggPriorityStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::AggPriorityStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::PriorityOperList::AggPriorityStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7372,16 +7372,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDefaultThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDefaultThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDefaultThresh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDefaultThresh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDefaultThresh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7530,16 +7530,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7708,16 +7708,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7886,16 +7886,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8064,16 +8064,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8242,16 +8242,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::DiffservIn
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8434,16 +8434,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::V4Protocol
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::V4ProtocolStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::V4ProtocolStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::V4ProtocolStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::V4ProtocolStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::V4ProtocolStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8666,16 +8666,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::V6Protocol
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::V6ProtocolStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::V6ProtocolStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::V6ProtocolStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::V6ProtocolStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::V6ProtocolStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8881,16 +8881,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::LagAggrega
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::LagAggregateState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::LagAggregateState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::LagAggregateState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::LagAggregateState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::LagAggregateState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9009,16 +9009,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::EtherState
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::EtherState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::EtherState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::EtherState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::EtherState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::EtherState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9149,16 +9149,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::EtherStats
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::EtherStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::EtherStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::EtherStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::EtherStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::EtherStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9323,16 +9323,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::SerialStat
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::SerialState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::SerialState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::SerialState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::SerialState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::SerialState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9441,16 +9441,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::SerialStat
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::SerialStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::SerialStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::SerialStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::SerialStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::SerialStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

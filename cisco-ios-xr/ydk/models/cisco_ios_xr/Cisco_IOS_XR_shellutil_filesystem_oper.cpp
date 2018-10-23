@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > FileSystem::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> FileSystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FileSystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<FileSystem::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<FileSystem::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FileSystem::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FileSystem::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FileSystem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void FileSystem::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> FileSystem::clone_ptr() const
+std::shared_ptr<ydk::Entity> FileSystem::clone_ptr() const
 {
     return std::make_shared<FileSystem>();
 }
@@ -190,33 +190,33 @@ std::vector<std::pair<std::string, LeafData> > FileSystem::Node::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> FileSystem::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FileSystem::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "file-system")
     {
-        auto c = std::make_shared<FileSystem::Node::FileSystem_>();
-        c->parent = this;
-        file_system.append(c);
-        return c;
+        auto ent_ = std::make_shared<FileSystem::Node::FileSystem_>();
+        ent_->parent = this;
+        file_system.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FileSystem::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FileSystem::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : file_system.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : file_system.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FileSystem::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -301,16 +301,16 @@ std::vector<std::pair<std::string, LeafData> > FileSystem::Node::FileSystem_::ge
 
 }
 
-std::shared_ptr<Entity> FileSystem::Node::FileSystem_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FileSystem::Node::FileSystem_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FileSystem::Node::FileSystem_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FileSystem::Node::FileSystem_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FileSystem::Node::FileSystem_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

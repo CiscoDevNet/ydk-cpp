@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Sla::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocols")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Sla::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(protocols != nullptr)
     {
-        children["protocols"] = protocols;
+        _children["protocols"] = protocols;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Sla::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Sla::clone_ptr() const
+std::shared_ptr<ydk::Entity> Sla::clone_ptr() const
 {
     return std::make_shared<Sla>();
 }
@@ -166,7 +166,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XR-ethernet-cfm-oper:ethernet")
     {
@@ -180,16 +180,16 @@ std::shared_ptr<Entity> Sla::Protocols::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet != nullptr)
     {
-        children["Cisco-IOS-XR-ethernet-cfm-oper:ethernet"] = ethernet;
+        _children["Cisco-IOS-XR-ethernet-cfm-oper:ethernet"] = ethernet;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -279,7 +279,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::get_nam
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics-on-demand-currents")
     {
@@ -347,46 +347,46 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics_on_demand_currents != nullptr)
     {
-        children["statistics-on-demand-currents"] = statistics_on_demand_currents;
+        _children["statistics-on-demand-currents"] = statistics_on_demand_currents;
     }
 
     if(operations != nullptr)
     {
-        children["operations"] = operations;
+        _children["operations"] = operations;
     }
 
     if(statistics_historicals != nullptr)
     {
-        children["statistics-historicals"] = statistics_historicals;
+        _children["statistics-historicals"] = statistics_historicals;
     }
 
     if(statistics_on_demand_historicals != nullptr)
     {
-        children["statistics-on-demand-historicals"] = statistics_on_demand_historicals;
+        _children["statistics-on-demand-historicals"] = statistics_on_demand_historicals;
     }
 
     if(config_errors != nullptr)
     {
-        children["config-errors"] = config_errors;
+        _children["config-errors"] = config_errors;
     }
 
     if(on_demand_operations != nullptr)
     {
-        children["on-demand-operations"] = on_demand_operations;
+        _children["on-demand-operations"] = on_demand_operations;
     }
 
     if(statistics_currents != nullptr)
     {
-        children["statistics-currents"] = statistics_currents;
+        _children["statistics-currents"] = statistics_currents;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -460,33 +460,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics-on-demand-current")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent>();
-        c->parent = this;
-        statistics_on_demand_current.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent>();
+        ent_->parent = this;
+        statistics_on_demand_current.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : statistics_on_demand_current.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : statistics_on_demand_current.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -604,7 +604,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "specific-options")
     {
@@ -626,39 +626,39 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::St
 
     if(child_yang_name == "operation-metric")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric>();
-        c->parent = this;
-        operation_metric.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric>();
+        ent_->parent = this;
+        operation_metric.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(specific_options != nullptr)
     {
-        children["specific-options"] = specific_options;
+        _children["specific-options"] = specific_options;
     }
 
     if(operation_schedule != nullptr)
     {
-        children["operation-schedule"] = operation_schedule;
+        _children["operation-schedule"] = operation_schedule;
     }
 
-    count = 0;
-    for (auto c : operation_metric.entities())
+    count_ = 0;
+    for (auto ent_ : operation_metric.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -823,7 +823,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "configured-operation-options")
     {
@@ -846,21 +846,21 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::St
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(configured_operation_options != nullptr)
     {
-        children["configured-operation-options"] = configured_operation_options;
+        _children["configured-operation-options"] = configured_operation_options;
     }
 
     if(ondemand_operation_options != nullptr)
     {
-        children["ondemand-operation-options"] = ondemand_operation_options;
+        _children["ondemand-operation-options"] = ondemand_operation_options;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -936,16 +936,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1025,16 +1025,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1132,16 +1132,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1258,7 +1258,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1271,34 +1271,34 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::St
 
     if(child_yang_name == "bucket")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket>();
-        c->parent = this;
-        bucket.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket>();
+        ent_->parent = this;
+        bucket.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
-    count = 0;
-    for (auto c : bucket.entities())
+    count_ = 0;
+    for (auto ent_ : bucket.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1384,16 +1384,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1644,7 +1644,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "contents")
     {
@@ -1658,16 +1658,16 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::St
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(contents != nullptr)
     {
-        children["contents"] = contents;
+        _children["contents"] = contents;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2052,7 +2052,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aggregated")
     {
@@ -2075,21 +2075,21 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::St
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aggregated != nullptr)
     {
-        children["aggregated"] = aggregated;
+        _children["aggregated"] = aggregated;
     }
 
     if(unaggregated != nullptr)
     {
-        children["unaggregated"] = unaggregated;
+        _children["unaggregated"] = unaggregated;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2173,33 +2173,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bins")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins>();
-        c->parent = this;
-        bins.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins>();
+        ent_->parent = this;
+        bins.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bins.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bins.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2285,16 +2285,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2428,33 +2428,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2552,16 +2552,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2725,33 +2725,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Operati
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "operation")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::Operations::Operation>();
-        c->parent = this;
-        operation_.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::Operations::Operation>();
+        ent_->parent = this;
+        operation_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Operations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : operation_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : operation_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Operations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2854,7 +2854,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Operati
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Operations::Operation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "profile-options")
     {
@@ -2877,21 +2877,21 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operations::Operation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Operations::Operation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(profile_options != nullptr)
     {
-        children["profile-options"] = profile_options;
+        _children["profile-options"] = profile_options;
     }
 
     if(specific_options != nullptr)
     {
-        children["specific-options"] = specific_options;
+        _children["specific-options"] = specific_options;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Operations::Operation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3081,7 +3081,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Operati
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "packet-padding")
     {
@@ -3112,44 +3112,44 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::Profile
 
     if(child_yang_name == "operation-metric")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric>();
-        c->parent = this;
-        operation_metric.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric>();
+        ent_->parent = this;
+        operation_metric.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(packet_padding != nullptr)
     {
-        children["packet-padding"] = packet_padding;
+        _children["packet-padding"] = packet_padding;
     }
 
     if(priority != nullptr)
     {
-        children["priority"] = priority;
+        _children["priority"] = priority;
     }
 
     if(operation_schedule != nullptr)
     {
-        children["operation-schedule"] = operation_schedule;
+        _children["operation-schedule"] = operation_schedule;
     }
 
-    count = 0;
-    for (auto c : operation_metric.entities())
+    count_ = 0;
+    for (auto ent_ : operation_metric.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3283,16 +3283,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Operati
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3392,16 +3392,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Operati
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3499,16 +3499,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Operati
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3619,7 +3619,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Operati
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric-config")
     {
@@ -3633,16 +3633,16 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::Profile
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(metric_config != nullptr)
     {
-        children["metric-config"] = metric_config;
+        _children["metric-config"] = metric_config;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3738,16 +3738,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Operati
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::MetricConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::MetricConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::MetricConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::MetricConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::MetricConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3882,7 +3882,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Operati
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "configured-operation-options")
     {
@@ -3905,21 +3905,21 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::Specifi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(configured_operation_options != nullptr)
     {
-        children["configured-operation-options"] = configured_operation_options;
+        _children["configured-operation-options"] = configured_operation_options;
     }
 
     if(ondemand_operation_options != nullptr)
     {
-        children["ondemand-operation-options"] = ondemand_operation_options;
+        _children["ondemand-operation-options"] = ondemand_operation_options;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3995,16 +3995,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Operati
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOperationOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOperationOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4084,16 +4084,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Operati
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperationOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperationOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4187,33 +4187,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics-historical")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical>();
-        c->parent = this;
-        statistics_historical.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical>();
+        ent_->parent = this;
+        statistics_historical.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : statistics_historical.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : statistics_historical.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4331,7 +4331,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "specific-options")
     {
@@ -4353,39 +4353,39 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::Statist
 
     if(child_yang_name == "operation-metric")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric>();
-        c->parent = this;
-        operation_metric.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric>();
+        ent_->parent = this;
+        operation_metric.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(specific_options != nullptr)
     {
-        children["specific-options"] = specific_options;
+        _children["specific-options"] = specific_options;
     }
 
     if(operation_schedule != nullptr)
     {
-        children["operation-schedule"] = operation_schedule;
+        _children["operation-schedule"] = operation_schedule;
     }
 
-    count = 0;
-    for (auto c : operation_metric.entities())
+    count_ = 0;
+    for (auto ent_ : operation_metric.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4550,7 +4550,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "configured-operation-options")
     {
@@ -4573,21 +4573,21 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::Statist
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(configured_operation_options != nullptr)
     {
-        children["configured-operation-options"] = configured_operation_options;
+        _children["configured-operation-options"] = configured_operation_options;
     }
 
     if(ondemand_operation_options != nullptr)
     {
-        children["ondemand-operation-options"] = ondemand_operation_options;
+        _children["ondemand-operation-options"] = ondemand_operation_options;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4663,16 +4663,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4752,16 +4752,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4859,16 +4859,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4985,7 +4985,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -4998,34 +4998,34 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::Statist
 
     if(child_yang_name == "bucket")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket>();
-        c->parent = this;
-        bucket.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket>();
+        ent_->parent = this;
+        bucket.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
-    count = 0;
-    for (auto c : bucket.entities())
+    count_ = 0;
+    for (auto ent_ : bucket.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5111,16 +5111,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5371,7 +5371,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "contents")
     {
@@ -5385,16 +5385,16 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::Statist
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(contents != nullptr)
     {
-        children["contents"] = contents;
+        _children["contents"] = contents;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5779,7 +5779,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aggregated")
     {
@@ -5802,21 +5802,21 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::Statist
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aggregated != nullptr)
     {
-        children["aggregated"] = aggregated;
+        _children["aggregated"] = aggregated;
     }
 
     if(unaggregated != nullptr)
     {
-        children["unaggregated"] = unaggregated;
+        _children["unaggregated"] = unaggregated;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5900,33 +5900,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bins")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins>();
-        c->parent = this;
-        bins.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins>();
+        ent_->parent = this;
+        bins.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bins.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bins.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6012,16 +6012,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6155,33 +6155,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6279,16 +6279,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6452,33 +6452,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics-on-demand-historical")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical>();
-        c->parent = this;
-        statistics_on_demand_historical.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical>();
+        ent_->parent = this;
+        statistics_on_demand_historical.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : statistics_on_demand_historical.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : statistics_on_demand_historical.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6596,7 +6596,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "specific-options")
     {
@@ -6618,39 +6618,39 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals:
 
     if(child_yang_name == "operation-metric")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric>();
-        c->parent = this;
-        operation_metric.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric>();
+        ent_->parent = this;
+        operation_metric.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(specific_options != nullptr)
     {
-        children["specific-options"] = specific_options;
+        _children["specific-options"] = specific_options;
     }
 
     if(operation_schedule != nullptr)
     {
-        children["operation-schedule"] = operation_schedule;
+        _children["operation-schedule"] = operation_schedule;
     }
 
-    count = 0;
-    for (auto c : operation_metric.entities())
+    count_ = 0;
+    for (auto ent_ : operation_metric.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6815,7 +6815,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "configured-operation-options")
     {
@@ -6838,21 +6838,21 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(configured_operation_options != nullptr)
     {
-        children["configured-operation-options"] = configured_operation_options;
+        _children["configured-operation-options"] = configured_operation_options;
     }
 
     if(ondemand_operation_options != nullptr)
     {
-        children["ondemand-operation-options"] = ondemand_operation_options;
+        _children["ondemand-operation-options"] = ondemand_operation_options;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6928,16 +6928,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7017,16 +7017,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7124,16 +7124,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7250,7 +7250,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -7263,34 +7263,34 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals:
 
     if(child_yang_name == "bucket")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket>();
-        c->parent = this;
-        bucket.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket>();
+        ent_->parent = this;
+        bucket.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
-    count = 0;
-    for (auto c : bucket.entities())
+    count_ = 0;
+    for (auto ent_ : bucket.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7376,16 +7376,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7636,7 +7636,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "contents")
     {
@@ -7650,16 +7650,16 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(contents != nullptr)
     {
-        children["contents"] = contents;
+        _children["contents"] = contents;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8044,7 +8044,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aggregated")
     {
@@ -8067,21 +8067,21 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aggregated != nullptr)
     {
-        children["aggregated"] = aggregated;
+        _children["aggregated"] = aggregated;
     }
 
     if(unaggregated != nullptr)
     {
-        children["unaggregated"] = unaggregated;
+        _children["unaggregated"] = unaggregated;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8165,33 +8165,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bins")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins>();
-        c->parent = this;
-        bins.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins>();
+        ent_->parent = this;
+        bins.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bins.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bins.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8277,16 +8277,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8420,33 +8420,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8544,16 +8544,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8717,33 +8717,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::ConfigE
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::ConfigErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::ConfigErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config-error")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::ConfigErrors::ConfigError>();
-        c->parent = this;
-        config_error.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::ConfigErrors::ConfigError>();
+        ent_->parent = this;
+        config_error.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::ConfigErrors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::ConfigErrors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : config_error.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : config_error.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::ConfigErrors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8911,16 +8911,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::ConfigE
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::ConfigErrors::ConfigError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::ConfigErrors::ConfigError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::ConfigErrors::ConfigError::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::ConfigErrors::ConfigError::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::ConfigErrors::ConfigError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9232,33 +9232,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::OnDeman
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::OnDemandOperations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "on-demand-operation")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation>();
-        c->parent = this;
-        on_demand_operation.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation>();
+        ent_->parent = this;
+        on_demand_operation.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDemandOperations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::OnDemandOperations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : on_demand_operation.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : on_demand_operation.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::OnDemandOperations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9361,7 +9361,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::OnDeman
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "profile-options")
     {
@@ -9384,21 +9384,21 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(profile_options != nullptr)
     {
-        children["profile-options"] = profile_options;
+        _children["profile-options"] = profile_options;
     }
 
     if(specific_options != nullptr)
     {
-        children["specific-options"] = specific_options;
+        _children["specific-options"] = specific_options;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9588,7 +9588,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::OnDeman
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "packet-padding")
     {
@@ -9619,44 +9619,44 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOp
 
     if(child_yang_name == "operation-metric")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric>();
-        c->parent = this;
-        operation_metric.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric>();
+        ent_->parent = this;
+        operation_metric.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(packet_padding != nullptr)
     {
-        children["packet-padding"] = packet_padding;
+        _children["packet-padding"] = packet_padding;
     }
 
     if(priority != nullptr)
     {
-        children["priority"] = priority;
+        _children["priority"] = priority;
     }
 
     if(operation_schedule != nullptr)
     {
-        children["operation-schedule"] = operation_schedule;
+        _children["operation-schedule"] = operation_schedule;
     }
 
-    count = 0;
-    for (auto c : operation_metric.entities())
+    count_ = 0;
+    for (auto ent_ : operation_metric.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9790,16 +9790,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::OnDeman
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9899,16 +9899,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::OnDeman
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10006,16 +10006,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::OnDeman
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10126,7 +10126,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::OnDeman
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric-config")
     {
@@ -10140,16 +10140,16 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(metric_config != nullptr)
     {
-        children["metric-config"] = metric_config;
+        _children["metric-config"] = metric_config;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10245,16 +10245,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::OnDeman
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10389,7 +10389,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::OnDeman
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "configured-operation-options")
     {
@@ -10412,21 +10412,21 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(configured_operation_options != nullptr)
     {
-        children["configured-operation-options"] = configured_operation_options;
+        _children["configured-operation-options"] = configured_operation_options;
     }
 
     if(ondemand_operation_options != nullptr)
     {
-        children["ondemand-operation-options"] = ondemand_operation_options;
+        _children["ondemand-operation-options"] = ondemand_operation_options;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10502,16 +10502,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::OnDeman
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10591,16 +10591,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::OnDeman
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10694,33 +10694,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics-current")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent>();
-        c->parent = this;
-        statistics_current.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent>();
+        ent_->parent = this;
+        statistics_current.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : statistics_current.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : statistics_current.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10838,7 +10838,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "specific-options")
     {
@@ -10860,39 +10860,39 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::Statistics
 
     if(child_yang_name == "operation-metric")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric>();
-        c->parent = this;
-        operation_metric.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric>();
+        ent_->parent = this;
+        operation_metric.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(specific_options != nullptr)
     {
-        children["specific-options"] = specific_options;
+        _children["specific-options"] = specific_options;
     }
 
     if(operation_schedule != nullptr)
     {
-        children["operation-schedule"] = operation_schedule;
+        _children["operation-schedule"] = operation_schedule;
     }
 
-    count = 0;
-    for (auto c : operation_metric.entities())
+    count_ = 0;
+    for (auto ent_ : operation_metric.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11057,7 +11057,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "configured-operation-options")
     {
@@ -11080,21 +11080,21 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::Statistics
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(configured_operation_options != nullptr)
     {
-        children["configured-operation-options"] = configured_operation_options;
+        _children["configured-operation-options"] = configured_operation_options;
     }
 
     if(ondemand_operation_options != nullptr)
     {
-        children["ondemand-operation-options"] = ondemand_operation_options;
+        _children["ondemand-operation-options"] = ondemand_operation_options;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11170,16 +11170,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11259,16 +11259,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11366,16 +11366,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11492,7 +11492,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -11505,34 +11505,34 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::Statistics
 
     if(child_yang_name == "bucket")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket>();
-        c->parent = this;
-        bucket.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket>();
+        ent_->parent = this;
+        bucket.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
-    count = 0;
-    for (auto c : bucket.entities())
+    count_ = 0;
+    for (auto ent_ : bucket.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11618,16 +11618,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11878,7 +11878,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "contents")
     {
@@ -11892,16 +11892,16 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::Statistics
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(contents != nullptr)
     {
-        children["contents"] = contents;
+        _children["contents"] = contents;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12286,7 +12286,7 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aggregated")
     {
@@ -12309,21 +12309,21 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::Statistics
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aggregated != nullptr)
     {
-        children["aggregated"] = aggregated;
+        _children["aggregated"] = aggregated;
     }
 
     if(unaggregated != nullptr)
     {
-        children["unaggregated"] = unaggregated;
+        _children["unaggregated"] = unaggregated;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12407,33 +12407,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bins")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins>();
-        c->parent = this;
-        bins.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins>();
+        ent_->parent = this;
+        bins.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bins.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bins.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12519,16 +12519,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12662,33 +12662,33 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12786,16 +12786,16 @@ std::vector<std::pair<std::string, LeafData> > Sla::Protocols::Ethernet::Statist
 
 }
 
-std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12940,16 +12940,16 @@ std::vector<std::pair<std::string, LeafData> > SlaNodes::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> SlaNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SlaNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SlaNodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SlaNodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SlaNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12960,7 +12960,7 @@ void SlaNodes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> SlaNodes::clone_ptr() const
+std::shared_ptr<ydk::Entity> SlaNodes::clone_ptr() const
 {
     return std::make_shared<SlaNodes>();
 }

@@ -80,7 +80,7 @@ std::vector<std::pair<std::string, LeafData> > Lldp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Lldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tlv-select")
     {
@@ -94,16 +94,16 @@ std::shared_ptr<Entity> Lldp::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tlv_select != nullptr)
     {
-        children["tlv-select"] = tlv_select;
+        _children["tlv-select"] = tlv_select;
     }
 
-    return children;
+    return _children;
 }
 
 void Lldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -184,7 +184,7 @@ void Lldp::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Lldp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Lldp::clone_ptr() const
 {
     return std::make_shared<Lldp>();
 }
@@ -285,7 +285,7 @@ std::vector<std::pair<std::string, LeafData> > Lldp::TlvSelect::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Lldp::TlvSelect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::TlvSelect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "system-name")
     {
@@ -335,36 +335,36 @@ std::shared_ptr<Entity> Lldp::TlvSelect::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::TlvSelect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(system_name != nullptr)
     {
-        children["system-name"] = system_name;
+        _children["system-name"] = system_name;
     }
 
     if(port_description != nullptr)
     {
-        children["port-description"] = port_description;
+        _children["port-description"] = port_description;
     }
 
     if(system_description != nullptr)
     {
-        children["system-description"] = system_description;
+        _children["system-description"] = system_description;
     }
 
     if(system_capabilities != nullptr)
     {
-        children["system-capabilities"] = system_capabilities;
+        _children["system-capabilities"] = system_capabilities;
     }
 
     if(management_address != nullptr)
     {
-        children["management-address"] = management_address;
+        _children["management-address"] = management_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Lldp::TlvSelect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -440,16 +440,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::TlvSelect::SystemName::get_
 
 }
 
-std::shared_ptr<Entity> Lldp::TlvSelect::SystemName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::TlvSelect::SystemName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::TlvSelect::SystemName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::TlvSelect::SystemName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -525,16 +525,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::TlvSelect::PortDescription:
 
 }
 
-std::shared_ptr<Entity> Lldp::TlvSelect::PortDescription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::TlvSelect::PortDescription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::PortDescription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::TlvSelect::PortDescription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::TlvSelect::PortDescription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -610,16 +610,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::TlvSelect::SystemDescriptio
 
 }
 
-std::shared_ptr<Entity> Lldp::TlvSelect::SystemDescription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::TlvSelect::SystemDescription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemDescription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::TlvSelect::SystemDescription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::TlvSelect::SystemDescription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -695,16 +695,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::TlvSelect::SystemCapabiliti
 
 }
 
-std::shared_ptr<Entity> Lldp::TlvSelect::SystemCapabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::TlvSelect::SystemCapabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemCapabilities::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::TlvSelect::SystemCapabilities::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::TlvSelect::SystemCapabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -780,16 +780,16 @@ std::vector<std::pair<std::string, LeafData> > Lldp::TlvSelect::ManagementAddres
 
 }
 
-std::shared_ptr<Entity> Lldp::TlvSelect::ManagementAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lldp::TlvSelect::ManagementAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::ManagementAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lldp::TlvSelect::ManagementAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lldp::TlvSelect::ManagementAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

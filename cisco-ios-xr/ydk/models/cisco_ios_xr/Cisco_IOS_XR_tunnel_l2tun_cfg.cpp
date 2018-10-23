@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > L2tp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> L2tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "classes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> L2tp::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(classes != nullptr)
     {
-        children["classes"] = classes;
+        _children["classes"] = classes;
     }
 
-    return children;
+    return _children;
 }
 
 void L2tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void L2tp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> L2tp::clone_ptr() const
+std::shared_ptr<ydk::Entity> L2tp::clone_ptr() const
 {
     return std::make_shared<L2tp>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Classes::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> L2tp::Classes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::Classes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class")
     {
-        auto c = std::make_shared<L2tp::Classes::Class>();
-        c->parent = this;
-        class_.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2tp::Classes::Class>();
+        ent_->parent = this;
+        class_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::Classes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2tp::Classes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -328,7 +328,7 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Classes::Class::get_name_le
 
 }
 
-std::shared_ptr<Entity> L2tp::Classes::Class::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::Classes::Class::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "security")
     {
@@ -378,36 +378,36 @@ std::shared_ptr<Entity> L2tp::Classes::Class::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::Class::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::Classes::Class::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(security != nullptr)
     {
-        children["security"] = security;
+        _children["security"] = security;
     }
 
     if(retransmit != nullptr)
     {
-        children["retransmit"] = retransmit;
+        _children["retransmit"] = retransmit;
     }
 
     if(tunnel != nullptr)
     {
-        children["tunnel"] = tunnel;
+        _children["tunnel"] = tunnel;
     }
 
     if(digest != nullptr)
     {
-        children["digest"] = digest;
+        _children["digest"] = digest;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void L2tp::Classes::Class::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -576,7 +576,7 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Classes::Class::Security::g
 
 }
 
-std::shared_ptr<Entity> L2tp::Classes::Class::Security::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::Classes::Class::Security::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
@@ -590,16 +590,16 @@ std::shared_ptr<Entity> L2tp::Classes::Class::Security::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::Class::Security::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::Classes::Class::Security::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void L2tp::Classes::Class::Security::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -658,16 +658,16 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Classes::Class::Security::I
 
 }
 
-std::shared_ptr<Entity> L2tp::Classes::Class::Security::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::Classes::Class::Security::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::Class::Security::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::Classes::Class::Security::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2tp::Classes::Class::Security::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -745,7 +745,7 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Classes::Class::Retransmit:
 
 }
 
-std::shared_ptr<Entity> L2tp::Classes::Class::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::Classes::Class::Retransmit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "initial")
     {
@@ -768,21 +768,21 @@ std::shared_ptr<Entity> L2tp::Classes::Class::Retransmit::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::Class::Retransmit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::Classes::Class::Retransmit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(initial != nullptr)
     {
-        children["initial"] = initial;
+        _children["initial"] = initial;
     }
 
     if(timeout != nullptr)
     {
-        children["timeout"] = timeout;
+        _children["timeout"] = timeout;
     }
 
-    return children;
+    return _children;
 }
 
 void L2tp::Classes::Class::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -856,7 +856,7 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Classes::Class::Retransmit:
 
 }
 
-std::shared_ptr<Entity> L2tp::Classes::Class::Retransmit::Initial::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::Classes::Class::Retransmit::Initial::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "timeout")
     {
@@ -870,16 +870,16 @@ std::shared_ptr<Entity> L2tp::Classes::Class::Retransmit::Initial::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::Class::Retransmit::Initial::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::Classes::Class::Retransmit::Initial::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(timeout != nullptr)
     {
-        children["timeout"] = timeout;
+        _children["timeout"] = timeout;
     }
 
-    return children;
+    return _children;
 }
 
 void L2tp::Classes::Class::Retransmit::Initial::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -952,16 +952,16 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Classes::Class::Retransmit:
 
 }
 
-std::shared_ptr<Entity> L2tp::Classes::Class::Retransmit::Initial::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::Classes::Class::Retransmit::Initial::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::Class::Retransmit::Initial::Timeout::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::Classes::Class::Retransmit::Initial::Timeout::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2tp::Classes::Class::Retransmit::Initial::Timeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1044,16 +1044,16 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Classes::Class::Retransmit:
 
 }
 
-std::shared_ptr<Entity> L2tp::Classes::Class::Retransmit::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::Classes::Class::Retransmit::Timeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::Class::Retransmit::Timeout::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::Classes::Class::Retransmit::Timeout::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2tp::Classes::Class::Retransmit::Timeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1132,16 +1132,16 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Classes::Class::Tunnel::get
 
 }
 
-std::shared_ptr<Entity> L2tp::Classes::Class::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::Classes::Class::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::Class::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::Classes::Class::Tunnel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2tp::Classes::Class::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1219,7 +1219,7 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Classes::Class::Digest::get
 
 }
 
-std::shared_ptr<Entity> L2tp::Classes::Class::Digest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::Classes::Class::Digest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "secrets")
     {
@@ -1233,16 +1233,16 @@ std::shared_ptr<Entity> L2tp::Classes::Class::Digest::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::Class::Digest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::Classes::Class::Digest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(secrets != nullptr)
     {
-        children["secrets"] = secrets;
+        _children["secrets"] = secrets;
     }
 
-    return children;
+    return _children;
 }
 
 void L2tp::Classes::Class::Digest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1329,33 +1329,33 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Classes::Class::Digest::Sec
 
 }
 
-std::shared_ptr<Entity> L2tp::Classes::Class::Digest::Secrets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::Classes::Class::Digest::Secrets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "secret")
     {
-        auto c = std::make_shared<L2tp::Classes::Class::Digest::Secrets::Secret>();
-        c->parent = this;
-        secret.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2tp::Classes::Class::Digest::Secrets::Secret>();
+        ent_->parent = this;
+        secret.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::Class::Digest::Secrets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::Classes::Class::Digest::Secrets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : secret.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : secret.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2tp::Classes::Class::Digest::Secrets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1419,16 +1419,16 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Classes::Class::Digest::Sec
 
 }
 
-std::shared_ptr<Entity> L2tp::Classes::Class::Digest::Secrets::Secret::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::Classes::Class::Digest::Secrets::Secret::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::Class::Digest::Secrets::Secret::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::Classes::Class::Digest::Secrets::Secret::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2tp::Classes::Class::Digest::Secrets::Secret::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1507,16 +1507,16 @@ std::vector<std::pair<std::string, LeafData> > L2tp::Classes::Class::Ip::get_nam
 
 }
 
-std::shared_ptr<Entity> L2tp::Classes::Class::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2tp::Classes::Class::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2tp::Classes::Class::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2tp::Classes::Class::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2tp::Classes::Class::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

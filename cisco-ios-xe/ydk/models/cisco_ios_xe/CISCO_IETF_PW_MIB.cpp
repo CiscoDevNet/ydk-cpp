@@ -76,7 +76,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcObjects")
     {
@@ -144,46 +144,46 @@ std::shared_ptr<Entity> CISCOIETFPWMIB::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cpwvcobjects != nullptr)
     {
-        children["cpwVcObjects"] = cpwvcobjects;
+        _children["cpwVcObjects"] = cpwvcobjects;
     }
 
     if(cpwvctable != nullptr)
     {
-        children["cpwVcTable"] = cpwvctable;
+        _children["cpwVcTable"] = cpwvctable;
     }
 
     if(cpwvcperfcurrenttable != nullptr)
     {
-        children["cpwVcPerfCurrentTable"] = cpwvcperfcurrenttable;
+        _children["cpwVcPerfCurrentTable"] = cpwvcperfcurrenttable;
     }
 
     if(cpwvcperfintervaltable != nullptr)
     {
-        children["cpwVcPerfIntervalTable"] = cpwvcperfintervaltable;
+        _children["cpwVcPerfIntervalTable"] = cpwvcperfintervaltable;
     }
 
     if(cpwvcperftotaltable != nullptr)
     {
-        children["cpwVcPerfTotalTable"] = cpwvcperftotaltable;
+        _children["cpwVcPerfTotalTable"] = cpwvcperftotaltable;
     }
 
     if(cpwvcidmappingtable != nullptr)
     {
-        children["cpwVcIdMappingTable"] = cpwvcidmappingtable;
+        _children["cpwVcIdMappingTable"] = cpwvcidmappingtable;
     }
 
     if(cpwvcpeermappingtable != nullptr)
     {
-        children["cpwVcPeerMappingTable"] = cpwvcpeermappingtable;
+        _children["cpwVcPeerMappingTable"] = cpwvcpeermappingtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -194,7 +194,7 @@ void CISCOIETFPWMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIETFPWMIB>();
 }
@@ -286,16 +286,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcObjects::get
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::CpwVcObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::CpwVcObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWMIB::CpwVcObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -409,33 +409,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcTable::get_n
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::CpwVcTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMIB::CpwVcTable::CpwVcEntry>();
-        c->parent = this;
-        cpwvcentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWMIB::CpwVcTable::CpwVcEntry>();
+        ent_->parent = this;
+        cpwvcentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::CpwVcTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwvcentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwvcentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWMIB::CpwVcTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -626,16 +626,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcTable::CpwVc
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1029,33 +1029,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPerfCurrentT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPerfCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::CpwVcPerfCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcPerfCurrentEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry>();
-        c->parent = this;
-        cpwvcperfcurrententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry>();
+        ent_->parent = this;
+        cpwvcperfcurrententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPerfCurrentTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::CpwVcPerfCurrentTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwvcperfcurrententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwvcperfcurrententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWMIB::CpwVcPerfCurrentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1138,16 +1138,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPerfCurrentT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWMIB::CpwVcPerfCurrentTable::CpwVcPerfCurrentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1271,33 +1271,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPerfInterval
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPerfIntervalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::CpwVcPerfIntervalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcPerfIntervalEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry>();
-        c->parent = this;
-        cpwvcperfintervalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry>();
+        ent_->parent = this;
+        cpwvcperfintervalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPerfIntervalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::CpwVcPerfIntervalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwvcperfintervalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwvcperfintervalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWMIB::CpwVcPerfIntervalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1393,16 +1393,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPerfInterval
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWMIB::CpwVcPerfIntervalTable::CpwVcPerfIntervalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1556,33 +1556,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPerfTotalTab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPerfTotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::CpwVcPerfTotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcPerfTotalEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry>();
-        c->parent = this;
-        cpwvcperftotalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry>();
+        ent_->parent = this;
+        cpwvcperftotalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPerfTotalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::CpwVcPerfTotalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwvcperftotalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwvcperftotalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWMIB::CpwVcPerfTotalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1669,16 +1669,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPerfTotalTab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWMIB::CpwVcPerfTotalTable::CpwVcPerfTotalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1812,33 +1812,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcIdMappingTab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcIdMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::CpwVcIdMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcIdMappingEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry>();
-        c->parent = this;
-        cpwvcidmappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry>();
+        ent_->parent = this;
+        cpwvcidmappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcIdMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::CpwVcIdMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwvcidmappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwvcidmappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWMIB::CpwVcIdMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1925,16 +1925,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcIdMappingTab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWMIB::CpwVcIdMappingTable::CpwVcIdMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2058,33 +2058,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPeerMappingT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPeerMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::CpwVcPeerMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpwVcPeerMappingEntry")
     {
-        auto c = std::make_shared<CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry>();
-        c->parent = this;
-        cpwvcpeermappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry>();
+        ent_->parent = this;
+        cpwvcpeermappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPeerMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::CpwVcPeerMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpwvcpeermappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpwvcpeermappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFPWMIB::CpwVcPeerMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2171,16 +2171,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFPWMIB::CpwVcPeerMappingT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFPWMIB::CpwVcPeerMappingTable::CpwVcPeerMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

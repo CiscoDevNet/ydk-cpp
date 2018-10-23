@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > TCPMIB::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> TCPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TCPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> TCPMIB::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TCPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TCPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tcp != nullptr)
     {
-        children["tcp"] = tcp;
+        _children["tcp"] = tcp;
     }
 
     if(tcpconntable != nullptr)
     {
-        children["tcpConnTable"] = tcpconntable;
+        _children["tcpConnTable"] = tcpconntable;
     }
 
     if(tcpconnectiontable != nullptr)
     {
-        children["tcpConnectionTable"] = tcpconnectiontable;
+        _children["tcpConnectionTable"] = tcpconnectiontable;
     }
 
     if(tcplistenertable != nullptr)
     {
-        children["tcpListenerTable"] = tcplistenertable;
+        _children["tcpListenerTable"] = tcplistenertable;
     }
 
-    return children;
+    return _children;
 }
 
 void TCPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void TCPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> TCPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> TCPMIB::clone_ptr() const
 {
     return std::make_shared<TCPMIB>();
 }
@@ -280,16 +280,16 @@ std::vector<std::pair<std::string, LeafData> > TCPMIB::Tcp::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> TCPMIB::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TCPMIB::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TCPMIB::Tcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TCPMIB::Tcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TCPMIB::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -523,33 +523,33 @@ std::vector<std::pair<std::string, LeafData> > TCPMIB::TcpConnTable::get_name_le
 
 }
 
-std::shared_ptr<Entity> TCPMIB::TcpConnTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TCPMIB::TcpConnTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcpConnEntry")
     {
-        auto c = std::make_shared<TCPMIB::TcpConnTable::TcpConnEntry>();
-        c->parent = this;
-        tcpconnentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TCPMIB::TcpConnTable::TcpConnEntry>();
+        ent_->parent = this;
+        tcpconnentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TCPMIB::TcpConnTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TCPMIB::TcpConnTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tcpconnentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tcpconnentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TCPMIB::TcpConnTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -635,16 +635,16 @@ std::vector<std::pair<std::string, LeafData> > TCPMIB::TcpConnTable::TcpConnEntr
 
 }
 
-std::shared_ptr<Entity> TCPMIB::TcpConnTable::TcpConnEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TCPMIB::TcpConnTable::TcpConnEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TCPMIB::TcpConnTable::TcpConnEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TCPMIB::TcpConnTable::TcpConnEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TCPMIB::TcpConnTable::TcpConnEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -768,33 +768,33 @@ std::vector<std::pair<std::string, LeafData> > TCPMIB::TcpConnectionTable::get_n
 
 }
 
-std::shared_ptr<Entity> TCPMIB::TcpConnectionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TCPMIB::TcpConnectionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcpConnectionEntry")
     {
-        auto c = std::make_shared<TCPMIB::TcpConnectionTable::TcpConnectionEntry>();
-        c->parent = this;
-        tcpconnectionentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TCPMIB::TcpConnectionTable::TcpConnectionEntry>();
+        ent_->parent = this;
+        tcpconnectionentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TCPMIB::TcpConnectionTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TCPMIB::TcpConnectionTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tcpconnectionentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tcpconnectionentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TCPMIB::TcpConnectionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -894,16 +894,16 @@ std::vector<std::pair<std::string, LeafData> > TCPMIB::TcpConnectionTable::TcpCo
 
 }
 
-std::shared_ptr<Entity> TCPMIB::TcpConnectionTable::TcpConnectionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TCPMIB::TcpConnectionTable::TcpConnectionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TCPMIB::TcpConnectionTable::TcpConnectionEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TCPMIB::TcpConnectionTable::TcpConnectionEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TCPMIB::TcpConnectionTable::TcpConnectionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1057,33 +1057,33 @@ std::vector<std::pair<std::string, LeafData> > TCPMIB::TcpListenerTable::get_nam
 
 }
 
-std::shared_ptr<Entity> TCPMIB::TcpListenerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TCPMIB::TcpListenerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcpListenerEntry")
     {
-        auto c = std::make_shared<TCPMIB::TcpListenerTable::TcpListenerEntry>();
-        c->parent = this;
-        tcplistenerentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TCPMIB::TcpListenerTable::TcpListenerEntry>();
+        ent_->parent = this;
+        tcplistenerentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TCPMIB::TcpListenerTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TCPMIB::TcpListenerTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tcplistenerentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tcplistenerentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TCPMIB::TcpListenerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1164,16 +1164,16 @@ std::vector<std::pair<std::string, LeafData> > TCPMIB::TcpListenerTable::TcpList
 
 }
 
-std::shared_ptr<Entity> TCPMIB::TcpListenerTable::TcpListenerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TCPMIB::TcpListenerTable::TcpListenerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TCPMIB::TcpListenerTable::TcpListenerEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TCPMIB::TcpListenerTable::TcpListenerEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TCPMIB::TcpListenerTable::TcpListenerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -100,7 +100,7 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnIdToIndexTable")
     {
@@ -222,76 +222,76 @@ std::shared_ptr<Entity> DOCSL2VPNMIB::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(docsl2vpnidtoindextable != nullptr)
     {
-        children["docsL2vpnIdToIndexTable"] = docsl2vpnidtoindextable;
+        _children["docsL2vpnIdToIndexTable"] = docsl2vpnidtoindextable;
     }
 
     if(docsl2vpnindextoidtable != nullptr)
     {
-        children["docsL2vpnIndexToIdTable"] = docsl2vpnindextoidtable;
+        _children["docsL2vpnIndexToIdTable"] = docsl2vpnindextoidtable;
     }
 
     if(docsl2vpncmtable != nullptr)
     {
-        children["docsL2vpnCmTable"] = docsl2vpncmtable;
+        _children["docsL2vpnCmTable"] = docsl2vpncmtable;
     }
 
     if(docsl2vpnvpncmtable != nullptr)
     {
-        children["docsL2vpnVpnCmTable"] = docsl2vpnvpncmtable;
+        _children["docsL2vpnVpnCmTable"] = docsl2vpnvpncmtable;
     }
 
     if(docsl2vpnvpncmstatstable != nullptr)
     {
-        children["docsL2vpnVpnCmStatsTable"] = docsl2vpnvpncmstatstable;
+        _children["docsL2vpnVpnCmStatsTable"] = docsl2vpnvpncmstatstable;
     }
 
     if(docsl2vpnportstatustable != nullptr)
     {
-        children["docsL2vpnPortStatusTable"] = docsl2vpnportstatustable;
+        _children["docsL2vpnPortStatusTable"] = docsl2vpnportstatustable;
     }
 
     if(docsl2vpnsfstatustable != nullptr)
     {
-        children["docsL2vpnSfStatusTable"] = docsl2vpnsfstatustable;
+        _children["docsL2vpnSfStatusTable"] = docsl2vpnsfstatustable;
     }
 
     if(docsl2vpnpktclasstable != nullptr)
     {
-        children["docsL2vpnPktClassTable"] = docsl2vpnpktclasstable;
+        _children["docsL2vpnPktClassTable"] = docsl2vpnpktclasstable;
     }
 
     if(docsl2vpncmnsitable != nullptr)
     {
-        children["docsL2vpnCmNsiTable"] = docsl2vpncmnsitable;
+        _children["docsL2vpnCmNsiTable"] = docsl2vpncmnsitable;
     }
 
     if(docsl2vpncmvpncpetable != nullptr)
     {
-        children["docsL2vpnCmVpnCpeTable"] = docsl2vpncmvpncpetable;
+        _children["docsL2vpnCmVpnCpeTable"] = docsl2vpncmvpncpetable;
     }
 
     if(docsl2vpnvpncmcpetable != nullptr)
     {
-        children["docsL2vpnVpnCmCpeTable"] = docsl2vpnvpncmcpetable;
+        _children["docsL2vpnVpnCmCpeTable"] = docsl2vpnvpncmcpetable;
     }
 
     if(docsl2vpndot1qtpfdbexttable != nullptr)
     {
-        children["docsL2vpnDot1qTpFdbExtTable"] = docsl2vpndot1qtpfdbexttable;
+        _children["docsL2vpnDot1qTpFdbExtTable"] = docsl2vpndot1qtpfdbexttable;
     }
 
     if(docsl2vpndot1qtpgroupexttable != nullptr)
     {
-        children["docsL2vpnDot1qTpGroupExtTable"] = docsl2vpndot1qtpgroupexttable;
+        _children["docsL2vpnDot1qTpGroupExtTable"] = docsl2vpndot1qtpgroupexttable;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -302,7 +302,7 @@ void DOCSL2VPNMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::clone_ptr() const
 {
     return std::make_shared<DOCSL2VPNMIB>();
 }
@@ -390,33 +390,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnIdToIndexT
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnIdToIndexTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnIdToIndexTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnIdToIndexEntry")
     {
-        auto c = std::make_shared<DOCSL2VPNMIB::DocsL2vpnIdToIndexTable::DocsL2vpnIdToIndexEntry>();
-        c->parent = this;
-        docsl2vpnidtoindexentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSL2VPNMIB::DocsL2vpnIdToIndexTable::DocsL2vpnIdToIndexEntry>();
+        ent_->parent = this;
+        docsl2vpnidtoindexentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnIdToIndexTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnIdToIndexTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsl2vpnidtoindexentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsl2vpnidtoindexentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnIdToIndexTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -487,16 +487,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnIdToIndexT
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnIdToIndexTable::DocsL2vpnIdToIndexEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnIdToIndexTable::DocsL2vpnIdToIndexEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnIdToIndexTable::DocsL2vpnIdToIndexEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnIdToIndexTable::DocsL2vpnIdToIndexEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnIdToIndexTable::DocsL2vpnIdToIndexEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -590,33 +590,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnIndexToIdT
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnIndexToIdTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnIndexToIdTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnIndexToIdEntry")
     {
-        auto c = std::make_shared<DOCSL2VPNMIB::DocsL2vpnIndexToIdTable::DocsL2vpnIndexToIdEntry>();
-        c->parent = this;
-        docsl2vpnindextoidentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSL2VPNMIB::DocsL2vpnIndexToIdTable::DocsL2vpnIndexToIdEntry>();
+        ent_->parent = this;
+        docsl2vpnindextoidentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnIndexToIdTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnIndexToIdTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsl2vpnindextoidentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsl2vpnindextoidentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnIndexToIdTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -687,16 +687,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnIndexToIdT
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnIndexToIdTable::DocsL2vpnIndexToIdEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnIndexToIdTable::DocsL2vpnIndexToIdEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnIndexToIdTable::DocsL2vpnIndexToIdEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnIndexToIdTable::DocsL2vpnIndexToIdEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnIndexToIdTable::DocsL2vpnIndexToIdEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -790,33 +790,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnCmTable::g
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnCmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnCmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnCmEntry")
     {
-        auto c = std::make_shared<DOCSL2VPNMIB::DocsL2vpnCmTable::DocsL2vpnCmEntry>();
-        c->parent = this;
-        docsl2vpncmentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSL2VPNMIB::DocsL2vpnCmTable::DocsL2vpnCmEntry>();
+        ent_->parent = this;
+        docsl2vpncmentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnCmTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnCmTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsl2vpncmentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsl2vpncmentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnCmTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -899,16 +899,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnCmTable::D
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnCmTable::DocsL2vpnCmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnCmTable::DocsL2vpnCmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnCmTable::DocsL2vpnCmEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnCmTable::DocsL2vpnCmEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnCmTable::DocsL2vpnCmEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1030,33 +1030,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnVpnCmTable
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnVpnCmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnVpnCmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnVpnCmEntry")
     {
-        auto c = std::make_shared<DOCSL2VPNMIB::DocsL2vpnVpnCmTable::DocsL2vpnVpnCmEntry>();
-        c->parent = this;
-        docsl2vpnvpncmentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSL2VPNMIB::DocsL2vpnVpnCmTable::DocsL2vpnVpnCmEntry>();
+        ent_->parent = this;
+        docsl2vpnvpncmentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnVpnCmTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnVpnCmTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsl2vpnvpncmentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsl2vpnvpncmentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnVpnCmTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1140,16 +1140,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnVpnCmTable
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnVpnCmTable::DocsL2vpnVpnCmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnVpnCmTable::DocsL2vpnVpnCmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnVpnCmTable::DocsL2vpnVpnCmEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnVpnCmTable::DocsL2vpnVpnCmEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnVpnCmTable::DocsL2vpnVpnCmEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1271,33 +1271,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnVpnCmStats
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnVpnCmStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnVpnCmStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnVpnCmStatsEntry")
     {
-        auto c = std::make_shared<DOCSL2VPNMIB::DocsL2vpnVpnCmStatsTable::DocsL2vpnVpnCmStatsEntry>();
-        c->parent = this;
-        docsl2vpnvpncmstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSL2VPNMIB::DocsL2vpnVpnCmStatsTable::DocsL2vpnVpnCmStatsEntry>();
+        ent_->parent = this;
+        docsl2vpnvpncmstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnVpnCmStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnVpnCmStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsl2vpnvpncmstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsl2vpnvpncmstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnVpnCmStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1393,16 +1393,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnVpnCmStats
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnVpnCmStatsTable::DocsL2vpnVpnCmStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnVpnCmStatsTable::DocsL2vpnVpnCmStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnVpnCmStatsTable::DocsL2vpnVpnCmStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnVpnCmStatsTable::DocsL2vpnVpnCmStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnVpnCmStatsTable::DocsL2vpnVpnCmStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1556,33 +1556,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnPortStatus
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnPortStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnPortStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnPortStatusEntry")
     {
-        auto c = std::make_shared<DOCSL2VPNMIB::DocsL2vpnPortStatusTable::DocsL2vpnPortStatusEntry>();
-        c->parent = this;
-        docsl2vpnportstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSL2VPNMIB::DocsL2vpnPortStatusTable::DocsL2vpnPortStatusEntry>();
+        ent_->parent = this;
+        docsl2vpnportstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnPortStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnPortStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsl2vpnportstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsl2vpnportstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnPortStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1658,16 +1658,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnPortStatus
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnPortStatusTable::DocsL2vpnPortStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnPortStatusTable::DocsL2vpnPortStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnPortStatusTable::DocsL2vpnPortStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnPortStatusTable::DocsL2vpnPortStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnPortStatusTable::DocsL2vpnPortStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1771,33 +1771,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnSfStatusTa
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnSfStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnSfStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnSfStatusEntry")
     {
-        auto c = std::make_shared<DOCSL2VPNMIB::DocsL2vpnSfStatusTable::DocsL2vpnSfStatusEntry>();
-        c->parent = this;
-        docsl2vpnsfstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSL2VPNMIB::DocsL2vpnSfStatusTable::DocsL2vpnSfStatusEntry>();
+        ent_->parent = this;
+        docsl2vpnsfstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnSfStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnSfStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsl2vpnsfstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsl2vpnsfstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnSfStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1881,16 +1881,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnSfStatusTa
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnSfStatusTable::DocsL2vpnSfStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnSfStatusTable::DocsL2vpnSfStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnSfStatusTable::DocsL2vpnSfStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnSfStatusTable::DocsL2vpnSfStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnSfStatusTable::DocsL2vpnSfStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2014,33 +2014,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnPktClassTa
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnPktClassTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnPktClassTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnPktClassEntry")
     {
-        auto c = std::make_shared<DOCSL2VPNMIB::DocsL2vpnPktClassTable::DocsL2vpnPktClassEntry>();
-        c->parent = this;
-        docsl2vpnpktclassentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSL2VPNMIB::DocsL2vpnPktClassTable::DocsL2vpnPktClassEntry>();
+        ent_->parent = this;
+        docsl2vpnpktclassentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnPktClassTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnPktClassTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsl2vpnpktclassentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsl2vpnpktclassentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnPktClassTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2137,16 +2137,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnPktClassTa
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnPktClassTable::DocsL2vpnPktClassEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnPktClassTable::DocsL2vpnPktClassEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnPktClassTable::DocsL2vpnPktClassEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnPktClassTable::DocsL2vpnPktClassEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnPktClassTable::DocsL2vpnPktClassEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2298,33 +2298,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnCmNsiTable
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnCmNsiTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnCmNsiTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnCmNsiEntry")
     {
-        auto c = std::make_shared<DOCSL2VPNMIB::DocsL2vpnCmNsiTable::DocsL2vpnCmNsiEntry>();
-        c->parent = this;
-        docsl2vpncmnsientry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSL2VPNMIB::DocsL2vpnCmNsiTable::DocsL2vpnCmNsiEntry>();
+        ent_->parent = this;
+        docsl2vpncmnsientry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnCmNsiTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnCmNsiTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsl2vpncmnsientry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsl2vpncmnsientry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnCmNsiTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2416,16 +2416,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnCmNsiTable
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnCmNsiTable::DocsL2vpnCmNsiEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnCmNsiTable::DocsL2vpnCmNsiEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnCmNsiTable::DocsL2vpnCmNsiEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnCmNsiTable::DocsL2vpnCmNsiEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnCmNsiTable::DocsL2vpnCmNsiEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2569,33 +2569,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTa
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnCmVpnCpeEntry")
     {
-        auto c = std::make_shared<DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTable::DocsL2vpnCmVpnCpeEntry>();
-        c->parent = this;
-        docsl2vpncmvpncpeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTable::DocsL2vpnCmVpnCpeEntry>();
+        ent_->parent = this;
+        docsl2vpncmvpncpeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsl2vpncmvpncpeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsl2vpncmvpncpeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2672,16 +2672,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTa
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTable::DocsL2vpnCmVpnCpeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTable::DocsL2vpnCmVpnCpeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTable::DocsL2vpnCmVpnCpeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTable::DocsL2vpnCmVpnCpeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnCmVpnCpeTable::DocsL2vpnCmVpnCpeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2785,33 +2785,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTa
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnVpnCmCpeEntry")
     {
-        auto c = std::make_shared<DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTable::DocsL2vpnVpnCmCpeEntry>();
-        c->parent = this;
-        docsl2vpnvpncmcpeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTable::DocsL2vpnVpnCmCpeEntry>();
+        ent_->parent = this;
+        docsl2vpnvpncmcpeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsl2vpnvpncmcpeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsl2vpnvpncmcpeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2888,16 +2888,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTa
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTable::DocsL2vpnVpnCmCpeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTable::DocsL2vpnVpnCmCpeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTable::DocsL2vpnVpnCmCpeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTable::DocsL2vpnVpnCmCpeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnVpnCmCpeTable::DocsL2vpnVpnCmCpeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3001,33 +3001,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnDot1qTpFdb
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnDot1qTpFdbExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnDot1qTpFdbExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnDot1qTpFdbExtEntry")
     {
-        auto c = std::make_shared<DOCSL2VPNMIB::DocsL2vpnDot1qTpFdbExtTable::DocsL2vpnDot1qTpFdbExtEntry>();
-        c->parent = this;
-        docsl2vpndot1qtpfdbextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSL2VPNMIB::DocsL2vpnDot1qTpFdbExtTable::DocsL2vpnDot1qTpFdbExtEntry>();
+        ent_->parent = this;
+        docsl2vpndot1qtpfdbextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnDot1qTpFdbExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnDot1qTpFdbExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsl2vpndot1qtpfdbextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsl2vpndot1qtpfdbextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnDot1qTpFdbExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3107,16 +3107,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnDot1qTpFdb
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnDot1qTpFdbExtTable::DocsL2vpnDot1qTpFdbExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnDot1qTpFdbExtTable::DocsL2vpnDot1qTpFdbExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnDot1qTpFdbExtTable::DocsL2vpnDot1qTpFdbExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnDot1qTpFdbExtTable::DocsL2vpnDot1qTpFdbExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnDot1qTpFdbExtTable::DocsL2vpnDot1qTpFdbExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3230,33 +3230,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnDot1qTpGro
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnDot1qTpGroupExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnDot1qTpGroupExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsL2vpnDot1qTpGroupExtEntry")
     {
-        auto c = std::make_shared<DOCSL2VPNMIB::DocsL2vpnDot1qTpGroupExtTable::DocsL2vpnDot1qTpGroupExtEntry>();
-        c->parent = this;
-        docsl2vpndot1qtpgroupextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSL2VPNMIB::DocsL2vpnDot1qTpGroupExtTable::DocsL2vpnDot1qTpGroupExtEntry>();
+        ent_->parent = this;
+        docsl2vpndot1qtpgroupextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnDot1qTpGroupExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnDot1qTpGroupExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsl2vpndot1qtpgroupextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsl2vpndot1qtpgroupextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnDot1qTpGroupExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3336,16 +3336,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSL2VPNMIB::DocsL2vpnDot1qTpGro
 
 }
 
-std::shared_ptr<Entity> DOCSL2VPNMIB::DocsL2vpnDot1qTpGroupExtTable::DocsL2vpnDot1qTpGroupExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSL2VPNMIB::DocsL2vpnDot1qTpGroupExtTable::DocsL2vpnDot1qTpGroupExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSL2VPNMIB::DocsL2vpnDot1qTpGroupExtTable::DocsL2vpnDot1qTpGroupExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSL2VPNMIB::DocsL2vpnDot1qTpGroupExtTable::DocsL2vpnDot1qTpGroupExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSL2VPNMIB::DocsL2vpnDot1qTpGroupExtTable::DocsL2vpnDot1qTpGroupExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

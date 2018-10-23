@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > MplsEa::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> MplsEa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsEa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> MplsEa::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsEa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsEa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsEa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void MplsEa::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MplsEa::clone_ptr() const
+std::shared_ptr<ydk::Entity> MplsEa::clone_ptr() const
 {
     return std::make_shared<MplsEa>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > MplsEa::Nodes::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> MplsEa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsEa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<MplsEa::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsEa::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsEa::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsEa::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsEa::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -272,7 +272,7 @@ std::vector<std::pair<std::string, LeafData> > MplsEa::Nodes::Node::get_name_lea
 
 }
 
-std::shared_ptr<Entity> MplsEa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsEa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -286,16 +286,16 @@ std::shared_ptr<Entity> MplsEa::Nodes::Node::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsEa::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsEa::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsEa::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -372,33 +372,33 @@ std::vector<std::pair<std::string, LeafData> > MplsEa::Nodes::Node::Interfaces::
 
 }
 
-std::shared_ptr<Entity> MplsEa::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsEa::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<MplsEa::Nodes::Node::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsEa::Nodes::Node::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsEa::Nodes::Node::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsEa::Nodes::Node::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsEa::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -474,16 +474,16 @@ std::vector<std::pair<std::string, LeafData> > MplsEa::Nodes::Node::Interfaces::
 
 }
 
-std::shared_ptr<Entity> MplsEa::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsEa::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsEa::Nodes::Node::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsEa::Nodes::Node::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsEa::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -592,7 +592,7 @@ std::vector<std::pair<std::string, LeafData> > MplsMa::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> MplsMa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsMa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -606,16 +606,16 @@ std::shared_ptr<Entity> MplsMa::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsMa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsMa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsMa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -626,7 +626,7 @@ void MplsMa::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MplsMa::clone_ptr() const
+std::shared_ptr<ydk::Entity> MplsMa::clone_ptr() const
 {
     return std::make_shared<MplsMa>();
 }
@@ -714,33 +714,33 @@ std::vector<std::pair<std::string, LeafData> > MplsMa::Nodes::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> MplsMa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsMa::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<MplsMa::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsMa::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsMa::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsMa::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsMa::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -812,7 +812,7 @@ std::vector<std::pair<std::string, LeafData> > MplsMa::Nodes::Node::get_name_lea
 
 }
 
-std::shared_ptr<Entity> MplsMa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsMa::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -826,16 +826,16 @@ std::shared_ptr<Entity> MplsMa::Nodes::Node::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsMa::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsMa::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsMa::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -912,33 +912,33 @@ std::vector<std::pair<std::string, LeafData> > MplsMa::Nodes::Node::Interfaces::
 
 }
 
-std::shared_ptr<Entity> MplsMa::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsMa::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<MplsMa::Nodes::Node::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsMa::Nodes::Node::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsMa::Nodes::Node::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsMa::Nodes::Node::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsMa::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1014,16 +1014,16 @@ std::vector<std::pair<std::string, LeafData> > MplsMa::Nodes::Node::Interfaces::
 
 }
 
-std::shared_ptr<Entity> MplsMa::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsMa::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsMa::Nodes::Node::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsMa::Nodes::Node::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsMa::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-xr")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> Interfaces::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_xr != nullptr)
     {
-        children["interface-xr"] = interface_xr;
+        _children["interface-xr"] = interface_xr;
     }
 
     if(node_type_sets != nullptr)
     {
-        children["node-type-sets"] = node_type_sets;
+        _children["node-type-sets"] = node_type_sets;
     }
 
     if(interface_briefs != nullptr)
     {
-        children["interface-briefs"] = interface_briefs;
+        _children["interface-briefs"] = interface_briefs;
     }
 
     if(inventory_summary != nullptr)
     {
-        children["inventory-summary"] = inventory_summary;
+        _children["inventory-summary"] = inventory_summary;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(interface_summary != nullptr)
     {
-        children["interface-summary"] = interface_summary;
+        _children["interface-summary"] = interface_summary;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Interfaces::clone_ptr() const
+std::shared_ptr<ydk::Entity> Interfaces::clone_ptr() const
 {
     return std::make_shared<Interfaces>();
 }
@@ -264,33 +264,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::get_name
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -530,7 +530,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dampening-information")
     {
@@ -634,66 +634,66 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dampening_information != nullptr)
     {
-        children["dampening-information"] = dampening_information;
+        _children["dampening-information"] = dampening_information;
     }
 
     if(mac_address != nullptr)
     {
-        children["mac-address"] = mac_address;
+        _children["mac-address"] = mac_address;
     }
 
     if(burned_in_address != nullptr)
     {
-        children["burned-in-address"] = burned_in_address;
+        _children["burned-in-address"] = burned_in_address;
     }
 
     if(carrier_delay != nullptr)
     {
-        children["carrier-delay"] = carrier_delay;
+        _children["carrier-delay"] = carrier_delay;
     }
 
     if(arp_information != nullptr)
     {
-        children["arp-information"] = arp_information;
+        _children["arp-information"] = arp_information;
     }
 
     if(ip_information != nullptr)
     {
-        children["ip-information"] = ip_information;
+        _children["ip-information"] = ip_information;
     }
 
     if(encapsulation_information != nullptr)
     {
-        children["encapsulation-information"] = encapsulation_information;
+        _children["encapsulation-information"] = encapsulation_information;
     }
 
     if(interface_type_information != nullptr)
     {
-        children["interface-type-information"] = interface_type_information;
+        _children["interface-type-information"] = interface_type_information;
     }
 
     if(data_rates != nullptr)
     {
-        children["data-rates"] = data_rates;
+        _children["data-rates"] = data_rates;
     }
 
     if(interface_statistics != nullptr)
     {
-        children["interface-statistics"] = interface_statistics;
+        _children["interface-statistics"] = interface_statistics;
     }
 
     if(l2_interface_statistics != nullptr)
     {
-        children["l2-interface-statistics"] = l2_interface_statistics;
+        _children["l2-interface-statistics"] = l2_interface_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1110,16 +1110,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::DampeningInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::DampeningInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::DampeningInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::DampeningInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::DampeningInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1258,16 +1258,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::MacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::MacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1336,16 +1336,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::BurnedInAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::BurnedInAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::BurnedInAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::BurnedInAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::BurnedInAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1418,16 +1418,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::CarrierDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::CarrierDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::CarrierDelay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::CarrierDelay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::CarrierDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1514,16 +1514,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::ArpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::ArpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::ArpInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::ArpInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::ArpInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1616,16 +1616,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::IpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::IpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::IpInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::IpInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::IpInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1717,7 +1717,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frame-relay-information")
     {
@@ -1749,26 +1749,26 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(frame_relay_information != nullptr)
     {
-        children["frame-relay-information"] = frame_relay_information;
+        _children["frame-relay-information"] = frame_relay_information;
     }
 
     if(dot1q_information != nullptr)
     {
-        children["dot1q-information"] = dot1q_information;
+        _children["dot1q-information"] = dot1q_information;
     }
 
     if(ppp_information != nullptr)
     {
-        children["ppp-information"] = ppp_information;
+        _children["ppp-information"] = ppp_information;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1889,16 +1889,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::FrameRelayInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2101,7 +2101,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "encapsulation-details")
     {
@@ -2124,21 +2124,21 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(encapsulation_details != nullptr)
     {
-        children["encapsulation-details"] = encapsulation_details;
+        _children["encapsulation-details"] = encapsulation_details;
     }
 
     if(vlan_switched != nullptr)
     {
-        children["vlan-switched"] = vlan_switched;
+        _children["vlan-switched"] = vlan_switched;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2234,7 +2234,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stack")
     {
@@ -2266,26 +2266,26 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stack != nullptr)
     {
-        children["stack"] = stack;
+        _children["stack"] = stack;
     }
 
     if(service_instance_details != nullptr)
     {
-        children["service-instance-details"] = service_instance_details;
+        _children["service-instance-details"] = service_instance_details;
     }
 
     if(dot1ad_dot1q_stack != nullptr)
     {
-        children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
+        _children["dot1ad-dot1q-stack"] = dot1ad_dot1q_stack;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2418,16 +2418,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Stack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2557,7 +2557,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-traffic-stack")
     {
@@ -2570,51 +2570,51 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 
     if(child_yang_name == "tags-to-match")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch>();
-        c->parent = this;
-        tags_to_match.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch>();
+        ent_->parent = this;
+        tags_to_match.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "pushe")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe>();
-        c->parent = this;
-        pushe.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe>();
+        ent_->parent = this;
+        pushe.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(local_traffic_stack != nullptr)
     {
-        children["local-traffic-stack"] = local_traffic_stack;
+        _children["local-traffic-stack"] = local_traffic_stack;
     }
 
-    count = 0;
-    for (auto c : tags_to_match.entities())
+    count_ = 0;
+    for (auto ent_ : tags_to_match.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : pushe.entities())
+    count_ = 0;
+    for (auto ent_ : pushe.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2751,33 +2751,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-traffic-tag")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag>();
-        c->parent = this;
-        local_traffic_tag.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag>();
+        ent_->parent = this;
+        local_traffic_tag.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : local_traffic_tag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : local_traffic_tag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2840,16 +2840,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2944,33 +2944,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-range")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange>();
-        c->parent = this;
-        vlan_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange>();
+        ent_->parent = this;
+        vlan_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vlan_range.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vlan_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3053,16 +3053,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3145,16 +3145,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::ServiceInstanceDetails::Pushe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3237,16 +3237,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::EncapsulationDetails::Dot1adDot1qStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3334,7 +3334,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trunk-vlan-ranges")
     {
@@ -3348,16 +3348,16 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(trunk_vlan_ranges != nullptr)
     {
-        children["trunk-vlan-ranges"] = trunk_vlan_ranges;
+        _children["trunk-vlan-ranges"] = trunk_vlan_ranges;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3487,7 +3487,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-traffic-stack")
     {
@@ -3500,51 +3500,51 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInforma
 
     if(child_yang_name == "tags-to-match")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch>();
-        c->parent = this;
-        tags_to_match.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch>();
+        ent_->parent = this;
+        tags_to_match.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "pushe")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::Pushe>();
-        c->parent = this;
-        pushe.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::Pushe>();
+        ent_->parent = this;
+        pushe.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(local_traffic_stack != nullptr)
     {
-        children["local-traffic-stack"] = local_traffic_stack;
+        _children["local-traffic-stack"] = local_traffic_stack;
     }
 
-    count = 0;
-    for (auto c : tags_to_match.entities())
+    count_ = 0;
+    for (auto ent_ : tags_to_match.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : pushe.entities())
+    count_ = 0;
+    for (auto ent_ : pushe.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3681,33 +3681,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-traffic-tag")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag>();
-        c->parent = this;
-        local_traffic_tag.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag>();
+        ent_->parent = this;
+        local_traffic_tag.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : local_traffic_tag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : local_traffic_tag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3770,16 +3770,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::LocalTrafficStack::LocalTrafficTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3874,33 +3874,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-range")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange>();
-        c->parent = this;
-        vlan_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange>();
+        ent_->parent = this;
+        vlan_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vlan_range.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vlan_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3983,16 +3983,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::TagsToMatch::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4075,16 +4075,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::Pushe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::Pushe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::Pushe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::Pushe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qInformation::VlanSwitched::TrunkVlanRanges::Pushe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4191,33 +4191,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ncp-info-array")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray>();
-        c->parent = this;
-        ncp_info_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray>();
+        ent_->parent = this;
+        ncp_info_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ncp_info_array.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ncp_info_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4330,16 +4330,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInformation::NcpInfoArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4455,7 +4455,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srp-information")
     {
@@ -4541,56 +4541,56 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(srp_information != nullptr)
     {
-        children["srp-information"] = srp_information;
+        _children["srp-information"] = srp_information;
     }
 
     if(tunnel_information != nullptr)
     {
-        children["tunnel-information"] = tunnel_information;
+        _children["tunnel-information"] = tunnel_information;
     }
 
     if(bundle_information != nullptr)
     {
-        children["bundle-information"] = bundle_information;
+        _children["bundle-information"] = bundle_information;
     }
 
     if(serial_information != nullptr)
     {
-        children["serial-information"] = serial_information;
+        _children["serial-information"] = serial_information;
     }
 
     if(sonet_pos_information != nullptr)
     {
-        children["sonet-pos-information"] = sonet_pos_information;
+        _children["sonet-pos-information"] = sonet_pos_information;
     }
 
     if(tunnel_gre_information != nullptr)
     {
-        children["tunnel-gre-information"] = tunnel_gre_information;
+        _children["tunnel-gre-information"] = tunnel_gre_information;
     }
 
     if(pseudowire_head_end_information != nullptr)
     {
-        children["pseudowire-head-end-information"] = pseudowire_head_end_information;
+        _children["pseudowire-head-end-information"] = pseudowire_head_end_information;
     }
 
     if(cem_information != nullptr)
     {
-        children["cem-information"] = cem_information;
+        _children["cem-information"] = cem_information;
     }
 
     if(gcc_information != nullptr)
     {
-        children["gcc-information"] = gcc_information;
+        _children["gcc-information"] = gcc_information;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4663,7 +4663,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srp-information")
     {
@@ -4686,21 +4686,21 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(srp_information != nullptr)
     {
-        children["srp-information"] = srp_information;
+        _children["srp-information"] = srp_information;
     }
 
     if(srp_statistics != nullptr)
     {
-        children["srp-statistics"] = srp_statistics;
+        _children["srp-statistics"] = srp_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4771,7 +4771,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ips-info")
     {
@@ -4812,31 +4812,31 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ips_info != nullptr)
     {
-        children["ips-info"] = ips_info;
+        _children["ips-info"] = ips_info;
     }
 
     if(topology_info != nullptr)
     {
-        children["topology-info"] = topology_info;
+        _children["topology-info"] = topology_info;
     }
 
     if(srr_info != nullptr)
     {
-        children["srr-info"] = srr_info;
+        _children["srr-info"] = srr_info;
     }
 
     if(rate_limit_info != nullptr)
     {
-        children["rate-limit-info"] = rate_limit_info;
+        _children["rate-limit-info"] = rate_limit_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4907,33 +4907,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-information")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation>();
-        c->parent = this;
-        local_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation>();
+        ent_->parent = this;
+        local_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : local_information.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : local_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5019,7 +5019,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "side-a")
     {
@@ -5042,21 +5042,21 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(side_a != nullptr)
     {
-        children["side-a"] = side_a;
+        _children["side-a"] = side_a;
     }
 
     if(side_b != nullptr)
     {
-        children["side-b"] = side_b;
+        _children["side-b"] = side_b;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5225,33 +5225,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "asserted-failure")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure>();
-        c->parent = this;
-        asserted_failure.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure>();
+        ent_->parent = this;
+        asserted_failure.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : asserted_failure.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : asserted_failure.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5510,16 +5510,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideA::AssertedFailure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5718,33 +5718,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "asserted-failure")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure>();
-        c->parent = this;
-        asserted_failure.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure>();
+        ent_->parent = this;
+        asserted_failure.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : asserted_failure.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : asserted_failure.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6003,16 +6003,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::IpsInfo::LocalInformation::SideB::AssertedFailure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6143,33 +6143,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-information")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation>();
-        c->parent = this;
-        local_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation>();
+        ent_->parent = this;
+        local_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : local_information.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : local_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6266,33 +6266,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ring-node")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode>();
-        c->parent = this;
-        ring_node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode>();
+        ent_->parent = this;
+        ring_node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ring_node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ring_node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6421,16 +6421,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::TopologyInfo::LocalInformation::RingNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6565,33 +6565,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srr-detailed-info")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo>();
-        c->parent = this;
-        srr_detailed_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo>();
+        ent_->parent = this;
+        srr_detailed_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : srr_detailed_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : srr_detailed_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6753,50 +6753,50 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes-on-ring")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing>();
-        c->parent = this;
-        nodes_on_ring.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing>();
+        ent_->parent = this;
+        nodes_on_ring.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "nodes-not-on-ring")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing>();
-        c->parent = this;
-        nodes_not_on_ring.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing>();
+        ent_->parent = this;
+        nodes_not_on_ring.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nodes_on_ring.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nodes_on_ring.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : nodes_not_on_ring.entities())
+    count_ = 0;
+    for (auto ent_ : nodes_not_on_ring.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7039,16 +7039,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesOnRing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7201,16 +7201,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::SrrInfo::SrrDetailedInfo::NodesNotOnRing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7351,33 +7351,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rate-limit-detailed-info")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo>();
-        c->parent = this;
-        rate_limit_detailed_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo>();
+        ent_->parent = this;
+        rate_limit_detailed_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rate_limit_detailed_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rate_limit_detailed_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7446,16 +7446,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpInformation_::RateLimitInfo::RateLimitDetailedInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7541,7 +7541,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "side-a-data-rate")
     {
@@ -7582,31 +7582,31 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(side_a_data_rate != nullptr)
     {
-        children["side-a-data-rate"] = side_a_data_rate;
+        _children["side-a-data-rate"] = side_a_data_rate;
     }
 
     if(side_b_data_rate != nullptr)
     {
-        children["side-b-data-rate"] = side_b_data_rate;
+        _children["side-b-data-rate"] = side_b_data_rate;
     }
 
     if(side_a_errors != nullptr)
     {
-        children["side-a-errors"] = side_a_errors;
+        _children["side-a-errors"] = side_a_errors;
     }
 
     if(side_b_errors != nullptr)
     {
-        children["side-b-errors"] = side_b_errors;
+        _children["side-b-errors"] = side_b_errors;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7687,16 +7687,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideADataRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7807,16 +7807,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBDataRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7947,16 +7947,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideAErrors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8137,16 +8137,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInformation::SrpStatistics::SideBErrors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8315,16 +8315,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8451,33 +8451,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "member")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member>();
-        c->parent = this;
-        member.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member>();
+        ent_->parent = this;
+        member.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : member.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : member.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8589,7 +8589,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -8630,31 +8630,31 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
     if(link_data != nullptr)
     {
-        children["link-data"] = link_data;
+        _children["link-data"] = link_data;
     }
 
     if(member_mux_data != nullptr)
     {
-        children["member-mux-data"] = member_mux_data;
+        _children["member-mux-data"] = member_mux_data;
     }
 
     if(mac_address != nullptr)
     {
-        children["mac-address"] = mac_address;
+        _children["mac-address"] = mac_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8853,16 +8853,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9087,16 +9087,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::LinkData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9326,7 +9326,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "member-mux-state-reason-data")
     {
@@ -9340,16 +9340,16 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(member_mux_state_reason_data != nullptr)
     {
-        children["member-mux-state-reason-data"] = member_mux_state_reason_data;
+        _children["member-mux-state-reason-data"] = member_mux_state_reason_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9462,16 +9462,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MemberMuxData::MemberMuxStateReasonData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9550,16 +9550,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::BundleInformation::Member::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9628,16 +9628,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SerialInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9706,16 +9706,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SonetPosInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9837,7 +9837,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source-ip-address")
     {
@@ -9860,21 +9860,21 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInforma
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source_ip_address != nullptr)
     {
-        children["source-ip-address"] = source_ip_address;
+        _children["source-ip-address"] = source_ip_address;
     }
 
     if(destination_ip_address != nullptr)
     {
-        children["destination-ip-address"] = destination_ip_address;
+        _children["destination-ip-address"] = destination_ip_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10061,16 +10061,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::SourceIpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10167,16 +10167,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::TunnelGreInformation::DestinationIpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10273,16 +10273,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::PseudowireHeadEndInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10383,16 +10383,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::CemInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10495,16 +10495,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::GccInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10631,16 +10631,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::DataRates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::DataRates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::DataRates::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::DataRates::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::DataRates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10838,7 +10838,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "full-interface-stats")
     {
@@ -10861,21 +10861,21 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceStatistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(full_interface_stats != nullptr)
     {
-        children["full-interface-stats"] = full_interface_stats;
+        _children["full-interface-stats"] = full_interface_stats;
     }
 
     if(basic_interface_stats != nullptr)
     {
-        children["basic-interface-stats"] = basic_interface_stats;
+        _children["basic-interface-stats"] = basic_interface_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11084,16 +11084,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceStatistics::FullInterfaceStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11572,16 +11572,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::InterfaceStatistics::BasicInterfaceStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11831,7 +11831,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stats-id")
     {
@@ -11844,51 +11844,51 @@ std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistic
 
     if(child_yang_name == "block-array")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray>();
-        c->parent = this;
-        block_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray>();
+        ent_->parent = this;
+        block_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "element-array")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray>();
-        c->parent = this;
-        element_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray>();
+        ent_->parent = this;
+        element_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stats_id != nullptr)
     {
-        children["stats-id"] = stats_id;
+        _children["stats-id"] = stats_id;
     }
 
-    count = 0;
-    for (auto c : block_array.entities())
+    count_ = 0;
+    for (auto ent_ : block_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : element_array.entities())
+    count_ = 0;
+    for (auto ent_ : element_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11987,16 +11987,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::StatsId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12123,16 +12123,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12233,33 +12233,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "block-array")
     {
-        auto c = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray>();
-        c->parent = this;
-        block_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray>();
+        ent_->parent = this;
+        block_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : block_array.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : block_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12336,16 +12336,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceXr::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementArray::BlockArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12449,33 +12449,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::NodeTypeSets::get_nam
 
 }
 
-std::shared_ptr<Entity> Interfaces::NodeTypeSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::NodeTypeSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node-type-set")
     {
-        auto c = std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet>();
-        c->parent = this;
-        node_type_set.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet>();
+        ent_->parent = this;
+        node_type_set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::NodeTypeSets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node_type_set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node_type_set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::NodeTypeSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12550,7 +12550,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::NodeTypeSets::NodeTyp
 
 }
 
-std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::NodeTypeSets::NodeTypeSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-summary")
     {
@@ -12564,16 +12564,16 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::NodeTypeSets::NodeTypeSet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_summary != nullptr)
     {
-        children["interface-summary"] = interface_summary;
+        _children["interface-summary"] = interface_summary;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::NodeTypeSets::NodeTypeSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12670,7 +12670,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::NodeTypeSets::NodeTyp
 
 }
 
-std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-counts")
     {
@@ -12683,34 +12683,34 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary:
 
     if(child_yang_name == "interface-type")
     {
-        auto c = std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType>();
-        c->parent = this;
-        interface_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType>();
+        ent_->parent = this;
+        interface_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_counts != nullptr)
     {
-        children["interface-counts"] = interface_counts;
+        _children["interface-counts"] = interface_counts;
     }
 
-    count = 0;
-    for (auto c : interface_type.entities())
+    count_ = 0;
+    for (auto ent_ : interface_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12788,16 +12788,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::NodeTypeSets::NodeTyp
 
 }
 
-std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12912,7 +12912,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::NodeTypeSets::NodeTyp
 
 }
 
-std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-counts")
     {
@@ -12926,16 +12926,16 @@ std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_counts != nullptr)
     {
-        children["interface-counts"] = interface_counts;
+        _children["interface-counts"] = interface_counts;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13033,16 +13033,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::NodeTypeSets::NodeTyp
 
 }
 
-std::shared_ptr<Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceType::InterfaceCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13156,33 +13156,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceBriefs::get_
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceBriefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-brief")
     {
-        auto c = std::make_shared<Interfaces::InterfaceBriefs::InterfaceBrief>();
-        c->parent = this;
-        interface_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceBriefs::InterfaceBrief>();
+        ent_->parent = this;
+        interface_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceBriefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceBriefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13301,16 +13301,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceBriefs::Inte
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceBriefs::InterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceBriefs::InterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceBriefs::InterfaceBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceBriefs::InterfaceBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceBriefs::InterfaceBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13527,7 +13527,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InventorySummary::get
 
 }
 
-std::shared_ptr<Entity> Interfaces::InventorySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InventorySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-counts")
     {
@@ -13540,34 +13540,34 @@ std::shared_ptr<Entity> Interfaces::InventorySummary::get_child_by_name(const st
 
     if(child_yang_name == "interface-type")
     {
-        auto c = std::make_shared<Interfaces::InventorySummary::InterfaceType>();
-        c->parent = this;
-        interface_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InventorySummary::InterfaceType>();
+        ent_->parent = this;
+        interface_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InventorySummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InventorySummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_counts != nullptr)
     {
-        children["interface-counts"] = interface_counts;
+        _children["interface-counts"] = interface_counts;
     }
 
-    count = 0;
-    for (auto c : interface_type.entities())
+    count_ = 0;
+    for (auto ent_ : interface_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InventorySummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13645,16 +13645,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InventorySummary::Int
 
 }
 
-std::shared_ptr<Entity> Interfaces::InventorySummary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InventorySummary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InventorySummary::InterfaceCounts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InventorySummary::InterfaceCounts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InventorySummary::InterfaceCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13769,7 +13769,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InventorySummary::Int
 
 }
 
-std::shared_ptr<Entity> Interfaces::InventorySummary::InterfaceType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InventorySummary::InterfaceType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-counts")
     {
@@ -13783,16 +13783,16 @@ std::shared_ptr<Entity> Interfaces::InventorySummary::InterfaceType::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InventorySummary::InterfaceType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InventorySummary::InterfaceType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_counts != nullptr)
     {
-        children["interface-counts"] = interface_counts;
+        _children["interface-counts"] = interface_counts;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InventorySummary::InterfaceType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13890,16 +13890,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InventorySummary::Int
 
 }
 
-std::shared_ptr<Entity> Interfaces::InventorySummary::InterfaceType::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InventorySummary::InterfaceType::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InventorySummary::InterfaceType::InterfaceCounts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InventorySummary::InterfaceType::InterfaceCounts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InventorySummary::InterfaceType::InterfaceCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14013,33 +14013,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interfaces_::get_name
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interfaces_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interfaces_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Interfaces::Interfaces_::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interfaces_::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interfaces_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interfaces_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interfaces_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14122,16 +14122,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interfaces_::Interfac
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interfaces_::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interfaces_::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interfaces_::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interfaces_::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interfaces_::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14258,7 +14258,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceSummary::get
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-counts")
     {
@@ -14271,34 +14271,34 @@ std::shared_ptr<Entity> Interfaces::InterfaceSummary::get_child_by_name(const st
 
     if(child_yang_name == "interface-type")
     {
-        auto c = std::make_shared<Interfaces::InterfaceSummary::InterfaceType>();
-        c->parent = this;
-        interface_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::InterfaceSummary::InterfaceType>();
+        ent_->parent = this;
+        interface_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_counts != nullptr)
     {
-        children["interface-counts"] = interface_counts;
+        _children["interface-counts"] = interface_counts;
     }
 
-    count = 0;
-    for (auto c : interface_type.entities())
+    count_ = 0;
+    for (auto ent_ : interface_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14376,16 +14376,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceSummary::Int
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceSummary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceSummary::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceSummary::InterfaceCounts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceSummary::InterfaceCounts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceSummary::InterfaceCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14500,7 +14500,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceSummary::Int
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceSummary::InterfaceType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceSummary::InterfaceType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-counts")
     {
@@ -14514,16 +14514,16 @@ std::shared_ptr<Entity> Interfaces::InterfaceSummary::InterfaceType::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceSummary::InterfaceType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceSummary::InterfaceType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_counts != nullptr)
     {
-        children["interface-counts"] = interface_counts;
+        _children["interface-counts"] = interface_counts;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::InterfaceSummary::InterfaceType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14621,16 +14621,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::InterfaceSummary::Int
 
 }
 
-std::shared_ptr<Entity> Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::InterfaceSummary::InterfaceType::InterfaceCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

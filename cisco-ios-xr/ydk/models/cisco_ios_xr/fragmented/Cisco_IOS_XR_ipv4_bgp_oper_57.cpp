@@ -57,7 +57,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global")
     {
@@ -80,21 +80,21 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -247,135 +247,135 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mode-enter-time")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::ModeEnterTime>();
-        c->parent = this;
-        mode_enter_time.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::ModeEnterTime>();
+        ent_->parent = this;
+        mode_enter_time.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "total-pim-install-add")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallAdd>();
-        c->parent = this;
-        total_pim_install_add.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallAdd>();
+        ent_->parent = this;
+        total_pim_install_add.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "total-pim-install-del")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallDel>();
-        c->parent = this;
-        total_pim_install_del.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallDel>();
+        ent_->parent = this;
+        total_pim_install_del.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "total-pim-callback-add")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAdd>();
-        c->parent = this;
-        total_pim_callback_add.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAdd>();
+        ent_->parent = this;
+        total_pim_callback_add.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "total-pim-callback-del")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDel>();
-        c->parent = this;
-        total_pim_callback_del.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDel>();
+        ent_->parent = this;
+        total_pim_callback_del.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "total-pim-callback-add-local")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAddLocal>();
-        c->parent = this;
-        total_pim_callback_add_local.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAddLocal>();
+        ent_->parent = this;
+        total_pim_callback_add_local.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "total-pim-callback-del-local")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDelLocal>();
-        c->parent = this;
-        total_pim_callback_del_local.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDelLocal>();
+        ent_->parent = this;
+        total_pim_callback_del_local.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mode_enter_time.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mode_enter_time.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : total_pim_install_add.entities())
+    count_ = 0;
+    for (auto ent_ : total_pim_install_add.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : total_pim_install_del.entities())
+    count_ = 0;
+    for (auto ent_ : total_pim_install_del.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : total_pim_callback_add.entities())
+    count_ = 0;
+    for (auto ent_ : total_pim_callback_add.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : total_pim_callback_del.entities())
+    count_ = 0;
+    for (auto ent_ : total_pim_callback_del.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : total_pim_callback_add_local.entities())
+    count_ = 0;
+    for (auto ent_ : total_pim_callback_add_local.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : total_pim_callback_del_local.entities())
+    count_ = 0;
+    for (auto ent_ : total_pim_callback_del_local.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -484,16 +484,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::ModeEnterTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::ModeEnterTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::ModeEnterTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::ModeEnterTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::ModeEnterTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -562,16 +562,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallAdd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallAdd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallAdd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallAdd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallAdd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -640,16 +640,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallDel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallDel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallDel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallDel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimInstallDel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -718,16 +718,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAdd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAdd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAdd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAdd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAdd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -796,16 +796,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -874,16 +874,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAddLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAddLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAddLocal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAddLocal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackAddLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -952,16 +952,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDelLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDelLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDelLocal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDelLocal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Global::TotalPimCallbackDelLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1239,7 +1239,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "time-rib-coverged")
     {
@@ -1307,46 +1307,46 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(time_rib_coverged != nullptr)
     {
-        children["time-rib-coverged"] = time_rib_coverged;
+        _children["time-rib-coverged"] = time_rib_coverged;
     }
 
     if(time_rib_down != nullptr)
     {
-        children["time-rib-down"] = time_rib_down;
+        _children["time-rib-down"] = time_rib_down;
     }
 
     if(first_rib_table_full_timestamp != nullptr)
     {
-        children["first-rib-table-full-timestamp"] = first_rib_table_full_timestamp;
+        _children["first-rib-table-full-timestamp"] = first_rib_table_full_timestamp;
     }
 
     if(last_rib_table_full_timestamp != nullptr)
     {
-        children["last-rib-table-full-timestamp"] = last_rib_table_full_timestamp;
+        _children["last-rib-table-full-timestamp"] = last_rib_table_full_timestamp;
     }
 
     if(first_rib_table_has_space_timestamp != nullptr)
     {
-        children["first-rib-table-has-space-timestamp"] = first_rib_table_has_space_timestamp;
+        _children["first-rib-table-has-space-timestamp"] = first_rib_table_has_space_timestamp;
     }
 
     if(last_rib_table_has_space_timestamp != nullptr)
     {
-        children["last-rib-table-has-space-timestamp"] = last_rib_table_has_space_timestamp;
+        _children["last-rib-table-has-space-timestamp"] = last_rib_table_has_space_timestamp;
     }
 
     if(time_label_retain != nullptr)
     {
-        children["time-label-retain"] = time_label_retain;
+        _children["time-label-retain"] = time_label_retain;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1869,16 +1869,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeRibCoverged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeRibCoverged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeRibCoverged::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeRibCoverged::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeRibCoverged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1961,16 +1961,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeRibDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeRibDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeRibDown::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeRibDown::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeRibDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2053,16 +2053,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::FirstRibTableFullTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::FirstRibTableFullTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::FirstRibTableFullTimestamp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::FirstRibTableFullTimestamp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::FirstRibTableFullTimestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2145,16 +2145,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::LastRibTableFullTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::LastRibTableFullTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::LastRibTableFullTimestamp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::LastRibTableFullTimestamp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::LastRibTableFullTimestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2237,16 +2237,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::FirstRibTableHasSpaceTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::FirstRibTableHasSpaceTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::FirstRibTableHasSpaceTimestamp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::FirstRibTableHasSpaceTimestamp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::FirstRibTableHasSpaceTimestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2329,16 +2329,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::LastRibTableHasSpaceTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::LastRibTableHasSpaceTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::LastRibTableHasSpaceTimestamp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::LastRibTableHasSpaceTimestamp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::LastRibTableHasSpaceTimestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2421,16 +2421,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeLabelRetain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeLabelRetain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeLabelRetain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeLabelRetain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AfProcessInfo::PerformanceStatistics::Vrf::TimeLabelRetain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2517,33 +2517,33 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path>();
-        c->parent = this;
-        path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path>();
+        ent_->parent = this;
+        path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2695,7 +2695,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "advertised-neighbor")
     {
@@ -2727,26 +2727,26 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(advertised_neighbor != nullptr)
     {
-        children["advertised-neighbor"] = advertised_neighbor;
+        _children["advertised-neighbor"] = advertised_neighbor;
     }
 
     if(path_information != nullptr)
     {
-        children["path-information"] = path_information;
+        _children["path-information"] = path_information;
     }
 
     if(attributes_after_policy_in != nullptr)
     {
-        children["attributes-after-policy-in"] = attributes_after_policy_in;
+        _children["attributes-after-policy-in"] = attributes_after_policy_in;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3116,7 +3116,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -3157,31 +3157,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3460,16 +3460,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3538,16 +3538,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3616,16 +3616,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3694,16 +3694,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AdvertisedNeighbor::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4293,7 +4293,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp-prefix")
     {
@@ -4396,203 +4396,203 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
 
     if(child_yang_name == "rcvd-label")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::RcvdLabel>();
-        c->parent = this;
-        rcvd_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::RcvdLabel>();
+        ent_->parent = this;
+        rcvd_label.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "l2vpn-circuit-status-value")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::L2vpnCircuitStatusValue>();
-        c->parent = this;
-        l2vpn_circuit_status_value.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::L2vpnCircuitStatusValue>();
+        ent_->parent = this;
+        l2vpn_circuit_status_value.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "mvpn-pmsi-value")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnPmsiValue>();
-        c->parent = this;
-        mvpn_pmsi_value.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnPmsiValue>();
+        ent_->parent = this;
+        mvpn_pmsi_value.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "extended-community")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::ExtendedCommunity>();
-        c->parent = this;
-        extended_community.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::ExtendedCommunity>();
+        ent_->parent = this;
+        extended_community.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "local-peers-advertised-to")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo>();
-        c->parent = this;
-        local_peers_advertised_to.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo>();
+        ent_->parent = this;
+        local_peers_advertised_to.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "pe-peers-advertised-to")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo>();
-        c->parent = this;
-        pe_peers_advertised_to.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo>();
+        ent_->parent = this;
+        pe_peers_advertised_to.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "best-path-orr-bitfield")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield>();
-        c->parent = this;
-        best_path_orr_bitfield.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield>();
+        ent_->parent = this;
+        best_path_orr_bitfield.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "add-path-orr-bitfield")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield>();
-        c->parent = this;
-        add_path_orr_bitfield.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield>();
+        ent_->parent = this;
+        add_path_orr_bitfield.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bgp_prefix != nullptr)
     {
-        children["bgp-prefix"] = bgp_prefix;
+        _children["bgp-prefix"] = bgp_prefix;
     }
 
     if(neighbor_address != nullptr)
     {
-        children["neighbor-address"] = neighbor_address;
+        _children["neighbor-address"] = neighbor_address;
     }
 
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
     if(nh_tunnel != nullptr)
     {
-        children["nh-tunnel"] = nh_tunnel;
+        _children["nh-tunnel"] = nh_tunnel;
     }
 
     if(mdt_group_addr != nullptr)
     {
-        children["mdt-group-addr"] = mdt_group_addr;
+        _children["mdt-group-addr"] = mdt_group_addr;
     }
 
     if(gw_addr != nullptr)
     {
-        children["gw-addr"] = gw_addr;
+        _children["gw-addr"] = gw_addr;
     }
 
     if(nh_addr != nullptr)
     {
-        children["nh-addr"] = nh_addr;
+        _children["nh-addr"] = nh_addr;
     }
 
     if(best_path_comp_winner != nullptr)
     {
-        children["best-path-comp-winner"] = best_path_comp_winner;
+        _children["best-path-comp-winner"] = best_path_comp_winner;
     }
 
     if(mvpn_nbr_addr != nullptr)
     {
-        children["mvpn-nbr-addr"] = mvpn_nbr_addr;
+        _children["mvpn-nbr-addr"] = mvpn_nbr_addr;
     }
 
     if(mvpn_nexthop_addr != nullptr)
     {
-        children["mvpn-nexthop-addr"] = mvpn_nexthop_addr;
+        _children["mvpn-nexthop-addr"] = mvpn_nexthop_addr;
     }
 
     if(vpn_nexthop_addr != nullptr)
     {
-        children["vpn-nexthop-addr"] = vpn_nexthop_addr;
+        _children["vpn-nexthop-addr"] = vpn_nexthop_addr;
     }
 
-    count = 0;
-    for (auto c : rcvd_label.entities())
+    count_ = 0;
+    for (auto ent_ : rcvd_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : l2vpn_circuit_status_value.entities())
+    count_ = 0;
+    for (auto ent_ : l2vpn_circuit_status_value.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : mvpn_pmsi_value.entities())
+    count_ = 0;
+    for (auto ent_ : mvpn_pmsi_value.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : extended_community.entities())
+    count_ = 0;
+    for (auto ent_ : extended_community.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : local_peers_advertised_to.entities())
+    count_ = 0;
+    for (auto ent_ : local_peers_advertised_to.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : pe_peers_advertised_to.entities())
+    count_ = 0;
+    for (auto ent_ : pe_peers_advertised_to.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : best_path_orr_bitfield.entities())
+    count_ = 0;
+    for (auto ent_ : best_path_orr_bitfield.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : add_path_orr_bitfield.entities())
+    count_ = 0;
+    for (auto ent_ : add_path_orr_bitfield.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5636,7 +5636,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
@@ -5650,16 +5650,16 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5829,7 +5829,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -5870,31 +5870,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6173,16 +6173,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6251,16 +6251,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6329,16 +6329,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6407,16 +6407,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6586,7 +6586,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -6627,31 +6627,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6930,16 +6930,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7008,16 +7008,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7086,16 +7086,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7164,16 +7164,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NeighborAddress::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7343,7 +7343,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -7384,31 +7384,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7687,16 +7687,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7765,16 +7765,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7843,16 +7843,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7921,16 +7921,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NextHop::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8055,16 +8055,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NhTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NhTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NhTunnel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NhTunnel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NhTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8374,7 +8374,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -8415,31 +8415,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8718,16 +8718,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8796,16 +8796,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8874,16 +8874,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8952,16 +8952,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9038,16 +9038,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::GwAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::GwAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::GwAddr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::GwAddr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::GwAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9144,16 +9144,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NhAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NhAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NhAddr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NhAddr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::NhAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9343,7 +9343,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -9384,31 +9384,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9687,16 +9687,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9765,16 +9765,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9843,16 +9843,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9921,16 +9921,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10100,7 +10100,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -10141,31 +10141,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10444,16 +10444,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10522,16 +10522,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10600,16 +10600,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10678,16 +10678,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10857,7 +10857,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -10898,31 +10898,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11201,16 +11201,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11279,16 +11279,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11357,16 +11357,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11435,16 +11435,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnNexthopAddr::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11614,7 +11614,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -11655,31 +11655,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11958,16 +11958,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12036,16 +12036,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12114,16 +12114,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12192,16 +12192,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12270,16 +12270,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::RcvdLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::RcvdLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::RcvdLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::RcvdLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::RcvdLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12348,16 +12348,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::L2vpnCircuitStatusValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::L2vpnCircuitStatusValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::L2vpnCircuitStatusValue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::L2vpnCircuitStatusValue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::L2vpnCircuitStatusValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12426,16 +12426,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnPmsiValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnPmsiValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnPmsiValue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnPmsiValue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnPmsiValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12504,16 +12504,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::ExtendedCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::ExtendedCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::ExtendedCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::ExtendedCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::ExtendedCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12595,7 +12595,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-address")
     {
@@ -12609,16 +12609,16 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(neighbor_address != nullptr)
     {
-        children["neighbor-address"] = neighbor_address;
+        _children["neighbor-address"] = neighbor_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12808,7 +12808,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -12849,31 +12849,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13152,16 +13152,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13230,16 +13230,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13308,16 +13308,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13386,16 +13386,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13477,7 +13477,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-address")
     {
@@ -13491,16 +13491,16 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(neighbor_address != nullptr)
     {
-        children["neighbor-address"] = neighbor_address;
+        _children["neighbor-address"] = neighbor_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13690,7 +13690,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -13731,31 +13731,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14034,16 +14034,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14112,16 +14112,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14190,16 +14190,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14268,16 +14268,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14359,7 +14359,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-address")
     {
@@ -14373,16 +14373,16 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(neighbor_address != nullptr)
     {
-        children["neighbor-address"] = neighbor_address;
+        _children["neighbor-address"] = neighbor_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14572,7 +14572,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -14613,31 +14613,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14916,16 +14916,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14994,16 +14994,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15072,16 +15072,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15150,16 +15150,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15241,7 +15241,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-address")
     {
@@ -15255,16 +15255,16 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(neighbor_address != nullptr)
     {
-        children["neighbor-address"] = neighbor_address;
+        _children["neighbor-address"] = neighbor_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15454,7 +15454,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -15495,31 +15495,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15798,16 +15798,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15876,16 +15876,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15954,16 +15954,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16032,16 +16032,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16215,7 +16215,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common-attributes")
     {
@@ -16256,31 +16256,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common_attributes != nullptr)
     {
-        children["common-attributes"] = common_attributes;
+        _children["common-attributes"] = common_attributes;
     }
 
     if(attr_set != nullptr)
     {
-        children["attr-set"] = attr_set;
+        _children["attr-set"] = attr_set;
     }
 
     if(rnh_addr != nullptr)
     {
-        children["rnh-addr"] = rnh_addr;
+        _children["rnh-addr"] = rnh_addr;
     }
 
     if(ribrnh_ip != nullptr)
     {
-        children["ribrnh-ip"] = ribrnh_ip;
+        _children["ribrnh-ip"] = ribrnh_ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16816,7 +16816,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-sid-attr")
     {
@@ -16838,192 +16838,192 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
 
     if(child_yang_name == "community")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Community>();
-        c->parent = this;
-        community.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Community>();
+        ent_->parent = this;
+        community.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "extended-community")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity>();
-        c->parent = this;
-        extended_community.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity>();
+        ent_->parent = this;
+        extended_community.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "unknown-attribute")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute>();
-        c->parent = this;
-        unknown_attribute.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute>();
+        ent_->parent = this;
+        unknown_attribute.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "cluster")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Cluster>();
-        c->parent = this;
-        cluster.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Cluster>();
+        ent_->parent = this;
+        cluster.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "l2tpv3-cookie")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie>();
-        c->parent = this;
-        l2tpv3_cookie.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie>();
+        ent_->parent = this;
+        l2tpv3_cookie.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "connector-value")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue>();
-        c->parent = this;
-        connector_value.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue>();
+        ent_->parent = this;
+        connector_value.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "pmsi-value")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PmsiValue>();
-        c->parent = this;
-        pmsi_value.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PmsiValue>();
+        ent_->parent = this;
+        pmsi_value.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ls-attr")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LsAttr>();
-        c->parent = this;
-        ls_attr.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LsAttr>();
+        ent_->parent = this;
+        ls_attr.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "pe-distinguisher-label")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel>();
-        c->parent = this;
-        pe_distinguisher_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel>();
+        ent_->parent = this;
+        pe_distinguisher_label.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "large-community")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity>();
-        c->parent = this;
-        large_community.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity>();
+        ent_->parent = this;
+        large_community.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_sid_attr != nullptr)
     {
-        children["prefix-sid-attr"] = prefix_sid_attr;
+        _children["prefix-sid-attr"] = prefix_sid_attr;
     }
 
     if(tunnel_encap != nullptr)
     {
-        children["tunnel-encap"] = tunnel_encap;
+        _children["tunnel-encap"] = tunnel_encap;
     }
 
-    count = 0;
-    for (auto c : community.entities())
+    count_ = 0;
+    for (auto ent_ : community.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : extended_community.entities())
+    count_ = 0;
+    for (auto ent_ : extended_community.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : unknown_attribute.entities())
+    count_ = 0;
+    for (auto ent_ : unknown_attribute.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : cluster.entities())
+    count_ = 0;
+    for (auto ent_ : cluster.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : l2tpv3_cookie.entities())
+    count_ = 0;
+    for (auto ent_ : l2tpv3_cookie.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : connector_value.entities())
+    count_ = 0;
+    for (auto ent_ : connector_value.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : pmsi_value.entities())
+    count_ = 0;
+    for (auto ent_ : pmsi_value.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ls_attr.entities())
+    count_ = 0;
+    for (auto ent_ : ls_attr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : pe_distinguisher_label.entities())
+    count_ = 0;
+    for (auto ent_ : pe_distinguisher_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : large_community.entities())
+    count_ = 0;
+    for (auto ent_ : large_community.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17420,33 +17420,33 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-sid-tlv")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::PrefixSidTlv>();
-        c->parent = this;
-        prefix_sid_tlv.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::PrefixSidTlv>();
+        ent_->parent = this;
+        prefix_sid_tlv.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prefix_sid_tlv.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prefix_sid_tlv.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17513,16 +17513,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::PrefixSidTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::PrefixSidTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::PrefixSidTlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::PrefixSidTlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::PrefixSidTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17611,7 +17611,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sr-policy")
     {
@@ -17625,16 +17625,16 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sr_policy != nullptr)
     {
-        children["sr-policy"] = sr_policy;
+        _children["sr-policy"] = sr_policy;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17729,7 +17729,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "binding-sid")
     {
@@ -17751,39 +17751,39 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
 
     if(child_yang_name == "segment-list")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList>();
-        c->parent = this;
-        segment_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList>();
+        ent_->parent = this;
+        segment_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(binding_sid != nullptr)
     {
-        children["binding-sid"] = binding_sid;
+        _children["binding-sid"] = binding_sid;
     }
 
     if(allocated_binding_sid != nullptr)
     {
-        children["allocated-binding-sid"] = allocated_binding_sid;
+        _children["allocated-binding-sid"] = allocated_binding_sid;
     }
 
-    count = 0;
-    for (auto c : segment_list.entities())
+    count_ = 0;
+    for (auto ent_ : segment_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17900,16 +17900,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18006,16 +18006,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18116,33 +18116,33 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "segment")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment>();
-        c->parent = this;
-        segment.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment>();
+        ent_->parent = this;
+        segment.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : segment.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : segment.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18223,16 +18223,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18331,16 +18331,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Community::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Community::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Community::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Community::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Community::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18409,16 +18409,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18487,16 +18487,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18565,16 +18565,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Cluster::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Cluster::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Cluster::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Cluster::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Cluster::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18643,16 +18643,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18721,16 +18721,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18799,16 +18799,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PmsiValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PmsiValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PmsiValue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PmsiValue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PmsiValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18877,16 +18877,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LsAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LsAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LsAttr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LsAttr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LsAttr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18959,16 +18959,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19055,16 +19055,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19400,7 +19400,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-sid-attr")
     {
@@ -19422,192 +19422,192 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
 
     if(child_yang_name == "community")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Community>();
-        c->parent = this;
-        community.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Community>();
+        ent_->parent = this;
+        community.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "extended-community")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity>();
-        c->parent = this;
-        extended_community.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity>();
+        ent_->parent = this;
+        extended_community.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "unknown-attribute")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::UnknownAttribute>();
-        c->parent = this;
-        unknown_attribute.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::UnknownAttribute>();
+        ent_->parent = this;
+        unknown_attribute.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "cluster")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Cluster>();
-        c->parent = this;
-        cluster.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Cluster>();
+        ent_->parent = this;
+        cluster.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "l2tpv3-cookie")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie>();
-        c->parent = this;
-        l2tpv3_cookie.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie>();
+        ent_->parent = this;
+        l2tpv3_cookie.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "connector-value")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ConnectorValue>();
-        c->parent = this;
-        connector_value.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ConnectorValue>();
+        ent_->parent = this;
+        connector_value.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "pmsi-value")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PmsiValue>();
-        c->parent = this;
-        pmsi_value.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PmsiValue>();
+        ent_->parent = this;
+        pmsi_value.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ls-attr")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LsAttr>();
-        c->parent = this;
-        ls_attr.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LsAttr>();
+        ent_->parent = this;
+        ls_attr.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "pe-distinguisher-label")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel>();
-        c->parent = this;
-        pe_distinguisher_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel>();
+        ent_->parent = this;
+        pe_distinguisher_label.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "large-community")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LargeCommunity>();
-        c->parent = this;
-        large_community.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LargeCommunity>();
+        ent_->parent = this;
+        large_community.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_sid_attr != nullptr)
     {
-        children["prefix-sid-attr"] = prefix_sid_attr;
+        _children["prefix-sid-attr"] = prefix_sid_attr;
     }
 
     if(tunnel_encap != nullptr)
     {
-        children["tunnel-encap"] = tunnel_encap;
+        _children["tunnel-encap"] = tunnel_encap;
     }
 
-    count = 0;
-    for (auto c : community.entities())
+    count_ = 0;
+    for (auto ent_ : community.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : extended_community.entities())
+    count_ = 0;
+    for (auto ent_ : extended_community.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : unknown_attribute.entities())
+    count_ = 0;
+    for (auto ent_ : unknown_attribute.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : cluster.entities())
+    count_ = 0;
+    for (auto ent_ : cluster.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : l2tpv3_cookie.entities())
+    count_ = 0;
+    for (auto ent_ : l2tpv3_cookie.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : connector_value.entities())
+    count_ = 0;
+    for (auto ent_ : connector_value.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : pmsi_value.entities())
+    count_ = 0;
+    for (auto ent_ : pmsi_value.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ls_attr.entities())
+    count_ = 0;
+    for (auto ent_ : ls_attr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : pe_distinguisher_label.entities())
+    count_ = 0;
+    for (auto ent_ : pe_distinguisher_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : large_community.entities())
+    count_ = 0;
+    for (auto ent_ : large_community.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20004,33 +20004,33 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-sid-tlv")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv>();
-        c->parent = this;
-        prefix_sid_tlv.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv>();
+        ent_->parent = this;
+        prefix_sid_tlv.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prefix_sid_tlv.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prefix_sid_tlv.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20097,16 +20097,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20195,7 +20195,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sr-policy")
     {
@@ -20209,16 +20209,16 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sr_policy != nullptr)
     {
-        children["sr-policy"] = sr_policy;
+        _children["sr-policy"] = sr_policy;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20313,7 +20313,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "binding-sid")
     {
@@ -20335,39 +20335,39 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
 
     if(child_yang_name == "segment-list")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList>();
-        c->parent = this;
-        segment_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList>();
+        ent_->parent = this;
+        segment_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(binding_sid != nullptr)
     {
-        children["binding-sid"] = binding_sid;
+        _children["binding-sid"] = binding_sid;
     }
 
     if(allocated_binding_sid != nullptr)
     {
-        children["allocated-binding-sid"] = allocated_binding_sid;
+        _children["allocated-binding-sid"] = allocated_binding_sid;
     }
 
-    count = 0;
-    for (auto c : segment_list.entities())
+    count_ = 0;
+    for (auto ent_ : segment_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20484,16 +20484,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20590,16 +20590,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20700,33 +20700,33 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "segment")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment>();
-        c->parent = this;
-        segment.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment>();
+        ent_->parent = this;
+        segment.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : segment.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : segment.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20807,16 +20807,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20915,16 +20915,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Community::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Community::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Community::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Community::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Community::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20993,16 +20993,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21071,16 +21071,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::UnknownAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::UnknownAttribute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::UnknownAttribute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::UnknownAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21149,16 +21149,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Cluster::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Cluster::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Cluster::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Cluster::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Cluster::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21227,16 +21227,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21305,16 +21305,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ConnectorValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ConnectorValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ConnectorValue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ConnectorValue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ConnectorValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21383,16 +21383,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PmsiValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PmsiValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PmsiValue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PmsiValue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PmsiValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21461,16 +21461,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LsAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LsAttr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LsAttr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LsAttr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LsAttr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21543,16 +21543,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21639,16 +21639,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LargeCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LargeCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LargeCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LargeCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LargeCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21749,16 +21749,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RnhAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RnhAddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RnhAddr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RnhAddr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RnhAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21958,7 +21958,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -21999,31 +21999,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22302,16 +22302,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22380,16 +22380,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22458,16 +22458,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22536,16 +22536,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22655,7 +22655,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bmp-version-wrap-time-spec")
     {
@@ -22687,26 +22687,26 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bmp_version_wrap_time_spec != nullptr)
     {
-        children["bmp-version-wrap-time-spec"] = bmp_version_wrap_time_spec;
+        _children["bmp-version-wrap-time-spec"] = bmp_version_wrap_time_spec;
     }
 
     if(bmp_version_wrap_start_time_spec != nullptr)
     {
-        children["bmp-version-wrap-start-time-spec"] = bmp_version_wrap_start_time_spec;
+        _children["bmp-version-wrap-start-time-spec"] = bmp_version_wrap_start_time_spec;
     }
 
     if(bmp_version_wrap_done_time_spec != nullptr)
     {
-        children["bmp-version-wrap-done-time-spec"] = bmp_version_wrap_done_time_spec;
+        _children["bmp-version-wrap-done-time-spec"] = bmp_version_wrap_done_time_spec;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22849,16 +22849,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapTimeSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapTimeSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapTimeSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapTimeSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapTimeSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22941,16 +22941,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapStartTimeSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapStartTimeSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapStartTimeSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapStartTimeSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapStartTimeSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23033,16 +23033,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapDoneTimeSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapDoneTimeSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapDoneTimeSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapDoneTimeSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapDoneTimeSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23129,33 +23129,33 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rpc-set")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet>();
-        c->parent = this;
-        rpc_set.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet>();
+        ent_->parent = this;
+        rpc_set.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rpc_set.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rpc_set.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23247,33 +23247,33 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
-        auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop>();
-        c->parent = this;
-        next_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop>();
+        ent_->parent = this;
+        next_hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : next_hop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : next_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23493,7 +23493,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2vpn-vpls-address")
     {
@@ -23534,31 +23534,31 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2vpn_vpls_address != nullptr)
     {
-        children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
     }
 
     if(l2vpn_mspw_address != nullptr)
     {
-        children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
     }
 
     if(ipv4_sr_policy_address != nullptr)
     {
-        children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
     }
 
     if(ipv6_sr_policy_address != nullptr)
     {
-        children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23837,16 +23837,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instances::Instance::Instanc
 
 }
 
-std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnVplsAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnVplsAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

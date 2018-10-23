@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> MplsOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> MplsOam::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface != nullptr)
     {
-        children["interface"] = interface;
+        _children["interface"] = interface;
     }
 
     if(packet != nullptr)
     {
-        children["packet"] = packet;
+        _children["packet"] = packet;
     }
 
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void MplsOam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MplsOam::clone_ptr() const
+std::shared_ptr<ydk::Entity> MplsOam::clone_ptr() const
 {
     return std::make_shared<MplsOam>();
 }
@@ -206,7 +206,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "briefs")
     {
@@ -229,21 +229,21 @@ std::shared_ptr<Entity> MplsOam::Interface::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(briefs != nullptr)
     {
-        children["briefs"] = briefs;
+        _children["briefs"] = briefs;
     }
 
     if(details != nullptr)
     {
-        children["details"] = details;
+        _children["details"] = details;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -317,33 +317,33 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Briefs::get_n
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Briefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Briefs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief")
     {
-        auto c = std::make_shared<MplsOam::Interface::Briefs::Brief>();
-        c->parent = this;
-        brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsOam::Interface::Briefs::Brief>();
+        ent_->parent = this;
+        brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Briefs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Briefs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Interface::Briefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -438,16 +438,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Briefs::Brief
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Briefs::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Briefs::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Briefs::Brief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Briefs::Brief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Briefs::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -601,33 +601,33 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::get_
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
-        auto c = std::make_shared<MplsOam::Interface::Details::Detail>();
-        c->parent = this;
-        detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsOam::Interface::Details::Detail>();
+        ent_->parent = this;
+        detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Interface::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -703,7 +703,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-brief")
     {
@@ -726,21 +726,21 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_brief != nullptr)
     {
-        children["interface-brief"] = interface_brief;
+        _children["interface-brief"] = interface_brief;
     }
 
     if(packet_statistics != nullptr)
     {
-        children["packet-statistics"] = packet_statistics;
+        _children["packet-statistics"] = packet_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -833,16 +833,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::InterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::InterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::InterfaceBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::InterfaceBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::InterfaceBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -991,7 +991,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "received")
     {
@@ -1050,41 +1050,41 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(received != nullptr)
     {
-        children["received"] = received;
+        _children["received"] = received;
     }
 
     if(sent != nullptr)
     {
-        children["sent"] = sent;
+        _children["sent"] = sent;
     }
 
     if(working_req_sent != nullptr)
     {
-        children["working-req-sent"] = working_req_sent;
+        _children["working-req-sent"] = working_req_sent;
     }
 
     if(working_rep_sent != nullptr)
     {
-        children["working-rep-sent"] = working_rep_sent;
+        _children["working-rep-sent"] = working_rep_sent;
     }
 
     if(protect_req_sent != nullptr)
     {
-        children["protect-req-sent"] = protect_req_sent;
+        _children["protect-req-sent"] = protect_req_sent;
     }
 
     if(protect_rep_sent != nullptr)
     {
-        children["protect-rep-sent"] = protect_rep_sent;
+        _children["protect-rep-sent"] = protect_rep_sent;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1195,7 +1195,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "received-good-request")
     {
@@ -1326,81 +1326,81 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::R
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(received_good_request != nullptr)
     {
-        children["received-good-request"] = received_good_request;
+        _children["received-good-request"] = received_good_request;
     }
 
     if(received_good_reply != nullptr)
     {
-        children["received-good-reply"] = received_good_reply;
+        _children["received-good-reply"] = received_good_reply;
     }
 
     if(received_unknown != nullptr)
     {
-        children["received-unknown"] = received_unknown;
+        _children["received-unknown"] = received_unknown;
     }
 
     if(received_error_ip_header != nullptr)
     {
-        children["received-error-ip-header"] = received_error_ip_header;
+        _children["received-error-ip-header"] = received_error_ip_header;
     }
 
     if(received_error_udp_header != nullptr)
     {
-        children["received-error-udp-header"] = received_error_udp_header;
+        _children["received-error-udp-header"] = received_error_udp_header;
     }
 
     if(received_error_runt != nullptr)
     {
-        children["received-error-runt"] = received_error_runt;
+        _children["received-error-runt"] = received_error_runt;
     }
 
     if(received_error_queue_full != nullptr)
     {
-        children["received-error-queue-full"] = received_error_queue_full;
+        _children["received-error-queue-full"] = received_error_queue_full;
     }
 
     if(received_error_general != nullptr)
     {
-        children["received-error-general"] = received_error_general;
+        _children["received-error-general"] = received_error_general;
     }
 
     if(received_error_no_interface != nullptr)
     {
-        children["received-error-no-interface"] = received_error_no_interface;
+        _children["received-error-no-interface"] = received_error_no_interface;
     }
 
     if(received_error_no_memory != nullptr)
     {
-        children["received-error-no-memory"] = received_error_no_memory;
+        _children["received-error-no-memory"] = received_error_no_memory;
     }
 
     if(protect_protocol_received_good_request != nullptr)
     {
-        children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
+        _children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
     }
 
     if(protect_protocol_received_good_reply != nullptr)
     {
-        children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
+        _children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
     }
 
     if(received_good_bfd_request != nullptr)
     {
-        children["received-good-bfd-request"] = received_good_bfd_request;
+        _children["received-good-bfd-request"] = received_good_bfd_request;
     }
 
     if(received_good_bfd_reply != nullptr)
     {
-        children["received-good-bfd-reply"] = received_good_bfd_reply;
+        _children["received-good-bfd-reply"] = received_good_bfd_reply;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1463,16 +1463,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1555,16 +1555,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1647,16 +1647,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1739,16 +1739,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1831,16 +1831,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1923,16 +1923,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2015,16 +2015,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2107,16 +2107,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2199,16 +2199,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2291,16 +2291,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2383,16 +2383,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2475,16 +2475,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2567,16 +2567,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2659,16 +2659,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2759,7 +2759,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit-good")
     {
@@ -2800,31 +2800,31 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::S
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transmit_good != nullptr)
     {
-        children["transmit-good"] = transmit_good;
+        _children["transmit-good"] = transmit_good;
     }
 
     if(transmit_drop != nullptr)
     {
-        children["transmit-drop"] = transmit_drop;
+        _children["transmit-drop"] = transmit_drop;
     }
 
     if(transmit_bfd_good != nullptr)
     {
-        children["transmit-bfd-good"] = transmit_bfd_good;
+        _children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
     if(bfd_no_reply != nullptr)
     {
-        children["bfd-no-reply"] = bfd_no_reply;
+        _children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2887,16 +2887,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2979,16 +2979,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3071,16 +3071,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3163,16 +3163,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3263,7 +3263,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit-good")
     {
@@ -3304,31 +3304,31 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::W
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transmit_good != nullptr)
     {
-        children["transmit-good"] = transmit_good;
+        _children["transmit-good"] = transmit_good;
     }
 
     if(transmit_drop != nullptr)
     {
-        children["transmit-drop"] = transmit_drop;
+        _children["transmit-drop"] = transmit_drop;
     }
 
     if(transmit_bfd_good != nullptr)
     {
-        children["transmit-bfd-good"] = transmit_bfd_good;
+        _children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
     if(bfd_no_reply != nullptr)
     {
-        children["bfd-no-reply"] = bfd_no_reply;
+        _children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3391,16 +3391,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3483,16 +3483,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3575,16 +3575,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3667,16 +3667,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3767,7 +3767,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit-good")
     {
@@ -3808,31 +3808,31 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::W
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transmit_good != nullptr)
     {
-        children["transmit-good"] = transmit_good;
+        _children["transmit-good"] = transmit_good;
     }
 
     if(transmit_drop != nullptr)
     {
-        children["transmit-drop"] = transmit_drop;
+        _children["transmit-drop"] = transmit_drop;
     }
 
     if(transmit_bfd_good != nullptr)
     {
-        children["transmit-bfd-good"] = transmit_bfd_good;
+        _children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
     if(bfd_no_reply != nullptr)
     {
-        children["bfd-no-reply"] = bfd_no_reply;
+        _children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3895,16 +3895,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3987,16 +3987,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4079,16 +4079,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4171,16 +4171,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4271,7 +4271,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit-good")
     {
@@ -4312,31 +4312,31 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transmit_good != nullptr)
     {
-        children["transmit-good"] = transmit_good;
+        _children["transmit-good"] = transmit_good;
     }
 
     if(transmit_drop != nullptr)
     {
-        children["transmit-drop"] = transmit_drop;
+        _children["transmit-drop"] = transmit_drop;
     }
 
     if(transmit_bfd_good != nullptr)
     {
-        children["transmit-bfd-good"] = transmit_bfd_good;
+        _children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
     if(bfd_no_reply != nullptr)
     {
-        children["bfd-no-reply"] = bfd_no_reply;
+        _children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4399,16 +4399,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4491,16 +4491,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4583,16 +4583,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4675,16 +4675,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4775,7 +4775,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit-good")
     {
@@ -4816,31 +4816,31 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::P
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transmit_good != nullptr)
     {
-        children["transmit-good"] = transmit_good;
+        _children["transmit-good"] = transmit_good;
     }
 
     if(transmit_drop != nullptr)
     {
-        children["transmit-drop"] = transmit_drop;
+        _children["transmit-drop"] = transmit_drop;
     }
 
     if(transmit_bfd_good != nullptr)
     {
-        children["transmit-bfd-good"] = transmit_bfd_good;
+        _children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
     if(bfd_no_reply != nullptr)
     {
-        children["bfd-no-reply"] = bfd_no_reply;
+        _children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4903,16 +4903,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4995,16 +4995,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5087,16 +5087,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5179,16 +5179,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Interface::Details::Deta
 
 }
 
-std::shared_ptr<Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5294,7 +5294,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "received")
     {
@@ -5353,41 +5353,41 @@ std::shared_ptr<Entity> MplsOam::Packet::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(received != nullptr)
     {
-        children["received"] = received;
+        _children["received"] = received;
     }
 
     if(sent != nullptr)
     {
-        children["sent"] = sent;
+        _children["sent"] = sent;
     }
 
     if(working_req_sent != nullptr)
     {
-        children["working-req-sent"] = working_req_sent;
+        _children["working-req-sent"] = working_req_sent;
     }
 
     if(working_rep_sent != nullptr)
     {
-        children["working-rep-sent"] = working_rep_sent;
+        _children["working-rep-sent"] = working_rep_sent;
     }
 
     if(protect_req_sent != nullptr)
     {
-        children["protect-req-sent"] = protect_req_sent;
+        _children["protect-req-sent"] = protect_req_sent;
     }
 
     if(protect_rep_sent != nullptr)
     {
-        children["protect-rep-sent"] = protect_rep_sent;
+        _children["protect-rep-sent"] = protect_rep_sent;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Packet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5505,7 +5505,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::get_na
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "received-good-request")
     {
@@ -5636,81 +5636,81 @@ std::shared_ptr<Entity> MplsOam::Packet::Received::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(received_good_request != nullptr)
     {
-        children["received-good-request"] = received_good_request;
+        _children["received-good-request"] = received_good_request;
     }
 
     if(received_good_reply != nullptr)
     {
-        children["received-good-reply"] = received_good_reply;
+        _children["received-good-reply"] = received_good_reply;
     }
 
     if(received_unknown != nullptr)
     {
-        children["received-unknown"] = received_unknown;
+        _children["received-unknown"] = received_unknown;
     }
 
     if(received_error_ip_header != nullptr)
     {
-        children["received-error-ip-header"] = received_error_ip_header;
+        _children["received-error-ip-header"] = received_error_ip_header;
     }
 
     if(received_error_udp_header != nullptr)
     {
-        children["received-error-udp-header"] = received_error_udp_header;
+        _children["received-error-udp-header"] = received_error_udp_header;
     }
 
     if(received_error_runt != nullptr)
     {
-        children["received-error-runt"] = received_error_runt;
+        _children["received-error-runt"] = received_error_runt;
     }
 
     if(received_error_queue_full != nullptr)
     {
-        children["received-error-queue-full"] = received_error_queue_full;
+        _children["received-error-queue-full"] = received_error_queue_full;
     }
 
     if(received_error_general != nullptr)
     {
-        children["received-error-general"] = received_error_general;
+        _children["received-error-general"] = received_error_general;
     }
 
     if(received_error_no_interface != nullptr)
     {
-        children["received-error-no-interface"] = received_error_no_interface;
+        _children["received-error-no-interface"] = received_error_no_interface;
     }
 
     if(received_error_no_memory != nullptr)
     {
-        children["received-error-no-memory"] = received_error_no_memory;
+        _children["received-error-no-memory"] = received_error_no_memory;
     }
 
     if(protect_protocol_received_good_request != nullptr)
     {
-        children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
+        _children["protect-protocol-received-good-request"] = protect_protocol_received_good_request;
     }
 
     if(protect_protocol_received_good_reply != nullptr)
     {
-        children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
+        _children["protect-protocol-received-good-reply"] = protect_protocol_received_good_reply;
     }
 
     if(received_good_bfd_request != nullptr)
     {
-        children["received-good-bfd-request"] = received_good_bfd_request;
+        _children["received-good-bfd-request"] = received_good_bfd_request;
     }
 
     if(received_good_bfd_reply != nullptr)
     {
-        children["received-good-bfd-reply"] = received_good_bfd_reply;
+        _children["received-good-bfd-reply"] = received_good_bfd_reply;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Packet::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5780,16 +5780,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Receiv
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodRequest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ReceivedGoodRequest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5879,16 +5879,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Receiv
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ReceivedGoodReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5978,16 +5978,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Receiv
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ReceivedUnknown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedUnknown::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ReceivedUnknown::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ReceivedUnknown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6077,16 +6077,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Receiv
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorIpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ReceivedErrorIpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorIpHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ReceivedErrorIpHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ReceivedErrorIpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6176,16 +6176,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Receiv
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ReceivedErrorUdpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6275,16 +6275,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Receiv
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ReceivedErrorRunt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorRunt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ReceivedErrorRunt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ReceivedErrorRunt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6374,16 +6374,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Receiv
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorQueueFull::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ReceivedErrorQueueFull::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorQueueFull::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ReceivedErrorQueueFull::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ReceivedErrorQueueFull::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6473,16 +6473,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Receiv
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorGeneral::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ReceivedErrorGeneral::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorGeneral::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ReceivedErrorGeneral::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ReceivedErrorGeneral::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6572,16 +6572,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Receiv
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorNoInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ReceivedErrorNoInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorNoInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ReceivedErrorNoInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ReceivedErrorNoInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6671,16 +6671,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Receiv
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedErrorNoMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ReceivedErrorNoMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedErrorNoMemory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ReceivedErrorNoMemory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ReceivedErrorNoMemory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6770,16 +6770,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Protec
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6869,16 +6869,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Protec
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6968,16 +6968,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Receiv
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ReceivedGoodBfdRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7067,16 +7067,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Received::Receiv
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Received::ReceivedGoodBfdReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Received::ReceivedGoodBfdReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::ReceivedGoodBfdReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Received::ReceivedGoodBfdReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Received::ReceivedGoodBfdReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7174,7 +7174,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Sent::get_name_l
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Sent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Sent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit-good")
     {
@@ -7215,31 +7215,31 @@ std::shared_ptr<Entity> MplsOam::Packet::Sent::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Sent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transmit_good != nullptr)
     {
-        children["transmit-good"] = transmit_good;
+        _children["transmit-good"] = transmit_good;
     }
 
     if(transmit_drop != nullptr)
     {
-        children["transmit-drop"] = transmit_drop;
+        _children["transmit-drop"] = transmit_drop;
     }
 
     if(transmit_bfd_good != nullptr)
     {
-        children["transmit-bfd-good"] = transmit_bfd_good;
+        _children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
     if(bfd_no_reply != nullptr)
     {
-        children["bfd-no-reply"] = bfd_no_reply;
+        _children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Packet::Sent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7309,16 +7309,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Sent::TransmitGo
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Sent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Sent::TransmitGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Sent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7408,16 +7408,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Sent::TransmitDr
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Sent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Sent::TransmitDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Sent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7507,16 +7507,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Sent::TransmitBf
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Sent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Sent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitBfdGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Sent::TransmitBfdGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Sent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7606,16 +7606,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::Sent::BfdNoReply
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::Sent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::Sent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::Sent::BfdNoReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::Sent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7713,7 +7713,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingReqSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::WorkingReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit-good")
     {
@@ -7754,31 +7754,31 @@ std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::WorkingReqSent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transmit_good != nullptr)
     {
-        children["transmit-good"] = transmit_good;
+        _children["transmit-good"] = transmit_good;
     }
 
     if(transmit_drop != nullptr)
     {
-        children["transmit-drop"] = transmit_drop;
+        _children["transmit-drop"] = transmit_drop;
     }
 
     if(transmit_bfd_good != nullptr)
     {
-        children["transmit-bfd-good"] = transmit_bfd_good;
+        _children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
     if(bfd_no_reply != nullptr)
     {
-        children["bfd-no-reply"] = bfd_no_reply;
+        _children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Packet::WorkingReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7848,16 +7848,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingReqSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::WorkingReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::WorkingReqSent::TransmitGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::WorkingReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7947,16 +7947,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingReqSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::WorkingReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::WorkingReqSent::TransmitDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::WorkingReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8046,16 +8046,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingReqSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::WorkingReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8145,16 +8145,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingReqSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::WorkingReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::WorkingReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::WorkingReqSent::BfdNoReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::WorkingReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8252,7 +8252,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingRepSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::WorkingRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit-good")
     {
@@ -8293,31 +8293,31 @@ std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::WorkingRepSent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transmit_good != nullptr)
     {
-        children["transmit-good"] = transmit_good;
+        _children["transmit-good"] = transmit_good;
     }
 
     if(transmit_drop != nullptr)
     {
-        children["transmit-drop"] = transmit_drop;
+        _children["transmit-drop"] = transmit_drop;
     }
 
     if(transmit_bfd_good != nullptr)
     {
-        children["transmit-bfd-good"] = transmit_bfd_good;
+        _children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
     if(bfd_no_reply != nullptr)
     {
-        children["bfd-no-reply"] = bfd_no_reply;
+        _children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Packet::WorkingRepSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8387,16 +8387,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingRepSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::WorkingRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::WorkingRepSent::TransmitGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::WorkingRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8486,16 +8486,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingRepSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::WorkingRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::WorkingRepSent::TransmitDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::WorkingRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8585,16 +8585,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingRepSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::WorkingRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8684,16 +8684,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::WorkingRepSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::WorkingRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::WorkingRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::WorkingRepSent::BfdNoReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::WorkingRepSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8791,7 +8791,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectReqSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::ProtectReqSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit-good")
     {
@@ -8832,31 +8832,31 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::ProtectReqSent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transmit_good != nullptr)
     {
-        children["transmit-good"] = transmit_good;
+        _children["transmit-good"] = transmit_good;
     }
 
     if(transmit_drop != nullptr)
     {
-        children["transmit-drop"] = transmit_drop;
+        _children["transmit-drop"] = transmit_drop;
     }
 
     if(transmit_bfd_good != nullptr)
     {
-        children["transmit-bfd-good"] = transmit_bfd_good;
+        _children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
     if(bfd_no_reply != nullptr)
     {
-        children["bfd-no-reply"] = bfd_no_reply;
+        _children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Packet::ProtectReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8926,16 +8926,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectReqSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::ProtectReqSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::ProtectReqSent::TransmitGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::ProtectReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9025,16 +9025,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectReqSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::ProtectReqSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::ProtectReqSent::TransmitDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::ProtectReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9124,16 +9124,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectReqSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::ProtectReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9223,16 +9223,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectReqSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::ProtectReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::ProtectReqSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::ProtectReqSent::BfdNoReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::ProtectReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9330,7 +9330,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectRepSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::ProtectRepSent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transmit-good")
     {
@@ -9371,31 +9371,31 @@ std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::ProtectRepSent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transmit_good != nullptr)
     {
-        children["transmit-good"] = transmit_good;
+        _children["transmit-good"] = transmit_good;
     }
 
     if(transmit_drop != nullptr)
     {
-        children["transmit-drop"] = transmit_drop;
+        _children["transmit-drop"] = transmit_drop;
     }
 
     if(transmit_bfd_good != nullptr)
     {
-        children["transmit-bfd-good"] = transmit_bfd_good;
+        _children["transmit-bfd-good"] = transmit_bfd_good;
     }
 
     if(bfd_no_reply != nullptr)
     {
-        children["bfd-no-reply"] = bfd_no_reply;
+        _children["bfd-no-reply"] = bfd_no_reply;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Packet::ProtectRepSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9465,16 +9465,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectRepSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::ProtectRepSent::TransmitGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::ProtectRepSent::TransmitGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::ProtectRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9564,16 +9564,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectRepSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::ProtectRepSent::TransmitDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::ProtectRepSent::TransmitDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::ProtectRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9663,16 +9663,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectRepSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::ProtectRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9762,16 +9762,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Packet::ProtectRepSent::
 
 }
 
-std::shared_ptr<Entity> MplsOam::Packet::ProtectRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Packet::ProtectRepSent::BfdNoReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::BfdNoReply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Packet::ProtectRepSent::BfdNoReply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Packet::ProtectRepSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9866,7 +9866,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Global::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> MplsOam::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "message-statistics")
     {
@@ -9889,21 +9889,21 @@ std::shared_ptr<Entity> MplsOam::Global::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(message_statistics != nullptr)
     {
-        children["message-statistics"] = message_statistics;
+        _children["message-statistics"] = message_statistics;
     }
 
     if(collaborator_statistics != nullptr)
     {
-        children["collaborator-statistics"] = collaborator_statistics;
+        _children["collaborator-statistics"] = collaborator_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10019,16 +10019,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Global::MessageStatistic
 
 }
 
-std::shared_ptr<Entity> MplsOam::Global::MessageStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Global::MessageStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::MessageStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Global::MessageStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Global::MessageStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10216,7 +10216,7 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Global::CollaboratorStat
 
 }
 
-std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Global::CollaboratorStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "collaborator-i-parm")
     {
@@ -10257,31 +10257,31 @@ std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Global::CollaboratorStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(collaborator_i_parm != nullptr)
     {
-        children["collaborator-i-parm"] = collaborator_i_parm;
+        _children["collaborator-i-parm"] = collaborator_i_parm;
     }
 
     if(collaborator_im != nullptr)
     {
-        children["collaborator-im"] = collaborator_im;
+        _children["collaborator-im"] = collaborator_im;
     }
 
     if(collaborator_net_io != nullptr)
     {
-        children["collaborator-net-io"] = collaborator_net_io;
+        _children["collaborator-net-io"] = collaborator_net_io;
     }
 
     if(collaborator_rib != nullptr)
     {
-        children["collaborator-rib"] = collaborator_rib;
+        _children["collaborator-rib"] = collaborator_rib;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsOam::Global::CollaboratorStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10351,16 +10351,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Global::CollaboratorStat
 
 }
 
-std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10450,16 +10450,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Global::CollaboratorStat
 
 }
 
-std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Global::CollaboratorStatistics::CollaboratorIm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10549,16 +10549,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Global::CollaboratorStat
 
 }
 
-std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10648,16 +10648,16 @@ std::vector<std::pair<std::string, LeafData> > MplsOam::Global::CollaboratorStat
 
 }
 
-std::shared_ptr<Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsOam::Global::CollaboratorStatistics::CollaboratorRib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

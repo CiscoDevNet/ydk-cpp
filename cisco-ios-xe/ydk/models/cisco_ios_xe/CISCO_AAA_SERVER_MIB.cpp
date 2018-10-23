@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOAAASERVERMIB::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> CISCOAAASERVERMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOAAASERVERMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "casConfig")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> CISCOAAASERVERMIB::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOAAASERVERMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOAAASERVERMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(casconfig != nullptr)
     {
-        children["casConfig"] = casconfig;
+        _children["casConfig"] = casconfig;
     }
 
     if(casconfigtable != nullptr)
     {
-        children["casConfigTable"] = casconfigtable;
+        _children["casConfigTable"] = casconfigtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOAAASERVERMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void CISCOAAASERVERMIB::set_filter(const std::string & value_path, YFilter yfilt
 {
 }
 
-std::shared_ptr<Entity> CISCOAAASERVERMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOAAASERVERMIB::clone_ptr() const
 {
     return std::make_shared<CISCOAAASERVERMIB>();
 }
@@ -184,16 +184,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOAAASERVERMIB::CasConfig::get
 
 }
 
-std::shared_ptr<Entity> CISCOAAASERVERMIB::CasConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOAAASERVERMIB::CasConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOAAASERVERMIB::CasConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOAAASERVERMIB::CasConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOAAASERVERMIB::CasConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -277,33 +277,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOAAASERVERMIB::CasConfigTable
 
 }
 
-std::shared_ptr<Entity> CISCOAAASERVERMIB::CasConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOAAASERVERMIB::CasConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "casConfigEntry")
     {
-        auto c = std::make_shared<CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry>();
-        c->parent = this;
-        casconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry>();
+        ent_->parent = this;
+        casconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOAAASERVERMIB::CasConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOAAASERVERMIB::CasConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : casconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : casconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOAAASERVERMIB::CasConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -515,16 +515,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOAAASERVERMIB::CasConfigTable
 
 }
 
-std::shared_ptr<Entity> CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOAAASERVERMIB::CasConfigTable::CasConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

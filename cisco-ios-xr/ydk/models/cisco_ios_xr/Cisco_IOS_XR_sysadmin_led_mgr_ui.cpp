@@ -71,50 +71,50 @@ std::vector<std::pair<std::string, LeafData> > Led::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Led::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Led::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Led::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Led::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "trace")
     {
-        auto c = std::make_shared<Led::Trace>();
-        c->parent = this;
-        trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<Led::Trace>();
+        ent_->parent = this;
+        trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Led::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Led::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : trace.entities())
+    count_ = 0;
+    for (auto ent_ : trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Led::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -125,7 +125,7 @@ void Led::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Led::clone_ptr() const
+std::shared_ptr<ydk::Entity> Led::clone_ptr() const
 {
     return std::make_shared<Led>();
 }
@@ -218,33 +218,33 @@ std::vector<std::pair<std::string, LeafData> > Led::Location::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Led::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Led::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "led_attributes")
     {
-        auto c = std::make_shared<Led::Location::LedAttributes>();
-        c->parent = this;
-        led_attributes.append(c);
-        return c;
+        auto ent_ = std::make_shared<Led::Location::LedAttributes>();
+        ent_->parent = this;
+        led_attributes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Led::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Led::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : led_attributes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : led_attributes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Led::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -322,16 +322,16 @@ std::vector<std::pair<std::string, LeafData> > Led::Location::LedAttributes::get
 
 }
 
-std::shared_ptr<Entity> Led::Location::LedAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Led::Location::LedAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Led::Location::LedAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Led::Location::LedAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Led::Location::LedAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -440,33 +440,33 @@ std::vector<std::pair<std::string, LeafData> > Led::Trace::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Led::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Led::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Led::Trace::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Led::Trace::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Led::Trace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Led::Trace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Led::Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -548,33 +548,33 @@ std::vector<std::pair<std::string, LeafData> > Led::Trace::Location::get_name_le
 
 }
 
-std::shared_ptr<Entity> Led::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Led::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-options")
     {
-        auto c = std::make_shared<Led::Trace::Location::AllOptions>();
-        c->parent = this;
-        all_options.append(c);
-        return c;
+        auto ent_ = std::make_shared<Led::Trace::Location::AllOptions>();
+        ent_->parent = this;
+        all_options.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Led::Trace::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Led::Trace::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_options.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_options.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Led::Trace::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -656,33 +656,33 @@ std::vector<std::pair<std::string, LeafData> > Led::Trace::Location::AllOptions:
 
 }
 
-std::shared_ptr<Entity> Led::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Led::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace-blocks")
     {
-        auto c = std::make_shared<Led::Trace::Location::AllOptions::TraceBlocks>();
-        c->parent = this;
-        trace_blocks.append(c);
-        return c;
+        auto ent_ = std::make_shared<Led::Trace::Location::AllOptions::TraceBlocks>();
+        ent_->parent = this;
+        trace_blocks.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Led::Trace::Location::AllOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Led::Trace::Location::AllOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace_blocks.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace_blocks.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Led::Trace::Location::AllOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -751,16 +751,16 @@ std::vector<std::pair<std::string, LeafData> > Led::Trace::Location::AllOptions:
 
 }
 
-std::shared_ptr<Entity> Led::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Led::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Led::Trace::Location::AllOptions::TraceBlocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Led::Trace::Location::AllOptions::TraceBlocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Led::Trace::Location::AllOptions::TraceBlocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

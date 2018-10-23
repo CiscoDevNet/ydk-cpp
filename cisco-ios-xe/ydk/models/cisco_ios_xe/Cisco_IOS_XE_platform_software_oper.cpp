@@ -67,7 +67,7 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::get_name_l
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "system-usages")
     {
@@ -89,39 +89,39 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::get_child_by_name(const std::stri
 
     if(child_yang_name == "q-filesystem")
     {
-        auto c = std::make_shared<CiscoPlatformSoftware::QFilesystem>();
-        c->parent = this;
-        q_filesystem.append(c);
-        return c;
+        auto ent_ = std::make_shared<CiscoPlatformSoftware::QFilesystem>();
+        ent_->parent = this;
+        q_filesystem.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(system_usages != nullptr)
     {
-        children["system-usages"] = system_usages;
+        _children["system-usages"] = system_usages;
     }
 
     if(control_processes != nullptr)
     {
-        children["control-processes"] = control_processes;
+        _children["control-processes"] = control_processes;
     }
 
-    count = 0;
-    for (auto c : q_filesystem.entities())
+    count_ = 0;
+    for (auto ent_ : q_filesystem.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CiscoPlatformSoftware::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -132,7 +132,7 @@ void CiscoPlatformSoftware::set_filter(const std::string & value_path, YFilter y
 {
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::clone_ptr() const
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::clone_ptr() const
 {
     return std::make_shared<CiscoPlatformSoftware>();
 }
@@ -220,33 +220,33 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::SystemUsag
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::SystemUsages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::SystemUsages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "system-usage")
     {
-        auto c = std::make_shared<CiscoPlatformSoftware::SystemUsages::SystemUsage>();
-        c->parent = this;
-        system_usage.append(c);
-        return c;
+        auto ent_ = std::make_shared<CiscoPlatformSoftware::SystemUsages::SystemUsage>();
+        ent_->parent = this;
+        system_usage.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::SystemUsages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::SystemUsages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : system_usage.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : system_usage.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CiscoPlatformSoftware::SystemUsages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -333,7 +333,7 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::SystemUsag
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::SystemUsages::SystemUsage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::SystemUsages::SystemUsage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process-system-usages")
     {
@@ -347,16 +347,16 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::SystemUsages::SystemUsage::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::SystemUsages::SystemUsage::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::SystemUsages::SystemUsage::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(process_system_usages != nullptr)
     {
-        children["process-system-usages"] = process_system_usages;
+        _children["process-system-usages"] = process_system_usages;
     }
 
-    return children;
+    return _children;
 }
 
 void CiscoPlatformSoftware::SystemUsages::SystemUsage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -463,33 +463,33 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::SystemUsag
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process-system-usage")
     {
-        auto c = std::make_shared<CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage>();
-        c->parent = this;
-        process_system_usage.append(c);
-        return c;
+        auto ent_ = std::make_shared<CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage>();
+        ent_->parent = this;
+        process_system_usage.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : process_system_usage.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : process_system_usage.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -569,16 +569,16 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::SystemUsag
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CiscoPlatformSoftware::SystemUsages::SystemUsage::ProcessSystemUsages::ProcessSystemUsage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -712,33 +712,33 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlPro
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::ControlProcesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "control-process")
     {
-        auto c = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess>();
-        c->parent = this;
-        control_process.append(c);
-        return c;
+        auto ent_ = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess>();
+        ent_->parent = this;
+        control_process.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::ControlProcesses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : control_process.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : control_process.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CiscoPlatformSoftware::ControlProcesses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -845,7 +845,7 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlPro
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "load-average-stats")
     {
@@ -886,31 +886,31 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(load_average_stats != nullptr)
     {
-        children["load-average-stats"] = load_average_stats;
+        _children["load-average-stats"] = load_average_stats;
     }
 
     if(load_avg_minutes != nullptr)
     {
-        children["load-avg-minutes"] = load_avg_minutes;
+        _children["load-avg-minutes"] = load_avg_minutes;
     }
 
     if(memory_stats != nullptr)
     {
-        children["memory-stats"] = memory_stats;
+        _children["memory-stats"] = memory_stats;
     }
 
     if(per_core_stats != nullptr)
     {
-        children["per-core-stats"] = per_core_stats;
+        _children["per-core-stats"] = per_core_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void CiscoPlatformSoftware::ControlProcesses::ControlProcess::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1029,16 +1029,16 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlPro
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1115,33 +1115,33 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlPro
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "load-avg-minute")
     {
-        auto c = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute>();
-        c->parent = this;
-        load_avg_minute.append(c);
-        return c;
+        auto ent_ = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute>();
+        ent_->parent = this;
+        load_avg_minute.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : load_avg_minute.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : load_avg_minute.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1210,7 +1210,7 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlPro
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "status")
     {
@@ -1224,16 +1224,16 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(status != nullptr)
     {
-        children["status"] = status;
+        _children["status"] = status;
     }
 
-    return children;
+    return _children;
 }
 
 void CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1320,16 +1320,16 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlPro
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1459,7 +1459,7 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlPro
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "status")
     {
@@ -1473,16 +1473,16 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(status != nullptr)
     {
-        children["status"] = status;
+        _children["status"] = status;
     }
 
-    return children;
+    return _children;
 }
 
 void CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1645,16 +1645,16 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlPro
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1741,33 +1741,33 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlPro
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "per-core-stat")
     {
-        auto c = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat>();
-        c->parent = this;
-        per_core_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat>();
+        ent_->parent = this;
+        per_core_stat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : per_core_stat.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : per_core_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1855,16 +1855,16 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::ControlPro
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2049,50 +2049,50 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::QFilesyste
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::QFilesystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::QFilesystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "partitions")
     {
-        auto c = std::make_shared<CiscoPlatformSoftware::QFilesystem::Partitions>();
-        c->parent = this;
-        partitions.append(c);
-        return c;
+        auto ent_ = std::make_shared<CiscoPlatformSoftware::QFilesystem::Partitions>();
+        ent_->parent = this;
+        partitions.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "core-files")
     {
-        auto c = std::make_shared<CiscoPlatformSoftware::QFilesystem::CoreFiles>();
-        c->parent = this;
-        core_files.append(c);
-        return c;
+        auto ent_ = std::make_shared<CiscoPlatformSoftware::QFilesystem::CoreFiles>();
+        ent_->parent = this;
+        core_files.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::QFilesystem::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::QFilesystem::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : partitions.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : partitions.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : core_files.entities())
+    count_ = 0;
+    for (auto ent_ : core_files.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CiscoPlatformSoftware::QFilesystem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2200,16 +2200,16 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::QFilesyste
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::QFilesystem::Partitions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::QFilesystem::Partitions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::QFilesystem::Partitions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::QFilesystem::Partitions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CiscoPlatformSoftware::QFilesystem::Partitions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2303,16 +2303,16 @@ std::vector<std::pair<std::string, LeafData> > CiscoPlatformSoftware::QFilesyste
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::QFilesystem::CoreFiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CiscoPlatformSoftware::QFilesystem::CoreFiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::QFilesystem::CoreFiles::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CiscoPlatformSoftware::QFilesystem::CoreFiles::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CiscoPlatformSoftware::QFilesystem::CoreFiles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

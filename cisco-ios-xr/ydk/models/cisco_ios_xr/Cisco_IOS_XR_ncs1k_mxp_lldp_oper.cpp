@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > LldpSnoopData::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> LldpSnoopData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LldpSnoopData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-controller-names")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> LldpSnoopData::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LldpSnoopData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet_controller_names != nullptr)
     {
-        children["ethernet-controller-names"] = ethernet_controller_names;
+        _children["ethernet-controller-names"] = ethernet_controller_names;
     }
 
-    return children;
+    return _children;
 }
 
 void LldpSnoopData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void LldpSnoopData::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> LldpSnoopData::clone_ptr() const
+std::shared_ptr<ydk::Entity> LldpSnoopData::clone_ptr() const
 {
     return std::make_shared<LldpSnoopData>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > LldpSnoopData::EthernetController
 
 }
 
-std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LldpSnoopData::EthernetControllerNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-controller-name")
     {
-        auto c = std::make_shared<LldpSnoopData::EthernetControllerNames::EthernetControllerName>();
-        c->parent = this;
-        ethernet_controller_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<LldpSnoopData::EthernetControllerNames::EthernetControllerName>();
+        ent_->parent = this;
+        ethernet_controller_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LldpSnoopData::EthernetControllerNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ethernet_controller_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ethernet_controller_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LldpSnoopData::EthernetControllerNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -320,7 +320,7 @@ std::vector<std::pair<std::string, LeafData> > LldpSnoopData::EthernetController
 
 }
 
-std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControllerName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LldpSnoopData::EthernetControllerNames::EthernetControllerName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-addresses")
     {
@@ -334,16 +334,16 @@ std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControll
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network_addresses != nullptr)
     {
-        children["network-addresses"] = network_addresses;
+        _children["network-addresses"] = network_addresses;
     }
 
-    return children;
+    return _children;
 }
 
 void LldpSnoopData::EthernetControllerNames::EthernetControllerName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -540,33 +540,33 @@ std::vector<std::pair<std::string, LeafData> > LldpSnoopData::EthernetController
 
 }
 
-std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldp-addr-entry")
     {
-        auto c = std::make_shared<LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry>();
-        c->parent = this;
-        lldp_addr_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry>();
+        ent_->parent = this;
+        lldp_addr_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lldp_addr_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lldp_addr_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -634,7 +634,7 @@ std::vector<std::pair<std::string, LeafData> > LldpSnoopData::EthernetController
 
 }
 
-std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -648,16 +648,16 @@ std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControll
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -744,16 +744,16 @@ std::vector<std::pair<std::string, LeafData> > LldpSnoopData::EthernetController
 
 }
 
-std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGEMIB::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIMAGEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoImageTable")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> CISCOIMAGEMIB::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGEMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIMAGEMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ciscoimagetable != nullptr)
     {
-        children["ciscoImageTable"] = ciscoimagetable;
+        _children["ciscoImageTable"] = ciscoimagetable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIMAGEMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void CISCOIMAGEMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOIMAGEMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIMAGEMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIMAGEMIB>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGEMIB::CiscoImageTable::g
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGEMIB::CiscoImageTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIMAGEMIB::CiscoImageTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoImageEntry")
     {
-        auto c = std::make_shared<CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry>();
-        c->parent = this;
-        ciscoimageentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry>();
+        ent_->parent = this;
+        ciscoimageentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGEMIB::CiscoImageTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIMAGEMIB::CiscoImageTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoimageentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoimageentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIMAGEMIB::CiscoImageTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -271,16 +271,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGEMIB::CiscoImageTable::C
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

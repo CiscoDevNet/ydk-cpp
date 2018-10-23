@@ -65,7 +65,7 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "afs")
     {
@@ -88,21 +88,21 @@ std::shared_ptr<Entity> FlowSpec::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(afs != nullptr)
     {
-        children["afs"] = afs;
+        _children["afs"] = afs;
     }
 
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -133,7 +133,7 @@ void FlowSpec::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> FlowSpec::clone_ptr() const
+std::shared_ptr<ydk::Entity> FlowSpec::clone_ptr() const
 {
     return std::make_shared<FlowSpec>();
 }
@@ -221,33 +221,33 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Afs::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Afs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Afs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "af")
     {
-        auto c = std::make_shared<FlowSpec::Afs::Af>();
-        c->parent = this;
-        af.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowSpec::Afs::Af>();
+        ent_->parent = this;
+        af.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Afs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Afs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : af.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : af.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -323,7 +323,7 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Afs::Af::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-policies")
     {
@@ -337,16 +337,16 @@ std::shared_ptr<Entity> FlowSpec::Afs::Af::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Afs::Af::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Afs::Af::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_policies != nullptr)
     {
-        children["service-policies"] = service_policies;
+        _children["service-policies"] = service_policies;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -433,33 +433,33 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Afs::Af::ServicePolicie
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Afs::Af::ServicePolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Afs::Af::ServicePolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-policy")
     {
-        auto c = std::make_shared<FlowSpec::Afs::Af::ServicePolicies::ServicePolicy>();
-        c->parent = this;
-        service_policy.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowSpec::Afs::Af::ServicePolicies::ServicePolicy>();
+        ent_->parent = this;
+        service_policy.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Afs::Af::ServicePolicies::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Afs::Af::ServicePolicies::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : service_policy.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : service_policy.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Afs::Af::ServicePolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -531,33 +531,33 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Afs::Af::ServicePolicie
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-type")
     {
-        auto c = std::make_shared<FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType>();
-        c->parent = this;
-        policy_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType>();
+        ent_->parent = this;
+        policy_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy_type.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -631,16 +631,16 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Afs::Af::ServicePolicie
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowSpec::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -734,33 +734,33 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<FlowSpec::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowSpec::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -832,7 +832,7 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::get_name_lea
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "afs")
     {
@@ -846,16 +846,16 @@ std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(afs != nullptr)
     {
-        children["afs"] = afs;
+        _children["afs"] = afs;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -932,33 +932,33 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::get_nam
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "af")
     {
-        auto c = std::make_shared<FlowSpec::Vrfs::Vrf::Afs::Af>();
-        c->parent = this;
-        af.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowSpec::Vrfs::Vrf::Afs::Af>();
+        ent_->parent = this;
+        af.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : af.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : af.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1027,7 +1027,7 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::get
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-policies")
     {
@@ -1041,16 +1041,16 @@ std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_policies != nullptr)
     {
-        children["service-policies"] = service_policies;
+        _children["service-policies"] = service_policies;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1137,33 +1137,33 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Ser
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-policy")
     {
-        auto c = std::make_shared<FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy>();
-        c->parent = this;
-        service_policy.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy>();
+        ent_->parent = this;
+        service_policy.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : service_policy.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : service_policy.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1235,33 +1235,33 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Ser
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-type")
     {
-        auto c = std::make_shared<FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType>();
-        c->parent = this;
-        policy_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType>();
+        ent_->parent = this;
+        policy_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy_type.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1335,16 +1335,16 @@ std::vector<std::pair<std::string, LeafData> > FlowSpec::Vrfs::Vrf::Afs::Af::Ser
 
 }
 
-std::shared_ptr<Entity> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy::PolicyType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

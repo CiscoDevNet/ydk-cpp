@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > XrXml::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> XrXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "agent")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> XrXml::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(agent != nullptr)
     {
-        children["agent"] = agent;
+        _children["agent"] = agent;
     }
 
-    return children;
+    return _children;
 }
 
 void XrXml::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void XrXml::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> XrXml::clone_ptr() const
+std::shared_ptr<ydk::Entity> XrXml::clone_ptr() const
 {
     return std::make_shared<XrXml>();
 }
@@ -174,7 +174,7 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default")
     {
@@ -206,26 +206,26 @@ std::shared_ptr<Entity> XrXml::Agent::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_ != nullptr)
     {
-        children["default"] = default_;
+        _children["default"] = default_;
     }
 
     if(tty != nullptr)
     {
-        children["tty"] = tty;
+        _children["tty"] = tty;
     }
 
     if(ssl != nullptr)
     {
-        children["ssl"] = ssl;
+        _children["ssl"] = ssl;
     }
 
-    return children;
+    return _children;
 }
 
 void XrXml::Agent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -320,7 +320,7 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default::get_name_l
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
@@ -352,26 +352,26 @@ std::shared_ptr<Entity> XrXml::Agent::Default::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::Default::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(throttle != nullptr)
     {
-        children["throttle"] = throttle;
+        _children["throttle"] = throttle;
     }
 
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
-    return children;
+    return _children;
 }
 
 void XrXml::Agent::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -487,16 +487,16 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default::Session::g
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Default::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::Default::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::Default::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void XrXml::Agent::Default::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -576,16 +576,16 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default::Throttle::
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Default::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::Default::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default::Throttle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::Default::Throttle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void XrXml::Agent::Default::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -679,33 +679,33 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default::Vrfs::get_
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Default::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::Default::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<XrXml::Agent::Default::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<XrXml::Agent::Default::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::Default::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void XrXml::Agent::Default::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -788,16 +788,16 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default::Vrfs::Vrf:
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Default::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::Default::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::Default::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void XrXml::Agent::Default::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -930,7 +930,7 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Tty::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
@@ -953,21 +953,21 @@ std::shared_ptr<Entity> XrXml::Agent::Tty::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::Tty::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(throttle != nullptr)
     {
-        children["throttle"] = throttle;
+        _children["throttle"] = throttle;
     }
 
-    return children;
+    return _children;
 }
 
 void XrXml::Agent::Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1063,16 +1063,16 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Tty::Session::get_n
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Tty::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::Tty::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::Tty::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void XrXml::Agent::Tty::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1152,16 +1152,16 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Tty::Throttle::get_
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Tty::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::Tty::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Throttle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::Tty::Throttle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void XrXml::Agent::Tty::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1268,7 +1268,7 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Ssl::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Ssl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::Ssl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
@@ -1300,26 +1300,26 @@ std::shared_ptr<Entity> XrXml::Agent::Ssl::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::Ssl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
     if(throttle != nullptr)
     {
-        children["throttle"] = throttle;
+        _children["throttle"] = throttle;
     }
 
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
-    return children;
+    return _children;
 }
 
 void XrXml::Agent::Ssl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1415,16 +1415,16 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Ssl::Session::get_n
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Ssl::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::Ssl::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::Ssl::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void XrXml::Agent::Ssl::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1504,16 +1504,16 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Ssl::Throttle::get_
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Ssl::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::Ssl::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Throttle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::Ssl::Throttle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void XrXml::Agent::Ssl::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1607,33 +1607,33 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Ssl::Vrfs::get_name
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Ssl::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::Ssl::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<XrXml::Agent::Ssl::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<XrXml::Agent::Ssl::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::Ssl::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void XrXml::Agent::Ssl::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1716,16 +1716,16 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Ssl::Vrfs::Vrf::get
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Ssl::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> XrXml::Agent::Ssl::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> XrXml::Agent::Ssl::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void XrXml::Agent::Ssl::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1834,7 +1834,7 @@ std::vector<std::pair<std::string, LeafData> > Netconf::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> Netconf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Netconf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "agent")
     {
@@ -1848,16 +1848,16 @@ std::shared_ptr<Entity> Netconf::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Netconf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Netconf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(agent != nullptr)
     {
-        children["agent"] = agent;
+        _children["agent"] = agent;
     }
 
-    return children;
+    return _children;
 }
 
 void Netconf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1868,7 +1868,7 @@ void Netconf::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Netconf::clone_ptr() const
+std::shared_ptr<ydk::Entity> Netconf::clone_ptr() const
 {
     return std::make_shared<Netconf>();
 }
@@ -1948,7 +1948,7 @@ std::vector<std::pair<std::string, LeafData> > Netconf::Agent::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Netconf::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Netconf::Agent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tty")
     {
@@ -1962,16 +1962,16 @@ std::shared_ptr<Entity> Netconf::Agent::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Netconf::Agent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tty != nullptr)
     {
-        children["tty"] = tty;
+        _children["tty"] = tty;
     }
 
-    return children;
+    return _children;
 }
 
 void Netconf::Agent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2046,7 +2046,7 @@ std::vector<std::pair<std::string, LeafData> > Netconf::Agent::Tty::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Netconf::Agent::Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Netconf::Agent::Tty::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "throttle")
     {
@@ -2069,21 +2069,21 @@ std::shared_ptr<Entity> Netconf::Agent::Tty::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Netconf::Agent::Tty::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(throttle != nullptr)
     {
-        children["throttle"] = throttle;
+        _children["throttle"] = throttle;
     }
 
     if(session != nullptr)
     {
-        children["session"] = session;
+        _children["session"] = session;
     }
 
-    return children;
+    return _children;
 }
 
 void Netconf::Agent::Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2167,16 +2167,16 @@ std::vector<std::pair<std::string, LeafData> > Netconf::Agent::Tty::Throttle::ge
 
 }
 
-std::shared_ptr<Entity> Netconf::Agent::Tty::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Netconf::Agent::Tty::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Throttle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Netconf::Agent::Tty::Throttle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Netconf::Agent::Tty::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2272,16 +2272,16 @@ std::vector<std::pair<std::string, LeafData> > Netconf::Agent::Tty::Session::get
 
 }
 
-std::shared_ptr<Entity> Netconf::Agent::Tty::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Netconf::Agent::Tty::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Netconf::Agent::Tty::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Netconf::Agent::Tty::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

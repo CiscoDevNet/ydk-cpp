@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Interfaces::clone_ptr() const
+std::shared_ptr<ydk::Entity> Interfaces::clone_ptr() const
 {
     return std::make_shared<Interfaces>();
 }
@@ -211,7 +211,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::get_name_l
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -288,51 +288,51 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(hold_time != nullptr)
     {
-        children["hold-time"] = hold_time;
+        _children["hold-time"] = hold_time;
     }
 
     if(subinterfaces != nullptr)
     {
-        children["subinterfaces"] = subinterfaces;
+        _children["subinterfaces"] = subinterfaces;
     }
 
     if(ethernet != nullptr)
     {
-        children["openconfig-if-ethernet:ethernet"] = ethernet;
+        _children["openconfig-if-ethernet:ethernet"] = ethernet;
     }
 
     if(aggregation != nullptr)
     {
-        children["openconfig-if-aggregate:aggregation"] = aggregation;
+        _children["openconfig-if-aggregate:aggregation"] = aggregation;
     }
 
     if(routed_vlan != nullptr)
     {
-        children["openconfig-vlan:routed-vlan"] = routed_vlan;
+        _children["openconfig-vlan:routed-vlan"] = routed_vlan;
     }
 
     if(sonet != nullptr)
     {
-        children["openconfig-transport-line-common:sonet"] = sonet;
+        _children["openconfig-transport-line-common:sonet"] = sonet;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -417,16 +417,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Config::ge
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -576,7 +576,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::State::get
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -590,16 +590,16 @@ std::shared_ptr<Entity> Interfaces::Interface::State::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -810,16 +810,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::State::Cou
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::State::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::State::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::State::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1022,7 +1022,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::HoldTime::
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::HoldTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::HoldTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1045,21 +1045,21 @@ std::shared_ptr<Entity> Interfaces::Interface::HoldTime::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::HoldTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::HoldTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::HoldTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1122,16 +1122,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::HoldTime::
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::HoldTime::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::HoldTime::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::HoldTime::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::HoldTime::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::HoldTime::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1214,16 +1214,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::HoldTime::
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::HoldTime::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::HoldTime::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::HoldTime::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::HoldTime::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::HoldTime::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1310,33 +1310,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subinterface")
     {
-        auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface>();
-        c->parent = this;
-        subinterface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface>();
+        ent_->parent = this;
+        subinterface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : subinterface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : subinterface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1417,7 +1417,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1467,36 +1467,36 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(vlan != nullptr)
     {
-        children["openconfig-vlan:vlan"] = vlan;
+        _children["openconfig-vlan:vlan"] = vlan;
     }
 
     if(ipv4 != nullptr)
     {
-        children["openconfig-if-ip:ipv4"] = ipv4;
+        _children["openconfig-if-ip:ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["openconfig-if-ip:ipv6"] = ipv6;
+        _children["openconfig-if-ip:ipv6"] = ipv6;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1577,16 +1577,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1718,7 +1718,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -1732,16 +1732,16 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Stat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1932,16 +1932,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::State::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::State::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::State::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2144,7 +2144,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2167,21 +2167,21 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Vlan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2240,16 +2240,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2318,16 +2318,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2412,7 +2412,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addresses")
     {
@@ -2462,36 +2462,36 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addresses != nullptr)
     {
-        children["addresses"] = addresses;
+        _children["addresses"] = addresses;
     }
 
     if(neighbors != nullptr)
     {
-        children["neighbors"] = neighbors;
+        _children["neighbors"] = neighbors;
     }
 
     if(unnumbered != nullptr)
     {
-        children["unnumbered"] = unnumbered;
+        _children["unnumbered"] = unnumbered;
     }
 
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2558,33 +2558,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
-        auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address>();
-        c->parent = this;
-        address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address>();
+        ent_->parent = this;
+        address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2657,7 +2657,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2689,26 +2689,26 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(vrrp != nullptr)
     {
-        children["vrrp"] = vrrp;
+        _children["vrrp"] = vrrp;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2781,16 +2781,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2877,16 +2877,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2983,33 +2983,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrrp-group")
     {
-        auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup>();
-        c->parent = this;
-        vrrp_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup>();
+        ent_->parent = this;
+        vrrp_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrrp_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrrp_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3082,7 +3082,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3114,26 +3114,26 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_tracking != nullptr)
     {
-        children["interface-tracking"] = interface_tracking;
+        _children["interface-tracking"] = interface_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3236,16 +3236,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3410,16 +3410,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3560,7 +3560,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3583,21 +3583,21 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3660,16 +3660,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3752,16 +3752,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3848,33 +3848,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3943,7 +3943,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3966,21 +3966,21 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4053,16 +4053,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4149,16 +4149,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4255,7 +4255,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -4287,26 +4287,26 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4365,16 +4365,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4443,16 +4443,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4525,7 +4525,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -4548,21 +4548,21 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4625,16 +4625,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4717,16 +4717,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4809,16 +4809,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4901,16 +4901,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5005,7 +5005,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addresses")
     {
@@ -5055,36 +5055,36 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addresses != nullptr)
     {
-        children["addresses"] = addresses;
+        _children["addresses"] = addresses;
     }
 
     if(neighbors != nullptr)
     {
-        children["neighbors"] = neighbors;
+        _children["neighbors"] = neighbors;
     }
 
     if(unnumbered != nullptr)
     {
-        children["unnumbered"] = unnumbered;
+        _children["unnumbered"] = unnumbered;
     }
 
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5151,33 +5151,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
-        auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address>();
-        c->parent = this;
-        address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address>();
+        ent_->parent = this;
+        address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5250,7 +5250,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -5282,26 +5282,26 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(vrrp != nullptr)
     {
-        children["vrrp"] = vrrp;
+        _children["vrrp"] = vrrp;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5374,16 +5374,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5474,16 +5474,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5590,33 +5590,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrrp-group")
     {
-        auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup>();
-        c->parent = this;
-        vrrp_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup>();
+        ent_->parent = this;
+        vrrp_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrrp_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrrp_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5689,7 +5689,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -5721,26 +5721,26 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_tracking != nullptr)
     {
-        children["interface-tracking"] = interface_tracking;
+        _children["interface-tracking"] = interface_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5847,16 +5847,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6035,16 +6035,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6195,7 +6195,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -6218,21 +6218,21 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6295,16 +6295,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6387,16 +6387,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6483,33 +6483,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6578,7 +6578,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -6601,21 +6601,21 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6688,16 +6688,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6792,16 +6792,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6918,7 +6918,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -6950,26 +6950,26 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7028,16 +7028,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7106,16 +7106,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7188,7 +7188,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -7211,21 +7211,21 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7288,16 +7288,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7380,16 +7380,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7476,16 +7476,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7582,16 +7582,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfa
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7688,7 +7688,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ethernet::
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -7720,26 +7720,26 @@ std::shared_ptr<Entity> Interfaces::Interface::Ethernet::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Ethernet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(switched_vlan != nullptr)
     {
-        children["openconfig-vlan:switched-vlan"] = switched_vlan;
+        _children["openconfig-vlan:switched-vlan"] = switched_vlan;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7818,16 +7818,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ethernet::
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Ethernet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Ethernet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Ethernet::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Ethernet::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7979,7 +7979,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ethernet::
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Ethernet::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Ethernet::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -7993,16 +7993,16 @@ std::shared_ptr<Entity> Interfaces::Interface::Ethernet::State::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Ethernet::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Ethernet::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8177,16 +8177,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ethernet::
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Ethernet::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Ethernet::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::State::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Ethernet::State::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Ethernet::State::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8349,7 +8349,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ethernet::
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Ethernet::SwitchedVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Ethernet::SwitchedVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -8372,21 +8372,21 @@ std::shared_ptr<Entity> Interfaces::Interface::Ethernet::SwitchedVlan::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::SwitchedVlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Ethernet::SwitchedVlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Ethernet::SwitchedVlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8467,16 +8467,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ethernet::
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Ethernet::SwitchedVlan::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Ethernet::SwitchedVlan::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::SwitchedVlan::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Ethernet::SwitchedVlan::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Ethernet::SwitchedVlan::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8595,16 +8595,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Ethernet::
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Ethernet::SwitchedVlan::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Ethernet::SwitchedVlan::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::SwitchedVlan::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Ethernet::SwitchedVlan::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Ethernet::SwitchedVlan::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8709,7 +8709,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Aggregatio
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Aggregation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Aggregation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -8741,26 +8741,26 @@ std::shared_ptr<Entity> Interfaces::Interface::Aggregation::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Aggregation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Aggregation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(switched_vlan != nullptr)
     {
-        children["openconfig-vlan:switched-vlan"] = switched_vlan;
+        _children["openconfig-vlan:switched-vlan"] = switched_vlan;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Aggregation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8823,16 +8823,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Aggregatio
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Aggregation::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Aggregation::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Aggregation::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Aggregation::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Aggregation::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8933,16 +8933,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Aggregatio
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Aggregation::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Aggregation::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Aggregation::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Aggregation::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Aggregation::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9043,7 +9043,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Aggregatio
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Aggregation::SwitchedVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Aggregation::SwitchedVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -9066,21 +9066,21 @@ std::shared_ptr<Entity> Interfaces::Interface::Aggregation::SwitchedVlan::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Aggregation::SwitchedVlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Aggregation::SwitchedVlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::Aggregation::SwitchedVlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9161,16 +9161,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Aggregatio
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Aggregation::SwitchedVlan::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Aggregation::SwitchedVlan::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Aggregation::SwitchedVlan::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Aggregation::SwitchedVlan::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Aggregation::SwitchedVlan::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9289,16 +9289,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Aggregatio
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Aggregation::SwitchedVlan::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Aggregation::SwitchedVlan::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Aggregation::SwitchedVlan::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Aggregation::SwitchedVlan::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Aggregation::SwitchedVlan::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9407,7 +9407,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -9448,31 +9448,31 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(ipv4 != nullptr)
     {
-        children["openconfig-if-ip:ipv4"] = ipv4;
+        _children["openconfig-if-ip:ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["openconfig-if-ip:ipv6"] = ipv6;
+        _children["openconfig-if-ip:ipv6"] = ipv6;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9531,16 +9531,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9609,16 +9609,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9703,7 +9703,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addresses")
     {
@@ -9753,36 +9753,36 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addresses != nullptr)
     {
-        children["addresses"] = addresses;
+        _children["addresses"] = addresses;
     }
 
     if(neighbors != nullptr)
     {
-        children["neighbors"] = neighbors;
+        _children["neighbors"] = neighbors;
     }
 
     if(unnumbered != nullptr)
     {
-        children["unnumbered"] = unnumbered;
+        _children["unnumbered"] = unnumbered;
     }
 
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9849,33 +9849,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
-        auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address>();
-        c->parent = this;
-        address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address>();
+        ent_->parent = this;
+        address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9948,7 +9948,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -9980,26 +9980,26 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(vrrp != nullptr)
     {
-        children["vrrp"] = vrrp;
+        _children["vrrp"] = vrrp;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10072,16 +10072,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10168,16 +10168,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10274,33 +10274,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrrp-group")
     {
-        auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup>();
-        c->parent = this;
-        vrrp_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup>();
+        ent_->parent = this;
+        vrrp_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrrp_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrrp_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10373,7 +10373,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -10405,26 +10405,26 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_tracking != nullptr)
     {
-        children["interface-tracking"] = interface_tracking;
+        _children["interface-tracking"] = interface_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10527,16 +10527,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10701,16 +10701,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10851,7 +10851,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -10874,21 +10874,21 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10951,16 +10951,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11043,16 +11043,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11139,33 +11139,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11234,7 +11234,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -11257,21 +11257,21 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neig
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11344,16 +11344,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11440,16 +11440,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11546,7 +11546,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -11578,26 +11578,26 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11656,16 +11656,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11734,16 +11734,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11816,7 +11816,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -11839,21 +11839,21 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Int
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11916,16 +11916,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12008,16 +12008,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12100,16 +12100,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12192,16 +12192,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv4::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv4::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv4::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12296,7 +12296,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addresses")
     {
@@ -12346,36 +12346,36 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(addresses != nullptr)
     {
-        children["addresses"] = addresses;
+        _children["addresses"] = addresses;
     }
 
     if(neighbors != nullptr)
     {
-        children["neighbors"] = neighbors;
+        _children["neighbors"] = neighbors;
     }
 
     if(unnumbered != nullptr)
     {
-        children["unnumbered"] = unnumbered;
+        _children["unnumbered"] = unnumbered;
     }
 
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12442,33 +12442,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
-        auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address>();
-        c->parent = this;
-        address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address>();
+        ent_->parent = this;
+        address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12541,7 +12541,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -12573,26 +12573,26 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(vrrp != nullptr)
     {
-        children["vrrp"] = vrrp;
+        _children["vrrp"] = vrrp;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12665,16 +12665,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12765,16 +12765,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12881,33 +12881,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrrp-group")
     {
-        auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup>();
-        c->parent = this;
-        vrrp_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup>();
+        ent_->parent = this;
+        vrrp_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrrp_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrrp_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12980,7 +12980,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -13012,26 +13012,26 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_tracking != nullptr)
     {
-        children["interface-tracking"] = interface_tracking;
+        _children["interface-tracking"] = interface_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13138,16 +13138,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13326,16 +13326,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13486,7 +13486,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -13509,21 +13509,21 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13586,16 +13586,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13678,16 +13678,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13774,33 +13774,33 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13869,7 +13869,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -13892,21 +13892,21 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neig
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13979,16 +13979,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14083,16 +14083,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14209,7 +14209,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -14241,26 +14241,26 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14319,16 +14319,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14397,16 +14397,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14479,7 +14479,7 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -14502,21 +14502,21 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Int
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14579,16 +14579,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14671,16 +14671,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14767,16 +14767,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14873,16 +14873,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::RoutedVlan
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::RoutedVlan::Ipv6::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::RoutedVlan::Ipv6::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::RoutedVlan::Ipv6::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14967,16 +14967,16 @@ std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Sonet::get
 
 }
 
-std::shared_ptr<Entity> Interfaces::Interface::Sonet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Interfaces::Interface::Sonet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Sonet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Interfaces::Interface::Sonet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Interfaces::Interface::Sonet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

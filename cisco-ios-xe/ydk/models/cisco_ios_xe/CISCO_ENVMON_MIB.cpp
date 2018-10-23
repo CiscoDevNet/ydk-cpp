@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOENVMONMIB::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> CISCOENVMONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENVMONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoEnvMonObjects")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> CISCOENVMONMIB::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENVMONMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENVMONMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ciscoenvmonobjects != nullptr)
     {
-        children["ciscoEnvMonObjects"] = ciscoenvmonobjects;
+        _children["ciscoEnvMonObjects"] = ciscoenvmonobjects;
     }
 
     if(ciscoenvmonmibnotificationenables != nullptr)
     {
-        children["ciscoEnvMonMIBNotificationEnables"] = ciscoenvmonmibnotificationenables;
+        _children["ciscoEnvMonMIBNotificationEnables"] = ciscoenvmonmibnotificationenables;
     }
 
     if(ciscoenvmonvoltagestatustable != nullptr)
     {
-        children["ciscoEnvMonVoltageStatusTable"] = ciscoenvmonvoltagestatustable;
+        _children["ciscoEnvMonVoltageStatusTable"] = ciscoenvmonvoltagestatustable;
     }
 
     if(ciscoenvmontemperaturestatustable != nullptr)
     {
-        children["ciscoEnvMonTemperatureStatusTable"] = ciscoenvmontemperaturestatustable;
+        _children["ciscoEnvMonTemperatureStatusTable"] = ciscoenvmontemperaturestatustable;
     }
 
     if(ciscoenvmonfanstatustable != nullptr)
     {
-        children["ciscoEnvMonFanStatusTable"] = ciscoenvmonfanstatustable;
+        _children["ciscoEnvMonFanStatusTable"] = ciscoenvmonfanstatustable;
     }
 
     if(ciscoenvmonsupplystatustable != nullptr)
     {
-        children["ciscoEnvMonSupplyStatusTable"] = ciscoenvmonsupplystatustable;
+        _children["ciscoEnvMonSupplyStatusTable"] = ciscoenvmonsupplystatustable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENVMONMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void CISCOENVMONMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOENVMONMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOENVMONMIB::clone_ptr() const
 {
     return std::make_shared<CISCOENVMONMIB>();
 }
@@ -260,16 +260,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENVMONMIB::CiscoEnvMonObject
 
 }
 
-std::shared_ptr<Entity> CISCOENVMONMIB::CiscoEnvMonObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENVMONMIB::CiscoEnvMonObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENVMONMIB::CiscoEnvMonObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENVMONMIB::CiscoEnvMonObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENVMONMIB::CiscoEnvMonObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -373,16 +373,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENVMONMIB::CiscoEnvMonMIBNot
 
 }
 
-std::shared_ptr<Entity> CISCOENVMONMIB::CiscoEnvMonMIBNotificationEnables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENVMONMIB::CiscoEnvMonMIBNotificationEnables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENVMONMIB::CiscoEnvMonMIBNotificationEnables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENVMONMIB::CiscoEnvMonMIBNotificationEnables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENVMONMIB::CiscoEnvMonMIBNotificationEnables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -516,33 +516,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENVMONMIB::CiscoEnvMonVoltag
 
 }
 
-std::shared_ptr<Entity> CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoEnvMonVoltageStatusEntry")
     {
-        auto c = std::make_shared<CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::CiscoEnvMonVoltageStatusEntry>();
-        c->parent = this;
-        ciscoenvmonvoltagestatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::CiscoEnvMonVoltageStatusEntry>();
+        ent_->parent = this;
+        ciscoenvmonvoltagestatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoenvmonvoltagestatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoenvmonvoltagestatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -633,16 +633,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENVMONMIB::CiscoEnvMonVoltag
 
 }
 
-std::shared_ptr<Entity> CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::CiscoEnvMonVoltageStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::CiscoEnvMonVoltageStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::CiscoEnvMonVoltageStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::CiscoEnvMonVoltageStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENVMONMIB::CiscoEnvMonVoltageStatusTable::CiscoEnvMonVoltageStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -786,33 +786,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENVMONMIB::CiscoEnvMonTemper
 
 }
 
-std::shared_ptr<Entity> CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoEnvMonTemperatureStatusEntry")
     {
-        auto c = std::make_shared<CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::CiscoEnvMonTemperatureStatusEntry>();
-        c->parent = this;
-        ciscoenvmontemperaturestatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::CiscoEnvMonTemperatureStatusEntry>();
+        ent_->parent = this;
+        ciscoenvmontemperaturestatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoenvmontemperaturestatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoenvmontemperaturestatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -899,16 +899,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENVMONMIB::CiscoEnvMonTemper
 
 }
 
-std::shared_ptr<Entity> CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::CiscoEnvMonTemperatureStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::CiscoEnvMonTemperatureStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::CiscoEnvMonTemperatureStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::CiscoEnvMonTemperatureStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENVMONMIB::CiscoEnvMonTemperatureStatusTable::CiscoEnvMonTemperatureStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1042,33 +1042,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENVMONMIB::CiscoEnvMonFanSta
 
 }
 
-std::shared_ptr<Entity> CISCOENVMONMIB::CiscoEnvMonFanStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENVMONMIB::CiscoEnvMonFanStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoEnvMonFanStatusEntry")
     {
-        auto c = std::make_shared<CISCOENVMONMIB::CiscoEnvMonFanStatusTable::CiscoEnvMonFanStatusEntry>();
-        c->parent = this;
-        ciscoenvmonfanstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENVMONMIB::CiscoEnvMonFanStatusTable::CiscoEnvMonFanStatusEntry>();
+        ent_->parent = this;
+        ciscoenvmonfanstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENVMONMIB::CiscoEnvMonFanStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENVMONMIB::CiscoEnvMonFanStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoenvmonfanstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoenvmonfanstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENVMONMIB::CiscoEnvMonFanStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1143,16 +1143,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENVMONMIB::CiscoEnvMonFanSta
 
 }
 
-std::shared_ptr<Entity> CISCOENVMONMIB::CiscoEnvMonFanStatusTable::CiscoEnvMonFanStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENVMONMIB::CiscoEnvMonFanStatusTable::CiscoEnvMonFanStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENVMONMIB::CiscoEnvMonFanStatusTable::CiscoEnvMonFanStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENVMONMIB::CiscoEnvMonFanStatusTable::CiscoEnvMonFanStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENVMONMIB::CiscoEnvMonFanStatusTable::CiscoEnvMonFanStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1256,33 +1256,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENVMONMIB::CiscoEnvMonSupply
 
 }
 
-std::shared_ptr<Entity> CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoEnvMonSupplyStatusEntry")
     {
-        auto c = std::make_shared<CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::CiscoEnvMonSupplyStatusEntry>();
-        c->parent = this;
-        ciscoenvmonsupplystatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::CiscoEnvMonSupplyStatusEntry>();
+        ent_->parent = this;
+        ciscoenvmonsupplystatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoenvmonsupplystatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoenvmonsupplystatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1361,16 +1361,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENVMONMIB::CiscoEnvMonSupply
 
 }
 
-std::shared_ptr<Entity> CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::CiscoEnvMonSupplyStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::CiscoEnvMonSupplyStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::CiscoEnvMonSupplyStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::CiscoEnvMonSupplyStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENVMONMIB::CiscoEnvMonSupplyStatusTable::CiscoEnvMonSupplyStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

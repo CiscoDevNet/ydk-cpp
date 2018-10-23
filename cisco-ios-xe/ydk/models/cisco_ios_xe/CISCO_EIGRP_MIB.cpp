@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEIGRPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cEigrpVpnTable")
     {
@@ -118,36 +118,36 @@ std::shared_ptr<Entity> CISCOEIGRPMIB::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEIGRPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ceigrpvpntable != nullptr)
     {
-        children["cEigrpVpnTable"] = ceigrpvpntable;
+        _children["cEigrpVpnTable"] = ceigrpvpntable;
     }
 
     if(ceigrptraffstatstable != nullptr)
     {
-        children["cEigrpTraffStatsTable"] = ceigrptraffstatstable;
+        _children["cEigrpTraffStatsTable"] = ceigrptraffstatstable;
     }
 
     if(ceigrptopotable != nullptr)
     {
-        children["cEigrpTopoTable"] = ceigrptopotable;
+        _children["cEigrpTopoTable"] = ceigrptopotable;
     }
 
     if(ceigrppeertable != nullptr)
     {
-        children["cEigrpPeerTable"] = ceigrppeertable;
+        _children["cEigrpPeerTable"] = ceigrppeertable;
     }
 
     if(ceigrpinterfacetable != nullptr)
     {
-        children["cEigrpInterfaceTable"] = ceigrpinterfacetable;
+        _children["cEigrpInterfaceTable"] = ceigrpinterfacetable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOEIGRPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -158,7 +158,7 @@ void CISCOEIGRPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOEIGRPMIB::clone_ptr() const
 {
     return std::make_shared<CISCOEIGRPMIB>();
 }
@@ -246,33 +246,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpVpnTable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpVpnTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEIGRPMIB::CEigrpVpnTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cEigrpVpnEntry")
     {
-        auto c = std::make_shared<CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry>();
-        c->parent = this;
-        ceigrpvpnentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry>();
+        ent_->parent = this;
+        ceigrpvpnentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpVpnTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEIGRPMIB::CEigrpVpnTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceigrpvpnentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceigrpvpnentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOEIGRPMIB::CEigrpVpnTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -343,16 +343,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpVpnTable::CE
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOEIGRPMIB::CEigrpVpnTable::CEigrpVpnEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -446,33 +446,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpTraffStatsTa
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpTraffStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEIGRPMIB::CEigrpTraffStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cEigrpTraffStatsEntry")
     {
-        auto c = std::make_shared<CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry>();
-        c->parent = this;
-        ceigrptraffstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry>();
+        ent_->parent = this;
+        ceigrptraffstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpTraffStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEIGRPMIB::CEigrpTraffStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceigrptraffstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceigrptraffstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOEIGRPMIB::CEigrpTraffStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -632,16 +632,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpTraffStatsTa
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOEIGRPMIB::CEigrpTraffStatsTable::CEigrpTraffStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -955,33 +955,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpTopoTable::g
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpTopoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEIGRPMIB::CEigrpTopoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cEigrpTopoEntry")
     {
-        auto c = std::make_shared<CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry>();
-        c->parent = this;
-        ceigrptopoentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry>();
+        ent_->parent = this;
+        ceigrptopoentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpTopoTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEIGRPMIB::CEigrpTopoTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceigrptopoentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceigrptopoentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOEIGRPMIB::CEigrpTopoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1116,16 +1116,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpTopoTable::C
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOEIGRPMIB::CEigrpTopoTable::CEigrpTopoEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1369,33 +1369,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpPeerTable::g
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEIGRPMIB::CEigrpPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cEigrpPeerEntry")
     {
-        auto c = std::make_shared<CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry>();
-        c->parent = this;
-        ceigrppeerentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry>();
+        ent_->parent = this;
+        ceigrppeerentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpPeerTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEIGRPMIB::CEigrpPeerTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceigrppeerentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceigrppeerentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOEIGRPMIB::CEigrpPeerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1520,16 +1520,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpPeerTable::C
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOEIGRPMIB::CEigrpPeerTable::CEigrpPeerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1753,33 +1753,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpInterfaceTab
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEIGRPMIB::CEigrpInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cEigrpInterfaceEntry")
     {
-        auto c = std::make_shared<CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry>();
-        c->parent = this;
-        ceigrpinterfaceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry>();
+        ent_->parent = this;
+        ceigrpinterfaceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpInterfaceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEIGRPMIB::CEigrpInterfaceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceigrpinterfaceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceigrpinterfaceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOEIGRPMIB::CEigrpInterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1940,16 +1940,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOEIGRPMIB::CEigrpInterfaceTab
 
 }
 
-std::shared_ptr<Entity> CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOEIGRPMIB::CEigrpInterfaceTable::CEigrpInterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

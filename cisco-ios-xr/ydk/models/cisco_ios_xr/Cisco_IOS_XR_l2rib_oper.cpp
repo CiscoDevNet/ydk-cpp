@@ -80,7 +80,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> L2rib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "producers-details")
     {
@@ -157,51 +157,51 @@ std::shared_ptr<Entity> L2rib::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(producers_details != nullptr)
     {
-        children["producers-details"] = producers_details;
+        _children["producers-details"] = producers_details;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(producers != nullptr)
     {
-        children["producers"] = producers;
+        _children["producers"] = producers;
     }
 
     if(clients != nullptr)
     {
-        children["clients"] = clients;
+        _children["clients"] = clients;
     }
 
     if(evis_xr != nullptr)
     {
-        children["evis-xr"] = evis_xr;
+        _children["evis-xr"] = evis_xr;
     }
 
     if(clients_details != nullptr)
     {
-        children["clients-details"] = clients_details;
+        _children["clients-details"] = clients_details;
     }
 
     if(evi_child_tables != nullptr)
     {
-        children["evi-child-tables"] = evi_child_tables;
+        _children["evi-child-tables"] = evi_child_tables;
     }
 
     if(evis != nullptr)
     {
-        children["evis"] = evis;
+        _children["evis"] = evis;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -212,7 +212,7 @@ void L2rib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> L2rib::clone_ptr() const
+std::shared_ptr<ydk::Entity> L2rib::clone_ptr() const
 {
     return std::make_shared<L2rib>();
 }
@@ -300,33 +300,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::ProducersDetails::get_name
 
 }
 
-std::shared_ptr<Entity> L2rib::ProducersDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::ProducersDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "producers-detail")
     {
-        auto c = std::make_shared<L2rib::ProducersDetails::ProducersDetail>();
-        c->parent = this;
-        producers_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::ProducersDetails::ProducersDetail>();
+        ent_->parent = this;
+        producers_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::ProducersDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::ProducersDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : producers_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : producers_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::ProducersDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -409,7 +409,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::ProducersDetails::Producer
 
 }
 
-std::shared_ptr<Entity> L2rib::ProducersDetails::ProducersDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::ProducersDetails::ProducersDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "producer")
     {
@@ -432,21 +432,21 @@ std::shared_ptr<Entity> L2rib::ProducersDetails::ProducersDetail::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::ProducersDetails::ProducersDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::ProducersDetails::ProducersDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(producer != nullptr)
     {
-        children["producer"] = producer;
+        _children["producer"] = producer;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::ProducersDetails::ProducersDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -566,16 +566,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::ProducersDetails::Producer
 
 }
 
-std::shared_ptr<Entity> L2rib::ProducersDetails::ProducersDetail::Producer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::ProducersDetails::ProducersDetail::Producer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::ProducersDetails::ProducersDetail::Producer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::ProducersDetails::ProducersDetail::Producer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::ProducersDetails::ProducersDetail::Producer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -720,7 +720,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::ProducersDetails::Producer
 
 }
 
-std::shared_ptr<Entity> L2rib::ProducersDetails::ProducersDetail::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::ProducersDetails::ProducersDetail::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -734,16 +734,16 @@ std::shared_ptr<Entity> L2rib::ProducersDetails::ProducersDetail::Statistics::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::ProducersDetails::ProducersDetail::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::ProducersDetails::ProducersDetail::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::ProducersDetails::ProducersDetail::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -849,33 +849,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::ProducersDetails::Producer
 
 }
 
-std::shared_ptr<Entity> L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "extended-counter")
     {
-        auto c = std::make_shared<L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter>();
-        c->parent = this;
-        extended_counter.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter>();
+        ent_->parent = this;
+        extended_counter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : extended_counter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : extended_counter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -991,16 +991,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::ProducersDetails::Producer
 
 }
 
-std::shared_ptr<Entity> L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::ExtendedCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1142,33 +1142,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::Summary::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> L2rib::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "table-summary")
     {
-        auto c = std::make_shared<L2rib::Summary::TableSummary>();
-        c->parent = this;
-        table_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::Summary::TableSummary>();
+        ent_->parent = this;
+        table_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : table_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : table_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1274,33 +1274,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::Summary::TableSummary::get
 
 }
 
-std::shared_ptr<Entity> L2rib::Summary::TableSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::Summary::TableSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "producer-stat")
     {
-        auto c = std::make_shared<L2rib::Summary::TableSummary::ProducerStat>();
-        c->parent = this;
-        producer_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::Summary::TableSummary::ProducerStat>();
+        ent_->parent = this;
+        producer_stat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::Summary::TableSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Summary::TableSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : producer_stat.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : producer_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::Summary::TableSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1405,7 +1405,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::Summary::TableSummary::Pro
 
 }
 
-std::shared_ptr<Entity> L2rib::Summary::TableSummary::ProducerStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::Summary::TableSummary::ProducerStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -1419,16 +1419,16 @@ std::shared_ptr<Entity> L2rib::Summary::TableSummary::ProducerStat::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::Summary::TableSummary::ProducerStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Summary::TableSummary::ProducerStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::Summary::TableSummary::ProducerStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1534,33 +1534,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::Summary::TableSummary::Pro
 
 }
 
-std::shared_ptr<Entity> L2rib::Summary::TableSummary::ProducerStat::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::Summary::TableSummary::ProducerStat::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "extended-counter")
     {
-        auto c = std::make_shared<L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter>();
-        c->parent = this;
-        extended_counter.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter>();
+        ent_->parent = this;
+        extended_counter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::Summary::TableSummary::ProducerStat::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Summary::TableSummary::ProducerStat::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : extended_counter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : extended_counter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::Summary::TableSummary::ProducerStat::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1676,16 +1676,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::Summary::TableSummary::Pro
 
 }
 
-std::shared_ptr<Entity> L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1819,33 +1819,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::Producers::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> L2rib::Producers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::Producers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "producer")
     {
-        auto c = std::make_shared<L2rib::Producers::Producer>();
-        c->parent = this;
-        producer.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::Producers::Producer>();
+        ent_->parent = this;
+        producer.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::Producers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Producers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : producer.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : producer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::Producers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1943,16 +1943,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::Producers::Producer::get_n
 
 }
 
-std::shared_ptr<Entity> L2rib::Producers::Producer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::Producers::Producer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::Producers::Producer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Producers::Producer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::Producers::Producer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2116,33 +2116,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::Clients::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> L2rib::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::Clients::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<L2rib::Clients::Client>();
-        c->parent = this;
-        client.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::Clients::Client>();
+        ent_->parent = this;
+        client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::Clients::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Clients::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : client.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::Clients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2229,16 +2229,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::Clients::Client::get_name_
 
 }
 
-std::shared_ptr<Entity> L2rib::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::Clients::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::Clients::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Clients::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::Clients::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2372,33 +2372,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EvisXr::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> L2rib::EvisXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EvisXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "evi")
     {
-        auto c = std::make_shared<L2rib::EvisXr::Evi>();
-        c->parent = this;
-        evi.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EvisXr::Evi>();
+        ent_->parent = this;
+        evi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EvisXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EvisXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : evi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : evi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EvisXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2498,7 +2498,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EvisXr::Evi::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> L2rib::EvisXr::Evi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EvisXr::Evi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "topology")
     {
@@ -2512,16 +2512,16 @@ std::shared_ptr<Entity> L2rib::EvisXr::Evi::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EvisXr::Evi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EvisXr::Evi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(topology != nullptr)
     {
-        children["topology"] = topology;
+        _children["topology"] = topology;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EvisXr::Evi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2668,16 +2668,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EvisXr::Evi::Topology::get
 
 }
 
-std::shared_ptr<Entity> L2rib::EvisXr::Evi::Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EvisXr::Evi::Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EvisXr::Evi::Topology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EvisXr::Evi::Topology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EvisXr::Evi::Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2781,33 +2781,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::get_name_l
 
 }
 
-std::shared_ptr<Entity> L2rib::ClientsDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::ClientsDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clients-detail")
     {
-        auto c = std::make_shared<L2rib::ClientsDetails::ClientsDetail>();
-        c->parent = this;
-        clients_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::ClientsDetails::ClientsDetail>();
+        ent_->parent = this;
+        clients_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::ClientsDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : clients_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clients_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::ClientsDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2902,7 +2902,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::ClientsDet
 
 }
 
-std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::ClientsDetails::ClientsDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
@@ -2924,39 +2924,39 @@ std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::get_child_by_name(
 
     if(child_yang_name == "producer-array")
     {
-        auto c = std::make_shared<L2rib::ClientsDetails::ClientsDetail::ProducerArray>();
-        c->parent = this;
-        producer_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::ClientsDetails::ClientsDetail::ProducerArray>();
+        ent_->parent = this;
+        producer_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::ClientsDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::ClientsDetails::ClientsDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(client != nullptr)
     {
-        children["client"] = client;
+        _children["client"] = client;
     }
 
     if(registration_table_statistics != nullptr)
     {
-        children["registration-table-statistics"] = registration_table_statistics;
+        _children["registration-table-statistics"] = registration_table_statistics;
     }
 
-    count = 0;
-    for (auto c : producer_array.entities())
+    count_ = 0;
+    for (auto ent_ : producer_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::ClientsDetails::ClientsDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3061,16 +3061,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::ClientsDet
 
 }
 
-std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::ClientsDetails::ClientsDetail::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::ClientsDetail::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::ClientsDetails::ClientsDetail::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::ClientsDetails::ClientsDetail::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3188,7 +3188,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::ClientsDet
 
 }
 
-std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -3202,16 +3202,16 @@ std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::RegistrationTableS
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3310,33 +3310,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::ClientsDet
 
 }
 
-std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "extended-counter")
     {
-        auto c = std::make_shared<L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter>();
-        c->parent = this;
-        extended_counter.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter>();
+        ent_->parent = this;
+        extended_counter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : extended_counter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : extended_counter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3445,16 +3445,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::ClientsDet
 
 }
 
-std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::Statistics::ExtendedCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3589,16 +3589,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::ClientsDetails::ClientsDet
 
 }
 
-std::shared_ptr<Entity> L2rib::ClientsDetails::ClientsDetail::ProducerArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::ClientsDetails::ClientsDetail::ProducerArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::ClientsDetails::ClientsDetail::ProducerArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::ClientsDetails::ClientsDetail::ProducerArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::ClientsDetails::ClientsDetail::ProducerArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3734,7 +3734,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::get_name_l
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macip-details")
     {
@@ -3793,41 +3793,41 @@ std::shared_ptr<Entity> L2rib::EviChildTables::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(macip_details != nullptr)
     {
-        children["macip-details"] = macip_details;
+        _children["macip-details"] = macip_details;
     }
 
     if(mac_ips != nullptr)
     {
-        children["mac-ips"] = mac_ips;
+        _children["mac-ips"] = mac_ips;
     }
 
     if(macs != nullptr)
     {
-        children["macs"] = macs;
+        _children["macs"] = macs;
     }
 
     if(imets != nullptr)
     {
-        children["imets"] = imets;
+        _children["imets"] = imets;
     }
 
     if(mac_details != nullptr)
     {
-        children["mac-details"] = mac_details;
+        _children["mac-details"] = mac_details;
     }
 
     if(imet_details != nullptr)
     {
-        children["imet-details"] = imet_details;
+        _children["imet-details"] = imet_details;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3901,33 +3901,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacipDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "macip-detail")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail>();
-        c->parent = this;
-        macip_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail>();
+        ent_->parent = this;
+        macip_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacipDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macip_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macip_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacipDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4042,7 +4042,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-ip-route")
     {
@@ -4074,26 +4074,26 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac_ip_route != nullptr)
     {
-        children["mac-ip-route"] = mac_ip_route;
+        _children["mac-ip-route"] = mac_ip_route;
     }
 
     if(rt_tlv != nullptr)
     {
-        children["rt-tlv"] = rt_tlv;
+        _children["rt-tlv"] = rt_tlv;
     }
 
     if(nh_tlv != nullptr)
     {
-        children["nh-tlv"] = nh_tlv;
+        _children["nh-tlv"] = nh_tlv;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacipDetails::MacipDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4280,7 +4280,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -4294,16 +4294,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpR
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4428,7 +4428,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -4442,16 +4442,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpR
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4562,7 +4562,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
@@ -4576,16 +4576,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpR
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(labeled != nullptr)
     {
-        children["labeled"] = labeled;
+        _children["labeled"] = labeled;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4723,16 +4723,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacipDetails::MacipDetail::MacIpRoute::NextHop::NextHop_::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4854,33 +4854,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tlv-val")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal>();
-        c->parent = this;
-        tlv_val.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal>();
+        ent_->parent = this;
+        tlv_val.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tlv_val.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tlv_val.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4966,16 +4966,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5067,33 +5067,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tlv-val")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal>();
-        c->parent = this;
-        tlv_val.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal>();
+        ent_->parent = this;
+        tlv_val.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tlv_val.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tlv_val.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5179,16 +5179,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetai
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5272,33 +5272,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacIps::ge
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacIps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacIps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-ip")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::MacIps::MacIp>();
-        c->parent = this;
-        mac_ip.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::MacIps::MacIp>();
+        ent_->parent = this;
+        mac_ip.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacIps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacIps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mac_ip.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mac_ip.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacIps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5409,7 +5409,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacIps::Ma
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacIps::MacIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacIps::MacIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -5423,16 +5423,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacIps::MacIp::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacIps::MacIp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacIps::MacIp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacIps::MacIp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5617,7 +5617,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacIps::Ma
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacIps::MacIp::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacIps::MacIp::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -5631,16 +5631,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacIps::MacIp::NextHop::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacIps::MacIp::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacIps::MacIp::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacIps::MacIp::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5751,7 +5751,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacIps::Ma
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
@@ -5765,16 +5765,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(labeled != nullptr)
     {
-        children["labeled"] = labeled;
+        _children["labeled"] = labeled;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5912,16 +5912,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacIps::Ma
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacIps::MacIp::NextHop::NextHop_::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6035,33 +6035,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::get_
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::Macs::Mac>();
-        c->parent = this;
-        mac.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::Macs::Mac>();
+        ent_->parent = this;
+        mac.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mac.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mac.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6164,7 +6164,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route")
     {
@@ -6178,16 +6178,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(route != nullptr)
     {
-        children["route"] = route;
+        _children["route"] = route;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6356,7 +6356,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "regular")
     {
@@ -6388,26 +6388,26 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(regular != nullptr)
     {
-        children["regular"] = regular;
+        _children["regular"] = regular;
     }
 
     if(evpn_esi != nullptr)
     {
-        children["evpn-esi"] = evpn_esi;
+        _children["evpn-esi"] = evpn_esi;
     }
 
     if(bmac != nullptr)
     {
-        children["bmac"] = bmac;
+        _children["bmac"] = bmac;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6483,7 +6483,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -6497,16 +6497,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Regular::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Regular::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Regular::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6581,7 +6581,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -6595,16 +6595,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6715,7 +6715,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
@@ -6729,16 +6729,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(labeled != nullptr)
     {
-        children["labeled"] = labeled;
+        _children["labeled"] = labeled;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6876,16 +6876,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Regular::NextHop::NextHop_::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7004,7 +7004,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment-id")
     {
@@ -7027,21 +7027,21 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet_segment_id != nullptr)
     {
-        children["ethernet-segment-id"] = ethernet_segment_id;
+        _children["ethernet-segment-id"] = ethernet_segment_id;
     }
 
     if(path_list != nullptr)
     {
-        children["path-list"] = path_list;
+        _children["path-list"] = path_list;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7135,16 +7135,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7264,7 +7264,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-info")
     {
@@ -7277,34 +7277,34 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathLi
 
     if(child_yang_name == "next-hop-array")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray>();
-        c->parent = this;
-        next_hop_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray>();
+        ent_->parent = this;
+        next_hop_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_list_info != nullptr)
     {
-        children["path-list-info"] = path_list_info;
+        _children["path-list-info"] = path_list_info;
     }
 
-    count = 0;
-    for (auto c : next_hop_array.entities())
+    count_ = 0;
+    for (auto ent_ : next_hop_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7409,7 +7409,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-esi")
     {
@@ -7432,21 +7432,21 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathLi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_list_esi != nullptr)
     {
-        children["path-list-esi"] = path_list_esi;
+        _children["path-list-esi"] = path_list_esi;
     }
 
     if(path_list_mac != nullptr)
     {
-        children["path-list-mac"] = path_list_mac;
+        _children["path-list-mac"] = path_list_mac;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7538,7 +7538,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment-id")
     {
@@ -7551,34 +7551,34 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathLi
 
     if(child_yang_name == "mac-update-next-hop-array")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
-        c->parent = this;
-        mac_update_next_hop_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
+        ent_->parent = this;
+        mac_update_next_hop_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet_segment_id != nullptr)
     {
-        children["ethernet-segment-id"] = ethernet_segment_id;
+        _children["ethernet-segment-id"] = ethernet_segment_id;
     }
 
-    count = 0;
-    for (auto c : mac_update_next_hop_array.entities())
+    count_ = 0;
+    for (auto ent_ : mac_update_next_hop_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7662,16 +7662,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7776,7 +7776,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -7790,16 +7790,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathLi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7910,7 +7910,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
@@ -7924,16 +7924,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathLi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(labeled != nullptr)
     {
-        children["labeled"] = labeled;
+        _children["labeled"] = labeled;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8071,16 +8071,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8186,16 +8186,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathListInfo::PathListMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8280,7 +8280,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -8294,16 +8294,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathLi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8414,7 +8414,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
@@ -8428,16 +8428,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathLi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(labeled != nullptr)
     {
-        children["labeled"] = labeled;
+        _children["labeled"] = labeled;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8575,16 +8575,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8699,7 +8699,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list")
     {
@@ -8713,16 +8713,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_list != nullptr)
     {
-        children["path-list"] = path_list;
+        _children["path-list"] = path_list;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Bmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8832,7 +8832,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-info")
     {
@@ -8845,34 +8845,34 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList:
 
     if(child_yang_name == "next-hop-array")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray>();
-        c->parent = this;
-        next_hop_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray>();
+        ent_->parent = this;
+        next_hop_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_list_info != nullptr)
     {
-        children["path-list-info"] = path_list_info;
+        _children["path-list-info"] = path_list_info;
     }
 
-    count = 0;
-    for (auto c : next_hop_array.entities())
+    count_ = 0;
+    for (auto ent_ : next_hop_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8977,7 +8977,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-esi")
     {
@@ -9000,21 +9000,21 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_list_esi != nullptr)
     {
-        children["path-list-esi"] = path_list_esi;
+        _children["path-list-esi"] = path_list_esi;
     }
 
     if(path_list_mac != nullptr)
     {
-        children["path-list-mac"] = path_list_mac;
+        _children["path-list-mac"] = path_list_mac;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9106,7 +9106,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment-id")
     {
@@ -9119,34 +9119,34 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList:
 
     if(child_yang_name == "mac-update-next-hop-array")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
-        c->parent = this;
-        mac_update_next_hop_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
+        ent_->parent = this;
+        mac_update_next_hop_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet_segment_id != nullptr)
     {
-        children["ethernet-segment-id"] = ethernet_segment_id;
+        _children["ethernet-segment-id"] = ethernet_segment_id;
     }
 
-    count = 0;
-    for (auto c : mac_update_next_hop_array.entities())
+    count_ = 0;
+    for (auto ent_ : mac_update_next_hop_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9230,16 +9230,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9344,7 +9344,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -9358,16 +9358,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9478,7 +9478,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
@@ -9492,16 +9492,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(labeled != nullptr)
     {
-        children["labeled"] = labeled;
+        _children["labeled"] = labeled;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9639,16 +9639,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9754,16 +9754,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInfo::PathListMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9848,7 +9848,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -9862,16 +9862,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9982,7 +9982,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
@@ -9996,16 +9996,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(labeled != nullptr)
     {
-        children["labeled"] = labeled;
+        _children["labeled"] = labeled;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10143,16 +10143,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10266,33 +10266,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Imets::get
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Imets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Imets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "imet")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::Imets::Imet>();
-        c->parent = this;
-        imet.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::Imets::Imet>();
+        ent_->parent = this;
+        imet.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Imets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Imets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : imet.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : imet.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::Imets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10394,16 +10394,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Imets::Ime
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::Imets::Imet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::Imets::Imet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::Imets::Imet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::Imets::Imet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::Imets::Imet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10577,33 +10577,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-detail")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail>();
-        c->parent = this;
-        mac_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail>();
+        ent_->parent = this;
+        mac_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mac_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mac_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10722,7 +10722,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-route")
     {
@@ -10745,21 +10745,21 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mac_route != nullptr)
     {
-        children["mac-route"] = mac_route;
+        _children["mac-route"] = mac_route;
     }
 
     if(rt_tlv != nullptr)
     {
-        children["rt-tlv"] = rt_tlv;
+        _children["rt-tlv"] = rt_tlv;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10962,7 +10962,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route")
     {
@@ -10976,16 +10976,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(route != nullptr)
     {
-        children["route"] = route;
+        _children["route"] = route;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11104,7 +11104,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "regular")
     {
@@ -11136,26 +11136,26 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(regular != nullptr)
     {
-        children["regular"] = regular;
+        _children["regular"] = regular;
     }
 
     if(evpn_esi != nullptr)
     {
-        children["evpn-esi"] = evpn_esi;
+        _children["evpn-esi"] = evpn_esi;
     }
 
     if(bmac != nullptr)
     {
-        children["bmac"] = bmac;
+        _children["bmac"] = bmac;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11231,7 +11231,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -11245,16 +11245,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11329,7 +11329,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -11343,16 +11343,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11463,7 +11463,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
@@ -11477,16 +11477,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(labeled != nullptr)
     {
-        children["labeled"] = labeled;
+        _children["labeled"] = labeled;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11624,16 +11624,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Regular::NextHop::NextHop_::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11752,7 +11752,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment-id")
     {
@@ -11775,21 +11775,21 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet_segment_id != nullptr)
     {
-        children["ethernet-segment-id"] = ethernet_segment_id;
+        _children["ethernet-segment-id"] = ethernet_segment_id;
     }
 
     if(path_list != nullptr)
     {
-        children["path-list"] = path_list;
+        _children["path-list"] = path_list;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11883,16 +11883,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12012,7 +12012,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-info")
     {
@@ -12025,34 +12025,34 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
 
     if(child_yang_name == "next-hop-array")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray>();
-        c->parent = this;
-        next_hop_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray>();
+        ent_->parent = this;
+        next_hop_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_list_info != nullptr)
     {
-        children["path-list-info"] = path_list_info;
+        _children["path-list-info"] = path_list_info;
     }
 
-    count = 0;
-    for (auto c : next_hop_array.entities())
+    count_ = 0;
+    for (auto ent_ : next_hop_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12157,7 +12157,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-esi")
     {
@@ -12180,21 +12180,21 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_list_esi != nullptr)
     {
-        children["path-list-esi"] = path_list_esi;
+        _children["path-list-esi"] = path_list_esi;
     }
 
     if(path_list_mac != nullptr)
     {
-        children["path-list-mac"] = path_list_mac;
+        _children["path-list-mac"] = path_list_mac;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12286,7 +12286,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment-id")
     {
@@ -12299,34 +12299,34 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
 
     if(child_yang_name == "mac-update-next-hop-array")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
-        c->parent = this;
-        mac_update_next_hop_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
+        ent_->parent = this;
+        mac_update_next_hop_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet_segment_id != nullptr)
     {
-        children["ethernet-segment-id"] = ethernet_segment_id;
+        _children["ethernet-segment-id"] = ethernet_segment_id;
     }
 
-    count = 0;
-    for (auto c : mac_update_next_hop_array.entities())
+    count_ = 0;
+    for (auto ent_ : mac_update_next_hop_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12410,16 +12410,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12524,7 +12524,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -12538,16 +12538,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12658,7 +12658,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
@@ -12672,16 +12672,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(labeled != nullptr)
     {
-        children["labeled"] = labeled;
+        _children["labeled"] = labeled;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12819,16 +12819,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12934,16 +12934,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::PathListInfo::PathListMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13028,7 +13028,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -13042,16 +13042,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13162,7 +13162,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
@@ -13176,16 +13176,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(labeled != nullptr)
     {
-        children["labeled"] = labeled;
+        _children["labeled"] = labeled;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13323,16 +13323,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnEsi::PathList::NextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13447,7 +13447,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list")
     {
@@ -13461,16 +13461,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_list != nullptr)
     {
-        children["path-list"] = path_list;
+        _children["path-list"] = path_list;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13580,7 +13580,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-info")
     {
@@ -13593,34 +13593,34 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
 
     if(child_yang_name == "next-hop-array")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray>();
-        c->parent = this;
-        next_hop_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray>();
+        ent_->parent = this;
+        next_hop_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_list_info != nullptr)
     {
-        children["path-list-info"] = path_list_info;
+        _children["path-list-info"] = path_list_info;
     }
 
-    count = 0;
-    for (auto c : next_hop_array.entities())
+    count_ = 0;
+    for (auto ent_ : next_hop_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13725,7 +13725,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-list-esi")
     {
@@ -13748,21 +13748,21 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_list_esi != nullptr)
     {
-        children["path-list-esi"] = path_list_esi;
+        _children["path-list-esi"] = path_list_esi;
     }
 
     if(path_list_mac != nullptr)
     {
-        children["path-list-mac"] = path_list_mac;
+        _children["path-list-mac"] = path_list_mac;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13854,7 +13854,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet-segment-id")
     {
@@ -13867,34 +13867,34 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
 
     if(child_yang_name == "mac-update-next-hop-array")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
-        c->parent = this;
-        mac_update_next_hop_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray>();
+        ent_->parent = this;
+        mac_update_next_hop_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ethernet_segment_id != nullptr)
     {
-        children["ethernet-segment-id"] = ethernet_segment_id;
+        _children["ethernet-segment-id"] = ethernet_segment_id;
     }
 
-    count = 0;
-    for (auto c : mac_update_next_hop_array.entities())
+    count_ = 0;
+    for (auto ent_ : mac_update_next_hop_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13978,16 +13978,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::EthernetSegmentId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14092,7 +14092,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -14106,16 +14106,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14226,7 +14226,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
@@ -14240,16 +14240,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(labeled != nullptr)
     {
-        children["labeled"] = labeled;
+        _children["labeled"] = labeled;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14387,16 +14387,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListEsi::MacUpdateNextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14502,16 +14502,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::PathListInfo::PathListMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14596,7 +14596,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
@@ -14610,16 +14610,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14730,7 +14730,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "labeled")
     {
@@ -14744,16 +14744,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(labeled != nullptr)
     {
-        children["labeled"] = labeled;
+        _children["labeled"] = labeled;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14891,16 +14891,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac::PathList::NextHopArray::NextHop::Labeled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15022,33 +15022,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tlv-val")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal>();
-        c->parent = this;
-        tlv_val.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal>();
+        ent_->parent = this;
+        tlv_val.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tlv_val.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tlv_val.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15134,16 +15134,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15227,33 +15227,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::ImetDetail
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::ImetDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::ImetDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "imet-detail")
     {
-        auto c = std::make_shared<L2rib::EviChildTables::ImetDetails::ImetDetail>();
-        c->parent = this;
-        imet_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::EviChildTables::ImetDetails::ImetDetail>();
+        ent_->parent = this;
+        imet_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::ImetDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::ImetDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : imet_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : imet_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::ImetDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15364,7 +15364,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::ImetDetail
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::ImetDetails::ImetDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::ImetDetails::ImetDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "imet-route-base")
     {
@@ -15378,16 +15378,16 @@ std::shared_ptr<Entity> L2rib::EviChildTables::ImetDetails::ImetDetail::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::ImetDetails::ImetDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::ImetDetails::ImetDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(imet_route_base != nullptr)
     {
-        children["imet-route-base"] = imet_route_base;
+        _children["imet-route-base"] = imet_route_base;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::EviChildTables::ImetDetails::ImetDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15579,16 +15579,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::ImetDetail
 
 }
 
-std::shared_ptr<Entity> L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::EviChildTables::ImetDetails::ImetDetail::ImetRouteBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15712,33 +15712,33 @@ std::vector<std::pair<std::string, LeafData> > L2rib::Evis::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> L2rib::Evis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::Evis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "evi")
     {
-        auto c = std::make_shared<L2rib::Evis::Evi>();
-        c->parent = this;
-        evi.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2rib::Evis::Evi>();
+        ent_->parent = this;
+        evi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::Evis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Evis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : evi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : evi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2rib::Evis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15817,16 +15817,16 @@ std::vector<std::pair<std::string, LeafData> > L2rib::Evis::Evi::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> L2rib::Evis::Evi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2rib::Evis::Evi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2rib::Evis::Evi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2rib::Evis::Evi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2rib::Evis::Evi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

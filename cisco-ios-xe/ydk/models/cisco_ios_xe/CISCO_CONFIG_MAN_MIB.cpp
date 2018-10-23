@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGMANMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGMANMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccmHistory")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> CISCOCONFIGMANMIB::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGMANMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ccmhistory != nullptr)
     {
-        children["ccmHistory"] = ccmhistory;
+        _children["ccmHistory"] = ccmhistory;
     }
 
     if(ccmclihistory != nullptr)
     {
-        children["ccmCLIHistory"] = ccmclihistory;
+        _children["ccmCLIHistory"] = ccmclihistory;
     }
 
     if(ccmclicfg != nullptr)
     {
-        children["ccmCLICfg"] = ccmclicfg;
+        _children["ccmCLICfg"] = ccmclicfg;
     }
 
     if(ccmctidobjects != nullptr)
     {
-        children["ccmCTIDObjects"] = ccmctidobjects;
+        _children["ccmCTIDObjects"] = ccmctidobjects;
     }
 
     if(ccmhistoryeventtable != nullptr)
     {
-        children["ccmHistoryEventTable"] = ccmhistoryeventtable;
+        _children["ccmHistoryEventTable"] = ccmhistoryeventtable;
     }
 
     if(ccmclihistorycommandtable != nullptr)
     {
-        children["ccmCLIHistoryCommandTable"] = ccmclihistorycommandtable;
+        _children["ccmCLIHistoryCommandTable"] = ccmclihistorycommandtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCONFIGMANMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void CISCOCONFIGMANMIB::set_filter(const std::string & value_path, YFilter yfilt
 {
 }
 
-std::shared_ptr<Entity> CISCOCONFIGMANMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOCONFIGMANMIB::clone_ptr() const
 {
     return std::make_shared<CISCOCONFIGMANMIB>();
 }
@@ -272,16 +272,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::CcmHistory::ge
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGMANMIB::CcmHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGMANMIB::CcmHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::CcmHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGMANMIB::CcmHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCONFIGMANMIB::CcmHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -405,16 +405,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::CcmCLIHistory:
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGMANMIB::CcmCLIHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGMANMIB::CcmCLIHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::CcmCLIHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGMANMIB::CcmCLIHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCONFIGMANMIB::CcmCLIHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -510,16 +510,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::CcmCLICfg::get
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGMANMIB::CcmCLICfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGMANMIB::CcmCLICfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::CcmCLICfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGMANMIB::CcmCLICfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCONFIGMANMIB::CcmCLICfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -607,16 +607,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::CcmCTIDObjects
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGMANMIB::CcmCTIDObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGMANMIB::CcmCTIDObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::CcmCTIDObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGMANMIB::CcmCTIDObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCONFIGMANMIB::CcmCTIDObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -730,33 +730,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::CcmHistoryEven
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGMANMIB::CcmHistoryEventTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGMANMIB::CcmHistoryEventTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccmHistoryEventEntry")
     {
-        auto c = std::make_shared<CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry>();
-        c->parent = this;
-        ccmhistoryevententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry>();
+        ent_->parent = this;
+        ccmhistoryevententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::CcmHistoryEventTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGMANMIB::CcmHistoryEventTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccmhistoryevententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccmhistoryevententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCONFIGMANMIB::CcmHistoryEventTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -895,16 +895,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::CcmHistoryEven
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCONFIGMANMIB::CcmHistoryEventTable::CcmHistoryEventEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1168,33 +1168,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::CcmCLIHistoryC
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccmCLIHistoryCommandEntry")
     {
-        auto c = std::make_shared<CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::CcmCLIHistoryCommandEntry>();
-        c->parent = this;
-        ccmclihistorycommandentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::CcmCLIHistoryCommandEntry>();
+        ent_->parent = this;
+        ccmclihistorycommandentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccmclihistorycommandentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccmclihistorycommandentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1270,16 +1270,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGMANMIB::CcmCLIHistoryC
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::CcmCLIHistoryCommandEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::CcmCLIHistoryCommandEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::CcmCLIHistoryCommandEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::CcmCLIHistoryCommandEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCONFIGMANMIB::CcmCLIHistoryCommandTable::CcmCLIHistoryCommandEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

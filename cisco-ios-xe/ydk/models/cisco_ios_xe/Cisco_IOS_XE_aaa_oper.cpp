@@ -93,84 +93,84 @@ std::vector<std::pair<std::string, LeafData> > AaaData::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> AaaData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aaa-radius-stats")
     {
-        auto c = std::make_shared<AaaData::AaaRadiusStats>();
-        c->parent = this;
-        aaa_radius_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<AaaData::AaaRadiusStats>();
+        ent_->parent = this;
+        aaa_radius_stats.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "aaa-tacacs-stats")
     {
-        auto c = std::make_shared<AaaData::AaaTacacsStats>();
-        c->parent = this;
-        aaa_tacacs_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<AaaData::AaaTacacsStats>();
+        ent_->parent = this;
+        aaa_tacacs_stats.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "aaa-ldap-counters")
     {
-        auto c = std::make_shared<AaaData::AaaLdapCounters>();
-        c->parent = this;
-        aaa_ldap_counters.append(c);
-        return c;
+        auto ent_ = std::make_shared<AaaData::AaaLdapCounters>();
+        ent_->parent = this;
+        aaa_ldap_counters.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "aaa-users")
     {
-        auto c = std::make_shared<AaaData::AaaUsers>();
-        c->parent = this;
-        aaa_users.append(c);
-        return c;
+        auto ent_ = std::make_shared<AaaData::AaaUsers>();
+        ent_->parent = this;
+        aaa_users.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : aaa_radius_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : aaa_radius_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : aaa_tacacs_stats.entities())
+    count_ = 0;
+    for (auto ent_ : aaa_tacacs_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : aaa_ldap_counters.entities())
+    count_ = 0;
+    for (auto ent_ : aaa_ldap_counters.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : aaa_users.entities())
+    count_ = 0;
+    for (auto ent_ : aaa_users.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AaaData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -181,7 +181,7 @@ void AaaData::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> AaaData::clone_ptr() const
+std::shared_ptr<ydk::Entity> AaaData::clone_ptr() const
 {
     return std::make_shared<AaaData>();
 }
@@ -365,16 +365,16 @@ std::vector<std::pair<std::string, LeafData> > AaaData::AaaRadiusStats::get_name
 
 }
 
-std::shared_ptr<Entity> AaaData::AaaRadiusStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaData::AaaRadiusStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaData::AaaRadiusStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaData::AaaRadiusStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AaaData::AaaRadiusStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -747,16 +747,16 @@ std::vector<std::pair<std::string, LeafData> > AaaData::AaaTacacsStats::get_name
 
 }
 
-std::shared_ptr<Entity> AaaData::AaaTacacsStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaData::AaaTacacsStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaData::AaaTacacsStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaData::AaaTacacsStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AaaData::AaaTacacsStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -984,16 +984,16 @@ std::vector<std::pair<std::string, LeafData> > AaaData::AaaLdapCounters::get_nam
 
 }
 
-std::shared_ptr<Entity> AaaData::AaaLdapCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaData::AaaLdapCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaData::AaaLdapCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaData::AaaLdapCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AaaData::AaaLdapCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1182,33 +1182,33 @@ std::vector<std::pair<std::string, LeafData> > AaaData::AaaUsers::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> AaaData::AaaUsers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaData::AaaUsers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aaa-sessions")
     {
-        auto c = std::make_shared<AaaData::AaaUsers::AaaSessions>();
-        c->parent = this;
-        aaa_sessions.append(c);
-        return c;
+        auto ent_ = std::make_shared<AaaData::AaaUsers::AaaSessions>();
+        ent_->parent = this;
+        aaa_sessions.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaData::AaaUsers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaData::AaaUsers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : aaa_sessions.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : aaa_sessions.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void AaaData::AaaUsers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1294,16 +1294,16 @@ std::vector<std::pair<std::string, LeafData> > AaaData::AaaUsers::AaaSessions::g
 
 }
 
-std::shared_ptr<Entity> AaaData::AaaUsers::AaaSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> AaaData::AaaUsers::AaaSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AaaData::AaaUsers::AaaSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> AaaData::AaaUsers::AaaSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void AaaData::AaaUsers::AaaSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

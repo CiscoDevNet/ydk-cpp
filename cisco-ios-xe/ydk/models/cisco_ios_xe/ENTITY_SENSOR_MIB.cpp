@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > ENTITYSENSORMIB::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> ENTITYSENSORMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYSENSORMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entPhySensorTable")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> ENTITYSENSORMIB::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYSENSORMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYSENSORMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(entphysensortable != nullptr)
     {
-        children["entPhySensorTable"] = entphysensortable;
+        _children["entPhySensorTable"] = entphysensortable;
     }
 
-    return children;
+    return _children;
 }
 
 void ENTITYSENSORMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void ENTITYSENSORMIB::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> ENTITYSENSORMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> ENTITYSENSORMIB::clone_ptr() const
 {
     return std::make_shared<ENTITYSENSORMIB>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > ENTITYSENSORMIB::EntPhySensorTabl
 
 }
 
-std::shared_ptr<Entity> ENTITYSENSORMIB::EntPhySensorTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYSENSORMIB::EntPhySensorTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entPhySensorEntry")
     {
-        auto c = std::make_shared<ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry>();
-        c->parent = this;
-        entphysensorentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry>();
+        ent_->parent = this;
+        entphysensorentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYSENSORMIB::EntPhySensorTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYSENSORMIB::EntPhySensorTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : entphysensorentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : entphysensorentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ENTITYSENSORMIB::EntPhySensorTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -299,16 +299,16 @@ std::vector<std::pair<std::string, LeafData> > ENTITYSENSORMIB::EntPhySensorTabl
 
 }
 
-std::shared_ptr<Entity> ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ENTITYSENSORMIB::EntPhySensorTable::EntPhySensorEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

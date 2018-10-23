@@ -77,7 +77,7 @@ std::vector<std::pair<std::string, LeafData> > Nacm::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Nacm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Nacm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "groups")
     {
@@ -100,21 +100,21 @@ std::shared_ptr<Entity> Nacm::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Nacm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Nacm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(groups != nullptr)
     {
-        children["groups"] = groups;
+        _children["groups"] = groups;
     }
 
     if(rulelist_classes != nullptr)
     {
-        children["rulelist-classes"] = rulelist_classes;
+        _children["rulelist-classes"] = rulelist_classes;
     }
 
-    return children;
+    return _children;
 }
 
 void Nacm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -175,7 +175,7 @@ void Nacm::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Nacm::clone_ptr() const
+std::shared_ptr<ydk::Entity> Nacm::clone_ptr() const
 {
     return std::make_shared<Nacm>();
 }
@@ -263,33 +263,33 @@ std::vector<std::pair<std::string, LeafData> > Nacm::Groups::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Nacm::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Nacm::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group")
     {
-        auto c = std::make_shared<Nacm::Groups::Group>();
-        c->parent = this;
-        group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Nacm::Groups::Group>();
+        ent_->parent = this;
+        group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Nacm::Groups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Nacm::Groups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Nacm::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -370,16 +370,16 @@ std::vector<std::pair<std::string, LeafData> > Nacm::Groups::Group::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Nacm::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Nacm::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Nacm::Groups::Group::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Nacm::Groups::Group::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Nacm::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -471,33 +471,33 @@ std::vector<std::pair<std::string, LeafData> > Nacm::RulelistClasses::get_name_l
 
 }
 
-std::shared_ptr<Entity> Nacm::RulelistClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Nacm::RulelistClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rulelist-class")
     {
-        auto c = std::make_shared<Nacm::RulelistClasses::RulelistClass>();
-        c->parent = this;
-        rulelist_class.append(c);
-        return c;
+        auto ent_ = std::make_shared<Nacm::RulelistClasses::RulelistClass>();
+        ent_->parent = this;
+        rulelist_class.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Nacm::RulelistClasses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Nacm::RulelistClasses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rulelist_class.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rulelist_class.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Nacm::RulelistClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -578,7 +578,7 @@ std::vector<std::pair<std::string, LeafData> > Nacm::RulelistClasses::RulelistCl
 
 }
 
-std::shared_ptr<Entity> Nacm::RulelistClasses::RulelistClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Nacm::RulelistClasses::RulelistClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-names")
     {
@@ -601,21 +601,21 @@ std::shared_ptr<Entity> Nacm::RulelistClasses::RulelistClass::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Nacm::RulelistClasses::RulelistClass::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Nacm::RulelistClasses::RulelistClass::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(group_names != nullptr)
     {
-        children["group-names"] = group_names;
+        _children["group-names"] = group_names;
     }
 
     if(rules != nullptr)
     {
-        children["rules"] = rules;
+        _children["rules"] = rules;
     }
 
-    return children;
+    return _children;
 }
 
 void Nacm::RulelistClasses::RulelistClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -705,16 +705,16 @@ std::vector<std::pair<std::string, LeafData> > Nacm::RulelistClasses::RulelistCl
 
 }
 
-std::shared_ptr<Entity> Nacm::RulelistClasses::RulelistClass::GroupNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Nacm::RulelistClasses::RulelistClass::GroupNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Nacm::RulelistClasses::RulelistClass::GroupNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Nacm::RulelistClasses::RulelistClass::GroupNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Nacm::RulelistClasses::RulelistClass::GroupNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -789,33 +789,33 @@ std::vector<std::pair<std::string, LeafData> > Nacm::RulelistClasses::RulelistCl
 
 }
 
-std::shared_ptr<Entity> Nacm::RulelistClasses::RulelistClass::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Nacm::RulelistClasses::RulelistClass::Rules::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule")
     {
-        auto c = std::make_shared<Nacm::RulelistClasses::RulelistClass::Rules::Rule>();
-        c->parent = this;
-        rule.append(c);
-        return c;
+        auto ent_ = std::make_shared<Nacm::RulelistClasses::RulelistClass::Rules::Rule>();
+        ent_->parent = this;
+        rule.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Nacm::RulelistClasses::RulelistClass::Rules::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Nacm::RulelistClasses::RulelistClass::Rules::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rule.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rule.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Nacm::RulelistClasses::RulelistClass::Rules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -901,7 +901,7 @@ std::vector<std::pair<std::string, LeafData> > Nacm::RulelistClasses::RulelistCl
 
 }
 
-std::shared_ptr<Entity> Nacm::RulelistClasses::RulelistClass::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Nacm::RulelistClasses::RulelistClass::Rules::Rule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rule-type")
     {
@@ -924,21 +924,21 @@ std::shared_ptr<Entity> Nacm::RulelistClasses::RulelistClass::Rules::Rule::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Nacm::RulelistClasses::RulelistClass::Rules::Rule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Nacm::RulelistClasses::RulelistClass::Rules::Rule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rule_type != nullptr)
     {
-        children["rule-type"] = rule_type;
+        _children["rule-type"] = rule_type;
     }
 
     if(access_operations != nullptr)
     {
-        children["access-operations"] = access_operations;
+        _children["access-operations"] = access_operations;
     }
 
-    return children;
+    return _children;
 }
 
 void Nacm::RulelistClasses::RulelistClass::Rules::Rule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1051,16 +1051,16 @@ std::vector<std::pair<std::string, LeafData> > Nacm::RulelistClasses::RulelistCl
 
 }
 
-std::shared_ptr<Entity> Nacm::RulelistClasses::RulelistClass::Rules::Rule::RuleType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Nacm::RulelistClasses::RulelistClass::Rules::Rule::RuleType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Nacm::RulelistClasses::RulelistClass::Rules::Rule::RuleType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Nacm::RulelistClasses::RulelistClass::Rules::Rule::RuleType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Nacm::RulelistClasses::RulelistClass::Rules::Rule::RuleType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1159,16 +1159,16 @@ std::vector<std::pair<std::string, LeafData> > Nacm::RulelistClasses::RulelistCl
 
 }
 
-std::shared_ptr<Entity> Nacm::RulelistClasses::RulelistClass::Rules::Rule::AccessOperations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Nacm::RulelistClasses::RulelistClass::Rules::Rule::AccessOperations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Nacm::RulelistClasses::RulelistClass::Rules::Rule::AccessOperations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Nacm::RulelistClasses::RulelistClass::Rules::Rule::AccessOperations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Nacm::RulelistClasses::RulelistClass::Rules::Rule::AccessOperations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

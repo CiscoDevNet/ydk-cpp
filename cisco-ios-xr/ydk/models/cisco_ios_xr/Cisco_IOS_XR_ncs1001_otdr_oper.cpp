@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> HwModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otdr-details")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> HwModule::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(otdr_details != nullptr)
     {
-        children["otdr-details"] = otdr_details;
+        _children["otdr-details"] = otdr_details;
     }
 
     if(otdrs != nullptr)
     {
-        children["otdrs"] = otdrs;
+        _children["otdrs"] = otdrs;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void HwModule::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> HwModule::clone_ptr() const
+std::shared_ptr<ydk::Entity> HwModule::clone_ptr() const
 {
     return std::make_shared<HwModule>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::OtdrDetails::get_name_l
 
 }
 
-std::shared_ptr<Entity> HwModule::OtdrDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::OtdrDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otdr-detail")
     {
-        auto c = std::make_shared<HwModule::OtdrDetails::OtdrDetail>();
-        c->parent = this;
-        otdr_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::OtdrDetails::OtdrDetail>();
+        ent_->parent = this;
+        otdr_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::OtdrDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::OtdrDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otdr_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otdr_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::OtdrDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -297,33 +297,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::OtdrDetails::OtdrDetail
 
 }
 
-std::shared_ptr<Entity> HwModule::OtdrDetails::OtdrDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::OtdrDetails::OtdrDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data-type-detail")
     {
-        auto c = std::make_shared<HwModule::OtdrDetails::OtdrDetail::DataTypeDetail>();
-        c->parent = this;
-        data_type_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::OtdrDetails::OtdrDetail::DataTypeDetail>();
+        ent_->parent = this;
+        data_type_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::OtdrDetails::OtdrDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::OtdrDetails::OtdrDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : data_type_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : data_type_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::OtdrDetails::OtdrDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -405,33 +405,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::OtdrDetails::OtdrDetail
 
 }
 
-std::shared_ptr<Entity> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "identifier")
     {
-        auto c = std::make_shared<HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier>();
-        c->parent = this;
-        identifier.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier>();
+        ent_->parent = this;
+        identifier.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : identifier.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : identifier.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -528,7 +528,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::OtdrDetails::OtdrDetail
 
 }
 
-std::shared_ptr<Entity> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otdr-item")
     {
@@ -541,51 +541,51 @@ std::shared_ptr<Entity> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Ident
 
     if(child_yang_name == "otdr-scan")
     {
-        auto c = std::make_shared<HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrScan>();
-        c->parent = this;
-        otdr_scan.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrScan>();
+        ent_->parent = this;
+        otdr_scan.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "otdr-status")
     {
-        auto c = std::make_shared<HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrStatus>();
-        c->parent = this;
-        otdr_status.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrStatus>();
+        ent_->parent = this;
+        otdr_status.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(otdr_item != nullptr)
     {
-        children["otdr-item"] = otdr_item;
+        _children["otdr-item"] = otdr_item;
     }
 
-    count = 0;
-    for (auto c : otdr_scan.entities())
+    count_ = 0;
+    for (auto ent_ : otdr_scan.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : otdr_status.entities())
+    count_ = 0;
+    for (auto ent_ : otdr_status.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -694,33 +694,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::OtdrDetails::OtdrDetail
 
 }
 
-std::shared_ptr<Entity> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrItem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrItem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otdr-event")
     {
-        auto c = std::make_shared<HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrItem::OtdrEvent>();
-        c->parent = this;
-        otdr_event.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrItem::OtdrEvent>();
+        ent_->parent = this;
+        otdr_event.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrItem::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrItem::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otdr_event.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otdr_event.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrItem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -887,16 +887,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::OtdrDetails::OtdrDetail
 
 }
 
-std::shared_ptr<Entity> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrItem::OtdrEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrItem::OtdrEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrItem::OtdrEvent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrItem::OtdrEvent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrItem::OtdrEvent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1055,16 +1055,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::OtdrDetails::OtdrDetail
 
 }
 
-std::shared_ptr<Entity> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrScan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrScan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrScan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrScan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrScan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1203,16 +1203,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::OtdrDetails::OtdrDetail
 
 }
 
-std::shared_ptr<Entity> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1346,33 +1346,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Otdrs::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> HwModule::Otdrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Otdrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otdr")
     {
-        auto c = std::make_shared<HwModule::Otdrs::Otdr>();
-        c->parent = this;
-        otdr.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Otdrs::Otdr>();
+        ent_->parent = this;
+        otdr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Otdrs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Otdrs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otdr.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otdr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Otdrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1451,33 +1451,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Otdrs::Otdr::get_name_l
 
 }
 
-std::shared_ptr<Entity> HwModule::Otdrs::Otdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Otdrs::Otdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data-type")
     {
-        auto c = std::make_shared<HwModule::Otdrs::Otdr::DataType>();
-        c->parent = this;
-        data_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Otdrs::Otdr::DataType>();
+        ent_->parent = this;
+        data_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Otdrs::Otdr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Otdrs::Otdr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : data_type.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : data_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Otdrs::Otdr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1574,7 +1574,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Otdrs::Otdr::DataType::
 
 }
 
-std::shared_ptr<Entity> HwModule::Otdrs::Otdr::DataType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Otdrs::Otdr::DataType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otdr-item")
     {
@@ -1587,51 +1587,51 @@ std::shared_ptr<Entity> HwModule::Otdrs::Otdr::DataType::get_child_by_name(const
 
     if(child_yang_name == "otdr-scan")
     {
-        auto c = std::make_shared<HwModule::Otdrs::Otdr::DataType::OtdrScan>();
-        c->parent = this;
-        otdr_scan.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Otdrs::Otdr::DataType::OtdrScan>();
+        ent_->parent = this;
+        otdr_scan.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "otdr-status")
     {
-        auto c = std::make_shared<HwModule::Otdrs::Otdr::DataType::OtdrStatus>();
-        c->parent = this;
-        otdr_status.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Otdrs::Otdr::DataType::OtdrStatus>();
+        ent_->parent = this;
+        otdr_status.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Otdrs::Otdr::DataType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Otdrs::Otdr::DataType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(otdr_item != nullptr)
     {
-        children["otdr-item"] = otdr_item;
+        _children["otdr-item"] = otdr_item;
     }
 
-    count = 0;
-    for (auto c : otdr_scan.entities())
+    count_ = 0;
+    for (auto ent_ : otdr_scan.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : otdr_status.entities())
+    count_ = 0;
+    for (auto ent_ : otdr_status.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Otdrs::Otdr::DataType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1740,33 +1740,33 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Otdrs::Otdr::DataType::
 
 }
 
-std::shared_ptr<Entity> HwModule::Otdrs::Otdr::DataType::OtdrItem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Otdrs::Otdr::DataType::OtdrItem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otdr-event")
     {
-        auto c = std::make_shared<HwModule::Otdrs::Otdr::DataType::OtdrItem::OtdrEvent>();
-        c->parent = this;
-        otdr_event.append(c);
-        return c;
+        auto ent_ = std::make_shared<HwModule::Otdrs::Otdr::DataType::OtdrItem::OtdrEvent>();
+        ent_->parent = this;
+        otdr_event.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Otdrs::Otdr::DataType::OtdrItem::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Otdrs::Otdr::DataType::OtdrItem::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otdr_event.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otdr_event.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HwModule::Otdrs::Otdr::DataType::OtdrItem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1933,16 +1933,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Otdrs::Otdr::DataType::
 
 }
 
-std::shared_ptr<Entity> HwModule::Otdrs::Otdr::DataType::OtdrItem::OtdrEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Otdrs::Otdr::DataType::OtdrItem::OtdrEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Otdrs::Otdr::DataType::OtdrItem::OtdrEvent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Otdrs::Otdr::DataType::OtdrItem::OtdrEvent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::Otdrs::Otdr::DataType::OtdrItem::OtdrEvent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2101,16 +2101,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Otdrs::Otdr::DataType::
 
 }
 
-std::shared_ptr<Entity> HwModule::Otdrs::Otdr::DataType::OtdrScan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Otdrs::Otdr::DataType::OtdrScan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Otdrs::Otdr::DataType::OtdrScan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Otdrs::Otdr::DataType::OtdrScan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::Otdrs::Otdr::DataType::OtdrScan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2249,16 +2249,16 @@ std::vector<std::pair<std::string, LeafData> > HwModule::Otdrs::Otdr::DataType::
 
 }
 
-std::shared_ptr<Entity> HwModule::Otdrs::Otdr::DataType::OtdrStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HwModule::Otdrs::Otdr::DataType::OtdrStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HwModule::Otdrs::Otdr::DataType::OtdrStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HwModule::Otdrs::Otdr::DataType::OtdrStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HwModule::Otdrs::Otdr::DataType::OtdrStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::get
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbRadiusStatsTable")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSESSBORDERCTRLRSTATSMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(csbradiusstatstable != nullptr)
     {
-        children["csbRadiusStatsTable"] = csbradiusstatstable;
+        _children["csbRadiusStatsTable"] = csbradiusstatstable;
     }
 
     if(csbrfbillrealmstatstable != nullptr)
     {
-        children["csbRfBillRealmStatsTable"] = csbrfbillrealmstatstable;
+        _children["csbRfBillRealmStatsTable"] = csbrfbillrealmstatstable;
     }
 
     if(csbsipmthdcurrentstatstable != nullptr)
     {
-        children["csbSIPMthdCurrentStatsTable"] = csbsipmthdcurrentstatstable;
+        _children["csbSIPMthdCurrentStatsTable"] = csbsipmthdcurrentstatstable;
     }
 
     if(csbsipmthdhistorystatstable != nullptr)
     {
-        children["csbSIPMthdHistoryStatsTable"] = csbsipmthdhistorystatstable;
+        _children["csbSIPMthdHistoryStatsTable"] = csbsipmthdhistorystatstable;
     }
 
     if(csbsipmthdrccurrentstatstable != nullptr)
     {
-        children["csbSIPMthdRCCurrentStatsTable"] = csbsipmthdrccurrentstatstable;
+        _children["csbSIPMthdRCCurrentStatsTable"] = csbsipmthdrccurrentstatstable;
     }
 
     if(csbsipmthdrchistorystatstable != nullptr)
     {
-        children["csbSIPMthdRCHistoryStatsTable"] = csbsipmthdrchistorystatstable;
+        _children["csbSIPMthdRCHistoryStatsTable"] = csbsipmthdrchistorystatstable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSESSBORDERCTRLRSTATSMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void CISCOSESSBORDERCTRLRSTATSMIB::set_filter(const std::string & value_path, YF
 {
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::clone_ptr() const
 {
     return std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB>();
 }
@@ -264,33 +264,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbRadiusStatsEntry")
     {
-        auto c = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::CsbRadiusStatsEntry>();
-        c->parent = this;
-        csbradiusstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::CsbRadiusStatsEntry>();
+        ent_->parent = this;
+        csbradiusstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csbradiusstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csbradiusstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -435,16 +435,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::CsbRadiusStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::CsbRadiusStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::CsbRadiusStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::CsbRadiusStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSESSBORDERCTRLRSTATSMIB::CsbRadiusStatsTable::CsbRadiusStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -718,33 +718,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbRfBillRealmStatsEntry")
     {
-        auto c = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::CsbRfBillRealmStatsEntry>();
-        c->parent = this;
-        csbrfbillrealmstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::CsbRfBillRealmStatsEntry>();
+        ent_->parent = this;
+        csbrfbillrealmstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csbrfbillrealmstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csbrfbillrealmstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -874,16 +874,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::CsbRfBillRealmStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::CsbRfBillRealmStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::CsbRfBillRealmStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::CsbRfBillRealmStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSESSBORDERCTRLRSTATSMIB::CsbRfBillRealmStatsTable::CsbRfBillRealmStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1117,33 +1117,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbSIPMthdCurrentStatsEntry")
     {
-        auto c = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::CsbSIPMthdCurrentStatsEntry>();
-        c->parent = this;
-        csbsipmthdcurrentstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::CsbSIPMthdCurrentStatsEntry>();
+        ent_->parent = this;
+        csbsipmthdcurrentstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csbsipmthdcurrentstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csbsipmthdcurrentstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1290,16 +1290,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::CsbSIPMthdCurrentStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::CsbSIPMthdCurrentStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::CsbSIPMthdCurrentStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::CsbSIPMthdCurrentStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdCurrentStatsTable::CsbSIPMthdCurrentStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1573,33 +1573,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbSIPMthdHistoryStatsEntry")
     {
-        auto c = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::CsbSIPMthdHistoryStatsEntry>();
-        c->parent = this;
-        csbsipmthdhistorystatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::CsbSIPMthdHistoryStatsEntry>();
+        ent_->parent = this;
+        csbsipmthdhistorystatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csbsipmthdhistorystatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csbsipmthdhistorystatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1746,16 +1746,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::CsbSIPMthdHistoryStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::CsbSIPMthdHistoryStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::CsbSIPMthdHistoryStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::CsbSIPMthdHistoryStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdHistoryStatsTable::CsbSIPMthdHistoryStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2029,33 +2029,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbSIPMthdRCCurrentStatsEntry")
     {
-        auto c = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::CsbSIPMthdRCCurrentStatsEntry>();
-        c->parent = this;
-        csbsipmthdrccurrentstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::CsbSIPMthdRCCurrentStatsEntry>();
+        ent_->parent = this;
+        csbsipmthdrccurrentstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csbsipmthdrccurrentstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csbsipmthdrccurrentstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2159,16 +2159,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::CsbSIPMthdRCCurrentStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::CsbSIPMthdRCCurrentStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::CsbSIPMthdRCCurrentStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::CsbSIPMthdRCCurrentStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCCurrentStatsTable::CsbSIPMthdRCCurrentStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2332,33 +2332,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csbSIPMthdRCHistoryStatsEntry")
     {
-        auto c = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::CsbSIPMthdRCHistoryStatsEntry>();
-        c->parent = this;
-        csbsipmthdrchistorystatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::CsbSIPMthdRCHistoryStatsEntry>();
+        ent_->parent = this;
+        csbsipmthdrchistorystatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : csbsipmthdrchistorystatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : csbsipmthdrchistorystatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2462,16 +2462,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOSESSBORDERCTRLRSTATSMIB::Csb
 
 }
 
-std::shared_ptr<Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::CsbSIPMthdRCHistoryStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::CsbSIPMthdRCHistoryStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::CsbSIPMthdRCHistoryStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::CsbSIPMthdRCHistoryStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOSESSBORDERCTRLRSTATSMIB::CsbSIPMthdRCHistoryStatsTable::CsbSIPMthdRCHistoryStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

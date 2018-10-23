@@ -86,7 +86,7 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "amplifiers")
     {
@@ -109,21 +109,21 @@ std::shared_ptr<Entity> OpticalAmplifier::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(amplifiers != nullptr)
     {
-        children["amplifiers"] = amplifiers;
+        _children["amplifiers"] = amplifiers;
     }
 
     if(supervisory_channels != nullptr)
     {
-        children["supervisory-channels"] = supervisory_channels;
+        _children["supervisory-channels"] = supervisory_channels;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalAmplifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -134,7 +134,7 @@ void OpticalAmplifier::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::clone_ptr() const
+std::shared_ptr<ydk::Entity> OpticalAmplifier::clone_ptr() const
 {
     return std::make_shared<OpticalAmplifier>();
 }
@@ -222,33 +222,33 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::get
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "amplifier")
     {
-        auto c = std::make_shared<OpticalAmplifier::Amplifiers::Amplifier>();
-        c->parent = this;
-        amplifier.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticalAmplifier::Amplifiers::Amplifier>();
+        ent_->parent = this;
+        amplifier.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : amplifier.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : amplifier.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -324,7 +324,7 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::Amp
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::Amplifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -347,21 +347,21 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::Amplifier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::Amplifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -458,16 +458,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::Amp
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::Amplifier::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::Amplifier::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::Amplifier::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -683,7 +683,7 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::Amp
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::Amplifier::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "actual-gain")
     {
@@ -778,61 +778,61 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(actual_gain != nullptr)
     {
-        children["actual-gain"] = actual_gain;
+        _children["actual-gain"] = actual_gain;
     }
 
     if(actual_gain_tilt != nullptr)
     {
-        children["actual-gain-tilt"] = actual_gain_tilt;
+        _children["actual-gain-tilt"] = actual_gain_tilt;
     }
 
     if(input_power_total != nullptr)
     {
-        children["input-power-total"] = input_power_total;
+        _children["input-power-total"] = input_power_total;
     }
 
     if(input_power_c_band != nullptr)
     {
-        children["input-power-c-band"] = input_power_c_band;
+        _children["input-power-c-band"] = input_power_c_band;
     }
 
     if(input_power_l_band != nullptr)
     {
-        children["input-power-l-band"] = input_power_l_band;
+        _children["input-power-l-band"] = input_power_l_band;
     }
 
     if(output_power_total != nullptr)
     {
-        children["output-power-total"] = output_power_total;
+        _children["output-power-total"] = output_power_total;
     }
 
     if(output_power_c_band != nullptr)
     {
-        children["output-power-c-band"] = output_power_c_band;
+        _children["output-power-c-band"] = output_power_c_band;
     }
 
     if(output_power_l_band != nullptr)
     {
-        children["output-power-l-band"] = output_power_l_band;
+        _children["output-power-l-band"] = output_power_l_band;
     }
 
     if(laser_bias_current != nullptr)
     {
-        children["laser-bias-current"] = laser_bias_current;
+        _children["laser-bias-current"] = laser_bias_current;
     }
 
     if(optical_return_loss != nullptr)
     {
-        children["optical-return-loss"] = optical_return_loss;
+        _children["optical-return-loss"] = optical_return_loss;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::Amplifier::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1003,16 +1003,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::Amp
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::ActualGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::Amplifier::State::ActualGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::ActualGain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::ActualGain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::Amplifier::State::ActualGain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1123,16 +1123,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::Amp
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1243,16 +1243,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::Amp
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1363,16 +1363,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::Amp
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1483,16 +1483,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::Amp
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1603,16 +1603,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::Amp
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1723,16 +1723,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::Amp
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1843,16 +1843,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::Amp
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1963,16 +1963,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::Amp
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2083,16 +2083,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::Amplifiers::Amp
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2206,33 +2206,33 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::SupervisoryChan
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::SupervisoryChannels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "supervisory-channel")
     {
-        auto c = std::make_shared<OpticalAmplifier::SupervisoryChannels::SupervisoryChannel>();
-        c->parent = this;
-        supervisory_channel.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticalAmplifier::SupervisoryChannels::SupervisoryChannel>();
+        ent_->parent = this;
+        supervisory_channel.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::SupervisoryChannels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : supervisory_channel.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : supervisory_channel.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalAmplifier::SupervisoryChannels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2308,7 +2308,7 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::SupervisoryChan
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2331,21 +2331,21 @@ std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChanne
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2425,16 +2425,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::SupervisoryChan
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2524,7 +2524,7 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::SupervisoryChan
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input-power")
     {
@@ -2556,26 +2556,26 @@ std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChanne
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input_power != nullptr)
     {
-        children["input-power"] = input_power;
+        _children["input-power"] = input_power;
     }
 
     if(output_power != nullptr)
     {
-        children["output-power"] = output_power;
+        _children["output-power"] = output_power;
     }
 
     if(laser_bias_current != nullptr)
     {
-        children["laser-bias-current"] = laser_bias_current;
+        _children["laser-bias-current"] = laser_bias_current;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2654,16 +2654,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::SupervisoryChan
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2774,16 +2774,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::SupervisoryChan
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2894,16 +2894,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalAmplifier::SupervisoryChan
 
 }
 
-std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

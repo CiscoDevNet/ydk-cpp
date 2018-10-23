@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > OcniNiBase::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> OcniNiBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniNiBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-instances")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> OcniNiBase::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniNiBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniNiBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network_instances != nullptr)
     {
-        children["network-instances"] = network_instances;
+        _children["network-instances"] = network_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniNiBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void OcniNiBase::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> OcniNiBase::clone_ptr() const
+std::shared_ptr<ydk::Entity> OcniNiBase::clone_ptr() const
 {
     return std::make_shared<OcniNiBase>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > OcniNiBase::NetworkInstances::get
 
 }
 
-std::shared_ptr<Entity> OcniNiBase::NetworkInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniNiBase::NetworkInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-instance")
     {
-        auto c = std::make_shared<OcniNiBase::NetworkInstances::NetworkInstance>();
-        c->parent = this;
-        network_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<OcniNiBase::NetworkInstances::NetworkInstance>();
+        ent_->parent = this;
+        network_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniNiBase::NetworkInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniNiBase::NetworkInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : network_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : network_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniNiBase::NetworkInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -272,7 +272,7 @@ std::vector<std::pair<std::string, LeafData> > OcniNiBase::NetworkInstances::Net
 
 }
 
-std::shared_ptr<Entity> OcniNiBase::NetworkInstances::NetworkInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniNiBase::NetworkInstances::NetworkInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -286,16 +286,16 @@ std::shared_ptr<Entity> OcniNiBase::NetworkInstances::NetworkInstance::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniNiBase::NetworkInstances::NetworkInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniNiBase::NetworkInstances::NetworkInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void OcniNiBase::NetworkInstances::NetworkInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -390,16 +390,16 @@ std::vector<std::pair<std::string, LeafData> > OcniNiBase::NetworkInstances::Net
 
 }
 
-std::shared_ptr<Entity> OcniNiBase::NetworkInstances::NetworkInstance::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcniNiBase::NetworkInstances::NetworkInstance::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OcniNiBase::NetworkInstances::NetworkInstance::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcniNiBase::NetworkInstances::NetworkInstance::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OcniNiBase::NetworkInstances::NetworkInstance::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

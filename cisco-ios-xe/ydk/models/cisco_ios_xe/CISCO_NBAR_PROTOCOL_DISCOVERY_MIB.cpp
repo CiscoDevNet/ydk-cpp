@@ -80,7 +80,7 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::ge
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdNotificationsConfig")
     {
@@ -157,51 +157,51 @@ std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cnpdnotificationsconfig != nullptr)
     {
-        children["cnpdNotificationsConfig"] = cnpdnotificationsconfig;
+        _children["cnpdNotificationsConfig"] = cnpdnotificationsconfig;
     }
 
     if(cnpdstatustable != nullptr)
     {
-        children["cnpdStatusTable"] = cnpdstatustable;
+        _children["cnpdStatusTable"] = cnpdstatustable;
     }
 
     if(cnpdallstatstable != nullptr)
     {
-        children["cnpdAllStatsTable"] = cnpdallstatstable;
+        _children["cnpdAllStatsTable"] = cnpdallstatstable;
     }
 
     if(cnpdtopnconfigtable != nullptr)
     {
-        children["cnpdTopNConfigTable"] = cnpdtopnconfigtable;
+        _children["cnpdTopNConfigTable"] = cnpdtopnconfigtable;
     }
 
     if(cnpdtopnstatstable != nullptr)
     {
-        children["cnpdTopNStatsTable"] = cnpdtopnstatstable;
+        _children["cnpdTopNStatsTable"] = cnpdtopnstatstable;
     }
 
     if(cnpdthresholdconfigtable != nullptr)
     {
-        children["cnpdThresholdConfigTable"] = cnpdthresholdconfigtable;
+        _children["cnpdThresholdConfigTable"] = cnpdthresholdconfigtable;
     }
 
     if(cnpdthresholdhistorytable != nullptr)
     {
-        children["cnpdThresholdHistoryTable"] = cnpdthresholdhistorytable;
+        _children["cnpdThresholdHistoryTable"] = cnpdthresholdhistorytable;
     }
 
     if(cnpdsupportedprotocolstable != nullptr)
     {
-        children["cnpdSupportedProtocolsTable"] = cnpdsupportedprotocolstable;
+        _children["cnpdSupportedProtocolsTable"] = cnpdsupportedprotocolstable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -212,7 +212,7 @@ void CISCONBARPROTOCOLDISCOVERYMIB::set_filter(const std::string & value_path, Y
 {
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::clone_ptr() const
 {
     return std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB>();
 }
@@ -292,16 +292,16 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdNotificationsConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -385,33 +385,33 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdStatusEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry>();
-        c->parent = this;
-        cnpdstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry>();
+        ent_->parent = this;
+        cnpdstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cnpdstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cnpdstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -486,16 +486,16 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdStatusTable::CnpdStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -599,33 +599,33 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdAllStatsEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry>();
-        c->parent = this;
-        cnpdallstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry>();
+        ent_->parent = this;
+        cnpdallstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cnpdallstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cnpdallstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -741,16 +741,16 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdAllStatsTable::CnpdAllStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -954,33 +954,33 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdTopNConfigEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry>();
-        c->parent = this;
-        cnpdtopnconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry>();
+        ent_->parent = this;
+        cnpdtopnconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cnpdtopnconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cnpdtopnconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1075,16 +1075,16 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNConfigTable::CnpdTopNConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1238,33 +1238,33 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdTopNStatsEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry>();
-        c->parent = this;
-        cnpdtopnstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry>();
+        ent_->parent = this;
+        cnpdtopnstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cnpdtopnstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cnpdtopnstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1348,16 +1348,16 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdTopNStatsTable::CnpdTopNStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1481,33 +1481,33 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdThresholdConfigEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry>();
-        c->parent = this;
-        cnpdthresholdconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry>();
+        ent_->parent = this;
+        cnpdthresholdconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cnpdthresholdconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cnpdthresholdconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1614,16 +1614,16 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdConfigTable::CnpdThresholdConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1807,33 +1807,33 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdThresholdHistoryEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry>();
-        c->parent = this;
-        cnpdthresholdhistoryentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry>();
+        ent_->parent = this;
+        cnpdthresholdhistoryentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cnpdthresholdhistoryentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cnpdthresholdhistoryentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1924,16 +1924,16 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdThresholdHistoryTable::CnpdThresholdHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2077,33 +2077,33 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnpdSupportedProtocolsEntry")
     {
-        auto c = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry>();
-        c->parent = this;
-        cnpdsupportedprotocolsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry>();
+        ent_->parent = this;
+        cnpdsupportedprotocolsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cnpdsupportedprotocolsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cnpdsupportedprotocolsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2174,16 +2174,16 @@ std::vector<std::pair<std::string, LeafData> > CISCONBARPROTOCOLDISCOVERYMIB::Cn
 
 }
 
-std::shared_ptr<Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCONBARPROTOCOLDISCOVERYMIB::CnpdSupportedProtocolsTable::CnpdSupportedProtocolsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

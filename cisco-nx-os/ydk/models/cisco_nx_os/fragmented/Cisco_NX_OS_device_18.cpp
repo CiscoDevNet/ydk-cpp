@@ -77,16 +77,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtItems::ExtIfList::Rsex
 
 }
 
-std::shared_ptr<Entity> System::ExtItems::ExtIfList::RsextConfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtItems::ExtIfList::RsextConfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtItems::ExtIfList::RsextConfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtItems::ExtIfList::RsextConfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtItems::ExtIfList::RsextConfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -219,16 +219,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtItems::ExtIfList::Rtvr
 
 }
 
-std::shared_ptr<Entity> System::ExtItems::ExtIfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtItems::ExtIfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtItems::ExtIfList::RtvrfMbrItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtItems::ExtIfList::RtvrfMbrItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtItems::ExtIfList::RtvrfMbrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -315,33 +315,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtItems::ExtIfList::Rtnw
 
 }
 
-std::shared_ptr<Entity> System::ExtItems::ExtIfList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtItems::ExtIfList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RtNwPathToIf-list")
     {
-        auto c = std::make_shared<System::ExtItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList>();
-        c->parent = this;
-        rtnwpathtoif_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList>();
+        ent_->parent = this;
+        rtnwpathtoif_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtItems::ExtIfList::RtnwPathToIfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtItems::ExtIfList::RtnwPathToIfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rtnwpathtoif_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rtnwpathtoif_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtItems::ExtIfList::RtnwPathToIfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -405,16 +405,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtItems::ExtIfList::Rtnw
 
 }
 
-std::shared_ptr<Entity> System::ExtItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -508,33 +508,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> System::BrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "BrIf-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList>();
-        c->parent = this;
-        brif_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList>();
+        ent_->parent = this;
+        brif_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : brif_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : brif_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -638,7 +638,7 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::get_na
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dep-items")
     {
@@ -706,46 +706,46 @@ std::shared_ptr<Entity> System::BrItems::BrIfList::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dep_items != nullptr)
     {
-        children["dep-items"] = dep_items;
+        _children["dep-items"] = dep_items;
     }
 
     if(vnode_items != nullptr)
     {
-        children["vnode-items"] = vnode_items;
+        _children["vnode-items"] = vnode_items;
     }
 
     if(idep_items != nullptr)
     {
-        children["idep-items"] = idep_items;
+        _children["idep-items"] = idep_items;
     }
 
     if(odev_items != nullptr)
     {
-        children["odev-items"] = odev_items;
+        _children["odev-items"] = odev_items;
     }
 
     if(rsbrconf_items != nullptr)
     {
-        children["rsbrConf-items"] = rsbrconf_items;
+        _children["rsbrConf-items"] = rsbrconf_items;
     }
 
     if(rtvrfmbr_items != nullptr)
     {
-        children["rtvrfMbr-items"] = rtvrfmbr_items;
+        _children["rtvrfMbr-items"] = rtvrfmbr_items;
     }
 
     if(rtnwpathtoif_items != nullptr)
     {
-        children["rtnwPathToIf-items"] = rtnwpathtoif_items;
+        _children["rtnwPathToIf-items"] = rtnwpathtoif_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -842,33 +842,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::DepIte
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::DepItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::DepItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "DEp-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::DepItems::DEpList>();
-        c->parent = this;
-        dep_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::DepItems::DEpList>();
+        ent_->parent = this;
+        dep_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::DepItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::DepItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dep_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dep_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::DepItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -945,16 +945,16 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::DepIte
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::DepItems::DEpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::DepItems::DEpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::DepItems::DEpList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::DepItems::DEpList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::BrItems::BrIfList::DepItems::DEpList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1071,33 +1071,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::VnodeI
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::VnodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::VnodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "VNode-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::VnodeItems::VNodeList>();
-        c->parent = this;
-        vnode_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::VnodeItems::VNodeList>();
+        ent_->parent = this;
+        vnode_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::VnodeItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::VnodeItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vnode_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vnode_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::VnodeItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1182,7 +1182,7 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::VnodeI
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::VnodeItems::VNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::VnodeItems::VNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rtfvVNode-items")
     {
@@ -1205,21 +1205,21 @@ std::shared_ptr<Entity> System::BrItems::BrIfList::VnodeItems::VNodeList::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::VnodeItems::VNodeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::VnodeItems::VNodeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rtfvvnode_items != nullptr)
     {
-        children["rtfvVNode-items"] = rtfvvnode_items;
+        _children["rtfvVNode-items"] = rtfvvnode_items;
     }
 
     if(rslnode_items != nullptr)
     {
-        children["rslNode-items"] = rslnode_items;
+        _children["rslNode-items"] = rslnode_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::VnodeItems::VNodeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1336,33 +1336,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::VnodeI
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::VnodeItems::VNodeList::RtfvVNodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::VnodeItems::VNodeList::RtfvVNodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RtFvVNode-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList>();
-        c->parent = this;
-        rtfvvnode_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList>();
+        ent_->parent = this;
+        rtfvvnode_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::VnodeItems::VNodeList::RtfvVNodeItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::VnodeItems::VNodeList::RtfvVNodeItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rtfvvnode_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rtfvvnode_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::VnodeItems::VNodeList::RtfvVNodeItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1426,16 +1426,16 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::VnodeI
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::BrItems::BrIfList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1522,33 +1522,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::VnodeI
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::VnodeItems::VNodeList::RslNodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::VnodeItems::VNodeList::RslNodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RsLNode-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList>();
-        c->parent = this;
-        rslnode_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList>();
+        ent_->parent = this;
+        rslnode_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::VnodeItems::VNodeList::RslNodeItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::VnodeItems::VNodeList::RslNodeItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rslnode_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rslnode_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::VnodeItems::VNodeList::RslNodeItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1612,16 +1612,16 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::VnodeI
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::BrItems::BrIfList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1708,33 +1708,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::IdepIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::IdepItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::IdepItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "IDEp-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::IdepItems::IDEpList>();
-        c->parent = this;
-        idep_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::IdepItems::IDEpList>();
+        ent_->parent = this;
+        idep_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::IdepItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::IdepItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : idep_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : idep_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::IdepItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1876,7 +1876,7 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::IdepIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::IdepItems::IDEpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::IdepItems::IDEpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "idepcntr-items")
     {
@@ -1899,21 +1899,21 @@ std::shared_ptr<Entity> System::BrItems::BrIfList::IdepItems::IDEpList::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(idepcntr_items != nullptr)
     {
-        children["idepcntr-items"] = idepcntr_items;
+        _children["idepcntr-items"] = idepcntr_items;
     }
 
     if(vdep_items != nullptr)
     {
-        children["vdep-items"] = vdep_items;
+        _children["vdep-items"] = vdep_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::IdepItems::IDEpList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2170,33 +2170,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::IdepIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::IdepItems::IDEpList::IdepcntrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::IdepItems::IDEpList::IdepcntrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "IDEpCntr-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::IdepItems::IDEpList::IdepcntrItems::IDEpCntrList>();
-        c->parent = this;
-        idepcntr_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::IdepItems::IDEpList::IdepcntrItems::IDEpCntrList>();
+        ent_->parent = this;
+        idepcntr_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::IdepcntrItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::IdepcntrItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : idepcntr_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : idepcntr_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::IdepItems::IDEpList::IdepcntrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2273,16 +2273,16 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::IdepIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::IdepItems::IDEpList::IdepcntrItems::IDEpCntrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::IdepItems::IDEpList::IdepcntrItems::IDEpCntrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::IdepcntrItems::IDEpCntrList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::IdepcntrItems::IDEpCntrList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::BrItems::BrIfList::IdepItems::IDEpList::IdepcntrItems::IDEpCntrList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2399,33 +2399,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::IdepIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "VDEp-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList>();
-        c->parent = this;
-        vdep_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList>();
+        ent_->parent = this;
+        vdep_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vdep_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vdep_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2520,7 +2520,7 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::IdepIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsvNode-items")
     {
@@ -2534,16 +2534,16 @@ std::shared_ptr<Entity> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItem
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsvnode_items != nullptr)
     {
-        children["rsvNode-items"] = rsvnode_items;
+        _children["rsvNode-items"] = rsvnode_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2690,33 +2690,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::IdepIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::RsvNodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::RsvNodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RsVNode-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::RsvNodeItems::RsVNodeList>();
-        c->parent = this;
-        rsvnode_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::RsvNodeItems::RsVNodeList>();
+        ent_->parent = this;
+        rsvnode_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::RsvNodeItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::RsvNodeItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rsvnode_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rsvnode_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::RsvNodeItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2780,16 +2780,16 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::IdepIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::RsvNodeItems::RsVNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::RsvNodeItems::RsVNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::RsvNodeItems::RsVNodeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::RsvNodeItems::RsVNodeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::BrItems::BrIfList::IdepItems::IDEpList::VdepItems::VDEpList::RsvNodeItems::RsVNodeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2876,33 +2876,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::OdevIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::OdevItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::OdevItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ODev-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::OdevItems::ODevList>();
-        c->parent = this;
-        odev_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::OdevItems::ODevList>();
+        ent_->parent = this;
+        odev_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::OdevItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::OdevItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : odev_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : odev_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::OdevItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3039,7 +3039,7 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::OdevIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::OdevItems::ODevList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::OdevItems::ODevList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "odevcap-items")
     {
@@ -3071,26 +3071,26 @@ std::shared_ptr<Entity> System::BrItems::BrIfList::OdevItems::ODevList::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::OdevItems::ODevList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::OdevItems::ODevList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(odevcap_items != nullptr)
     {
-        children["odevcap-items"] = odevcap_items;
+        _children["odevcap-items"] = odevcap_items;
     }
 
     if(vnode_items != nullptr)
     {
-        children["vnode-items"] = vnode_items;
+        _children["vnode-items"] = vnode_items;
     }
 
     if(opnic_items != nullptr)
     {
-        children["opnic-items"] = opnic_items;
+        _children["opnic-items"] = opnic_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::OdevItems::ODevList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3335,16 +3335,16 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::OdevIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::OdevItems::ODevList::OdevcapItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::OdevItems::ODevList::OdevcapItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::OdevItems::ODevList::OdevcapItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::OdevItems::ODevList::OdevcapItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::BrItems::BrIfList::OdevItems::ODevList::OdevcapItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3461,33 +3461,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::OdevIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "VNode-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList>();
-        c->parent = this;
-        vnode_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList>();
+        ent_->parent = this;
+        vnode_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vnode_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vnode_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3572,7 +3572,7 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::OdevIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rtfvVNode-items")
     {
@@ -3595,21 +3595,21 @@ std::shared_ptr<Entity> System::BrItems::BrIfList::OdevItems::ODevList::VnodeIte
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rtfvvnode_items != nullptr)
     {
-        children["rtfvVNode-items"] = rtfvvnode_items;
+        _children["rtfvVNode-items"] = rtfvvnode_items;
     }
 
     if(rslnode_items != nullptr)
     {
-        children["rslNode-items"] = rslnode_items;
+        _children["rslNode-items"] = rslnode_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3726,33 +3726,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::OdevIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RtfvVNodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RtfvVNodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RtFvVNode-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList>();
-        c->parent = this;
-        rtfvvnode_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList>();
+        ent_->parent = this;
+        rtfvvnode_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RtfvVNodeItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RtfvVNodeItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rtfvvnode_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rtfvvnode_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RtfvVNodeItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3816,16 +3816,16 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::OdevIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RtfvVNodeItems::RtFvVNodeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3912,33 +3912,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::OdevIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RslNodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RslNodeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RsLNode-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList>();
-        c->parent = this;
-        rslnode_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList>();
+        ent_->parent = this;
+        rslnode_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RslNodeItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RslNodeItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rslnode_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rslnode_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RslNodeItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4002,16 +4002,16 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::OdevIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::BrItems::BrIfList::OdevItems::ODevList::VnodeItems::VNodeList::RslNodeItems::RsLNodeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4098,33 +4098,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::OdevIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::OdevItems::ODevList::OpnicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::OdevItems::ODevList::OpnicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "OPNic-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::OdevItems::ODevList::OpnicItems::OPNicList>();
-        c->parent = this;
-        opnic_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::OdevItems::ODevList::OpnicItems::OPNicList>();
+        ent_->parent = this;
+        opnic_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::OdevItems::ODevList::OpnicItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::OdevItems::ODevList::OpnicItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : opnic_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : opnic_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::OdevItems::ODevList::OpnicItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4196,16 +4196,16 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::OdevIt
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::OdevItems::ODevList::OpnicItems::OPNicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::OdevItems::ODevList::OpnicItems::OPNicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::OdevItems::ODevList::OpnicItems::OPNicList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::OdevItems::ODevList::OpnicItems::OPNicList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::BrItems::BrIfList::OdevItems::ODevList::OpnicItems::OPNicList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4328,16 +4328,16 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::RsbrCo
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::RsbrConfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::RsbrConfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::RsbrConfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::RsbrConfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::BrItems::BrIfList::RsbrConfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4470,16 +4470,16 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::RtvrfM
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::RtvrfMbrItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::RtvrfMbrItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::BrItems::BrIfList::RtvrfMbrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4566,33 +4566,33 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::RtnwPa
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RtNwPathToIf-list")
     {
-        auto c = std::make_shared<System::BrItems::BrIfList::RtnwPathToIfItems::RtNwPathToIfList>();
-        c->parent = this;
-        rtnwpathtoif_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::BrItems::BrIfList::RtnwPathToIfItems::RtNwPathToIfList>();
+        ent_->parent = this;
+        rtnwpathtoif_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::RtnwPathToIfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::RtnwPathToIfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rtnwpathtoif_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rtnwpathtoif_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::BrItems::BrIfList::RtnwPathToIfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4656,16 +4656,16 @@ std::vector<std::pair<std::string, LeafData> > System::BrItems::BrIfList::RtnwPa
 
 }
 
-std::shared_ptr<Entity> System::BrItems::BrIfList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::BrItems::BrIfList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::BrItems::BrIfList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BrItems::BrIfList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::BrItems::BrIfList::RtnwPathToIfItems::RtNwPathToIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4760,7 +4760,7 @@ std::vector<std::pair<std::string, LeafData> > System::MacItems::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> System::MacItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::MacItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-items")
     {
@@ -4783,21 +4783,21 @@ std::shared_ptr<Entity> System::MacItems::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::MacItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::MacItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(static_items != nullptr)
     {
-        children["static-items"] = static_items;
+        _children["static-items"] = static_items;
     }
 
     if(table_items != nullptr)
     {
-        children["table-items"] = table_items;
+        _children["table-items"] = table_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::MacItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4873,7 +4873,7 @@ std::vector<std::pair<std::string, LeafData> > System::MacItems::StaticItems::ge
 
 }
 
-std::shared_ptr<Entity> System::MacItems::StaticItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::MacItems::StaticItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-items")
     {
@@ -4887,16 +4887,16 @@ std::shared_ptr<Entity> System::MacItems::StaticItems::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::MacItems::StaticItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::MacItems::StaticItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vlan_items != nullptr)
     {
-        children["vlan-items"] = vlan_items;
+        _children["vlan-items"] = vlan_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::MacItems::StaticItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4970,33 +4970,33 @@ std::vector<std::pair<std::string, LeafData> > System::MacItems::StaticItems::Vl
 
 }
 
-std::shared_ptr<Entity> System::MacItems::StaticItems::VlanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::MacItems::StaticItems::VlanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "StaticEntry-list")
     {
-        auto c = std::make_shared<System::MacItems::StaticItems::VlanItems::StaticEntryList>();
-        c->parent = this;
-        staticentry_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::MacItems::StaticItems::VlanItems::StaticEntryList>();
+        ent_->parent = this;
+        staticentry_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::MacItems::StaticItems::VlanItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::MacItems::StaticItems::VlanItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : staticentry_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : staticentry_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::MacItems::StaticItems::VlanItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5076,16 +5076,16 @@ std::vector<std::pair<std::string, LeafData> > System::MacItems::StaticItems::Vl
 
 }
 
-std::shared_ptr<Entity> System::MacItems::StaticItems::VlanItems::StaticEntryList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::MacItems::StaticItems::VlanItems::StaticEntryList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::MacItems::StaticItems::VlanItems::StaticEntryList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::MacItems::StaticItems::VlanItems::StaticEntryList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::MacItems::StaticItems::VlanItems::StaticEntryList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5191,7 +5191,7 @@ std::vector<std::pair<std::string, LeafData> > System::MacItems::TableItems::get
 
 }
 
-std::shared_ptr<Entity> System::MacItems::TableItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::MacItems::TableItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-items")
     {
@@ -5205,16 +5205,16 @@ std::shared_ptr<Entity> System::MacItems::TableItems::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::MacItems::TableItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::MacItems::TableItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vlan_items != nullptr)
     {
-        children["vlan-items"] = vlan_items;
+        _children["vlan-items"] = vlan_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::MacItems::TableItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5288,33 +5288,33 @@ std::vector<std::pair<std::string, LeafData> > System::MacItems::TableItems::Vla
 
 }
 
-std::shared_ptr<Entity> System::MacItems::TableItems::VlanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::MacItems::TableItems::VlanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "MacAddressEntry-list")
     {
-        auto c = std::make_shared<System::MacItems::TableItems::VlanItems::MacAddressEntryList>();
-        c->parent = this;
-        macaddressentry_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::MacItems::TableItems::VlanItems::MacAddressEntryList>();
+        ent_->parent = this;
+        macaddressentry_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::MacItems::TableItems::VlanItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::MacItems::TableItems::VlanItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : macaddressentry_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : macaddressentry_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::MacItems::TableItems::VlanItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5418,16 +5418,16 @@ std::vector<std::pair<std::string, LeafData> > System::MacItems::TableItems::Vla
 
 }
 
-std::shared_ptr<Entity> System::MacItems::TableItems::VlanItems::MacAddressEntryList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::MacItems::TableItems::VlanItems::MacAddressEntryList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::MacItems::TableItems::VlanItems::MacAddressEntryList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::MacItems::TableItems::VlanItems::MacAddressEntryList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::MacItems::TableItems::VlanItems::MacAddressEntryList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5606,7 +5606,7 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "inst-items")
     {
@@ -5620,16 +5620,16 @@ std::shared_ptr<Entity> System::CdpItems::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(inst_items != nullptr)
     {
-        children["inst-items"] = inst_items;
+        _children["inst-items"] = inst_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::CdpItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5762,7 +5762,7 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::get_
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "if-items")
     {
@@ -5776,16 +5776,16 @@ std::shared_ptr<Entity> System::CdpItems::InstItems::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(if_items != nullptr)
     {
-        children["if-items"] = if_items;
+        _children["if-items"] = if_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::CdpItems::InstItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5949,33 +5949,33 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::IfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "If-list")
     {
-        auto c = std::make_shared<System::CdpItems::InstItems::IfItems::IfList>();
-        c->parent = this;
-        if_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::CdpItems::InstItems::IfItems::IfList>();
+        ent_->parent = this;
+        if_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::IfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::IfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : if_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : if_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::CdpItems::InstItems::IfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6091,7 +6091,7 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::IfItems::IfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adj-items")
     {
@@ -6132,31 +6132,31 @@ std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::IfItems::IfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::IfItems::IfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(adj_items != nullptr)
     {
-        children["adj-items"] = adj_items;
+        _children["adj-items"] = adj_items;
     }
 
     if(ifstats_items != nullptr)
     {
-        children["ifstats-items"] = ifstats_items;
+        _children["ifstats-items"] = ifstats_items;
     }
 
     if(rtvrfmbr_items != nullptr)
     {
-        children["rtvrfMbr-items"] = rtvrfmbr_items;
+        _children["rtvrfMbr-items"] = rtvrfmbr_items;
     }
 
     if(rtnwpathtoif_items != nullptr)
     {
-        children["rtnwPathToIf-items"] = rtnwpathtoif_items;
+        _children["rtnwPathToIf-items"] = rtnwpathtoif_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::CdpItems::InstItems::IfItems::IfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6313,33 +6313,33 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "AdjEp-list")
     {
-        auto c = std::make_shared<System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList>();
-        c->parent = this;
-        adjep_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList>();
+        ent_->parent = this;
+        adjep_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : adjep_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : adjep_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::CdpItems::InstItems::IfItems::IfList::AdjItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6456,7 +6456,7 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mgmt-items")
     {
@@ -6488,26 +6488,26 @@ std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mgmt_items != nullptr)
     {
-        children["mgmt-items"] = mgmt_items;
+        _children["mgmt-items"] = mgmt_items;
     }
 
     if(intf_items != nullptr)
     {
-        children["intf-items"] = intf_items;
+        _children["intf-items"] = intf_items;
     }
 
     if(adjstats_items != nullptr)
     {
-        children["adjstats-items"] = adjstats_items;
+        _children["adjstats-items"] = adjstats_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6694,33 +6694,33 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::MgmtItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::MgmtItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "MgmtAddr-list")
     {
-        auto c = std::make_shared<System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::MgmtItems::MgmtAddrList>();
-        c->parent = this;
-        mgmtaddr_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::MgmtItems::MgmtAddrList>();
+        ent_->parent = this;
+        mgmtaddr_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::MgmtItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::MgmtItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mgmtaddr_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mgmtaddr_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::MgmtItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6780,16 +6780,16 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::MgmtItems::MgmtAddrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::MgmtItems::MgmtAddrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::MgmtItems::MgmtAddrList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::MgmtItems::MgmtAddrList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::MgmtItems::MgmtAddrList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6866,33 +6866,33 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::IntfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::IntfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "IntfAddr-list")
     {
-        auto c = std::make_shared<System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::IntfItems::IntfAddrList>();
-        c->parent = this;
-        intfaddr_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::IntfItems::IntfAddrList>();
+        ent_->parent = this;
+        intfaddr_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::IntfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::IntfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : intfaddr_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : intfaddr_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::IntfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6952,16 +6952,16 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::IntfItems::IntfAddrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::IntfItems::IntfAddrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::IntfItems::IntfAddrList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::IntfItems::IntfAddrList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::IntfItems::IntfAddrList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7030,16 +7030,16 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::AdjstatsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::AdjstatsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::AdjstatsItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::AdjstatsItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::CdpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::AdjstatsItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7136,16 +7136,16 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::IfstatsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::IfItems::IfList::IfstatsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::IfItems::IfList::IfstatsItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::IfItems::IfList::IfstatsItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::CdpItems::InstItems::IfItems::IfList::IfstatsItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7288,16 +7288,16 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::IfItems::IfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::IfItems::IfList::RtvrfMbrItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::IfItems::IfList::RtvrfMbrItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::CdpItems::InstItems::IfItems::IfList::RtvrfMbrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7384,33 +7384,33 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RtNwPathToIf-list")
     {
-        auto c = std::make_shared<System::CdpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList>();
-        c->parent = this;
-        rtnwpathtoif_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::CdpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList>();
+        ent_->parent = this;
+        rtnwpathtoif_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rtnwpathtoif_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rtnwpathtoif_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::CdpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7474,16 +7474,16 @@ std::vector<std::pair<std::string, LeafData> > System::CdpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::CdpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::CdpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::CdpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::CdpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::CdpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7582,7 +7582,7 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "inst-items")
     {
@@ -7596,16 +7596,16 @@ std::shared_ptr<Entity> System::LldpItems::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(inst_items != nullptr)
     {
-        children["inst-items"] = inst_items;
+        _children["inst-items"] = inst_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::LldpItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7750,7 +7750,7 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::get
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mgmt-items")
     {
@@ -7791,31 +7791,31 @@ std::shared_ptr<Entity> System::LldpItems::InstItems::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mgmt_items != nullptr)
     {
-        children["mgmt-items"] = mgmt_items;
+        _children["mgmt-items"] = mgmt_items;
     }
 
     if(if_items != nullptr)
     {
-        children["if-items"] = if_items;
+        _children["if-items"] = if_items;
     }
 
     if(inststats_items != nullptr)
     {
-        children["inststats-items"] = inststats_items;
+        _children["inststats-items"] = inststats_items;
     }
 
     if(rslldpinstpolcons_items != nullptr)
     {
-        children["rslldpInstPolCons-items"] = rslldpinstpolcons_items;
+        _children["rslldpInstPolCons-items"] = rslldpinstpolcons_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::LldpItems::InstItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7979,33 +7979,33 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::Mgm
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::MgmtItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::MgmtItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "MgmtAddr-list")
     {
-        auto c = std::make_shared<System::LldpItems::InstItems::MgmtItems::MgmtAddrList>();
-        c->parent = this;
-        mgmtaddr_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::LldpItems::InstItems::MgmtItems::MgmtAddrList>();
+        ent_->parent = this;
+        mgmtaddr_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::MgmtItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::MgmtItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mgmtaddr_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mgmtaddr_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::LldpItems::InstItems::MgmtItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8072,16 +8072,16 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::Mgm
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::MgmtItems::MgmtAddrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::MgmtItems::MgmtAddrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::MgmtItems::MgmtAddrList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::MgmtItems::MgmtAddrList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::LldpItems::InstItems::MgmtItems::MgmtAddrList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8165,33 +8165,33 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::IfI
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::IfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "If-list")
     {
-        auto c = std::make_shared<System::LldpItems::InstItems::IfItems::IfList>();
-        c->parent = this;
-        if_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::LldpItems::InstItems::IfItems::IfList>();
+        ent_->parent = this;
+        if_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::IfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::IfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : if_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : if_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::LldpItems::InstItems::IfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8319,7 +8319,7 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::IfI
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::IfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::IfItems::IfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adj-items")
     {
@@ -8369,36 +8369,36 @@ std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::IfList::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::IfItems::IfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::IfItems::IfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(adj_items != nullptr)
     {
-        children["adj-items"] = adj_items;
+        _children["adj-items"] = adj_items;
     }
 
     if(ctrlradj_items != nullptr)
     {
-        children["ctrlradj-items"] = ctrlradj_items;
+        _children["ctrlradj-items"] = ctrlradj_items;
     }
 
     if(ifstats_items != nullptr)
     {
-        children["ifstats-items"] = ifstats_items;
+        _children["ifstats-items"] = ifstats_items;
     }
 
     if(rtvrfmbr_items != nullptr)
     {
-        children["rtvrfMbr-items"] = rtvrfmbr_items;
+        _children["rtvrfMbr-items"] = rtvrfmbr_items;
     }
 
     if(rtnwpathtoif_items != nullptr)
     {
-        children["rtnwPathToIf-items"] = rtnwpathtoif_items;
+        _children["rtnwPathToIf-items"] = rtnwpathtoif_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::LldpItems::InstItems::IfItems::IfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8575,33 +8575,33 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::IfI
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::IfList::AdjItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::IfItems::IfList::AdjItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "AdjEp-list")
     {
-        auto c = std::make_shared<System::LldpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList>();
-        c->parent = this;
-        adjep_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::LldpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList>();
+        ent_->parent = this;
+        adjep_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::IfItems::IfList::AdjItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::IfItems::IfList::AdjItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : adjep_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : adjep_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::LldpItems::InstItems::IfItems::IfList::AdjItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8714,7 +8714,7 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::IfI
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "adjstats-items")
     {
@@ -8728,16 +8728,16 @@ std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::IfList::AdjItems:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(adjstats_items != nullptr)
     {
-        children["adjstats-items"] = adjstats_items;
+        _children["adjstats-items"] = adjstats_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::LldpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8922,16 +8922,16 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::IfI
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::AdjstatsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::AdjstatsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::AdjstatsItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::AdjstatsItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::LldpItems::InstItems::IfItems::IfList::AdjItems::AdjEpList::AdjstatsItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8993,7 +8993,7 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::IfI
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::IfList::CtrlradjItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::IfItems::IfList::CtrlradjItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rsctrlrAdjEpToStAdjEp-items")
     {
@@ -9007,16 +9007,16 @@ std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::IfList::CtrlradjI
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::IfItems::IfList::CtrlradjItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::IfItems::IfList::CtrlradjItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rsctrlradjeptostadjep_items != nullptr)
     {
-        children["rsctrlrAdjEpToStAdjEp-items"] = rsctrlradjeptostadjep_items;
+        _children["rsctrlrAdjEpToStAdjEp-items"] = rsctrlradjeptostadjep_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::LldpItems::InstItems::IfItems::IfList::CtrlradjItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9089,16 +9089,16 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::IfI
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::IfList::CtrlradjItems::RsctrlrAdjEpToStAdjEpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::IfItems::IfList::CtrlradjItems::RsctrlrAdjEpToStAdjEpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::IfItems::IfList::CtrlradjItems::RsctrlrAdjEpToStAdjEpItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::IfItems::IfList::CtrlradjItems::RsctrlrAdjEpToStAdjEpItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::LldpItems::InstItems::IfItems::IfList::CtrlradjItems::RsctrlrAdjEpToStAdjEpItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9197,16 +9197,16 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::IfI
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::IfList::IfstatsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::IfItems::IfList::IfstatsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::IfItems::IfList::IfstatsItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::IfItems::IfList::IfstatsItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::LldpItems::InstItems::IfItems::IfList::IfstatsItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9329,16 +9329,16 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::IfI
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::IfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::IfItems::IfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::IfItems::IfList::RtvrfMbrItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::IfItems::IfList::RtvrfMbrItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::LldpItems::InstItems::IfItems::IfList::RtvrfMbrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9425,33 +9425,33 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::IfI
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RtNwPathToIf-list")
     {
-        auto c = std::make_shared<System::LldpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList>();
-        c->parent = this;
-        rtnwpathtoif_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::LldpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList>();
+        ent_->parent = this;
+        rtnwpathtoif_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rtnwpathtoif_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rtnwpathtoif_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::LldpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9515,16 +9515,16 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::IfI
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::LldpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9630,16 +9630,16 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::Ins
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::InststatsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::InststatsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::InststatsItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::InststatsItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::LldpItems::InstItems::InststatsItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9769,16 +9769,16 @@ std::vector<std::pair<std::string, LeafData> > System::LldpItems::InstItems::Rsl
 
 }
 
-std::shared_ptr<Entity> System::LldpItems::InstItems::RslldpInstPolConsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::LldpItems::InstItems::RslldpInstPolConsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::LldpItems::InstItems::RslldpInstPolConsItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LldpItems::InstItems::RslldpInstPolConsItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::LldpItems::InstItems::RslldpInstPolConsItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9877,7 +9877,7 @@ std::vector<std::pair<std::string, LeafData> > System::McpItems::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> System::McpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::McpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "inst-items")
     {
@@ -9891,16 +9891,16 @@ std::shared_ptr<Entity> System::McpItems::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::McpItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::McpItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(inst_items != nullptr)
     {
-        children["inst-items"] = inst_items;
+        _children["inst-items"] = inst_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::McpItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10021,7 +10021,7 @@ std::vector<std::pair<std::string, LeafData> > System::McpItems::InstItems::get_
 
 }
 
-std::shared_ptr<Entity> System::McpItems::InstItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::McpItems::InstItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "if-items")
     {
@@ -10035,16 +10035,16 @@ std::shared_ptr<Entity> System::McpItems::InstItems::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::McpItems::InstItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::McpItems::InstItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(if_items != nullptr)
     {
-        children["if-items"] = if_items;
+        _children["if-items"] = if_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::McpItems::InstItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10178,33 +10178,33 @@ std::vector<std::pair<std::string, LeafData> > System::McpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::McpItems::InstItems::IfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::McpItems::InstItems::IfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "If-list")
     {
-        auto c = std::make_shared<System::McpItems::InstItems::IfItems::IfList>();
-        c->parent = this;
-        if_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::McpItems::InstItems::IfItems::IfList>();
+        ent_->parent = this;
+        if_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::McpItems::InstItems::IfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::McpItems::InstItems::IfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : if_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : if_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::McpItems::InstItems::IfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10296,7 +10296,7 @@ std::vector<std::pair<std::string, LeafData> > System::McpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::McpItems::InstItems::IfItems::IfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::McpItems::InstItems::IfItems::IfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rtvrfMbr-items")
     {
@@ -10319,21 +10319,21 @@ std::shared_ptr<Entity> System::McpItems::InstItems::IfItems::IfList::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::McpItems::InstItems::IfItems::IfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::McpItems::InstItems::IfItems::IfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rtvrfmbr_items != nullptr)
     {
-        children["rtvrfMbr-items"] = rtvrfmbr_items;
+        _children["rtvrfMbr-items"] = rtvrfmbr_items;
     }
 
     if(rtnwpathtoif_items != nullptr)
     {
-        children["rtnwPathToIf-items"] = rtnwpathtoif_items;
+        _children["rtnwPathToIf-items"] = rtnwpathtoif_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::McpItems::InstItems::IfItems::IfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10446,16 +10446,16 @@ std::vector<std::pair<std::string, LeafData> > System::McpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::McpItems::InstItems::IfItems::IfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::McpItems::InstItems::IfItems::IfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::McpItems::InstItems::IfItems::IfList::RtvrfMbrItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::McpItems::InstItems::IfItems::IfList::RtvrfMbrItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::McpItems::InstItems::IfItems::IfList::RtvrfMbrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10542,33 +10542,33 @@ std::vector<std::pair<std::string, LeafData> > System::McpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::McpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::McpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RtNwPathToIf-list")
     {
-        auto c = std::make_shared<System::McpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList>();
-        c->parent = this;
-        rtnwpathtoif_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::McpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList>();
+        ent_->parent = this;
+        rtnwpathtoif_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::McpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::McpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rtnwpathtoif_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rtnwpathtoif_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::McpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10632,16 +10632,16 @@ std::vector<std::pair<std::string, LeafData> > System::McpItems::InstItems::IfIt
 
 }
 
-std::shared_ptr<Entity> System::McpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::McpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::McpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::McpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::McpItems::InstItems::IfItems::IfList::RtnwPathToIfItems::RtNwPathToIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10744,7 +10744,7 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "inst-items")
     {
@@ -10758,16 +10758,16 @@ std::shared_ptr<Entity> System::VpcItems::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(inst_items != nullptr)
     {
-        children["inst-items"] = inst_items;
+        _children["inst-items"] = inst_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10894,7 +10894,7 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::get_
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "orphan-items")
     {
@@ -10917,21 +10917,21 @@ std::shared_ptr<Entity> System::VpcItems::InstItems::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(orphan_items != nullptr)
     {
-        children["orphan-items"] = orphan_items;
+        _children["orphan-items"] = orphan_items;
     }
 
     if(dom_items != nullptr)
     {
-        children["dom-items"] = dom_items;
+        _children["dom-items"] = dom_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11045,33 +11045,33 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::Orph
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::OrphanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::OrphanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "OrphanPort-list")
     {
-        auto c = std::make_shared<System::VpcItems::InstItems::OrphanItems::OrphanPortList>();
-        c->parent = this;
-        orphanport_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::VpcItems::InstItems::OrphanItems::OrphanPortList>();
+        ent_->parent = this;
+        orphanport_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::OrphanItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::OrphanItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : orphanport_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : orphanport_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::OrphanItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11159,7 +11159,7 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::Orph
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::OrphanItems::OrphanPortList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::OrphanItems::OrphanPortList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rtvrfMbr-items")
     {
@@ -11182,21 +11182,21 @@ std::shared_ptr<Entity> System::VpcItems::InstItems::OrphanItems::OrphanPortList
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::OrphanItems::OrphanPortList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::OrphanItems::OrphanPortList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rtvrfmbr_items != nullptr)
     {
-        children["rtvrfMbr-items"] = rtvrfmbr_items;
+        _children["rtvrfMbr-items"] = rtvrfmbr_items;
     }
 
     if(rtnwpathtoif_items != nullptr)
     {
-        children["rtnwPathToIf-items"] = rtnwpathtoif_items;
+        _children["rtnwPathToIf-items"] = rtnwpathtoif_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::OrphanItems::OrphanPortList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11299,16 +11299,16 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::Orph
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtvrfMbrItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtvrfMbrItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtvrfMbrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11395,33 +11395,33 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::Orph
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RtNwPathToIf-list")
     {
-        auto c = std::make_shared<System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtnwPathToIfItems::RtNwPathToIfList>();
-        c->parent = this;
-        rtnwpathtoif_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtnwPathToIfItems::RtNwPathToIfList>();
+        ent_->parent = this;
+        rtnwpathtoif_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtnwPathToIfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtnwPathToIfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rtnwpathtoif_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rtnwpathtoif_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtnwPathToIfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11485,16 +11485,16 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::Orph
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::VpcItems::InstItems::OrphanItems::OrphanPortList::RtnwPathToIfItems::RtNwPathToIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11793,7 +11793,7 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "if-items")
     {
@@ -11834,31 +11834,31 @@ std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(if_items != nullptr)
     {
-        children["if-items"] = if_items;
+        _children["if-items"] = if_items;
     }
 
     if(keepalive_items != nullptr)
     {
-        children["keepalive-items"] = keepalive_items;
+        _children["keepalive-items"] = keepalive_items;
     }
 
     if(params_items != nullptr)
     {
-        children["params-items"] = params_items;
+        _children["params-items"] = params_items;
     }
 
     if(rsvpcinstpolcons_items != nullptr)
     {
-        children["rsvpcInstPolCons-items"] = rsvpcinstpolcons_items;
+        _children["rsvpcInstPolCons-items"] = rsvpcinstpolcons_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12432,33 +12432,33 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::IfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::IfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "If-list")
     {
-        auto c = std::make_shared<System::VpcItems::InstItems::DomItems::IfItems::IfList>();
-        c->parent = this;
-        if_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::VpcItems::InstItems::DomItems::IfItems::IfList>();
+        ent_->parent = this;
+        if_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::IfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::IfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : if_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : if_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::IfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12582,7 +12582,7 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "params-items")
     {
@@ -12605,21 +12605,21 @@ std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::IfItems::IfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::IfItems::IfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(params_items != nullptr)
     {
-        children["params-items"] = params_items;
+        _children["params-items"] = params_items;
     }
 
     if(rsvpcconf_items != nullptr)
     {
-        children["rsvpcConf-items"] = rsvpcconf_items;
+        _children["rsvpcConf-items"] = rsvpcconf_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::IfItems::IfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12816,33 +12816,33 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "AppParams-list")
     {
-        auto c = std::make_shared<System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList>();
-        c->parent = this;
-        appparams_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList>();
+        ent_->parent = this;
+        appparams_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : appparams_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : appparams_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12931,7 +12931,7 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "param-items")
     {
@@ -12945,16 +12945,16 @@ std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(param_items != nullptr)
     {
-        children["param-items"] = param_items;
+        _children["param-items"] = param_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13091,33 +13091,33 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::ParamItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::ParamItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "AppParamInfo-list")
     {
-        auto c = std::make_shared<System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::ParamItems::AppParamInfoList>();
-        c->parent = this;
-        appparaminfo_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::ParamItems::AppParamInfoList>();
+        ent_->parent = this;
+        appparaminfo_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::ParamItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::ParamItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : appparaminfo_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : appparaminfo_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::ParamItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13189,16 +13189,16 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::ParamItems::AppParamInfoList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::ParamItems::AppParamInfoList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::ParamItems::AppParamInfoList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::ParamItems::AppParamInfoList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::IfItems::IfList::ParamsItems::AppParamsList::ParamItems::AppParamInfoList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13321,16 +13321,16 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::RsvpcConfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::IfItems::IfList::RsvpcConfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::IfItems::IfList::RsvpcConfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::IfItems::IfList::RsvpcConfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::IfItems::IfList::RsvpcConfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13551,7 +13551,7 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::KeepaliveItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::KeepaliveItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peerlink-items")
     {
@@ -13565,16 +13565,16 @@ std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::KeepaliveItems::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::KeepaliveItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::KeepaliveItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peerlink_items != nullptr)
     {
-        children["peerlink-items"] = peerlink_items;
+        _children["peerlink-items"] = peerlink_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::KeepaliveItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13871,7 +13871,7 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rtvrfMbr-items")
     {
@@ -13894,21 +13894,21 @@ std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::KeepaliveItems::P
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rtvrfmbr_items != nullptr)
     {
-        children["rtvrfMbr-items"] = rtvrfmbr_items;
+        _children["rtvrfMbr-items"] = rtvrfmbr_items;
     }
 
     if(rtnwpathtoif_items != nullptr)
     {
-        children["rtnwPathToIf-items"] = rtnwpathtoif_items;
+        _children["rtnwPathToIf-items"] = rtnwpathtoif_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14018,16 +14018,16 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtvrfMbrItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtvrfMbrItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtvrfMbrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14121,33 +14121,33 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RtNwPathToIf-list")
     {
-        auto c = std::make_shared<System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtnwPathToIfItems::RtNwPathToIfList>();
-        c->parent = this;
-        rtnwpathtoif_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtnwPathToIfItems::RtNwPathToIfList>();
+        ent_->parent = this;
+        rtnwpathtoif_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtnwPathToIfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtnwPathToIfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rtnwpathtoif_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rtnwpathtoif_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtnwPathToIfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14218,16 +14218,16 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::KeepaliveItems::PeerlinkItems::RtnwPathToIfItems::RtNwPathToIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14321,33 +14321,33 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::ParamsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::ParamsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "AppParams-list")
     {
-        auto c = std::make_shared<System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList>();
-        c->parent = this;
-        appparams_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList>();
+        ent_->parent = this;
+        appparams_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::ParamsItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::ParamsItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : appparams_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : appparams_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::ParamsItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14443,7 +14443,7 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "param-items")
     {
@@ -14457,16 +14457,16 @@ std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::ParamsItems::AppP
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(param_items != nullptr)
     {
-        children["param-items"] = param_items;
+        _children["param-items"] = param_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14603,33 +14603,33 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::ParamItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::ParamItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "AppParamInfo-list")
     {
-        auto c = std::make_shared<System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::ParamItems::AppParamInfoList>();
-        c->parent = this;
-        appparaminfo_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::ParamItems::AppParamInfoList>();
+        ent_->parent = this;
+        appparaminfo_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::ParamItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::ParamItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : appparaminfo_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : appparaminfo_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::ParamItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14701,16 +14701,16 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::ParamItems::AppParamInfoList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::ParamItems::AppParamInfoList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::ParamItems::AppParamInfoList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::ParamItems::AppParamInfoList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::ParamsItems::AppParamsList::ParamItems::AppParamInfoList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14824,16 +14824,16 @@ std::vector<std::pair<std::string, LeafData> > System::VpcItems::InstItems::DomI
 
 }
 
-std::shared_ptr<Entity> System::VpcItems::InstItems::DomItems::RsvpcInstPolConsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::VpcItems::InstItems::DomItems::RsvpcInstPolConsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::VpcItems::InstItems::DomItems::RsvpcInstPolConsItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::VpcItems::InstItems::DomItems::RsvpcInstPolConsItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::VpcItems::InstItems::DomItems::RsvpcInstPolConsItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14929,16 +14929,16 @@ std::vector<std::pair<std::string, LeafData> > System::EpnsItems::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> System::EpnsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::EpnsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::EpnsItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::EpnsItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::EpnsItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15019,7 +15019,7 @@ std::vector<std::pair<std::string, LeafData> > System::GoldItems::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> System::GoldItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::GoldItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "module-items")
     {
@@ -15033,16 +15033,16 @@ std::shared_ptr<Entity> System::GoldItems::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::GoldItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::GoldItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(module_items != nullptr)
     {
-        children["module-items"] = module_items;
+        _children["module-items"] = module_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::GoldItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15126,33 +15126,33 @@ std::vector<std::pair<std::string, LeafData> > System::GoldItems::ModuleItems::g
 
 }
 
-std::shared_ptr<Entity> System::GoldItems::ModuleItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::GoldItems::ModuleItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Module-list")
     {
-        auto c = std::make_shared<System::GoldItems::ModuleItems::ModuleList>();
-        c->parent = this;
-        module_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::GoldItems::ModuleItems::ModuleList>();
+        ent_->parent = this;
+        module_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::GoldItems::ModuleItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::GoldItems::ModuleItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : module_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : module_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::GoldItems::ModuleItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15236,7 +15236,7 @@ std::vector<std::pair<std::string, LeafData> > System::GoldItems::ModuleItems::M
 
 }
 
-std::shared_ptr<Entity> System::GoldItems::ModuleItems::ModuleList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::GoldItems::ModuleItems::ModuleList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "test-items")
     {
@@ -15250,16 +15250,16 @@ std::shared_ptr<Entity> System::GoldItems::ModuleItems::ModuleList::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::GoldItems::ModuleItems::ModuleList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::GoldItems::ModuleItems::ModuleList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(test_items != nullptr)
     {
-        children["test-items"] = test_items;
+        _children["test-items"] = test_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::GoldItems::ModuleItems::ModuleList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15366,33 +15366,33 @@ std::vector<std::pair<std::string, LeafData> > System::GoldItems::ModuleItems::M
 
 }
 
-std::shared_ptr<Entity> System::GoldItems::ModuleItems::ModuleList::TestItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::GoldItems::ModuleItems::ModuleList::TestItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Test-list")
     {
-        auto c = std::make_shared<System::GoldItems::ModuleItems::ModuleList::TestItems::TestList>();
-        c->parent = this;
-        test_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::GoldItems::ModuleItems::ModuleList::TestItems::TestList>();
+        ent_->parent = this;
+        test_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::GoldItems::ModuleItems::ModuleList::TestItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::GoldItems::ModuleItems::ModuleList::TestItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : test_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : test_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::GoldItems::ModuleItems::ModuleList::TestItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15528,16 +15528,16 @@ std::vector<std::pair<std::string, LeafData> > System::GoldItems::ModuleItems::M
 
 }
 
-std::shared_ptr<Entity> System::GoldItems::ModuleItems::ModuleList::TestItems::TestList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::GoldItems::ModuleItems::ModuleList::TestItems::TestList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::GoldItems::ModuleItems::ModuleList::TestItems::TestList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::GoldItems::ModuleItems::ModuleList::TestItems::TestList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::GoldItems::ModuleItems::ModuleList::TestItems::TestList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15816,7 +15816,7 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "inst-items")
     {
@@ -15830,16 +15830,16 @@ std::shared_ptr<Entity> System::IgmpItems::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(inst_items != nullptr)
     {
-        children["inst-items"] = inst_items;
+        _children["inst-items"] = inst_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15980,7 +15980,7 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::get
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "extdom-items")
     {
@@ -16012,26 +16012,26 @@ std::shared_ptr<Entity> System::IgmpItems::InstItems::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(extdom_items != nullptr)
     {
-        children["extdom-items"] = extdom_items;
+        _children["extdom-items"] = extdom_items;
     }
 
     if(dom_items != nullptr)
     {
-        children["dom-items"] = dom_items;
+        _children["dom-items"] = dom_items;
     }
 
     if(routedb_items != nullptr)
     {
-        children["routedb-items"] = routedb_items;
+        _children["routedb-items"] = routedb_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16195,33 +16195,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Ext
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::ExtdomItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::ExtdomItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ExtDom-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::ExtdomItems::ExtDomList>();
-        c->parent = this;
-        extdom_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::ExtdomItems::ExtDomList>();
+        ent_->parent = this;
+        extdom_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::ExtdomItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::ExtdomItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : extdom_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : extdom_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::ExtdomItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16301,7 +16301,7 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Ext
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "extif-items")
     {
@@ -16315,16 +16315,16 @@ std::shared_ptr<Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(extif_items != nullptr)
     {
-        children["extif-items"] = extif_items;
+        _children["extif-items"] = extif_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::ExtdomItems::ExtDomList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16421,33 +16421,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Ext
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ExtIf-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList>();
-        c->parent = this;
-        extif_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList>();
+        ent_->parent = this;
+        extif_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : extif_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : extif_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16528,7 +16528,7 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Ext
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rtvrfMbr-items")
     {
@@ -16551,21 +16551,21 @@ std::shared_ptr<Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::E
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rtvrfmbr_items != nullptr)
     {
-        children["rtvrfMbr-items"] = rtvrfmbr_items;
+        _children["rtvrfMbr-items"] = rtvrfmbr_items;
     }
 
     if(rtnwpathtoif_items != nullptr)
     {
-        children["rtnwPathToIf-items"] = rtnwpathtoif_items;
+        _children["rtnwPathToIf-items"] = rtnwpathtoif_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16668,16 +16668,16 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Ext
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtvrfMbrItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtvrfMbrItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtvrfMbrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16764,33 +16764,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Ext
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtnwPathToIfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "RtNwPathToIf-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList>();
-        c->parent = this;
-        rtnwpathtoif_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList>();
+        ent_->parent = this;
+        rtnwpathtoif_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtnwPathToIfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtnwPathToIfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rtnwpathtoif_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rtnwpathtoif_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtnwPathToIfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16854,16 +16854,16 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Ext
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::ExtdomItems::ExtDomList::ExtifItems::ExtIfList::RtnwPathToIfItems::RtNwPathToIfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16957,33 +16957,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Dom-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList>();
-        c->parent = this;
-        dom_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList>();
+        ent_->parent = this;
+        dom_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dom_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dom_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17067,7 +17067,7 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "db-items")
     {
@@ -17108,31 +17108,31 @@ std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(db_items != nullptr)
     {
-        children["db-items"] = db_items;
+        _children["db-items"] = db_items;
     }
 
     if(eventhist_items != nullptr)
     {
-        children["eventHist-items"] = eventhist_items;
+        _children["eventHist-items"] = eventhist_items;
     }
 
     if(if_items != nullptr)
     {
-        children["if-items"] = if_items;
+        _children["if-items"] = if_items;
     }
 
     if(ssmxlate_items != nullptr)
     {
-        children["ssmxlate-items"] = ssmxlate_items;
+        _children["ssmxlate-items"] = ssmxlate_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17209,33 +17209,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Db-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList>();
-        c->parent = this;
-        db_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList>();
+        ent_->parent = this;
+        db_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::DbItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::DbItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : db_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : db_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::DbItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17304,7 +17304,7 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "src-items")
     {
@@ -17318,16 +17318,16 @@ std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(src_items != nullptr)
     {
-        children["src-items"] = src_items;
+        _children["src-items"] = src_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17414,33 +17414,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Route-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList>();
-        c->parent = this;
-        route_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList>();
+        ent_->parent = this;
+        route_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : route_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : route_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17510,7 +17510,7 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oif-items")
     {
@@ -17524,16 +17524,16 @@ std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(oif_items != nullptr)
     {
-        children["oif-items"] = oif_items;
+        _children["oif-items"] = oif_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17620,33 +17620,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::OifItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::OifItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Oif-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::OifItems::OifList>();
-        c->parent = this;
-        oif_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::OifItems::OifList>();
+        ent_->parent = this;
+        oif_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::OifItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::OifItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : oif_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : oif_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::OifItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17722,16 +17722,16 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::OifItems::OifList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::OifItems::OifList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::OifItems::OifList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::OifItems::OifList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::DbItems::DbList::SrcItems::RouteList::OifItems::OifList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17848,33 +17848,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::EventHistItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::EventHistItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "EventHistory-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::EventHistItems::EventHistoryList>();
-        c->parent = this;
-        eventhistory_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::EventHistItems::EventHistoryList>();
+        ent_->parent = this;
+        eventhistory_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::EventHistItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::EventHistItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : eventhistory_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : eventhistory_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::EventHistItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17938,16 +17938,16 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::EventHistItems::EventHistoryList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::EventHistItems::EventHistoryList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::EventHistItems::EventHistoryList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::EventHistItems::EventHistoryList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::EventHistItems::EventHistoryList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18034,33 +18034,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "If-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList>();
-        c->parent = this;
-        if_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList>();
+        ent_->parent = this;
+        if_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : if_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : if_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18213,7 +18213,7 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "IfStats-items")
     {
@@ -18290,51 +18290,51 @@ std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ifstats_items != nullptr)
     {
-        children["IfStats-items"] = ifstats_items;
+        _children["IfStats-items"] = ifstats_items;
     }
 
     if(jointype_items != nullptr)
     {
-        children["jointype-items"] = jointype_items;
+        _children["jointype-items"] = jointype_items;
     }
 
     if(limit_items != nullptr)
     {
-        children["limit-items"] = limit_items;
+        _children["limit-items"] = limit_items;
     }
 
     if(reppol_items != nullptr)
     {
-        children["reppol-items"] = reppol_items;
+        _children["reppol-items"] = reppol_items;
     }
 
     if(streppol_items != nullptr)
     {
-        children["streppol-items"] = streppol_items;
+        _children["streppol-items"] = streppol_items;
     }
 
     if(querierp_items != nullptr)
     {
-        children["querierp-items"] = querierp_items;
+        _children["querierp-items"] = querierp_items;
     }
 
     if(rtvrfmbr_items != nullptr)
     {
-        children["rtvrfMbr-items"] = rtvrfmbr_items;
+        _children["rtvrfMbr-items"] = rtvrfmbr_items;
     }
 
     if(rtnwpathtoif_items != nullptr)
     {
-        children["rtnwPathToIf-items"] = rtnwpathtoif_items;
+        _children["rtnwPathToIf-items"] = rtnwpathtoif_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18589,16 +18589,16 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::IfStatsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::IfStatsItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::IfStatsItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::IfStatsItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::IfStatsItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18765,33 +18765,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "JoinType-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList>();
-        c->parent = this;
-        jointype_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList>();
+        ent_->parent = this;
+        jointype_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : jointype_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : jointype_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18856,7 +18856,7 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ver-items")
     {
@@ -18870,16 +18870,16 @@ std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ver_items != nullptr)
     {
-        children["ver-items"] = ver_items;
+        _children["ver-items"] = ver_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18956,33 +18956,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Version-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList>();
-        c->parent = this;
-        version_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList>();
+        ent_->parent = this;
+        version_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : version_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : version_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19047,7 +19047,7 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-items")
     {
@@ -19061,16 +19061,16 @@ std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(group_items != nullptr)
     {
-        children["group-items"] = group_items;
+        _children["group-items"] = group_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19147,33 +19147,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Group-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList>();
-        c->parent = this;
-        group_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList>();
+        ent_->parent = this;
+        group_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19242,7 +19242,7 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source-items")
     {
@@ -19256,16 +19256,16 @@ std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source_items != nullptr)
     {
-        children["source-items"] = source_items;
+        _children["source-items"] = source_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19352,33 +19352,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::SourceItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::SourceItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Source-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::SourceItems::SourceList>();
-        c->parent = this;
-        source_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::SourceItems::SourceList>();
+        ent_->parent = this;
+        source_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::SourceItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::SourceItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : source_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : source_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::SourceItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19442,16 +19442,16 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::SourceItems::SourceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::SourceItems::SourceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::SourceItems::SourceList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::SourceItems::SourceList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::JointypeItems::JoinTypeList::VerItems::VersionList::GroupItems::GroupList::SourceItems::SourceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19562,16 +19562,16 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::LimitItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::LimitItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::LimitItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::LimitItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::LimitItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19728,16 +19728,16 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::ReppolItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::ReppolItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::ReppolItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::ReppolItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::ReppolItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19834,33 +19834,33 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::StreppolItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::StreppolItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "StRepP-list")
     {
-        auto c = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::StreppolItems::StRepPList>();
-        c->parent = this;
-        strepp_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::StreppolItems::StRepPList>();
+        ent_->parent = this;
+        strepp_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::StreppolItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::StreppolItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : strepp_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : strepp_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::StreppolItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19932,16 +19932,16 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::StreppolItems::StRepPList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::StreppolItems::StRepPList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::StreppolItems::StRepPList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::StreppolItems::StRepPList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::StreppolItems::StRepPList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20084,16 +20084,16 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::QuerierpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::QuerierpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::QuerierpItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::QuerierpItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::QuerierpItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20276,16 +20276,16 @@ std::vector<std::pair<std::string, LeafData> > System::IgmpItems::InstItems::Dom
 
 }
 
-std::shared_ptr<Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::RtvrfMbrItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::RtvrfMbrItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::RtvrfMbrItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::IgmpItems::InstItems::DomItems::DomList::IfItems::IfList::RtvrfMbrItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -88,7 +88,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmCPUHistory")
     {
@@ -183,61 +183,61 @@ std::shared_ptr<Entity> CISCOPROCESSMIB::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cpmcpuhistory != nullptr)
     {
-        children["cpmCPUHistory"] = cpmcpuhistory;
+        _children["cpmCPUHistory"] = cpmcpuhistory;
     }
 
     if(cpmcputotaltable != nullptr)
     {
-        children["cpmCPUTotalTable"] = cpmcputotaltable;
+        _children["cpmCPUTotalTable"] = cpmcputotaltable;
     }
 
     if(cpmcoretable != nullptr)
     {
-        children["cpmCoreTable"] = cpmcoretable;
+        _children["cpmCoreTable"] = cpmcoretable;
     }
 
     if(cpmprocesstable != nullptr)
     {
-        children["cpmProcessTable"] = cpmprocesstable;
+        _children["cpmProcessTable"] = cpmprocesstable;
     }
 
     if(cpmprocessextrevtable != nullptr)
     {
-        children["cpmProcessExtRevTable"] = cpmprocessextrevtable;
+        _children["cpmProcessExtRevTable"] = cpmprocessextrevtable;
     }
 
     if(cpmcputhresholdtable != nullptr)
     {
-        children["cpmCPUThresholdTable"] = cpmcputhresholdtable;
+        _children["cpmCPUThresholdTable"] = cpmcputhresholdtable;
     }
 
     if(cpmcpuhistorytable != nullptr)
     {
-        children["cpmCPUHistoryTable"] = cpmcpuhistorytable;
+        _children["cpmCPUHistoryTable"] = cpmcpuhistorytable;
     }
 
     if(cpmcpuprocesshistorytable != nullptr)
     {
-        children["cpmCPUProcessHistoryTable"] = cpmcpuprocesshistorytable;
+        _children["cpmCPUProcessHistoryTable"] = cpmcpuprocesshistorytable;
     }
 
     if(cpmthreadtable != nullptr)
     {
-        children["cpmThreadTable"] = cpmthreadtable;
+        _children["cpmThreadTable"] = cpmthreadtable;
     }
 
     if(cpmvirtualprocesstable != nullptr)
     {
-        children["cpmVirtualProcessTable"] = cpmvirtualprocesstable;
+        _children["cpmVirtualProcessTable"] = cpmvirtualprocesstable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPROCESSMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -248,7 +248,7 @@ void CISCOPROCESSMIB::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::clone_ptr() const
 {
     return std::make_shared<CISCOPROCESSMIB>();
 }
@@ -332,16 +332,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmCPUHistory::g
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmCPUHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmCPUHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmCPUHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmCPUHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmCPUHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -435,33 +435,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmCPUTotalTable
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmCPUTotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmCPUTotalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmCPUTotalEntry")
     {
-        auto c = std::make_shared<CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry>();
-        c->parent = this;
-        cpmcputotalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry>();
+        ent_->parent = this;
+        cpmcputotalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmCPUTotalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmCPUTotalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpmcputotalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpmcputotalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmCPUTotalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -640,16 +640,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmCPUTotalTable
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmCPUTotalTable::CpmCPUTotalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1013,33 +1013,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmCoreTable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmCoreTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmCoreTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmCoreEntry")
     {
-        auto c = std::make_shared<CISCOPROCESSMIB::CpmCoreTable::CpmCoreEntry>();
-        c->parent = this;
-        cpmcoreentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPROCESSMIB::CpmCoreTable::CpmCoreEntry>();
+        ent_->parent = this;
+        cpmcoreentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmCoreTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmCoreTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpmcoreentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpmcoreentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmCoreTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1139,16 +1139,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmCoreTable::Cp
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmCoreTable::CpmCoreEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmCoreTable::CpmCoreEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmCoreTable::CpmCoreEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmCoreTable::CpmCoreEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmCoreTable::CpmCoreEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1312,33 +1312,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmProcessTable:
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmProcessEntry")
     {
-        auto c = std::make_shared<CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry>();
-        c->parent = this;
-        cpmprocessentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry>();
+        ent_->parent = this;
+        cpmprocessentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmProcessTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmProcessTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpmprocessentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpmprocessentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmProcessTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1458,16 +1458,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmProcessTable:
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmProcessTable::CpmProcessEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1681,33 +1681,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmProcessExtRev
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmProcessExtRevTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmProcessExtRevTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmProcessExtRevEntry")
     {
-        auto c = std::make_shared<CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry>();
-        c->parent = this;
-        cpmprocessextreventry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry>();
+        ent_->parent = this;
+        cpmprocessextreventry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmProcessExtRevTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmProcessExtRevTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpmprocessextreventry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpmprocessextreventry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmProcessExtRevTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1899,16 +1899,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmProcessExtRev
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmProcessExtRevTable::CpmProcessExtRevEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2302,33 +2302,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmCPUThresholdT
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmCPUThresholdTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmCPUThresholdTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmCPUThresholdEntry")
     {
-        auto c = std::make_shared<CISCOPROCESSMIB::CpmCPUThresholdTable::CpmCPUThresholdEntry>();
-        c->parent = this;
-        cpmcputhresholdentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPROCESSMIB::CpmCPUThresholdTable::CpmCPUThresholdEntry>();
+        ent_->parent = this;
+        cpmcputhresholdentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmCPUThresholdTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmCPUThresholdTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpmcputhresholdentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpmcputhresholdentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmCPUThresholdTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2420,16 +2420,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmCPUThresholdT
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmCPUThresholdTable::CpmCPUThresholdEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmCPUThresholdTable::CpmCPUThresholdEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmCPUThresholdTable::CpmCPUThresholdEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmCPUThresholdTable::CpmCPUThresholdEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmCPUThresholdTable::CpmCPUThresholdEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2573,33 +2573,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmCPUHistoryTab
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmCPUHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmCPUHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmCPUHistoryEntry")
     {
-        auto c = std::make_shared<CISCOPROCESSMIB::CpmCPUHistoryTable::CpmCPUHistoryEntry>();
-        c->parent = this;
-        cpmcpuhistoryentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPROCESSMIB::CpmCPUHistoryTable::CpmCPUHistoryEntry>();
+        ent_->parent = this;
+        cpmcpuhistoryentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmCPUHistoryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmCPUHistoryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpmcpuhistoryentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpmcpuhistoryentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmCPUHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2687,16 +2687,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmCPUHistoryTab
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmCPUHistoryTable::CpmCPUHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmCPUHistoryTable::CpmCPUHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmCPUHistoryTable::CpmCPUHistoryEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmCPUHistoryTable::CpmCPUHistoryEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmCPUHistoryTable::CpmCPUHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2830,33 +2830,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmCPUProcessHis
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmCPUProcessHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmCPUProcessHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmCPUProcessHistoryEntry")
     {
-        auto c = std::make_shared<CISCOPROCESSMIB::CpmCPUProcessHistoryTable::CpmCPUProcessHistoryEntry>();
-        c->parent = this;
-        cpmcpuprocesshistoryentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPROCESSMIB::CpmCPUProcessHistoryTable::CpmCPUProcessHistoryEntry>();
+        ent_->parent = this;
+        cpmcpuprocesshistoryentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmCPUProcessHistoryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmCPUProcessHistoryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpmcpuprocesshistoryentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpmcpuprocesshistoryentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmCPUProcessHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2949,16 +2949,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmCPUProcessHis
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmCPUProcessHistoryTable::CpmCPUProcessHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmCPUProcessHistoryTable::CpmCPUProcessHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmCPUProcessHistoryTable::CpmCPUProcessHistoryEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmCPUProcessHistoryTable::CpmCPUProcessHistoryEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmCPUProcessHistoryTable::CpmCPUProcessHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3102,33 +3102,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmThreadTable::
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmThreadTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmThreadTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmThreadEntry")
     {
-        auto c = std::make_shared<CISCOPROCESSMIB::CpmThreadTable::CpmThreadEntry>();
-        c->parent = this;
-        cpmthreadentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPROCESSMIB::CpmThreadTable::CpmThreadEntry>();
+        ent_->parent = this;
+        cpmthreadentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmThreadTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmThreadTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpmthreadentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpmthreadentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmThreadTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3237,16 +3237,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmThreadTable::
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmThreadTable::CpmThreadEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmThreadTable::CpmThreadEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmThreadTable::CpmThreadEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmThreadTable::CpmThreadEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmThreadTable::CpmThreadEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3430,33 +3430,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmVirtualProces
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmVirtualProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmVirtualProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpmVirtualProcessEntry")
     {
-        auto c = std::make_shared<CISCOPROCESSMIB::CpmVirtualProcessTable::CpmVirtualProcessEntry>();
-        c->parent = this;
-        cpmvirtualprocessentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPROCESSMIB::CpmVirtualProcessTable::CpmVirtualProcessEntry>();
+        ent_->parent = this;
+        cpmvirtualprocessentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmVirtualProcessTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmVirtualProcessTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpmvirtualprocessentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpmvirtualprocessentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmVirtualProcessTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3581,16 +3581,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPROCESSMIB::CpmVirtualProces
 
 }
 
-std::shared_ptr<Entity> CISCOPROCESSMIB::CpmVirtualProcessTable::CpmVirtualProcessEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPROCESSMIB::CpmVirtualProcessTable::CpmVirtualProcessEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPROCESSMIB::CpmVirtualProcessTable::CpmVirtualProcessEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPROCESSMIB::CpmVirtualProcessTable::CpmVirtualProcessEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPROCESSMIB::CpmVirtualProcessTable::CpmVirtualProcessEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

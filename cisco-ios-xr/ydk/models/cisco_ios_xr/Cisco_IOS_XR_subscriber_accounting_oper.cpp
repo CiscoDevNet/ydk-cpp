@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::get_name_le
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> SubscriberAccounting::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void SubscriberAccounting::set_filter(const std::string & value_path, YFilter yf
 {
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::clone_ptr() const
+std::shared_ptr<ydk::Entity> SubscriberAccounting::clone_ptr() const
 {
     return std::make_shared<SubscriberAccounting>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::get_
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<SubscriberAccounting::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberAccounting::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -280,7 +280,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subscriber-accounting-session-features")
     {
@@ -312,26 +312,26 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(subscriber_accounting_session_features != nullptr)
     {
-        children["subscriber-accounting-session-features"] = subscriber_accounting_session_features;
+        _children["subscriber-accounting-session-features"] = subscriber_accounting_session_features;
     }
 
     if(subscriber_accounting_summary != nullptr)
     {
-        children["subscriber-accounting-summary"] = subscriber_accounting_summary;
+        _children["subscriber-accounting-summary"] = subscriber_accounting_summary;
     }
 
     if(subscriber_accounting_flow_features != nullptr)
     {
-        children["subscriber-accounting-flow-features"] = subscriber_accounting_flow_features;
+        _children["subscriber-accounting-flow-features"] = subscriber_accounting_flow_features;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -408,33 +408,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subscriber-accounting-session-feature")
     {
-        auto c = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature>();
-        c->parent = this;
-        subscriber_accounting_session_feature.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature>();
+        ent_->parent = this;
+        subscriber_accounting_session_feature.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : subscriber_accounting_session_feature.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : subscriber_accounting_session_feature.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -499,7 +499,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-feature-data")
     {
@@ -513,16 +513,16 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session_feature_data != nullptr)
     {
-        children["session-feature-data"] = session_feature_data;
+        _children["session-feature-data"] = session_feature_data;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -691,33 +691,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-accounting-feature")
     {
-        auto c = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature>();
-        c->parent = this;
-        service_accounting_feature.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature>();
+        ent_->parent = this;
+        service_accounting_feature.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : service_accounting_feature.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : service_accounting_feature.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1030,16 +1030,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1180,7 +1180,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aaa-counters")
     {
@@ -1221,31 +1221,31 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aaa_counters != nullptr)
     {
-        children["aaa-counters"] = aaa_counters;
+        _children["aaa-counters"] = aaa_counters;
     }
 
     if(idle_timeout_counters != nullptr)
     {
-        children["idle-timeout-counters"] = idle_timeout_counters;
+        _children["idle-timeout-counters"] = idle_timeout_counters;
     }
 
     if(session_timeout_counters != nullptr)
     {
-        children["session-timeout-counters"] = session_timeout_counters;
+        _children["session-timeout-counters"] = session_timeout_counters;
     }
 
     if(session_flow_counters != nullptr)
     {
-        children["session-flow-counters"] = session_flow_counters;
+        _children["session-flow-counters"] = session_flow_counters;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1440,16 +1440,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1886,16 +1886,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2038,16 +2038,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2142,16 +2142,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2268,33 +2268,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subscriber-accounting-flow-feature")
     {
-        auto c = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature>();
-        c->parent = this;
-        subscriber_accounting_flow_feature.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature>();
+        ent_->parent = this;
+        subscriber_accounting_flow_feature.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : subscriber_accounting_flow_feature.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : subscriber_accounting_flow_feature.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2359,7 +2359,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-feature-data")
     {
@@ -2373,16 +2373,16 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingF
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flow_feature_data != nullptr)
     {
-        children["flow-feature-data"] = flow_feature_data;
+        _children["flow-feature-data"] = flow_feature_data;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2643,16 +2643,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node
 
 }
 
-std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

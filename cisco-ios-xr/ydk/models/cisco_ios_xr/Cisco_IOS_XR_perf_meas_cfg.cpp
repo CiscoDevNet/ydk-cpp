@@ -61,7 +61,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceMeasurement::get_name_
 
 }
 
-std::shared_ptr<Entity> PerformanceMeasurement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceMeasurement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delay-profile-interface")
     {
@@ -84,21 +84,21 @@ std::shared_ptr<Entity> PerformanceMeasurement::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceMeasurement::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceMeasurement::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delay_profile_interface != nullptr)
     {
-        children["delay-profile-interface"] = delay_profile_interface;
+        _children["delay-profile-interface"] = delay_profile_interface;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceMeasurement::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -119,7 +119,7 @@ void PerformanceMeasurement::set_filter(const std::string & value_path, YFilter 
     }
 }
 
-std::shared_ptr<Entity> PerformanceMeasurement::clone_ptr() const
+std::shared_ptr<ydk::Entity> PerformanceMeasurement::clone_ptr() const
 {
     return std::make_shared<PerformanceMeasurement>();
 }
@@ -203,7 +203,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceMeasurement::DelayProf
 
 }
 
-std::shared_ptr<Entity> PerformanceMeasurement::DelayProfileInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceMeasurement::DelayProfileInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "advertisement")
     {
@@ -226,21 +226,21 @@ std::shared_ptr<Entity> PerformanceMeasurement::DelayProfileInterface::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceMeasurement::DelayProfileInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceMeasurement::DelayProfileInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(advertisement != nullptr)
     {
-        children["advertisement"] = advertisement;
+        _children["advertisement"] = advertisement;
     }
 
     if(probe != nullptr)
     {
-        children["probe"] = probe;
+        _children["probe"] = probe;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceMeasurement::DelayProfileInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -310,7 +310,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceMeasurement::DelayProf
 
 }
 
-std::shared_ptr<Entity> PerformanceMeasurement::DelayProfileInterface::Advertisement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceMeasurement::DelayProfileInterface::Advertisement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accelerated")
     {
@@ -333,21 +333,21 @@ std::shared_ptr<Entity> PerformanceMeasurement::DelayProfileInterface::Advertise
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceMeasurement::DelayProfileInterface::Advertisement::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceMeasurement::DelayProfileInterface::Advertisement::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(accelerated != nullptr)
     {
-        children["accelerated"] = accelerated;
+        _children["accelerated"] = accelerated;
     }
 
     if(periodic != nullptr)
     {
-        children["periodic"] = periodic;
+        _children["periodic"] = periodic;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceMeasurement::DelayProfileInterface::Advertisement::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -421,16 +421,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceMeasurement::DelayProf
 
 }
 
-std::shared_ptr<Entity> PerformanceMeasurement::DelayProfileInterface::Advertisement::Accelerated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceMeasurement::DelayProfileInterface::Advertisement::Accelerated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceMeasurement::DelayProfileInterface::Advertisement::Accelerated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceMeasurement::DelayProfileInterface::Advertisement::Accelerated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceMeasurement::DelayProfileInterface::Advertisement::Accelerated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -538,16 +538,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceMeasurement::DelayProf
 
 }
 
-std::shared_ptr<Entity> PerformanceMeasurement::DelayProfileInterface::Advertisement::Periodic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceMeasurement::DelayProfileInterface::Advertisement::Periodic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceMeasurement::DelayProfileInterface::Advertisement::Periodic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceMeasurement::DelayProfileInterface::Advertisement::Periodic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceMeasurement::DelayProfileInterface::Advertisement::Periodic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -662,7 +662,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceMeasurement::DelayProf
 
 }
 
-std::shared_ptr<Entity> PerformanceMeasurement::DelayProfileInterface::Probe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceMeasurement::DelayProfileInterface::Probe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "burst")
     {
@@ -676,16 +676,16 @@ std::shared_ptr<Entity> PerformanceMeasurement::DelayProfileInterface::Probe::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceMeasurement::DelayProfileInterface::Probe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceMeasurement::DelayProfileInterface::Probe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(burst != nullptr)
     {
-        children["burst"] = burst;
+        _children["burst"] = burst;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceMeasurement::DelayProfileInterface::Probe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -775,16 +775,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceMeasurement::DelayProf
 
 }
 
-std::shared_ptr<Entity> PerformanceMeasurement::DelayProfileInterface::Probe::Burst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceMeasurement::DelayProfileInterface::Probe::Burst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceMeasurement::DelayProfileInterface::Probe::Burst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceMeasurement::DelayProfileInterface::Probe::Burst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceMeasurement::DelayProfileInterface::Probe::Burst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -878,33 +878,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceMeasurement::Interface
 
 }
 
-std::shared_ptr<Entity> PerformanceMeasurement::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceMeasurement::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<PerformanceMeasurement::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceMeasurement::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceMeasurement::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceMeasurement::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceMeasurement::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -980,7 +980,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceMeasurement::Interface
 
 }
 
-std::shared_ptr<Entity> PerformanceMeasurement::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceMeasurement::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delay-measurement")
     {
@@ -994,16 +994,16 @@ std::shared_ptr<Entity> PerformanceMeasurement::Interfaces::Interface::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceMeasurement::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceMeasurement::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delay_measurement != nullptr)
     {
-        children["delay-measurement"] = delay_measurement;
+        _children["delay-measurement"] = delay_measurement;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceMeasurement::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1086,16 +1086,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceMeasurement::Interface
 
 }
 
-std::shared_ptr<Entity> PerformanceMeasurement::Interfaces::Interface::DelayMeasurement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceMeasurement::Interfaces::Interface::DelayMeasurement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceMeasurement::Interfaces::Interface::DelayMeasurement::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceMeasurement::Interfaces::Interface::DelayMeasurement::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceMeasurement::Interfaces::Interface::DelayMeasurement::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

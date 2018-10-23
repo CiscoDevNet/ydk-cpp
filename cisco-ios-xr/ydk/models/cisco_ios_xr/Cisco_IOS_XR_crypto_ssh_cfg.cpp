@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> Ssh::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(client != nullptr)
     {
-        children["client"] = client;
+        _children["client"] = client;
     }
 
     if(server != nullptr)
     {
-        children["server"] = server;
+        _children["server"] = server;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void Ssh::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Ssh::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ssh::clone_ptr() const
 {
     return std::make_shared<Ssh>();
 }
@@ -213,7 +213,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Client::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Ssh::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client-algo")
     {
@@ -236,21 +236,21 @@ std::shared_ptr<Entity> Ssh::Client::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(client_algo != nullptr)
     {
-        children["client-algo"] = client_algo;
+        _children["client-algo"] = client_algo;
     }
 
     if(client_enable != nullptr)
     {
-        children["client-enable"] = client_enable;
+        _children["client-enable"] = client_enable;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -376,7 +376,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Client::ClientAlgo::get_name
 
 }
 
-std::shared_ptr<Entity> Ssh::Client::ClientAlgo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Client::ClientAlgo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-exchanges")
     {
@@ -390,16 +390,16 @@ std::shared_ptr<Entity> Ssh::Client::ClientAlgo::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Client::ClientAlgo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Client::ClientAlgo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_exchanges != nullptr)
     {
-        children["key-exchanges"] = key_exchanges;
+        _children["key-exchanges"] = key_exchanges;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Client::ClientAlgo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -476,16 +476,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Client::ClientAlgo::KeyExcha
 
 }
 
-std::shared_ptr<Entity> Ssh::Client::ClientAlgo::KeyExchanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Client::ClientAlgo::KeyExchanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Client::ClientAlgo::KeyExchanges::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Client::ClientAlgo::KeyExchanges::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Client::ClientAlgo::KeyExchanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -559,7 +559,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Client::ClientEnable::get_na
 
 }
 
-std::shared_ptr<Entity> Ssh::Client::ClientEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Client::ClientEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "client-cipher")
     {
@@ -573,16 +573,16 @@ std::shared_ptr<Entity> Ssh::Client::ClientEnable::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Client::ClientEnable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Client::ClientEnable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(client_cipher != nullptr)
     {
-        children["client-cipher"] = client_cipher;
+        _children["client-cipher"] = client_cipher;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Client::ClientEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -652,16 +652,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Client::ClientEnable::Client
 
 }
 
-std::shared_ptr<Entity> Ssh::Client::ClientEnable::ClientCipher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Client::ClientEnable::ClientCipher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Client::ClientEnable::ClientCipher::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Client::ClientEnable::ClientCipher::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Client::ClientEnable::ClientCipher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -804,7 +804,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Ssh::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disable")
     {
@@ -863,41 +863,41 @@ std::shared_ptr<Entity> Ssh::Server::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Server::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disable != nullptr)
     {
-        children["disable"] = disable;
+        _children["disable"] = disable;
     }
 
     if(enable != nullptr)
     {
-        children["enable"] = enable;
+        _children["enable"] = enable;
     }
 
     if(vrf_table != nullptr)
     {
-        children["vrf-table"] = vrf_table;
+        _children["vrf-table"] = vrf_table;
     }
 
     if(server_algo != nullptr)
     {
-        children["server-algo"] = server_algo;
+        _children["server-algo"] = server_algo;
     }
 
     if(capability != nullptr)
     {
-        children["capability"] = capability;
+        _children["capability"] = capability;
     }
 
     if(netconf_vrf_table != nullptr)
     {
-        children["netconf-vrf-table"] = netconf_vrf_table;
+        _children["netconf-vrf-table"] = netconf_vrf_table;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1053,7 +1053,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::Disable::get_name_le
 
 }
 
-std::shared_ptr<Entity> Ssh::Server::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Server::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hmac")
     {
@@ -1067,16 +1067,16 @@ std::shared_ptr<Entity> Ssh::Server::Disable::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::Disable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Server::Disable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(hmac != nullptr)
     {
-        children["hmac"] = hmac;
+        _children["hmac"] = hmac;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Server::Disable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1142,16 +1142,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::Disable::Hmac::get_n
 
 }
 
-std::shared_ptr<Entity> Ssh::Server::Disable::Hmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Server::Disable::Hmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::Disable::Hmac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Server::Disable::Hmac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Server::Disable::Hmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1227,7 +1227,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::Enable::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Ssh::Server::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Server::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipher")
     {
@@ -1241,16 +1241,16 @@ std::shared_ptr<Entity> Ssh::Server::Enable::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::Enable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Server::Enable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cipher != nullptr)
     {
-        children["cipher"] = cipher;
+        _children["cipher"] = cipher;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Server::Enable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1320,16 +1320,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::Enable::Cipher::get_
 
 }
 
-std::shared_ptr<Entity> Ssh::Server::Enable::Cipher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Server::Enable::Cipher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::Enable::Cipher::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Server::Enable::Cipher::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Server::Enable::Cipher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1423,33 +1423,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::VrfTable::get_name_l
 
 }
 
-std::shared_ptr<Entity> Ssh::Server::VrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Server::VrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Ssh::Server::VrfTable::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Server::VrfTable::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::VrfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Server::VrfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Server::VrfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1528,16 +1528,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::VrfTable::Vrf::get_n
 
 }
 
-std::shared_ptr<Entity> Ssh::Server::VrfTable::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Server::VrfTable::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::VrfTable::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Server::VrfTable::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Server::VrfTable::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1643,7 +1643,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::ServerAlgo::get_name
 
 }
 
-std::shared_ptr<Entity> Ssh::Server::ServerAlgo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Server::ServerAlgo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-exchanges")
     {
@@ -1657,16 +1657,16 @@ std::shared_ptr<Entity> Ssh::Server::ServerAlgo::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::ServerAlgo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Server::ServerAlgo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_exchanges != nullptr)
     {
-        children["key-exchanges"] = key_exchanges;
+        _children["key-exchanges"] = key_exchanges;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Server::ServerAlgo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1743,16 +1743,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::ServerAlgo::KeyExcha
 
 }
 
-std::shared_ptr<Entity> Ssh::Server::ServerAlgo::KeyExchanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Server::ServerAlgo::KeyExchanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::ServerAlgo::KeyExchanges::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Server::ServerAlgo::KeyExchanges::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Server::ServerAlgo::KeyExchanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1826,16 +1826,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::Capability::get_name
 
 }
 
-std::shared_ptr<Entity> Ssh::Server::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Server::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::Capability::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Server::Capability::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Server::Capability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1919,33 +1919,33 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::NetconfVrfTable::get
 
 }
 
-std::shared_ptr<Entity> Ssh::Server::NetconfVrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Server::NetconfVrfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Ssh::Server::NetconfVrfTable::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ssh::Server::NetconfVrfTable::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::NetconfVrfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Server::NetconfVrfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ssh::Server::NetconfVrfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2024,16 +2024,16 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::NetconfVrfTable::Vrf
 
 }
 
-std::shared_ptr<Entity> Ssh::Server::NetconfVrfTable::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ssh::Server::NetconfVrfTable::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ssh::Server::NetconfVrfTable::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Server::NetconfVrfTable::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ssh::Server::NetconfVrfTable::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

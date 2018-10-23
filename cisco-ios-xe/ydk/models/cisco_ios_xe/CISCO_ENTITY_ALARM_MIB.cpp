@@ -80,7 +80,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::get_name_lea
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceAlarmMonitoring")
     {
@@ -157,51 +157,51 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cealarmmonitoring != nullptr)
     {
-        children["ceAlarmMonitoring"] = cealarmmonitoring;
+        _children["ceAlarmMonitoring"] = cealarmmonitoring;
     }
 
     if(cealarmhistory != nullptr)
     {
-        children["ceAlarmHistory"] = cealarmhistory;
+        _children["ceAlarmHistory"] = cealarmhistory;
     }
 
     if(cealarmfiltering != nullptr)
     {
-        children["ceAlarmFiltering"] = cealarmfiltering;
+        _children["ceAlarmFiltering"] = cealarmfiltering;
     }
 
     if(cealarmdescrmaptable != nullptr)
     {
-        children["ceAlarmDescrMapTable"] = cealarmdescrmaptable;
+        _children["ceAlarmDescrMapTable"] = cealarmdescrmaptable;
     }
 
     if(cealarmdescrtable != nullptr)
     {
-        children["ceAlarmDescrTable"] = cealarmdescrtable;
+        _children["ceAlarmDescrTable"] = cealarmdescrtable;
     }
 
     if(cealarmtable != nullptr)
     {
-        children["ceAlarmTable"] = cealarmtable;
+        _children["ceAlarmTable"] = cealarmtable;
     }
 
     if(cealarmhisttable != nullptr)
     {
-        children["ceAlarmHistTable"] = cealarmhisttable;
+        _children["ceAlarmHistTable"] = cealarmhisttable;
     }
 
     if(cealarmfilterprofiletable != nullptr)
     {
-        children["ceAlarmFilterProfileTable"] = cealarmfilterprofiletable;
+        _children["ceAlarmFilterProfileTable"] = cealarmfilterprofiletable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -212,7 +212,7 @@ void CISCOENTITYALARMMIB::set_filter(const std::string & value_path, YFilter yfi
 {
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::clone_ptr() const
 {
     return std::make_shared<CISCOENTITYALARMMIB>();
 }
@@ -304,16 +304,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::CeAlarmMonit
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::CeAlarmMonitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::CeAlarmMonitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::CeAlarmMonitoring::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::CeAlarmMonitoring::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::CeAlarmMonitoring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -423,16 +423,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::CeAlarmHisto
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::CeAlarmHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::CeAlarmHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::CeAlarmHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::CeAlarmHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::CeAlarmHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -526,16 +526,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::CeAlarmFilte
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::CeAlarmFiltering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::CeAlarmFiltering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::CeAlarmFiltering::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::CeAlarmFiltering::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::CeAlarmFiltering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -639,33 +639,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::CeAlarmDescr
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::CeAlarmDescrMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::CeAlarmDescrMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceAlarmDescrMapEntry")
     {
-        auto c = std::make_shared<CISCOENTITYALARMMIB::CeAlarmDescrMapTable::CeAlarmDescrMapEntry>();
-        c->parent = this;
-        cealarmdescrmapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYALARMMIB::CeAlarmDescrMapTable::CeAlarmDescrMapEntry>();
+        ent_->parent = this;
+        cealarmdescrmapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::CeAlarmDescrMapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::CeAlarmDescrMapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cealarmdescrmapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cealarmdescrmapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::CeAlarmDescrMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -736,16 +736,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::CeAlarmDescr
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::CeAlarmDescrMapTable::CeAlarmDescrMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::CeAlarmDescrMapTable::CeAlarmDescrMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::CeAlarmDescrMapTable::CeAlarmDescrMapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::CeAlarmDescrMapTable::CeAlarmDescrMapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::CeAlarmDescrMapTable::CeAlarmDescrMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -839,33 +839,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::CeAlarmDescr
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::CeAlarmDescrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::CeAlarmDescrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceAlarmDescrEntry")
     {
-        auto c = std::make_shared<CISCOENTITYALARMMIB::CeAlarmDescrTable::CeAlarmDescrEntry>();
-        c->parent = this;
-        cealarmdescrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYALARMMIB::CeAlarmDescrTable::CeAlarmDescrEntry>();
+        ent_->parent = this;
+        cealarmdescrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::CeAlarmDescrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::CeAlarmDescrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cealarmdescrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cealarmdescrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::CeAlarmDescrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -945,16 +945,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::CeAlarmDescr
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::CeAlarmDescrTable::CeAlarmDescrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::CeAlarmDescrTable::CeAlarmDescrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::CeAlarmDescrTable::CeAlarmDescrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::CeAlarmDescrTable::CeAlarmDescrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::CeAlarmDescrTable::CeAlarmDescrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1068,33 +1068,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::CeAlarmTable
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::CeAlarmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::CeAlarmTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceAlarmEntry")
     {
-        auto c = std::make_shared<CISCOENTITYALARMMIB::CeAlarmTable::CeAlarmEntry>();
-        c->parent = this;
-        cealarmentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYALARMMIB::CeAlarmTable::CeAlarmEntry>();
+        ent_->parent = this;
+        cealarmentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::CeAlarmTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::CeAlarmTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cealarmentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cealarmentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::CeAlarmTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1173,16 +1173,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::CeAlarmTable
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::CeAlarmTable::CeAlarmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::CeAlarmTable::CeAlarmEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::CeAlarmTable::CeAlarmEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::CeAlarmTable::CeAlarmEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::CeAlarmTable::CeAlarmEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1296,33 +1296,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::CeAlarmHistT
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::CeAlarmHistTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::CeAlarmHistTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceAlarmHistEntry")
     {
-        auto c = std::make_shared<CISCOENTITYALARMMIB::CeAlarmHistTable::CeAlarmHistEntry>();
-        c->parent = this;
-        cealarmhistentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYALARMMIB::CeAlarmHistTable::CeAlarmHistEntry>();
+        ent_->parent = this;
+        cealarmhistentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::CeAlarmHistTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::CeAlarmHistTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cealarmhistentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cealarmhistentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::CeAlarmHistTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1409,16 +1409,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::CeAlarmHistT
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::CeAlarmHistTable::CeAlarmHistEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::CeAlarmHistTable::CeAlarmHistEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::CeAlarmHistTable::CeAlarmHistEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::CeAlarmHistTable::CeAlarmHistEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::CeAlarmHistTable::CeAlarmHistEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1552,33 +1552,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::CeAlarmFilte
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::CeAlarmFilterProfileTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::CeAlarmFilterProfileTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceAlarmFilterProfileEntry")
     {
-        auto c = std::make_shared<CISCOENTITYALARMMIB::CeAlarmFilterProfileTable::CeAlarmFilterProfileEntry>();
-        c->parent = this;
-        cealarmfilterprofileentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYALARMMIB::CeAlarmFilterProfileTable::CeAlarmFilterProfileEntry>();
+        ent_->parent = this;
+        cealarmfilterprofileentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::CeAlarmFilterProfileTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::CeAlarmFilterProfileTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cealarmfilterprofileentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cealarmfilterprofileentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::CeAlarmFilterProfileTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1665,16 +1665,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYALARMMIB::CeAlarmFilte
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYALARMMIB::CeAlarmFilterProfileTable::CeAlarmFilterProfileEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYALARMMIB::CeAlarmFilterProfileTable::CeAlarmFilterProfileEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::CeAlarmFilterProfileTable::CeAlarmFilterProfileEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYALARMMIB::CeAlarmFilterProfileTable::CeAlarmFilterProfileEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYALARMMIB::CeAlarmFilterProfileTable::CeAlarmFilterProfileEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

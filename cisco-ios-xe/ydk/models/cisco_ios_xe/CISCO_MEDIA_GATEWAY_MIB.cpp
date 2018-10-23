@@ -80,7 +80,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::get_name_le
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cMediaGwTable")
     {
@@ -157,51 +157,51 @@ std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cmediagwtable != nullptr)
     {
-        children["cMediaGwTable"] = cmediagwtable;
+        _children["cMediaGwTable"] = cmediagwtable;
     }
 
     if(cmgwsignalprotocoltable != nullptr)
     {
-        children["cmgwSignalProtocolTable"] = cmgwsignalprotocoltable;
+        _children["cmgwSignalProtocolTable"] = cmgwsignalprotocoltable;
     }
 
     if(cmediagwipconfigtable != nullptr)
     {
-        children["cMediaGwIpConfigTable"] = cmediagwipconfigtable;
+        _children["cMediaGwIpConfigTable"] = cmediagwipconfigtable;
     }
 
     if(cmediagwdomainnameconfigtable != nullptr)
     {
-        children["cMediaGwDomainNameConfigTable"] = cmediagwdomainnameconfigtable;
+        _children["cMediaGwDomainNameConfigTable"] = cmediagwdomainnameconfigtable;
     }
 
     if(cmediagwdnsipconfigtable != nullptr)
     {
-        children["cMediaGwDnsIpConfigTable"] = cmediagwdnsipconfigtable;
+        _children["cMediaGwDnsIpConfigTable"] = cmediagwdnsipconfigtable;
     }
 
     if(cmgwliftable != nullptr)
     {
-        children["cmgwLifTable"] = cmgwliftable;
+        _children["cmgwLifTable"] = cmgwliftable;
     }
 
     if(cmediagwcallcontrolconfigtable != nullptr)
     {
-        children["cMediaGwCallControlConfigTable"] = cmediagwcallcontrolconfigtable;
+        _children["cMediaGwCallControlConfigTable"] = cmediagwcallcontrolconfigtable;
     }
 
     if(cmediagwrscstatstable != nullptr)
     {
-        children["cMediaGwRscStatsTable"] = cmediagwrscstatstable;
+        _children["cMediaGwRscStatsTable"] = cmediagwrscstatstable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -212,7 +212,7 @@ void CISCOMEDIAGATEWAYMIB::set_filter(const std::string & value_path, YFilter yf
 {
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::clone_ptr() const
 {
     return std::make_shared<CISCOMEDIAGATEWAYMIB>();
 }
@@ -300,33 +300,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwTab
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CMediaGwTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cMediaGwEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry>();
-        c->parent = this;
-        cmediagwentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry>();
+        ent_->parent = this;
+        cmediagwentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmediagwentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmediagwentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CMediaGwTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -429,16 +429,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwTab
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -612,33 +612,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CmgwSignalP
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmgwSignalProtocolEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry>();
-        c->parent = this;
-        cmgwsignalprotocolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry>();
+        ent_->parent = this;
+        cmgwsignalprotocolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmgwsignalprotocolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmgwsignalprotocolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -734,16 +734,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CmgwSignalP
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -897,33 +897,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwIpC
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cMediaGwIpConfigEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry>();
-        c->parent = this;
-        cmediagwipconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry>();
+        ent_->parent = this;
+        cmediagwipconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmediagwipconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmediagwipconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1031,16 +1031,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwIpC
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1224,33 +1224,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwDom
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cMediaGwDomainNameConfigEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry>();
-        c->parent = this;
-        cmediagwdomainnameconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry>();
+        ent_->parent = this;
+        cmediagwdomainnameconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmediagwdomainnameconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmediagwdomainnameconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1334,16 +1334,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwDom
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1467,33 +1467,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwDns
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cMediaGwDnsIpConfigEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry>();
-        c->parent = this;
-        cmediagwdnsipconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry>();
+        ent_->parent = this;
+        cmediagwdnsipconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmediagwdnsipconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmediagwdnsipconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1581,16 +1581,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwDns
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1724,33 +1724,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CmgwLifTabl
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CmgwLifTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CmgwLifTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmgwLifEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry>();
-        c->parent = this;
-        cmgwlifentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry>();
+        ent_->parent = this;
+        cmgwlifentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CmgwLifTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CmgwLifTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmgwlifentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmgwlifentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CmgwLifTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1830,16 +1830,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CmgwLifTabl
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1953,33 +1953,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwCal
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cMediaGwCallControlConfigEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry>();
-        c->parent = this;
-        cmediagwcallcontrolconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry>();
+        ent_->parent = this;
+        cmediagwcallcontrolconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmediagwcallcontrolconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmediagwcallcontrolconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2118,16 +2118,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwCal
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2391,33 +2391,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwRsc
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cMediaGwRscStatsEntry")
     {
-        auto c = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry>();
-        c->parent = this;
-        cmediagwrscstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry>();
+        ent_->parent = this;
+        cmediagwrscstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmediagwrscstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmediagwrscstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2505,16 +2505,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOMEDIAGATEWAYMIB::CMediaGwRsc
 
 }
 
-std::shared_ptr<Entity> CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

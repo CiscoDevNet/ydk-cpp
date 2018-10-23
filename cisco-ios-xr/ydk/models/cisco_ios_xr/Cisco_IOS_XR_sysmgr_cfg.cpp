@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > ProcessMandatory::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> ProcessMandatory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessMandatory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> ProcessMandatory::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessMandatory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessMandatory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
-    return children;
+    return _children;
 }
 
 void ProcessMandatory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void ProcessMandatory::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> ProcessMandatory::clone_ptr() const
+std::shared_ptr<ydk::Entity> ProcessMandatory::clone_ptr() const
 {
     return std::make_shared<ProcessMandatory>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > ProcessMandatory::Nodes::get_name
 
 }
 
-std::shared_ptr<Entity> ProcessMandatory::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessMandatory::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<ProcessMandatory::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<ProcessMandatory::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessMandatory::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessMandatory::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ProcessMandatory::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -290,7 +290,7 @@ std::vector<std::pair<std::string, LeafData> > ProcessMandatory::Nodes::Node::ge
 
 }
 
-std::shared_ptr<Entity> ProcessMandatory::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessMandatory::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "processes")
     {
@@ -304,16 +304,16 @@ std::shared_ptr<Entity> ProcessMandatory::Nodes::Node::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessMandatory::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessMandatory::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(processes != nullptr)
     {
-        children["processes"] = processes;
+        _children["processes"] = processes;
     }
 
-    return children;
+    return _children;
 }
 
 void ProcessMandatory::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -390,33 +390,33 @@ std::vector<std::pair<std::string, LeafData> > ProcessMandatory::Nodes::Node::Pr
 
 }
 
-std::shared_ptr<Entity> ProcessMandatory::Nodes::Node::Processes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessMandatory::Nodes::Node::Processes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process")
     {
-        auto c = std::make_shared<ProcessMandatory::Nodes::Node::Processes::Process>();
-        c->parent = this;
-        process.append(c);
-        return c;
+        auto ent_ = std::make_shared<ProcessMandatory::Nodes::Node::Processes::Process>();
+        ent_->parent = this;
+        process.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessMandatory::Nodes::Node::Processes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessMandatory::Nodes::Node::Processes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : process.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : process.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ProcessMandatory::Nodes::Node::Processes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -476,16 +476,16 @@ std::vector<std::pair<std::string, LeafData> > ProcessMandatory::Nodes::Node::Pr
 
 }
 
-std::shared_ptr<Entity> ProcessMandatory::Nodes::Node::Processes::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessMandatory::Nodes::Node::Processes::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessMandatory::Nodes::Node::Processes::Process::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessMandatory::Nodes::Node::Processes::Process::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ProcessMandatory::Nodes::Node::Processes::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -561,7 +561,7 @@ std::vector<std::pair<std::string, LeafData> > ProcessMandatory::All::get_name_l
 
 }
 
-std::shared_ptr<Entity> ProcessMandatory::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessMandatory::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "processes")
     {
@@ -575,16 +575,16 @@ std::shared_ptr<Entity> ProcessMandatory::All::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessMandatory::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessMandatory::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(processes != nullptr)
     {
-        children["processes"] = processes;
+        _children["processes"] = processes;
     }
 
-    return children;
+    return _children;
 }
 
 void ProcessMandatory::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -658,33 +658,33 @@ std::vector<std::pair<std::string, LeafData> > ProcessMandatory::All::Processes:
 
 }
 
-std::shared_ptr<Entity> ProcessMandatory::All::Processes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessMandatory::All::Processes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process")
     {
-        auto c = std::make_shared<ProcessMandatory::All::Processes::Process>();
-        c->parent = this;
-        process.append(c);
-        return c;
+        auto ent_ = std::make_shared<ProcessMandatory::All::Processes::Process>();
+        ent_->parent = this;
+        process.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessMandatory::All::Processes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessMandatory::All::Processes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : process.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : process.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ProcessMandatory::All::Processes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -751,16 +751,16 @@ std::vector<std::pair<std::string, LeafData> > ProcessMandatory::All::Processes:
 
 }
 
-std::shared_ptr<Entity> ProcessMandatory::All::Processes::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessMandatory::All::Processes::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessMandatory::All::Processes::Process::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessMandatory::All::Processes::Process::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ProcessMandatory::All::Processes::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -833,16 +833,16 @@ std::vector<std::pair<std::string, LeafData> > ProcessSingleCrash::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> ProcessSingleCrash::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ProcessSingleCrash::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ProcessSingleCrash::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ProcessSingleCrash::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ProcessSingleCrash::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -873,7 +873,7 @@ void ProcessSingleCrash::set_filter(const std::string & value_path, YFilter yfil
     }
 }
 
-std::shared_ptr<Entity> ProcessSingleCrash::clone_ptr() const
+std::shared_ptr<ydk::Entity> ProcessSingleCrash::clone_ptr() const
 {
     return std::make_shared<ProcessSingleCrash>();
 }

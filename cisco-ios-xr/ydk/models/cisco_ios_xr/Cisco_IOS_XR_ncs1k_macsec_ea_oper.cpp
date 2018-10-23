@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Ncs1kMacsecOper::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Ncs1kMacsecOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ncs1kMacsecOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ncs1k-macsec-ctrlr-names")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Ncs1kMacsecOper::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ncs1kMacsecOper::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ncs1kMacsecOper::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ncs1k_macsec_ctrlr_names != nullptr)
     {
-        children["ncs1k-macsec-ctrlr-names"] = ncs1k_macsec_ctrlr_names;
+        _children["ncs1k-macsec-ctrlr-names"] = ncs1k_macsec_ctrlr_names;
     }
 
-    return children;
+    return _children;
 }
 
 void Ncs1kMacsecOper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Ncs1kMacsecOper::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> Ncs1kMacsecOper::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ncs1kMacsecOper::clone_ptr() const
 {
     return std::make_shared<Ncs1kMacsecOper>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > Ncs1kMacsecOper::Ncs1kMacsecCtrlr
 
 }
 
-std::shared_ptr<Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ncs1k-macsec-ctrlr-name")
     {
-        auto c = std::make_shared<Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName>();
-        c->parent = this;
-        ncs1k_macsec_ctrlr_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName>();
+        ent_->parent = this;
+        ncs1k_macsec_ctrlr_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ncs1k_macsec_ctrlr_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ncs1k_macsec_ctrlr_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -272,7 +272,7 @@ std::vector<std::pair<std::string, LeafData> > Ncs1kMacsecOper::Ncs1kMacsecCtrlr
 
 }
 
-std::shared_ptr<Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ncs1k-status-info")
     {
@@ -286,16 +286,16 @@ std::shared_ptr<Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ncs1k_status_info != nullptr)
     {
-        children["ncs1k-status-info"] = ncs1k_status_info;
+        _children["ncs1k-status-info"] = ncs1k_status_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -381,7 +381,7 @@ std::vector<std::pair<std::string, LeafData> > Ncs1kMacsecOper::Ncs1kMacsecCtrlr
 
 }
 
-std::shared_ptr<Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "encrypt-sc-status")
     {
@@ -404,21 +404,21 @@ std::shared_ptr<Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(encrypt_sc_status != nullptr)
     {
-        children["encrypt-sc-status"] = encrypt_sc_status;
+        _children["encrypt-sc-status"] = encrypt_sc_status;
     }
 
     if(decrypt_sc_status != nullptr)
     {
-        children["decrypt-sc-status"] = decrypt_sc_status;
+        _children["decrypt-sc-status"] = decrypt_sc_status;
     }
 
-    return children;
+    return _children;
 }
 
 void Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -547,33 +547,33 @@ std::vector<std::pair<std::string, LeafData> > Ncs1kMacsecOper::Ncs1kMacsecCtrlr
 
 }
 
-std::shared_ptr<Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::EncryptScStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::EncryptScStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active-association")
     {
-        auto c = std::make_shared<Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::EncryptScStatus::ActiveAssociation>();
-        c->parent = this;
-        active_association.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::EncryptScStatus::ActiveAssociation>();
+        ent_->parent = this;
+        active_association.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::EncryptScStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::EncryptScStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : active_association.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : active_association.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::EncryptScStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -742,16 +742,16 @@ std::vector<std::pair<std::string, LeafData> > Ncs1kMacsecOper::Ncs1kMacsecCtrlr
 
 }
 
-std::shared_ptr<Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::EncryptScStatus::ActiveAssociation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::EncryptScStatus::ActiveAssociation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::EncryptScStatus::ActiveAssociation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::EncryptScStatus::ActiveAssociation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::EncryptScStatus::ActiveAssociation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -908,33 +908,33 @@ std::vector<std::pair<std::string, LeafData> > Ncs1kMacsecOper::Ncs1kMacsecCtrlr
 
 }
 
-std::shared_ptr<Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::DecryptScStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::DecryptScStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active-association")
     {
-        auto c = std::make_shared<Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::DecryptScStatus::ActiveAssociation>();
-        c->parent = this;
-        active_association.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::DecryptScStatus::ActiveAssociation>();
+        ent_->parent = this;
+        active_association.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::DecryptScStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::DecryptScStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : active_association.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : active_association.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::DecryptScStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1103,16 +1103,16 @@ std::vector<std::pair<std::string, LeafData> > Ncs1kMacsecOper::Ncs1kMacsecCtrlr
 
 }
 
-std::shared_ptr<Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::DecryptScStatus::ActiveAssociation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::DecryptScStatus::ActiveAssociation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::DecryptScStatus::ActiveAssociation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::DecryptScStatus::ActiveAssociation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kStatusInfo::DecryptScStatus::ActiveAssociation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

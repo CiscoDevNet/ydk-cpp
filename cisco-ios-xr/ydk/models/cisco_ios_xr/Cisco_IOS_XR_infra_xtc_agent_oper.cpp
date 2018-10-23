@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > Pcc::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Pcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "plsps")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> Pcc::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(plsps != nullptr)
     {
-        children["plsps"] = plsps;
+        _children["plsps"] = plsps;
     }
 
     if(peers != nullptr)
     {
-        children["peers"] = peers;
+        _children["peers"] = peers;
     }
 
-    return children;
+    return _children;
 }
 
 void Pcc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void Pcc::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Pcc::clone_ptr() const
+std::shared_ptr<ydk::Entity> Pcc::clone_ptr() const
 {
     return std::make_shared<Pcc>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "plsp")
     {
-        auto c = std::make_shared<Pcc::Plsps::Plsp>();
-        c->parent = this;
-        plsp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pcc::Plsps::Plsp>();
+        ent_->parent = this;
+        plsp.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : plsp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : plsp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pcc::Plsps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -328,7 +328,7 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::Plsp::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::Plsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::Plsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stats")
     {
@@ -341,51 +341,51 @@ std::shared_ptr<Entity> Pcc::Plsps::Plsp::get_child_by_name(const std::string & 
 
     if(child_yang_name == "event-history")
     {
-        auto c = std::make_shared<Pcc::Plsps::Plsp::EventHistory>();
-        c->parent = this;
-        event_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pcc::Plsps::Plsp::EventHistory>();
+        ent_->parent = this;
+        event_history.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "path")
     {
-        auto c = std::make_shared<Pcc::Plsps::Plsp::Path>();
-        c->parent = this;
-        path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pcc::Plsps::Plsp::Path>();
+        ent_->parent = this;
+        path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::Plsp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stats != nullptr)
     {
-        children["stats"] = stats;
+        _children["stats"] = stats;
     }
 
-    count = 0;
-    for (auto c : event_history.entities())
+    count_ = 0;
+    for (auto ent_ : event_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : path.entities())
+    count_ = 0;
+    for (auto ent_ : path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pcc::Plsps::Plsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -518,16 +518,16 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::Plsp::Stats::get_name
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::Plsp::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::Plsp::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::Plsp::Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pcc::Plsps::Plsp::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -660,16 +660,16 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::Plsp::EventHistory::g
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::Plsp::EventHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::Plsp::EventHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::EventHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::Plsp::EventHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pcc::Plsps::Plsp::EventHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -863,7 +863,7 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::Plsp::Path::get_name_
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::Plsp::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stats")
     {
@@ -876,51 +876,51 @@ std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::get_child_by_name(const std::str
 
     if(child_yang_name == "ero-hop")
     {
-        auto c = std::make_shared<Pcc::Plsps::Plsp::Path::EroHop>();
-        c->parent = this;
-        ero_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pcc::Plsps::Plsp::Path::EroHop>();
+        ent_->parent = this;
+        ero_hop.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "rro-hop")
     {
-        auto c = std::make_shared<Pcc::Plsps::Plsp::Path::RroHop>();
-        c->parent = this;
-        rro_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pcc::Plsps::Plsp::Path::RroHop>();
+        ent_->parent = this;
+        rro_hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::Path::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::Plsp::Path::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stats != nullptr)
     {
-        children["stats"] = stats;
+        _children["stats"] = stats;
     }
 
-    count = 0;
-    for (auto c : ero_hop.entities())
+    count_ = 0;
+    for (auto ent_ : ero_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : rro_hop.entities())
+    count_ = 0;
+    for (auto ent_ : rro_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pcc::Plsps::Plsp::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1217,16 +1217,16 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::Plsp::Path::Stats::ge
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::Plsp::Path::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::Path::Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::Plsp::Path::Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pcc::Plsps::Plsp::Path::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1320,7 +1320,7 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::Plsp::Path::EroHop::g
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::EroHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::Plsp::Path::EroHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -1334,16 +1334,16 @@ std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::EroHop::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::Path::EroHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::Plsp::Path::EroHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    return children;
+    return _children;
 }
 
 void Pcc::Plsps::Plsp::Path::EroHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1421,7 +1421,7 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::Plsp::Path::EroHop::D
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::EroHop::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::Plsp::Path::EroHop::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -1444,21 +1444,21 @@ std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::EroHop::Data::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::Path::EroHop::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::Plsp::Path::EroHop::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(sr_v4 != nullptr)
     {
-        children["sr-v4"] = sr_v4;
+        _children["sr-v4"] = sr_v4;
     }
 
-    return children;
+    return _children;
 }
 
 void Pcc::Plsps::Plsp::Path::EroHop::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1531,16 +1531,16 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::Plsp::Path::EroHop::D
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::EroHop::Data::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::Plsp::Path::EroHop::Data::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::Path::EroHop::Data::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::Plsp::Path::EroHop::Data::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pcc::Plsps::Plsp::Path::EroHop::Data::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1635,16 +1635,16 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::Plsp::Path::EroHop::D
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::EroHop::Data::SrV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::Plsp::Path::EroHop::Data::SrV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::Path::EroHop::Data::SrV4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::Plsp::Path::EroHop::Data::SrV4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pcc::Plsps::Plsp::Path::EroHop::Data::SrV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1758,7 +1758,7 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::Plsp::Path::RroHop::g
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::RroHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::Plsp::Path::RroHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -1772,16 +1772,16 @@ std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::RroHop::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::Path::RroHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::Plsp::Path::RroHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    return children;
+    return _children;
 }
 
 void Pcc::Plsps::Plsp::Path::RroHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1859,7 +1859,7 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::Plsp::Path::RroHop::D
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::RroHop::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::Plsp::Path::RroHop::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -1882,21 +1882,21 @@ std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::RroHop::Data::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::Path::RroHop::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::Plsp::Path::RroHop::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(sr_v4 != nullptr)
     {
-        children["sr-v4"] = sr_v4;
+        _children["sr-v4"] = sr_v4;
     }
 
-    return children;
+    return _children;
 }
 
 void Pcc::Plsps::Plsp::Path::RroHop::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1969,16 +1969,16 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::Plsp::Path::RroHop::D
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::RroHop::Data::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::Plsp::Path::RroHop::Data::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::Path::RroHop::Data::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::Plsp::Path::RroHop::Data::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pcc::Plsps::Plsp::Path::RroHop::Data::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2073,16 +2073,16 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Plsps::Plsp::Path::RroHop::D
 
 }
 
-std::shared_ptr<Entity> Pcc::Plsps::Plsp::Path::RroHop::Data::SrV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Plsps::Plsp::Path::RroHop::Data::SrV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Plsps::Plsp::Path::RroHop::Data::SrV4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Plsps::Plsp::Path::RroHop::Data::SrV4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pcc::Plsps::Plsp::Path::RroHop::Data::SrV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2206,33 +2206,33 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Peers::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Pcc::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer")
     {
-        auto c = std::make_shared<Pcc::Peers::Peer>();
-        c->parent = this;
-        peer.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pcc::Peers::Peer>();
+        ent_->parent = this;
+        peer.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Peers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Peers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : peer.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : peer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pcc::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2424,7 +2424,7 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Peers::Peer::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Pcc::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "socket-info")
     {
@@ -2447,21 +2447,21 @@ std::shared_ptr<Entity> Pcc::Peers::Peer::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Peers::Peer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Peers::Peer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(socket_info != nullptr)
     {
-        children["socket-info"] = socket_info;
+        _children["socket-info"] = socket_info;
     }
 
     if(stats != nullptr)
     {
-        children["stats"] = stats;
+        _children["stats"] = stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Pcc::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2848,16 +2848,16 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Peers::Peer::SocketInfo::get
 
 }
 
-std::shared_ptr<Entity> Pcc::Peers::Peer::SocketInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Peers::Peer::SocketInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Peers::Peer::SocketInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Peers::Peer::SocketInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pcc::Peers::Peer::SocketInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3214,16 +3214,16 @@ std::vector<std::pair<std::string, LeafData> > Pcc::Peers::Peer::Stats::get_name
 
 }
 
-std::shared_ptr<Entity> Pcc::Peers::Peer::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pcc::Peers::Peer::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pcc::Peers::Peer::Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pcc::Peers::Peer::Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pcc::Peers::Peer::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3838,7 +3838,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Xtc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policies")
     {
@@ -3915,51 +3915,51 @@ std::shared_ptr<Entity> Xtc::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(policies != nullptr)
     {
-        children["policies"] = policies;
+        _children["policies"] = policies;
     }
 
     if(policy_summary != nullptr)
     {
-        children["policy-summary"] = policy_summary;
+        _children["policy-summary"] = policy_summary;
     }
 
     if(on_demand_colors != nullptr)
     {
-        children["on-demand-colors"] = on_demand_colors;
+        _children["on-demand-colors"] = on_demand_colors;
     }
 
     if(forwarding != nullptr)
     {
-        children["forwarding"] = forwarding;
+        _children["forwarding"] = forwarding;
     }
 
     if(controller != nullptr)
     {
-        children["controller"] = controller;
+        _children["controller"] = controller;
     }
 
     if(topology_summary != nullptr)
     {
-        children["topology-summary"] = topology_summary;
+        _children["topology-summary"] = topology_summary;
     }
 
     if(topology_nodes != nullptr)
     {
-        children["topology-nodes"] = topology_nodes;
+        _children["topology-nodes"] = topology_nodes;
     }
 
     if(prefix_infos != nullptr)
     {
-        children["prefix-infos"] = prefix_infos;
+        _children["prefix-infos"] = prefix_infos;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3970,7 +3970,7 @@ void Xtc::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Xtc::clone_ptr() const
+std::shared_ptr<ydk::Entity> Xtc::clone_ptr() const
 {
     return std::make_shared<Xtc>();
 }
@@ -4058,33 +4058,33 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy")
     {
-        auto c = std::make_shared<Xtc::Policies::Policy>();
-        c->parent = this;
-        policy.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::Policies::Policy>();
+        ent_->parent = this;
+        policy.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Policies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4251,7 +4251,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::get_name_l
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination-address")
     {
@@ -4282,44 +4282,44 @@ std::shared_ptr<Entity> Xtc::Policies::Policy::get_child_by_name(const std::stri
 
     if(child_yang_name == "paths")
     {
-        auto c = std::make_shared<Xtc::Policies::Policy::Paths>();
-        c->parent = this;
-        paths.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::Policies::Policy::Paths>();
+        ent_->parent = this;
+        paths.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination_address != nullptr)
     {
-        children["destination-address"] = destination_address;
+        _children["destination-address"] = destination_address;
     }
 
     if(binding_sid != nullptr)
     {
-        children["binding-sid"] = binding_sid;
+        _children["binding-sid"] = binding_sid;
     }
 
     if(auto_policy_info != nullptr)
     {
-        children["auto-policy-info"] = auto_policy_info;
+        _children["auto-policy-info"] = auto_policy_info;
     }
 
-    count = 0;
-    for (auto c : paths.entities())
+    count_ = 0;
+    for (auto ent_ : paths.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Policies::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4586,16 +4586,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Destinatio
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::DestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::DestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::DestinationAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::DestinationAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Policies::Policy::DestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4705,7 +4705,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::BindingSid
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::BindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::BindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
@@ -4719,16 +4719,16 @@ std::shared_ptr<Entity> Xtc::Policies::Policy::BindingSid::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::BindingSid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::BindingSid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(value_ != nullptr)
     {
-        children["value"] = value_;
+        _children["value"] = value_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Policies::Policy::BindingSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4845,16 +4845,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::BindingSid
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::BindingSid::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::BindingSid::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::BindingSid::Value::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::BindingSid::Value::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Policies::Policy::BindingSid::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4951,16 +4951,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::AutoPolicy
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::AutoPolicyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::AutoPolicyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::AutoPolicyInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::AutoPolicyInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Policies::Policy::AutoPolicyInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5105,7 +5105,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::get
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sr-path-constraints")
     {
@@ -5118,34 +5118,34 @@ std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::get_child_by_name(const st
 
     if(child_yang_name == "hops")
     {
-        auto c = std::make_shared<Xtc::Policies::Policy::Paths::Hops>();
-        c->parent = this;
-        hops.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::Policies::Policy::Paths::Hops>();
+        ent_->parent = this;
+        hops.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::Paths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sr_path_constraints != nullptr)
     {
-        children["sr-path-constraints"] = sr_path_constraints;
+        _children["sr-path-constraints"] = sr_path_constraints;
     }
 
-    count = 0;
-    for (auto c : hops.entities())
+    count_ = 0;
+    for (auto ent_ : hops.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Policies::Policy::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5329,7 +5329,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::SrP
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-metrics")
     {
@@ -5351,39 +5351,39 @@ std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::get_chi
 
     if(child_yang_name == "affinity-constraint")
     {
-        auto c = std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint>();
-        c->parent = this;
-        affinity_constraint.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint>();
+        ent_->parent = this;
+        affinity_constraint.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_metrics != nullptr)
     {
-        children["path-metrics"] = path_metrics;
+        _children["path-metrics"] = path_metrics;
     }
 
     if(segments != nullptr)
     {
-        children["segments"] = segments;
+        _children["segments"] = segments;
     }
 
-    count = 0;
-    for (auto c : affinity_constraint.entities())
+    count_ = 0;
+    for (auto ent_ : affinity_constraint.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Policies::Policy::Paths::SrPathConstraints::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5462,16 +5462,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::SrP
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Policies::Policy::Paths::SrPathConstraints::PathMetrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5590,16 +5590,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::SrP
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Policies::Policy::Paths::SrPathConstraints::Segments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5684,33 +5684,33 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::SrP
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "color")
     {
-        auto c = std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color>();
-        c->parent = this;
-        color.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color>();
+        ent_->parent = this;
+        color.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : color.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : color.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5789,16 +5789,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::SrP
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint::Color::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5884,7 +5884,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::Hop
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sid")
     {
@@ -5916,26 +5916,26 @@ std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::Hops::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::Paths::Hops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::Hops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sid != nullptr)
     {
-        children["sid"] = sid;
+        _children["sid"] = sid;
     }
 
     if(local_address != nullptr)
     {
-        children["local-address"] = local_address;
+        _children["local-address"] = local_address;
     }
 
     if(remote_address != nullptr)
     {
-        children["remote-address"] = remote_address;
+        _children["remote-address"] = remote_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Policies::Policy::Paths::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6022,16 +6022,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::Hop
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::Hops::Sid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::Hops::Sid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::Paths::Hops::Sid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::Hops::Sid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Policies::Policy::Paths::Hops::Sid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6128,16 +6128,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::Hop
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::Hops::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::Hops::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::Paths::Hops::LocalAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::Hops::LocalAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Policies::Policy::Paths::Hops::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6234,16 +6234,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::Paths::Hop
 
 }
 
-std::shared_ptr<Entity> Xtc::Policies::Policy::Paths::Hops::RemoteAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::Paths::Hops::RemoteAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Policies::Policy::Paths::Hops::RemoteAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Paths::Hops::RemoteAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Policies::Policy::Paths::Hops::RemoteAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6352,7 +6352,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PolicySummary::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Xtc::PolicySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::PolicySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-source-address")
     {
@@ -6366,16 +6366,16 @@ std::shared_ptr<Entity> Xtc::PolicySummary::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::PolicySummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PolicySummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_source_address != nullptr)
     {
-        children["ipv4-source-address"] = ipv4_source_address;
+        _children["ipv4-source-address"] = ipv4_source_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::PolicySummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6479,16 +6479,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PolicySummary::Ipv4SourceAdd
 
 }
 
-std::shared_ptr<Entity> Xtc::PolicySummary::Ipv4SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::PolicySummary::Ipv4SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::PolicySummary::Ipv4SourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PolicySummary::Ipv4SourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::PolicySummary::Ipv4SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6592,33 +6592,33 @@ std::vector<std::pair<std::string, LeafData> > Xtc::OnDemandColors::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Xtc::OnDemandColors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::OnDemandColors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "on-demand-color")
     {
-        auto c = std::make_shared<Xtc::OnDemandColors::OnDemandColor>();
-        c->parent = this;
-        on_demand_color.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::OnDemandColors::OnDemandColor>();
+        ent_->parent = this;
+        on_demand_color.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::OnDemandColors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::OnDemandColors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : on_demand_color.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : on_demand_color.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::OnDemandColors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6698,7 +6698,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::OnDemandColors::OnDemandColo
 
 }
 
-std::shared_ptr<Entity> Xtc::OnDemandColors::OnDemandColor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::OnDemandColors::OnDemandColor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "disjoint-path-info")
     {
@@ -6712,16 +6712,16 @@ std::shared_ptr<Entity> Xtc::OnDemandColors::OnDemandColor::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::OnDemandColors::OnDemandColor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::OnDemandColors::OnDemandColor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(disjoint_path_info != nullptr)
     {
-        children["disjoint-path-info"] = disjoint_path_info;
+        _children["disjoint-path-info"] = disjoint_path_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::OnDemandColors::OnDemandColor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6818,16 +6818,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::OnDemandColors::OnDemandColo
 
 }
 
-std::shared_ptr<Entity> Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::OnDemandColors::OnDemandColor::DisjointPathInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6923,7 +6923,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Forwarding::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Xtc::Forwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Forwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-forwardings")
     {
@@ -6937,16 +6937,16 @@ std::shared_ptr<Entity> Xtc::Forwarding::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Forwarding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Forwarding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(policy_forwardings != nullptr)
     {
-        children["policy-forwardings"] = policy_forwardings;
+        _children["policy-forwardings"] = policy_forwardings;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Forwarding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7020,33 +7020,33 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Forwarding::PolicyForwarding
 
 }
 
-std::shared_ptr<Entity> Xtc::Forwarding::PolicyForwardings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Forwarding::PolicyForwardings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-forwarding")
     {
-        auto c = std::make_shared<Xtc::Forwarding::PolicyForwardings::PolicyForwarding>();
-        c->parent = this;
-        policy_forwarding.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::Forwarding::PolicyForwardings::PolicyForwarding>();
+        ent_->parent = this;
+        policy_forwarding.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Forwarding::PolicyForwardings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Forwarding::PolicyForwardings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy_forwarding.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy_forwarding.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Forwarding::PolicyForwardings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7149,33 +7149,33 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Forwarding::PolicyForwarding
 
 }
 
-std::shared_ptr<Entity> Xtc::Forwarding::PolicyForwardings::PolicyForwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Forwarding::PolicyForwardings::PolicyForwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "paths")
     {
-        auto c = std::make_shared<Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths>();
-        c->parent = this;
-        paths.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths>();
+        ent_->parent = this;
+        paths.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Forwarding::PolicyForwardings::PolicyForwarding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Forwarding::PolicyForwardings::PolicyForwarding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : paths.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : paths.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Forwarding::PolicyForwardings::PolicyForwarding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7362,16 +7362,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Forwarding::PolicyForwarding
 
 }
 
-std::shared_ptr<Entity> Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7565,7 +7565,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-requests")
     {
@@ -7579,16 +7579,16 @@ std::shared_ptr<Entity> Xtc::Controller::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(policy_requests != nullptr)
     {
-        children["policy-requests"] = policy_requests;
+        _children["policy-requests"] = policy_requests;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Controller::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7662,33 +7662,33 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-request")
     {
-        auto c = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest>();
-        c->parent = this;
-        policy_request.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest>();
+        ent_->parent = this;
+        policy_request.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy_request.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy_request.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Controller::PolicyRequests::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7819,7 +7819,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "end-point")
     {
@@ -7832,34 +7832,34 @@ std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::get_chil
 
     if(child_yang_name == "paths")
     {
-        auto c = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths>();
-        c->parent = this;
-        paths.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths>();
+        ent_->parent = this;
+        paths.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(end_point != nullptr)
     {
-        children["end-point"] = end_point;
+        _children["end-point"] = end_point;
     }
 
-    count = 0;
-    for (auto c : paths.entities())
+    count_ = 0;
+    for (auto ent_ : paths.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Controller::PolicyRequests::PolicyRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8046,16 +8046,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Controller::PolicyRequests::PolicyRequest::EndPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8200,7 +8200,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sr-path-constraints")
     {
@@ -8213,34 +8213,34 @@ std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::g
 
     if(child_yang_name == "hops")
     {
-        auto c = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops>();
-        c->parent = this;
-        hops.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops>();
+        ent_->parent = this;
+        hops.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sr_path_constraints != nullptr)
     {
-        children["sr-path-constraints"] = sr_path_constraints;
+        _children["sr-path-constraints"] = sr_path_constraints;
     }
 
-    count = 0;
-    for (auto c : hops.entities())
+    count_ = 0;
+    for (auto ent_ : hops.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8424,7 +8424,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-metrics")
     {
@@ -8446,39 +8446,39 @@ std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::S
 
     if(child_yang_name == "affinity-constraint")
     {
-        auto c = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint>();
-        c->parent = this;
-        affinity_constraint.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint>();
+        ent_->parent = this;
+        affinity_constraint.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_metrics != nullptr)
     {
-        children["path-metrics"] = path_metrics;
+        _children["path-metrics"] = path_metrics;
     }
 
     if(segments != nullptr)
     {
-        children["segments"] = segments;
+        _children["segments"] = segments;
     }
 
-    count = 0;
-    for (auto c : affinity_constraint.entities())
+    count_ = 0;
+    for (auto ent_ : affinity_constraint.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8557,16 +8557,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::PathMetrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8685,16 +8685,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::Segments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8779,33 +8779,33 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "color")
     {
-        auto c = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color>();
-        c->parent = this;
-        color.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color>();
+        ent_->parent = this;
+        color.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : color.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : color.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8884,16 +8884,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstraints::AffinityConstraint::Color::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8979,7 +8979,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sid")
     {
@@ -9011,26 +9011,26 @@ std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::H
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sid != nullptr)
     {
-        children["sid"] = sid;
+        _children["sid"] = sid;
     }
 
     if(local_address != nullptr)
     {
-        children["local-address"] = local_address;
+        _children["local-address"] = local_address;
     }
 
     if(remote_address != nullptr)
     {
-        children["remote-address"] = remote_address;
+        _children["remote-address"] = remote_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9117,16 +9117,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::Sid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9223,16 +9223,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::LocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9329,16 +9329,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Controller::PolicyRequests::
 
 }
 
-std::shared_ptr<Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::RemoteAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9450,16 +9450,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologySummary::get_name_le
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologySummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologySummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologySummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9583,33 +9583,33 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "topology-node")
     {
-        auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode>();
-        c->parent = this;
-        topology_node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::TopologyNodes::TopologyNode>();
+        ent_->parent = this;
+        topology_node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : topology_node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : topology_node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9722,7 +9722,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node-protocol-identifier")
     {
@@ -9735,68 +9735,68 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::get_child_by_name(cons
 
     if(child_yang_name == "prefix-sid")
     {
-        auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::PrefixSid>();
-        c->parent = this;
-        prefix_sid.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::TopologyNodes::TopologyNode::PrefixSid>();
+        ent_->parent = this;
+        prefix_sid.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ipv4-link")
     {
-        auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link>();
-        c->parent = this;
-        ipv4_link.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link>();
+        ent_->parent = this;
+        ipv4_link.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ipv6-link")
     {
-        auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link>();
-        c->parent = this;
-        ipv6_link.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link>();
+        ent_->parent = this;
+        ipv6_link.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(node_protocol_identifier != nullptr)
     {
-        children["node-protocol-identifier"] = node_protocol_identifier;
+        _children["node-protocol-identifier"] = node_protocol_identifier;
     }
 
-    count = 0;
-    for (auto c : prefix_sid.entities())
+    count_ = 0;
+    for (auto ent_ : prefix_sid.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipv4_link.entities())
+    count_ = 0;
+    for (auto ent_ : ipv4_link.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipv6_link.entities())
+    count_ = 0;
+    for (auto ent_ : ipv6_link.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9913,33 +9913,33 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igp-information")
     {
-        auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation>();
-        c->parent = this;
-        igp_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation>();
+        ent_->parent = this;
+        igp_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : igp_information.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : igp_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10053,7 +10053,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igp")
     {
@@ -10067,16 +10067,16 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(igp != nullptr)
     {
-        children["igp"] = igp;
+        _children["igp"] = igp;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10158,7 +10158,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isis")
     {
@@ -10190,26 +10190,26 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(ospf != nullptr)
     {
-        children["ospf"] = ospf;
+        _children["ospf"] = ospf;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10282,16 +10282,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10374,16 +10374,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10462,16 +10462,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10553,7 +10553,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::PrefixSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::PrefixSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sid-prefix")
     {
@@ -10567,16 +10567,16 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::PrefixSid::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::PrefixSid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::PrefixSid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sid_prefix != nullptr)
     {
-        children["sid-prefix"] = sid_prefix;
+        _children["sid-prefix"] = sid_prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::PrefixSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10673,16 +10673,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::PrefixSid::SidPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::PrefixSid::SidPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::PrefixSid::SidPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::PrefixSid::SidPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::PrefixSid::SidPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10829,7 +10829,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-igp-information")
     {
@@ -10851,39 +10851,39 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::get_child_by
 
     if(child_yang_name == "adjacency-sid")
     {
-        auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid>();
-        c->parent = this;
-        adjacency_sid.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid>();
+        ent_->parent = this;
+        adjacency_sid.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(local_igp_information != nullptr)
     {
-        children["local-igp-information"] = local_igp_information;
+        _children["local-igp-information"] = local_igp_information;
     }
 
     if(remote_node_protocol_identifier != nullptr)
     {
-        children["remote-node-protocol-identifier"] = remote_node_protocol_identifier;
+        _children["remote-node-protocol-identifier"] = remote_node_protocol_identifier;
     }
 
-    count = 0;
-    for (auto c : adjacency_sid.entities())
+    count_ = 0;
+    for (auto ent_ : adjacency_sid.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11025,7 +11025,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igp")
     {
@@ -11039,16 +11039,16 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(igp != nullptr)
     {
-        children["igp"] = igp;
+        _children["igp"] = igp;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11130,7 +11130,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isis")
     {
@@ -11162,26 +11162,26 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(ospf != nullptr)
     {
-        children["ospf"] = ospf;
+        _children["ospf"] = ospf;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11254,16 +11254,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11346,16 +11346,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11434,16 +11434,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation::Igp::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11540,33 +11540,33 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igp-information")
     {
-        auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation>();
-        c->parent = this;
-        igp_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation>();
+        ent_->parent = this;
+        igp_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : igp_information.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : igp_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11680,7 +11680,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igp")
     {
@@ -11694,16 +11694,16 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodePr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(igp != nullptr)
     {
-        children["igp"] = igp;
+        _children["igp"] = igp;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11785,7 +11785,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isis")
     {
@@ -11817,26 +11817,26 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodePr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(ospf != nullptr)
     {
-        children["ospf"] = ospf;
+        _children["ospf"] = ospf;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11909,16 +11909,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12001,16 +12001,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12089,16 +12089,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12180,7 +12180,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sid-prefix")
     {
@@ -12194,16 +12194,16 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sid_prefix != nullptr)
     {
-        children["sid-prefix"] = sid_prefix;
+        _children["sid-prefix"] = sid_prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12300,16 +12300,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12438,7 +12438,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-igp-information")
     {
@@ -12460,39 +12460,39 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::get_child_by
 
     if(child_yang_name == "adjacency-sid")
     {
-        auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid>();
-        c->parent = this;
-        adjacency_sid.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid>();
+        ent_->parent = this;
+        adjacency_sid.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(local_igp_information != nullptr)
     {
-        children["local-igp-information"] = local_igp_information;
+        _children["local-igp-information"] = local_igp_information;
     }
 
     if(remote_node_protocol_identifier != nullptr)
     {
-        children["remote-node-protocol-identifier"] = remote_node_protocol_identifier;
+        _children["remote-node-protocol-identifier"] = remote_node_protocol_identifier;
     }
 
-    count = 0;
-    for (auto c : adjacency_sid.entities())
+    count_ = 0;
+    for (auto ent_ : adjacency_sid.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12616,7 +12616,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igp")
     {
@@ -12630,16 +12630,16 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(igp != nullptr)
     {
-        children["igp"] = igp;
+        _children["igp"] = igp;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12721,7 +12721,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isis")
     {
@@ -12753,26 +12753,26 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(ospf != nullptr)
     {
-        children["ospf"] = ospf;
+        _children["ospf"] = ospf;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12845,16 +12845,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12937,16 +12937,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13025,16 +13025,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13131,33 +13131,33 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igp-information")
     {
-        auto c = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation>();
-        c->parent = this;
-        igp_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation>();
+        ent_->parent = this;
+        igp_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : igp_information.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : igp_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13271,7 +13271,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igp")
     {
@@ -13285,16 +13285,16 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodePr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(igp != nullptr)
     {
-        children["igp"] = igp;
+        _children["igp"] = igp;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13376,7 +13376,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isis")
     {
@@ -13408,26 +13408,26 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodePr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(ospf != nullptr)
     {
-        children["ospf"] = ospf;
+        _children["ospf"] = ospf;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13500,16 +13500,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13592,16 +13592,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13680,16 +13680,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13771,7 +13771,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sid-prefix")
     {
@@ -13785,16 +13785,16 @@ std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sid_prefix != nullptr)
     {
-        children["sid-prefix"] = sid_prefix;
+        _children["sid-prefix"] = sid_prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13891,16 +13891,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
 
 }
 
-std::shared_ptr<Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14004,33 +14004,33 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PrefixInfos::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Xtc::PrefixInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::PrefixInfos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-info")
     {
-        auto c = std::make_shared<Xtc::PrefixInfos::PrefixInfo>();
-        c->parent = this;
-        prefix_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::PrefixInfos::PrefixInfo>();
+        ent_->parent = this;
+        prefix_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::PrefixInfos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PrefixInfos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prefix_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prefix_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::PrefixInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14117,7 +14117,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PrefixInfos::PrefixInfo::get
 
 }
 
-std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::PrefixInfos::PrefixInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node-protocol-identifier")
     {
@@ -14130,34 +14130,34 @@ std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::get_child_by_name(const st
 
     if(child_yang_name == "address")
     {
-        auto c = std::make_shared<Xtc::PrefixInfos::PrefixInfo::Address>();
-        c->parent = this;
-        address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::PrefixInfos::PrefixInfo::Address>();
+        ent_->parent = this;
+        address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::PrefixInfos::PrefixInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PrefixInfos::PrefixInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(node_protocol_identifier != nullptr)
     {
-        children["node-protocol-identifier"] = node_protocol_identifier;
+        _children["node-protocol-identifier"] = node_protocol_identifier;
     }
 
-    count = 0;
-    for (auto c : address.entities())
+    count_ = 0;
+    for (auto ent_ : address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::PrefixInfos::PrefixInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14264,33 +14264,33 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PrefixInfos::PrefixInfo::Nod
 
 }
 
-std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igp-information")
     {
-        auto c = std::make_shared<Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation>();
-        c->parent = this;
-        igp_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation>();
+        ent_->parent = this;
+        igp_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : igp_information.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : igp_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14404,7 +14404,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PrefixInfos::PrefixInfo::Nod
 
 }
 
-std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igp")
     {
@@ -14418,16 +14418,16 @@ std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::Ig
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(igp != nullptr)
     {
-        children["igp"] = igp;
+        _children["igp"] = igp;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14509,7 +14509,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PrefixInfos::PrefixInfo::Nod
 
 }
 
-std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isis")
     {
@@ -14541,26 +14541,26 @@ std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::Ig
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(ospf != nullptr)
     {
-        children["ospf"] = ospf;
+        _children["ospf"] = ospf;
     }
 
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14633,16 +14633,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PrefixInfos::PrefixInfo::Nod
 
 }
 
-std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14725,16 +14725,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PrefixInfos::PrefixInfo::Nod
 
 }
 
-std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14813,16 +14813,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PrefixInfos::PrefixInfo::Nod
 
 }
 
-std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14891,7 +14891,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PrefixInfos::PrefixInfo::Add
 
 }
 
-std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::PrefixInfos::PrefixInfo::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-address")
     {
@@ -14905,16 +14905,16 @@ std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::Address::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::PrefixInfos::PrefixInfo::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PrefixInfos::PrefixInfo::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip_address != nullptr)
     {
-        children["ip-address"] = ip_address;
+        _children["ip-address"] = ip_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Xtc::PrefixInfos::PrefixInfo::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14981,16 +14981,16 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PrefixInfos::PrefixInfo::Add
 
 }
 
-std::shared_ptr<Entity> Xtc::PrefixInfos::PrefixInfo::Address::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Xtc::PrefixInfos::PrefixInfo::Address::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Xtc::PrefixInfos::PrefixInfo::Address::IpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PrefixInfos::PrefixInfo::Address::IpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Xtc::PrefixInfos::PrefixInfo::Address::IpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

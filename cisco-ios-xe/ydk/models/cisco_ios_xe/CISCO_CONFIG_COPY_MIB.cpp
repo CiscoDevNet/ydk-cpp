@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGCOPYMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccCopyTable")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGCOPYMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cccopytable != nullptr)
     {
-        children["ccCopyTable"] = cccopytable;
+        _children["ccCopyTable"] = cccopytable;
     }
 
     if(cccopyerrortable != nullptr)
     {
-        children["ccCopyErrorTable"] = cccopyerrortable;
+        _children["ccCopyErrorTable"] = cccopyerrortable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCONFIGCOPYMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void CISCOCONFIGCOPYMIB::set_filter(const std::string & value_path, YFilter yfil
 {
 }
 
-std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOCONFIGCOPYMIB::clone_ptr() const
 {
     return std::make_shared<CISCOCONFIGCOPYMIB>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::CcCopyTable::
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::CcCopyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGCOPYMIB::CcCopyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccCopyEntry")
     {
-        auto c = std::make_shared<CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry>();
-        c->parent = this;
-        cccopyentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry>();
+        ent_->parent = this;
+        cccopyentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::CcCopyTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGCOPYMIB::CcCopyTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cccopyentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cccopyentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCONFIGCOPYMIB::CcCopyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -345,16 +345,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::CcCopyTable::
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCONFIGCOPYMIB::CcCopyTable::CcCopyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -588,33 +588,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::CcCopyErrorTa
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::CcCopyErrorTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGCOPYMIB::CcCopyErrorTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccCopyErrorEntry")
     {
-        auto c = std::make_shared<CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry>();
-        c->parent = this;
-        cccopyerrorentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry>();
+        ent_->parent = this;
+        cccopyerrorentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::CcCopyErrorTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGCOPYMIB::CcCopyErrorTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cccopyerrorentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cccopyerrorentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCONFIGCOPYMIB::CcCopyErrorTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -702,16 +702,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONFIGCOPYMIB::CcCopyErrorTa
 
 }
 
-std::shared_ptr<Entity> CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCONFIGCOPYMIB::CcCopyErrorTable::CcCopyErrorEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

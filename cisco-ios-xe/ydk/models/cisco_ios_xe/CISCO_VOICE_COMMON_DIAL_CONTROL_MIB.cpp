@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICECOMMONDIALCONTROLMIB::g
 
 }
 
-std::shared_ptr<Entity> CISCOVOICECOMMONDIALCONTROLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVOICECOMMONDIALCONTROLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCommonDcCallActiveTable")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> CISCOVOICECOMMONDIALCONTROLMIB::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICECOMMONDIALCONTROLMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVOICECOMMONDIALCONTROLMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cvcommondccallactivetable != nullptr)
     {
-        children["cvCommonDcCallActiveTable"] = cvcommondccallactivetable;
+        _children["cvCommonDcCallActiveTable"] = cvcommondccallactivetable;
     }
 
     if(cvcommondccallhistorytable != nullptr)
     {
-        children["cvCommonDcCallHistoryTable"] = cvcommondccallhistorytable;
+        _children["cvCommonDcCallHistoryTable"] = cvcommondccallhistorytable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVOICECOMMONDIALCONTROLMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void CISCOVOICECOMMONDIALCONTROLMIB::set_filter(const std::string & value_path, 
 {
 }
 
-std::shared_ptr<Entity> CISCOVOICECOMMONDIALCONTROLMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOVOICECOMMONDIALCONTROLMIB::clone_ptr() const
 {
     return std::make_shared<CISCOVOICECOMMONDIALCONTROLMIB>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICECOMMONDIALCONTROLMIB::C
 
 }
 
-std::shared_ptr<Entity> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallActiveTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallActiveTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCommonDcCallActiveEntry")
     {
-        auto c = std::make_shared<CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallActiveTable::CvCommonDcCallActiveEntry>();
-        c->parent = this;
-        cvcommondccallactiveentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallActiveTable::CvCommonDcCallActiveEntry>();
+        ent_->parent = this;
+        cvcommondccallactiveentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallActiveTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallActiveTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cvcommondccallactiveentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cvcommondccallactiveentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallActiveTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -318,16 +318,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICECOMMONDIALCONTROLMIB::C
 
 }
 
-std::shared_ptr<Entity> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallActiveTable::CvCommonDcCallActiveEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallActiveTable::CvCommonDcCallActiveEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallActiveTable::CvCommonDcCallActiveEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallActiveTable::CvCommonDcCallActiveEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallActiveTable::CvCommonDcCallActiveEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -491,33 +491,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICECOMMONDIALCONTROLMIB::C
 
 }
 
-std::shared_ptr<Entity> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCommonDcCallHistoryEntry")
     {
-        auto c = std::make_shared<CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::CvCommonDcCallHistoryEntry>();
-        c->parent = this;
-        cvcommondccallhistoryentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::CvCommonDcCallHistoryEntry>();
+        ent_->parent = this;
+        cvcommondccallhistoryentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cvcommondccallhistoryentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cvcommondccallhistoryentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -612,16 +612,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICECOMMONDIALCONTROLMIB::C
 
 }
 
-std::shared_ptr<Entity> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::CvCommonDcCallHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::CvCommonDcCallHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::CvCommonDcCallHistoryEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::CvCommonDcCallHistoryEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::CvCommonDcCallHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

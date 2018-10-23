@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYEXTMIB::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYEXTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYEXTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceExtPhysicalProcessorTable")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> CISCOENTITYEXTMIB::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYEXTMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ceextphysicalprocessortable != nullptr)
     {
-        children["ceExtPhysicalProcessorTable"] = ceextphysicalprocessortable;
+        _children["ceExtPhysicalProcessorTable"] = ceextphysicalprocessortable;
     }
 
     if(ceextconfigregtable != nullptr)
     {
-        children["ceExtConfigRegTable"] = ceextconfigregtable;
+        _children["ceExtConfigRegTable"] = ceextconfigregtable;
     }
 
     if(ceextentityledtable != nullptr)
     {
-        children["ceExtEntityLEDTable"] = ceextentityledtable;
+        _children["ceExtEntityLEDTable"] = ceextentityledtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYEXTMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void CISCOENTITYEXTMIB::set_filter(const std::string & value_path, YFilter yfilt
 {
 }
 
-std::shared_ptr<Entity> CISCOENTITYEXTMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOENTITYEXTMIB::clone_ptr() const
 {
     return std::make_shared<CISCOENTITYEXTMIB>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYEXTMIB::CeExtPhysicalP
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceExtPhysicalProcessorEntry")
     {
-        auto c = std::make_shared<CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::CeExtPhysicalProcessorEntry>();
-        c->parent = this;
-        ceextphysicalprocessorentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::CeExtPhysicalProcessorEntry>();
+        ent_->parent = this;
+        ceextphysicalprocessorentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceextphysicalprocessorentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceextphysicalprocessorentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -323,16 +323,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYEXTMIB::CeExtPhysicalP
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::CeExtPhysicalProcessorEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::CeExtPhysicalProcessorEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::CeExtPhysicalProcessorEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::CeExtPhysicalProcessorEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::CeExtPhysicalProcessorEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -466,33 +466,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYEXTMIB::CeExtConfigReg
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYEXTMIB::CeExtConfigRegTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYEXTMIB::CeExtConfigRegTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceExtConfigRegEntry")
     {
-        auto c = std::make_shared<CISCOENTITYEXTMIB::CeExtConfigRegTable::CeExtConfigRegEntry>();
-        c->parent = this;
-        ceextconfigregentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYEXTMIB::CeExtConfigRegTable::CeExtConfigRegEntry>();
+        ent_->parent = this;
+        ceextconfigregentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::CeExtConfigRegTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYEXTMIB::CeExtConfigRegTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceextconfigregentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceextconfigregentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYEXTMIB::CeExtConfigRegTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -575,16 +575,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYEXTMIB::CeExtConfigReg
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYEXTMIB::CeExtConfigRegTable::CeExtConfigRegEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYEXTMIB::CeExtConfigRegTable::CeExtConfigRegEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::CeExtConfigRegTable::CeExtConfigRegEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYEXTMIB::CeExtConfigRegTable::CeExtConfigRegEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYEXTMIB::CeExtConfigRegTable::CeExtConfigRegEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -708,33 +708,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYEXTMIB::CeExtEntityLED
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYEXTMIB::CeExtEntityLEDTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYEXTMIB::CeExtEntityLEDTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceExtEntityLEDEntry")
     {
-        auto c = std::make_shared<CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry>();
-        c->parent = this;
-        ceextentityledentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry>();
+        ent_->parent = this;
+        ceextentityledentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::CeExtEntityLEDTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYEXTMIB::CeExtEntityLEDTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceextentityledentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceextentityledentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENTITYEXTMIB::CeExtEntityLEDTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -810,16 +810,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENTITYEXTMIB::CeExtEntityLED
 
 }
 
-std::shared_ptr<Entity> CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

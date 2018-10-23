@@ -62,7 +62,7 @@ std::vector<std::pair<std::string, LeafData> > FwOperData::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> FwOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FwOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fw-drop-stats")
     {
@@ -75,34 +75,34 @@ std::shared_ptr<Entity> FwOperData::get_child_by_name(const std::string & child_
 
     if(child_yang_name == "fw-zonepair-entries")
     {
-        auto c = std::make_shared<FwOperData::FwZonepairEntries>();
-        c->parent = this;
-        fw_zonepair_entries.append(c);
-        return c;
+        auto ent_ = std::make_shared<FwOperData::FwZonepairEntries>();
+        ent_->parent = this;
+        fw_zonepair_entries.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FwOperData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FwOperData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fw_drop_stats != nullptr)
     {
-        children["fw-drop-stats"] = fw_drop_stats;
+        _children["fw-drop-stats"] = fw_drop_stats;
     }
 
-    count = 0;
-    for (auto c : fw_zonepair_entries.entities())
+    count_ = 0;
+    for (auto ent_ : fw_zonepair_entries.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FwOperData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -113,7 +113,7 @@ void FwOperData::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> FwOperData::clone_ptr() const
+std::shared_ptr<ydk::Entity> FwOperData::clone_ptr() const
 {
     return std::make_shared<FwOperData>();
 }
@@ -501,16 +501,16 @@ std::vector<std::pair<std::string, LeafData> > FwOperData::FwDropStats::get_name
 
 }
 
-std::shared_ptr<Entity> FwOperData::FwDropStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FwOperData::FwDropStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FwOperData::FwDropStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FwOperData::FwDropStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FwOperData::FwDropStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1381,33 +1381,33 @@ std::vector<std::pair<std::string, LeafData> > FwOperData::FwZonepairEntries::ge
 
 }
 
-std::shared_ptr<Entity> FwOperData::FwZonepairEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FwOperData::FwZonepairEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fw-traffic-class-entry")
     {
-        auto c = std::make_shared<FwOperData::FwZonepairEntries::FwTrafficClassEntry>();
-        c->parent = this;
-        fw_traffic_class_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<FwOperData::FwZonepairEntries::FwTrafficClassEntry>();
+        ent_->parent = this;
+        fw_traffic_class_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FwOperData::FwZonepairEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FwOperData::FwZonepairEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fw_traffic_class_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fw_traffic_class_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FwOperData::FwZonepairEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1578,50 +1578,50 @@ std::vector<std::pair<std::string, LeafData> > FwOperData::FwZonepairEntries::Fw
 
 }
 
-std::shared_ptr<Entity> FwOperData::FwZonepairEntries::FwTrafficClassEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FwOperData::FwZonepairEntries::FwTrafficClassEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fw-tc-match-entry")
     {
-        auto c = std::make_shared<FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcMatchEntry>();
-        c->parent = this;
-        fw_tc_match_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcMatchEntry>();
+        ent_->parent = this;
+        fw_tc_match_entry.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "fw-tc-proto-entry")
     {
-        auto c = std::make_shared<FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcProtoEntry>();
-        c->parent = this;
-        fw_tc_proto_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcProtoEntry>();
+        ent_->parent = this;
+        fw_tc_proto_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FwOperData::FwZonepairEntries::FwTrafficClassEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FwOperData::FwZonepairEntries::FwTrafficClassEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fw_tc_match_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fw_tc_match_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : fw_tc_proto_entry.entities())
+    count_ = 0;
+    for (auto ent_ : fw_tc_proto_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FwOperData::FwZonepairEntries::FwTrafficClassEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1820,16 +1820,16 @@ std::vector<std::pair<std::string, LeafData> > FwOperData::FwZonepairEntries::Fw
 
 }
 
-std::shared_ptr<Entity> FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcMatchEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcMatchEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcMatchEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcMatchEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcMatchEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1931,16 +1931,16 @@ std::vector<std::pair<std::string, LeafData> > FwOperData::FwZonepairEntries::Fw
 
 }
 
-std::shared_ptr<Entity> FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcProtoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcProtoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcProtoEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcProtoEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FwOperData::FwZonepairEntries::FwTrafficClassEntry::FwTcProtoEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

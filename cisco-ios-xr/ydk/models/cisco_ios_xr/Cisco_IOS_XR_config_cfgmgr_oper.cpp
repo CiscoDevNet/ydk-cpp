@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Config::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Config::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Config::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Config::clone_ptr() const
+std::shared_ptr<ydk::Entity> Config::clone_ptr() const
 {
     return std::make_shared<Config>();
 }
@@ -166,7 +166,7 @@ std::vector<std::pair<std::string, LeafData> > Config::Global::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Config::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XR-config-valid-ccv-oper:validation")
     {
@@ -180,16 +180,16 @@ std::shared_ptr<Entity> Config::Global::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(validation != nullptr)
     {
-        children["Cisco-IOS-XR-config-valid-ccv-oper:validation"] = validation;
+        _children["Cisco-IOS-XR-config-valid-ccv-oper:validation"] = validation;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -259,7 +259,7 @@ std::vector<std::pair<std::string, LeafData> > Config::Global::Validation::get_n
 
 }
 
-std::shared_ptr<Entity> Config::Global::Validation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Global::Validation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "unsupported-configs")
     {
@@ -282,21 +282,21 @@ std::shared_ptr<Entity> Config::Global::Validation::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Global::Validation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Global::Validation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(unsupported_configs != nullptr)
     {
-        children["unsupported-configs"] = unsupported_configs;
+        _children["unsupported-configs"] = unsupported_configs;
     }
 
     if(persistent_failures != nullptr)
     {
-        children["persistent-failures"] = persistent_failures;
+        _children["persistent-failures"] = persistent_failures;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::Global::Validation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -370,33 +370,33 @@ std::vector<std::pair<std::string, LeafData> > Config::Global::Validation::Unsup
 
 }
 
-std::shared_ptr<Entity> Config::Global::Validation::UnsupportedConfigs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Global::Validation::UnsupportedConfigs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "unsupported-config")
     {
-        auto c = std::make_shared<Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig>();
-        c->parent = this;
-        unsupported_config.append(c);
-        return c;
+        auto ent_ = std::make_shared<Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig>();
+        ent_->parent = this;
+        unsupported_config.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Global::Validation::UnsupportedConfigs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Global::Validation::UnsupportedConfigs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : unsupported_config.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : unsupported_config.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::Global::Validation::UnsupportedConfigs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -479,33 +479,33 @@ std::vector<std::pair<std::string, LeafData> > Config::Global::Validation::Unsup
 
 }
 
-std::shared_ptr<Entity> Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "failure")
     {
-        auto c = std::make_shared<Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig::Failure>();
-        c->parent = this;
-        failure.append(c);
-        return c;
+        auto ent_ = std::make_shared<Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig::Failure>();
+        ent_->parent = this;
+        failure.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : failure.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : failure.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -592,16 +592,16 @@ std::vector<std::pair<std::string, LeafData> > Config::Global::Validation::Unsup
 
 }
 
-std::shared_ptr<Entity> Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig::Failure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig::Failure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig::Failure::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig::Failure::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig::Failure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -705,33 +705,33 @@ std::vector<std::pair<std::string, LeafData> > Config::Global::Validation::Persi
 
 }
 
-std::shared_ptr<Entity> Config::Global::Validation::PersistentFailures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Global::Validation::PersistentFailures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "persistent-failure")
     {
-        auto c = std::make_shared<Config::Global::Validation::PersistentFailures::PersistentFailure>();
-        c->parent = this;
-        persistent_failure.append(c);
-        return c;
+        auto ent_ = std::make_shared<Config::Global::Validation::PersistentFailures::PersistentFailure>();
+        ent_->parent = this;
+        persistent_failure.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Global::Validation::PersistentFailures::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Global::Validation::PersistentFailures::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : persistent_failure.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : persistent_failure.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::Global::Validation::PersistentFailures::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -814,33 +814,33 @@ std::vector<std::pair<std::string, LeafData> > Config::Global::Validation::Persi
 
 }
 
-std::shared_ptr<Entity> Config::Global::Validation::PersistentFailures::PersistentFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Global::Validation::PersistentFailures::PersistentFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "failure")
     {
-        auto c = std::make_shared<Config::Global::Validation::PersistentFailures::PersistentFailure::Failure>();
-        c->parent = this;
-        failure.append(c);
-        return c;
+        auto ent_ = std::make_shared<Config::Global::Validation::PersistentFailures::PersistentFailure::Failure>();
+        ent_->parent = this;
+        failure.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Global::Validation::PersistentFailures::PersistentFailure::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Global::Validation::PersistentFailures::PersistentFailure::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : failure.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : failure.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Config::Global::Validation::PersistentFailures::PersistentFailure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -927,16 +927,16 @@ std::vector<std::pair<std::string, LeafData> > Config::Global::Validation::Persi
 
 }
 
-std::shared_ptr<Entity> Config::Global::Validation::PersistentFailures::PersistentFailure::Failure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Config::Global::Validation::PersistentFailures::PersistentFailure::Failure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Config::Global::Validation::PersistentFailures::PersistentFailure::Failure::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Config::Global::Validation::PersistentFailures::PersistentFailure::Failure::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Config::Global::Validation::PersistentFailures::PersistentFailure::Failure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > CISCORFMIB::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> CISCORFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cRFStatus")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> CISCORFMIB::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORFMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(crfstatus != nullptr)
     {
-        children["cRFStatus"] = crfstatus;
+        _children["cRFStatus"] = crfstatus;
     }
 
     if(crfcfg != nullptr)
     {
-        children["cRFCfg"] = crfcfg;
+        _children["cRFCfg"] = crfcfg;
     }
 
     if(crfhistory != nullptr)
     {
-        children["cRFHistory"] = crfhistory;
+        _children["cRFHistory"] = crfhistory;
     }
 
     if(crfstatusrfmodecapstable != nullptr)
     {
-        children["cRFStatusRFModeCapsTable"] = crfstatusrfmodecapstable;
+        _children["cRFStatusRFModeCapsTable"] = crfstatusrfmodecapstable;
     }
 
     if(crfhistoryswitchovertable != nullptr)
     {
-        children["cRFHistorySwitchOverTable"] = crfhistoryswitchovertable;
+        _children["cRFHistorySwitchOverTable"] = crfhistoryswitchovertable;
     }
 
     if(crfstatusrfclienttable != nullptr)
     {
-        children["cRFStatusRFClientTable"] = crfstatusrfclienttable;
+        _children["cRFStatusRFClientTable"] = crfstatusrfclienttable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORFMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void CISCORFMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCORFMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCORFMIB::clone_ptr() const
 {
     return std::make_shared<CISCORFMIB>();
 }
@@ -308,16 +308,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORFMIB::CRFStatus::get_name_l
 
 }
 
-std::shared_ptr<Entity> CISCORFMIB::CRFStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORFMIB::CRFStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::CRFStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORFMIB::CRFStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORFMIB::CRFStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -583,16 +583,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORFMIB::CRFCfg::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> CISCORFMIB::CRFCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORFMIB::CRFCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::CRFCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORFMIB::CRFCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORFMIB::CRFCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -826,16 +826,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORFMIB::CRFHistory::get_name_
 
 }
 
-std::shared_ptr<Entity> CISCORFMIB::CRFHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORFMIB::CRFHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::CRFHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORFMIB::CRFHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORFMIB::CRFHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -939,33 +939,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORFMIB::CRFStatusRFModeCapsTa
 
 }
 
-std::shared_ptr<Entity> CISCORFMIB::CRFStatusRFModeCapsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORFMIB::CRFStatusRFModeCapsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cRFStatusRFModeCapsEntry")
     {
-        auto c = std::make_shared<CISCORFMIB::CRFStatusRFModeCapsTable::CRFStatusRFModeCapsEntry>();
-        c->parent = this;
-        crfstatusrfmodecapsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORFMIB::CRFStatusRFModeCapsTable::CRFStatusRFModeCapsEntry>();
+        ent_->parent = this;
+        crfstatusrfmodecapsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::CRFStatusRFModeCapsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORFMIB::CRFStatusRFModeCapsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : crfstatusrfmodecapsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : crfstatusrfmodecapsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORFMIB::CRFStatusRFModeCapsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1036,16 +1036,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORFMIB::CRFStatusRFModeCapsTa
 
 }
 
-std::shared_ptr<Entity> CISCORFMIB::CRFStatusRFModeCapsTable::CRFStatusRFModeCapsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORFMIB::CRFStatusRFModeCapsTable::CRFStatusRFModeCapsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::CRFStatusRFModeCapsTable::CRFStatusRFModeCapsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORFMIB::CRFStatusRFModeCapsTable::CRFStatusRFModeCapsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORFMIB::CRFStatusRFModeCapsTable::CRFStatusRFModeCapsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1139,33 +1139,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORFMIB::CRFHistorySwitchOverT
 
 }
 
-std::shared_ptr<Entity> CISCORFMIB::CRFHistorySwitchOverTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORFMIB::CRFHistorySwitchOverTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cRFHistorySwitchOverEntry")
     {
-        auto c = std::make_shared<CISCORFMIB::CRFHistorySwitchOverTable::CRFHistorySwitchOverEntry>();
-        c->parent = this;
-        crfhistoryswitchoverentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORFMIB::CRFHistorySwitchOverTable::CRFHistorySwitchOverEntry>();
+        ent_->parent = this;
+        crfhistoryswitchoverentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::CRFHistorySwitchOverTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORFMIB::CRFHistorySwitchOverTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : crfhistoryswitchoverentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : crfhistoryswitchoverentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORFMIB::CRFHistorySwitchOverTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1248,16 +1248,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORFMIB::CRFHistorySwitchOverT
 
 }
 
-std::shared_ptr<Entity> CISCORFMIB::CRFHistorySwitchOverTable::CRFHistorySwitchOverEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORFMIB::CRFHistorySwitchOverTable::CRFHistorySwitchOverEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::CRFHistorySwitchOverTable::CRFHistorySwitchOverEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORFMIB::CRFHistorySwitchOverTable::CRFHistorySwitchOverEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORFMIB::CRFHistorySwitchOverTable::CRFHistorySwitchOverEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1381,33 +1381,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORFMIB::CRFStatusRFClientTabl
 
 }
 
-std::shared_ptr<Entity> CISCORFMIB::CRFStatusRFClientTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORFMIB::CRFStatusRFClientTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cRFStatusRFClientEntry")
     {
-        auto c = std::make_shared<CISCORFMIB::CRFStatusRFClientTable::CRFStatusRFClientEntry>();
-        c->parent = this;
-        crfstatusrfcliententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORFMIB::CRFStatusRFClientTable::CRFStatusRFClientEntry>();
+        ent_->parent = this;
+        crfstatusrfcliententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::CRFStatusRFClientTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORFMIB::CRFStatusRFClientTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : crfstatusrfcliententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : crfstatusrfcliententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORFMIB::CRFStatusRFClientTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1490,16 +1490,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORFMIB::CRFStatusRFClientTabl
 
 }
 
-std::shared_ptr<Entity> CISCORFMIB::CRFStatusRFClientTable::CRFStatusRFClientEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORFMIB::CRFStatusRFClientTable::CRFStatusRFClientEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::CRFStatusRFClientTable::CRFStatusRFClientEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORFMIB::CRFStatusRFClientTable::CRFStatusRFClientEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORFMIB::CRFStatusRFClientTable::CRFStatusRFClientEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

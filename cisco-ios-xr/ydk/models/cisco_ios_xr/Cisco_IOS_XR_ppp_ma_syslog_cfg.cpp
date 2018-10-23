@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Ppp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Ppp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ppp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "syslog")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Ppp::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ppp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ppp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(syslog != nullptr)
     {
-        children["syslog"] = syslog;
+        _children["syslog"] = syslog;
     }
 
-    return children;
+    return _children;
 }
 
 void Ppp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Ppp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Ppp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ppp::clone_ptr() const
 {
     return std::make_shared<Ppp>();
 }
@@ -166,16 +166,16 @@ std::vector<std::pair<std::string, LeafData> > Ppp::Syslog::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Ppp::Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ppp::Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ppp::Syslog::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ppp::Syslog::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ppp::Syslog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

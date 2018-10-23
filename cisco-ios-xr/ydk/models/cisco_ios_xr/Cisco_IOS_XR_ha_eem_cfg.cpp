@@ -77,7 +77,7 @@ std::vector<std::pair<std::string, LeafData> > EventManager::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> EventManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EventManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policies")
     {
@@ -109,26 +109,26 @@ std::shared_ptr<Entity> EventManager::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EventManager::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EventManager::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(policies != nullptr)
     {
-        children["policies"] = policies;
+        _children["policies"] = policies;
     }
 
     if(scheduler_script != nullptr)
     {
-        children["scheduler-script"] = scheduler_script;
+        _children["scheduler-script"] = scheduler_script;
     }
 
     if(environments != nullptr)
     {
-        children["environments"] = environments;
+        _children["environments"] = environments;
     }
 
-    return children;
+    return _children;
 }
 
 void EventManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -179,7 +179,7 @@ void EventManager::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> EventManager::clone_ptr() const
+std::shared_ptr<ydk::Entity> EventManager::clone_ptr() const
 {
     return std::make_shared<EventManager>();
 }
@@ -267,33 +267,33 @@ std::vector<std::pair<std::string, LeafData> > EventManager::Policies::get_name_
 
 }
 
-std::shared_ptr<Entity> EventManager::Policies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EventManager::Policies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy")
     {
-        auto c = std::make_shared<EventManager::Policies::Policy>();
-        c->parent = this;
-        policy.append(c);
-        return c;
+        auto ent_ = std::make_shared<EventManager::Policies::Policy>();
+        ent_->parent = this;
+        policy.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EventManager::Policies::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EventManager::Policies::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EventManager::Policies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -388,16 +388,16 @@ std::vector<std::pair<std::string, LeafData> > EventManager::Policies::Policy::g
 
 }
 
-std::shared_ptr<Entity> EventManager::Policies::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EventManager::Policies::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EventManager::Policies::Policy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EventManager::Policies::Policy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EventManager::Policies::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -543,7 +543,7 @@ std::vector<std::pair<std::string, LeafData> > EventManager::SchedulerScript::ge
 
 }
 
-std::shared_ptr<Entity> EventManager::SchedulerScript::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EventManager::SchedulerScript::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thread-classes")
     {
@@ -557,16 +557,16 @@ std::shared_ptr<Entity> EventManager::SchedulerScript::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EventManager::SchedulerScript::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EventManager::SchedulerScript::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(thread_classes != nullptr)
     {
-        children["thread-classes"] = thread_classes;
+        _children["thread-classes"] = thread_classes;
     }
 
-    return children;
+    return _children;
 }
 
 void EventManager::SchedulerScript::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -640,33 +640,33 @@ std::vector<std::pair<std::string, LeafData> > EventManager::SchedulerScript::Th
 
 }
 
-std::shared_ptr<Entity> EventManager::SchedulerScript::ThreadClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EventManager::SchedulerScript::ThreadClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thread-class")
     {
-        auto c = std::make_shared<EventManager::SchedulerScript::ThreadClasses::ThreadClass>();
-        c->parent = this;
-        thread_class.append(c);
-        return c;
+        auto ent_ = std::make_shared<EventManager::SchedulerScript::ThreadClasses::ThreadClass>();
+        ent_->parent = this;
+        thread_class.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EventManager::SchedulerScript::ThreadClasses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EventManager::SchedulerScript::ThreadClasses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : thread_class.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : thread_class.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EventManager::SchedulerScript::ThreadClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -737,16 +737,16 @@ std::vector<std::pair<std::string, LeafData> > EventManager::SchedulerScript::Th
 
 }
 
-std::shared_ptr<Entity> EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EventManager::SchedulerScript::ThreadClasses::ThreadClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -840,33 +840,33 @@ std::vector<std::pair<std::string, LeafData> > EventManager::Environments::get_n
 
 }
 
-std::shared_ptr<Entity> EventManager::Environments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EventManager::Environments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "environment")
     {
-        auto c = std::make_shared<EventManager::Environments::Environment>();
-        c->parent = this;
-        environment.append(c);
-        return c;
+        auto ent_ = std::make_shared<EventManager::Environments::Environment>();
+        ent_->parent = this;
+        environment.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EventManager::Environments::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EventManager::Environments::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : environment.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : environment.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EventManager::Environments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -937,16 +937,16 @@ std::vector<std::pair<std::string, LeafData> > EventManager::Environments::Envir
 
 }
 
-std::shared_ptr<Entity> EventManager::Environments::Environment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EventManager::Environments::Environment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EventManager::Environments::Environment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EventManager::Environments::Environment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EventManager::Environments::Environment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

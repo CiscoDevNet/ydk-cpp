@@ -88,16 +88,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::CenterWavelength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::CenterWavelength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::CenterWavelength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::CenterWavelength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::CenterWavelength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -292,16 +292,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pdl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pdl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pdl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pdl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pdl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -496,16 +496,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pcr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pcr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pcr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pcr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pcr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -700,16 +700,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::Pn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -904,16 +904,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::RxSigPow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1108,16 +1108,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LowSigFreqOff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LowSigFreqOff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LowSigFreqOff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LowSigFreqOff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::LowSigFreqOff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1312,16 +1312,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1516,16 +1516,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15OpticsHistories::OpticsMinute15OpticsHistory::OpticsMinute15OpticsTimeLineInstances::OpticsMinute15OpticsTimeLineInstance::AmpliGainTilt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1692,33 +1692,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optics-minute15fec-history")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory>();
-        c->parent = this;
-        optics_minute15fec_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory>();
+        ent_->parent = this;
+        optics_minute15fec_history.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : optics_minute15fec_history.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : optics_minute15fec_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1783,7 +1783,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optics-minute15fec-time-line-instances")
     {
@@ -1797,16 +1797,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(optics_minute15fec_time_line_instances != nullptr)
     {
-        children["optics-minute15fec-time-line-instances"] = optics_minute15fec_time_line_instances;
+        _children["optics-minute15fec-time-line-instances"] = optics_minute15fec_time_line_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1883,33 +1883,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optics-minute15fec-time-line-instance")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance>();
-        c->parent = this;
-        optics_minute15fec_time_line_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance>();
+        ent_->parent = this;
+        optics_minute15fec_time_line_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : optics_minute15fec_time_line_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : optics_minute15fec_time_line_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2026,7 +2026,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ec-bits")
     {
@@ -2085,41 +2085,41 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ec_bits != nullptr)
     {
-        children["ec-bits"] = ec_bits;
+        _children["ec-bits"] = ec_bits;
     }
 
     if(uc_words != nullptr)
     {
-        children["uc-words"] = uc_words;
+        _children["uc-words"] = uc_words;
     }
 
     if(pre_fec_ber != nullptr)
     {
-        children["pre-fec-ber"] = pre_fec_ber;
+        _children["pre-fec-ber"] = pre_fec_ber;
     }
 
     if(post_fec_ber != nullptr)
     {
-        children["post-fec-ber"] = post_fec_ber;
+        _children["post-fec-ber"] = post_fec_ber;
     }
 
     if(q != nullptr)
     {
-        children["q"] = q;
+        _children["q"] = q;
     }
 
     if(qmargin != nullptr)
     {
-        children["qmargin"] = qmargin;
+        _children["qmargin"] = qmargin;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2280,16 +2280,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::EcBits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::EcBits::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::EcBits::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2400,16 +2400,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::UcWords::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::UcWords::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::UcWords::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2536,16 +2536,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::PreFecBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::PreFecBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2712,16 +2712,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::PostFecBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::PostFecBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2888,16 +2888,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::Q::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::Q::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3064,16 +3064,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::Qmargin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::Qmargin::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::Qmargin::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsMinute15History::OpticsMinute15fecHistories::OpticsMinute15fecHistory::OpticsMinute15fecTimeLineInstances::OpticsMinute15fecTimeLineInstance::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3219,7 +3219,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oc-port-histories")
     {
@@ -3233,16 +3233,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(oc_port_histories != nullptr)
     {
-        children["oc-port-histories"] = oc_port_histories;
+        _children["oc-port-histories"] = oc_port_histories;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3316,33 +3316,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oc-port-history")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory>();
-        c->parent = this;
-        oc_port_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory>();
+        ent_->parent = this;
+        oc_port_history.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : oc_port_history.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : oc_port_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3418,7 +3418,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oc-hour24-history")
     {
@@ -3441,21 +3441,21 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(oc_hour24_history != nullptr)
     {
-        children["oc-hour24-history"] = oc_hour24_history;
+        _children["oc-hour24-history"] = oc_hour24_history;
     }
 
     if(oc_minute15_history != nullptr)
     {
-        children["oc-minute15-history"] = oc_minute15_history;
+        _children["oc-minute15-history"] = oc_minute15_history;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3524,7 +3524,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oc-hour24ocn-histories")
     {
@@ -3538,16 +3538,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(oc_hour24ocn_histories != nullptr)
     {
-        children["oc-hour24ocn-histories"] = oc_hour24ocn_histories;
+        _children["oc-hour24ocn-histories"] = oc_hour24ocn_histories;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3614,33 +3614,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oc-hour24ocn-history")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory>();
-        c->parent = this;
-        oc_hour24ocn_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory>();
+        ent_->parent = this;
+        oc_hour24ocn_history.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : oc_hour24ocn_history.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : oc_hour24ocn_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3705,7 +3705,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oc-hour24ocn-time-line-instances")
     {
@@ -3719,16 +3719,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(oc_hour24ocn_time_line_instances != nullptr)
     {
-        children["oc-hour24ocn-time-line-instances"] = oc_hour24ocn_time_line_instances;
+        _children["oc-hour24ocn-time-line-instances"] = oc_hour24ocn_time_line_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3805,33 +3805,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oc-hour24ocn-time-line-instance")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance>();
-        c->parent = this;
-        oc_hour24ocn_time_line_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance>();
+        ent_->parent = this;
+        oc_hour24ocn_time_line_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : oc_hour24ocn_time_line_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : oc_hour24ocn_time_line_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3928,7 +3928,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section")
     {
@@ -3960,26 +3960,26 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(section != nullptr)
     {
-        children["section"] = section;
+        _children["section"] = section;
     }
 
     if(line != nullptr)
     {
-        children["line"] = line;
+        _children["line"] = line;
     }
 
     if(fe_line != nullptr)
     {
-        children["fe-line"] = fe_line;
+        _children["fe-line"] = fe_line;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4125,7 +4125,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section-e-ss")
     {
@@ -4166,31 +4166,31 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(section_e_ss != nullptr)
     {
-        children["section-e-ss"] = section_e_ss;
+        _children["section-e-ss"] = section_e_ss;
     }
 
     if(section_se_ss != nullptr)
     {
-        children["section-se-ss"] = section_se_ss;
+        _children["section-se-ss"] = section_se_ss;
     }
 
     if(section_sef_ss != nullptr)
     {
-        children["section-sef-ss"] = section_sef_ss;
+        _children["section-sef-ss"] = section_sef_ss;
     }
 
     if(section_c_vs != nullptr)
     {
-        children["section-c-vs"] = section_c_vs;
+        _children["section-c-vs"] = section_c_vs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4267,16 +4267,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4373,16 +4373,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4479,16 +4479,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionSefSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionSefSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionSefSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4585,16 +4585,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionCVs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionCVs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Section::SectionCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4704,7 +4704,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "line-e-ss")
     {
@@ -4754,36 +4754,36 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(line_e_ss != nullptr)
     {
-        children["line-e-ss"] = line_e_ss;
+        _children["line-e-ss"] = line_e_ss;
     }
 
     if(line_se_ss != nullptr)
     {
-        children["line-se-ss"] = line_se_ss;
+        _children["line-se-ss"] = line_se_ss;
     }
 
     if(line_c_vs != nullptr)
     {
-        children["line-c-vs"] = line_c_vs;
+        _children["line-c-vs"] = line_c_vs;
     }
 
     if(line_ua_ss != nullptr)
     {
-        children["line-ua-ss"] = line_ua_ss;
+        _children["line-ua-ss"] = line_ua_ss;
     }
 
     if(line_fc_ls != nullptr)
     {
-        children["line-fc-ls"] = line_fc_ls;
+        _children["line-fc-ls"] = line_fc_ls;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4860,16 +4860,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4966,16 +4966,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5072,16 +5072,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineCVs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineCVs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5178,16 +5178,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5284,16 +5284,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineFcLs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineFcLs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::Line::LineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5398,7 +5398,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "far-end-line-e-ss")
     {
@@ -5448,36 +5448,36 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(far_end_line_e_ss != nullptr)
     {
-        children["far-end-line-e-ss"] = far_end_line_e_ss;
+        _children["far-end-line-e-ss"] = far_end_line_e_ss;
     }
 
     if(far_end_line_se_ss != nullptr)
     {
-        children["far-end-line-se-ss"] = far_end_line_se_ss;
+        _children["far-end-line-se-ss"] = far_end_line_se_ss;
     }
 
     if(far_end_line_c_vs != nullptr)
     {
-        children["far-end-line-c-vs"] = far_end_line_c_vs;
+        _children["far-end-line-c-vs"] = far_end_line_c_vs;
     }
 
     if(far_end_line_ua_ss != nullptr)
     {
-        children["far-end-line-ua-ss"] = far_end_line_ua_ss;
+        _children["far-end-line-ua-ss"] = far_end_line_ua_ss;
     }
 
     if(far_end_line_fc_ls != nullptr)
     {
-        children["far-end-line-fc-ls"] = far_end_line_fc_ls;
+        _children["far-end-line-fc-ls"] = far_end_line_fc_ls;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5544,16 +5544,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5650,16 +5650,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5756,16 +5756,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineCVs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineCVs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5862,16 +5862,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5968,16 +5968,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineFcLs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineFcLs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcHour24History::OcHour24ocnHistories::OcHour24ocnHistory::OcHour24ocnTimeLineInstances::OcHour24ocnTimeLineInstance::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6066,7 +6066,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oc-minute15ocn-histories")
     {
@@ -6080,16 +6080,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(oc_minute15ocn_histories != nullptr)
     {
-        children["oc-minute15ocn-histories"] = oc_minute15ocn_histories;
+        _children["oc-minute15ocn-histories"] = oc_minute15ocn_histories;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6156,33 +6156,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oc-minute15ocn-history")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory>();
-        c->parent = this;
-        oc_minute15ocn_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory>();
+        ent_->parent = this;
+        oc_minute15ocn_history.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : oc_minute15ocn_history.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : oc_minute15ocn_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6247,7 +6247,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oc-minute15ocn-time-line-instances")
     {
@@ -6261,16 +6261,16 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(oc_minute15ocn_time_line_instances != nullptr)
     {
-        children["oc-minute15ocn-time-line-instances"] = oc_minute15ocn_time_line_instances;
+        _children["oc-minute15ocn-time-line-instances"] = oc_minute15ocn_time_line_instances;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6347,33 +6347,33 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oc-minute15ocn-time-line-instance")
     {
-        auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance>();
-        c->parent = this;
-        oc_minute15ocn_time_line_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance>();
+        ent_->parent = this;
+        oc_minute15ocn_time_line_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : oc_minute15ocn_time_line_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : oc_minute15ocn_time_line_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6470,7 +6470,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section")
     {
@@ -6502,26 +6502,26 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(section != nullptr)
     {
-        children["section"] = section;
+        _children["section"] = section;
     }
 
     if(line != nullptr)
     {
-        children["line"] = line;
+        _children["line"] = line;
     }
 
     if(fe_line != nullptr)
     {
-        children["fe-line"] = fe_line;
+        _children["fe-line"] = fe_line;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6667,7 +6667,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "section-e-ss")
     {
@@ -6708,31 +6708,31 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(section_e_ss != nullptr)
     {
-        children["section-e-ss"] = section_e_ss;
+        _children["section-e-ss"] = section_e_ss;
     }
 
     if(section_se_ss != nullptr)
     {
-        children["section-se-ss"] = section_se_ss;
+        _children["section-se-ss"] = section_se_ss;
     }
 
     if(section_sef_ss != nullptr)
     {
-        children["section-sef-ss"] = section_sef_ss;
+        _children["section-sef-ss"] = section_sef_ss;
     }
 
     if(section_c_vs != nullptr)
     {
-        children["section-c-vs"] = section_c_vs;
+        _children["section-c-vs"] = section_c_vs;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6809,16 +6809,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6915,16 +6915,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7021,16 +7021,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionSefSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionSefSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionSefSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionSefSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7127,16 +7127,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionCVs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionCVs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Section::SectionCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7246,7 +7246,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "line-e-ss")
     {
@@ -7296,36 +7296,36 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(line_e_ss != nullptr)
     {
-        children["line-e-ss"] = line_e_ss;
+        _children["line-e-ss"] = line_e_ss;
     }
 
     if(line_se_ss != nullptr)
     {
-        children["line-se-ss"] = line_se_ss;
+        _children["line-se-ss"] = line_se_ss;
     }
 
     if(line_c_vs != nullptr)
     {
-        children["line-c-vs"] = line_c_vs;
+        _children["line-c-vs"] = line_c_vs;
     }
 
     if(line_ua_ss != nullptr)
     {
-        children["line-ua-ss"] = line_ua_ss;
+        _children["line-ua-ss"] = line_ua_ss;
     }
 
     if(line_fc_ls != nullptr)
     {
-        children["line-fc-ls"] = line_fc_ls;
+        _children["line-fc-ls"] = line_fc_ls;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7402,16 +7402,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7508,16 +7508,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7614,16 +7614,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineCVs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineCVs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7720,16 +7720,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7826,16 +7826,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineFcLs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineFcLs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::Line::LineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7940,7 +7940,7 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "far-end-line-e-ss")
     {
@@ -7990,36 +7990,36 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistor
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(far_end_line_e_ss != nullptr)
     {
-        children["far-end-line-e-ss"] = far_end_line_e_ss;
+        _children["far-end-line-e-ss"] = far_end_line_e_ss;
     }
 
     if(far_end_line_se_ss != nullptr)
     {
-        children["far-end-line-se-ss"] = far_end_line_se_ss;
+        _children["far-end-line-se-ss"] = far_end_line_se_ss;
     }
 
     if(far_end_line_c_vs != nullptr)
     {
-        children["far-end-line-c-vs"] = far_end_line_c_vs;
+        _children["far-end-line-c-vs"] = far_end_line_c_vs;
     }
 
     if(far_end_line_ua_ss != nullptr)
     {
-        children["far-end-line-ua-ss"] = far_end_line_ua_ss;
+        _children["far-end-line-ua-ss"] = far_end_line_ua_ss;
     }
 
     if(far_end_line_fc_ls != nullptr)
     {
-        children["far-end-line-fc-ls"] = far_end_line_fc_ls;
+        _children["far-end-line-fc-ls"] = far_end_line_fc_ls;
     }
 
-    return children;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8086,16 +8086,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineESs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineESs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineESs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8192,16 +8192,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineSeSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineSeSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineSeSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8298,16 +8298,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineCVs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineCVs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineCVs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8404,16 +8404,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineUaSs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineUaSs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineUaSs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8510,16 +8510,16 @@ std::vector<std::pair<std::string, LeafData> > PerformanceManagementHistory::Glo
 
 }
 
-std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineFcLs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineFcLs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineFcLs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PerformanceManagementHistory::Global::Periodic::OcHistory::OcPortHistories::OcPortHistory::OcMinute15History::OcMinute15ocnHistories::OcMinute15ocnHistory::OcMinute15ocnTimeLineInstances::OcMinute15ocnTimeLineInstance::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

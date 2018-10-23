@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::get_name
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENHANCEDMEMPOOLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cempNotificationConfig")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENHANCEDMEMPOOLMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cempnotificationconfig != nullptr)
     {
-        children["cempNotificationConfig"] = cempnotificationconfig;
+        _children["cempNotificationConfig"] = cempnotificationconfig;
     }
 
     if(cempmempooltable != nullptr)
     {
-        children["cempMemPoolTable"] = cempmempooltable;
+        _children["cempMemPoolTable"] = cempmempooltable;
     }
 
     if(cempmembufferpooltable != nullptr)
     {
-        children["cempMemBufferPoolTable"] = cempmembufferpooltable;
+        _children["cempMemBufferPoolTable"] = cempmembufferpooltable;
     }
 
     if(cempmembuffercachepooltable != nullptr)
     {
-        children["cempMemBufferCachePoolTable"] = cempmembuffercachepooltable;
+        _children["cempMemBufferCachePoolTable"] = cempmembuffercachepooltable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENHANCEDMEMPOOLMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void CISCOENHANCEDMEMPOOLMIB::set_filter(const std::string & value_path, YFilter
 {
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOENHANCEDMEMPOOLMIB::clone_ptr() const
 {
     return std::make_shared<CISCOENHANCEDMEMPOOLMIB>();
 }
@@ -220,16 +220,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempNoti
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -313,33 +313,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempMemP
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cempMemPoolEntry")
     {
-        auto c = std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry>();
-        c->parent = this;
-        cempmempoolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry>();
+        ent_->parent = this;
+        cempmempoolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cempmempoolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cempmempoolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -519,16 +519,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempMemP
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -892,33 +892,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempMemB
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cempMemBufferPoolEntry")
     {
-        auto c = std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry>();
-        c->parent = this;
-        cempmembufferpoolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry>();
+        ent_->parent = this;
+        cempmembufferpoolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cempmembufferpoolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cempmembufferpoolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1074,16 +1074,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempMemB
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1387,33 +1387,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempMemB
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cempMemBufferCachePoolEntry")
     {
-        auto c = std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry>();
-        c->parent = this;
-        cempmembuffercachepoolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry>();
+        ent_->parent = this;
+        cempmembuffercachepoolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cempmembuffercachepoolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cempmembuffercachepoolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1513,16 +1513,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempMemB
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

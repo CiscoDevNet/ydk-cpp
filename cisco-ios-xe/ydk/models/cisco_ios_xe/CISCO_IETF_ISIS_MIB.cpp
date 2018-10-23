@@ -136,7 +136,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiSysObject")
     {
@@ -339,121 +339,121 @@ std::shared_ptr<Entity> CISCOIETFISISMIB::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ciisysobject != nullptr)
     {
-        children["ciiSysObject"] = ciisysobject;
+        _children["ciiSysObject"] = ciisysobject;
     }
 
     if(ciicirc != nullptr)
     {
-        children["ciiCirc"] = ciicirc;
+        _children["ciiCirc"] = ciicirc;
     }
 
     if(ciimanareaaddrtable != nullptr)
     {
-        children["ciiManAreaAddrTable"] = ciimanareaaddrtable;
+        _children["ciiManAreaAddrTable"] = ciimanareaaddrtable;
     }
 
     if(ciiareaaddrtable != nullptr)
     {
-        children["ciiAreaAddrTable"] = ciiareaaddrtable;
+        _children["ciiAreaAddrTable"] = ciiareaaddrtable;
     }
 
     if(ciisysprotsupptable != nullptr)
     {
-        children["ciiSysProtSuppTable"] = ciisysprotsupptable;
+        _children["ciiSysProtSuppTable"] = ciisysprotsupptable;
     }
 
     if(ciisummaddrtable != nullptr)
     {
-        children["ciiSummAddrTable"] = ciisummaddrtable;
+        _children["ciiSummAddrTable"] = ciisummaddrtable;
     }
 
     if(ciiredistributeaddrtable != nullptr)
     {
-        children["ciiRedistributeAddrTable"] = ciiredistributeaddrtable;
+        _children["ciiRedistributeAddrTable"] = ciiredistributeaddrtable;
     }
 
     if(ciiroutertable != nullptr)
     {
-        children["ciiRouterTable"] = ciiroutertable;
+        _children["ciiRouterTable"] = ciiroutertable;
     }
 
     if(ciisysleveltable != nullptr)
     {
-        children["ciiSysLevelTable"] = ciisysleveltable;
+        _children["ciiSysLevelTable"] = ciisysleveltable;
     }
 
     if(ciicirctable != nullptr)
     {
-        children["ciiCircTable"] = ciicirctable;
+        _children["ciiCircTable"] = ciicirctable;
     }
 
     if(ciicircleveltable != nullptr)
     {
-        children["ciiCircLevelTable"] = ciicircleveltable;
+        _children["ciiCircLevelTable"] = ciicircleveltable;
     }
 
     if(ciisystemcountertable != nullptr)
     {
-        children["ciiSystemCounterTable"] = ciisystemcountertable;
+        _children["ciiSystemCounterTable"] = ciisystemcountertable;
     }
 
     if(ciicircuitcountertable != nullptr)
     {
-        children["ciiCircuitCounterTable"] = ciicircuitcountertable;
+        _children["ciiCircuitCounterTable"] = ciicircuitcountertable;
     }
 
     if(ciipacketcountertable != nullptr)
     {
-        children["ciiPacketCounterTable"] = ciipacketcountertable;
+        _children["ciiPacketCounterTable"] = ciipacketcountertable;
     }
 
     if(ciiisadjtable != nullptr)
     {
-        children["ciiISAdjTable"] = ciiisadjtable;
+        _children["ciiISAdjTable"] = ciiisadjtable;
     }
 
     if(ciiisadjareaaddrtable != nullptr)
     {
-        children["ciiISAdjAreaAddrTable"] = ciiisadjareaaddrtable;
+        _children["ciiISAdjAreaAddrTable"] = ciiisadjareaaddrtable;
     }
 
     if(ciiisadjipaddrtable != nullptr)
     {
-        children["ciiISAdjIPAddrTable"] = ciiisadjipaddrtable;
+        _children["ciiISAdjIPAddrTable"] = ciiisadjipaddrtable;
     }
 
     if(ciiisadjprotsupptable != nullptr)
     {
-        children["ciiISAdjProtSuppTable"] = ciiisadjprotsupptable;
+        _children["ciiISAdjProtSuppTable"] = ciiisadjprotsupptable;
     }
 
     if(ciiratable != nullptr)
     {
-        children["ciiRATable"] = ciiratable;
+        _children["ciiRATable"] = ciiratable;
     }
 
     if(ciiipratable != nullptr)
     {
-        children["ciiIPRATable"] = ciiipratable;
+        _children["ciiIPRATable"] = ciiipratable;
     }
 
     if(ciilspsummarytable != nullptr)
     {
-        children["ciiLSPSummaryTable"] = ciilspsummarytable;
+        _children["ciiLSPSummaryTable"] = ciilspsummarytable;
     }
 
     if(ciilsptlvtable != nullptr)
     {
-        children["ciiLSPTLVTable"] = ciilsptlvtable;
+        _children["ciiLSPTLVTable"] = ciilsptlvtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -464,7 +464,7 @@ void CISCOIETFISISMIB::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIETFISISMIB>();
 }
@@ -584,16 +584,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSysObject::g
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSysObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiSysObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSysObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiSysObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiSysObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -769,16 +769,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCirc::get_na
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCirc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiCirc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCirc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiCirc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiCirc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -862,33 +862,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiManAreaAddrT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiManAreaAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiManAreaAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiManAreaAddrEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry>();
-        c->parent = this;
-        ciimanareaaddrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry>();
+        ent_->parent = this;
+        ciimanareaaddrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiManAreaAddrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiManAreaAddrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciimanareaaddrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciimanareaaddrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiManAreaAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -959,16 +959,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiManAreaAddrT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1062,33 +1062,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiAreaAddrTabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiAreaAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiAreaAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiAreaAddrEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry>();
-        c->parent = this;
-        ciiareaaddrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry>();
+        ent_->parent = this;
+        ciiareaaddrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiAreaAddrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiAreaAddrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciiareaaddrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciiareaaddrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiAreaAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1155,16 +1155,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiAreaAddrTabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1248,33 +1248,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSysProtSuppT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSysProtSuppTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiSysProtSuppTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiSysProtSuppEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry>();
-        c->parent = this;
-        ciisysprotsuppentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry>();
+        ent_->parent = this;
+        ciisysprotsuppentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSysProtSuppTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiSysProtSuppTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciisysprotsuppentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciisysprotsuppentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiSysProtSuppTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1345,16 +1345,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSysProtSuppT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1448,33 +1448,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSummAddrTabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSummAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiSummAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiSummAddrEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry>();
-        c->parent = this;
-        ciisummaddrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry>();
+        ent_->parent = this;
+        ciisummaddrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSummAddrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiSummAddrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciisummaddrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciisummaddrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiSummAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1563,16 +1563,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSummAddrTabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1706,33 +1706,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiRedistribute
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiRedistributeAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiRedistributeAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiRedistributeAddrEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry>();
-        c->parent = this;
-        ciiredistributeaddrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry>();
+        ent_->parent = this;
+        ciiredistributeaddrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiRedistributeAddrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiRedistributeAddrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciiredistributeaddrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciiredistributeaddrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiRedistributeAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1813,16 +1813,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiRedistribute
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1936,33 +1936,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiRouterTable:
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiRouterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiRouterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiRouterEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry>();
-        c->parent = this;
-        ciirouterentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry>();
+        ent_->parent = this;
+        ciirouterentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiRouterTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiRouterTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciirouterentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciirouterentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiRouterTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2042,16 +2042,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiRouterTable:
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2165,33 +2165,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSysLevelTabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSysLevelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiSysLevelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiSysLevelEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry>();
-        c->parent = this;
-        ciisyslevelentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry>();
+        ent_->parent = this;
+        ciisyslevelentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSysLevelTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiSysLevelTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciisyslevelentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciisyslevelentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiSysLevelTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2290,16 +2290,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSysLevelTabl
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2463,33 +2463,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCircTable::g
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCircTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiCircTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiCircEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiCircTable::CiiCircEntry>();
-        c->parent = this;
-        ciicircentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiCircTable::CiiCircEntry>();
+        ent_->parent = this;
+        ciicircentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCircTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiCircTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciicircentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciicircentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiCircTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2612,16 +2612,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCircTable::C
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2845,33 +2845,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCircLevelTab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCircLevelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiCircLevelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiCircLevelEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry>();
-        c->parent = this;
-        ciicirclevelentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry>();
+        ent_->parent = this;
+        ciicirclevelentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCircLevelTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiCircLevelTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciicirclevelentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciicirclevelentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiCircLevelTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2995,16 +2995,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCircLevelTab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3228,33 +3228,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSystemCounte
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSystemCounterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiSystemCounterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiSystemCounterEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry>();
-        c->parent = this;
-        ciisystemcounterentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry>();
+        ent_->parent = this;
+        ciisystemcounterentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSystemCounterTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiSystemCounterTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciisystemcounterentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciisystemcounterentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiSystemCounterTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3369,16 +3369,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiSystemCounte
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3582,33 +3582,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCircuitCount
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCircuitCounterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiCircuitCounterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiCircuitCounterEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry>();
-        c->parent = this;
-        ciicircuitcounterentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry>();
+        ent_->parent = this;
+        ciicircuitcounterentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCircuitCounterTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiCircuitCounterTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciicircuitcounterentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciicircuitcounterentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiCircuitCounterTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3716,16 +3716,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiCircuitCount
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3909,33 +3909,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiPacketCounte
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiPacketCounterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiPacketCounterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiPacketCounterEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry>();
-        c->parent = this;
-        ciipacketcounterentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry>();
+        ent_->parent = this;
+        ciipacketcounterentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiPacketCounterTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiPacketCounterTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciipacketcounterentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciipacketcounterentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiPacketCounterTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4040,16 +4040,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiPacketCounte
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4223,33 +4223,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjTable::
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiISAdjTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiISAdjEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry>();
-        c->parent = this;
-        ciiisadjentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry>();
+        ent_->parent = this;
+        ciiisadjentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiISAdjTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciiisadjentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciiisadjentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiISAdjTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4361,16 +4361,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjTable::
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4564,33 +4564,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjAreaAdd
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjAreaAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiISAdjAreaAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiISAdjAreaAddrEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry>();
-        c->parent = this;
-        ciiisadjareaaddrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry>();
+        ent_->parent = this;
+        ciiisadjareaaddrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjAreaAddrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiISAdjAreaAddrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciiisadjareaaddrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciiisadjareaaddrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiISAdjAreaAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4671,16 +4671,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjAreaAdd
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4794,33 +4794,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjIPAddrT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjIPAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiISAdjIPAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiISAdjIPAddrEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry>();
-        c->parent = this;
-        ciiisadjipaddrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry>();
+        ent_->parent = this;
+        ciiisadjipaddrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjIPAddrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiISAdjIPAddrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciiisadjipaddrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciiisadjipaddrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiISAdjIPAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4905,16 +4905,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjIPAddrT
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5038,33 +5038,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjProtSup
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjProtSuppTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiISAdjProtSuppTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiISAdjProtSuppEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry>();
-        c->parent = this;
-        ciiisadjprotsuppentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry>();
+        ent_->parent = this;
+        ciiisadjprotsuppentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjProtSuppTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiISAdjProtSuppTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciiisadjprotsuppentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciiisadjprotsuppentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiISAdjProtSuppTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5141,16 +5141,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiISAdjProtSup
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5254,33 +5254,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiRATable::get
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiRATable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiRATable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiRAEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiRATable::CiiRAEntry>();
-        c->parent = this;
-        ciiraentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiRATable::CiiRAEntry>();
+        ent_->parent = this;
+        ciiraentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiRATable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiRATable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciiraentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciiraentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiRATable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5392,16 +5392,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiRATable::Cii
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiRATable::CiiRAEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiRATable::CiiRAEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiRATable::CiiRAEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiRATable::CiiRAEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiRATable::CiiRAEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5595,33 +5595,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiIPRATable::g
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiIPRATable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiIPRATable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiIPRAEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry>();
-        c->parent = this;
-        ciiipraentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry>();
+        ent_->parent = this;
+        ciiipraentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiIPRATable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiIPRATable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciiipraentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciiipraentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiIPRATable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5743,16 +5743,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiIPRATable::C
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5966,33 +5966,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiLSPSummaryTa
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiLSPSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiLSPSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiLSPSummaryEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry>();
-        c->parent = this;
-        ciilspsummaryentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry>();
+        ent_->parent = this;
+        ciilspsummaryentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiLSPSummaryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiLSPSummaryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciilspsummaryentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciilspsummaryentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiLSPSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6088,16 +6088,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiLSPSummaryTa
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6251,33 +6251,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiLSPTLVTable:
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiLSPTLVTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiLSPTLVTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciiLSPTLVEntry")
     {
-        auto c = std::make_shared<CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry>();
-        c->parent = this;
-        ciilsptlventry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry>();
+        ent_->parent = this;
+        ciilsptlventry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiLSPTLVTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiLSPTLVTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciilsptlventry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciilsptlventry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiLSPTLVTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6374,16 +6374,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFISISMIB::CiiLSPTLVTable:
 
 }
 
-std::shared_ptr<Entity> CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

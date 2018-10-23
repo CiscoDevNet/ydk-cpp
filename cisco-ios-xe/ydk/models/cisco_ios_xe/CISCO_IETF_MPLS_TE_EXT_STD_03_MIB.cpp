@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::get_n
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSTEEXTSTD03MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsNodeConfigTable")
     {
@@ -118,36 +118,36 @@ std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFMPLSTEEXTSTD03MIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cmplsnodeconfigtable != nullptr)
     {
-        children["cmplsNodeConfigTable"] = cmplsnodeconfigtable;
+        _children["cmplsNodeConfigTable"] = cmplsnodeconfigtable;
     }
 
     if(cmplsnodeipmaptable != nullptr)
     {
-        children["cmplsNodeIpMapTable"] = cmplsnodeipmaptable;
+        _children["cmplsNodeIpMapTable"] = cmplsnodeipmaptable;
     }
 
     if(cmplsnodeiccmaptable != nullptr)
     {
-        children["cmplsNodeIccMapTable"] = cmplsnodeiccmaptable;
+        _children["cmplsNodeIccMapTable"] = cmplsnodeiccmaptable;
     }
 
     if(cmplstunnelexttable != nullptr)
     {
-        children["cmplsTunnelExtTable"] = cmplstunnelexttable;
+        _children["cmplsTunnelExtTable"] = cmplstunnelexttable;
     }
 
     if(cmplstunnelreverseperftable != nullptr)
     {
-        children["cmplsTunnelReversePerfTable"] = cmplstunnelreverseperftable;
+        _children["cmplsTunnelReversePerfTable"] = cmplstunnelreverseperftable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFMPLSTEEXTSTD03MIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -158,7 +158,7 @@ void CISCOIETFMPLSTEEXTSTD03MIB::set_filter(const std::string & value_path, YFil
 {
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSTEEXTSTD03MIB::clone_ptr() const
 {
     return std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB>();
 }
@@ -246,33 +246,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmpls
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsNodeConfigEntry")
     {
-        auto c = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::CmplsNodeConfigEntry>();
-        c->parent = this;
-        cmplsnodeconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::CmplsNodeConfigEntry>();
+        ent_->parent = this;
+        cmplsnodeconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmplsnodeconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmplsnodeconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -359,16 +359,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmpls
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::CmplsNodeConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::CmplsNodeConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::CmplsNodeConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::CmplsNodeConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::CmplsNodeConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -502,33 +502,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmpls
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsNodeIpMapEntry")
     {
-        auto c = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::CmplsNodeIpMapEntry>();
-        c->parent = this;
-        cmplsnodeipmapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::CmplsNodeIpMapEntry>();
+        ent_->parent = this;
+        cmplsnodeipmapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmplsnodeipmapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmplsnodeipmapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -604,16 +604,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmpls
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::CmplsNodeIpMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::CmplsNodeIpMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::CmplsNodeIpMapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::CmplsNodeIpMapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::CmplsNodeIpMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -717,33 +717,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmpls
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsNodeIccMapEntry")
     {
-        auto c = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::CmplsNodeIccMapEntry>();
-        c->parent = this;
-        cmplsnodeiccmapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::CmplsNodeIccMapEntry>();
+        ent_->parent = this;
+        cmplsnodeiccmapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmplsnodeiccmapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmplsnodeiccmapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -814,16 +814,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmpls
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::CmplsNodeIccMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::CmplsNodeIccMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::CmplsNodeIccMapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::CmplsNodeIccMapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::CmplsNodeIccMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -917,33 +917,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmpls
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsTunnelExtEntry")
     {
-        auto c = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::CmplsTunnelExtEntry>();
-        c->parent = this;
-        cmplstunnelextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::CmplsTunnelExtEntry>();
+        ent_->parent = this;
+        cmplstunnelextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmplstunnelextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmplstunnelextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1045,16 +1045,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmpls
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::CmplsTunnelExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::CmplsTunnelExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::CmplsTunnelExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::CmplsTunnelExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::CmplsTunnelExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1218,33 +1218,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmpls
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsTunnelReversePerfEntry")
     {
-        auto c = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::CmplsTunnelReversePerfEntry>();
-        c->parent = this;
-        cmplstunnelreverseperfentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::CmplsTunnelReversePerfEntry>();
+        ent_->parent = this;
+        cmplstunnelreverseperfentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cmplstunnelreverseperfentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cmplstunnelreverseperfentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1346,16 +1346,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFMPLSTEEXTSTD03MIB::Cmpls
 
 }
 
-std::shared_ptr<Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::CmplsTunnelReversePerfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::CmplsTunnelReversePerfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::CmplsTunnelReversePerfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::CmplsTunnelReversePerfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::CmplsTunnelReversePerfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

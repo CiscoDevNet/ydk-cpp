@@ -96,7 +96,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoVpdnMgmtMIBNotifs")
     {
@@ -209,71 +209,71 @@ std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ciscovpdnmgmtmibnotifs != nullptr)
     {
-        children["ciscoVpdnMgmtMIBNotifs"] = ciscovpdnmgmtmibnotifs;
+        _children["ciscoVpdnMgmtMIBNotifs"] = ciscovpdnmgmtmibnotifs;
     }
 
     if(cvpdnsysteminfo != nullptr)
     {
-        children["cvpdnSystemInfo"] = cvpdnsysteminfo;
+        _children["cvpdnSystemInfo"] = cvpdnsysteminfo;
     }
 
     if(cvpdnmultilinkinfo != nullptr)
     {
-        children["cvpdnMultilinkInfo"] = cvpdnmultilinkinfo;
+        _children["cvpdnMultilinkInfo"] = cvpdnmultilinkinfo;
     }
 
     if(cvpdnsystemtable != nullptr)
     {
-        children["cvpdnSystemTable"] = cvpdnsystemtable;
+        _children["cvpdnSystemTable"] = cvpdnsystemtable;
     }
 
     if(cvpdntunneltable != nullptr)
     {
-        children["cvpdnTunnelTable"] = cvpdntunneltable;
+        _children["cvpdnTunnelTable"] = cvpdntunneltable;
     }
 
     if(cvpdntunnelattrtable != nullptr)
     {
-        children["cvpdnTunnelAttrTable"] = cvpdntunnelattrtable;
+        _children["cvpdnTunnelAttrTable"] = cvpdntunnelattrtable;
     }
 
     if(cvpdntunnelsessiontable != nullptr)
     {
-        children["cvpdnTunnelSessionTable"] = cvpdntunnelsessiontable;
+        _children["cvpdnTunnelSessionTable"] = cvpdntunnelsessiontable;
     }
 
     if(cvpdnsessionattrtable != nullptr)
     {
-        children["cvpdnSessionAttrTable"] = cvpdnsessionattrtable;
+        _children["cvpdnSessionAttrTable"] = cvpdnsessionattrtable;
     }
 
     if(cvpdnusertofailhistinfotable != nullptr)
     {
-        children["cvpdnUserToFailHistInfoTable"] = cvpdnusertofailhistinfotable;
+        _children["cvpdnUserToFailHistInfoTable"] = cvpdnusertofailhistinfotable;
     }
 
     if(cvpdntemplatetable != nullptr)
     {
-        children["cvpdnTemplateTable"] = cvpdntemplatetable;
+        _children["cvpdnTemplateTable"] = cvpdntemplatetable;
     }
 
     if(cvpdnbundletable != nullptr)
     {
-        children["cvpdnBundleTable"] = cvpdnbundletable;
+        _children["cvpdnBundleTable"] = cvpdnbundletable;
     }
 
     if(cvpdnbundlechildtable != nullptr)
     {
-        children["cvpdnBundleChildTable"] = cvpdnbundlechildtable;
+        _children["cvpdnBundleChildTable"] = cvpdnbundlechildtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -284,7 +284,7 @@ void CISCOVPDNMGMTMIB::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::clone_ptr() const
 {
     return std::make_shared<CISCOVPDNMGMTMIB>();
 }
@@ -368,16 +368,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CiscoVpdnMgmtMI
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -479,16 +479,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnSystemInfo
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnSystemInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnSystemInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnSystemInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnSystemInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnSystemInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -616,16 +616,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnMultilinkI
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -739,33 +739,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnSystemTabl
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnSystemTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnSystemTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnSystemEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry>();
-        c->parent = this;
-        cvpdnsystementry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry>();
+        ent_->parent = this;
+        cvpdnsystementry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnSystemTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnSystemTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cvpdnsystementry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cvpdnsystementry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnSystemTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -856,16 +856,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnSystemTabl
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1009,33 +1009,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTunnelTabl
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTunnelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnTunnelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnTunnelEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry>();
-        c->parent = this;
-        cvpdntunnelentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry>();
+        ent_->parent = this;
+        cvpdntunnelentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cvpdntunnelentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cvpdntunnelentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnTunnelTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1158,16 +1158,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTunnelTabl
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1391,33 +1391,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTunnelAttr
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnTunnelAttrEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry>();
-        c->parent = this;
-        cvpdntunnelattrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry>();
+        ent_->parent = this;
+        cvpdntunnelattrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cvpdntunnelattrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cvpdntunnelattrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1569,16 +1569,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTunnelAttr
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1872,33 +1872,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTunnelSess
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnTunnelSessionEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry>();
-        c->parent = this;
-        cvpdntunnelsessionentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry>();
+        ent_->parent = this;
+        cvpdntunnelsessionentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cvpdntunnelsessionentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cvpdntunnelsessionentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2042,16 +2042,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTunnelSess
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2325,33 +2325,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnSessionAtt
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnSessionAttrEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry>();
-        c->parent = this;
-        cvpdnsessionattrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry>();
+        ent_->parent = this;
+        cvpdnsessionattrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cvpdnsessionattrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cvpdnsessionattrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2520,16 +2520,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnSessionAtt
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2863,33 +2863,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnUserToFail
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnUserToFailHistInfoEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry>();
-        c->parent = this;
-        cvpdnusertofailhistinfoentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry>();
+        ent_->parent = this;
+        cvpdnusertofailhistinfoentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cvpdnusertofailhistinfoentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cvpdnusertofailhistinfoentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3017,16 +3017,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnUserToFail
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3260,33 +3260,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTemplateTa
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTemplateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnTemplateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnTemplateEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry>();
-        c->parent = this;
-        cvpdntemplateentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry>();
+        ent_->parent = this;
+        cvpdntemplateentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTemplateTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnTemplateTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cvpdntemplateentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cvpdntemplateentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnTemplateTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3357,16 +3357,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTemplateTa
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3460,33 +3460,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnBundleTabl
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnBundleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnBundleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnBundleEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry>();
-        c->parent = this;
-        cvpdnbundleentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry>();
+        ent_->parent = this;
+        cvpdnbundleentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnBundleTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnBundleTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cvpdnbundleentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cvpdnbundleentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnBundleTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3577,16 +3577,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnBundleTabl
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3730,33 +3730,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnBundleChil
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnBundleChildTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnBundleChildTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnBundleChildEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry>();
-        c->parent = this;
-        cvpdnbundlechildentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry>();
+        ent_->parent = this;
+        cvpdnbundlechildentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnBundleChildTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnBundleChildTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cvpdnbundlechildentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cvpdnbundlechildentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnBundleChildTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3838,16 +3838,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnBundleChil
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

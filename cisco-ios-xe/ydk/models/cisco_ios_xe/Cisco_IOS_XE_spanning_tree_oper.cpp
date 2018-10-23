@@ -62,14 +62,14 @@ std::vector<std::pair<std::string, LeafData> > StpDetails::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> StpDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StpDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stp-detail")
     {
-        auto c = std::make_shared<StpDetails::StpDetail>();
-        c->parent = this;
-        stp_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<StpDetails::StpDetail>();
+        ent_->parent = this;
+        stp_detail.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "stp-global")
@@ -84,25 +84,25 @@ std::shared_ptr<Entity> StpDetails::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StpDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StpDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stp_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stp_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(stp_global != nullptr)
     {
-        children["stp-global"] = stp_global;
+        _children["stp-global"] = stp_global;
     }
 
-    return children;
+    return _children;
 }
 
 void StpDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -113,7 +113,7 @@ void StpDetails::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> StpDetails::clone_ptr() const
+std::shared_ptr<ydk::Entity> StpDetails::clone_ptr() const
 {
     return std::make_shared<StpDetails>();
 }
@@ -251,7 +251,7 @@ std::vector<std::pair<std::string, LeafData> > StpDetails::StpDetail::get_name_l
 
 }
 
-std::shared_ptr<Entity> StpDetails::StpDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StpDetails::StpDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -265,16 +265,16 @@ std::shared_ptr<Entity> StpDetails::StpDetail::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StpDetails::StpDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StpDetails::StpDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void StpDetails::StpDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -481,33 +481,33 @@ std::vector<std::pair<std::string, LeafData> > StpDetails::StpDetail::Interfaces
 
 }
 
-std::shared_ptr<Entity> StpDetails::StpDetail::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StpDetails::StpDetail::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<StpDetails::StpDetail::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<StpDetails::StpDetail::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StpDetails::StpDetail::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StpDetails::StpDetail::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void StpDetails::StpDetail::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -643,16 +643,16 @@ std::vector<std::pair<std::string, LeafData> > StpDetails::StpDetail::Interfaces
 
 }
 
-std::shared_ptr<Entity> StpDetails::StpDetail::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StpDetails::StpDetail::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StpDetails::StpDetail::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StpDetails::StpDetail::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void StpDetails::StpDetail::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -943,7 +943,7 @@ std::vector<std::pair<std::string, LeafData> > StpDetails::StpGlobal::get_name_l
 
 }
 
-std::shared_ptr<Entity> StpDetails::StpGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StpDetails::StpGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mst-only")
     {
@@ -957,16 +957,16 @@ std::shared_ptr<Entity> StpDetails::StpGlobal::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StpDetails::StpGlobal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StpDetails::StpGlobal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mst_only != nullptr)
     {
-        children["mst-only"] = mst_only;
+        _children["mst-only"] = mst_only;
     }
 
-    return children;
+    return _children;
 }
 
 void StpDetails::StpGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1100,16 +1100,16 @@ std::vector<std::pair<std::string, LeafData> > StpDetails::StpGlobal::MstOnly::g
 
 }
 
-std::shared_ptr<Entity> StpDetails::StpGlobal::MstOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> StpDetails::StpGlobal::MstOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> StpDetails::StpGlobal::MstOnly::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> StpDetails::StpGlobal::MstOnly::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void StpDetails::StpGlobal::MstOnly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

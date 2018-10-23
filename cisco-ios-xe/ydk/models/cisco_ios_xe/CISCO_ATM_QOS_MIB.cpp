@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMQOSMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "caqVccParamsTable")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> CISCOATMQOSMIB::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMQOSMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(caqvccparamstable != nullptr)
     {
-        children["caqVccParamsTable"] = caqvccparamstable;
+        _children["caqVccParamsTable"] = caqvccparamstable;
     }
 
     if(caqvpcparamstable != nullptr)
     {
-        children["caqVpcParamsTable"] = caqvpcparamstable;
+        _children["caqVpcParamsTable"] = caqvpcparamstable;
     }
 
     if(caqqueuingparamstable != nullptr)
     {
-        children["caqQueuingParamsTable"] = caqqueuingparamstable;
+        _children["caqQueuingParamsTable"] = caqqueuingparamstable;
     }
 
     if(caqqueuingparamsclasstable != nullptr)
     {
-        children["caqQueuingParamsClassTable"] = caqqueuingparamsclasstable;
+        _children["caqQueuingParamsClassTable"] = caqqueuingparamsclasstable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMQOSMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void CISCOATMQOSMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOATMQOSMIB::clone_ptr() const
 {
     return std::make_shared<CISCOATMQOSMIB>();
 }
@@ -228,33 +228,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqVccParamsTable
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::CaqVccParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMQOSMIB::CaqVccParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "caqVccParamsEntry")
     {
-        auto c = std::make_shared<CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry>();
-        c->parent = this;
-        caqvccparamsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry>();
+        ent_->parent = this;
+        caqvccparamsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqVccParamsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMQOSMIB::CaqVccParamsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : caqvccparamsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : caqvccparamsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMQOSMIB::CaqVccParamsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -443,16 +443,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqVccParamsTable
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -836,33 +836,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqVpcParamsTable
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::CaqVpcParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMQOSMIB::CaqVpcParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "caqVpcParamsEntry")
     {
-        auto c = std::make_shared<CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry>();
-        c->parent = this;
-        caqvpcparamsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry>();
+        ent_->parent = this;
+        caqvpcparamsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqVpcParamsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMQOSMIB::CaqVpcParamsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : caqvpcparamsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : caqvpcparamsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMQOSMIB::CaqVpcParamsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -974,16 +974,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqVpcParamsTable
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1177,33 +1177,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqQueuingParamsT
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::CaqQueuingParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMQOSMIB::CaqQueuingParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "caqQueuingParamsEntry")
     {
-        auto c = std::make_shared<CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry>();
-        c->parent = this;
-        caqqueuingparamsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry>();
+        ent_->parent = this;
+        caqqueuingparamsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqQueuingParamsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMQOSMIB::CaqQueuingParamsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : caqqueuingparamsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : caqqueuingparamsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMQOSMIB::CaqQueuingParamsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1284,16 +1284,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqQueuingParamsT
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1407,33 +1407,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqQueuingParamsC
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::CaqQueuingParamsClassTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMQOSMIB::CaqQueuingParamsClassTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "caqQueuingParamsClassEntry")
     {
-        auto c = std::make_shared<CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry>();
-        c->parent = this;
-        caqqueuingparamsclassentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry>();
+        ent_->parent = this;
+        caqqueuingparamsclassentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqQueuingParamsClassTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMQOSMIB::CaqQueuingParamsClassTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : caqqueuingparamsclassentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : caqqueuingparamsclassentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOATMQOSMIB::CaqQueuingParamsClassTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1535,16 +1535,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOATMQOSMIB::CaqQueuingParamsC
 
 }
 
-std::shared_ptr<Entity> CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

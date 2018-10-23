@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Pbr::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Pbr::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pbr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pbr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Pbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Pbr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Pbr::clone_ptr() const
+std::shared_ptr<ydk::Entity> Pbr::clone_ptr() const
 {
     return std::make_shared<Pbr>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Pbr::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pbr::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Pbr::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pbr::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pbr::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pbr::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -272,7 +272,7 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Pbr::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pbr::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-map")
     {
@@ -286,16 +286,16 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pbr::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(policy_map != nullptr)
     {
-        children["policy-map"] = policy_map;
+        _children["policy-map"] = policy_map;
     }
 
-    return children;
+    return _children;
 }
 
 void Pbr::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -364,7 +364,7 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::get_
 
 }
 
-std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pbr::Nodes::Node::PolicyMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -378,16 +378,16 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pbr::Nodes::Node::PolicyMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Pbr::Nodes::Node::PolicyMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -454,33 +454,33 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -545,7 +545,7 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "direction")
     {
@@ -559,16 +559,16 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(direction != nullptr)
     {
-        children["direction"] = direction;
+        _children["direction"] = direction;
     }
 
-    return children;
+    return _children;
 }
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -637,7 +637,7 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -651,16 +651,16 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Dire
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
-    return children;
+    return _children;
 }
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -743,33 +743,33 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-stat")
     {
-        auto c = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat>();
-        c->parent = this;
-        class_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat>();
+        ent_->parent = this;
+        class_stat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_stat.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -889,7 +889,7 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "general-stats")
     {
@@ -921,26 +921,26 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Dire
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(general_stats != nullptr)
     {
-        children["general-stats"] = general_stats;
+        _children["general-stats"] = general_stats;
     }
 
     if(httpr_stats != nullptr)
     {
-        children["httpr-stats"] = httpr_stats;
+        _children["httpr-stats"] = httpr_stats;
     }
 
     if(http_enrich_stats != nullptr)
     {
-        children["http-enrich-stats"] = http_enrich_stats;
+        _children["http-enrich-stats"] = http_enrich_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1061,16 +1061,16 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1239,16 +1239,16 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1395,16 +1395,16 @@ std::vector<std::pair<std::string, LeafData> > Pbr::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttpEnrichStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

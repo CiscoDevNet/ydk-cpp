@@ -98,7 +98,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> ConfdState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "smp")
     {
@@ -184,56 +184,56 @@ std::shared_ptr<Entity> ConfdState::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(smp != nullptr)
     {
-        children["smp"] = smp;
+        _children["smp"] = smp;
     }
 
     if(ha != nullptr)
     {
-        children["ha"] = ha;
+        _children["ha"] = ha;
     }
 
     if(loaded_data_models != nullptr)
     {
-        children["loaded-data-models"] = loaded_data_models;
+        _children["loaded-data-models"] = loaded_data_models;
     }
 
     if(netconf != nullptr)
     {
-        children["netconf"] = netconf;
+        _children["netconf"] = netconf;
     }
 
     if(cli != nullptr)
     {
-        children["cli"] = cli;
+        _children["cli"] = cli;
     }
 
     if(webui != nullptr)
     {
-        children["webui"] = webui;
+        _children["webui"] = webui;
     }
 
     if(rest != nullptr)
     {
-        children["rest"] = rest;
+        _children["rest"] = rest;
     }
 
     if(snmp != nullptr)
     {
-        children["snmp"] = snmp;
+        _children["snmp"] = snmp;
     }
 
     if(internal != nullptr)
     {
-        children["internal"] = internal;
+        _children["internal"] = internal;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -294,7 +294,7 @@ void ConfdState::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> ConfdState::clone_ptr() const
+std::shared_ptr<ydk::Entity> ConfdState::clone_ptr() const
 {
     return std::make_shared<ConfdState>();
 }
@@ -374,16 +374,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Smp::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> ConfdState::Smp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Smp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Smp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Smp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Smp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -495,16 +495,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Ha::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> ConfdState::Ha::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Ha::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Ha::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Ha::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Ha::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -624,33 +624,33 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::LoadedDataModels::get
 
 }
 
-std::shared_ptr<Entity> ConfdState::LoadedDataModels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::LoadedDataModels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data-model")
     {
-        auto c = std::make_shared<ConfdState::LoadedDataModels::DataModel>();
-        c->parent = this;
-        data_model.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::LoadedDataModels::DataModel>();
+        ent_->parent = this;
+        data_model.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::LoadedDataModels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::LoadedDataModels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : data_model.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : data_model.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::LoadedDataModels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -747,16 +747,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::LoadedDataModels::Dat
 
 }
 
-std::shared_ptr<Entity> ConfdState::LoadedDataModels::DataModel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::LoadedDataModels::DataModel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::LoadedDataModels::DataModel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::LoadedDataModels::DataModel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::LoadedDataModels::DataModel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -880,7 +880,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Netconf::get_name_lea
 
 }
 
-std::shared_ptr<Entity> ConfdState::Netconf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Netconf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "listen")
     {
@@ -894,16 +894,16 @@ std::shared_ptr<Entity> ConfdState::Netconf::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Netconf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(listen != nullptr)
     {
-        children["listen"] = listen;
+        _children["listen"] = listen;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Netconf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -988,50 +988,50 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Netconf::Listen::get_
 
 }
 
-std::shared_ptr<Entity> ConfdState::Netconf::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Netconf::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp")
     {
-        auto c = std::make_shared<ConfdState::Netconf::Listen::Tcp>();
-        c->parent = this;
-        tcp.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Netconf::Listen::Tcp>();
+        ent_->parent = this;
+        tcp.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ssh")
     {
-        auto c = std::make_shared<ConfdState::Netconf::Listen::Ssh>();
-        c->parent = this;
-        ssh.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Netconf::Listen::Ssh>();
+        ent_->parent = this;
+        ssh.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::Listen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Netconf::Listen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tcp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tcp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ssh.entities())
+    count_ = 0;
+    for (auto ent_ : ssh.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Netconf::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1101,16 +1101,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Netconf::Listen::Tcp:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Netconf::Listen::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Netconf::Listen::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::Listen::Tcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Netconf::Listen::Tcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Netconf::Listen::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1200,16 +1200,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Netconf::Listen::Ssh:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Netconf::Listen::Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Netconf::Listen::Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::Listen::Ssh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Netconf::Listen::Ssh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Netconf::Listen::Ssh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1295,7 +1295,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Cli::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> ConfdState::Cli::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Cli::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "listen")
     {
@@ -1309,16 +1309,16 @@ std::shared_ptr<Entity> ConfdState::Cli::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Cli::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(listen != nullptr)
     {
-        children["listen"] = listen;
+        _children["listen"] = listen;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Cli::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1392,33 +1392,33 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Cli::Listen::get_name
 
 }
 
-std::shared_ptr<Entity> ConfdState::Cli::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Cli::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ssh")
     {
-        auto c = std::make_shared<ConfdState::Cli::Listen::Ssh>();
-        c->parent = this;
-        ssh.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Cli::Listen::Ssh>();
+        ent_->parent = this;
+        ssh.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::Listen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Cli::Listen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ssh.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ssh.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Cli::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1488,16 +1488,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Cli::Listen::Ssh::get
 
 }
 
-std::shared_ptr<Entity> ConfdState::Cli::Listen::Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Cli::Listen::Ssh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::Listen::Ssh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Cli::Listen::Ssh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Cli::Listen::Ssh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1583,7 +1583,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Webui::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> ConfdState::Webui::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Webui::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "listen")
     {
@@ -1597,16 +1597,16 @@ std::shared_ptr<Entity> ConfdState::Webui::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Webui::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(listen != nullptr)
     {
-        children["listen"] = listen;
+        _children["listen"] = listen;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Webui::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1691,50 +1691,50 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Webui::Listen::get_na
 
 }
 
-std::shared_ptr<Entity> ConfdState::Webui::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Webui::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp")
     {
-        auto c = std::make_shared<ConfdState::Webui::Listen::Tcp>();
-        c->parent = this;
-        tcp.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Webui::Listen::Tcp>();
+        ent_->parent = this;
+        tcp.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ssl")
     {
-        auto c = std::make_shared<ConfdState::Webui::Listen::Ssl>();
-        c->parent = this;
-        ssl.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Webui::Listen::Ssl>();
+        ent_->parent = this;
+        ssl.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::Listen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Webui::Listen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tcp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tcp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ssl.entities())
+    count_ = 0;
+    for (auto ent_ : ssl.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Webui::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1804,16 +1804,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Webui::Listen::Tcp::g
 
 }
 
-std::shared_ptr<Entity> ConfdState::Webui::Listen::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Webui::Listen::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::Listen::Tcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Webui::Listen::Tcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Webui::Listen::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1903,16 +1903,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Webui::Listen::Ssl::g
 
 }
 
-std::shared_ptr<Entity> ConfdState::Webui::Listen::Ssl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Webui::Listen::Ssl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::Listen::Ssl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Webui::Listen::Ssl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Webui::Listen::Ssl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1998,7 +1998,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Rest::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> ConfdState::Rest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Rest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "listen")
     {
@@ -2012,16 +2012,16 @@ std::shared_ptr<Entity> ConfdState::Rest::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Rest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(listen != nullptr)
     {
-        children["listen"] = listen;
+        _children["listen"] = listen;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Rest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2106,50 +2106,50 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Rest::Listen::get_nam
 
 }
 
-std::shared_ptr<Entity> ConfdState::Rest::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Rest::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp")
     {
-        auto c = std::make_shared<ConfdState::Rest::Listen::Tcp>();
-        c->parent = this;
-        tcp.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Rest::Listen::Tcp>();
+        ent_->parent = this;
+        tcp.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ssl")
     {
-        auto c = std::make_shared<ConfdState::Rest::Listen::Ssl>();
-        c->parent = this;
-        ssl.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Rest::Listen::Ssl>();
+        ent_->parent = this;
+        ssl.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::Listen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Rest::Listen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tcp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tcp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ssl.entities())
+    count_ = 0;
+    for (auto ent_ : ssl.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Rest::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2219,16 +2219,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Rest::Listen::Tcp::ge
 
 }
 
-std::shared_ptr<Entity> ConfdState::Rest::Listen::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Rest::Listen::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::Listen::Tcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Rest::Listen::Tcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Rest::Listen::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2318,16 +2318,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Rest::Listen::Ssl::ge
 
 }
 
-std::shared_ptr<Entity> ConfdState::Rest::Listen::Ssl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Rest::Listen::Ssl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::Listen::Ssl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Rest::Listen::Ssl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Rest::Listen::Ssl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2436,7 +2436,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Snmp::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> ConfdState::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "listen")
     {
@@ -2459,21 +2459,21 @@ std::shared_ptr<Entity> ConfdState::Snmp::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Snmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(listen != nullptr)
     {
-        children["listen"] = listen;
+        _children["listen"] = listen;
     }
 
     if(version != nullptr)
     {
-        children["version"] = version;
+        _children["version"] = version;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2565,33 +2565,33 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Snmp::Listen::get_nam
 
 }
 
-std::shared_ptr<Entity> ConfdState::Snmp::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Snmp::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udp")
     {
-        auto c = std::make_shared<ConfdState::Snmp::Listen::Udp>();
-        c->parent = this;
-        udp.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Snmp::Listen::Udp>();
+        ent_->parent = this;
+        udp.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::Listen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Snmp::Listen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : udp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : udp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Snmp::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2661,16 +2661,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Snmp::Listen::Udp::ge
 
 }
 
-std::shared_ptr<Entity> ConfdState::Snmp::Listen::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Snmp::Listen::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::Listen::Udp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Snmp::Listen::Udp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Snmp::Listen::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2764,16 +2764,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Snmp::Version::get_na
 
 }
 
-std::shared_ptr<Entity> ConfdState::Snmp::Version::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Snmp::Version::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::Version::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Snmp::Version::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Snmp::Version::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2873,7 +2873,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::get_name_le
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "callpoints")
     {
@@ -2896,21 +2896,21 @@ std::shared_ptr<Entity> ConfdState::Internal::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(callpoints != nullptr)
     {
-        children["callpoints"] = callpoints;
+        _children["callpoints"] = callpoints;
     }
 
     if(cdb != nullptr)
     {
-        children["cdb"] = cdb;
+        _children["cdb"] = cdb;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3066,70 +3066,70 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "callpoint")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::Callpoint>();
-        c->parent = this;
-        callpoint.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::Callpoint>();
+        ent_->parent = this;
+        callpoint.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "validationpoint")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint>();
-        c->parent = this;
-        validationpoint.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint>();
+        ent_->parent = this;
+        validationpoint.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "actionpoint")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::Actionpoint>();
-        c->parent = this;
-        actionpoint.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::Actionpoint>();
+        ent_->parent = this;
+        actionpoint.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "snmp-inform-callback")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback>();
-        c->parent = this;
-        snmp_inform_callback.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback>();
+        ent_->parent = this;
+        snmp_inform_callback.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "snmp-notification-subscription")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription>();
-        c->parent = this;
-        snmp_notification_subscription.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription>();
+        ent_->parent = this;
+        snmp_notification_subscription.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "error-formatting-callback")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback>();
-        c->parent = this;
-        error_formatting_callback.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback>();
+        ent_->parent = this;
+        error_formatting_callback.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "typepoint")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::Typepoint>();
-        c->parent = this;
-        typepoint.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::Typepoint>();
+        ent_->parent = this;
+        typepoint.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "notification-stream-replay")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay>();
-        c->parent = this;
-        notification_stream_replay.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay>();
+        ent_->parent = this;
+        notification_stream_replay.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "authentication-callback")
@@ -3153,93 +3153,93 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : callpoint.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : callpoint.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : validationpoint.entities())
+    count_ = 0;
+    for (auto ent_ : validationpoint.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : actionpoint.entities())
+    count_ = 0;
+    for (auto ent_ : actionpoint.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : snmp_inform_callback.entities())
+    count_ = 0;
+    for (auto ent_ : snmp_inform_callback.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : snmp_notification_subscription.entities())
+    count_ = 0;
+    for (auto ent_ : snmp_notification_subscription.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : error_formatting_callback.entities())
+    count_ = 0;
+    for (auto ent_ : error_formatting_callback.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : typepoint.entities())
+    count_ = 0;
+    for (auto ent_ : typepoint.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : notification_stream_replay.entities())
+    count_ = 0;
+    for (auto ent_ : notification_stream_replay.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(authentication_callback != nullptr)
     {
-        children["authentication-callback"] = authentication_callback;
+        _children["authentication-callback"] = authentication_callback;
     }
 
     if(authorization_callbacks != nullptr)
     {
-        children["authorization-callbacks"] = authorization_callbacks;
+        _children["authorization-callbacks"] = authorization_callbacks;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3334,7 +3334,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Callpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -3347,34 +3347,34 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::get_child_b
 
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Callpoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    count = 0;
-    for (auto c : range.entities())
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Callpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3481,16 +3481,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Callpoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Callpoint::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Callpoint::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3592,7 +3592,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Callpoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -3606,16 +3606,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Range::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Callpoint::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Callpoint::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3712,16 +3712,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3846,7 +3846,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Validationpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -3859,34 +3859,34 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::get_c
 
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Validationpoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    count = 0;
-    for (auto c : range.entities())
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Validationpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3993,16 +3993,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Validationpoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Validationpoint::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Validationpoint::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4104,7 +4104,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Validationpoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -4118,16 +4118,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Range
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Validationpoint::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Validationpoint::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4224,16 +4224,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4358,7 +4358,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Actionpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -4371,34 +4371,34 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::get_child
 
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::Actionpoint::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::Actionpoint::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Actionpoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Actionpoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    count = 0;
-    for (auto c : range.entities())
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Actionpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4505,16 +4505,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Actionpoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Actionpoint::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Actionpoint::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Actionpoint::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4616,7 +4616,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Actionpoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -4630,16 +4630,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::Range::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Actionpoint::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Actionpoint::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Actionpoint::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4736,16 +4736,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4870,7 +4870,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -4883,34 +4883,34 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::ge
 
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    count = 0;
-    for (auto c : range.entities())
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::SnmpInformCallback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5017,16 +5017,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5128,7 +5128,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -5142,16 +5142,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Ra
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5248,16 +5248,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5382,7 +5382,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -5395,34 +5395,34 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscr
 
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    count = 0;
-    for (auto c : range.entities())
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5529,16 +5529,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5640,7 +5640,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -5654,16 +5654,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5760,16 +5760,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5894,7 +5894,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -5907,34 +5907,34 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallbac
 
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    count = 0;
-    for (auto c : range.entities())
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::ErrorFormattingCallback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6041,16 +6041,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6152,7 +6152,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -6166,16 +6166,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallbac
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6272,16 +6272,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6406,7 +6406,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Typepoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -6419,34 +6419,34 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::get_child_b
 
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Typepoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    count = 0;
-    for (auto c : range.entities())
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Typepoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6553,16 +6553,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Typepoint::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Typepoint::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Typepoint::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6664,7 +6664,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Typepoint::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -6678,16 +6678,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Range::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Typepoint::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Typepoint::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6784,16 +6784,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6922,7 +6922,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamReplay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::NotificationStreamReplay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -6935,34 +6935,34 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamRepl
 
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    count = 0;
-    for (auto c : range.entities())
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::NotificationStreamReplay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7079,16 +7079,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7190,7 +7190,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -7204,16 +7204,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamRepl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7310,16 +7310,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7443,7 +7443,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -7456,34 +7456,34 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
 
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    count = 0;
-    for (auto c : range.entities())
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::AuthenticationCallback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7597,16 +7597,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7715,7 +7715,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -7729,16 +7729,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7842,16 +7842,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7975,7 +7975,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -7988,34 +7988,34 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
 
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    count = 0;
-    for (auto c : range.entities())
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::AuthorizationCallbacks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8129,16 +8129,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8247,7 +8247,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daemon")
     {
@@ -8261,16 +8261,16 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(daemon != nullptr)
     {
-        children["daemon"] = daemon;
+        _children["daemon"] = daemon;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8374,16 +8374,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Callpoints:
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8498,50 +8498,50 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::get_na
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Cdb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Cdb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "datastore")
     {
-        auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore>();
-        c->parent = this;
-        datastore.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Cdb::Datastore>();
+        ent_->parent = this;
+        datastore.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "client")
     {
-        auto c = std::make_shared<ConfdState::Internal::Cdb::Client>();
-        c->parent = this;
-        client.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Cdb::Client>();
+        ent_->parent = this;
+        client.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Cdb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : datastore.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : datastore.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : client.entities())
+    count_ = 0;
+    for (auto ent_ : client.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Cdb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8659,7 +8659,7 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Datast
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Cdb::Datastore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pending-subscription-sync")
     {
@@ -8672,34 +8672,34 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::get_child_by_name(
 
     if(child_yang_name == "pending-notification-queue")
     {
-        auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue>();
-        c->parent = this;
-        pending_notification_queue.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue>();
+        ent_->parent = this;
+        pending_notification_queue.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Cdb::Datastore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pending_subscription_sync != nullptr)
     {
-        children["pending-subscription-sync"] = pending_subscription_sync;
+        _children["pending-subscription-sync"] = pending_subscription_sync;
     }
 
-    count = 0;
-    for (auto c : pending_notification_queue.entities())
+    count_ = 0;
+    for (auto ent_ : pending_notification_queue.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Cdb::Datastore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8874,33 +8874,33 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Datast
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "notification")
     {
-        auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification>();
-        c->parent = this;
-        notification.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification>();
+        ent_->parent = this;
+        notification.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : notification.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : notification.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8993,16 +8993,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Datast
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9087,33 +9087,33 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Datast
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "notification")
     {
-        auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification>();
-        c->parent = this;
-        notification.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification>();
+        ent_->parent = this;
+        notification.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : notification.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : notification.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9190,16 +9190,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Datast
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9321,33 +9321,33 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Client
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Cdb::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Cdb::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subscription")
     {
-        auto c = std::make_shared<ConfdState::Internal::Cdb::Client::Subscription>();
-        c->parent = this;
-        subscription.append(c);
-        return c;
+        auto ent_ = std::make_shared<ConfdState::Internal::Cdb::Client::Subscription>();
+        ent_->parent = this;
+        subscription.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Client::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Cdb::Client::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : subscription.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : subscription.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ConfdState::Internal::Cdb::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9483,16 +9483,16 @@ std::vector<std::pair<std::string, LeafData> > ConfdState::Internal::Cdb::Client
 
 }
 
-std::shared_ptr<Entity> ConfdState::Internal::Cdb::Client::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ConfdState::Internal::Cdb::Client::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Client::Subscription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Internal::Cdb::Client::Subscription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ConfdState::Internal::Cdb::Client::Subscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

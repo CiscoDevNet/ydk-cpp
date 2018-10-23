@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> TerminalDevice::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(logical_channels != nullptr)
     {
-        children["logical-channels"] = logical_channels;
+        _children["logical-channels"] = logical_channels;
     }
 
     if(operational_modes != nullptr)
     {
-        children["operational-modes"] = operational_modes;
+        _children["operational-modes"] = operational_modes;
     }
 
-    return children;
+    return _children;
 }
 
 void TerminalDevice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void TerminalDevice::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> TerminalDevice::clone_ptr() const
+std::shared_ptr<ydk::Entity> TerminalDevice::clone_ptr() const
 {
     return std::make_shared<TerminalDevice>();
 }
@@ -216,16 +216,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::Config::get_name_
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -285,16 +285,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::State::get_name_l
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -366,33 +366,33 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "channel")
     {
-        auto c = std::make_shared<TerminalDevice::LogicalChannels::Channel>();
-        c->parent = this;
-        channel.append(c);
-        return c;
+        auto ent_ = std::make_shared<TerminalDevice::LogicalChannels::Channel>();
+        ent_->parent = this;
+        channel.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : channel.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : channel.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -484,7 +484,7 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -543,41 +543,41 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(otn != nullptr)
     {
-        children["otn"] = otn;
+        _children["otn"] = otn;
     }
 
     if(ethernet != nullptr)
     {
-        children["ethernet"] = ethernet;
+        _children["ethernet"] = ethernet;
     }
 
     if(ingress != nullptr)
     {
-        children["ingress"] = ingress;
+        _children["ingress"] = ingress;
     }
 
     if(logical_channel_assignments != nullptr)
     {
-        children["logical-channel-assignments"] = logical_channel_assignments;
+        _children["logical-channel-assignments"] = logical_channel_assignments;
     }
 
-    return children;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -670,16 +670,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -836,16 +836,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -988,7 +988,7 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1011,21 +1011,21 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Otn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1092,16 +1092,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Otn::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Otn::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Otn::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1255,7 +1255,7 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pre-fec-ber")
     {
@@ -1296,31 +1296,31 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pre_fec_ber != nullptr)
     {
-        children["pre-fec-ber"] = pre_fec_ber;
+        _children["pre-fec-ber"] = pre_fec_ber;
     }
 
     if(post_fec_ber != nullptr)
     {
-        children["post-fec-ber"] = post_fec_ber;
+        _children["post-fec-ber"] = post_fec_ber;
     }
 
     if(q_value != nullptr)
     {
-        children["q-value"] = q_value;
+        _children["q-value"] = q_value;
     }
 
     if(esnr != nullptr)
     {
-        children["esnr"] = esnr;
+        _children["esnr"] = esnr;
     }
 
-    return children;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Otn::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1521,16 +1521,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1641,16 +1641,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1761,16 +1761,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::QValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::QValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::QValue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::QValue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Otn::State::QValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1881,16 +1881,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1993,7 +1993,7 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2016,21 +2016,21 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ethernet::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Ethernet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2085,16 +2085,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ethernet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Ethernet::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Ethernet::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Ethernet::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Ethernet::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2187,16 +2187,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ethernet::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Ethernet::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Ethernet::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Ethernet::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Ethernet::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2359,7 +2359,7 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ingress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Ingress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2382,21 +2382,21 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ingress::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Ingress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Ingress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Ingress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2469,16 +2469,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ingress::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Ingress::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Ingress::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Ingress::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Ingress::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2569,16 +2569,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ingress::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::Ingress::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Ingress::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::Ingress::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::Ingress::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2663,33 +2663,33 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "assignment")
     {
-        auto c = std::make_shared<TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment>();
-        c->parent = this;
-        assignment.append(c);
-        return c;
+        auto ent_ = std::make_shared<TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment>();
+        ent_->parent = this;
+        assignment.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : assignment.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : assignment.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2758,7 +2758,7 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2781,21 +2781,21 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannel
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2884,16 +2884,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3032,16 +3032,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::LogicalChannels::
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3175,33 +3175,33 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::OperationalModes:
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::OperationalModes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::OperationalModes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mode")
     {
-        auto c = std::make_shared<TerminalDevice::OperationalModes::Mode>();
-        c->parent = this;
-        mode.append(c);
-        return c;
+        auto ent_ = std::make_shared<TerminalDevice::OperationalModes::Mode>();
+        ent_->parent = this;
+        mode.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::OperationalModes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::OperationalModes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mode.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mode.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TerminalDevice::OperationalModes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3277,7 +3277,7 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::OperationalModes:
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::OperationalModes::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::OperationalModes::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3300,21 +3300,21 @@ std::shared_ptr<Entity> TerminalDevice::OperationalModes::Mode::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::OperationalModes::Mode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::OperationalModes::Mode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void TerminalDevice::OperationalModes::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3379,16 +3379,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::OperationalModes:
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::OperationalModes::Mode::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::OperationalModes::Mode::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::OperationalModes::Mode::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::OperationalModes::Mode::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::OperationalModes::Mode::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3453,16 +3453,16 @@ std::vector<std::pair<std::string, LeafData> > TerminalDevice::OperationalModes:
 
 }
 
-std::shared_ptr<Entity> TerminalDevice::OperationalModes::Mode::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TerminalDevice::OperationalModes::Mode::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::OperationalModes::Mode::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TerminalDevice::OperationalModes::Mode::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TerminalDevice::OperationalModes::Mode::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

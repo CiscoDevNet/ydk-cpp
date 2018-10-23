@@ -54,7 +54,7 @@ std::vector<std::pair<std::string, LeafData> > FibStatistics::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> FibStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FibStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -68,16 +68,16 @@ std::shared_ptr<Entity> FibStatistics::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FibStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FibStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void FibStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -88,7 +88,7 @@ void FibStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> FibStatistics::clone_ptr() const
+std::shared_ptr<ydk::Entity> FibStatistics::clone_ptr() const
 {
     return std::make_shared<FibStatistics>();
 }
@@ -176,33 +176,33 @@ std::vector<std::pair<std::string, LeafData> > FibStatistics::Nodes::get_name_le
 
 }
 
-std::shared_ptr<Entity> FibStatistics::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FibStatistics::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<FibStatistics::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<FibStatistics::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FibStatistics::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FibStatistics::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void FibStatistics::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -274,7 +274,7 @@ std::vector<std::pair<std::string, LeafData> > FibStatistics::Nodes::Node::get_n
 
 }
 
-std::shared_ptr<Entity> FibStatistics::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FibStatistics::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "drops")
     {
@@ -288,16 +288,16 @@ std::shared_ptr<Entity> FibStatistics::Nodes::Node::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FibStatistics::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FibStatistics::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(drops != nullptr)
     {
-        children["drops"] = drops;
+        _children["drops"] = drops;
     }
 
-    return children;
+    return _children;
 }
 
 void FibStatistics::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -462,16 +462,16 @@ std::vector<std::pair<std::string, LeafData> > FibStatistics::Nodes::Node::Drops
 
 }
 
-std::shared_ptr<Entity> FibStatistics::Nodes::Node::Drops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> FibStatistics::Nodes::Node::Drops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> FibStatistics::Nodes::Node::Drops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> FibStatistics::Nodes::Node::Drops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void FibStatistics::Nodes::Node::Drops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -780,7 +780,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Fib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -794,16 +794,16 @@ std::shared_ptr<Entity> Fib::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -814,7 +814,7 @@ void Fib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Fib::clone_ptr() const
+std::shared_ptr<ydk::Entity> Fib::clone_ptr() const
 {
     return std::make_shared<Fib>();
 }
@@ -902,33 +902,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Fib::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1004,7 +1004,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global")
     {
@@ -1027,21 +1027,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
     if(protocols != nullptr)
     {
-        children["protocols"] = protocols;
+        _children["protocols"] = protocols;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1118,7 +1118,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::get_nam
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fib-cofo")
     {
@@ -1150,26 +1150,26 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fib_cofo != nullptr)
     {
-        children["fib-cofo"] = fib_cofo;
+        _children["fib-cofo"] = fib_cofo;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(object_history != nullptr)
     {
-        children["object-history"] = object_history;
+        _children["object-history"] = object_history;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1232,7 +1232,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::FibCofo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fib-cofo-idb")
     {
@@ -1255,21 +1255,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::FibCofo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fib_cofo_idb != nullptr)
     {
-        children["fib-cofo-idb"] = fib_cofo_idb;
+        _children["fib-cofo-idb"] = fib_cofo_idb;
     }
 
     if(fib_cofo_table_id != nullptr)
     {
-        children["fib-cofo-table-id"] = fib_cofo_table_id;
+        _children["fib-cofo-table-id"] = fib_cofo_table_id;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::FibCofo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1328,7 +1328,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fib-cofo-idb-table-entries")
     {
@@ -1342,16 +1342,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fib_cofo_idb_table_entries != nullptr)
     {
-        children["fib-cofo-idb-table-entries"] = fib_cofo_idb_table_entries;
+        _children["fib-cofo-idb-table-entries"] = fib_cofo_idb_table_entries;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1418,33 +1418,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fib-cofo-idb-table-entry")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry>();
-        c->parent = this;
-        fib_cofo_idb_table_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry>();
+        ent_->parent = this;
+        fib_cofo_idb_table_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fib_cofo_idb_table_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fib_cofo_idb_table_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1581,7 +1581,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "object-base")
     {
@@ -1594,34 +1594,34 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoId
 
     if(child_yang_name == "bundle-member-info")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo>();
-        c->parent = this;
-        bundle_member_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo>();
+        ent_->parent = this;
+        bundle_member_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(object_base != nullptr)
     {
-        children["object-base"] = object_base;
+        _children["object-base"] = object_base;
     }
 
-    count = 0;
-    for (auto c : bundle_member_info.entities())
+    count_ = 0;
+    for (auto ent_ : bundle_member_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1834,16 +1834,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::ObjectBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1968,16 +1968,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntries::FibCofoIdbTableEntry::BundleMemberInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2090,7 +2090,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fib-cofo-table-id-entries")
     {
@@ -2113,21 +2113,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fib_cofo_table_id_entries != nullptr)
     {
-        children["fib-cofo-table-id-entries"] = fib_cofo_table_id_entries;
+        _children["fib-cofo-table-id-entries"] = fib_cofo_table_id_entries;
     }
 
     if(fib_cofo_table_id_summary != nullptr)
     {
-        children["fib-cofo-table-id-summary"] = fib_cofo_table_id_summary;
+        _children["fib-cofo-table-id-summary"] = fib_cofo_table_id_summary;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2194,33 +2194,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fib-cofo-table-id-entry")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry>();
-        c->parent = this;
-        fib_cofo_table_id_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry>();
+        ent_->parent = this;
+        fib_cofo_table_id_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fib_cofo_table_id_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fib_cofo_table_id_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2320,7 +2320,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "object-base")
     {
@@ -2334,16 +2334,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(object_base != nullptr)
     {
-        children["object-base"] = object_base;
+        _children["object-base"] = object_base;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2518,16 +2518,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEntries::FibCofoTableIdEntry::ObjectBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2672,33 +2672,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "per-sdr-stat")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat>();
-        c->parent = this;
-        per_sdr_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat>();
+        ent_->parent = this;
+        per_sdr_stat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : per_sdr_stat.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : per_sdr_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2839,16 +2839,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::FibCofo
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSummary::PerSdrStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2951,7 +2951,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "total")
     {
@@ -2974,21 +2974,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(total != nullptr)
     {
-        children["total"] = total;
+        _children["total"] = total;
     }
 
     if(protos != nullptr)
     {
-        children["protos"] = protos;
+        _children["protos"] = protos;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3051,7 +3051,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common-info")
     {
@@ -3074,21 +3074,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Total::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Total::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common_info != nullptr)
     {
-        children["common-info"] = common_info;
+        _children["common-info"] = common_info;
     }
 
     if(total_counters != nullptr)
     {
-        children["total-counters"] = total_counters;
+        _children["total-counters"] = total_counters;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Total::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3147,16 +3147,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::CommonInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Total::CommonInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Total::CommonInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Total::CommonInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Total::CommonInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3252,50 +3252,50 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "array-number-of-retry")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry>();
-        c->parent = this;
-        array_number_of_retry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry>();
+        ent_->parent = this;
+        array_number_of_retry.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "array-number-of-object")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject>();
-        c->parent = this;
-        array_number_of_object.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject>();
+        ent_->parent = this;
+        array_number_of_object.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : array_number_of_retry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : array_number_of_retry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : array_number_of_object.entities())
+    count_ = 0;
+    for (auto ent_ : array_number_of_object.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Total::TotalCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3378,16 +3378,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfRetry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3470,16 +3470,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumberOfObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3566,33 +3566,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Protos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "proto")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto>();
-        c->parent = this;
-        proto.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto>();
+        ent_->parent = this;
+        proto.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Protos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : proto.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : proto.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Protos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3661,7 +3661,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common-info")
     {
@@ -3684,21 +3684,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common_info != nullptr)
     {
-        children["common-info"] = common_info;
+        _children["common-info"] = common_info;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Protos::Proto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3767,16 +3767,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Protos::Proto::CommonInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3853,7 +3853,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base-object")
     {
@@ -3885,26 +3885,26 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(base_object != nullptr)
     {
-        children["base-object"] = base_object;
+        _children["base-object"] = base_object;
     }
 
     if(summary_counts != nullptr)
     {
-        children["summary-counts"] = summary_counts;
+        _children["summary-counts"] = summary_counts;
     }
 
     if(health != nullptr)
     {
-        children["health"] = health;
+        _children["health"] = health;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3963,16 +3963,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::BaseObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4068,50 +4068,50 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "array-number-of-retry")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry>();
-        c->parent = this;
-        array_number_of_retry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry>();
+        ent_->parent = this;
+        array_number_of_retry.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "array-number-of-object")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject>();
-        c->parent = this;
-        array_number_of_object.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject>();
+        ent_->parent = this;
+        array_number_of_object.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : array_number_of_retry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : array_number_of_retry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : array_number_of_object.entities())
+    count_ = 0;
+    for (auto ent_ : array_number_of_object.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4194,16 +4194,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfRetry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4286,16 +4286,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryCounts::ArrayNumberOfObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4374,16 +4374,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::Summary
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::Health::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4452,7 +4452,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::ObjectH
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::ObjectHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "obj-history-protos")
     {
@@ -4466,16 +4466,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::ObjectHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::ObjectHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(obj_history_protos != nullptr)
     {
-        children["obj-history-protos"] = obj_history_protos;
+        _children["obj-history-protos"] = obj_history_protos;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::ObjectHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4542,33 +4542,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::ObjectH
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "obj-history-proto")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto>();
-        c->parent = this;
-        obj_history_proto.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto>();
+        ent_->parent = this;
+        obj_history_proto.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : obj_history_proto.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : obj_history_proto.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4637,7 +4637,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::ObjectH
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base-object")
     {
@@ -4660,21 +4660,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProto
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(base_object != nullptr)
     {
-        children["base-object"] = base_object;
+        _children["base-object"] = base_object;
     }
 
     if(object_history != nullptr)
     {
-        children["object-history"] = object_history;
+        _children["object-history"] = object_history;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4743,16 +4743,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::ObjectH
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::BaseObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4821,16 +4821,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Global::ObjectH
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Global::ObjectHistory::ObjHistoryProtos::ObjHistoryProto::ObjectHistory_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4907,33 +4907,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::get_
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocol")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol>();
-        c->parent = this;
-        protocol.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol>();
+        ent_->parent = this;
+        protocol.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : protocol.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : protocol.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5042,7 +5042,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "issu-state")
     {
@@ -5155,71 +5155,71 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(issu_state != nullptr)
     {
-        children["issu-state"] = issu_state;
+        _children["issu-state"] = issu_state;
     }
 
     if(resource != nullptr)
     {
-        children["resource"] = resource;
+        _children["resource"] = resource;
     }
 
     if(fib_summaries != nullptr)
     {
-        children["fib-summaries"] = fib_summaries;
+        _children["fib-summaries"] = fib_summaries;
     }
 
     if(external_summary_all != nullptr)
     {
-        children["external-summary-all"] = external_summary_all;
+        _children["external-summary-all"] = external_summary_all;
     }
 
     if(frr_log != nullptr)
     {
-        children["frr-log"] = frr_log;
+        _children["frr-log"] = frr_log;
     }
 
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
     if(exact_routes != nullptr)
     {
-        children["exact-routes"] = exact_routes;
+        _children["exact-routes"] = exact_routes;
     }
 
     if(protocol_global != nullptr)
     {
-        children["protocol-global"] = protocol_global;
+        _children["protocol-global"] = protocol_global;
     }
 
     if(nh_ids != nullptr)
     {
-        children["nh-ids"] = nh_ids;
+        _children["nh-ids"] = nh_ids;
     }
 
     if(external_client_summaries != nullptr)
     {
-        children["external-client-summaries"] = external_client_summaries;
+        _children["external-client-summaries"] = external_client_summaries;
     }
 
     if(misc != nullptr)
     {
-        children["misc"] = misc;
+        _children["misc"] = misc;
     }
 
     if(local_label != nullptr)
     {
-        children["local-label"] = local_label;
+        _children["local-label"] = local_label;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5340,33 +5340,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::IssuState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::IssuState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fis-proto-state")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState>();
-        c->parent = this;
-        fis_proto_state.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState>();
+        ent_->parent = this;
+        fis_proto_state.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::IssuState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::IssuState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fis_proto_state.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fis_proto_state.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::IssuState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5587,16 +5587,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5807,7 +5807,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "resource-detail-info")
     {
@@ -5848,31 +5848,31 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(resource_detail_info != nullptr)
     {
-        children["resource-detail-info"] = resource_detail_info;
+        _children["resource-detail-info"] = resource_detail_info;
     }
 
     if(resource_hardware_ingress_info != nullptr)
     {
-        children["resource-hardware-ingress-info"] = resource_hardware_ingress_info;
+        _children["resource-hardware-ingress-info"] = resource_hardware_ingress_info;
     }
 
     if(resource_hardware_egress_info != nullptr)
     {
-        children["resource-hardware-egress-info"] = resource_hardware_egress_info;
+        _children["resource-hardware-egress-info"] = resource_hardware_egress_info;
     }
 
     if(resource_summary_info != nullptr)
     {
-        children["resource-summary-info"] = resource_summary_info;
+        _children["resource-summary-info"] = resource_summary_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Resource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5974,50 +5974,50 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sr-hwrsrc-mode")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrHwrsrcMode>();
-        c->parent = this;
-        sr_hwrsrc_mode.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrHwrsrcMode>();
+        ent_->parent = this;
+        sr_hwrsrc_mode.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "sr-shm-state")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState>();
-        c->parent = this;
-        sr_shm_state.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState>();
+        ent_->parent = this;
+        sr_shm_state.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sr_hwrsrc_mode.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sr_hwrsrc_mode.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : sr_shm_state.entities())
+    count_ = 0;
+    for (auto ent_ : sr_shm_state.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6136,16 +6136,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrHwrsrcMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrHwrsrcMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrHwrsrcMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrHwrsrcMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrHwrsrcMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6222,16 +6222,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo::SrShmState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6363,50 +6363,50 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sr-hwrsrc-mode")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrHwrsrcMode>();
-        c->parent = this;
-        sr_hwrsrc_mode.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrHwrsrcMode>();
+        ent_->parent = this;
+        sr_hwrsrc_mode.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "sr-shm-state")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState>();
-        c->parent = this;
-        sr_shm_state.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState>();
+        ent_->parent = this;
+        sr_shm_state.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sr_hwrsrc_mode.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sr_hwrsrc_mode.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : sr_shm_state.entities())
+    count_ = 0;
+    for (auto ent_ : sr_shm_state.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6525,16 +6525,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrHwrsrcMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrHwrsrcMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrHwrsrcMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrHwrsrcMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrHwrsrcMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6611,16 +6611,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIngressInfo::SrShmState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6752,50 +6752,50 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sr-hwrsrc-mode")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrHwrsrcMode>();
-        c->parent = this;
-        sr_hwrsrc_mode.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrHwrsrcMode>();
+        ent_->parent = this;
+        sr_hwrsrc_mode.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "sr-shm-state")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState>();
-        c->parent = this;
-        sr_shm_state.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState>();
+        ent_->parent = this;
+        sr_shm_state.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sr_hwrsrc_mode.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sr_hwrsrc_mode.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : sr_shm_state.entities())
+    count_ = 0;
+    for (auto ent_ : sr_shm_state.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6914,16 +6914,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrHwrsrcMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrHwrsrcMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrHwrsrcMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrHwrsrcMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrHwrsrcMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7000,16 +7000,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgressInfo::SrShmState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7141,50 +7141,50 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sr-hwrsrc-mode")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrHwrsrcMode>();
-        c->parent = this;
-        sr_hwrsrc_mode.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrHwrsrcMode>();
+        ent_->parent = this;
+        sr_hwrsrc_mode.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "sr-shm-state")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState>();
-        c->parent = this;
-        sr_shm_state.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState>();
+        ent_->parent = this;
+        sr_shm_state.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sr_hwrsrc_mode.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sr_hwrsrc_mode.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : sr_shm_state.entities())
+    count_ = 0;
+    for (auto ent_ : sr_shm_state.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7303,16 +7303,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrHwrsrcMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrHwrsrcMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrHwrsrcMode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrHwrsrcMode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrHwrsrcMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7389,16 +7389,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo::SrShmState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7495,33 +7495,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fib-summary")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary>();
-        c->parent = this;
-        fib_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary>();
+        ent_->parent = this;
+        fib_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fib_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fib_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FibSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7765,7 +7765,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exclusive-load-sharing-element")
     {
@@ -7815,36 +7815,36 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::Fib
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(exclusive_load_sharing_element != nullptr)
     {
-        children["exclusive-load-sharing-element"] = exclusive_load_sharing_element;
+        _children["exclusive-load-sharing-element"] = exclusive_load_sharing_element;
     }
 
     if(shared_load_sharing_element != nullptr)
     {
-        children["shared-load-sharing-element"] = shared_load_sharing_element;
+        _children["shared-load-sharing-element"] = shared_load_sharing_element;
     }
 
     if(cross_shared_load_sharing_element != nullptr)
     {
-        children["cross-shared-load-sharing-element"] = cross_shared_load_sharing_element;
+        _children["cross-shared-load-sharing-element"] = cross_shared_load_sharing_element;
     }
 
     if(encap_shared_load_sharing_element != nullptr)
     {
-        children["encap-shared-load-sharing-element"] = encap_shared_load_sharing_element;
+        _children["encap-shared-load-sharing-element"] = encap_shared_load_sharing_element;
     }
 
     if(prefix_masklen_distribution != nullptr)
     {
-        children["prefix-masklen-distribution"] = prefix_masklen_distribution;
+        _children["prefix-masklen-distribution"] = prefix_masklen_distribution;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8359,16 +8359,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::ExclusiveLoadSharingElement::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8563,16 +8563,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::SharedLoadSharingElement::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8767,16 +8767,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::CrossSharedLoadSharingElement::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8971,16 +8971,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::EncapSharedLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::EncapSharedLoadSharingElement::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::EncapSharedLoadSharingElement::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::EncapSharedLoadSharingElement::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::EncapSharedLoadSharingElement::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9169,67 +9169,67 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "unicast-prefixe")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::UnicastPrefixe>();
-        c->parent = this;
-        unicast_prefixe.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::UnicastPrefixe>();
+        ent_->parent = this;
+        unicast_prefixe.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "broadcast-prefixe")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::BroadcastPrefixe>();
-        c->parent = this;
-        broadcast_prefixe.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::BroadcastPrefixe>();
+        ent_->parent = this;
+        broadcast_prefixe.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "multicast-prefix")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::MulticastPrefix>();
-        c->parent = this;
-        multicast_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::MulticastPrefix>();
+        ent_->parent = this;
+        multicast_prefix.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : unicast_prefixe.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : unicast_prefixe.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : broadcast_prefixe.entities())
+    count_ = 0;
+    for (auto ent_ : broadcast_prefixe.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : multicast_prefix.entities())
+    count_ = 0;
+    for (auto ent_ : multicast_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9292,16 +9292,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::UnicastPrefixe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::UnicastPrefixe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::UnicastPrefixe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::UnicastPrefixe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::UnicastPrefixe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9384,16 +9384,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::BroadcastPrefixe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::BroadcastPrefixe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::BroadcastPrefixe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::BroadcastPrefixe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::BroadcastPrefixe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9476,16 +9476,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::MulticastPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::MulticastPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::MulticastPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::MulticastPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::PrefixMasklenDistribution::MulticastPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9569,7 +9569,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sesa-pl-sum")
     {
@@ -9583,16 +9583,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sesa_pl_sum != nullptr)
     {
-        children["sesa-pl-sum"] = sesa_pl_sum;
+        _children["sesa-pl-sum"] = sesa_pl_sum;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9677,33 +9677,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sep-num-ecd-pl-per-interest")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::SepNumEcdPlPerInterest>();
-        c->parent = this;
-        sep_num_ecd_pl_per_interest.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::SepNumEcdPlPerInterest>();
+        ent_->parent = this;
+        sep_num_ecd_pl_per_interest.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sep_num_ecd_pl_per_interest.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sep_num_ecd_pl_per_interest.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9782,16 +9782,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::SepNumEcdPlPerInterest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::SepNumEcdPlPerInterest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::SepNumEcdPlPerInterest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::SepNumEcdPlPerInterest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::SepNumEcdPlPerInterest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9860,7 +9860,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frr-interfaces")
     {
@@ -9874,16 +9874,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(frr_interfaces != nullptr)
     {
-        children["frr-interfaces"] = frr_interfaces;
+        _children["frr-interfaces"] = frr_interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FrrLog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9950,33 +9950,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frr-interface")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface>();
-        c->parent = this;
-        frr_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface>();
+        ent_->parent = this;
+        frr_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : frr_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : frr_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10041,7 +10041,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "logs")
     {
@@ -10055,16 +10055,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterf
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(logs != nullptr)
     {
-        children["logs"] = logs;
+        _children["logs"] = logs;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10141,33 +10141,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "log")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log>();
-        c->parent = this;
-        log.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log>();
+        ent_->parent = this;
+        log.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : log.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : log.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10252,7 +10252,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frr-timestamp")
     {
@@ -10266,16 +10266,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterf
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(frr_timestamp != nullptr)
     {
-        children["frr-timestamp"] = frr_timestamp;
+        _children["frr-timestamp"] = frr_timestamp;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10398,16 +10398,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::FrrTimestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10494,33 +10494,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10613,7 +10613,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-detail-hardware-egress")
     {
@@ -10690,51 +10690,51 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nh_info_detail_hardware_egress != nullptr)
     {
-        children["nh-info-detail-hardware-egress"] = nh_info_detail_hardware_egress;
+        _children["nh-info-detail-hardware-egress"] = nh_info_detail_hardware_egress;
     }
 
     if(ip_prefix_details != nullptr)
     {
-        children["ip-prefix-details"] = ip_prefix_details;
+        _children["ip-prefix-details"] = ip_prefix_details;
     }
 
     if(nh_info_detail != nullptr)
     {
-        children["nh-info-detail"] = nh_info_detail;
+        _children["nh-info-detail"] = nh_info_detail;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(interface_infos != nullptr)
     {
-        children["interface-infos"] = interface_infos;
+        _children["interface-infos"] = interface_infos;
     }
 
     if(ip_prefix_briefs != nullptr)
     {
-        children["ip-prefix-briefs"] = ip_prefix_briefs;
+        _children["ip-prefix-briefs"] = ip_prefix_briefs;
     }
 
     if(nh_info_detail_hardware_ingress != nullptr)
     {
-        children["nh-info-detail-hardware-ingress"] = nh_info_detail_hardware_ingress;
+        _children["nh-info-detail-hardware-ingress"] = nh_info_detail_hardware_ingress;
     }
 
     if(nh_info_brief != nullptr)
     {
-        children["nh-info-brief"] = nh_info_brief;
+        _children["nh-info-brief"] = nh_info_brief;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10811,7 +10811,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-special-detail-hardware-egress")
     {
@@ -10843,26 +10843,26 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nh_info_special_detail_hardware_egress != nullptr)
     {
-        children["nh-info-special-detail-hardware-egress"] = nh_info_special_detail_hardware_egress;
+        _children["nh-info-special-detail-hardware-egress"] = nh_info_special_detail_hardware_egress;
     }
 
     if(nh_info_local_detail_hardware_egresses != nullptr)
     {
-        children["nh-info-local-detail-hardware-egresses"] = nh_info_local_detail_hardware_egresses;
+        _children["nh-info-local-detail-hardware-egresses"] = nh_info_local_detail_hardware_egresses;
     }
 
     if(nh_info_remote_detail_hardware_egresses != nullptr)
     {
-        children["nh-info-remote-detail-hardware-egresses"] = nh_info_remote_detail_hardware_egresses;
+        _children["nh-info-remote-detail-hardware-egresses"] = nh_info_remote_detail_hardware_egresses;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10933,7 +10933,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-special-null-detail-hardware-egress")
     {
@@ -10974,31 +10974,31 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nh_info_special_null_detail_hardware_egress != nullptr)
     {
-        children["nh-info-special-null-detail-hardware-egress"] = nh_info_special_null_detail_hardware_egress;
+        _children["nh-info-special-null-detail-hardware-egress"] = nh_info_special_null_detail_hardware_egress;
     }
 
     if(nh_info_special_punt_detail_hardware_egress != nullptr)
     {
-        children["nh-info-special-punt-detail-hardware-egress"] = nh_info_special_punt_detail_hardware_egress;
+        _children["nh-info-special-punt-detail-hardware-egress"] = nh_info_special_punt_detail_hardware_egress;
     }
 
     if(nh_info_special_discard_detail_hardware_egress != nullptr)
     {
-        children["nh-info-special-discard-detail-hardware-egress"] = nh_info_special_discard_detail_hardware_egress;
+        _children["nh-info-special-discard-detail-hardware-egress"] = nh_info_special_discard_detail_hardware_egress;
     }
 
     if(nh_info_special_drop_detail_hardware_egress != nullptr)
     {
-        children["nh-info-special-drop-detail-hardware-egress"] = nh_info_special_drop_detail_hardware_egress;
+        _children["nh-info-special-drop-detail-hardware-egress"] = nh_info_special_drop_detail_hardware_egress;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11250,7 +11250,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "si-pwhe")
     {
@@ -11273,21 +11273,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(si_pwhe != nullptr)
     {
-        children["si-pwhe"] = si_pwhe;
+        _children["si-pwhe"] = si_pwhe;
     }
 
     if(nh_info_extension != nullptr)
     {
-        children["nh-info-extension"] = nh_info_extension;
+        _children["nh-info-extension"] = nh_info_extension;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11836,16 +11836,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::SiPwhe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::SiPwhe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::SiPwhe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::SiPwhe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::SiPwhe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11972,33 +11972,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-extension-detail")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
-        c->parent = this;
-        nh_info_extension_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
+        ent_->parent = this;
+        nh_info_extension_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nh_info_extension_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nh_info_extension_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12061,7 +12061,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-extension-base")
     {
@@ -12084,21 +12084,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nh_info_extension_base != nullptr)
     {
-        children["nh-info-extension-base"] = nh_info_extension_base;
+        _children["nh-info-extension-base"] = nh_info_extension_base;
     }
 
     if(nh_info_extension_detail != nullptr)
     {
-        children["nh-info-extension-detail"] = nh_info_extension_detail;
+        _children["nh-info-extension-detail"] = nh_info_extension_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12166,7 +12166,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "object-base")
     {
@@ -12180,16 +12180,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(object_base != nullptr)
     {
-        children["object-base"] = object_base;
+        _children["object-base"] = object_base;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12284,16 +12284,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12407,7 +12407,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snecd-nhr")
     {
@@ -12421,16 +12421,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(snecd_nhr != nullptr)
     {
-        children["snecd-nhr"] = snecd_nhr;
+        _children["snecd-nhr"] = snecd_nhr;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12507,16 +12507,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialNullDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12798,7 +12798,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "si-pwhe")
     {
@@ -12821,21 +12821,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(si_pwhe != nullptr)
     {
-        children["si-pwhe"] = si_pwhe;
+        _children["si-pwhe"] = si_pwhe;
     }
 
     if(nh_info_extension != nullptr)
     {
-        children["nh-info-extension"] = nh_info_extension;
+        _children["nh-info-extension"] = nh_info_extension;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13384,16 +13384,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::SiPwhe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::SiPwhe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::SiPwhe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::SiPwhe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::SiPwhe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13520,33 +13520,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-extension-detail")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
-        c->parent = this;
-        nh_info_extension_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
+        ent_->parent = this;
+        nh_info_extension_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nh_info_extension_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nh_info_extension_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13609,7 +13609,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-extension-base")
     {
@@ -13632,21 +13632,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nh_info_extension_base != nullptr)
     {
-        children["nh-info-extension-base"] = nh_info_extension_base;
+        _children["nh-info-extension-base"] = nh_info_extension_base;
     }
 
     if(nh_info_extension_detail != nullptr)
     {
-        children["nh-info-extension-detail"] = nh_info_extension_detail;
+        _children["nh-info-extension-detail"] = nh_info_extension_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13714,7 +13714,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "object-base")
     {
@@ -13728,16 +13728,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(object_base != nullptr)
     {
-        children["object-base"] = object_base;
+        _children["object-base"] = object_base;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13832,16 +13832,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13955,7 +13955,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snecd-nhr")
     {
@@ -13969,16 +13969,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(snecd_nhr != nullptr)
     {
-        children["snecd-nhr"] = snecd_nhr;
+        _children["snecd-nhr"] = snecd_nhr;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14055,16 +14055,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialPuntDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14346,7 +14346,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "si-pwhe")
     {
@@ -14369,21 +14369,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(si_pwhe != nullptr)
     {
-        children["si-pwhe"] = si_pwhe;
+        _children["si-pwhe"] = si_pwhe;
     }
 
     if(nh_info_extension != nullptr)
     {
-        children["nh-info-extension"] = nh_info_extension;
+        _children["nh-info-extension"] = nh_info_extension;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14932,16 +14932,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::SiPwhe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::SiPwhe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::SiPwhe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::SiPwhe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::SiPwhe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15068,33 +15068,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-extension-detail")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
-        c->parent = this;
-        nh_info_extension_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
+        ent_->parent = this;
+        nh_info_extension_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nh_info_extension_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nh_info_extension_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15157,7 +15157,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-extension-base")
     {
@@ -15180,21 +15180,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nh_info_extension_base != nullptr)
     {
-        children["nh-info-extension-base"] = nh_info_extension_base;
+        _children["nh-info-extension-base"] = nh_info_extension_base;
     }
 
     if(nh_info_extension_detail != nullptr)
     {
-        children["nh-info-extension-detail"] = nh_info_extension_detail;
+        _children["nh-info-extension-detail"] = nh_info_extension_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15262,7 +15262,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "object-base")
     {
@@ -15276,16 +15276,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(object_base != nullptr)
     {
-        children["object-base"] = object_base;
+        _children["object-base"] = object_base;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15380,16 +15380,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15503,7 +15503,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snecd-nhr")
     {
@@ -15517,16 +15517,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(snecd_nhr != nullptr)
     {
-        children["snecd-nhr"] = snecd_nhr;
+        _children["snecd-nhr"] = snecd_nhr;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15603,16 +15603,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDiscardDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15894,7 +15894,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "si-pwhe")
     {
@@ -15917,21 +15917,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(si_pwhe != nullptr)
     {
-        children["si-pwhe"] = si_pwhe;
+        _children["si-pwhe"] = si_pwhe;
     }
 
     if(nh_info_extension != nullptr)
     {
-        children["nh-info-extension"] = nh_info_extension;
+        _children["nh-info-extension"] = nh_info_extension;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16480,16 +16480,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::SiPwhe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::SiPwhe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::SiPwhe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::SiPwhe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::SiPwhe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16616,33 +16616,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-extension-detail")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
-        c->parent = this;
-        nh_info_extension_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
+        ent_->parent = this;
+        nh_info_extension_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nh_info_extension_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nh_info_extension_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16705,7 +16705,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-extension-base")
     {
@@ -16728,21 +16728,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nh_info_extension_base != nullptr)
     {
-        children["nh-info-extension-base"] = nh_info_extension_base;
+        _children["nh-info-extension-base"] = nh_info_extension_base;
     }
 
     if(nh_info_extension_detail != nullptr)
     {
-        children["nh-info-extension-detail"] = nh_info_extension_detail;
+        _children["nh-info-extension-detail"] = nh_info_extension_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16810,7 +16810,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "object-base")
     {
@@ -16824,16 +16824,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(object_base != nullptr)
     {
-        children["object-base"] = object_base;
+        _children["object-base"] = object_base;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16928,16 +16928,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17051,7 +17051,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snecd-nhr")
     {
@@ -17065,16 +17065,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(snecd_nhr != nullptr)
     {
-        children["snecd-nhr"] = snecd_nhr;
+        _children["snecd-nhr"] = snecd_nhr;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17151,16 +17151,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoSpecialDetailHardwareEgress::NhInfoSpecialDropDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17257,33 +17257,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-local-detail-hardware-egress")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress>();
-        c->parent = this;
-        nh_info_local_detail_hardware_egress.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress>();
+        ent_->parent = this;
+        nh_info_local_detail_hardware_egress.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nh_info_local_detail_hardware_egress.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nh_info_local_detail_hardware_egress.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17551,7 +17551,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "si-pwhe")
     {
@@ -17574,21 +17574,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(si_pwhe != nullptr)
     {
-        children["si-pwhe"] = si_pwhe;
+        _children["si-pwhe"] = si_pwhe;
     }
 
     if(nh_info_extension != nullptr)
     {
-        children["nh-info-extension"] = nh_info_extension;
+        _children["nh-info-extension"] = nh_info_extension;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18177,16 +18177,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::SiPwhe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::SiPwhe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::SiPwhe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::SiPwhe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::SiPwhe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18313,33 +18313,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-extension-detail")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
-        c->parent = this;
-        nh_info_extension_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
+        ent_->parent = this;
+        nh_info_extension_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nh_info_extension_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nh_info_extension_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18402,7 +18402,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-extension-base")
     {
@@ -18425,21 +18425,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nh_info_extension_base != nullptr)
     {
-        children["nh-info-extension-base"] = nh_info_extension_base;
+        _children["nh-info-extension-base"] = nh_info_extension_base;
     }
 
     if(nh_info_extension_detail != nullptr)
     {
-        children["nh-info-extension-detail"] = nh_info_extension_detail;
+        _children["nh-info-extension-detail"] = nh_info_extension_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18507,7 +18507,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "object-base")
     {
@@ -18521,16 +18521,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(object_base != nullptr)
     {
-        children["object-base"] = object_base;
+        _children["object-base"] = object_base;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18625,16 +18625,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18748,7 +18748,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snecd-nhr")
     {
@@ -18762,16 +18762,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(snecd_nhr != nullptr)
     {
-        children["snecd-nhr"] = snecd_nhr;
+        _children["snecd-nhr"] = snecd_nhr;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18848,16 +18848,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoLocalDetailHardwareEgresses::NhInfoLocalDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18954,33 +18954,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-remote-detail-hardware-egress")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress>();
-        c->parent = this;
-        nh_info_remote_detail_hardware_egress.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress>();
+        ent_->parent = this;
+        nh_info_remote_detail_hardware_egress.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nh_info_remote_detail_hardware_egress.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nh_info_remote_detail_hardware_egress.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19248,7 +19248,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "si-pwhe")
     {
@@ -19271,21 +19271,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(si_pwhe != nullptr)
     {
-        children["si-pwhe"] = si_pwhe;
+        _children["si-pwhe"] = si_pwhe;
     }
 
     if(nh_info_extension != nullptr)
     {
-        children["nh-info-extension"] = nh_info_extension;
+        _children["nh-info-extension"] = nh_info_extension;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19874,16 +19874,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::SiPwhe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::SiPwhe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::SiPwhe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::SiPwhe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::SiPwhe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20010,33 +20010,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-extension-detail")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
-        c->parent = this;
-        nh_info_extension_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail>();
+        ent_->parent = this;
+        nh_info_extension_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nh_info_extension_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nh_info_extension_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20099,7 +20099,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nh-info-extension-base")
     {
@@ -20122,21 +20122,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nh_info_extension_base != nullptr)
     {
-        children["nh-info-extension-base"] = nh_info_extension_base;
+        _children["nh-info-extension-base"] = nh_info_extension_base;
     }
 
     if(nh_info_extension_detail != nullptr)
     {
-        children["nh-info-extension-detail"] = nh_info_extension_detail;
+        _children["nh-info-extension-detail"] = nh_info_extension_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20204,7 +20204,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "object-base")
     {
@@ -20218,16 +20218,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(object_base != nullptr)
     {
-        children["object-base"] = object_base;
+        _children["object-base"] = object_base;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20322,16 +20322,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionBase::ObjectBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20445,7 +20445,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snecd-nhr")
     {
@@ -20459,16 +20459,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(snecd_nhr != nullptr)
     {
-        children["snecd-nhr"] = snecd_nhr;
+        _children["snecd-nhr"] = snecd_nhr;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20545,16 +20545,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareEgress::NhInfoRemoteDetailHardwareEgresses::NhInfoRemoteDetailHardwareEgress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20651,33 +20651,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-prefix-detail")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail>();
-        c->parent = this;
-        ip_prefix_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail>();
+        ent_->parent = this;
+        ip_prefix_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ip_prefix_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ip_prefix_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20916,7 +20916,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail-fib-entry-information")
     {
@@ -20938,39 +20938,39 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
 
     if(child_yang_name == "extension-object")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject>();
-        c->parent = this;
-        extension_object.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::ExtensionObject>();
+        ent_->parent = this;
+        extension_object.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail_fib_entry_information != nullptr)
     {
-        children["detail-fib-entry-information"] = detail_fib_entry_information;
+        _children["detail-fib-entry-information"] = detail_fib_entry_information;
     }
 
     if(fib_entry_path != nullptr)
     {
-        children["fib-entry-path"] = fib_entry_path;
+        _children["fib-entry-path"] = fib_entry_path;
     }
 
-    count = 0;
-    for (auto c : extension_object.entities())
+    count_ = 0;
+    for (auto ent_ : extension_object.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21596,7 +21596,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "loadshare-information")
     {
@@ -21610,16 +21610,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(loadshare_information != nullptr)
     {
-        children["loadshare-information"] = loadshare_information;
+        _children["loadshare-information"] = loadshare_information;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22113,7 +22113,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "load-informtion-internal-data")
     {
@@ -22127,16 +22127,16 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(load_informtion_internal_data != nullptr)
     {
-        children["load-informtion-internal-data"] = load_informtion_internal_data;
+        _children["load-informtion-internal-data"] = load_informtion_internal_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22439,135 +22439,135 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sanity-flag")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::SanityFlag>();
-        c->parent = this;
-        sanity_flag.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::SanityFlag>();
+        ent_->parent = this;
+        sanity_flag.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "interface-handle")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::InterfaceHandle>();
-        c->parent = this;
-        interface_handle.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::InterfaceHandle>();
+        ent_->parent = this;
+        interface_handle.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "weights-of-path")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::WeightsOfPath>();
-        c->parent = this;
-        weights_of_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::WeightsOfPath>();
+        ent_->parent = this;
+        weights_of_path.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "adjacency-address")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress>();
-        c->parent = this;
-        adjacency_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress>();
+        ent_->parent = this;
+        adjacency_address.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "pbts-class-is-fallback-mapped")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped>();
-        c->parent = this;
-        pbts_class_is_fallback_mapped.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped>();
+        ent_->parent = this;
+        pbts_class_is_fallback_mapped.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "pbts-fallback-to-drop")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop>();
-        c->parent = this;
-        pbts_fallback_to_drop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop>();
+        ent_->parent = this;
+        pbts_fallback_to_drop.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "tunnel-is-forward-class")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass>();
-        c->parent = this;
-        tunnel_is_forward_class.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass>();
+        ent_->parent = this;
+        tunnel_is_forward_class.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sanity_flag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sanity_flag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : interface_handle.entities())
+    count_ = 0;
+    for (auto ent_ : interface_handle.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : weights_of_path.entities())
+    count_ = 0;
+    for (auto ent_ : weights_of_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : adjacency_address.entities())
+    count_ = 0;
+    for (auto ent_ : adjacency_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : pbts_class_is_fallback_mapped.entities())
+    count_ = 0;
+    for (auto ent_ : pbts_class_is_fallback_mapped.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : pbts_fallback_to_drop.entities())
+    count_ = 0;
+    for (auto ent_ : pbts_fallback_to_drop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : tunnel_is_forward_class.entities())
+    count_ = 0;
+    for (auto ent_ : tunnel_is_forward_class.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22776,16 +22776,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::SanityFlag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::SanityFlag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::SanityFlag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::SanityFlag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::SanityFlag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22854,16 +22854,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::InterfaceHandle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::InterfaceHandle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::InterfaceHandle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::InterfaceHandle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::InterfaceHandle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22932,16 +22932,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::WeightsOfPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::WeightsOfPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::WeightsOfPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::WeightsOfPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::WeightsOfPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23010,16 +23010,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::AdjacencyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23088,16 +23088,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsClassIsFallbackMapped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23166,16 +23166,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::PbtsFallbackToDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23244,16 +23244,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::TunnelIsForwardClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23330,33 +23330,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fib-sh-tbl-path")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath>();
-        c->parent = this;
-        fib_sh_tbl_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath>();
+        ent_->parent = this;
+        fib_sh_tbl_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fib_sh_tbl_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fib_sh_tbl_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23508,7 +23508,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "more-detail-about-path")
     {
@@ -23531,21 +23531,21 @@ std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPref
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(more_detail_about_path != nullptr)
     {
-        children["more-detail-about-path"] = more_detail_about_path;
+        _children["more-detail-about-path"] = more_detail_about_path;
     }
 
     if(mpls_information_for_path != nullptr)
     {
-        children["mpls-information-for-path"] = mpls_information_for_path;
+        _children["mpls-information-for-path"] = mpls_information_for_path;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23947,50 +23947,50 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spd-ipencap")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap>();
-        c->parent = this;
-        spd_ipencap.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap>();
+        ent_->parent = this;
+        spd_ipencap.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "next-next-hop")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::NextNextHop>();
-        c->parent = this;
-        next_next_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::NextNextHop>();
+        ent_->parent = this;
+        next_next_hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : spd_ipencap.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : spd_ipencap.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : next_next_hop.entities())
+    count_ = 0;
+    for (auto ent_ : next_next_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24353,33 +24353,33 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-encap-hdr")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr>();
-        c->parent = this;
-        ip_encap_hdr.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr>();
+        ent_->parent = this;
+        ip_encap_hdr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ip_encap_hdr.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ip_encap_hdr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24536,16 +24536,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::SpdIpencap::IpEncapHdr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24642,16 +24642,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::NextNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::NextNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::NextNextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::NextNextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MoreDetailAboutPath::NextNextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24775,50 +24775,50 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "recursive-lbl-stack")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::RecursiveLblStack>();
-        c->parent = this;
-        recursive_lbl_stack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::RecursiveLblStack>();
+        ent_->parent = this;
+        recursive_lbl_stack.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "igp-label-stack-array")
     {
-        auto c = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray>();
-        c->parent = this;
-        igp_label_stack_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray>();
+        ent_->parent = this;
+        igp_label_stack_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : recursive_lbl_stack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : recursive_lbl_stack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : igp_label_stack_array.entities())
+    count_ = 0;
+    for (auto ent_ : igp_label_stack_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24917,16 +24917,16 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
 }
 
-std::shared_ptr<Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::RecursiveLblStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::RecursiveLblStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::RecursiveLblStack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::RecursiveLblStack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::RecursiveLblStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

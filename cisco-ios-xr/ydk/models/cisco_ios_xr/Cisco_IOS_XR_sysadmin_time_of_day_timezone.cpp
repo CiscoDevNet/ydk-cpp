@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Clock::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "timezone")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Clock::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Clock::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Clock::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(timezone != nullptr)
     {
-        children["timezone"] = timezone;
+        _children["timezone"] = timezone;
     }
 
-    return children;
+    return _children;
 }
 
 void Clock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Clock::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Clock::clone_ptr() const
+std::shared_ptr<ydk::Entity> Clock::clone_ptr() const
 {
     return std::make_shared<Clock>();
 }
@@ -170,16 +170,16 @@ std::vector<std::pair<std::string, LeafData> > Clock::Timezone::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Clock::Timezone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Clock::Timezone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Clock::Timezone::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Clock::Timezone::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Clock::Timezone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -262,7 +262,7 @@ std::vector<std::pair<std::string, LeafData> > Trace::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "timezone_config")
     {
@@ -285,21 +285,21 @@ std::shared_ptr<Entity> Trace::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Trace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Trace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(timezone_config != nullptr)
     {
-        children["timezone_config"] = timezone_config;
+        _children["timezone_config"] = timezone_config;
     }
 
     if(timezone_notify != nullptr)
     {
-        children["timezone_notify"] = timezone_notify;
+        _children["timezone_notify"] = timezone_notify;
     }
 
-    return children;
+    return _children;
 }
 
 void Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -310,7 +310,7 @@ void Trace::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Trace::clone_ptr() const
+std::shared_ptr<ydk::Entity> Trace::clone_ptr() const
 {
     return std::make_shared<Trace>();
 }
@@ -398,33 +398,33 @@ std::vector<std::pair<std::string, LeafData> > Trace::TimezoneConfig::get_name_l
 
 }
 
-std::shared_ptr<Entity> Trace::TimezoneConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Trace::TimezoneConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace")
     {
-        auto c = std::make_shared<Trace::TimezoneConfig::Trace_>();
-        c->parent = this;
-        trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<Trace::TimezoneConfig::Trace_>();
+        ent_->parent = this;
+        trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Trace::TimezoneConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Trace::TimezoneConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -503,33 +503,33 @@ std::vector<std::pair<std::string, LeafData> > Trace::TimezoneConfig::Trace_::ge
 
 }
 
-std::shared_ptr<Entity> Trace::TimezoneConfig::Trace_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Trace::TimezoneConfig::Trace_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Trace::TimezoneConfig::Trace_::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Trace::TimezoneConfig::Trace_::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneConfig::Trace_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Trace::TimezoneConfig::Trace_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Trace::TimezoneConfig::Trace_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -611,33 +611,33 @@ std::vector<std::pair<std::string, LeafData> > Trace::TimezoneConfig::Trace_::Lo
 
 }
 
-std::shared_ptr<Entity> Trace::TimezoneConfig::Trace_::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Trace::TimezoneConfig::Trace_::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-options")
     {
-        auto c = std::make_shared<Trace::TimezoneConfig::Trace_::Location::AllOptions>();
-        c->parent = this;
-        all_options.append(c);
-        return c;
+        auto ent_ = std::make_shared<Trace::TimezoneConfig::Trace_::Location::AllOptions>();
+        ent_->parent = this;
+        all_options.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneConfig::Trace_::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Trace::TimezoneConfig::Trace_::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_options.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_options.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Trace::TimezoneConfig::Trace_::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -719,33 +719,33 @@ std::vector<std::pair<std::string, LeafData> > Trace::TimezoneConfig::Trace_::Lo
 
 }
 
-std::shared_ptr<Entity> Trace::TimezoneConfig::Trace_::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Trace::TimezoneConfig::Trace_::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace-blocks")
     {
-        auto c = std::make_shared<Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks>();
-        c->parent = this;
-        trace_blocks.append(c);
-        return c;
+        auto ent_ = std::make_shared<Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks>();
+        ent_->parent = this;
+        trace_blocks.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneConfig::Trace_::Location::AllOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Trace::TimezoneConfig::Trace_::Location::AllOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace_blocks.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace_blocks.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Trace::TimezoneConfig::Trace_::Location::AllOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -814,16 +814,16 @@ std::vector<std::pair<std::string, LeafData> > Trace::TimezoneConfig::Trace_::Lo
 
 }
 
-std::shared_ptr<Entity> Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Trace::TimezoneConfig::Trace_::Location::AllOptions::TraceBlocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -907,33 +907,33 @@ std::vector<std::pair<std::string, LeafData> > Trace::TimezoneNotify::get_name_l
 
 }
 
-std::shared_ptr<Entity> Trace::TimezoneNotify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Trace::TimezoneNotify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace")
     {
-        auto c = std::make_shared<Trace::TimezoneNotify::Trace_>();
-        c->parent = this;
-        trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<Trace::TimezoneNotify::Trace_>();
+        ent_->parent = this;
+        trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneNotify::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Trace::TimezoneNotify::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Trace::TimezoneNotify::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1012,33 +1012,33 @@ std::vector<std::pair<std::string, LeafData> > Trace::TimezoneNotify::Trace_::ge
 
 }
 
-std::shared_ptr<Entity> Trace::TimezoneNotify::Trace_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Trace::TimezoneNotify::Trace_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<Trace::TimezoneNotify::Trace_::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<Trace::TimezoneNotify::Trace_::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneNotify::Trace_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Trace::TimezoneNotify::Trace_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Trace::TimezoneNotify::Trace_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1120,33 +1120,33 @@ std::vector<std::pair<std::string, LeafData> > Trace::TimezoneNotify::Trace_::Lo
 
 }
 
-std::shared_ptr<Entity> Trace::TimezoneNotify::Trace_::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Trace::TimezoneNotify::Trace_::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-options")
     {
-        auto c = std::make_shared<Trace::TimezoneNotify::Trace_::Location::AllOptions>();
-        c->parent = this;
-        all_options.append(c);
-        return c;
+        auto ent_ = std::make_shared<Trace::TimezoneNotify::Trace_::Location::AllOptions>();
+        ent_->parent = this;
+        all_options.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneNotify::Trace_::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Trace::TimezoneNotify::Trace_::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_options.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_options.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Trace::TimezoneNotify::Trace_::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1228,33 +1228,33 @@ std::vector<std::pair<std::string, LeafData> > Trace::TimezoneNotify::Trace_::Lo
 
 }
 
-std::shared_ptr<Entity> Trace::TimezoneNotify::Trace_::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Trace::TimezoneNotify::Trace_::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace-blocks")
     {
-        auto c = std::make_shared<Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks>();
-        c->parent = this;
-        trace_blocks.append(c);
-        return c;
+        auto ent_ = std::make_shared<Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks>();
+        ent_->parent = this;
+        trace_blocks.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneNotify::Trace_::Location::AllOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Trace::TimezoneNotify::Trace_::Location::AllOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace_blocks.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace_blocks.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Trace::TimezoneNotify::Trace_::Location::AllOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1323,16 +1323,16 @@ std::vector<std::pair<std::string, LeafData> > Trace::TimezoneNotify::Trace_::Lo
 
 }
 
-std::shared_ptr<Entity> Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Trace::TimezoneNotify::Trace_::Location::AllOptions::TraceBlocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

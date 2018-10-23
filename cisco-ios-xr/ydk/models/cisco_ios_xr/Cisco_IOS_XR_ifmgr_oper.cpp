@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> InterfaceDampening::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void InterfaceDampening::set_filter(const std::string & value_path, YFilter yfil
 {
 }
 
-std::shared_ptr<Entity> InterfaceDampening::clone_ptr() const
+std::shared_ptr<ydk::Entity> InterfaceDampening::clone_ptr() const
 {
     return std::make_shared<InterfaceDampening>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::g
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<InterfaceDampening::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<InterfaceDampening::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -290,7 +290,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::I
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "if-dampening")
     {
@@ -304,16 +304,16 @@ std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(if_dampening != nullptr)
     {
-        children["if-dampening"] = if_dampening;
+        _children["if-dampening"] = if_dampening;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -426,7 +426,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::I
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Interfaces::Interface::IfDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-dampening")
     {
@@ -439,34 +439,34 @@ std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::
 
     if(child_yang_name == "capsulation")
     {
-        auto c = std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation>();
-        c->parent = this;
-        capsulation.append(c);
-        return c;
+        auto ent_ = std::make_shared<InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation>();
+        ent_->parent = this;
+        capsulation.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_dampening != nullptr)
     {
-        children["interface-dampening"] = interface_dampening;
+        _children["interface-dampening"] = interface_dampening;
     }
 
-    count = 0;
-    for (auto c : capsulation.entities())
+    count_ = 0;
+    for (auto ent_ : capsulation.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Interfaces::Interface::IfDampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -621,16 +621,16 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::I
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -744,7 +744,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::I
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "capsulation-dampening")
     {
@@ -758,16 +758,16 @@ std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(capsulation_dampening != nullptr)
     {
-        children["capsulation-dampening"] = capsulation_dampening;
+        _children["capsulation-dampening"] = capsulation_dampening;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -852,16 +852,16 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Interfaces::I
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::CapsulationDampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -985,33 +985,33 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::get_na
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<InterfaceDampening::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<InterfaceDampening::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1083,7 +1083,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "show")
     {
@@ -1097,16 +1097,16 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(show != nullptr)
     {
-        children["show"] = show;
+        _children["show"] = show;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1175,7 +1175,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::Node::Show::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dampening")
     {
@@ -1189,16 +1189,16 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::Node::Show::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dampening != nullptr)
     {
-        children["dampening"] = dampening;
+        _children["dampening"] = dampening;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::Node::Show::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1261,7 +1261,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::Node::Show::Dampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "if-handles")
     {
@@ -1284,21 +1284,21 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(if_handles != nullptr)
     {
-        children["if-handles"] = if_handles;
+        _children["if-handles"] = if_handles;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1365,33 +1365,33 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "if-handle")
     {
-        auto c = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle>();
-        c->parent = this;
-        if_handle.append(c);
-        return c;
+        auto ent_ = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle>();
+        ent_->parent = this;
+        if_handle.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : if_handle.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : if_handle.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1499,7 +1499,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-dampening")
     {
@@ -1512,34 +1512,34 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHand
 
     if(child_yang_name == "capsulation")
     {
-        auto c = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation>();
-        c->parent = this;
-        capsulation.append(c);
-        return c;
+        auto ent_ = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation>();
+        ent_->parent = this;
+        capsulation.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_dampening != nullptr)
     {
-        children["interface-dampening"] = interface_dampening;
+        _children["interface-dampening"] = interface_dampening;
     }
 
-    count = 0;
-    for (auto c : capsulation.entities())
+    count_ = 0;
+    for (auto ent_ : capsulation.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1704,16 +1704,16 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1827,7 +1827,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "capsulation-dampening")
     {
@@ -1841,16 +1841,16 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHand
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(capsulation_dampening != nullptr)
     {
-        children["capsulation-dampening"] = capsulation_dampening;
+        _children["capsulation-dampening"] = capsulation_dampening;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1935,16 +1935,16 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::CapsulationDampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2061,33 +2061,33 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2195,7 +2195,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-dampening")
     {
@@ -2208,34 +2208,34 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interf
 
     if(child_yang_name == "capsulation")
     {
-        auto c = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation>();
-        c->parent = this;
-        capsulation.append(c);
-        return c;
+        auto ent_ = std::make_shared<InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation>();
+        ent_->parent = this;
+        capsulation.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_dampening != nullptr)
     {
-        children["interface-dampening"] = interface_dampening;
+        _children["interface-dampening"] = interface_dampening;
     }
 
-    count = 0;
-    for (auto c : capsulation.entities())
+    count_ = 0;
+    for (auto ent_ : capsulation.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2400,16 +2400,16 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::InterfaceDampening_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2523,7 +2523,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "capsulation-dampening")
     {
@@ -2537,16 +2537,16 @@ std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interf
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(capsulation_dampening != nullptr)
     {
-        children["capsulation-dampening"] = capsulation_dampening;
+        _children["capsulation-dampening"] = capsulation_dampening;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2631,16 +2631,16 @@ std::vector<std::pair<std::string, LeafData> > InterfaceDampening::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::CapsulationDampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2749,7 +2749,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::get_name_lea
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data-nodes")
     {
@@ -2763,16 +2763,16 @@ std::shared_ptr<Entity> InterfaceProperties::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data_nodes != nullptr)
     {
-        children["data-nodes"] = data_nodes;
+        _children["data-nodes"] = data_nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceProperties::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2783,7 +2783,7 @@ void InterfaceProperties::set_filter(const std::string & value_path, YFilter yfi
 {
 }
 
-std::shared_ptr<Entity> InterfaceProperties::clone_ptr() const
+std::shared_ptr<ydk::Entity> InterfaceProperties::clone_ptr() const
 {
     return std::make_shared<InterfaceProperties>();
 }
@@ -2871,33 +2871,33 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::g
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::DataNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::DataNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data-node")
     {
-        auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode>();
-        c->parent = this;
-        data_node.append(c);
-        return c;
+        auto ent_ = std::make_shared<InterfaceProperties::DataNodes::DataNode>();
+        ent_->parent = this;
+        data_node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::DataNodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : data_node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : data_node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceProperties::DataNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2977,7 +2977,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::DataNodes::DataNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "locationviews")
     {
@@ -3009,26 +3009,26 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::DataNodes::DataNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(locationviews != nullptr)
     {
-        children["locationviews"] = locationviews;
+        _children["locationviews"] = locationviews;
     }
 
     if(pq_node_locations != nullptr)
     {
-        children["pq-node-locations"] = pq_node_locations;
+        _children["pq-node-locations"] = pq_node_locations;
     }
 
     if(system_view != nullptr)
     {
-        children["system-view"] = system_view;
+        _children["system-view"] = system_view;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceProperties::DataNodes::DataNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3105,33 +3105,33 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::Locationviews::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::DataNodes::DataNode::Locationviews::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "locationview")
     {
-        auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview>();
-        c->parent = this;
-        locationview.append(c);
-        return c;
+        auto ent_ = std::make_shared<InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview>();
+        ent_->parent = this;
+        locationview.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::Locationviews::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::DataNodes::DataNode::Locationviews::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : locationview.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : locationview.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceProperties::DataNodes::DataNode::Locationviews::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3196,7 +3196,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -3210,16 +3210,16 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::Locationviews:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3296,33 +3296,33 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3434,16 +3434,16 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3650,33 +3650,33 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pq-node-location")
     {
-        auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation>();
-        c->parent = this;
-        pq_node_location.append(c);
-        return c;
+        auto ent_ = std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation>();
+        ent_->parent = this;
+        pq_node_location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pq_node_location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pq_node_location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceProperties::DataNodes::DataNode::PqNodeLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3741,7 +3741,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -3755,16 +3755,16 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocation
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3841,33 +3841,33 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3979,16 +3979,16 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4187,7 +4187,7 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::SystemView::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::DataNodes::DataNode::SystemView::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interfaces")
     {
@@ -4201,16 +4201,16 @@ std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::SystemView::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::SystemView::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::DataNodes::DataNode::SystemView::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceProperties::DataNodes::DataNode::SystemView::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4277,33 +4277,33 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4415,16 +4415,16 @@ std::vector<std::pair<std::string, LeafData> > InterfaceProperties::DataNodes::D
 
 }
 
-std::shared_ptr<Entity> InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

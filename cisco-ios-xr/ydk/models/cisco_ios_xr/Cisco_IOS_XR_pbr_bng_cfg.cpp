@@ -57,7 +57,7 @@ std::vector<std::pair<std::string, LeafData> > BngPbr::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> BngPbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BngPbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "http-enrichment")
     {
@@ -71,16 +71,16 @@ std::shared_ptr<Entity> BngPbr::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BngPbr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BngPbr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(http_enrichment != nullptr)
     {
-        children["http-enrichment"] = http_enrichment;
+        _children["http-enrichment"] = http_enrichment;
     }
 
-    return children;
+    return _children;
 }
 
 void BngPbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -101,7 +101,7 @@ void BngPbr::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> BngPbr::clone_ptr() const
+std::shared_ptr<ydk::Entity> BngPbr::clone_ptr() const
 {
     return std::make_shared<BngPbr>();
 }
@@ -180,7 +180,7 @@ std::vector<std::pair<std::string, LeafData> > BngPbr::HttpEnrichment::get_name_
 
 }
 
-std::shared_ptr<Entity> BngPbr::HttpEnrichment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BngPbr::HttpEnrichment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "parameters")
     {
@@ -194,16 +194,16 @@ std::shared_ptr<Entity> BngPbr::HttpEnrichment::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BngPbr::HttpEnrichment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BngPbr::HttpEnrichment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(parameters != nullptr)
     {
-        children["parameters"] = parameters;
+        _children["parameters"] = parameters;
     }
 
-    return children;
+    return _children;
 }
 
 void BngPbr::HttpEnrichment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -281,16 +281,16 @@ std::vector<std::pair<std::string, LeafData> > BngPbr::HttpEnrichment::Parameter
 
 }
 
-std::shared_ptr<Entity> BngPbr::HttpEnrichment::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BngPbr::HttpEnrichment::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BngPbr::HttpEnrichment::Parameters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BngPbr::HttpEnrichment::Parameters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BngPbr::HttpEnrichment::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

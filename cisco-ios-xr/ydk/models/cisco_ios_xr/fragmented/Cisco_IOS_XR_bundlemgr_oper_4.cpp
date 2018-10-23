@@ -60,16 +60,16 @@ std::vector<std::pair<std::string, LeafData> > BundlesAdjacency::Nodes::Node::Br
 
 }
 
-std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -166,33 +166,33 @@ std::vector<std::pair<std::string, LeafData> > BundlesAdjacency::Nodes::Node::Bu
 
 }
 
-std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BundlesAdjacency::Nodes::Node::Bundles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bundle")
     {
-        auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle>();
-        c->parent = this;
-        bundle.append(c);
-        return c;
+        auto ent_ = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle>();
+        ent_->parent = this;
+        bundle.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BundlesAdjacency::Nodes::Node::Bundles::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bundle.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bundle.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void BundlesAdjacency::Nodes::Node::Bundles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -257,7 +257,7 @@ std::vector<std::pair<std::string, LeafData> > BundlesAdjacency::Nodes::Node::Bu
 
 }
 
-std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bundle-info")
     {
@@ -271,16 +271,16 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bundle_info != nullptr)
     {
-        children["bundle-info"] = bundle_info;
+        _children["bundle-info"] = bundle_info;
     }
 
-    return children;
+    return _children;
 }
 
 void BundlesAdjacency::Nodes::Node::Bundles::Bundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -388,7 +388,7 @@ std::vector<std::pair<std::string, LeafData> > BundlesAdjacency::Nodes::Node::Bu
 
 }
 
-std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "brief")
     {
@@ -410,56 +410,56 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleIn
 
     if(child_yang_name == "member")
     {
-        auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member>();
-        c->parent = this;
-        member.append(c);
-        return c;
+        auto ent_ = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member>();
+        ent_->parent = this;
+        member.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "sub-interface")
     {
-        auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface>();
-        c->parent = this;
-        sub_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface>();
+        ent_->parent = this;
+        sub_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(brief != nullptr)
     {
-        children["brief"] = brief;
+        _children["brief"] = brief;
     }
 
     if(load_balance_data != nullptr)
     {
-        children["load-balance-data"] = load_balance_data;
+        _children["load-balance-data"] = load_balance_data;
     }
 
-    count = 0;
-    for (auto c : member.entities())
+    count_ = 0;
+    for (auto ent_ : member.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : sub_interface.entities())
+    count_ = 0;
+    for (auto ent_ : sub_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -572,33 +572,33 @@ std::vector<std::pair<std::string, LeafData> > BundlesAdjacency::Nodes::Node::Bu
 
 }
 
-std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sub-interface")
     {
-        auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface>();
-        c->parent = this;
-        sub_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface>();
+        ent_->parent = this;
+        sub_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sub_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sub_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -702,7 +702,7 @@ std::vector<std::pair<std::string, LeafData> > BundlesAdjacency::Nodes::Node::Bu
 
 }
 
-std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "load-balance-data")
     {
@@ -716,16 +716,16 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleIn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(load_balance_data != nullptr)
     {
-        children["load-balance-data"] = load_balance_data;
+        _children["load-balance-data"] = load_balance_data;
     }
 
-    return children;
+    return _children;
 }
 
 void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -802,16 +802,16 @@ std::vector<std::pair<std::string, LeafData> > BundlesAdjacency::Nodes::Node::Bu
 
 }
 
-std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -908,16 +908,16 @@ std::vector<std::pair<std::string, LeafData> > BundlesAdjacency::Nodes::Node::Bu
 
 }
 
-std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1018,16 +1018,16 @@ std::vector<std::pair<std::string, LeafData> > BundlesAdjacency::Nodes::Node::Bu
 
 }
 
-std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1131,7 +1131,7 @@ std::vector<std::pair<std::string, LeafData> > BundlesAdjacency::Nodes::Node::Bu
 
 }
 
-std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "load-balance-data")
     {
@@ -1145,16 +1145,16 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleIn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(load_balance_data != nullptr)
     {
-        children["load-balance-data"] = load_balance_data;
+        _children["load-balance-data"] = load_balance_data;
     }
 
-    return children;
+    return _children;
 }
 
 void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1231,16 +1231,16 @@ std::vector<std::pair<std::string, LeafData> > BundlesAdjacency::Nodes::Node::Bu
 
 }
 
-std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

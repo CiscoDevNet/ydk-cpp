@@ -88,7 +88,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::get_name_l
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccsFlapObjects")
     {
@@ -183,61 +183,61 @@ std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ccsflapobjects != nullptr)
     {
-        children["ccsFlapObjects"] = ccsflapobjects;
+        _children["ccsFlapObjects"] = ccsflapobjects;
     }
 
     if(ccsflaptable != nullptr)
     {
-        children["ccsFlapTable"] = ccsflaptable;
+        _children["ccsFlapTable"] = ccsflaptable;
     }
 
     if(ccscmflaptable != nullptr)
     {
-        children["ccsCmFlapTable"] = ccscmflaptable;
+        _children["ccsCmFlapTable"] = ccscmflaptable;
     }
 
     if(ccsspectrumrequesttable != nullptr)
     {
-        children["ccsSpectrumRequestTable"] = ccsspectrumrequesttable;
+        _children["ccsSpectrumRequestTable"] = ccsspectrumrequesttable;
     }
 
     if(ccsspectrumdatatable != nullptr)
     {
-        children["ccsSpectrumDataTable"] = ccsspectrumdatatable;
+        _children["ccsSpectrumDataTable"] = ccsspectrumdatatable;
     }
 
     if(ccssnrrequesttable != nullptr)
     {
-        children["ccsSNRRequestTable"] = ccssnrrequesttable;
+        _children["ccsSNRRequestTable"] = ccssnrrequesttable;
     }
 
     if(ccsupinspecgrouptable != nullptr)
     {
-        children["ccsUpInSpecGroupTable"] = ccsupinspecgrouptable;
+        _children["ccsUpInSpecGroupTable"] = ccsupinspecgrouptable;
     }
 
     if(ccsupinfibernodetable != nullptr)
     {
-        children["ccsUpInFiberNodeTable"] = ccsupinfibernodetable;
+        _children["ccsUpInFiberNodeTable"] = ccsupinfibernodetable;
     }
 
     if(ccsupspecmgmttable != nullptr)
     {
-        children["ccsUpSpecMgmtTable"] = ccsupspecmgmttable;
+        _children["ccsUpSpecMgmtTable"] = ccsupspecmgmttable;
     }
 
     if(ccsspecgroupfreqtable != nullptr)
     {
-        children["ccsSpecGroupFreqTable"] = ccsspecgroupfreqtable;
+        _children["ccsSpecGroupFreqTable"] = ccsspecgroupfreqtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -248,7 +248,7 @@ void CISCOCABLESPECTRUMMIB::set_filter(const std::string & value_path, YFilter y
 {
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::clone_ptr() const
 {
     return std::make_shared<CISCOCABLESPECTRUMMIB>();
 }
@@ -360,16 +360,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsFlapObj
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsFlapObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsFlapObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsFlapObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsFlapObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsFlapObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -533,33 +533,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsFlapTab
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsFlapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsFlapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccsFlapEntry")
     {
-        auto c = std::make_shared<CISCOCABLESPECTRUMMIB::CcsFlapTable::CcsFlapEntry>();
-        c->parent = this;
-        ccsflapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLESPECTRUMMIB::CcsFlapTable::CcsFlapEntry>();
+        ent_->parent = this;
+        ccsflapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsFlapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsFlapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccsflapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccsflapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsFlapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -702,16 +702,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsFlapTab
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsFlapTable::CcsFlapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsFlapTable::CcsFlapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsFlapTable::CcsFlapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsFlapTable::CcsFlapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsFlapTable::CcsFlapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -985,33 +985,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsCmFlapT
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsCmFlapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsCmFlapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccsCmFlapEntry")
     {
-        auto c = std::make_shared<CISCOCABLESPECTRUMMIB::CcsCmFlapTable::CcsCmFlapEntry>();
-        c->parent = this;
-        ccscmflapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLESPECTRUMMIB::CcsCmFlapTable::CcsCmFlapEntry>();
+        ent_->parent = this;
+        ccscmflapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsCmFlapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsCmFlapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccscmflapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccscmflapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsCmFlapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1132,16 +1132,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsCmFlapT
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsCmFlapTable::CcsCmFlapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsCmFlapTable::CcsCmFlapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsCmFlapTable::CcsCmFlapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsCmFlapTable::CcsCmFlapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsCmFlapTable::CcsCmFlapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1355,33 +1355,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsSpectru
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsSpectrumRequestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsSpectrumRequestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccsSpectrumRequestEntry")
     {
-        auto c = std::make_shared<CISCOCABLESPECTRUMMIB::CcsSpectrumRequestTable::CcsSpectrumRequestEntry>();
-        c->parent = this;
-        ccsspectrumrequestentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLESPECTRUMMIB::CcsSpectrumRequestTable::CcsSpectrumRequestEntry>();
+        ent_->parent = this;
+        ccsspectrumrequestentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsSpectrumRequestTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsSpectrumRequestTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccsspectrumrequestentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccsspectrumrequestentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsSpectrumRequestTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1488,16 +1488,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsSpectru
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsSpectrumRequestTable::CcsSpectrumRequestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsSpectrumRequestTable::CcsSpectrumRequestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsSpectrumRequestTable::CcsSpectrumRequestEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsSpectrumRequestTable::CcsSpectrumRequestEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsSpectrumRequestTable::CcsSpectrumRequestEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1681,33 +1681,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsSpectru
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsSpectrumDataTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsSpectrumDataTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccsSpectrumDataEntry")
     {
-        auto c = std::make_shared<CISCOCABLESPECTRUMMIB::CcsSpectrumDataTable::CcsSpectrumDataEntry>();
-        c->parent = this;
-        ccsspectrumdataentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLESPECTRUMMIB::CcsSpectrumDataTable::CcsSpectrumDataEntry>();
+        ent_->parent = this;
+        ccsspectrumdataentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsSpectrumDataTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsSpectrumDataTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccsspectrumdataentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccsspectrumdataentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsSpectrumDataTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1783,16 +1783,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsSpectru
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsSpectrumDataTable::CcsSpectrumDataEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsSpectrumDataTable::CcsSpectrumDataEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsSpectrumDataTable::CcsSpectrumDataEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsSpectrumDataTable::CcsSpectrumDataEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsSpectrumDataTable::CcsSpectrumDataEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1896,33 +1896,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsSNRRequ
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsSNRRequestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsSNRRequestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccsSNRRequestEntry")
     {
-        auto c = std::make_shared<CISCOCABLESPECTRUMMIB::CcsSNRRequestTable::CcsSNRRequestEntry>();
-        c->parent = this;
-        ccssnrrequestentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLESPECTRUMMIB::CcsSNRRequestTable::CcsSNRRequestEntry>();
+        ent_->parent = this;
+        ccssnrrequestentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsSNRRequestTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsSNRRequestTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccssnrrequestentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccssnrrequestentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsSNRRequestTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2017,16 +2017,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsSNRRequ
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsSNRRequestTable::CcsSNRRequestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsSNRRequestTable::CcsSNRRequestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsSNRRequestTable::CcsSNRRequestEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsSNRRequestTable::CcsSNRRequestEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsSNRRequestTable::CcsSNRRequestEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2180,33 +2180,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsUpInSpe
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsUpInSpecGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsUpInSpecGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccsUpInSpecGroupEntry")
     {
-        auto c = std::make_shared<CISCOCABLESPECTRUMMIB::CcsUpInSpecGroupTable::CcsUpInSpecGroupEntry>();
-        c->parent = this;
-        ccsupinspecgroupentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLESPECTRUMMIB::CcsUpInSpecGroupTable::CcsUpInSpecGroupEntry>();
+        ent_->parent = this;
+        ccsupinspecgroupentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsUpInSpecGroupTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsUpInSpecGroupTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccsupinspecgroupentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccsupinspecgroupentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsUpInSpecGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2286,16 +2286,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsUpInSpe
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsUpInSpecGroupTable::CcsUpInSpecGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsUpInSpecGroupTable::CcsUpInSpecGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsUpInSpecGroupTable::CcsUpInSpecGroupEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsUpInSpecGroupTable::CcsUpInSpecGroupEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsUpInSpecGroupTable::CcsUpInSpecGroupEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2409,33 +2409,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsUpInFib
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsUpInFiberNodeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsUpInFiberNodeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccsUpInFiberNodeEntry")
     {
-        auto c = std::make_shared<CISCOCABLESPECTRUMMIB::CcsUpInFiberNodeTable::CcsUpInFiberNodeEntry>();
-        c->parent = this;
-        ccsupinfibernodeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLESPECTRUMMIB::CcsUpInFiberNodeTable::CcsUpInFiberNodeEntry>();
+        ent_->parent = this;
+        ccsupinfibernodeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsUpInFiberNodeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsUpInFiberNodeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccsupinfibernodeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccsupinfibernodeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsUpInFiberNodeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2515,16 +2515,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsUpInFib
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsUpInFiberNodeTable::CcsUpInFiberNodeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsUpInFiberNodeTable::CcsUpInFiberNodeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsUpInFiberNodeTable::CcsUpInFiberNodeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsUpInFiberNodeTable::CcsUpInFiberNodeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsUpInFiberNodeTable::CcsUpInFiberNodeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2638,33 +2638,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsUpSpecM
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccsUpSpecMgmtEntry")
     {
-        auto c = std::make_shared<CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::CcsUpSpecMgmtEntry>();
-        c->parent = this;
-        ccsupspecmgmtentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::CcsUpSpecMgmtEntry>();
+        ent_->parent = this;
+        ccsupspecmgmtentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccsupspecmgmtentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccsupspecmgmtentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2831,16 +2831,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsUpSpecM
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::CcsUpSpecMgmtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::CcsUpSpecMgmtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::CcsUpSpecMgmtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::CcsUpSpecMgmtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsUpSpecMgmtTable::CcsUpSpecMgmtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3172,33 +3172,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsSpecGro
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ccsSpecGroupFreqEntry")
     {
-        auto c = std::make_shared<CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::CcsSpecGroupFreqEntry>();
-        c->parent = this;
-        ccsspecgroupfreqentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::CcsSpecGroupFreqEntry>();
+        ent_->parent = this;
+        ccsspecgroupfreqentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ccsspecgroupfreqentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ccsspecgroupfreqentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3290,16 +3290,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCABLESPECTRUMMIB::CcsSpecGro
 
 }
 
-std::shared_ptr<Entity> CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::CcsSpecGroupFreqEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::CcsSpecGroupFreqEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::CcsSpecGroupFreqEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::CcsSpecGroupFreqEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCABLESPECTRUMMIB::CcsSpecGroupFreqTable::CcsSpecGroupFreqEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

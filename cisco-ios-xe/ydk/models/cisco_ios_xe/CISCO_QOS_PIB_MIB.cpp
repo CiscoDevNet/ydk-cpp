@@ -120,7 +120,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosDevicePibIncarnationTable")
     {
@@ -287,101 +287,101 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(qosdevicepibincarnationtable != nullptr)
     {
-        children["qosDevicePibIncarnationTable"] = qosdevicepibincarnationtable;
+        _children["qosDevicePibIncarnationTable"] = qosdevicepibincarnationtable;
     }
 
     if(qosdeviceattributetable != nullptr)
     {
-        children["qosDeviceAttributeTable"] = qosdeviceattributetable;
+        _children["qosDeviceAttributeTable"] = qosdeviceattributetable;
     }
 
     if(qosinterfacetypetable != nullptr)
     {
-        children["qosInterfaceTypeTable"] = qosinterfacetypetable;
+        _children["qosInterfaceTypeTable"] = qosinterfacetypetable;
     }
 
     if(qosdiffservmappingtable != nullptr)
     {
-        children["qosDiffServMappingTable"] = qosdiffservmappingtable;
+        _children["qosDiffServMappingTable"] = qosdiffservmappingtable;
     }
 
     if(qoscostodscptable != nullptr)
     {
-        children["qosCosToDscpTable"] = qoscostodscptable;
+        _children["qosCosToDscpTable"] = qoscostodscptable;
     }
 
     if(qosunmatchedpolicytable != nullptr)
     {
-        children["qosUnmatchedPolicyTable"] = qosunmatchedpolicytable;
+        _children["qosUnmatchedPolicyTable"] = qosunmatchedpolicytable;
     }
 
     if(qospolicertable != nullptr)
     {
-        children["qosPolicerTable"] = qospolicertable;
+        _children["qosPolicerTable"] = qospolicertable;
     }
 
     if(qosaggregatetable != nullptr)
     {
-        children["qosAggregateTable"] = qosaggregatetable;
+        _children["qosAggregateTable"] = qosaggregatetable;
     }
 
     if(qosmacclassificationtable != nullptr)
     {
-        children["qosMacClassificationTable"] = qosmacclassificationtable;
+        _children["qosMacClassificationTable"] = qosmacclassificationtable;
     }
 
     if(qosipacetable != nullptr)
     {
-        children["qosIpAceTable"] = qosipacetable;
+        _children["qosIpAceTable"] = qosipacetable;
     }
 
     if(qosipacldefinitiontable != nullptr)
     {
-        children["qosIpAclDefinitionTable"] = qosipacldefinitiontable;
+        _children["qosIpAclDefinitionTable"] = qosipacldefinitiontable;
     }
 
     if(qosipaclactiontable != nullptr)
     {
-        children["qosIpAclActionTable"] = qosipaclactiontable;
+        _children["qosIpAclActionTable"] = qosipaclactiontable;
     }
 
     if(qosifschedulingpreferencestable != nullptr)
     {
-        children["qosIfSchedulingPreferencesTable"] = qosifschedulingpreferencestable;
+        _children["qosIfSchedulingPreferencesTable"] = qosifschedulingpreferencestable;
     }
 
     if(qosifdroppreferencetable != nullptr)
     {
-        children["qosIfDropPreferenceTable"] = qosifdroppreferencetable;
+        _children["qosIfDropPreferenceTable"] = qosifdroppreferencetable;
     }
 
     if(qosifdscpassignmenttable != nullptr)
     {
-        children["qosIfDscpAssignmentTable"] = qosifdscpassignmenttable;
+        _children["qosIfDscpAssignmentTable"] = qosifdscpassignmenttable;
     }
 
     if(qosifredtable != nullptr)
     {
-        children["qosIfRedTable"] = qosifredtable;
+        _children["qosIfRedTable"] = qosifredtable;
     }
 
     if(qosiftaildroptable != nullptr)
     {
-        children["qosIfTailDropTable"] = qosiftaildroptable;
+        _children["qosIfTailDropTable"] = qosiftaildroptable;
     }
 
     if(qosifweightstable != nullptr)
     {
-        children["qosIfWeightsTable"] = qosifweightstable;
+        _children["qosIfWeightsTable"] = qosifweightstable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -392,7 +392,7 @@ void CISCOQOSPIBMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::clone_ptr() const
 {
     return std::make_shared<CISCOQOSPIBMIB>();
 }
@@ -480,33 +480,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosDevicePibIncar
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosDevicePibIncarnationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosDevicePibIncarnationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosDevicePibIncarnationEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosDevicePibIncarnationTable::QosDevicePibIncarnationEntry>();
-        c->parent = this;
-        qosdevicepibincarnationentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosDevicePibIncarnationTable::QosDevicePibIncarnationEntry>();
+        ent_->parent = this;
+        qosdevicepibincarnationentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosDevicePibIncarnationTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosDevicePibIncarnationTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosdevicepibincarnationentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosdevicepibincarnationentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosDevicePibIncarnationTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -585,16 +585,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosDevicePibIncar
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosDevicePibIncarnationTable::QosDevicePibIncarnationEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosDevicePibIncarnationTable::QosDevicePibIncarnationEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosDevicePibIncarnationTable::QosDevicePibIncarnationEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosDevicePibIncarnationTable::QosDevicePibIncarnationEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosDevicePibIncarnationTable::QosDevicePibIncarnationEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -708,33 +708,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosDeviceAttribut
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosDeviceAttributeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosDeviceAttributeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosDeviceAttributeEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosDeviceAttributeTable::QosDeviceAttributeEntry>();
-        c->parent = this;
-        qosdeviceattributeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosDeviceAttributeTable::QosDeviceAttributeEntry>();
+        ent_->parent = this;
+        qosdeviceattributeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosDeviceAttributeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosDeviceAttributeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosdeviceattributeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosdeviceattributeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosDeviceAttributeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -821,16 +821,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosDeviceAttribut
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosDeviceAttributeTable::QosDeviceAttributeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosDeviceAttributeTable::QosDeviceAttributeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosDeviceAttributeTable::QosDeviceAttributeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosDeviceAttributeTable::QosDeviceAttributeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosDeviceAttributeTable::QosDeviceAttributeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -962,33 +962,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosInterfaceTypeT
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosInterfaceTypeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosInterfaceTypeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosInterfaceTypeEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosInterfaceTypeTable::QosInterfaceTypeEntry>();
-        c->parent = this;
-        qosinterfacetypeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosInterfaceTypeTable::QosInterfaceTypeEntry>();
+        ent_->parent = this;
+        qosinterfacetypeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosInterfaceTypeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosInterfaceTypeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosinterfacetypeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosinterfacetypeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosInterfaceTypeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1067,16 +1067,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosInterfaceTypeT
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosInterfaceTypeTable::QosInterfaceTypeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosInterfaceTypeTable::QosInterfaceTypeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosInterfaceTypeTable::QosInterfaceTypeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosInterfaceTypeTable::QosInterfaceTypeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosInterfaceTypeTable::QosInterfaceTypeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1188,33 +1188,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosDiffServMappin
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosDiffServMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosDiffServMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosDiffServMappingEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosDiffServMappingTable::QosDiffServMappingEntry>();
-        c->parent = this;
-        qosdiffservmappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosDiffServMappingTable::QosDiffServMappingEntry>();
+        ent_->parent = this;
+        qosdiffservmappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosDiffServMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosDiffServMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosdiffservmappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosdiffservmappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosDiffServMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1289,16 +1289,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosDiffServMappin
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosDiffServMappingTable::QosDiffServMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosDiffServMappingTable::QosDiffServMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosDiffServMappingTable::QosDiffServMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosDiffServMappingTable::QosDiffServMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosDiffServMappingTable::QosDiffServMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1402,33 +1402,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosCosToDscpTable
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosCosToDscpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosCosToDscpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosCosToDscpEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosCosToDscpTable::QosCosToDscpEntry>();
-        c->parent = this;
-        qoscostodscpentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosCosToDscpTable::QosCosToDscpEntry>();
+        ent_->parent = this;
+        qoscostodscpentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosCosToDscpTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosCosToDscpTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qoscostodscpentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qoscostodscpentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosCosToDscpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1499,16 +1499,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosCosToDscpTable
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosCosToDscpTable::QosCosToDscpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosCosToDscpTable::QosCosToDscpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosCosToDscpTable::QosCosToDscpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosCosToDscpTable::QosCosToDscpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosCosToDscpTable::QosCosToDscpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1602,33 +1602,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosUnmatchedPolic
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosUnmatchedPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosUnmatchedPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosUnmatchedPolicyEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry>();
-        c->parent = this;
-        qosunmatchedpolicyentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry>();
+        ent_->parent = this;
+        qosunmatchedpolicyentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosUnmatchedPolicyTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosUnmatchedPolicyTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosunmatchedpolicyentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosunmatchedpolicyentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosUnmatchedPolicyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1719,16 +1719,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosUnmatchedPolic
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosUnmatchedPolicyTable::QosUnmatchedPolicyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1872,33 +1872,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosPolicerTable::
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosPolicerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosPolicerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosPolicerEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosPolicerTable::QosPolicerEntry>();
-        c->parent = this;
-        qospolicerentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosPolicerTable::QosPolicerEntry>();
+        ent_->parent = this;
+        qospolicerentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosPolicerTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosPolicerTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qospolicerentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qospolicerentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosPolicerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1981,16 +1981,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosPolicerTable::
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosPolicerTable::QosPolicerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosPolicerTable::QosPolicerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosPolicerTable::QosPolicerEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosPolicerTable::QosPolicerEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosPolicerTable::QosPolicerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2114,33 +2114,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosAggregateTable
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosAggregateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosAggregateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosAggregateEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosAggregateTable::QosAggregateEntry>();
-        c->parent = this;
-        qosaggregateentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosAggregateTable::QosAggregateEntry>();
+        ent_->parent = this;
+        qosaggregateentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosAggregateTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosAggregateTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosaggregateentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosaggregateentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosAggregateTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2211,16 +2211,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosAggregateTable
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosAggregateTable::QosAggregateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosAggregateTable::QosAggregateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosAggregateTable::QosAggregateEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosAggregateTable::QosAggregateEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosAggregateTable::QosAggregateEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2314,33 +2314,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosMacClassificat
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosMacClassificationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosMacClassificationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosMacClassificationEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosMacClassificationTable::QosMacClassificationEntry>();
-        c->parent = this;
-        qosmacclassificationentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosMacClassificationTable::QosMacClassificationEntry>();
+        ent_->parent = this;
+        qosmacclassificationentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosMacClassificationTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosMacClassificationTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosmacclassificationentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosmacclassificationentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosMacClassificationTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2419,16 +2419,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosMacClassificat
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosMacClassificationTable::QosMacClassificationEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosMacClassificationTable::QosMacClassificationEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosMacClassificationTable::QosMacClassificationEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosMacClassificationTable::QosMacClassificationEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosMacClassificationTable::QosMacClassificationEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2542,33 +2542,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIpAceTable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIpAceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIpAceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosIpAceEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosIpAceTable::QosIpAceEntry>();
-        c->parent = this;
-        qosipaceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosIpAceTable::QosIpAceEntry>();
+        ent_->parent = this;
+        qosipaceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIpAceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIpAceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosipaceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosipaceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIpAceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2683,16 +2683,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIpAceTable::Qo
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIpAceTable::QosIpAceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIpAceTable::QosIpAceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIpAceTable::QosIpAceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIpAceTable::QosIpAceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIpAceTable::QosIpAceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2896,33 +2896,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIpAclDefinitio
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIpAclDefinitionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIpAclDefinitionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosIpAclDefinitionEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosIpAclDefinitionTable::QosIpAclDefinitionEntry>();
-        c->parent = this;
-        qosipacldefinitionentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosIpAclDefinitionTable::QosIpAclDefinitionEntry>();
+        ent_->parent = this;
+        qosipacldefinitionentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIpAclDefinitionTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIpAclDefinitionTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosipacldefinitionentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosipacldefinitionentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIpAclDefinitionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3001,16 +3001,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIpAclDefinitio
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIpAclDefinitionTable::QosIpAclDefinitionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIpAclDefinitionTable::QosIpAclDefinitionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIpAclDefinitionTable::QosIpAclDefinitionEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIpAclDefinitionTable::QosIpAclDefinitionEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIpAclDefinitionTable::QosIpAclDefinitionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3124,33 +3124,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIpAclActionTab
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIpAclActionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIpAclActionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosIpAclActionEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosIpAclActionTable::QosIpAclActionEntry>();
-        c->parent = this;
-        qosipaclactionentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosIpAclActionTable::QosIpAclActionEntry>();
+        ent_->parent = this;
+        qosipaclactionentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIpAclActionTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIpAclActionTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosipaclactionentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosipaclactionentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIpAclActionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3249,16 +3249,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIpAclActionTab
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIpAclActionTable::QosIpAclActionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIpAclActionTable::QosIpAclActionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIpAclActionTable::QosIpAclActionEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIpAclActionTable::QosIpAclActionEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIpAclActionTable::QosIpAclActionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3422,33 +3422,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIfSchedulingPr
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosIfSchedulingPreferenceEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::QosIfSchedulingPreferenceEntry>();
-        c->parent = this;
-        qosifschedulingpreferenceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::QosIfSchedulingPreferenceEntry>();
+        ent_->parent = this;
+        qosifschedulingpreferenceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosifschedulingpreferenceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosifschedulingpreferenceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3531,16 +3531,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIfSchedulingPr
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::QosIfSchedulingPreferenceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::QosIfSchedulingPreferenceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::QosIfSchedulingPreferenceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::QosIfSchedulingPreferenceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIfSchedulingPreferencesTable::QosIfSchedulingPreferenceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3664,33 +3664,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIfDropPreferen
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIfDropPreferenceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIfDropPreferenceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosIfDropPreferenceEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosIfDropPreferenceTable::QosIfDropPreferenceEntry>();
-        c->parent = this;
-        qosifdroppreferenceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosIfDropPreferenceTable::QosIfDropPreferenceEntry>();
+        ent_->parent = this;
+        qosifdroppreferenceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIfDropPreferenceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIfDropPreferenceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosifdroppreferenceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosifdroppreferenceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIfDropPreferenceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3769,16 +3769,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIfDropPreferen
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIfDropPreferenceTable::QosIfDropPreferenceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIfDropPreferenceTable::QosIfDropPreferenceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIfDropPreferenceTable::QosIfDropPreferenceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIfDropPreferenceTable::QosIfDropPreferenceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIfDropPreferenceTable::QosIfDropPreferenceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3892,33 +3892,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIfDscpAssignme
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIfDscpAssignmentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIfDscpAssignmentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosIfDscpAssignmentEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosIfDscpAssignmentTable::QosIfDscpAssignmentEntry>();
-        c->parent = this;
-        qosifdscpassignmententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosIfDscpAssignmentTable::QosIfDscpAssignmentEntry>();
+        ent_->parent = this;
+        qosifdscpassignmententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIfDscpAssignmentTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIfDscpAssignmentTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosifdscpassignmententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosifdscpassignmententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIfDscpAssignmentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4005,16 +4005,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIfDscpAssignme
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIfDscpAssignmentTable::QosIfDscpAssignmentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIfDscpAssignmentTable::QosIfDscpAssignmentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIfDscpAssignmentTable::QosIfDscpAssignmentEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIfDscpAssignmentTable::QosIfDscpAssignmentEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIfDscpAssignmentTable::QosIfDscpAssignmentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4148,33 +4148,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIfRedTable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIfRedTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIfRedTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosIfRedEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosIfRedTable::QosIfRedEntry>();
-        c->parent = this;
-        qosifredentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosIfRedTable::QosIfRedEntry>();
+        ent_->parent = this;
+        qosifredentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIfRedTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIfRedTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosifredentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosifredentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIfRedTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4261,16 +4261,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIfRedTable::Qo
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIfRedTable::QosIfRedEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIfRedTable::QosIfRedEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIfRedTable::QosIfRedEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIfRedTable::QosIfRedEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIfRedTable::QosIfRedEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4404,33 +4404,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIfTailDropTabl
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIfTailDropTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIfTailDropTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosIfTailDropEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosIfTailDropTable::QosIfTailDropEntry>();
-        c->parent = this;
-        qosiftaildropentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosIfTailDropTable::QosIfTailDropEntry>();
+        ent_->parent = this;
+        qosiftaildropentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIfTailDropTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIfTailDropTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosiftaildropentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosiftaildropentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIfTailDropTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4513,16 +4513,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIfTailDropTabl
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIfTailDropTable::QosIfTailDropEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIfTailDropTable::QosIfTailDropEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIfTailDropTable::QosIfTailDropEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIfTailDropTable::QosIfTailDropEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIfTailDropTable::QosIfTailDropEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4646,33 +4646,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIfWeightsTable
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIfWeightsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIfWeightsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qosIfWeightsEntry")
     {
-        auto c = std::make_shared<CISCOQOSPIBMIB::QosIfWeightsTable::QosIfWeightsEntry>();
-        c->parent = this;
-        qosifweightsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOQOSPIBMIB::QosIfWeightsTable::QosIfWeightsEntry>();
+        ent_->parent = this;
+        qosifweightsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIfWeightsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIfWeightsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qosifweightsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qosifweightsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIfWeightsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4759,16 +4759,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOQOSPIBMIB::QosIfWeightsTable
 
 }
 
-std::shared_ptr<Entity> CISCOQOSPIBMIB::QosIfWeightsTable::QosIfWeightsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOQOSPIBMIB::QosIfWeightsTable::QosIfWeightsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::QosIfWeightsTable::QosIfWeightsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOQOSPIBMIB::QosIfWeightsTable::QosIfWeightsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOQOSPIBMIB::QosIfWeightsTable::QosIfWeightsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

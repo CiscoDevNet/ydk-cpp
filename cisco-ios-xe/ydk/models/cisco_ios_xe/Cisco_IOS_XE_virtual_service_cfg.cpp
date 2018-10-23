@@ -55,7 +55,7 @@ std::vector<std::pair<std::string, LeafData> > VirtualServiceCfgData::get_name_l
 
 }
 
-std::shared_ptr<Entity> VirtualServiceCfgData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServiceCfgData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "apps")
     {
@@ -78,21 +78,21 @@ std::shared_ptr<Entity> VirtualServiceCfgData::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServiceCfgData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServiceCfgData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(apps != nullptr)
     {
-        children["apps"] = apps;
+        _children["apps"] = apps;
     }
 
     if(controls != nullptr)
     {
-        children["controls"] = controls;
+        _children["controls"] = controls;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServiceCfgData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -103,7 +103,7 @@ void VirtualServiceCfgData::set_filter(const std::string & value_path, YFilter y
 {
 }
 
-std::shared_ptr<Entity> VirtualServiceCfgData::clone_ptr() const
+std::shared_ptr<ydk::Entity> VirtualServiceCfgData::clone_ptr() const
 {
     return std::make_shared<VirtualServiceCfgData>();
 }
@@ -191,33 +191,33 @@ std::vector<std::pair<std::string, LeafData> > VirtualServiceCfgData::Apps::get_
 
 }
 
-std::shared_ptr<Entity> VirtualServiceCfgData::Apps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServiceCfgData::Apps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "app")
     {
-        auto c = std::make_shared<VirtualServiceCfgData::Apps::App>();
-        c->parent = this;
-        app.append(c);
-        return c;
+        auto ent_ = std::make_shared<VirtualServiceCfgData::Apps::App>();
+        ent_->parent = this;
+        app.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServiceCfgData::Apps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServiceCfgData::Apps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : app.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : app.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServiceCfgData::Apps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -297,7 +297,7 @@ std::vector<std::pair<std::string, LeafData> > VirtualServiceCfgData::Apps::App:
 
 }
 
-std::shared_ptr<Entity> VirtualServiceCfgData::Apps::App::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServiceCfgData::Apps::App::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "application-network-resource")
     {
@@ -329,26 +329,26 @@ std::shared_ptr<Entity> VirtualServiceCfgData::Apps::App::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServiceCfgData::Apps::App::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServiceCfgData::Apps::App::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(application_network_resource != nullptr)
     {
-        children["application-network-resource"] = application_network_resource;
+        _children["application-network-resource"] = application_network_resource;
     }
 
     if(application_resource_profile != nullptr)
     {
-        children["application-resource-profile"] = application_resource_profile;
+        _children["application-resource-profile"] = application_resource_profile;
     }
 
     if(application_attached_device != nullptr)
     {
-        children["application-attached-device"] = application_attached_device;
+        _children["application-attached-device"] = application_attached_device;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServiceCfgData::Apps::App::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -554,7 +554,7 @@ std::vector<std::pair<std::string, LeafData> > VirtualServiceCfgData::Apps::App:
 
 }
 
-std::shared_ptr<Entity> VirtualServiceCfgData::Apps::App::ApplicationNetworkResource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServiceCfgData::Apps::App::ApplicationNetworkResource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "application-mac-address")
     {
@@ -568,16 +568,16 @@ std::shared_ptr<Entity> VirtualServiceCfgData::Apps::App::ApplicationNetworkReso
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServiceCfgData::Apps::App::ApplicationNetworkResource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServiceCfgData::Apps::App::ApplicationNetworkResource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(application_mac_address != nullptr)
     {
-        children["application-mac-address"] = application_mac_address;
+        _children["application-mac-address"] = application_mac_address;
     }
 
-    return children;
+    return _children;
 }
 
 void VirtualServiceCfgData::Apps::App::ApplicationNetworkResource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -980,16 +980,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServiceCfgData::Apps::App:
 
 }
 
-std::shared_ptr<Entity> VirtualServiceCfgData::Apps::App::ApplicationNetworkResource::ApplicationMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServiceCfgData::Apps::App::ApplicationNetworkResource::ApplicationMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServiceCfgData::Apps::App::ApplicationNetworkResource::ApplicationMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServiceCfgData::Apps::App::ApplicationNetworkResource::ApplicationMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServiceCfgData::Apps::App::ApplicationNetworkResource::ApplicationMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1088,16 +1088,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServiceCfgData::Apps::App:
 
 }
 
-std::shared_ptr<Entity> VirtualServiceCfgData::Apps::App::ApplicationResourceProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServiceCfgData::Apps::App::ApplicationResourceProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServiceCfgData::Apps::App::ApplicationResourceProfile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServiceCfgData::Apps::App::ApplicationResourceProfile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServiceCfgData::Apps::App::ApplicationResourceProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1216,16 +1216,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServiceCfgData::Apps::App:
 
 }
 
-std::shared_ptr<Entity> VirtualServiceCfgData::Apps::App::ApplicationAttachedDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServiceCfgData::Apps::App::ApplicationAttachedDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServiceCfgData::Apps::App::ApplicationAttachedDevice::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServiceCfgData::Apps::App::ApplicationAttachedDevice::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServiceCfgData::Apps::App::ApplicationAttachedDevice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1301,16 +1301,16 @@ std::vector<std::pair<std::string, LeafData> > VirtualServiceCfgData::Controls::
 
 }
 
-std::shared_ptr<Entity> VirtualServiceCfgData::Controls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VirtualServiceCfgData::Controls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VirtualServiceCfgData::Controls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VirtualServiceCfgData::Controls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VirtualServiceCfgData::Controls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

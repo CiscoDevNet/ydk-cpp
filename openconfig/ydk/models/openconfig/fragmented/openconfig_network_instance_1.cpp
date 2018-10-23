@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -163,7 +163,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -204,31 +204,31 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtoc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(sid_counters != nullptr)
     {
-        children["sid-counters"] = sid_counters;
+        _children["sid-counters"] = sid_counters;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -297,16 +297,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -391,16 +391,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -517,33 +517,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sid-counter")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter>();
-        c->parent = this;
-        sid_counter.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter>();
+        ent_->parent = this;
+        sid_counter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sid_counter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sid_counter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -612,7 +612,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -635,21 +635,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtoc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(forwarding_classes != nullptr)
     {
-        children["forwarding-classes"] = forwarding_classes;
+        _children["forwarding-classes"] = forwarding_classes;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -734,16 +734,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -860,33 +860,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "forwarding-class")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass>();
-        c->parent = this;
-        forwarding_class.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass>();
+        ent_->parent = this;
+        forwarding_class.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : forwarding_class.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : forwarding_class.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -951,7 +951,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -965,16 +965,16 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtoc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1059,16 +1059,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::SidCounters::SidCounter::ForwardingClasses::ForwardingClass::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1181,7 +1181,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1204,21 +1204,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtoc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1281,16 +1281,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1373,16 +1373,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interface::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1469,7 +1469,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "constrained-path")
     {
@@ -1501,26 +1501,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(constrained_path != nullptr)
     {
-        children["constrained-path"] = constrained_path;
+        _children["constrained-path"] = constrained_path;
     }
 
     if(unconstrained_path != nullptr)
     {
-        children["unconstrained-path"] = unconstrained_path;
+        _children["unconstrained-path"] = unconstrained_path;
     }
 
     if(static_lsps != nullptr)
     {
-        children["static-lsps"] = static_lsps;
+        _children["static-lsps"] = static_lsps;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1583,7 +1583,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "named-explicit-paths")
     {
@@ -1606,21 +1606,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(named_explicit_paths != nullptr)
     {
-        children["named-explicit-paths"] = named_explicit_paths;
+        _children["named-explicit-paths"] = named_explicit_paths;
     }
 
     if(tunnels != nullptr)
     {
-        children["tunnels"] = tunnels;
+        _children["tunnels"] = tunnels;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1687,33 +1687,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "named-explicit-path")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath>();
-        c->parent = this;
-        named_explicit_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath>();
+        ent_->parent = this;
+        named_explicit_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : named_explicit_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : named_explicit_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1786,7 +1786,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1818,26 +1818,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(explicit_route_objects != nullptr)
     {
-        children["explicit-route-objects"] = explicit_route_objects;
+        _children["explicit-route-objects"] = explicit_route_objects;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1914,16 +1914,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2020,16 +2020,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2126,33 +2126,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "explicit-route-object")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject>();
-        c->parent = this;
-        explicit_route_object.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject>();
+        ent_->parent = this;
+        explicit_route_object.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : explicit_route_object.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : explicit_route_object.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2221,7 +2221,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2244,21 +2244,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2335,16 +2335,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2441,16 +2441,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPath::ExplicitRouteObjects::ExplicitRouteObject::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2547,33 +2547,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnel")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel>();
-        c->parent = this;
-        tunnel.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel>();
+        ent_->parent = this;
+        tunnel.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tunnel.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tunnel.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2650,7 +2650,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2691,31 +2691,31 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(bandwidth != nullptr)
     {
-        children["bandwidth"] = bandwidth;
+        _children["bandwidth"] = bandwidth;
     }
 
     if(p2p_tunnel_attributes != nullptr)
     {
-        children["p2p-tunnel-attributes"] = p2p_tunnel_attributes;
+        _children["p2p-tunnel-attributes"] = p2p_tunnel_attributes;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2840,16 +2840,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3127,7 +3127,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counters")
     {
@@ -3141,16 +3141,16 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counters != nullptr)
     {
-        children["counters"] = counters;
+        _children["counters"] = counters;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3403,16 +3403,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::Counters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::Counters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::Counters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::State::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3549,7 +3549,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3581,26 +3581,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(auto_bandwidth != nullptr)
     {
-        children["auto-bandwidth"] = auto_bandwidth;
+        _children["auto-bandwidth"] = auto_bandwidth;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3663,16 +3663,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3759,16 +3759,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3869,7 +3869,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -3910,31 +3910,31 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(overflow != nullptr)
     {
-        children["overflow"] = overflow;
+        _children["overflow"] = overflow;
     }
 
     if(underflow != nullptr)
     {
-        children["underflow"] = underflow;
+        _children["underflow"] = underflow;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4009,16 +4009,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4143,16 +4143,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4265,7 +4265,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -4288,21 +4288,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4369,16 +4369,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4475,16 +4475,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4577,7 +4577,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -4600,21 +4600,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4681,16 +4681,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4787,16 +4787,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4897,7 +4897,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -4938,31 +4938,31 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(p2p_primary_path != nullptr)
     {
-        children["p2p-primary-path"] = p2p_primary_path;
+        _children["p2p-primary-path"] = p2p_primary_path;
     }
 
     if(p2p_secondary_paths != nullptr)
     {
-        children["p2p-secondary-paths"] = p2p_secondary_paths;
+        _children["p2p-secondary-paths"] = p2p_secondary_paths;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5021,16 +5021,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5099,16 +5099,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5185,33 +5185,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "p2p-primary-path")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_>();
-        c->parent = this;
-        p2p_primary_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_>();
+        ent_->parent = this;
+        p2p_primary_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : p2p_primary_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : p2p_primary_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5288,7 +5288,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -5329,31 +5329,31 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(candidate_secondary_paths != nullptr)
     {
-        children["candidate-secondary-paths"] = candidate_secondary_paths;
+        _children["candidate-secondary-paths"] = candidate_secondary_paths;
     }
 
     if(admin_groups != nullptr)
     {
-        children["admin-groups"] = admin_groups;
+        _children["admin-groups"] = admin_groups;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5458,16 +5458,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5666,16 +5666,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5852,33 +5852,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "candidate-secondary-path")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath>();
-        c->parent = this;
-        candidate_secondary_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath>();
+        ent_->parent = this;
+        candidate_secondary_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : candidate_secondary_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : candidate_secondary_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5947,7 +5947,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -5970,21 +5970,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6057,16 +6057,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6153,16 +6153,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::CandidateSecondaryPaths::CandidateSecondaryPath::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6255,7 +6255,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -6278,21 +6278,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6390,16 +6390,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6521,16 +6521,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pPrimaryPath::P2pPrimaryPath_::AdminGroups::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6621,33 +6621,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "p2p-secondary-path")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath>();
-        c->parent = this;
-        p2p_secondary_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath>();
+        ent_->parent = this;
+        p2p_secondary_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : p2p_secondary_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : p2p_secondary_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6720,7 +6720,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -6752,26 +6752,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(admin_groups != nullptr)
     {
-        children["admin-groups"] = admin_groups;
+        _children["admin-groups"] = admin_groups;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6876,16 +6876,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7084,16 +7084,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7266,7 +7266,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -7289,21 +7289,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Constrain
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7401,16 +7401,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7532,16 +7532,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::AdminGroups::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7624,7 +7624,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-setup-protocol")
     {
@@ -7638,16 +7638,16 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Unconstra
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_setup_protocol != nullptr)
     {
-        children["path-setup-protocol"] = path_setup_protocol;
+        _children["path-setup-protocol"] = path_setup_protocol;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7706,7 +7706,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ldp")
     {
@@ -7720,16 +7720,16 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::Unconstra
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ldp != nullptr)
     {
-        children["ldp"] = ldp;
+        _children["ldp"] = ldp;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7784,16 +7784,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7858,33 +7858,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-lsp")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp>();
-        c->parent = this;
-        static_lsp.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp>();
+        ent_->parent = this;
+        static_lsp.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : static_lsp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : static_lsp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7965,7 +7965,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -8015,36 +8015,36 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(ingress != nullptr)
     {
-        children["ingress"] = ingress;
+        _children["ingress"] = ingress;
     }
 
     if(transit != nullptr)
     {
-        children["transit"] = transit;
+        _children["transit"] = transit;
     }
 
     if(egress != nullptr)
     {
-        children["egress"] = egress;
+        _children["egress"] = egress;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8113,16 +8113,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8191,16 +8191,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8273,7 +8273,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -8296,21 +8296,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8377,16 +8377,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8483,16 +8483,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Ingress::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8585,7 +8585,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -8608,21 +8608,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8689,16 +8689,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8795,16 +8795,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Transit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8897,7 +8897,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -8920,21 +8920,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9001,16 +9001,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9107,16 +9107,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Mpls::Lsps::StaticLsps::StaticLsp::Egress::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9209,7 +9209,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srgbs")
     {
@@ -9232,21 +9232,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::SegmentRouting::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::SegmentRouting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::SegmentRouting::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(srgbs != nullptr)
     {
-        children["srgbs"] = srgbs;
+        _children["srgbs"] = srgbs;
     }
 
     if(srlbs != nullptr)
     {
-        children["srlbs"] = srlbs;
+        _children["srlbs"] = srlbs;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::SegmentRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9313,33 +9313,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srgb")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb>();
-        c->parent = this;
-        srgb.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb>();
+        ent_->parent = this;
+        srgb.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : srgb.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : srgb.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9408,7 +9408,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -9431,21 +9431,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9546,16 +9546,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9690,16 +9690,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::SegmentRouting::Srgbs::Srgb::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9822,33 +9822,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "srlb")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb>();
-        c->parent = this;
-        srlb.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb>();
+        ent_->parent = this;
+        srlb.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : srlb.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : srlb.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9917,7 +9917,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -9940,21 +9940,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10035,16 +10035,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10155,16 +10155,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::SegmentRouting::Srlbs::Srlb::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10271,33 +10271,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Vlans::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Vlans::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Vlans::Vlan>();
-        c->parent = this;
-        vlan.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Vlans::Vlan>();
+        ent_->parent = this;
+        vlan.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Vlans::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Vlans::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vlan.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vlan.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Vlans::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10370,7 +10370,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -10402,26 +10402,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(members != nullptr)
     {
-        children["members"] = members;
+        _children["members"] = members;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Vlans::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10502,16 +10502,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Vlans::Vlan::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10622,16 +10622,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Vlans::Vlan::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10738,33 +10738,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "member")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member>();
-        c->parent = this;
-        member.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member>();
+        ent_->parent = this;
+        member.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : member.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : member.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Vlans::Vlan::Members::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10823,7 +10823,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-ref")
     {
@@ -10837,16 +10837,16 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::Members:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10905,7 +10905,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -10919,16 +10919,16 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::Members:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10991,16 +10991,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Vlans::Vlan::Members::Member::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11095,7 +11095,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-unicast")
     {
@@ -11145,36 +11145,36 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_unicast != nullptr)
     {
-        children["ipv4-unicast"] = ipv4_unicast;
+        _children["ipv4-unicast"] = ipv4_unicast;
     }
 
     if(ipv6_unicast != nullptr)
     {
-        children["ipv6-unicast"] = ipv6_unicast;
+        _children["ipv6-unicast"] = ipv6_unicast;
     }
 
     if(policy_forwarding != nullptr)
     {
-        children["policy-forwarding"] = policy_forwarding;
+        _children["policy-forwarding"] = policy_forwarding;
     }
 
     if(mpls != nullptr)
     {
-        children["mpls"] = mpls;
+        _children["mpls"] = mpls;
     }
 
     if(ethernet != nullptr)
     {
-        children["ethernet"] = ethernet;
+        _children["ethernet"] = ethernet;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11241,33 +11241,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-entry")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry>();
-        c->parent = this;
-        ipv4_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry>();
+        ent_->parent = this;
+        ipv4_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11340,7 +11340,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -11372,26 +11372,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ip
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(next_hops != nullptr)
     {
-        children["next-hops"] = next_hops;
+        _children["next-hops"] = next_hops;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11460,16 +11460,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11550,16 +11550,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11666,33 +11666,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop>();
-        c->parent = this;
-        next_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop>();
+        ent_->parent = this;
+        next_hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : next_hop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : next_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11765,7 +11765,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -11797,26 +11797,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ip
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11885,16 +11885,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12019,16 +12019,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12187,7 +12187,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -12210,21 +12210,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ip
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12287,16 +12287,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12379,16 +12379,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv4Unicast::Ipv4Entry::NextHops::NextHop::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12475,33 +12475,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6-entry")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry>();
-        c->parent = this;
-        ipv6_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry>();
+        ent_->parent = this;
+        ipv6_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv6_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv6_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12574,7 +12574,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -12606,26 +12606,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ip
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(next_hops != nullptr)
     {
-        children["next-hops"] = next_hops;
+        _children["next-hops"] = next_hops;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12694,16 +12694,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12784,16 +12784,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12900,33 +12900,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop>();
-        c->parent = this;
-        next_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop>();
+        ent_->parent = this;
+        next_hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : next_hop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : next_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12999,7 +12999,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -13031,26 +13031,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ip
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13119,16 +13119,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13253,16 +13253,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13421,7 +13421,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -13444,21 +13444,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ip
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13521,16 +13521,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13613,16 +13613,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ipv6Unicast::Ipv6Entry::NextHops::NextHop::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13709,33 +13709,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-forwarding-entry")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry>();
-        c->parent = this;
-        policy_forwarding_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry>();
+        ent_->parent = this;
+        policy_forwarding_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy_forwarding_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy_forwarding_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::PolicyForwarding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13808,7 +13808,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -13840,26 +13840,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwardin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(next_hops != nullptr)
     {
-        children["next-hops"] = next_hops;
+        _children["next-hops"] = next_hops;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13960,16 +13960,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14158,16 +14158,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14344,33 +14344,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop>();
-        c->parent = this;
-        next_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop>();
+        ent_->parent = this;
+        next_hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : next_hop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : next_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14443,7 +14443,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -14475,26 +14475,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwardin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14563,16 +14563,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14693,16 +14693,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14851,7 +14851,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -14874,21 +14874,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwardin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14951,16 +14951,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15043,16 +15043,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardingEntry::NextHops::NextHop::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15139,33 +15139,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "label-entry")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry>();
-        c->parent = this;
-        label_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry>();
+        ent_->parent = this;
+        label_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : label_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : label_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15238,7 +15238,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -15270,26 +15270,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(next_hops != nullptr)
     {
-        children["next-hops"] = next_hops;
+        _children["next-hops"] = next_hops;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15358,16 +15358,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15444,16 +15444,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15550,33 +15550,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop>();
-        c->parent = this;
-        next_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop>();
+        ent_->parent = this;
+        next_hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : next_hop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : next_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15649,7 +15649,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -15681,26 +15681,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15769,16 +15769,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15899,16 +15899,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16057,7 +16057,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -16080,21 +16080,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16157,16 +16157,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16249,16 +16249,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Mpls::LabelEntry::NextHops::NextHop::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16345,33 +16345,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-entry")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry>();
-        c->parent = this;
-        mac_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry>();
+        ent_->parent = this;
+        mac_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mac_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mac_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16444,7 +16444,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -16476,26 +16476,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(next_hops != nullptr)
     {
-        children["next-hops"] = next_hops;
+        _children["next-hops"] = next_hops;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16564,16 +16564,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16650,16 +16650,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16756,33 +16756,33 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop")
     {
-        auto c = std::make_shared<NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop>();
-        c->parent = this;
-        next_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop>();
+        ent_->parent = this;
+        next_hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : next_hop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : next_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16855,7 +16855,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -16887,26 +16887,26 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(interface_ref != nullptr)
     {
-        children["interface-ref"] = interface_ref;
+        _children["interface-ref"] = interface_ref;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16975,16 +16975,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17105,16 +17105,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17263,7 +17263,7 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -17286,21 +17286,21 @@ std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17363,16 +17363,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17455,16 +17455,16 @@ std::vector<std::pair<std::string, LeafData> > NetworkInstances::NetworkInstance
 
 }
 
-std::shared_ptr<Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NetworkInstances::NetworkInstance::Afts::Ethernet::MacEntry::NextHops::NextHop::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

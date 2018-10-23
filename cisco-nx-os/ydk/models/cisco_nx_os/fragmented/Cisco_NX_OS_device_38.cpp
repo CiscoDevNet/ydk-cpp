@@ -198,7 +198,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spsd-items")
     {
@@ -212,16 +212,16 @@ std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::SplcI
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spsd_items != nullptr)
     {
-        children["spsd-items"] = spsd_items;
+        _children["spsd-items"] = spsd_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -648,33 +648,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::SpsdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::SpsdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "SpSd-list")
     {
-        auto c = std::make_shared<System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList>();
-        c->parent = this;
-        spsd_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList>();
+        ent_->parent = this;
+        spsd_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::SpsdItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::SpsdItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : spsd_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : spsd_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::SpsdItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -766,16 +766,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::FcItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -932,33 +932,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Asic-list")
     {
-        auto c = std::make_shared<System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems::AsicList>();
-        c->parent = this;
-        asic_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems::AsicList>();
+        ent_->parent = this;
+        asic_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : asic_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : asic_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1058,16 +1058,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems::AsicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems::AsicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems::AsicList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems::AsicList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::FcItems::AsicItems::AsicList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1244,33 +1244,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "CPU-list")
     {
-        auto c = std::make_shared<System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList>();
-        c->parent = this;
-        cpu_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList>();
+        ent_->parent = this;
+        cpu_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpu_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpu_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1383,7 +1383,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "core-items")
     {
@@ -1397,16 +1397,16 @@ std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuIt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(core_items != nullptr)
     {
-        children["core-items"] = core_items;
+        _children["core-items"] = core_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1603,33 +1603,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::CoreItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::CoreItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Core-list")
     {
-        auto c = std::make_shared<System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::CoreItems::CoreList>();
-        c->parent = this;
-        core_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::CoreItems::CoreList>();
+        ent_->parent = this;
+        core_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::CoreItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::CoreItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : core_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : core_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::CoreItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1713,16 +1713,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::CoreItems::CoreList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::CoreItems::CoreList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::CoreItems::CoreList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::CoreItems::CoreList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::FcItems::CpuItems::CPUList::CoreItems::CoreList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1859,33 +1859,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Dimm-list")
     {
-        auto c = std::make_shared<System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems::DimmList>();
-        c->parent = this;
-        dimm_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems::DimmList>();
+        ent_->parent = this;
+        dimm_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dimm_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dimm_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1985,16 +1985,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems::DimmList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems::DimmList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems::DimmList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems::DimmList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::FcItems::DimmItems::DimmList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2203,16 +2203,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::FlashItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::FlashItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::FlashItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::FlashItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::FcItems::FlashItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2409,16 +2409,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::ObflItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::FcItems::ObflItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::ObflItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::FcItems::ObflItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::FcItems::ObflItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2561,16 +2561,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FcslotItems::FCS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FcslotItems::FCSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FcslotItems::FCSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FcslotItems::FCSlotList::RtoosSlotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FcslotItems::FCSlotList::RtoosSlotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::FcslotItems::FCSlotList::RtoosSlotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2664,33 +2664,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::get
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "SysCSlot-list")
     {
-        auto c = std::make_shared<System::ChItems::ScslotItems::SysCSlotList>();
-        c->parent = this;
-        syscslot_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::ScslotItems::SysCSlotList>();
+        ent_->parent = this;
+        syscslot_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : syscslot_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : syscslot_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2786,7 +2786,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sc-items")
     {
@@ -2809,21 +2809,21 @@ std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sc_items != nullptr)
     {
-        children["sc-items"] = sc_items;
+        _children["sc-items"] = sc_items;
     }
 
     if(rtoosslot_items != nullptr)
     {
-        children["rtoosSlot-items"] = rtoosslot_items;
+        _children["rtoosSlot-items"] = rtoosslot_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3051,7 +3051,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "running-items")
     {
@@ -3146,61 +3146,61 @@ std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(running_items != nullptr)
     {
-        children["running-items"] = running_items;
+        _children["running-items"] = running_items;
     }
 
     if(eobc_items != nullptr)
     {
-        children["eobc-items"] = eobc_items;
+        _children["eobc-items"] = eobc_items;
     }
 
     if(epc_items != nullptr)
     {
-        children["epc-items"] = epc_items;
+        _children["epc-items"] = epc_items;
     }
 
     if(sensor_items != nullptr)
     {
-        children["sensor-items"] = sensor_items;
+        _children["sensor-items"] = sensor_items;
     }
 
     if(splc_items != nullptr)
     {
-        children["splc-items"] = splc_items;
+        _children["splc-items"] = splc_items;
     }
 
     if(asic_items != nullptr)
     {
-        children["asic-items"] = asic_items;
+        _children["asic-items"] = asic_items;
     }
 
     if(cpu_items != nullptr)
     {
-        children["cpu-items"] = cpu_items;
+        _children["cpu-items"] = cpu_items;
     }
 
     if(dimm_items != nullptr)
     {
-        children["dimm-items"] = dimm_items;
+        _children["dimm-items"] = dimm_items;
     }
 
     if(flash_items != nullptr)
     {
-        children["flash-items"] = flash_items;
+        _children["flash-items"] = flash_items;
     }
 
     if(obfl_items != nullptr)
     {
-        children["obfl-items"] = obfl_items;
+        _children["obfl-items"] = obfl_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3475,16 +3475,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::RunningItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::RunningItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::RunningItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::RunningItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::RunningItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3651,33 +3651,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::EobcItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::EobcItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "EobcP-list")
     {
-        auto c = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::EobcItems::EobcPList>();
-        c->parent = this;
-        eobcp_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::EobcItems::EobcPList>();
+        ent_->parent = this;
+        eobcp_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::EobcItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::EobcItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : eobcp_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : eobcp_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::EobcItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3745,16 +3745,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::EobcItems::EobcPList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::EobcItems::EobcPList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::EobcItems::EobcPList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::EobcItems::EobcPList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::EobcItems::EobcPList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3851,33 +3851,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::EpcItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::EpcItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "EpcP-list")
     {
-        auto c = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::EpcItems::EpcPList>();
-        c->parent = this;
-        epcp_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::EpcItems::EpcPList>();
+        ent_->parent = this;
+        epcp_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::EpcItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::EpcItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : epcp_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : epcp_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::EpcItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3945,16 +3945,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::EpcItems::EpcPList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::EpcItems::EpcPList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::EpcItems::EpcPList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::EpcItems::EpcPList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::EpcItems::EpcPList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4051,33 +4051,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SensorItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SensorItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Sensor-list")
     {
-        auto c = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::SensorItems::SensorList>();
-        c->parent = this;
-        sensor_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::SensorItems::SensorList>();
+        ent_->parent = this;
+        sensor_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SensorItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SensorItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SensorItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4173,16 +4173,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SensorItems::SensorList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SensorItems::SensorList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SensorItems::SensorList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SensorItems::SensorList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SensorItems::SensorList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4398,7 +4398,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spcmn-items")
     {
@@ -4448,36 +4448,36 @@ std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::Spl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spcmn_items != nullptr)
     {
-        children["spcmn-items"] = spcmn_items;
+        _children["spcmn-items"] = spcmn_items;
     }
 
     if(splcblk_items != nullptr)
     {
-        children["splcblk-items"] = splcblk_items;
+        _children["splcblk-items"] = splcblk_items;
     }
 
     if(sppd_items != nullptr)
     {
-        children["sppd-items"] = sppd_items;
+        _children["sppd-items"] = sppd_items;
     }
 
     if(spsd_items != nullptr)
     {
-        children["spsd-items"] = spsd_items;
+        _children["spsd-items"] = spsd_items;
     }
 
     if(spsensorblk_items != nullptr)
     {
-        children["spsensorblk-items"] = spsensorblk_items;
+        _children["spsensorblk-items"] = spsensorblk_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4716,16 +4716,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpcmnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpcmnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpcmnItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpcmnItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpcmnItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5087,7 +5087,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spsd-items")
     {
@@ -5110,21 +5110,21 @@ std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::Spl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spsd_items != nullptr)
     {
-        children["spsd-items"] = spsd_items;
+        _children["spsd-items"] = spsd_items;
     }
 
     if(sppd_items != nullptr)
     {
-        children["sppd-items"] = sppd_items;
+        _children["sppd-items"] = sppd_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5411,33 +5411,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SpsdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SpsdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "SpSd-list")
     {
-        auto c = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SpsdItems::SpSdList>();
-        c->parent = this;
-        spsd_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SpsdItems::SpSdList>();
+        ent_->parent = this;
+        spsd_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SpsdItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SpsdItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : spsd_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : spsd_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SpsdItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5529,16 +5529,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SpsdItems::SpSdList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SpsdItems::SpSdList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SpsdItems::SpSdList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SpsdItems::SpSdList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SpsdItems::SpSdList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5691,16 +5691,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SppdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SppdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SppdItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SppdItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SplcblkItems::SppdItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5783,16 +5783,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SppdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SppdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SppdItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SppdItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SppdItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5879,33 +5879,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "SpSd-list")
     {
-        auto c = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsdItems::SpSdList>();
-        c->parent = this;
-        spsd_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsdItems::SpSdList>();
+        ent_->parent = this;
+        spsd_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsdItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsdItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : spsd_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : spsd_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsdItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5997,16 +5997,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsdItems::SpSdList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsdItems::SpSdList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsdItems::SpSdList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsdItems::SpSdList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsdItems::SpSdList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6300,7 +6300,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spsd-items")
     {
@@ -6314,16 +6314,16 @@ std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::Spl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spsd_items != nullptr)
     {
-        children["spsd-items"] = spsd_items;
+        _children["spsd-items"] = spsd_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6750,33 +6750,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::SpsdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::SpsdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "SpSd-list")
     {
-        auto c = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList>();
-        c->parent = this;
-        spsd_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList>();
+        ent_->parent = this;
+        spsd_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::SpsdItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::SpsdItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : spsd_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : spsd_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::SpsdItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6868,16 +6868,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::SplcItems::SpsensorblkItems::SpsdItems::SpSdList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7034,33 +7034,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::AsicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::AsicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Asic-list")
     {
-        auto c = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::AsicItems::AsicList>();
-        c->parent = this;
-        asic_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::AsicItems::AsicList>();
+        ent_->parent = this;
+        asic_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::AsicItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::AsicItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : asic_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : asic_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::AsicItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7160,16 +7160,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::AsicItems::AsicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::AsicItems::AsicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::AsicItems::AsicList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::AsicItems::AsicList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::AsicItems::AsicList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7346,33 +7346,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "CPU-list")
     {
-        auto c = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList>();
-        c->parent = this;
-        cpu_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList>();
+        ent_->parent = this;
+        cpu_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpu_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpu_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7485,7 +7485,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "core-items")
     {
@@ -7499,16 +7499,16 @@ std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::Cpu
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(core_items != nullptr)
     {
-        children["core-items"] = core_items;
+        _children["core-items"] = core_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7705,33 +7705,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::CoreItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::CoreItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Core-list")
     {
-        auto c = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::CoreItems::CoreList>();
-        c->parent = this;
-        core_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::CoreItems::CoreList>();
+        ent_->parent = this;
+        core_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::CoreItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::CoreItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : core_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : core_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::CoreItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7815,16 +7815,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::CoreItems::CoreList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::CoreItems::CoreList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::CoreItems::CoreList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::CoreItems::CoreList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::CpuItems::CPUList::CoreItems::CoreList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7961,33 +7961,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::DimmItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::DimmItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Dimm-list")
     {
-        auto c = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::DimmItems::DimmList>();
-        c->parent = this;
-        dimm_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::ScslotItems::SysCSlotList::ScItems::DimmItems::DimmList>();
+        ent_->parent = this;
+        dimm_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::DimmItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::DimmItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dimm_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dimm_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::DimmItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8087,16 +8087,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::DimmItems::DimmList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::DimmItems::DimmList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::DimmItems::DimmList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::DimmItems::DimmList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::DimmItems::DimmList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8305,16 +8305,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::FlashItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::FlashItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::FlashItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::FlashItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::FlashItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8511,16 +8511,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::ObflItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::ScItems::ObflItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::ObflItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::ScItems::ObflItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::ScItems::ObflItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8663,16 +8663,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::ScslotItems::Sys
 
 }
 
-std::shared_ptr<Entity> System::ChItems::ScslotItems::SysCSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::ScslotItems::SysCSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::ScslotItems::SysCSlotList::RtoosSlotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::ScslotItems::SysCSlotList::RtoosSlotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::ScslotItems::SysCSlotList::RtoosSlotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8766,33 +8766,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::PsuslotItems::ge
 
 }
 
-std::shared_ptr<Entity> System::ChItems::PsuslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::PsuslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "PsuSlot-list")
     {
-        auto c = std::make_shared<System::ChItems::PsuslotItems::PsuSlotList>();
-        c->parent = this;
-        psuslot_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::PsuslotItems::PsuSlotList>();
+        ent_->parent = this;
+        psuslot_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::PsuslotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::PsuslotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : psuslot_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : psuslot_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::PsuslotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8888,7 +8888,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::PsuslotItems::Ps
 
 }
 
-std::shared_ptr<Entity> System::ChItems::PsuslotItems::PsuSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::PsuslotItems::PsuSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "psu-items")
     {
@@ -8911,21 +8911,21 @@ std::shared_ptr<Entity> System::ChItems::PsuslotItems::PsuSlotList::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::PsuslotItems::PsuSlotList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::PsuslotItems::PsuSlotList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(psu_items != nullptr)
     {
-        children["psu-items"] = psu_items;
+        _children["psu-items"] = psu_items;
     }
 
     if(rtoosslot_items != nullptr)
     {
-        children["rtoosSlot-items"] = rtoosslot_items;
+        _children["rtoosSlot-items"] = rtoosslot_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::PsuslotItems::PsuSlotList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9108,16 +9108,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::PsuslotItems::Ps
 
 }
 
-std::shared_ptr<Entity> System::ChItems::PsuslotItems::PsuSlotList::PsuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::PsuslotItems::PsuSlotList::PsuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::PsuslotItems::PsuSlotList::PsuItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::PsuslotItems::PsuSlotList::PsuItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::PsuslotItems::PsuSlotList::PsuItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9350,16 +9350,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::PsuslotItems::Ps
 
 }
 
-std::shared_ptr<Entity> System::ChItems::PsuslotItems::PsuSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::PsuslotItems::PsuSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::PsuslotItems::PsuSlotList::RtoosSlotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::PsuslotItems::PsuSlotList::RtoosSlotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::PsuslotItems::PsuSlotList::RtoosSlotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9453,33 +9453,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FtslotItems::get
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FtslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FtslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "FtSlot-list")
     {
-        auto c = std::make_shared<System::ChItems::FtslotItems::FtSlotList>();
-        c->parent = this;
-        ftslot_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::FtslotItems::FtSlotList>();
+        ent_->parent = this;
+        ftslot_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FtslotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FtslotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ftslot_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ftslot_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::FtslotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9575,7 +9575,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FtslotItems::FtS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FtslotItems::FtSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ft-items")
     {
@@ -9598,21 +9598,21 @@ std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FtslotItems::FtSlotList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FtslotItems::FtSlotList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ft_items != nullptr)
     {
-        children["ft-items"] = ft_items;
+        _children["ft-items"] = ft_items;
     }
 
     if(rtoosslot_items != nullptr)
     {
-        children["rtoosSlot-items"] = rtoosslot_items;
+        _children["rtoosSlot-items"] = rtoosslot_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::FtslotItems::FtSlotList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9784,7 +9784,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FtslotItems::FtS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ej-items")
     {
@@ -9816,26 +9816,26 @@ std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ej_items != nullptr)
     {
-        children["ej-items"] = ej_items;
+        _children["ej-items"] = ej_items;
     }
 
     if(fan_items != nullptr)
     {
-        children["fan-items"] = fan_items;
+        _children["fan-items"] = fan_items;
     }
 
     if(spfan_items != nullptr)
     {
-        children["spfan-items"] = spfan_items;
+        _children["spfan-items"] = spfan_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::FtslotItems::FtSlotList::FtItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10012,33 +10012,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FtslotItems::FtS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::EjItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::EjItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Ejec-list")
     {
-        auto c = std::make_shared<System::ChItems::FtslotItems::FtSlotList::FtItems::EjItems::EjecList>();
-        c->parent = this;
-        ejec_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::FtslotItems::FtSlotList::FtItems::EjItems::EjecList>();
+        ent_->parent = this;
+        ejec_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::EjItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::EjItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ejec_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ejec_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::FtslotItems::FtSlotList::FtItems::EjItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10126,16 +10126,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FtslotItems::FtS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::EjItems::EjecList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::EjItems::EjecList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::EjItems::EjecList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::EjItems::EjecList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::FtslotItems::FtSlotList::FtItems::EjItems::EjecList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10282,33 +10282,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FtslotItems::FtS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::FanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::FanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Fan-list")
     {
-        auto c = std::make_shared<System::ChItems::FtslotItems::FtSlotList::FtItems::FanItems::FanList>();
-        c->parent = this;
-        fan_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::FtslotItems::FtSlotList::FtItems::FanItems::FanList>();
+        ent_->parent = this;
+        fan_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::FanItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::FanItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fan_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fan_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::FtslotItems::FtSlotList::FtItems::FanItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10408,16 +10408,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FtslotItems::FtS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::FanItems::FanList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::FanItems::FanList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::FanItems::FanList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::FanItems::FanList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::FtslotItems::FtSlotList::FtItems::FanItems::FanList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10639,7 +10639,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FtslotItems::FtS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spcmn-items")
     {
@@ -10671,26 +10671,26 @@ std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::Spfan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spcmn_items != nullptr)
     {
-        children["spcmn-items"] = spcmn_items;
+        _children["spcmn-items"] = spcmn_items;
     }
 
     if(spfanblk_items != nullptr)
     {
-        children["spfanblk-items"] = spfanblk_items;
+        _children["spfanblk-items"] = spfanblk_items;
     }
 
     if(spfansn_items != nullptr)
     {
-        children["spfansn-items"] = spfansn_items;
+        _children["spfansn-items"] = spfansn_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10939,16 +10939,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FtslotItems::FtS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpcmnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpcmnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpcmnItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpcmnItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpcmnItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11257,16 +11257,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FtslotItems::FtS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfanblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfanblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfanblkItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfanblkItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfanblkItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11451,16 +11451,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FtslotItems::FtS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfansnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfansnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfansnItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfansnItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfansnItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11573,16 +11573,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::FtslotItems::FtS
 
 }
 
-std::shared_ptr<Entity> System::ChItems::FtslotItems::FtSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::FtslotItems::FtSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::FtslotItems::FtSlotList::RtoosSlotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::FtslotItems::FtSlotList::RtoosSlotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::FtslotItems::FtSlotList::RtoosSlotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11717,7 +11717,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::SpbpItems::get_n
 
 }
 
-std::shared_ptr<Entity> System::ChItems::SpbpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::SpbpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spcmn-items")
     {
@@ -11740,21 +11740,21 @@ std::shared_ptr<Entity> System::ChItems::SpbpItems::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::SpbpItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::SpbpItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spcmn_items != nullptr)
     {
-        children["spcmn-items"] = spcmn_items;
+        _children["spcmn-items"] = spcmn_items;
     }
 
     if(spbpblk_items != nullptr)
     {
-        children["spbpblk-items"] = spbpblk_items;
+        _children["spbpblk-items"] = spbpblk_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::SpbpItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12010,16 +12010,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::SpbpItems::Spcmn
 
 }
 
-std::shared_ptr<Entity> System::ChItems::SpbpItems::SpcmnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::SpbpItems::SpcmnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::SpbpItems::SpcmnItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::SpbpItems::SpcmnItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::SpbpItems::SpcmnItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12339,16 +12339,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::SpbpItems::Spbpb
 
 }
 
-std::shared_ptr<Entity> System::ChItems::SpbpItems::SpbpblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::SpbpItems::SpbpblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::SpbpItems::SpbpblkItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::SpbpItems::SpbpblkItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::SpbpItems::SpbpblkItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12563,7 +12563,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::get_
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "board-items")
     {
@@ -12586,21 +12586,21 @@ std::shared_ptr<Entity> System::ChItems::BslotItems::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(board_items != nullptr)
     {
-        children["board-items"] = board_items;
+        _children["board-items"] = board_items;
     }
 
     if(rtoosslot_items != nullptr)
     {
-        children["rtoosSlot-items"] = rtoosslot_items;
+        _children["rtoosSlot-items"] = rtoosslot_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::BslotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12819,7 +12819,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Boar
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::BoardItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sensor-items")
     {
@@ -12878,41 +12878,41 @@ std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::BoardItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::BoardItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sensor_items != nullptr)
     {
-        children["sensor-items"] = sensor_items;
+        _children["sensor-items"] = sensor_items;
     }
 
     if(asic_items != nullptr)
     {
-        children["asic-items"] = asic_items;
+        _children["asic-items"] = asic_items;
     }
 
     if(cpu_items != nullptr)
     {
-        children["cpu-items"] = cpu_items;
+        _children["cpu-items"] = cpu_items;
     }
 
     if(dimm_items != nullptr)
     {
-        children["dimm-items"] = dimm_items;
+        _children["dimm-items"] = dimm_items;
     }
 
     if(flash_items != nullptr)
     {
-        children["flash-items"] = flash_items;
+        _children["flash-items"] = flash_items;
     }
 
     if(obfl_items != nullptr)
     {
-        children["obfl-items"] = obfl_items;
+        _children["obfl-items"] = obfl_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::BslotItems::BoardItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13166,33 +13166,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Boar
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::SensorItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::BoardItems::SensorItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Sensor-list")
     {
-        auto c = std::make_shared<System::ChItems::BslotItems::BoardItems::SensorItems::SensorList>();
-        c->parent = this;
-        sensor_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::BslotItems::BoardItems::SensorItems::SensorList>();
+        ent_->parent = this;
+        sensor_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::BoardItems::SensorItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::BoardItems::SensorItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::BslotItems::BoardItems::SensorItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13295,16 +13295,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Boar
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::SensorItems::SensorList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::BoardItems::SensorItems::SensorList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::BoardItems::SensorItems::SensorList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::BoardItems::SensorItems::SensorList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::BslotItems::BoardItems::SensorItems::SensorList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13478,33 +13478,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Boar
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::AsicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::BoardItems::AsicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Asic-list")
     {
-        auto c = std::make_shared<System::ChItems::BslotItems::BoardItems::AsicItems::AsicList>();
-        c->parent = this;
-        asic_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::BslotItems::BoardItems::AsicItems::AsicList>();
+        ent_->parent = this;
+        asic_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::BoardItems::AsicItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::BoardItems::AsicItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : asic_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : asic_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::BslotItems::BoardItems::AsicItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13611,16 +13611,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Boar
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::AsicItems::AsicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::BoardItems::AsicItems::AsicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::BoardItems::AsicItems::AsicList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::BoardItems::AsicItems::AsicList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::BslotItems::BoardItems::AsicItems::AsicList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13804,33 +13804,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Boar
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::CpuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::BoardItems::CpuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "CPU-list")
     {
-        auto c = std::make_shared<System::ChItems::BslotItems::BoardItems::CpuItems::CPUList>();
-        c->parent = this;
-        cpu_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::BslotItems::BoardItems::CpuItems::CPUList>();
+        ent_->parent = this;
+        cpu_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::BoardItems::CpuItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::BoardItems::CpuItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpu_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpu_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::BslotItems::BoardItems::CpuItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13950,7 +13950,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Boar
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "core-items")
     {
@@ -13964,16 +13964,16 @@ std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::CpuItems::CPULi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(core_items != nullptr)
     {
-        children["core-items"] = core_items;
+        _children["core-items"] = core_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14170,33 +14170,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Boar
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::CoreItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::CoreItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Core-list")
     {
-        auto c = std::make_shared<System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::CoreItems::CoreList>();
-        c->parent = this;
-        core_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::CoreItems::CoreList>();
+        ent_->parent = this;
+        core_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::CoreItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::CoreItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : core_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : core_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::CoreItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14280,16 +14280,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Boar
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::CoreItems::CoreList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::CoreItems::CoreList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::CoreItems::CoreList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::CoreItems::CoreList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::BslotItems::BoardItems::CpuItems::CPUList::CoreItems::CoreList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14433,33 +14433,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Boar
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::DimmItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::BoardItems::DimmItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Dimm-list")
     {
-        auto c = std::make_shared<System::ChItems::BslotItems::BoardItems::DimmItems::DimmList>();
-        c->parent = this;
-        dimm_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::BslotItems::BoardItems::DimmItems::DimmList>();
+        ent_->parent = this;
+        dimm_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::BoardItems::DimmItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::BoardItems::DimmItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dimm_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dimm_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::BslotItems::BoardItems::DimmItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14566,16 +14566,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Boar
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::DimmItems::DimmList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::BoardItems::DimmItems::DimmList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::BoardItems::DimmItems::DimmList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::BoardItems::DimmItems::DimmList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::BslotItems::BoardItems::DimmItems::DimmList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14791,16 +14791,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Boar
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::FlashItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::BoardItems::FlashItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::BoardItems::FlashItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::BoardItems::FlashItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::BslotItems::BoardItems::FlashItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15004,16 +15004,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Boar
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::BoardItems::ObflItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::BoardItems::ObflItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::BoardItems::ObflItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::BoardItems::ObflItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::BslotItems::BoardItems::ObflItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15163,16 +15163,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::BslotItems::Rtoo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::BslotItems::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::BslotItems::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::BslotItems::RtoosSlotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::BslotItems::RtoosSlotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::BslotItems::RtoosSlotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15266,33 +15266,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::get_
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "NSlot-list")
     {
-        auto c = std::make_shared<System::ChItems::NslotItems::NSlotList>();
-        c->parent = this;
-        nslot_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::NslotItems::NSlotList>();
+        ent_->parent = this;
+        nslot_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nslot_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nslot_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::NslotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15388,7 +15388,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nic-items")
     {
@@ -15411,21 +15411,21 @@ std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nic_items != nullptr)
     {
-        children["nic-items"] = nic_items;
+        _children["nic-items"] = nic_items;
     }
 
     if(rtoosslot_items != nullptr)
     {
-        children["rtoosSlot-items"] = rtoosslot_items;
+        _children["rtoosSlot-items"] = rtoosslot_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15552,33 +15552,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Nic-list")
     {
-        auto c = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList>();
-        c->parent = this;
-        nic_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList>();
+        ent_->parent = this;
+        nic_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nic_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nic_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15735,7 +15735,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eaport-items")
     {
@@ -15803,46 +15803,46 @@ std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicLis
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(eaport_items != nullptr)
     {
-        children["eaport-items"] = eaport_items;
+        _children["eaport-items"] = eaport_items;
     }
 
     if(sensor_items != nullptr)
     {
-        children["sensor-items"] = sensor_items;
+        _children["sensor-items"] = sensor_items;
     }
 
     if(asic_items != nullptr)
     {
-        children["asic-items"] = asic_items;
+        _children["asic-items"] = asic_items;
     }
 
     if(cpu_items != nullptr)
     {
-        children["cpu-items"] = cpu_items;
+        _children["cpu-items"] = cpu_items;
     }
 
     if(dimm_items != nullptr)
     {
-        children["dimm-items"] = dimm_items;
+        _children["dimm-items"] = dimm_items;
     }
 
     if(flash_items != nullptr)
     {
-        children["flash-items"] = flash_items;
+        _children["flash-items"] = flash_items;
     }
 
     if(obfl_items != nullptr)
     {
-        children["obfl-items"] = obfl_items;
+        _children["obfl-items"] = obfl_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16089,33 +16089,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::EaportItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::EaportItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ExtAP-list")
     {
-        auto c = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList::EaportItems::ExtAPList>();
-        c->parent = this;
-        extap_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList::EaportItems::ExtAPList>();
+        ent_->parent = this;
+        extap_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::EaportItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::EaportItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : extap_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : extap_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::EaportItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16187,16 +16187,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::EaportItems::ExtAPList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::EaportItems::ExtAPList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::EaportItems::ExtAPList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::EaportItems::ExtAPList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::EaportItems::ExtAPList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16303,33 +16303,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::SensorItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::SensorItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Sensor-list")
     {
-        auto c = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList::SensorItems::SensorList>();
-        c->parent = this;
-        sensor_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList::SensorItems::SensorList>();
+        ent_->parent = this;
+        sensor_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::SensorItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::SensorItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::SensorItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16425,16 +16425,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::SensorItems::SensorList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::SensorItems::SensorList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::SensorItems::SensorList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::SensorItems::SensorList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::SensorItems::SensorList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16601,33 +16601,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::AsicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::AsicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Asic-list")
     {
-        auto c = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList::AsicItems::AsicList>();
-        c->parent = this;
-        asic_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList::AsicItems::AsicList>();
+        ent_->parent = this;
+        asic_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::AsicItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::AsicItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : asic_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : asic_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::AsicItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16727,16 +16727,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::AsicItems::AsicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::AsicItems::AsicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::AsicItems::AsicList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::AsicItems::AsicList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::AsicItems::AsicList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16913,33 +16913,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "CPU-list")
     {
-        auto c = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList>();
-        c->parent = this;
-        cpu_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList>();
+        ent_->parent = this;
+        cpu_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpu_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpu_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17052,7 +17052,7 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "core-items")
     {
@@ -17066,16 +17066,16 @@ std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicLis
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(core_items != nullptr)
     {
-        children["core-items"] = core_items;
+        _children["core-items"] = core_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17272,33 +17272,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::CoreItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::CoreItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Core-list")
     {
-        auto c = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::CoreItems::CoreList>();
-        c->parent = this;
-        core_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::CoreItems::CoreList>();
+        ent_->parent = this;
+        core_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::CoreItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::CoreItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : core_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : core_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::CoreItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17382,16 +17382,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::CoreItems::CoreList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::CoreItems::CoreList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::CoreItems::CoreList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::CoreItems::CoreList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::CpuItems::CPUList::CoreItems::CoreList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17528,33 +17528,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::DimmItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::DimmItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Dimm-list")
     {
-        auto c = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList::DimmItems::DimmList>();
-        c->parent = this;
-        dimm_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::NslotItems::NSlotList::NicItems::NicList::DimmItems::DimmList>();
+        ent_->parent = this;
+        dimm_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::DimmItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::DimmItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dimm_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dimm_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::DimmItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17654,16 +17654,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::DimmItems::DimmList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::DimmItems::DimmList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::DimmItems::DimmList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::DimmItems::DimmList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::DimmItems::DimmList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17872,16 +17872,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::FlashItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::FlashItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::FlashItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::FlashItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::FlashItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18078,16 +18078,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::ObflItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::NicItems::NicList::ObflItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::ObflItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::NicItems::NicList::ObflItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::NicItems::NicList::ObflItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18230,16 +18230,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::NslotItems::NSlo
 
 }
 
-std::shared_ptr<Entity> System::ChItems::NslotItems::NSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::NslotItems::NSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::NslotItems::NSlotList::RtoosSlotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::NslotItems::NSlotList::RtoosSlotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::NslotItems::NSlotList::RtoosSlotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18333,33 +18333,33 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::PItems::get_name
 
 }
 
-std::shared_ptr<Entity> System::ChItems::PItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::PItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Storage-list")
     {
-        auto c = std::make_shared<System::ChItems::PItems::StorageList>();
-        c->parent = this;
-        storage_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ChItems::PItems::StorageList>();
+        ent_->parent = this;
+        storage_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::PItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::PItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : storage_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : storage_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ChItems::PItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18455,16 +18455,16 @@ std::vector<std::pair<std::string, LeafData> > System::ChItems::PItems::StorageL
 
 }
 
-std::shared_ptr<Entity> System::ChItems::PItems::StorageList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ChItems::PItems::StorageList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ChItems::PItems::StorageList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ChItems::PItems::StorageList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ChItems::PItems::StorageList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18618,33 +18618,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ExtCh-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList>();
-        c->parent = this;
-        extch_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList>();
+        ent_->parent = this;
+        extch_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : extch_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : extch_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18784,7 +18784,7 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::ge
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "running-items")
     {
@@ -18852,46 +18852,46 @@ std::shared_ptr<Entity> System::ExtchItems::ExtChList::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(running_items != nullptr)
     {
-        children["running-items"] = running_items;
+        _children["running-items"] = running_items;
     }
 
     if(locled_items != nullptr)
     {
-        children["locled-items"] = locled_items;
+        _children["locled-items"] = locled_items;
     }
 
     if(extchslot_items != nullptr)
     {
-        children["extchslot-items"] = extchslot_items;
+        _children["extchslot-items"] = extchslot_items;
     }
 
     if(psuslot_items != nullptr)
     {
-        children["psuslot-items"] = psuslot_items;
+        _children["psuslot-items"] = psuslot_items;
     }
 
     if(ftslot_items != nullptr)
     {
-        children["ftslot-items"] = ftslot_items;
+        _children["ftslot-items"] = ftslot_items;
     }
 
     if(spbp_items != nullptr)
     {
-        children["spbp-items"] = spbp_items;
+        _children["spbp-items"] = spbp_items;
     }
 
     if(spsup_items != nullptr)
     {
-        children["spsup-items"] = spsup_items;
+        _children["spsup-items"] = spsup_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19094,16 +19094,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ru
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::RunningItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::RunningItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::RunningItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::RunningItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::RunningItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19240,33 +19240,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Lo
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::LocledItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::LocledItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ExtChLocLed-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::LocledItems::ExtChLocLedList>();
-        c->parent = this;
-        extchlocled_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::LocledItems::ExtChLocLedList>();
+        ent_->parent = this;
+        extchlocled_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::LocledItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::LocledItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : extchlocled_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : extchlocled_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::LocledItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19366,16 +19366,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Lo
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::LocledItems::ExtChLocLedList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::LocledItems::ExtChLocLedList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::LocledItems::ExtChLocLedList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::LocledItems::ExtChLocLedList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::LocledItems::ExtChLocLedList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19552,33 +19552,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ExtChCardSlot-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList>();
-        c->parent = this;
-        extchcardslot_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList>();
+        ent_->parent = this;
+        extchcardslot_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : extchcardslot_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : extchcardslot_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19667,7 +19667,7 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "extchc-items")
     {
@@ -19690,21 +19690,21 @@ std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCard
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(extchc_items != nullptr)
     {
-        children["extchc-items"] = extchc_items;
+        _children["extchc-items"] = extchc_items;
     }
 
     if(rtoosslot_items != nullptr)
     {
-        children["rtoosSlot-items"] = rtoosslot_items;
+        _children["rtoosSlot-items"] = rtoosslot_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19948,7 +19948,7 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hostextport-items")
     {
@@ -20025,51 +20025,51 @@ std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCard
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(hostextport_items != nullptr)
     {
-        children["hostextport-items"] = hostextport_items;
+        _children["hostextport-items"] = hostextport_items;
     }
 
     if(leafextport_items != nullptr)
     {
-        children["leafextport-items"] = leafextport_items;
+        _children["leafextport-items"] = leafextport_items;
     }
 
     if(sensor_items != nullptr)
     {
-        children["sensor-items"] = sensor_items;
+        _children["sensor-items"] = sensor_items;
     }
 
     if(asic_items != nullptr)
     {
-        children["asic-items"] = asic_items;
+        _children["asic-items"] = asic_items;
     }
 
     if(cpu_items != nullptr)
     {
-        children["cpu-items"] = cpu_items;
+        _children["cpu-items"] = cpu_items;
     }
 
     if(dimm_items != nullptr)
     {
-        children["dimm-items"] = dimm_items;
+        _children["dimm-items"] = dimm_items;
     }
 
     if(flash_items != nullptr)
     {
-        children["flash-items"] = flash_items;
+        _children["flash-items"] = flash_items;
     }
 
     if(obfl_items != nullptr)
     {
-        children["obfl-items"] = obfl_items;
+        _children["obfl-items"] = obfl_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20376,33 +20376,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::HostextportItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::HostextportItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ExtChHP-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::HostextportItems::ExtChHPList>();
-        c->parent = this;
-        extchhp_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::HostextportItems::ExtChHPList>();
+        ent_->parent = this;
+        extchhp_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::HostextportItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::HostextportItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : extchhp_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : extchhp_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::HostextportItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20474,16 +20474,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::HostextportItems::ExtChHPList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::HostextportItems::ExtChHPList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::HostextportItems::ExtChHPList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::HostextportItems::ExtChHPList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::HostextportItems::ExtChHPList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20590,33 +20590,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::LeafextportItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::LeafextportItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ExtChFP-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::LeafextportItems::ExtChFPList>();
-        c->parent = this;
-        extchfp_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::LeafextportItems::ExtChFPList>();
+        ent_->parent = this;
+        extchfp_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::LeafextportItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::LeafextportItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : extchfp_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : extchfp_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::LeafextportItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20688,16 +20688,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::LeafextportItems::ExtChFPList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::LeafextportItems::ExtChFPList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::LeafextportItems::ExtChFPList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::LeafextportItems::ExtChFPList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::LeafextportItems::ExtChFPList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20804,33 +20804,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::SensorItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::SensorItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Sensor-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::SensorItems::SensorList>();
-        c->parent = this;
-        sensor_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::SensorItems::SensorList>();
+        ent_->parent = this;
+        sensor_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::SensorItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::SensorItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::SensorItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20926,16 +20926,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::SensorItems::SensorList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::SensorItems::SensorList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::SensorItems::SensorList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::SensorItems::SensorList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::SensorItems::SensorList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21102,33 +21102,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::AsicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::AsicItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Asic-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::AsicItems::AsicList>();
-        c->parent = this;
-        asic_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::AsicItems::AsicList>();
+        ent_->parent = this;
+        asic_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::AsicItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::AsicItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : asic_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : asic_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::AsicItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21228,16 +21228,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::AsicItems::AsicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::AsicItems::AsicList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::AsicItems::AsicList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::AsicItems::AsicList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::AsicItems::AsicList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21414,33 +21414,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "CPU-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList>();
-        c->parent = this;
-        cpu_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList>();
+        ent_->parent = this;
+        cpu_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpu_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpu_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21553,7 +21553,7 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "core-items")
     {
@@ -21567,16 +21567,16 @@ std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCard
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(core_items != nullptr)
     {
-        children["core-items"] = core_items;
+        _children["core-items"] = core_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21773,33 +21773,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::CoreItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::CoreItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Core-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::CoreItems::CoreList>();
-        c->parent = this;
-        core_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::CoreItems::CoreList>();
+        ent_->parent = this;
+        core_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::CoreItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::CoreItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : core_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : core_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::CoreItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21883,16 +21883,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::CoreItems::CoreList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::CoreItems::CoreList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::CoreItems::CoreList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::CoreItems::CoreList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::CpuItems::CPUList::CoreItems::CoreList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22029,33 +22029,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::DimmItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::DimmItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Dimm-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::DimmItems::DimmList>();
-        c->parent = this;
-        dimm_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::DimmItems::DimmList>();
+        ent_->parent = this;
+        dimm_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::DimmItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::DimmItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dimm_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dimm_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::DimmItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22155,16 +22155,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::DimmItems::DimmList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::DimmItems::DimmList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::DimmItems::DimmList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::DimmItems::DimmList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::DimmItems::DimmList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22373,16 +22373,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::FlashItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::FlashItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::FlashItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::FlashItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::FlashItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22579,16 +22579,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::ObflItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::ObflItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::ObflItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::ObflItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::ExtchcItems::ObflItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22731,16 +22731,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ex
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::RtoosSlotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::RtoosSlotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::ExtchslotItems::ExtChCardSlotList::RtoosSlotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22827,33 +22827,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ps
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::PsuslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::PsuslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "PsuSlot-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList>();
-        c->parent = this;
-        psuslot_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList>();
+        ent_->parent = this;
+        psuslot_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::PsuslotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::PsuslotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : psuslot_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : psuslot_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::PsuslotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22942,7 +22942,7 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ps
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "psu-items")
     {
@@ -22965,21 +22965,21 @@ std::shared_ptr<Entity> System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(psu_items != nullptr)
     {
-        children["psu-items"] = psu_items;
+        _children["psu-items"] = psu_items;
     }
 
     if(rtoosslot_items != nullptr)
     {
-        children["rtoosSlot-items"] = rtoosslot_items;
+        _children["rtoosSlot-items"] = rtoosslot_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23162,16 +23162,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ps
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::PsuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::PsuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::PsuItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::PsuItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::PsuItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23404,16 +23404,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ps
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::RtoosSlotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::RtoosSlotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::PsuslotItems::PsuSlotList::RtoosSlotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23500,33 +23500,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ft
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::FtslotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "FtSlot-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::FtslotItems::FtSlotList>();
-        c->parent = this;
-        ftslot_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::FtslotItems::FtSlotList>();
+        ent_->parent = this;
+        ftslot_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::FtslotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::FtslotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ftslot_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ftslot_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::FtslotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23615,7 +23615,7 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ft
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ft-items")
     {
@@ -23638,21 +23638,21 @@ std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ft_items != nullptr)
     {
-        children["ft-items"] = ft_items;
+        _children["ft-items"] = ft_items;
     }
 
     if(rtoosslot_items != nullptr)
     {
-        children["rtoosSlot-items"] = rtoosslot_items;
+        _children["rtoosSlot-items"] = rtoosslot_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::FtslotItems::FtSlotList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23824,7 +23824,7 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ft
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ej-items")
     {
@@ -23856,26 +23856,26 @@ std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ej_items != nullptr)
     {
-        children["ej-items"] = ej_items;
+        _children["ej-items"] = ej_items;
     }
 
     if(fan_items != nullptr)
     {
-        children["fan-items"] = fan_items;
+        _children["fan-items"] = fan_items;
     }
 
     if(spfan_items != nullptr)
     {
-        children["spfan-items"] = spfan_items;
+        _children["spfan-items"] = spfan_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24052,33 +24052,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ft
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::EjItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::EjItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Ejec-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::EjItems::EjecList>();
-        c->parent = this;
-        ejec_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::EjItems::EjecList>();
+        ent_->parent = this;
+        ejec_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::EjItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::EjItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ejec_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ejec_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::EjItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24166,16 +24166,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ft
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::EjItems::EjecList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::EjItems::EjecList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::EjItems::EjecList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::EjItems::EjecList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::EjItems::EjecList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24322,33 +24322,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ft
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::FanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::FanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Fan-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::FanItems::FanList>();
-        c->parent = this;
-        fan_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::FanItems::FanList>();
+        ent_->parent = this;
+        fan_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::FanItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::FanItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fan_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fan_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::FanItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24448,16 +24448,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ft
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::FanItems::FanList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::FanItems::FanList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::FanItems::FanList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::FanItems::FanList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::FanItems::FanList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24679,7 +24679,7 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ft
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spcmn-items")
     {
@@ -24711,26 +24711,26 @@ std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spcmn_items != nullptr)
     {
-        children["spcmn-items"] = spcmn_items;
+        _children["spcmn-items"] = spcmn_items;
     }
 
     if(spfanblk_items != nullptr)
     {
-        children["spfanblk-items"] = spfanblk_items;
+        _children["spfanblk-items"] = spfanblk_items;
     }
 
     if(spfansn_items != nullptr)
     {
-        children["spfansn-items"] = spfansn_items;
+        _children["spfansn-items"] = spfansn_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24979,16 +24979,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ft
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpcmnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpcmnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpcmnItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpcmnItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpcmnItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25297,16 +25297,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ft
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfanblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfanblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfanblkItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfanblkItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfanblkItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25491,16 +25491,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ft
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfansnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfansnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfansnItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfansnItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::FtslotItems::FtSlotList::FtItems::SpfanItems::SpfansnItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25613,16 +25613,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Ft
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::RtoosSlotItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::RtoosSlotItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::FtslotItems::FtSlotList::RtoosSlotItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::FtslotItems::FtSlotList::RtoosSlotItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25750,7 +25750,7 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Sp
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::SpbpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::SpbpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spcmn-items")
     {
@@ -25773,21 +25773,21 @@ std::shared_ptr<Entity> System::ExtchItems::ExtChList::SpbpItems::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::SpbpItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::SpbpItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spcmn_items != nullptr)
     {
-        children["spcmn-items"] = spcmn_items;
+        _children["spcmn-items"] = spcmn_items;
     }
 
     if(spbpblk_items != nullptr)
     {
-        children["spbpblk-items"] = spbpblk_items;
+        _children["spbpblk-items"] = spbpblk_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::SpbpItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26036,16 +26036,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Sp
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::SpbpItems::SpcmnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::SpbpItems::SpcmnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::SpbpItems::SpcmnItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::SpbpItems::SpcmnItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::SpbpItems::SpcmnItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26358,16 +26358,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Sp
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::SpbpItems::SpbpblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::SpbpItems::SpbpblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::SpbpItems::SpbpblkItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::SpbpItems::SpbpblkItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::SpbpItems::SpbpblkItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26607,7 +26607,7 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Sp
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::SpsupItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::SpsupItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spcmn-items")
     {
@@ -26657,36 +26657,36 @@ std::shared_ptr<Entity> System::ExtchItems::ExtChList::SpsupItems::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::SpsupItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::SpsupItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spcmn_items != nullptr)
     {
-        children["spcmn-items"] = spcmn_items;
+        _children["spcmn-items"] = spcmn_items;
     }
 
     if(spsupblk_items != nullptr)
     {
-        children["spsupblk-items"] = spsupblk_items;
+        _children["spsupblk-items"] = spsupblk_items;
     }
 
     if(sppd_items != nullptr)
     {
-        children["sppd-items"] = sppd_items;
+        _children["sppd-items"] = sppd_items;
     }
 
     if(spsd_items != nullptr)
     {
-        children["spsd-items"] = spsd_items;
+        _children["spsd-items"] = spsd_items;
     }
 
     if(spsensorblk_items != nullptr)
     {
-        children["spsensorblk-items"] = spsensorblk_items;
+        _children["spsensorblk-items"] = spsensorblk_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::SpsupItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26935,16 +26935,16 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Sp
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::SpsupItems::SpcmnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::SpsupItems::SpcmnItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::SpsupItems::SpcmnItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::SpsupItems::SpcmnItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::SpsupItems::SpcmnItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27306,7 +27306,7 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Sp
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::SpsupItems::SpsupblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::SpsupItems::SpsupblkItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spsd-items")
     {
@@ -27329,21 +27329,21 @@ std::shared_ptr<Entity> System::ExtchItems::ExtChList::SpsupItems::SpsupblkItems
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::SpsupItems::SpsupblkItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::SpsupItems::SpsupblkItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spsd_items != nullptr)
     {
-        children["spsd-items"] = spsd_items;
+        _children["spsd-items"] = spsd_items;
     }
 
     if(sppd_items != nullptr)
     {
-        children["sppd-items"] = sppd_items;
+        _children["sppd-items"] = sppd_items;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::SpsupItems::SpsupblkItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27630,33 +27630,33 @@ std::vector<std::pair<std::string, LeafData> > System::ExtchItems::ExtChList::Sp
 
 }
 
-std::shared_ptr<Entity> System::ExtchItems::ExtChList::SpsupItems::SpsupblkItems::SpsdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> System::ExtchItems::ExtChList::SpsupItems::SpsupblkItems::SpsdItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "SpSd-list")
     {
-        auto c = std::make_shared<System::ExtchItems::ExtChList::SpsupItems::SpsupblkItems::SpsdItems::SpSdList>();
-        c->parent = this;
-        spsd_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<System::ExtchItems::ExtChList::SpsupItems::SpsupblkItems::SpsdItems::SpSdList>();
+        ent_->parent = this;
+        spsd_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> System::ExtchItems::ExtChList::SpsupItems::SpsupblkItems::SpsdItems::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::ExtchItems::ExtChList::SpsupItems::SpsupblkItems::SpsdItems::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : spsd_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : spsd_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void System::ExtchItems::ExtChList::SpsupItems::SpsupblkItems::SpsdItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

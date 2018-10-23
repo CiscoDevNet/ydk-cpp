@@ -144,7 +144,7 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonAppl")
     {
@@ -365,131 +365,131 @@ std::shared_ptr<Entity> CISCORTTMONMIB::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rttmonappl != nullptr)
     {
-        children["rttMonAppl"] = rttmonappl;
+        _children["rttMonAppl"] = rttmonappl;
     }
 
     if(rttmonapplsupportedrtttypestable != nullptr)
     {
-        children["rttMonApplSupportedRttTypesTable"] = rttmonapplsupportedrtttypestable;
+        _children["rttMonApplSupportedRttTypesTable"] = rttmonapplsupportedrtttypestable;
     }
 
     if(rttmonapplsupportedprotocolstable != nullptr)
     {
-        children["rttMonApplSupportedProtocolsTable"] = rttmonapplsupportedprotocolstable;
+        _children["rttMonApplSupportedProtocolsTable"] = rttmonapplsupportedprotocolstable;
     }
 
     if(rttmonapplpreconfigedtable != nullptr)
     {
-        children["rttMonApplPreConfigedTable"] = rttmonapplpreconfigedtable;
+        _children["rttMonApplPreConfigedTable"] = rttmonapplpreconfigedtable;
     }
 
     if(rttmonapplauthtable != nullptr)
     {
-        children["rttMonApplAuthTable"] = rttmonapplauthtable;
+        _children["rttMonApplAuthTable"] = rttmonapplauthtable;
     }
 
     if(rttmonctrladmintable != nullptr)
     {
-        children["rttMonCtrlAdminTable"] = rttmonctrladmintable;
+        _children["rttMonCtrlAdminTable"] = rttmonctrladmintable;
     }
 
     if(rttmonechoadmintable != nullptr)
     {
-        children["rttMonEchoAdminTable"] = rttmonechoadmintable;
+        _children["rttMonEchoAdminTable"] = rttmonechoadmintable;
     }
 
     if(rttmonfileioadmintable != nullptr)
     {
-        children["rttMonFileIOAdminTable"] = rttmonfileioadmintable;
+        _children["rttMonFileIOAdminTable"] = rttmonfileioadmintable;
     }
 
     if(rttmonscriptadmintable != nullptr)
     {
-        children["rttMonScriptAdminTable"] = rttmonscriptadmintable;
+        _children["rttMonScriptAdminTable"] = rttmonscriptadmintable;
     }
 
     if(rttmonreacttriggeradmintable != nullptr)
     {
-        children["rttMonReactTriggerAdminTable"] = rttmonreacttriggeradmintable;
+        _children["rttMonReactTriggerAdminTable"] = rttmonreacttriggeradmintable;
     }
 
     if(rttmonechopathadmintable != nullptr)
     {
-        children["rttMonEchoPathAdminTable"] = rttmonechopathadmintable;
+        _children["rttMonEchoPathAdminTable"] = rttmonechopathadmintable;
     }
 
     if(rttmongrpscheduleadmintable != nullptr)
     {
-        children["rttMonGrpScheduleAdminTable"] = rttmongrpscheduleadmintable;
+        _children["rttMonGrpScheduleAdminTable"] = rttmongrpscheduleadmintable;
     }
 
     if(rttmplsvpnmonctrltable != nullptr)
     {
-        children["rttMplsVpnMonCtrlTable"] = rttmplsvpnmonctrltable;
+        _children["rttMplsVpnMonCtrlTable"] = rttmplsvpnmonctrltable;
     }
 
     if(rttmonreacttable != nullptr)
     {
-        children["rttMonReactTable"] = rttmonreacttable;
+        _children["rttMonReactTable"] = rttmonreacttable;
     }
 
     if(rttmongeneratedopertable != nullptr)
     {
-        children["rttMonGeneratedOperTable"] = rttmongeneratedopertable;
+        _children["rttMonGeneratedOperTable"] = rttmongeneratedopertable;
     }
 
     if(rttmonstatscapturetable != nullptr)
     {
-        children["rttMonStatsCaptureTable"] = rttmonstatscapturetable;
+        _children["rttMonStatsCaptureTable"] = rttmonstatscapturetable;
     }
 
     if(rttmonstatscollecttable != nullptr)
     {
-        children["rttMonStatsCollectTable"] = rttmonstatscollecttable;
+        _children["rttMonStatsCollectTable"] = rttmonstatscollecttable;
     }
 
     if(rttmonstatstotalstable != nullptr)
     {
-        children["rttMonStatsTotalsTable"] = rttmonstatstotalstable;
+        _children["rttMonStatsTotalsTable"] = rttmonstatstotalstable;
     }
 
     if(rttmonhttpstatstable != nullptr)
     {
-        children["rttMonHTTPStatsTable"] = rttmonhttpstatstable;
+        _children["rttMonHTTPStatsTable"] = rttmonhttpstatstable;
     }
 
     if(rttmonjitterstatstable != nullptr)
     {
-        children["rttMonJitterStatsTable"] = rttmonjitterstatstable;
+        _children["rttMonJitterStatsTable"] = rttmonjitterstatstable;
     }
 
     if(rttmonlpdgrpstatstable != nullptr)
     {
-        children["rttMonLpdGrpStatsTable"] = rttmonlpdgrpstatstable;
+        _children["rttMonLpdGrpStatsTable"] = rttmonlpdgrpstatstable;
     }
 
     if(rttmonhistorycollectiontable != nullptr)
     {
-        children["rttMonHistoryCollectionTable"] = rttmonhistorycollectiontable;
+        _children["rttMonHistoryCollectionTable"] = rttmonhistorycollectiontable;
     }
 
     if(rttmonlatesthttpopertable != nullptr)
     {
-        children["rttMonLatestHTTPOperTable"] = rttmonlatesthttpopertable;
+        _children["rttMonLatestHTTPOperTable"] = rttmonlatesthttpopertable;
     }
 
     if(rttmonlatestjitteropertable != nullptr)
     {
-        children["rttMonLatestJitterOperTable"] = rttmonlatestjitteropertable;
+        _children["rttMonLatestJitterOperTable"] = rttmonlatestjitteropertable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -500,7 +500,7 @@ void CISCORTTMONMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::clone_ptr() const
 {
     return std::make_shared<CISCORTTMONMIB>();
 }
@@ -620,16 +620,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonAppl::get_n
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonAppl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonAppl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonAppl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonAppl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonAppl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -813,33 +813,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonApplSupport
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonApplSupportedRttTypesTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonApplSupportedRttTypesTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonApplSupportedRttTypesEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonApplSupportedRttTypesTable::RttMonApplSupportedRttTypesEntry>();
-        c->parent = this;
-        rttmonapplsupportedrtttypesentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonApplSupportedRttTypesTable::RttMonApplSupportedRttTypesEntry>();
+        ent_->parent = this;
+        rttmonapplsupportedrtttypesentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonApplSupportedRttTypesTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonApplSupportedRttTypesTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonapplsupportedrtttypesentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonapplsupportedrtttypesentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonApplSupportedRttTypesTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -910,16 +910,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonApplSupport
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonApplSupportedRttTypesTable::RttMonApplSupportedRttTypesEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonApplSupportedRttTypesTable::RttMonApplSupportedRttTypesEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonApplSupportedRttTypesTable::RttMonApplSupportedRttTypesEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonApplSupportedRttTypesTable::RttMonApplSupportedRttTypesEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonApplSupportedRttTypesTable::RttMonApplSupportedRttTypesEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1013,33 +1013,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonApplSupport
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonApplSupportedProtocolsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonApplSupportedProtocolsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonApplSupportedProtocolsEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonApplSupportedProtocolsTable::RttMonApplSupportedProtocolsEntry>();
-        c->parent = this;
-        rttmonapplsupportedprotocolsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonApplSupportedProtocolsTable::RttMonApplSupportedProtocolsEntry>();
+        ent_->parent = this;
+        rttmonapplsupportedprotocolsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonApplSupportedProtocolsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonApplSupportedProtocolsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonapplsupportedprotocolsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonapplsupportedprotocolsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonApplSupportedProtocolsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1110,16 +1110,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonApplSupport
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonApplSupportedProtocolsTable::RttMonApplSupportedProtocolsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonApplSupportedProtocolsTable::RttMonApplSupportedProtocolsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonApplSupportedProtocolsTable::RttMonApplSupportedProtocolsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonApplSupportedProtocolsTable::RttMonApplSupportedProtocolsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonApplSupportedProtocolsTable::RttMonApplSupportedProtocolsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1213,33 +1213,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonApplPreConf
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonApplPreConfigedTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonApplPreConfigedTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonApplPreConfigedEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonApplPreConfigedTable::RttMonApplPreConfigedEntry>();
-        c->parent = this;
-        rttmonapplpreconfigedentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonApplPreConfigedTable::RttMonApplPreConfigedEntry>();
+        ent_->parent = this;
+        rttmonapplpreconfigedentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonApplPreConfigedTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonApplPreConfigedTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonapplpreconfigedentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonapplpreconfigedentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonApplPreConfigedTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1315,16 +1315,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonApplPreConf
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonApplPreConfigedTable::RttMonApplPreConfigedEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonApplPreConfigedTable::RttMonApplPreConfigedEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonApplPreConfigedTable::RttMonApplPreConfigedEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonApplPreConfigedTable::RttMonApplPreConfigedEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonApplPreConfigedTable::RttMonApplPreConfigedEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1428,33 +1428,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonApplAuthTab
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonApplAuthTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonApplAuthTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonApplAuthEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonApplAuthTable::RttMonApplAuthEntry>();
-        c->parent = this;
-        rttmonapplauthentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonApplAuthTable::RttMonApplAuthEntry>();
+        ent_->parent = this;
+        rttmonapplauthentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonApplAuthTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonApplAuthTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonapplauthentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonapplauthentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonApplAuthTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1549,16 +1549,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonApplAuthTab
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonApplAuthTable::RttMonApplAuthEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonApplAuthTable::RttMonApplAuthEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonApplAuthTable::RttMonApplAuthEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonApplAuthTable::RttMonApplAuthEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonApplAuthTable::RttMonApplAuthEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1712,33 +1712,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonCtrlAdminTa
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonCtrlAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonCtrlAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonCtrlAdminEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry>();
-        c->parent = this;
-        rttmonctrladminentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry>();
+        ent_->parent = this;
+        rttmonctrladminentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonCtrlAdminTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonCtrlAdminTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonctrladminentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonctrladminentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonCtrlAdminTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2001,16 +2001,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonCtrlAdminTa
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonCtrlAdminTable::RttMonCtrlAdminEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2584,33 +2584,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonEchoAdminTa
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonEchoAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonEchoAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonEchoAdminEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry>();
-        c->parent = this;
-        rttmonechoadminentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry>();
+        ent_->parent = this;
+        rttmonechoadminentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonEchoAdminTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonEchoAdminTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonechoadminentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonechoadminentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonEchoAdminTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2981,16 +2981,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonEchoAdminTa
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonEchoAdminTable::RttMonEchoAdminEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3834,33 +3834,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonFileIOAdmin
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonFileIOAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonFileIOAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonFileIOAdminEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonFileIOAdminTable::RttMonFileIOAdminEntry>();
-        c->parent = this;
-        rttmonfileioadminentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonFileIOAdminTable::RttMonFileIOAdminEntry>();
+        ent_->parent = this;
+        rttmonfileioadminentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonFileIOAdminTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonFileIOAdminTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonfileioadminentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonfileioadminentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonFileIOAdminTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3939,16 +3939,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonFileIOAdmin
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonFileIOAdminTable::RttMonFileIOAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonFileIOAdminTable::RttMonFileIOAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonFileIOAdminTable::RttMonFileIOAdminEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonFileIOAdminTable::RttMonFileIOAdminEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonFileIOAdminTable::RttMonFileIOAdminEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4062,33 +4062,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonScriptAdmin
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonScriptAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonScriptAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonScriptAdminEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonScriptAdminTable::RttMonScriptAdminEntry>();
-        c->parent = this;
-        rttmonscriptadminentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonScriptAdminTable::RttMonScriptAdminEntry>();
+        ent_->parent = this;
+        rttmonscriptadminentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonScriptAdminTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonScriptAdminTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonscriptadminentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonscriptadminentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonScriptAdminTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4163,16 +4163,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonScriptAdmin
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonScriptAdminTable::RttMonScriptAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonScriptAdminTable::RttMonScriptAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonScriptAdminTable::RttMonScriptAdminEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonScriptAdminTable::RttMonScriptAdminEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonScriptAdminTable::RttMonScriptAdminEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4276,33 +4276,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonReactTrigge
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonReactTriggerAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonReactTriggerAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonReactTriggerAdminEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonReactTriggerAdminTable::RttMonReactTriggerAdminEntry>();
-        c->parent = this;
-        rttmonreacttriggeradminentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonReactTriggerAdminTable::RttMonReactTriggerAdminEntry>();
+        ent_->parent = this;
+        rttmonreacttriggeradminentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonReactTriggerAdminTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonReactTriggerAdminTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonreacttriggeradminentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonreacttriggeradminentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonReactTriggerAdminTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4382,16 +4382,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonReactTrigge
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonReactTriggerAdminTable::RttMonReactTriggerAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonReactTriggerAdminTable::RttMonReactTriggerAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonReactTriggerAdminTable::RttMonReactTriggerAdminEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonReactTriggerAdminTable::RttMonReactTriggerAdminEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonReactTriggerAdminTable::RttMonReactTriggerAdminEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4505,33 +4505,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonEchoPathAdm
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonEchoPathAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonEchoPathAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonEchoPathAdminEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonEchoPathAdminTable::RttMonEchoPathAdminEntry>();
-        c->parent = this;
-        rttmonechopathadminentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonEchoPathAdminTable::RttMonEchoPathAdminEntry>();
+        ent_->parent = this;
+        rttmonechopathadminentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonEchoPathAdminTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonEchoPathAdminTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonechopathadminentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonechopathadminentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonEchoPathAdminTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4607,16 +4607,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonEchoPathAdm
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonEchoPathAdminTable::RttMonEchoPathAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonEchoPathAdminTable::RttMonEchoPathAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonEchoPathAdminTable::RttMonEchoPathAdminEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonEchoPathAdminTable::RttMonEchoPathAdminEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonEchoPathAdminTable::RttMonEchoPathAdminEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4720,33 +4720,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonGrpSchedule
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonGrpScheduleAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonGrpScheduleAdminTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonGrpScheduleAdminEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonGrpScheduleAdminTable::RttMonGrpScheduleAdminEntry>();
-        c->parent = this;
-        rttmongrpscheduleadminentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonGrpScheduleAdminTable::RttMonGrpScheduleAdminEntry>();
+        ent_->parent = this;
+        rttmongrpscheduleadminentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonGrpScheduleAdminTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonGrpScheduleAdminTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmongrpscheduleadminentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmongrpscheduleadminentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonGrpScheduleAdminTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4861,16 +4861,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonGrpSchedule
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonGrpScheduleAdminTable::RttMonGrpScheduleAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonGrpScheduleAdminTable::RttMonGrpScheduleAdminEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonGrpScheduleAdminTable::RttMonGrpScheduleAdminEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonGrpScheduleAdminTable::RttMonGrpScheduleAdminEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonGrpScheduleAdminTable::RttMonGrpScheduleAdminEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5074,33 +5074,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMplsVpnMonCtrl
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMplsVpnMonCtrlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMplsVpnMonCtrlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMplsVpnMonCtrlEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry>();
-        c->parent = this;
-        rttmplsvpnmonctrlentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry>();
+        ent_->parent = this;
+        rttmplsvpnmonctrlentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMplsVpnMonCtrlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMplsVpnMonCtrlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmplsvpnmonctrlentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmplsvpnmonctrlentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMplsVpnMonCtrlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5335,16 +5335,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMplsVpnMonCtrl
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMplsVpnMonCtrlTable::RttMplsVpnMonCtrlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5848,33 +5848,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonReactTable:
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonReactTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonReactTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonReactEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonReactTable::RttMonReactEntry>();
-        c->parent = this;
-        rttmonreactentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonReactTable::RttMonReactEntry>();
+        ent_->parent = this;
+        rttmonreactentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonReactTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonReactTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonreactentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonreactentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonReactTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5986,16 +5986,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonReactTable:
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonReactTable::RttMonReactEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonReactTable::RttMonReactEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonReactTable::RttMonReactEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonReactTable::RttMonReactEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonReactTable::RttMonReactEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6189,33 +6189,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonGeneratedOp
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonGeneratedOperTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonGeneratedOperTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonGeneratedOperEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonGeneratedOperTable::RttMonGeneratedOperEntry>();
-        c->parent = this;
-        rttmongeneratedoperentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonGeneratedOperTable::RttMonGeneratedOperEntry>();
+        ent_->parent = this;
+        rttmongeneratedoperentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonGeneratedOperTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonGeneratedOperTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmongeneratedoperentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmongeneratedoperentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonGeneratedOperTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6296,16 +6296,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonGeneratedOp
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonGeneratedOperTable::RttMonGeneratedOperEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonGeneratedOperTable::RttMonGeneratedOperEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonGeneratedOperTable::RttMonGeneratedOperEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonGeneratedOperTable::RttMonGeneratedOperEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonGeneratedOperTable::RttMonGeneratedOperEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6419,33 +6419,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonStatsCaptur
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonStatsCaptureTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonStatsCaptureTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonStatsCaptureEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonStatsCaptureTable::RttMonStatsCaptureEntry>();
-        c->parent = this;
-        rttmonstatscaptureentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonStatsCaptureTable::RttMonStatsCaptureEntry>();
+        ent_->parent = this;
+        rttmonstatscaptureentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonStatsCaptureTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonStatsCaptureTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonstatscaptureentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonstatscaptureentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonStatsCaptureTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6560,16 +6560,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonStatsCaptur
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonStatsCaptureTable::RttMonStatsCaptureEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonStatsCaptureTable::RttMonStatsCaptureEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonStatsCaptureTable::RttMonStatsCaptureEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonStatsCaptureTable::RttMonStatsCaptureEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonStatsCaptureTable::RttMonStatsCaptureEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6763,33 +6763,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonStatsCollec
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonStatsCollectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonStatsCollectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonStatsCollectEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonStatsCollectTable::RttMonStatsCollectEntry>();
-        c->parent = this;
-        rttmonstatscollectentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonStatsCollectTable::RttMonStatsCollectEntry>();
+        ent_->parent = this;
+        rttmonstatscollectentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonStatsCollectTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonStatsCollectTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonstatscollectentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonstatscollectentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonStatsCollectTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6919,16 +6919,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonStatsCollec
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonStatsCollectTable::RttMonStatsCollectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonStatsCollectTable::RttMonStatsCollectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonStatsCollectTable::RttMonStatsCollectEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonStatsCollectTable::RttMonStatsCollectEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonStatsCollectTable::RttMonStatsCollectEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7162,33 +7162,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonStatsTotals
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonStatsTotalsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonStatsTotalsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonStatsTotalsEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonStatsTotalsTable::RttMonStatsTotalsEntry>();
-        c->parent = this;
-        rttmonstatstotalsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonStatsTotalsTable::RttMonStatsTotalsEntry>();
+        ent_->parent = this;
+        rttmonstatstotalsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonStatsTotalsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonStatsTotalsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonstatstotalsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonstatstotalsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonStatsTotalsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7268,16 +7268,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonStatsTotals
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonStatsTotalsTable::RttMonStatsTotalsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonStatsTotalsTable::RttMonStatsTotalsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonStatsTotalsTable::RttMonStatsTotalsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonStatsTotalsTable::RttMonStatsTotalsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonStatsTotalsTable::RttMonStatsTotalsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7391,33 +7391,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonHTTPStatsTa
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonHTTPStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonHTTPStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonHTTPStatsEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonHTTPStatsTable::RttMonHTTPStatsEntry>();
-        c->parent = this;
-        rttmonhttpstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonHTTPStatsTable::RttMonHTTPStatsEntry>();
+        ent_->parent = this;
+        rttmonhttpstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonHTTPStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonHTTPStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonhttpstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonhttpstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonHTTPStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7561,16 +7561,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonHTTPStatsTa
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonHTTPStatsTable::RttMonHTTPStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonHTTPStatsTable::RttMonHTTPStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonHTTPStatsTable::RttMonHTTPStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonHTTPStatsTable::RttMonHTTPStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonHTTPStatsTable::RttMonHTTPStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7844,33 +7844,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonJitterStats
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonJitterStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonJitterStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonJitterStatsEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonJitterStatsTable::RttMonJitterStatsEntry>();
-        c->parent = this;
-        rttmonjitterstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonJitterStatsTable::RttMonJitterStatsEntry>();
+        ent_->parent = this;
+        rttmonjitterstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonJitterStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonJitterStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonjitterstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonjitterstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonJitterStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8210,16 +8210,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonJitterStats
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonJitterStatsTable::RttMonJitterStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonJitterStatsTable::RttMonJitterStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonJitterStatsTable::RttMonJitterStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonJitterStatsTable::RttMonJitterStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonJitterStatsTable::RttMonJitterStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8983,33 +8983,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonLpdGrpStats
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonLpdGrpStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonLpdGrpStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonLpdGrpStatsEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonLpdGrpStatsTable::RttMonLpdGrpStatsEntry>();
-        c->parent = this;
-        rttmonlpdgrpstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonLpdGrpStatsTable::RttMonLpdGrpStatsEntry>();
+        ent_->parent = this;
+        rttmonlpdgrpstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonLpdGrpStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonLpdGrpStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonlpdgrpstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonlpdgrpstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonLpdGrpStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9153,16 +9153,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonLpdGrpStats
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonLpdGrpStatsTable::RttMonLpdGrpStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonLpdGrpStatsTable::RttMonLpdGrpStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonLpdGrpStatsTable::RttMonLpdGrpStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonLpdGrpStatsTable::RttMonLpdGrpStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonLpdGrpStatsTable::RttMonLpdGrpStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9436,33 +9436,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonHistoryColl
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonHistoryCollectionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonHistoryCollectionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonHistoryCollectionEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonHistoryCollectionTable::RttMonHistoryCollectionEntry>();
-        c->parent = this;
-        rttmonhistorycollectionentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonHistoryCollectionTable::RttMonHistoryCollectionEntry>();
+        ent_->parent = this;
+        rttmonhistorycollectionentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonHistoryCollectionTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonHistoryCollectionTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonhistorycollectionentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonhistorycollectionentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonHistoryCollectionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9568,16 +9568,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonHistoryColl
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonHistoryCollectionTable::RttMonHistoryCollectionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonHistoryCollectionTable::RttMonHistoryCollectionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonHistoryCollectionTable::RttMonHistoryCollectionEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonHistoryCollectionTable::RttMonHistoryCollectionEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonHistoryCollectionTable::RttMonHistoryCollectionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9751,33 +9751,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonLatestHTTPO
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonLatestHTTPOperTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonLatestHTTPOperTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonLatestHTTPOperEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonLatestHTTPOperTable::RttMonLatestHTTPOperEntry>();
-        c->parent = this;
-        rttmonlatesthttpoperentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonLatestHTTPOperTable::RttMonLatestHTTPOperEntry>();
+        ent_->parent = this;
+        rttmonlatesthttpoperentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonLatestHTTPOperTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonLatestHTTPOperTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonlatesthttpoperentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonlatesthttpoperentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonLatestHTTPOperTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9872,16 +9872,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonLatestHTTPO
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonLatestHTTPOperTable::RttMonLatestHTTPOperEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonLatestHTTPOperTable::RttMonLatestHTTPOperEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonLatestHTTPOperTable::RttMonLatestHTTPOperEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonLatestHTTPOperTable::RttMonLatestHTTPOperEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonLatestHTTPOperTable::RttMonLatestHTTPOperEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10035,33 +10035,33 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonLatestJitte
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonLatestJitterOperTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonLatestJitterOperTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rttMonLatestJitterOperEntry")
     {
-        auto c = std::make_shared<CISCORTTMONMIB::RttMonLatestJitterOperTable::RttMonLatestJitterOperEntry>();
-        c->parent = this;
-        rttmonlatestjitteroperentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCORTTMONMIB::RttMonLatestJitterOperTable::RttMonLatestJitterOperEntry>();
+        ent_->parent = this;
+        rttmonlatestjitteroperentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonLatestJitterOperTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonLatestJitterOperTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rttmonlatestjitteroperentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rttmonlatestjitteroperentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonLatestJitterOperTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10360,16 +10360,16 @@ std::vector<std::pair<std::string, LeafData> > CISCORTTMONMIB::RttMonLatestJitte
 
 }
 
-std::shared_ptr<Entity> CISCORTTMONMIB::RttMonLatestJitterOperTable::RttMonLatestJitterOperEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCORTTMONMIB::RttMonLatestJitterOperTable::RttMonLatestJitterOperEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCORTTMONMIB::RttMonLatestJitterOperTable::RttMonLatestJitterOperEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCORTTMONMIB::RttMonLatestJitterOperTable::RttMonLatestJitterOperEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCORTTMONMIB::RttMonLatestJitterOperTable::RttMonLatestJitterOperEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -94,7 +94,7 @@ std::vector<std::pair<std::string, LeafData> > IpTcp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> IpTcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpTcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "directory")
     {
@@ -135,31 +135,31 @@ std::shared_ptr<Entity> IpTcp::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpTcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpTcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(directory != nullptr)
     {
-        children["directory"] = directory;
+        _children["directory"] = directory;
     }
 
     if(throttle != nullptr)
     {
-        children["throttle"] = throttle;
+        _children["throttle"] = throttle;
     }
 
     if(ao != nullptr)
     {
-        children["ao"] = ao;
+        _children["ao"] = ao;
     }
 
     if(num_thread != nullptr)
     {
-        children["num-thread"] = num_thread;
+        _children["num-thread"] = num_thread;
     }
 
-    return children;
+    return _children;
 }
 
 void IpTcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -250,7 +250,7 @@ void IpTcp::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> IpTcp::clone_ptr() const
+std::shared_ptr<ydk::Entity> IpTcp::clone_ptr() const
 {
     return std::make_shared<IpTcp>();
 }
@@ -338,16 +338,16 @@ std::vector<std::pair<std::string, LeafData> > IpTcp::Directory::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> IpTcp::Directory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpTcp::Directory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpTcp::Directory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpTcp::Directory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpTcp::Directory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -447,16 +447,16 @@ std::vector<std::pair<std::string, LeafData> > IpTcp::Throttle::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> IpTcp::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpTcp::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpTcp::Throttle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpTcp::Throttle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpTcp::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -547,7 +547,7 @@ std::vector<std::pair<std::string, LeafData> > IpTcp::Ao::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> IpTcp::Ao::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpTcp::Ao::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "keychains")
     {
@@ -561,16 +561,16 @@ std::shared_ptr<Entity> IpTcp::Ao::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpTcp::Ao::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpTcp::Ao::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(keychains != nullptr)
     {
-        children["keychains"] = keychains;
+        _children["keychains"] = keychains;
     }
 
-    return children;
+    return _children;
 }
 
 void IpTcp::Ao::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -654,33 +654,33 @@ std::vector<std::pair<std::string, LeafData> > IpTcp::Ao::Keychains::get_name_le
 
 }
 
-std::shared_ptr<Entity> IpTcp::Ao::Keychains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpTcp::Ao::Keychains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "keychain")
     {
-        auto c = std::make_shared<IpTcp::Ao::Keychains::Keychain>();
-        c->parent = this;
-        keychain.append(c);
-        return c;
+        auto ent_ = std::make_shared<IpTcp::Ao::Keychains::Keychain>();
+        ent_->parent = this;
+        keychain.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpTcp::Ao::Keychains::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpTcp::Ao::Keychains::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : keychain.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : keychain.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IpTcp::Ao::Keychains::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -756,7 +756,7 @@ std::vector<std::pair<std::string, LeafData> > IpTcp::Ao::Keychains::Keychain::g
 
 }
 
-std::shared_ptr<Entity> IpTcp::Ao::Keychains::Keychain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpTcp::Ao::Keychains::Keychain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "keys")
     {
@@ -770,16 +770,16 @@ std::shared_ptr<Entity> IpTcp::Ao::Keychains::Keychain::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpTcp::Ao::Keychains::Keychain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpTcp::Ao::Keychains::Keychain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(keys != nullptr)
     {
-        children["keys"] = keys;
+        _children["keys"] = keys;
     }
 
-    return children;
+    return _children;
 }
 
 void IpTcp::Ao::Keychains::Keychain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -866,33 +866,33 @@ std::vector<std::pair<std::string, LeafData> > IpTcp::Ao::Keychains::Keychain::K
 
 }
 
-std::shared_ptr<Entity> IpTcp::Ao::Keychains::Keychain::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpTcp::Ao::Keychains::Keychain::Keys::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key")
     {
-        auto c = std::make_shared<IpTcp::Ao::Keychains::Keychain::Keys::Key>();
-        c->parent = this;
-        key.append(c);
-        return c;
+        auto ent_ = std::make_shared<IpTcp::Ao::Keychains::Keychain::Keys::Key>();
+        ent_->parent = this;
+        key.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpTcp::Ao::Keychains::Keychain::Keys::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpTcp::Ao::Keychains::Keychain::Keys::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : key.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : key.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void IpTcp::Ao::Keychains::Keychain::Keys::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -960,16 +960,16 @@ std::vector<std::pair<std::string, LeafData> > IpTcp::Ao::Keychains::Keychain::K
 
 }
 
-std::shared_ptr<Entity> IpTcp::Ao::Keychains::Keychain::Keys::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpTcp::Ao::Keychains::Keychain::Keys::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpTcp::Ao::Keychains::Keychain::Keys::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpTcp::Ao::Keychains::Keychain::Keys::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpTcp::Ao::Keychains::Keychain::Keys::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1069,16 +1069,16 @@ std::vector<std::pair<std::string, LeafData> > IpTcp::NumThread::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> IpTcp::NumThread::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> IpTcp::NumThread::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IpTcp::NumThread::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> IpTcp::NumThread::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void IpTcp::NumThread::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1161,7 +1161,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cinetd")
     {
@@ -1184,21 +1184,21 @@ std::shared_ptr<Entity> Ip::get_child_by_name(const std::string & child_yang_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cinetd != nullptr)
     {
-        children["cinetd"] = cinetd;
+        _children["cinetd"] = cinetd;
     }
 
     if(forward_protocol != nullptr)
     {
-        children["Cisco-IOS-XR-ip-udp-cfg:forward-protocol"] = forward_protocol;
+        _children["Cisco-IOS-XR-ip-udp-cfg:forward-protocol"] = forward_protocol;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1209,7 +1209,7 @@ void Ip::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Ip::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ip::clone_ptr() const
 {
     return std::make_shared<Ip>();
 }
@@ -1294,7 +1294,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "services")
     {
@@ -1308,16 +1308,16 @@ std::shared_ptr<Entity> Ip::Cinetd::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(services != nullptr)
     {
-        children["services"] = services;
+        _children["services"] = services;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1401,7 +1401,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::get_name_le
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -1433,26 +1433,26 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::Services::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1518,7 +1518,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Ipv4::get_n
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "small-servers")
     {
@@ -1532,16 +1532,16 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(small_servers != nullptr)
     {
-        children["small-servers"] = small_servers;
+        _children["small-servers"] = small_servers;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1609,7 +1609,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Ipv4::Small
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::SmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Ipv4::SmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-small-servers")
     {
@@ -1632,21 +1632,21 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::SmallServers::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::SmallServers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Ipv4::SmallServers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tcp_small_servers != nullptr)
     {
-        children["tcp-small-servers"] = tcp_small_servers;
+        _children["tcp-small-servers"] = tcp_small_servers;
     }
 
     if(udp_small_servers != nullptr)
     {
-        children["Cisco-IOS-XR-ip-udp-cfg:udp-small-servers"] = udp_small_servers;
+        _children["Cisco-IOS-XR-ip-udp-cfg:udp-small-servers"] = udp_small_servers;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Ipv4::SmallServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1716,16 +1716,16 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Ipv4::Small
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1815,16 +1815,16 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Ipv4::Small
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1918,33 +1918,33 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Vrfs::get_n
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ip::Cinetd::Services::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2020,7 +2020,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Vrfs::Vrf::
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6")
     {
@@ -2043,21 +2043,21 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2130,7 +2130,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Vrfs::Vrf::
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "telnet")
     {
@@ -2153,21 +2153,21 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(telnet != nullptr)
     {
-        children["telnet"] = telnet;
+        _children["telnet"] = telnet;
     }
 
     if(tftp != nullptr)
     {
-        children["tftp"] = tftp;
+        _children["tftp"] = tftp;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2225,7 +2225,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Vrfs::Vrf::
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp")
     {
@@ -2239,16 +2239,16 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tcp != nullptr)
     {
-        children["tcp"] = tcp;
+        _children["tcp"] = tcp;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2311,16 +2311,16 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Vrfs::Vrf::
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2398,7 +2398,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Vrfs::Vrf::
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udp")
     {
@@ -2412,16 +2412,16 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(udp != nullptr)
     {
-        children["udp"] = udp;
+        _children["udp"] = udp;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2492,16 +2492,16 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Vrfs::Vrf::
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2604,7 +2604,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Vrfs::Vrf::
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "telnet")
     {
@@ -2627,21 +2627,21 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(telnet != nullptr)
     {
-        children["telnet"] = telnet;
+        _children["telnet"] = telnet;
     }
 
     if(tftp != nullptr)
     {
-        children["tftp"] = tftp;
+        _children["tftp"] = tftp;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2699,7 +2699,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Vrfs::Vrf::
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp")
     {
@@ -2713,16 +2713,16 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tcp != nullptr)
     {
-        children["tcp"] = tcp;
+        _children["tcp"] = tcp;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2785,16 +2785,16 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Vrfs::Vrf::
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2872,7 +2872,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Vrfs::Vrf::
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udp")
     {
@@ -2886,16 +2886,16 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(udp != nullptr)
     {
-        children["udp"] = udp;
+        _children["udp"] = udp;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2966,16 +2966,16 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Vrfs::Vrf::
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3081,7 +3081,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Ipv6::get_n
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "small-servers")
     {
@@ -3095,16 +3095,16 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(small_servers != nullptr)
     {
-        children["small-servers"] = small_servers;
+        _children["small-servers"] = small_servers;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3172,7 +3172,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Ipv6::Small
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::SmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Ipv6::SmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-small-servers")
     {
@@ -3195,21 +3195,21 @@ std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::SmallServers::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::SmallServers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Ipv6::SmallServers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tcp_small_servers != nullptr)
     {
-        children["tcp-small-servers"] = tcp_small_servers;
+        _children["tcp-small-servers"] = tcp_small_servers;
     }
 
     if(udp_small_servers != nullptr)
     {
-        children["Cisco-IOS-XR-ip-udp-cfg:udp-small-servers"] = udp_small_servers;
+        _children["Cisco-IOS-XR-ip-udp-cfg:udp-small-servers"] = udp_small_servers;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Ipv6::SmallServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3279,16 +3279,16 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Ipv6::Small
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3378,16 +3378,16 @@ std::vector<std::pair<std::string, LeafData> > Ip::Cinetd::Services::Ipv6::Small
 
 }
 
-std::shared_ptr<Entity> Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ip::Cinetd::Services::Ipv6::SmallServers::UdpSmallServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3473,7 +3473,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::ForwardProtocol::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Ip::ForwardProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::ForwardProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udp")
     {
@@ -3487,16 +3487,16 @@ std::shared_ptr<Entity> Ip::ForwardProtocol::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::ForwardProtocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(udp != nullptr)
     {
-        children["udp"] = udp;
+        _children["udp"] = udp;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::ForwardProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3567,7 +3567,7 @@ std::vector<std::pair<std::string, LeafData> > Ip::ForwardProtocol::Udp::get_nam
 
 }
 
-std::shared_ptr<Entity> Ip::ForwardProtocol::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::ForwardProtocol::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ports")
     {
@@ -3581,16 +3581,16 @@ std::shared_ptr<Entity> Ip::ForwardProtocol::Udp::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::Udp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::ForwardProtocol::Udp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ports != nullptr)
     {
-        children["ports"] = ports;
+        _children["ports"] = ports;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::ForwardProtocol::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3674,33 +3674,33 @@ std::vector<std::pair<std::string, LeafData> > Ip::ForwardProtocol::Udp::Ports::
 
 }
 
-std::shared_ptr<Entity> Ip::ForwardProtocol::Udp::Ports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::ForwardProtocol::Udp::Ports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port")
     {
-        auto c = std::make_shared<Ip::ForwardProtocol::Udp::Ports::Port>();
-        c->parent = this;
-        port.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ip::ForwardProtocol::Udp::Ports::Port>();
+        ent_->parent = this;
+        port.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::Udp::Ports::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::ForwardProtocol::Udp::Ports::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : port.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : port.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ip::ForwardProtocol::Udp::Ports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3771,16 +3771,16 @@ std::vector<std::pair<std::string, LeafData> > Ip::ForwardProtocol::Udp::Ports::
 
 }
 
-std::shared_ptr<Entity> Ip::ForwardProtocol::Udp::Ports::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ip::ForwardProtocol::Udp::Ports::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::Udp::Ports::Port::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ip::ForwardProtocol::Udp::Ports::Port::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ip::ForwardProtocol::Udp::Ports::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -88,7 +88,7 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tokenRingMLStatsTable")
     {
@@ -183,61 +183,61 @@ std::shared_ptr<Entity> TOKENRINGRMONMIB::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tokenringmlstatstable != nullptr)
     {
-        children["tokenRingMLStatsTable"] = tokenringmlstatstable;
+        _children["tokenRingMLStatsTable"] = tokenringmlstatstable;
     }
 
     if(tokenringpstatstable != nullptr)
     {
-        children["tokenRingPStatsTable"] = tokenringpstatstable;
+        _children["tokenRingPStatsTable"] = tokenringpstatstable;
     }
 
     if(tokenringmlhistorytable != nullptr)
     {
-        children["tokenRingMLHistoryTable"] = tokenringmlhistorytable;
+        _children["tokenRingMLHistoryTable"] = tokenringmlhistorytable;
     }
 
     if(tokenringphistorytable != nullptr)
     {
-        children["tokenRingPHistoryTable"] = tokenringphistorytable;
+        _children["tokenRingPHistoryTable"] = tokenringphistorytable;
     }
 
     if(ringstationcontroltable != nullptr)
     {
-        children["ringStationControlTable"] = ringstationcontroltable;
+        _children["ringStationControlTable"] = ringstationcontroltable;
     }
 
     if(ringstationtable != nullptr)
     {
-        children["ringStationTable"] = ringstationtable;
+        _children["ringStationTable"] = ringstationtable;
     }
 
     if(ringstationordertable != nullptr)
     {
-        children["ringStationOrderTable"] = ringstationordertable;
+        _children["ringStationOrderTable"] = ringstationordertable;
     }
 
     if(ringstationconfigcontroltable != nullptr)
     {
-        children["ringStationConfigControlTable"] = ringstationconfigcontroltable;
+        _children["ringStationConfigControlTable"] = ringstationconfigcontroltable;
     }
 
     if(ringstationconfigtable != nullptr)
     {
-        children["ringStationConfigTable"] = ringstationconfigtable;
+        _children["ringStationConfigTable"] = ringstationconfigtable;
     }
 
     if(sourceroutingstatstable != nullptr)
     {
-        children["sourceRoutingStatsTable"] = sourceroutingstatstable;
+        _children["sourceRoutingStatsTable"] = sourceroutingstatstable;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -248,7 +248,7 @@ void TOKENRINGRMONMIB::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::clone_ptr() const
 {
     return std::make_shared<TOKENRINGRMONMIB>();
 }
@@ -336,33 +336,33 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingMLStat
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingMLStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::TokenRingMLStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tokenRingMLStatsEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry>();
-        c->parent = this;
-        tokenringmlstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry>();
+        ent_->parent = this;
+        tokenringmlstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingMLStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::TokenRingMLStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tokenringmlstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tokenringmlstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::TokenRingMLStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -541,16 +541,16 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingMLStat
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -914,33 +914,33 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingPStats
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingPStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::TokenRingPStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tokenRingPStatsEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry>();
-        c->parent = this;
-        tokenringpstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry>();
+        ent_->parent = this;
+        tokenringpstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingPStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::TokenRingPStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tokenringpstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tokenringpstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::TokenRingPStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1087,16 +1087,16 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingPStats
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1380,33 +1380,33 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingMLHist
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingMLHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::TokenRingMLHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tokenRingMLHistoryEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry>();
-        c->parent = this;
-        tokenringmlhistoryentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry>();
+        ent_->parent = this;
+        tokenringmlhistoryentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingMLHistoryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::TokenRingMLHistoryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tokenringmlhistoryentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tokenringmlhistoryentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::TokenRingMLHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1578,16 +1578,16 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingMLHist
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1931,33 +1931,33 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingPHisto
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingPHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::TokenRingPHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tokenRingPHistoryEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry>();
-        c->parent = this;
-        tokenringphistoryentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry>();
+        ent_->parent = this;
+        tokenringphistoryentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingPHistoryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::TokenRingPHistoryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tokenringphistoryentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tokenringphistoryentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::TokenRingPHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2093,16 +2093,16 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::TokenRingPHisto
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2356,33 +2356,33 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationCont
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::RingStationControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ringStationControlEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry>();
-        c->parent = this;
-        ringstationcontrolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry>();
+        ent_->parent = this;
+        ringstationcontrolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationControlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::RingStationControlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ringstationcontrolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ringstationcontrolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::RingStationControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2493,16 +2493,16 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationCont
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2696,33 +2696,33 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationTabl
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::RingStationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ringStationEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::RingStationTable::RingStationEntry>();
-        c->parent = this;
-        ringstationentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TOKENRINGRMONMIB::RingStationTable::RingStationEntry>();
+        ent_->parent = this;
+        ringstationentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::RingStationTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ringstationentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ringstationentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::RingStationTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2874,16 +2874,16 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationTabl
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationTable::RingStationEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::RingStationTable::RingStationEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationTable::RingStationEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::RingStationTable::RingStationEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::RingStationTable::RingStationEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3177,33 +3177,33 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationOrde
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationOrderTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::RingStationOrderTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ringStationOrderEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry>();
-        c->parent = this;
-        ringstationorderentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry>();
+        ent_->parent = this;
+        ringstationorderentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationOrderTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::RingStationOrderTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ringstationorderentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ringstationorderentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::RingStationOrderTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3279,16 +3279,16 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationOrde
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3392,33 +3392,33 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationConf
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationConfigControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::RingStationConfigControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ringStationConfigControlEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry>();
-        c->parent = this;
-        ringstationconfigcontrolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry>();
+        ent_->parent = this;
+        ringstationconfigcontrolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationConfigControlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::RingStationConfigControlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ringstationconfigcontrolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ringstationconfigcontrolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::RingStationConfigControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3498,16 +3498,16 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationConf
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3621,33 +3621,33 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationConf
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::RingStationConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ringStationConfigEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry>();
-        c->parent = this;
-        ringstationconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry>();
+        ent_->parent = this;
+        ringstationconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::RingStationConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ringstationconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ringstationconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::RingStationConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3739,16 +3739,16 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::RingStationConf
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3892,33 +3892,33 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::SourceRoutingSt
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::SourceRoutingStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::SourceRoutingStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sourceRoutingStatsEntry")
     {
-        auto c = std::make_shared<TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry>();
-        c->parent = this;
-        sourceroutingstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry>();
+        ent_->parent = this;
+        sourceroutingstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::SourceRoutingStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::SourceRoutingStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sourceroutingstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sourceroutingstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::SourceRoutingStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4085,16 +4085,16 @@ std::vector<std::pair<std::string, LeafData> > TOKENRINGRMONMIB::SourceRoutingSt
 
 }
 
-std::shared_ptr<Entity> TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

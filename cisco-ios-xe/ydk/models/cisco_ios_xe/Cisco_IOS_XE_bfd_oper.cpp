@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > BfdState::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> BfdState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BfdState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sessions")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> BfdState::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BfdState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BfdState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sessions != nullptr)
     {
-        children["sessions"] = sessions;
+        _children["sessions"] = sessions;
     }
 
-    return children;
+    return _children;
 }
 
 void BfdState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void BfdState::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> BfdState::clone_ptr() const
+std::shared_ptr<ydk::Entity> BfdState::clone_ptr() const
 {
     return std::make_shared<BfdState>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> BfdState::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BfdState::Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
-        auto c = std::make_shared<BfdState::Sessions::Session>();
-        c->parent = this;
-        session.append(c);
-        return c;
+        auto ent_ = std::make_shared<BfdState::Sessions::Session>();
+        ent_->parent = this;
+        session.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BfdState::Sessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void BfdState::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -288,7 +288,7 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::get_
 
 }
 
-std::shared_ptr<Entity> BfdState::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BfdState::Sessions::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bfd-tunnel-paths")
     {
@@ -338,36 +338,36 @@ std::shared_ptr<Entity> BfdState::Sessions::Session::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BfdState::Sessions::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bfd_tunnel_paths != nullptr)
     {
-        children["bfd-tunnel-paths"] = bfd_tunnel_paths;
+        _children["bfd-tunnel-paths"] = bfd_tunnel_paths;
     }
 
     if(bfd_circuits != nullptr)
     {
-        children["bfd-circuits"] = bfd_circuits;
+        _children["bfd-circuits"] = bfd_circuits;
     }
 
     if(bfd_nbrs != nullptr)
     {
-        children["bfd-nbrs"] = bfd_nbrs;
+        _children["bfd-nbrs"] = bfd_nbrs;
     }
 
     if(bfd_mhop_nbrs != nullptr)
     {
-        children["bfd-mhop-nbrs"] = bfd_mhop_nbrs;
+        _children["bfd-mhop-nbrs"] = bfd_mhop_nbrs;
     }
 
     if(bfd_mhop_vrf_nbrs != nullptr)
     {
-        children["bfd-mhop-vrf-nbrs"] = bfd_mhop_vrf_nbrs;
+        _children["bfd-mhop-vrf-nbrs"] = bfd_mhop_vrf_nbrs;
     }
 
-    return children;
+    return _children;
 }
 
 void BfdState::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -444,33 +444,33 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdT
 
 }
 
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdTunnelPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BfdState::Sessions::Session::BfdTunnelPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bfd-tunnel-path")
     {
-        auto c = std::make_shared<BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath>();
-        c->parent = this;
-        bfd_tunnel_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath>();
+        ent_->parent = this;
+        bfd_tunnel_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdTunnelPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BfdState::Sessions::Session::BfdTunnelPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bfd_tunnel_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bfd_tunnel_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void BfdState::Sessions::Session::BfdTunnelPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -551,16 +551,16 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdT
 
 }
 
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -687,33 +687,33 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdC
 
 }
 
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdCircuits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BfdState::Sessions::Session::BfdCircuits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bfd-circuit")
     {
-        auto c = std::make_shared<BfdState::Sessions::Session::BfdCircuits::BfdCircuit>();
-        c->parent = this;
-        bfd_circuit.append(c);
-        return c;
+        auto ent_ = std::make_shared<BfdState::Sessions::Session::BfdCircuits::BfdCircuit>();
+        ent_->parent = this;
+        bfd_circuit.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdCircuits::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BfdState::Sessions::Session::BfdCircuits::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bfd_circuit.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bfd_circuit.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void BfdState::Sessions::Session::BfdCircuits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -794,16 +794,16 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdC
 
 }
 
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdCircuits::BfdCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BfdState::Sessions::Session::BfdCircuits::BfdCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdCircuits::BfdCircuit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BfdState::Sessions::Session::BfdCircuits::BfdCircuit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BfdState::Sessions::Session::BfdCircuits::BfdCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -930,33 +930,33 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdN
 
 }
 
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdNbrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BfdState::Sessions::Session::BfdNbrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bfd-nbr")
     {
-        auto c = std::make_shared<BfdState::Sessions::Session::BfdNbrs::BfdNbr>();
-        c->parent = this;
-        bfd_nbr.append(c);
-        return c;
+        auto ent_ = std::make_shared<BfdState::Sessions::Session::BfdNbrs::BfdNbr>();
+        ent_->parent = this;
+        bfd_nbr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdNbrs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BfdState::Sessions::Session::BfdNbrs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bfd_nbr.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bfd_nbr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void BfdState::Sessions::Session::BfdNbrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1037,16 +1037,16 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdN
 
 }
 
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BfdState::Sessions::Session::BfdNbrs::BfdNbr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BfdState::Sessions::Session::BfdNbrs::BfdNbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1173,33 +1173,33 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdM
 
 }
 
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopNbrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BfdState::Sessions::Session::BfdMhopNbrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bfd-mhop-nbr")
     {
-        auto c = std::make_shared<BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr>();
-        c->parent = this;
-        bfd_mhop_nbr.append(c);
-        return c;
+        auto ent_ = std::make_shared<BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr>();
+        ent_->parent = this;
+        bfd_mhop_nbr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdMhopNbrs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BfdState::Sessions::Session::BfdMhopNbrs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bfd_mhop_nbr.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bfd_mhop_nbr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void BfdState::Sessions::Session::BfdMhopNbrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1280,16 +1280,16 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdM
 
 }
 
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1416,33 +1416,33 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdM
 
 }
 
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopVrfNbrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BfdState::Sessions::Session::BfdMhopVrfNbrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bfd-mhop-vrf-nbr")
     {
-        auto c = std::make_shared<BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr>();
-        c->parent = this;
-        bfd_mhop_vrf_nbr.append(c);
-        return c;
+        auto ent_ = std::make_shared<BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr>();
+        ent_->parent = this;
+        bfd_mhop_vrf_nbr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdMhopVrfNbrs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BfdState::Sessions::Session::BfdMhopVrfNbrs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bfd_mhop_vrf_nbr.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bfd_mhop_vrf_nbr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void BfdState::Sessions::Session::BfdMhopVrfNbrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1528,16 +1528,16 @@ std::vector<std::pair<std::string, LeafData> > BfdState::Sessions::Session::BfdM
 
 }
 
-std::shared_ptr<Entity> BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

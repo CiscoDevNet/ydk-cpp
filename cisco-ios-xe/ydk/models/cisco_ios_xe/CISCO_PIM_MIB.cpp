@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOPIMMIB::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> CISCOPIMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPIMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpim")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> CISCOPIMMIB::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPIMMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPIMMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cpim != nullptr)
     {
-        children["cpim"] = cpim;
+        _children["cpim"] = cpim;
     }
 
     if(ciscopimmibnotificationobjects != nullptr)
     {
-        children["ciscoPimMIBNotificationObjects"] = ciscopimmibnotificationobjects;
+        _children["ciscoPimMIBNotificationObjects"] = ciscopimmibnotificationobjects;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPIMMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void CISCOPIMMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOPIMMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOPIMMIB::clone_ptr() const
 {
     return std::make_shared<CISCOPIMMIB>();
 }
@@ -216,16 +216,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPIMMIB::Cpim::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> CISCOPIMMIB::Cpim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPIMMIB::Cpim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPIMMIB::Cpim::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPIMMIB::Cpim::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPIMMIB::Cpim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -381,16 +381,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPIMMIB::CiscoPimMIBNotificat
 
 }
 
-std::shared_ptr<Entity> CISCOPIMMIB::CiscoPimMIBNotificationObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPIMMIB::CiscoPimMIBNotificationObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPIMMIB::CiscoPimMIBNotificationObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPIMMIB::CiscoPimMIBNotificationObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPIMMIB::CiscoPimMIBNotificationObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

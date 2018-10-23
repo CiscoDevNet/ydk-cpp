@@ -54,16 +54,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Server::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Server::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Server::Transport::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Server::Transport::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Connection::Server::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -141,7 +141,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Transaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Transaction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counter")
     {
@@ -164,21 +164,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Transaction::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Transaction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Transaction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counter != nullptr)
     {
-        children["counter"] = counter;
+        _children["counter"] = counter;
     }
 
     if(duration != nullptr)
     {
-        children["duration"] = duration;
+        _children["duration"] = duration;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Connection::Transaction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -247,16 +247,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Transaction::Counter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Transaction::Counter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Transaction::Counter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Transaction::Counter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Connection::Transaction::Counter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -333,16 +333,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Transaction::Duration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Connection::Transaction::Duration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Transaction::Duration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Connection::Transaction::Duration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Connection::Transaction::Duration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -438,7 +438,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Counter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bytes")
     {
@@ -461,21 +461,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Counter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bytes != nullptr)
     {
-        children["bytes"] = bytes;
+        _children["bytes"] = bytes;
     }
 
     if(packets != nullptr)
     {
-        children["packets"] = packets;
+        _children["packets"] = packets;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Counter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -556,7 +556,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Bytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Counter::Bytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rate")
     {
@@ -588,26 +588,26 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Bytes::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Bytes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Counter::Bytes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rate != nullptr)
     {
-        children["rate"] = rate;
+        _children["rate"] = rate;
     }
 
     if(squared != nullptr)
     {
-        children["squared"] = squared;
+        _children["squared"] = squared;
     }
 
     if(layer2 != nullptr)
     {
-        children["layer2"] = layer2;
+        _children["layer2"] = layer2;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Counter::Bytes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -675,7 +675,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Bytes::Rate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Counter::Bytes::Rate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "per-flow")
     {
@@ -689,16 +689,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Bytes::Rate::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Bytes::Rate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Counter::Bytes::Rate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(per_flow != nullptr)
     {
-        children["per-flow"] = per_flow;
+        _children["per-flow"] = per_flow;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Counter::Bytes::Rate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -761,16 +761,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Bytes::Rate::PerFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Counter::Bytes::Rate::PerFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Bytes::Rate::PerFlow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Counter::Bytes::Rate::PerFlow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Counter::Bytes::Rate::PerFlow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -849,16 +849,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Bytes::Squared::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Counter::Bytes::Squared::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Bytes::Squared::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Counter::Bytes::Squared::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Counter::Bytes::Squared::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -927,16 +927,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Bytes::Layer2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Counter::Bytes::Layer2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Bytes::Layer2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Counter::Bytes::Layer2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Counter::Bytes::Layer2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1013,7 +1013,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Packets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Counter::Packets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rate")
     {
@@ -1027,16 +1027,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Packets::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Packets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Counter::Packets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rate != nullptr)
     {
-        children["rate"] = rate;
+        _children["rate"] = rate;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Counter::Packets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1114,7 +1114,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Packets::Rate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Counter::Packets::Rate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "per-flow")
     {
@@ -1128,16 +1128,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Packets::Rate::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Packets::Rate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Counter::Packets::Rate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(per_flow != nullptr)
     {
-        children["per-flow"] = per_flow;
+        _children["per-flow"] = per_flow;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Counter::Packets::Rate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1200,16 +1200,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Packets::Rate::PerFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Counter::Packets::Rate::PerFlow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Packets::Rate::PerFlow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Counter::Packets::Rate::PerFlow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Counter::Packets::Rate::PerFlow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1309,7 +1309,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Da
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Datalink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1q")
     {
@@ -1332,21 +1332,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Datalink::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dot1q != nullptr)
     {
-        children["dot1q"] = dot1q;
+        _children["dot1q"] = dot1q;
     }
 
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Datalink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1450,7 +1450,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Da
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Dot1q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Datalink::Dot1q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan")
     {
@@ -1464,16 +1464,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Dot1q::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Dot1q::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Datalink::Dot1q::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vlan != nullptr)
     {
-        children["vlan"] = vlan;
+        _children["vlan"] = vlan;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Datalink::Dot1q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1546,16 +1546,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Da
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Dot1q::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Datalink::Dot1q::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Dot1q::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Datalink::Dot1q::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Datalink::Dot1q::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1638,7 +1638,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Da
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Datalink::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination")
     {
@@ -1661,21 +1661,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Mac::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Datalink::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination != nullptr)
     {
-        children["destination"] = destination;
+        _children["destination"] = destination;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Datalink::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1734,7 +1734,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Da
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Mac::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Datalink::Mac::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -1748,16 +1748,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Mac::Destinatio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Mac::Destination::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Datalink::Mac::Destination::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Datalink::Mac::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1820,16 +1820,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Da
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Mac::Destination::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Datalink::Mac::Destination::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Mac::Destination::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Datalink::Mac::Destination::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Datalink::Mac::Destination::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1908,7 +1908,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Da
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Mac::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Datalink::Mac::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -1922,16 +1922,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Mac::Source::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Mac::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Datalink::Mac::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Datalink::Mac::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1994,16 +1994,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Da
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Mac::Source::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Datalink::Mac::Source::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Mac::Source::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Datalink::Mac::Source::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Datalink::Mac::Source::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2099,7 +2099,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Fl
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Flow_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Flow_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cts")
     {
@@ -2122,21 +2122,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Flow_::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Flow_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Flow_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cts != nullptr)
     {
-        children["cts"] = cts;
+        _children["cts"] = cts;
     }
 
     if(observation != nullptr)
     {
-        children["observation"] = observation;
+        _children["observation"] = observation;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Flow_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2229,7 +2229,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Fl
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Flow_::Cts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Flow_::Cts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination")
     {
@@ -2252,21 +2252,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Flow_::Cts::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Flow_::Cts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Flow_::Cts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination != nullptr)
     {
-        children["destination"] = destination;
+        _children["destination"] = destination;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Flow_::Cts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2325,16 +2325,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Fl
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Flow_::Cts::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Flow_::Cts::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Flow_::Cts::Destination::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Flow_::Cts::Destination::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Flow_::Cts::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2403,16 +2403,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Fl
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Flow_::Cts::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Flow_::Cts::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Flow_::Cts::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Flow_::Cts::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Flow_::Cts::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2481,16 +2481,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Fl
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Flow_::Observation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Flow_::Observation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Flow_::Observation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Flow_::Observation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Flow_::Observation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2561,7 +2561,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::In
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -2584,21 +2584,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Interface::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2657,16 +2657,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::In
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Interface::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Interface::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Interface::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Interface::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Interface::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2735,16 +2735,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::In
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Interface::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Interface::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Interface::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Interface::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Interface::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2868,7 +2868,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination")
     {
@@ -2945,51 +2945,51 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination != nullptr)
     {
-        children["destination"] = destination;
+        _children["destination"] = destination;
     }
 
     if(fragmentation != nullptr)
     {
-        children["fragmentation"] = fragmentation;
+        _children["fragmentation"] = fragmentation;
     }
 
     if(length != nullptr)
     {
-        children["length"] = length;
+        _children["length"] = length;
     }
 
     if(option != nullptr)
     {
-        children["option"] = option;
+        _children["option"] = option;
     }
 
     if(section != nullptr)
     {
-        children["section"] = section;
+        _children["section"] = section;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
     if(total_length != nullptr)
     {
-        children["total-length"] = total_length;
+        _children["total-length"] = total_length;
     }
 
     if(ttl != nullptr)
     {
-        children["ttl"] = ttl;
+        _children["ttl"] = ttl;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3125,7 +3125,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mask")
     {
@@ -3148,21 +3148,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Destination::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Destination::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Destination::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mask != nullptr)
     {
-        children["mask"] = mask;
+        _children["mask"] = mask;
     }
 
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3231,16 +3231,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Destination::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Destination::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Destination::Mask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Destination::Mask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Destination::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3309,16 +3309,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Destination::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Destination::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Destination::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Destination::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Destination::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3391,16 +3391,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Fragmentation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Fragmentation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Fragmentation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Fragmentation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Fragmentation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3487,7 +3487,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Length::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Length::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "total")
     {
@@ -3501,16 +3501,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Length::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Length::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Length::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(total != nullptr)
     {
-        children["total"] = total;
+        _children["total"] = total;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Length::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3593,16 +3593,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Length::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Length::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Length::Total::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Length::Total::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Length::Total::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3681,16 +3681,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Option::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Option::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3763,7 +3763,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "header")
     {
@@ -3786,21 +3786,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Section::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Section::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Section::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(payload != nullptr)
     {
-        children["payload"] = payload;
+        _children["payload"] = payload;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3859,16 +3859,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Section::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Section::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Section::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Section::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Section::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3937,16 +3937,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Section::Payload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Section::Payload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Section::Payload::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Section::Payload::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Section::Payload::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4022,7 +4022,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mask")
     {
@@ -4045,21 +4045,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Source::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mask != nullptr)
     {
-        children["mask"] = mask;
+        _children["mask"] = mask;
     }
 
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4128,16 +4128,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Source::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Source::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Source::Mask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Source::Mask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Source::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4206,16 +4206,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Source::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Source::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Source::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Source::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Source::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4288,16 +4288,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::TotalLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::TotalLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::TotalLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::TotalLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::TotalLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4380,16 +4380,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Ttl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv4::Ttl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Ttl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv4::Ttl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv4::Ttl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4524,7 +4524,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination")
     {
@@ -4592,46 +4592,46 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination != nullptr)
     {
-        children["destination"] = destination;
+        _children["destination"] = destination;
     }
 
     if(extension != nullptr)
     {
-        children["extension"] = extension;
+        _children["extension"] = extension;
     }
 
     if(fragmentation != nullptr)
     {
-        children["fragmentation"] = fragmentation;
+        _children["fragmentation"] = fragmentation;
     }
 
     if(hop_limit != nullptr)
     {
-        children["hop-limit"] = hop_limit;
+        _children["hop-limit"] = hop_limit;
     }
 
     if(length != nullptr)
     {
-        children["length"] = length;
+        _children["length"] = length;
     }
 
     if(section != nullptr)
     {
-        children["section"] = section;
+        _children["section"] = section;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4777,7 +4777,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mask")
     {
@@ -4800,21 +4800,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Destination::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Destination::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::Destination::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mask != nullptr)
     {
-        children["mask"] = mask;
+        _children["mask"] = mask;
     }
 
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4883,16 +4883,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Destination::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::Destination::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Destination::Mask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::Destination::Mask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::Destination::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4961,16 +4961,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Destination::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::Destination::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Destination::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::Destination::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::Destination::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5039,16 +5039,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Extension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::Extension::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Extension::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::Extension::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::Extension::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5125,16 +5125,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Fragmentation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::Fragmentation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Fragmentation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::Fragmentation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::Fragmentation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5227,16 +5227,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::HopLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::HopLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::HopLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::HopLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::HopLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5323,7 +5323,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Length::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::Length::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "total")
     {
@@ -5337,16 +5337,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Length::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Length::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::Length::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(total != nullptr)
     {
-        children["total"] = total;
+        _children["total"] = total;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::Length::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5429,16 +5429,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Length::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::Length::Total::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Length::Total::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::Length::Total::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::Length::Total::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5521,7 +5521,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::Section::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "header")
     {
@@ -5544,21 +5544,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Section::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Section::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::Section::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(header != nullptr)
     {
-        children["header"] = header;
+        _children["header"] = header;
     }
 
     if(payload != nullptr)
     {
-        children["payload"] = payload;
+        _children["payload"] = payload;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5617,16 +5617,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Section::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::Section::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Section::Header::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::Section::Header::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::Section::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5695,16 +5695,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Section::Payload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::Section::Payload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Section::Payload::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::Section::Payload::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::Section::Payload::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5780,7 +5780,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mask")
     {
@@ -5803,21 +5803,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Source::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mask != nullptr)
     {
-        children["mask"] = mask;
+        _children["mask"] = mask;
     }
 
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5886,16 +5886,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Source::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::Source::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Source::Mask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::Source::Mask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::Source::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5964,16 +5964,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ip
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Source::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Ipv6::Source::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Source::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Ipv6::Source::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Ipv6::Source::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6050,16 +6050,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Me
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Metadata::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Metadata::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Metadata::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Metadata::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Metadata::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6148,16 +6148,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Mo
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Monitor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Monitor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Monitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6226,7 +6226,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Mp
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "label")
     {
@@ -6240,16 +6240,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Mpls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(label != nullptr)
     {
-        children["label"] = label;
+        _children["label"] = label;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6328,7 +6328,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Mp
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Mpls::Label::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "one")
     {
@@ -6387,41 +6387,41 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Mpls::Label::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(one != nullptr)
     {
-        children["one"] = one;
+        _children["one"] = one;
     }
 
     if(two != nullptr)
     {
-        children["two"] = two;
+        _children["two"] = two;
     }
 
     if(three != nullptr)
     {
-        children["three"] = three;
+        _children["three"] = three;
     }
 
     if(four != nullptr)
     {
-        children["four"] = four;
+        _children["four"] = four;
     }
 
     if(five != nullptr)
     {
-        children["five"] = five;
+        _children["five"] = five;
     }
 
     if(six != nullptr)
     {
-        children["six"] = six;
+        _children["six"] = six;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Mpls::Label::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6492,16 +6492,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Mp
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::One::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Mpls::Label::One::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::One::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Mpls::Label::One::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Mpls::Label::One::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6600,16 +6600,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Mp
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::Two::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Mpls::Label::Two::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::Two::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Mpls::Label::Two::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Mpls::Label::Two::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6678,16 +6678,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Mp
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::Three::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Mpls::Label::Three::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::Three::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Mpls::Label::Three::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Mpls::Label::Three::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6756,16 +6756,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Mp
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::Four::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Mpls::Label::Four::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::Four::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Mpls::Label::Four::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Mpls::Label::Four::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6834,16 +6834,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Mp
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::Five::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Mpls::Label::Five::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::Five::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Mpls::Label::Five::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Mpls::Label::Five::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6912,16 +6912,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Mp
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::Six::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Mpls::Label::Six::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::Six::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Mpls::Label::Six::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Mpls::Label::Six::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6990,7 +6990,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ne
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delay")
     {
@@ -7004,16 +7004,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Network::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delay != nullptr)
     {
-        children["delay"] = delay;
+        _children["delay"] = delay;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7076,16 +7076,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ne
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Network::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Network::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Network::Delay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Network::Delay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Network::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7176,7 +7176,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Pf
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Pfr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "label")
     {
@@ -7217,31 +7217,31 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Pfr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(label != nullptr)
     {
-        children["label"] = label;
+        _children["label"] = label;
     }
 
     if(one_way_delay != nullptr)
     {
-        children["one-way-delay"] = one_way_delay;
+        _children["one-way-delay"] = one_way_delay;
     }
 
     if(service != nullptr)
     {
-        children["service"] = service;
+        _children["service"] = service;
     }
 
     if(site != nullptr)
     {
-        children["site"] = site;
+        _children["site"] = site;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Pfr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7300,16 +7300,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Pf
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Label::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Pfr::Label::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Label::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Pfr::Label::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Pfr::Label::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7382,16 +7382,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Pf
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::OneWayDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Pfr::OneWayDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::OneWayDelay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Pfr::OneWayDelay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Pfr::OneWayDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7478,16 +7478,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Pf
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Pfr::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Service::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Pfr::Service::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Pfr::Service::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7580,7 +7580,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Pf
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Pfr::Site::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination")
     {
@@ -7603,21 +7603,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Pfr::Site::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination != nullptr)
     {
-        children["destination"] = destination;
+        _children["destination"] = destination;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Pfr::Site::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7680,7 +7680,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Pf
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "id")
     {
@@ -7703,21 +7703,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Destination::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Pfr::Site::Destination::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(id != nullptr)
     {
-        children["id"] = id;
+        _children["id"] = id;
     }
 
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Pfr::Site::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7776,16 +7776,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Pf
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Destination::Id::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Pfr::Site::Destination::Id::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Pfr::Site::Destination::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7859,7 +7859,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Pf
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mask")
     {
@@ -7873,16 +7873,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::P
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mask != nullptr)
     {
-        children["mask"] = mask;
+        _children["mask"] = mask;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7951,16 +7951,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Pf
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::Mask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::Mask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8033,7 +8033,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Pf
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Pfr::Site::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "id")
     {
@@ -8056,21 +8056,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Source::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Pfr::Site::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(id != nullptr)
     {
-        children["id"] = id;
+        _children["id"] = id;
     }
 
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Pfr::Site::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8129,16 +8129,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Pf
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Source::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Pfr::Site::Source::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Source::Id::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Pfr::Site::Source::Id::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Pfr::Site::Source::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8212,7 +8212,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Pf
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mask")
     {
@@ -8226,16 +8226,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Source::Prefix
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mask != nullptr)
     {
-        children["mask"] = mask;
+        _children["mask"] = mask;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8304,16 +8304,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Pf
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::Mask::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::Mask::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8386,7 +8386,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Po
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "performance-monitor")
     {
@@ -8409,21 +8409,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Policy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Policy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(performance_monitor != nullptr)
     {
-        children["performance-monitor"] = performance_monitor;
+        _children["performance-monitor"] = performance_monitor;
     }
 
     if(qos != nullptr)
     {
-        children["qos"] = qos;
+        _children["qos"] = qos;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8482,7 +8482,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Po
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::PerformanceMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Policy::PerformanceMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "classification")
     {
@@ -8496,16 +8496,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::PerformanceMonito
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Policy::PerformanceMonitor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Policy::PerformanceMonitor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(classification != nullptr)
     {
-        children["classification"] = classification;
+        _children["classification"] = classification;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Policy::PerformanceMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8564,16 +8564,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Po
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::PerformanceMonitor::Classification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Policy::PerformanceMonitor::Classification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Policy::PerformanceMonitor::Classification::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Policy::PerformanceMonitor::Classification::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Policy::PerformanceMonitor::Classification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8646,7 +8646,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Po
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Policy::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "classification")
     {
@@ -8669,21 +8669,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::Qos::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Policy::Qos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Policy::Qos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(classification != nullptr)
     {
-        children["classification"] = classification;
+        _children["classification"] = classification;
     }
 
     if(queue != nullptr)
     {
-        children["queue"] = queue;
+        _children["queue"] = queue;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Policy::Qos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8742,16 +8742,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Po
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::Qos::Classification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Policy::Qos::Classification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Policy::Qos::Classification::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Policy::Qos::Classification::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Policy::Qos::Classification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8824,16 +8824,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Po
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::Qos::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Policy::Qos::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Policy::Qos::Queue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Policy::Qos::Queue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Policy::Qos::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8936,7 +8936,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination")
     {
@@ -8995,41 +8995,41 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination != nullptr)
     {
-        children["destination"] = destination;
+        _children["destination"] = destination;
     }
 
     if(forwarding_status != nullptr)
     {
-        children["forwarding-status"] = forwarding_status;
+        _children["forwarding-status"] = forwarding_status;
     }
 
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
     if(pw != nullptr)
     {
-        children["pw"] = pw;
+        _children["pw"] = pw;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9102,7 +9102,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "as")
     {
@@ -9116,16 +9116,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Destination::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Destination::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::Destination::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(as != nullptr)
     {
-        children["as"] = as;
+        _children["as"] = as;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9198,7 +9198,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Destination::As::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::Destination::As::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer")
     {
@@ -9212,16 +9212,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Destination::As:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Destination::As::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::Destination::As::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peer != nullptr)
     {
-        children["peer"] = peer;
+        _children["peer"] = peer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::Destination::As::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9290,16 +9290,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Destination::As::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::Destination::As::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Destination::As::Peer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::Destination::As::Peer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::Destination::As::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9368,16 +9368,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::ForwardingStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::ForwardingStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::ForwardingStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::ForwardingStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::ForwardingStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9446,7 +9446,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -9460,16 +9460,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::NextHop::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9530,7 +9530,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::NextHop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::NextHop::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -9553,21 +9553,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::NextHop::Address
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::NextHop::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::NextHop::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::NextHop::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9626,16 +9626,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9704,16 +9704,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9782,7 +9782,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination")
     {
@@ -9796,16 +9796,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Pw::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Pw::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::Pw::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination != nullptr)
     {
-        children["destination"] = destination;
+        _children["destination"] = destination;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::Pw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9864,16 +9864,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Pw::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::Pw::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Pw::Destination::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::Pw::Destination::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::Pw::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9946,7 +9946,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "as")
     {
@@ -9960,16 +9960,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Source::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(as != nullptr)
     {
-        children["as"] = as;
+        _children["as"] = as;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10042,7 +10042,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Source::As::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::Source::As::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer")
     {
@@ -10056,16 +10056,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Source::As::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Source::As::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::Source::As::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peer != nullptr)
     {
-        children["peer"] = peer;
+        _children["peer"] = peer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::Source::As::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10134,16 +10134,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Source::As::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::Source::As::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Source::As::Peer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::Source::As::Peer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::Source::As::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10216,16 +10216,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ro
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Routing::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Routing::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Routing::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10304,7 +10304,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Se
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Services::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Services::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "waas")
     {
@@ -10318,16 +10318,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Services::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Services::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Services::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(waas != nullptr)
     {
-        children["waas"] = waas;
+        _children["waas"] = waas;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Services::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10390,7 +10390,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Se
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Services::Waas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Services::Waas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "segment")
     {
@@ -10404,16 +10404,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Services::Waas::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Services::Waas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Services::Waas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(segment != nullptr)
     {
-        children["segment"] = segment;
+        _children["segment"] = segment;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Services::Waas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10482,16 +10482,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Se
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Services::Waas::Segment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Services::Waas::Segment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Services::Waas::Segment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Services::Waas::Segment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Services::Waas::Segment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10569,7 +10569,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ti
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Timestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Timestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "absolute")
     {
@@ -10592,21 +10592,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Timestamp::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Timestamp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Timestamp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(absolute != nullptr)
     {
-        children["absolute"] = absolute;
+        _children["absolute"] = absolute;
     }
 
     if(sys_uptime != nullptr)
     {
-        children["sys-uptime"] = sys_uptime;
+        _children["sys-uptime"] = sys_uptime;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Timestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10684,7 +10684,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ti
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Timestamp::Absolute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Timestamp::Absolute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "monitoring-interval")
     {
@@ -10698,16 +10698,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Timestamp::Absolute::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Timestamp::Absolute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Timestamp::Absolute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(monitoring_interval != nullptr)
     {
-        children["monitoring-interval"] = monitoring_interval;
+        _children["monitoring-interval"] = monitoring_interval;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Timestamp::Absolute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10790,16 +10790,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ti
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Timestamp::Absolute::MonitoringInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Timestamp::Absolute::MonitoringInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Timestamp::Absolute::MonitoringInterval::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Timestamp::Absolute::MonitoringInterval::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Timestamp::Absolute::MonitoringInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10882,16 +10882,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Ti
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Timestamp::SysUptime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Timestamp::SysUptime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Timestamp::SysUptime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Timestamp::SysUptime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Timestamp::SysUptime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11010,7 +11010,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bytes")
     {
@@ -11096,56 +11096,56 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bytes != nullptr)
     {
-        children["bytes"] = bytes;
+        _children["bytes"] = bytes;
     }
 
     if(icmp != nullptr)
     {
-        children["icmp"] = icmp;
+        _children["icmp"] = icmp;
     }
 
     if(igmp != nullptr)
     {
-        children["igmp"] = igmp;
+        _children["igmp"] = igmp;
     }
 
     if(tcp != nullptr)
     {
-        children["tcp"] = tcp;
+        _children["tcp"] = tcp;
     }
 
     if(udp != nullptr)
     {
-        children["udp"] = udp;
+        _children["udp"] = udp;
     }
 
     if(event != nullptr)
     {
-        children["event"] = event;
+        _children["event"] = event;
     }
 
     if(packets != nullptr)
     {
-        children["packets"] = packets;
+        _children["packets"] = packets;
     }
 
     if(round_trip_time != nullptr)
     {
-        children["round-trip-time"] = round_trip_time;
+        _children["round-trip-time"] = round_trip_time;
     }
 
     if(rtp != nullptr)
     {
-        children["rtp"] = rtp;
+        _children["rtp"] = rtp;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11232,7 +11232,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Bytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Bytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lost")
     {
@@ -11246,16 +11246,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Bytes::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Bytes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Bytes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lost != nullptr)
     {
-        children["lost"] = lost;
+        _children["lost"] = lost;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Bytes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11334,16 +11334,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Bytes::Lost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Bytes::Lost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Bytes::Lost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Bytes::Lost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Bytes::Lost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11416,7 +11416,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -11439,21 +11439,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Icmp::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Icmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Icmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Icmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11516,16 +11516,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Icmp::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Icmp::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Icmp::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Icmp::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Icmp::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11608,16 +11608,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Icmp::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Icmp::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Icmp::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Icmp::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Icmp::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11696,16 +11696,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Igmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Igmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11813,7 +11813,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flags")
     {
@@ -11854,31 +11854,31 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Tcp::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Tcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Tcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flags != nullptr)
     {
-        children["flags"] = flags;
+        _children["flags"] = flags;
     }
 
     if(flow != nullptr)
     {
-        children["flow"] = flow;
+        _children["flow"] = flow;
     }
 
     if(option != nullptr)
     {
-        children["option"] = option;
+        _children["option"] = option;
     }
 
     if(window_size != nullptr)
     {
-        children["window-size"] = window_size;
+        _children["window-size"] = window_size;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12035,16 +12035,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Tcp::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Tcp::Flags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Tcp::Flags::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Tcp::Flags::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Tcp::Flags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12183,16 +12183,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Tcp::Flow_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Tcp::Flow_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Tcp::Flow_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Tcp::Flow_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Tcp::Flow_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12260,7 +12260,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Tcp::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Tcp::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map")
     {
@@ -12274,16 +12274,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Tcp::Option::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Tcp::Option::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Tcp::Option::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(map != nullptr)
     {
-        children["map"] = map;
+        _children["map"] = map;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Tcp::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12342,16 +12342,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Tcp::Option::Map::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Tcp::Option::Map::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Tcp::Option::Map::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Tcp::Option::Map::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Tcp::Option::Map::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12432,7 +12432,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Tcp::WindowSize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Tcp::WindowSize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "average")
     {
@@ -12446,16 +12446,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Tcp::WindowSiz
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Tcp::WindowSize::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Tcp::WindowSize::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(average != nullptr)
     {
-        children["average"] = average;
+        _children["average"] = average;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Tcp::WindowSize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12544,16 +12544,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Tcp::WindowSize::Average::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Tcp::WindowSize::Average::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Tcp::WindowSize::Average::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Tcp::WindowSize::Average::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Tcp::WindowSize::Average::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12630,16 +12630,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Udp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Udp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12728,7 +12728,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "packet-loss")
     {
@@ -12742,16 +12742,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Event::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Event::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Event::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(packet_loss != nullptr)
     {
-        children["packet-loss"] = packet_loss;
+        _children["packet-loss"] = packet_loss;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12809,7 +12809,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Event::PacketLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Event::PacketLoss::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counter")
     {
@@ -12823,16 +12823,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Event::PacketL
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Event::PacketLoss::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Event::PacketLoss::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counter != nullptr)
     {
-        children["counter"] = counter;
+        _children["counter"] = counter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Event::PacketLoss::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12895,16 +12895,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Event::PacketLoss::Counter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Event::PacketLoss::Counter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Event::PacketLoss::Counter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Event::PacketLoss::Counter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Event::PacketLoss::Counter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12992,7 +12992,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Packets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Packets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expected")
     {
@@ -13015,21 +13015,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Packets::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Packets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Packets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(expected != nullptr)
     {
-        children["expected"] = expected;
+        _children["expected"] = expected;
     }
 
     if(lost != nullptr)
     {
-        children["lost"] = lost;
+        _children["lost"] = lost;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Packets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13098,16 +13098,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Packets::Expected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Packets::Expected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Packets::Expected::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Packets::Expected::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Packets::Expected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13178,7 +13178,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Packets::Lost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Packets::Lost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counter")
     {
@@ -13201,21 +13201,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Packets::Lost:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Packets::Lost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Packets::Lost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counter != nullptr)
     {
-        children["counter"] = counter;
+        _children["counter"] = counter;
     }
 
     if(rate != nullptr)
     {
-        children["rate"] = rate;
+        _children["rate"] = rate;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Packets::Lost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13278,16 +13278,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Packets::Lost::Counter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Packets::Lost::Counter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Packets::Lost::Counter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Packets::Lost::Counter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Packets::Lost::Counter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13370,16 +13370,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Packets::Lost::Rate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Packets::Lost::Rate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Packets::Lost::Rate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Packets::Lost::Rate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Packets::Lost::Rate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13470,16 +13470,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::RoundTripTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::RoundTripTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::RoundTripTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::RoundTripTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::RoundTripTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13591,7 +13591,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Rtp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Rtp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow")
     {
@@ -13614,21 +13614,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Rtp::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Rtp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Rtp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flow != nullptr)
     {
-        children["flow"] = flow;
+        _children["flow"] = flow;
     }
 
     if(jitter != nullptr)
     {
-        children["jitter"] = jitter;
+        _children["jitter"] = jitter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Rtp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13707,16 +13707,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Rtp::Flow_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Rtp::Flow_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Rtp::Flow_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Rtp::Flow_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Rtp::Flow_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13793,7 +13793,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Rtp::Jitter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Rtp::Jitter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mean")
     {
@@ -13807,16 +13807,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Rtp::Jitter::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Rtp::Jitter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Rtp::Jitter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mean != nullptr)
     {
-        children["mean"] = mean;
+        _children["mean"] = mean;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Rtp::Jitter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13895,16 +13895,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Collect::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Collect::Transport::Rtp::Jitter::Mean::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Collect::Transport::Rtp::Jitter::Mean::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Transport::Rtp::Jitter::Mean::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Collect::Transport::Rtp::Jitter::Mean::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Collect::Transport::Rtp::Jitter::Mean::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13982,7 +13982,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Default::ge
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "collect")
     {
@@ -14005,21 +14005,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Default::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Default::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Default::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(collect != nullptr)
     {
-        children["collect"] = collect;
+        _children["collect"] = collect;
     }
 
     if(match != nullptr)
     {
-        children["match"] = match;
+        _children["match"] = match;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14156,7 +14156,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Default::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Default::Collect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Default::Collect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "application")
     {
@@ -14323,101 +14323,101 @@ std::shared_ptr<Entity> Native::Flow::Record::Default::Collect::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Default::Collect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Default::Collect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(application != nullptr)
     {
-        children["application"] = application;
+        _children["application"] = application;
     }
 
     if(connection != nullptr)
     {
-        children["connection"] = connection;
+        _children["connection"] = connection;
     }
 
     if(counter != nullptr)
     {
-        children["counter"] = counter;
+        _children["counter"] = counter;
     }
 
     if(datalink != nullptr)
     {
-        children["datalink"] = datalink;
+        _children["datalink"] = datalink;
     }
 
     if(flow != nullptr)
     {
-        children["flow"] = flow;
+        _children["flow"] = flow;
     }
 
     if(interface != nullptr)
     {
-        children["interface"] = interface;
+        _children["interface"] = interface;
     }
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(metadata != nullptr)
     {
-        children["metadata"] = metadata;
+        _children["metadata"] = metadata;
     }
 
     if(monitor != nullptr)
     {
-        children["monitor"] = monitor;
+        _children["monitor"] = monitor;
     }
 
     if(mpls != nullptr)
     {
-        children["mpls"] = mpls;
+        _children["mpls"] = mpls;
     }
 
     if(network != nullptr)
     {
-        children["network"] = network;
+        _children["network"] = network;
     }
 
     if(pfr != nullptr)
     {
-        children["pfr"] = pfr;
+        _children["pfr"] = pfr;
     }
 
     if(policy != nullptr)
     {
-        children["policy"] = policy;
+        _children["policy"] = policy;
     }
 
     if(routing != nullptr)
     {
-        children["routing"] = routing;
+        _children["routing"] = routing;
     }
 
     if(services != nullptr)
     {
-        children["services"] = services;
+        _children["services"] = services;
     }
 
     if(timestamp != nullptr)
     {
-        children["timestamp"] = timestamp;
+        _children["timestamp"] = timestamp;
     }
 
     if(transport != nullptr)
     {
-        children["transport"] = transport;
+        _children["transport"] = transport;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Default::Collect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14524,7 +14524,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Default::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Default::Collect::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Default::Collect::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dns")
     {
@@ -14628,66 +14628,66 @@ std::shared_ptr<Entity> Native::Flow::Record::Default::Collect::Application::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Default::Collect::Application::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Default::Collect::Application::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dns != nullptr)
     {
-        children["dns"] = dns;
+        _children["dns"] = dns;
     }
 
     if(http != nullptr)
     {
-        children["http"] = http;
+        _children["http"] = http;
     }
 
     if(media != nullptr)
     {
-        children["media"] = media;
+        _children["media"] = media;
     }
 
     if(name != nullptr)
     {
-        children["name"] = name;
+        _children["name"] = name;
     }
 
     if(nntp != nullptr)
     {
-        children["nntp"] = nntp;
+        _children["nntp"] = nntp;
     }
 
     if(pop3 != nullptr)
     {
-        children["pop3"] = pop3;
+        _children["pop3"] = pop3;
     }
 
     if(rtmp != nullptr)
     {
-        children["rtmp"] = rtmp;
+        _children["rtmp"] = rtmp;
     }
 
     if(rtsp != nullptr)
     {
-        children["rtsp"] = rtsp;
+        _children["rtsp"] = rtsp;
     }
 
     if(sip != nullptr)
     {
-        children["sip"] = sip;
+        _children["sip"] = sip;
     }
 
     if(smtp != nullptr)
     {
-        children["smtp"] = smtp;
+        _children["smtp"] = smtp;
     }
 
     if(ssl != nullptr)
     {
-        children["ssl"] = ssl;
+        _children["ssl"] = ssl;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Default::Collect::Application::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14766,16 +14766,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Default::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Default::Collect::Application::Dns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Default::Collect::Application::Dns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Default::Collect::Application::Dns::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Default::Collect::Application::Dns::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Default::Collect::Application::Dns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14861,7 +14861,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Default::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Default::Collect::Application::Http::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Default::Collect::Application::Http::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "uri")
     {
@@ -14875,16 +14875,16 @@ std::shared_ptr<Entity> Native::Flow::Record::Default::Collect::Application::Htt
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Default::Collect::Application::Http::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Default::Collect::Application::Http::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(uri != nullptr)
     {
-        children["uri"] = uri;
+        _children["uri"] = uri;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Default::Collect::Application::Http::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14983,16 +14983,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Default::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Default::Collect::Application::Http::Uri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Default::Collect::Application::Http::Uri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Default::Collect::Application::Http::Uri::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Default::Collect::Application::Http::Uri::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Default::Collect::Application::Http::Uri::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15070,7 +15070,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Default::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Default::Collect::Application::Media::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Default::Collect::Application::Media::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bytes")
     {
@@ -15093,21 +15093,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Default::Collect::Application::Med
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Default::Collect::Application::Media::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Default::Collect::Application::Media::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bytes != nullptr)
     {
-        children["bytes"] = bytes;
+        _children["bytes"] = bytes;
     }
 
     if(packets != nullptr)
     {
-        children["packets"] = packets;
+        _children["packets"] = packets;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Default::Collect::Application::Media::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15178,7 +15178,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Default::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Default::Collect::Application::Media::Bytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Default::Collect::Application::Media::Bytes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "counter")
     {
@@ -15201,21 +15201,21 @@ std::shared_ptr<Entity> Native::Flow::Record::Default::Collect::Application::Med
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Default::Collect::Application::Media::Bytes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Default::Collect::Application::Media::Bytes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(counter != nullptr)
     {
-        children["counter"] = counter;
+        _children["counter"] = counter;
     }
 
     if(rate != nullptr)
     {
-        children["rate"] = rate;
+        _children["rate"] = rate;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Flow::Record::Default::Collect::Application::Media::Bytes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15274,16 +15274,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Flow::Record::Default::Co
 
 }
 
-std::shared_ptr<Entity> Native::Flow::Record::Default::Collect::Application::Media::Bytes::Counter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Flow::Record::Default::Collect::Application::Media::Bytes::Counter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Default::Collect::Application::Media::Bytes::Counter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Flow::Record::Default::Collect::Application::Media::Bytes::Counter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Flow::Record::Default::Collect::Application::Media::Bytes::Counter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

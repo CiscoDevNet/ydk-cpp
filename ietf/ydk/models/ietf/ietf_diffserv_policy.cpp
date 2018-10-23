@@ -70,33 +70,33 @@ std::vector<std::pair<std::string, LeafData> > Policies::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> Policies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy-entry")
     {
-        auto c = std::make_shared<Policies::PolicyEntry>();
-        c->parent = this;
-        policy_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Policies::PolicyEntry>();
+        ent_->parent = this;
+        policy_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : policy_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : policy_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -107,7 +107,7 @@ void Policies::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Policies::clone_ptr() const
+std::shared_ptr<ydk::Entity> Policies::clone_ptr() const
 {
     return std::make_shared<Policies>();
 }
@@ -204,33 +204,33 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::get_name_l
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "classifier-entry")
     {
-        auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry>();
-        c->parent = this;
-        classifier_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Policies::PolicyEntry::ClassifierEntry>();
+        ent_->parent = this;
+        classifier_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : classifier_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : classifier_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::PolicyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -341,50 +341,50 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "filter-entry")
     {
-        auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry>();
-        c->parent = this;
-        filter_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry>();
+        ent_->parent = this;
+        filter_entry.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "classifier-action-entry-cfg")
     {
-        auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg>();
-        c->parent = this;
-        classifier_action_entry_cfg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg>();
+        ent_->parent = this;
+        classifier_action_entry_cfg.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : filter_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : filter_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : classifier_action_entry_cfg.entities())
+    count_ = 0;
+    for (auto ent_ : classifier_action_entry_cfg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -546,118 +546,118 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dscp-cfg")
     {
-        auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg>();
-        c->parent = this;
-        dscp_cfg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg>();
+        ent_->parent = this;
+        dscp_cfg.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "source-ip-address-cfg")
     {
-        auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg>();
-        c->parent = this;
-        source_ip_address_cfg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg>();
+        ent_->parent = this;
+        source_ip_address_cfg.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "destination-ip-address-cfg")
     {
-        auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg>();
-        c->parent = this;
-        destination_ip_address_cfg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg>();
+        ent_->parent = this;
+        destination_ip_address_cfg.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "source-port-cfg")
     {
-        auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg>();
-        c->parent = this;
-        source_port_cfg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg>();
+        ent_->parent = this;
+        source_port_cfg.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "destination-port-cfg")
     {
-        auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg>();
-        c->parent = this;
-        destination_port_cfg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg>();
+        ent_->parent = this;
+        destination_port_cfg.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "protocol-cfg")
     {
-        auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg>();
-        c->parent = this;
-        protocol_cfg.append(c);
-        return c;
+        auto ent_ = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg>();
+        ent_->parent = this;
+        protocol_cfg.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dscp_cfg.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dscp_cfg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : source_ip_address_cfg.entities())
+    count_ = 0;
+    for (auto ent_ : source_ip_address_cfg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : destination_ip_address_cfg.entities())
+    count_ = 0;
+    for (auto ent_ : destination_ip_address_cfg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : source_port_cfg.entities())
+    count_ = 0;
+    for (auto ent_ : source_port_cfg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : destination_port_cfg.entities())
+    count_ = 0;
+    for (auto ent_ : destination_port_cfg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : protocol_cfg.entities())
+    count_ = 0;
+    for (auto ent_ : protocol_cfg.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::FilterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -742,16 +742,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -831,16 +831,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -910,16 +910,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -994,16 +994,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1088,16 +1088,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1182,16 +1182,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1304,7 +1304,7 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ietf-diffserv-action:marking-cfg")
     {
@@ -1381,51 +1381,51 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(marking_cfg != nullptr)
     {
-        children["ietf-diffserv-action:marking-cfg"] = marking_cfg;
+        _children["ietf-diffserv-action:marking-cfg"] = marking_cfg;
     }
 
     if(priority_cfg != nullptr)
     {
-        children["ietf-diffserv-action:priority-cfg"] = priority_cfg;
+        _children["ietf-diffserv-action:priority-cfg"] = priority_cfg;
     }
 
     if(meter_cfg != nullptr)
     {
-        children["ietf-diffserv-action:meter-cfg"] = meter_cfg;
+        _children["ietf-diffserv-action:meter-cfg"] = meter_cfg;
     }
 
     if(min_rate_cfg != nullptr)
     {
-        children["ietf-diffserv-action:min-rate-cfg"] = min_rate_cfg;
+        _children["ietf-diffserv-action:min-rate-cfg"] = min_rate_cfg;
     }
 
     if(max_rate_cfg != nullptr)
     {
-        children["ietf-diffserv-action:max-rate-cfg"] = max_rate_cfg;
+        _children["ietf-diffserv-action:max-rate-cfg"] = max_rate_cfg;
     }
 
     if(drop_cfg != nullptr)
     {
-        children["ietf-diffserv-action:drop-cfg"] = drop_cfg;
+        _children["ietf-diffserv-action:drop-cfg"] = drop_cfg;
     }
 
     if(tail_drop_cfg != nullptr)
     {
-        children["ietf-diffserv-action:tail-drop-cfg"] = tail_drop_cfg;
+        _children["ietf-diffserv-action:tail-drop-cfg"] = tail_drop_cfg;
     }
 
     if(random_detect_cfg != nullptr)
     {
-        children["ietf-diffserv-action:random-detect-cfg"] = random_detect_cfg;
+        _children["ietf-diffserv-action:random-detect-cfg"] = random_detect_cfg;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1494,16 +1494,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1577,7 +1577,7 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rate-burst")
     {
@@ -1591,16 +1591,16 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rate_burst != nullptr)
     {
-        children["rate-burst"] = rate_burst;
+        _children["rate-burst"] = rate_burst;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1693,16 +1693,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1839,33 +1839,33 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "meter-list")
     {
-        auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList>();
-        c->parent = this;
-        meter_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList>();
+        ent_->parent = this;
+        meter_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : meter_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : meter_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1950,7 +1950,7 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "color")
     {
@@ -1982,26 +1982,26 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(color != nullptr)
     {
-        children["color"] = color;
+        _children["color"] = color;
     }
 
     if(succeed_action != nullptr)
     {
-        children["succeed-action"] = succeed_action;
+        _children["succeed-action"] = succeed_action;
     }
 
     if(fail_action != nullptr)
     {
-        children["fail-action"] = fail_action;
+        _children["fail-action"] = fail_action;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2108,16 +2108,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::Color::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::Color::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::Color::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::Color::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::Color::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2218,16 +2218,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::SucceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::SucceedAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::SucceedAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::SucceedAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::SucceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2338,16 +2338,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2467,7 +2467,7 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bw-excess-share-cfg")
     {
@@ -2481,16 +2481,16 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bw_excess_share_cfg != nullptr)
     {
-        children["bw-excess-share-cfg"] = bw_excess_share_cfg;
+        _children["bw-excess-share-cfg"] = bw_excess_share_cfg;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2615,16 +2615,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::BwExcessShareCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::BwExcessShareCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::BwExcessShareCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::BwExcessShareCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::BwExcessShareCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2757,16 +2757,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2895,16 +2895,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2981,33 +2981,33 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "qlimit-dscp-thresh")
     {
-        auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh>();
-        c->parent = this;
-        qlimit_dscp_thresh.append(c);
-        return c;
+        auto ent_ = std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh>();
+        ent_->parent = this;
+        qlimit_dscp_thresh.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : qlimit_dscp_thresh.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : qlimit_dscp_thresh.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3077,7 +3077,7 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
@@ -3091,16 +3091,16 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(threshold != nullptr)
     {
-        children["threshold"] = threshold;
+        _children["threshold"] = threshold;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3183,16 +3183,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::Threshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3284,7 +3284,7 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "red-min-thresh")
     {
@@ -3307,21 +3307,21 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(red_min_thresh != nullptr)
     {
-        children["red-min-thresh"] = red_min_thresh;
+        _children["red-min-thresh"] = red_min_thresh;
     }
 
     if(red_max_thresh != nullptr)
     {
-        children["red-max-thresh"] = red_max_thresh;
+        _children["red-max-thresh"] = red_max_thresh;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3400,7 +3400,7 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
@@ -3414,16 +3414,16 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(threshold != nullptr)
     {
-        children["threshold"] = threshold;
+        _children["threshold"] = threshold;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3486,16 +3486,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3574,7 +3574,7 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
@@ -3588,16 +3588,16 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(threshold != nullptr)
     {
-        children["threshold"] = threshold;
+        _children["threshold"] = threshold;
     }
 
-    return children;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3660,16 +3660,16 @@ std::vector<std::pair<std::string, LeafData> > Policies::PolicyEntry::Classifier
 
 }
 
-std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

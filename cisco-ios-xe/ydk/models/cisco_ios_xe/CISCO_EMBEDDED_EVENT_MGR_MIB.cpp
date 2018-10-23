@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::get_nam
 
 }
 
-std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEMBEDDEDEVENTMGRMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceemHistory")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEMBEDDEDEVENTMGRMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ceemhistory != nullptr)
     {
-        children["ceemHistory"] = ceemhistory;
+        _children["ceemHistory"] = ceemhistory;
     }
 
     if(ceemeventmaptable != nullptr)
     {
-        children["ceemEventMapTable"] = ceemeventmaptable;
+        _children["ceemEventMapTable"] = ceemeventmaptable;
     }
 
     if(ceemhistoryeventtable != nullptr)
     {
-        children["ceemHistoryEventTable"] = ceemhistoryeventtable;
+        _children["ceemHistoryEventTable"] = ceemhistoryeventtable;
     }
 
     if(ceemregisteredpolicytable != nullptr)
     {
-        children["ceemRegisteredPolicyTable"] = ceemregisteredpolicytable;
+        _children["ceemRegisteredPolicyTable"] = ceemregisteredpolicytable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOEMBEDDEDEVENTMGRMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void CISCOEMBEDDEDEVENTMGRMIB::set_filter(const std::string & value_path, YFilte
 {
 }
 
-std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOEMBEDDEDEVENTMGRMIB::clone_ptr() const
 {
     return std::make_shared<CISCOEMBEDDEDEVENTMGRMIB>();
 }
@@ -224,16 +224,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::CeemHis
 
 }
 
-std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOEMBEDDEDEVENTMGRMIB::CeemHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -327,33 +327,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::CeemEve
 
 }
 
-std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceemEventMapEntry")
     {
-        auto c = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::CeemEventMapEntry>();
-        c->parent = this;
-        ceemeventmapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::CeemEventMapEntry>();
+        ent_->parent = this;
+        ceemeventmapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceemeventmapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceemeventmapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -428,16 +428,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::CeemEve
 
 }
 
-std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::CeemEventMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::CeemEventMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::CeemEventMapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::CeemEventMapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::CeemEventMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -541,33 +541,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::CeemHis
 
 }
 
-std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceemHistoryEventEntry")
     {
-        auto c = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::CeemHistoryEventEntry>();
-        c->parent = this;
-        ceemhistoryevententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::CeemHistoryEventEntry>();
+        ent_->parent = this;
+        ceemhistoryevententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceemhistoryevententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceemhistoryevententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -694,16 +694,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::CeemHis
 
 }
 
-std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::CeemHistoryEventEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::CeemHistoryEventEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::CeemHistoryEventEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::CeemHistoryEventEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::CeemHistoryEventEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -937,33 +937,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::CeemReg
 
 }
 
-std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ceemRegisteredPolicyEntry")
     {
-        auto c = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry>();
-        c->parent = this;
-        ceemregisteredpolicyentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry>();
+        ent_->parent = this;
+        ceemregisteredpolicyentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceemregisteredpolicyentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceemregisteredpolicyentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1094,16 +1094,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOEMBEDDEDEVENTMGRMIB::CeemReg
 
 }
 
-std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

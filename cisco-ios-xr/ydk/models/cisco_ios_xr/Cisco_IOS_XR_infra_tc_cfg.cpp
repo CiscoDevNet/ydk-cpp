@@ -61,7 +61,7 @@ std::vector<std::pair<std::string, LeafData> > TrafficCollector::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> TrafficCollector::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TrafficCollector::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "external-interfaces")
     {
@@ -84,21 +84,21 @@ std::shared_ptr<Entity> TrafficCollector::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TrafficCollector::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(external_interfaces != nullptr)
     {
-        children["external-interfaces"] = external_interfaces;
+        _children["external-interfaces"] = external_interfaces;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void TrafficCollector::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -119,7 +119,7 @@ void TrafficCollector::set_filter(const std::string & value_path, YFilter yfilte
     }
 }
 
-std::shared_ptr<Entity> TrafficCollector::clone_ptr() const
+std::shared_ptr<ydk::Entity> TrafficCollector::clone_ptr() const
 {
     return std::make_shared<TrafficCollector>();
 }
@@ -207,33 +207,33 @@ std::vector<std::pair<std::string, LeafData> > TrafficCollector::ExternalInterfa
 
 }
 
-std::shared_ptr<Entity> TrafficCollector::ExternalInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TrafficCollector::ExternalInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "external-interface")
     {
-        auto c = std::make_shared<TrafficCollector::ExternalInterfaces::ExternalInterface>();
-        c->parent = this;
-        external_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<TrafficCollector::ExternalInterfaces::ExternalInterface>();
+        ent_->parent = this;
+        external_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TrafficCollector::ExternalInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : external_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : external_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TrafficCollector::ExternalInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -304,16 +304,16 @@ std::vector<std::pair<std::string, LeafData> > TrafficCollector::ExternalInterfa
 
 }
 
-std::shared_ptr<Entity> TrafficCollector::ExternalInterfaces::ExternalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TrafficCollector::ExternalInterfaces::ExternalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfaces::ExternalInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TrafficCollector::ExternalInterfaces::ExternalInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TrafficCollector::ExternalInterfaces::ExternalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -411,16 +411,16 @@ std::vector<std::pair<std::string, LeafData> > TrafficCollector::Statistics::get
 
 }
 
-std::shared_ptr<Entity> TrafficCollector::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TrafficCollector::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TrafficCollector::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TrafficCollector::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

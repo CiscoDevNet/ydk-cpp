@@ -71,50 +71,50 @@ std::vector<std::pair<std::string, LeafData> > DhcpOperData::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> DhcpOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DhcpOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcpv4-server-oper")
     {
-        auto c = std::make_shared<DhcpOperData::Dhcpv4ServerOper>();
-        c->parent = this;
-        dhcpv4_server_oper.append(c);
-        return c;
+        auto ent_ = std::make_shared<DhcpOperData::Dhcpv4ServerOper>();
+        ent_->parent = this;
+        dhcpv4_server_oper.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "dhcpv4-client-oper")
     {
-        auto c = std::make_shared<DhcpOperData::Dhcpv4ClientOper>();
-        c->parent = this;
-        dhcpv4_client_oper.append(c);
-        return c;
+        auto ent_ = std::make_shared<DhcpOperData::Dhcpv4ClientOper>();
+        ent_->parent = this;
+        dhcpv4_client_oper.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DhcpOperData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DhcpOperData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dhcpv4_server_oper.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dhcpv4_server_oper.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : dhcpv4_client_oper.entities())
+    count_ = 0;
+    for (auto ent_ : dhcpv4_client_oper.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DhcpOperData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -125,7 +125,7 @@ void DhcpOperData::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> DhcpOperData::clone_ptr() const
+std::shared_ptr<ydk::Entity> DhcpOperData::clone_ptr() const
 {
     return std::make_shared<DhcpOperData>();
 }
@@ -241,7 +241,7 @@ std::vector<std::pair<std::string, LeafData> > DhcpOperData::Dhcpv4ServerOper::g
 
 }
 
-std::shared_ptr<Entity> DhcpOperData::Dhcpv4ServerOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DhcpOperData::Dhcpv4ServerOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expiration")
     {
@@ -255,16 +255,16 @@ std::shared_ptr<Entity> DhcpOperData::Dhcpv4ServerOper::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DhcpOperData::Dhcpv4ServerOper::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DhcpOperData::Dhcpv4ServerOper::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(expiration != nullptr)
     {
-        children["expiration"] = expiration;
+        _children["expiration"] = expiration;
     }
 
-    return children;
+    return _children;
 }
 
 void DhcpOperData::Dhcpv4ServerOper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -407,16 +407,16 @@ std::vector<std::pair<std::string, LeafData> > DhcpOperData::Dhcpv4ServerOper::E
 
 }
 
-std::shared_ptr<Entity> DhcpOperData::Dhcpv4ServerOper::Expiration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DhcpOperData::Dhcpv4ServerOper::Expiration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DhcpOperData::Dhcpv4ServerOper::Expiration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DhcpOperData::Dhcpv4ServerOper::Expiration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DhcpOperData::Dhcpv4ServerOper::Expiration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -550,7 +550,7 @@ std::vector<std::pair<std::string, LeafData> > DhcpOperData::Dhcpv4ClientOper::g
 
 }
 
-std::shared_ptr<Entity> DhcpOperData::Dhcpv4ClientOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DhcpOperData::Dhcpv4ClientOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lease-expiry")
     {
@@ -564,16 +564,16 @@ std::shared_ptr<Entity> DhcpOperData::Dhcpv4ClientOper::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DhcpOperData::Dhcpv4ClientOper::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DhcpOperData::Dhcpv4ClientOper::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lease_expiry != nullptr)
     {
-        children["lease-expiry"] = lease_expiry;
+        _children["lease-expiry"] = lease_expiry;
     }
 
-    return children;
+    return _children;
 }
 
 void DhcpOperData::Dhcpv4ClientOper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -746,16 +746,16 @@ std::vector<std::pair<std::string, LeafData> > DhcpOperData::Dhcpv4ClientOper::L
 
 }
 
-std::shared_ptr<Entity> DhcpOperData::Dhcpv4ClientOper::LeaseExpiry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DhcpOperData::Dhcpv4ClientOper::LeaseExpiry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DhcpOperData::Dhcpv4ClientOper::LeaseExpiry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DhcpOperData::Dhcpv4ClientOper::LeaseExpiry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DhcpOperData::Dhcpv4ClientOper::LeaseExpiry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

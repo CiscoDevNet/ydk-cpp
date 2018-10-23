@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > InventoryConfigurations::get_name
 
 }
 
-std::shared_ptr<Entity> InventoryConfigurations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InventoryConfigurations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "entity")
     {
-        auto c = std::make_shared<InventoryConfigurations::Entity>();
-        c->parent = this;
-        entity_.append(c);
-        return c;
+        auto ent_ = std::make_shared<InventoryConfigurations::Entity>();
+        ent_->parent = this;
+        entity_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InventoryConfigurations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InventoryConfigurations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : entity_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : entity_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void InventoryConfigurations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void InventoryConfigurations::set_filter(const std::string & value_path, YFilter
 {
 }
 
-std::shared_ptr<Entity> InventoryConfigurations::clone_ptr() const
+std::shared_ptr<ydk::Entity> InventoryConfigurations::clone_ptr() const
 {
     return std::make_shared<InventoryConfigurations>();
 }
@@ -182,16 +182,16 @@ std::vector<std::pair<std::string, LeafData> > InventoryConfigurations::Entity::
 
 }
 
-std::shared_ptr<Entity> InventoryConfigurations::Entity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> InventoryConfigurations::Entity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InventoryConfigurations::Entity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> InventoryConfigurations::Entity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void InventoryConfigurations::Entity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

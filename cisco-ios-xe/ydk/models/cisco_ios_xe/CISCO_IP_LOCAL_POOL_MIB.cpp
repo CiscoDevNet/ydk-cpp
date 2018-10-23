@@ -72,7 +72,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::get_name_lea
 
 }
 
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPLOCALPOOLMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cIpLocalPoolConfig")
     {
@@ -131,41 +131,41 @@ std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPLOCALPOOLMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ciplocalpoolconfig != nullptr)
     {
-        children["cIpLocalPoolConfig"] = ciplocalpoolconfig;
+        _children["cIpLocalPoolConfig"] = ciplocalpoolconfig;
     }
 
     if(ciplocalpoolconfigtable != nullptr)
     {
-        children["cIpLocalPoolConfigTable"] = ciplocalpoolconfigtable;
+        _children["cIpLocalPoolConfigTable"] = ciplocalpoolconfigtable;
     }
 
     if(ciplocalpoolgroupcontainstable != nullptr)
     {
-        children["cIpLocalPoolGroupContainsTable"] = ciplocalpoolgroupcontainstable;
+        _children["cIpLocalPoolGroupContainsTable"] = ciplocalpoolgroupcontainstable;
     }
 
     if(ciplocalpoolgrouptable != nullptr)
     {
-        children["cIpLocalPoolGroupTable"] = ciplocalpoolgrouptable;
+        _children["cIpLocalPoolGroupTable"] = ciplocalpoolgrouptable;
     }
 
     if(ciplocalpoolstatstable != nullptr)
     {
-        children["cIpLocalPoolStatsTable"] = ciplocalpoolstatstable;
+        _children["cIpLocalPoolStatsTable"] = ciplocalpoolstatstable;
     }
 
     if(ciplocalpoolalloctable != nullptr)
     {
-        children["cIpLocalPoolAllocTable"] = ciplocalpoolalloctable;
+        _children["cIpLocalPoolAllocTable"] = ciplocalpoolalloctable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPLOCALPOOLMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -176,7 +176,7 @@ void CISCOIPLOCALPOOLMIB::set_filter(const std::string & value_path, YFilter yfi
 {
 }
 
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIPLOCALPOOLMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIPLOCALPOOLMIB>();
 }
@@ -256,16 +256,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::CIpLocalPool
 
 }
 
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPLOCALPOOLMIB::CIpLocalPoolConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -349,33 +349,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::CIpLocalPool
 
 }
 
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cIpLocalPoolConfigEntry")
     {
-        auto c = std::make_shared<CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::CIpLocalPoolConfigEntry>();
-        c->parent = this;
-        ciplocalpoolconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::CIpLocalPoolConfigEntry>();
+        ent_->parent = this;
+        ciplocalpoolconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciplocalpoolconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciplocalpoolconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -476,16 +476,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::CIpLocalPool
 
 }
 
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::CIpLocalPoolConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::CIpLocalPoolConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::CIpLocalPoolConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::CIpLocalPoolConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPLOCALPOOLMIB::CIpLocalPoolConfigTable::CIpLocalPoolConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -649,33 +649,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::CIpLocalPool
 
 }
 
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cIpLocalPoolGroupContainsEntry")
     {
-        auto c = std::make_shared<CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::CIpLocalPoolGroupContainsEntry>();
-        c->parent = this;
-        ciplocalpoolgroupcontainsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::CIpLocalPoolGroupContainsEntry>();
+        ent_->parent = this;
+        ciplocalpoolgroupcontainsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciplocalpoolgroupcontainsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciplocalpoolgroupcontainsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -747,16 +747,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::CIpLocalPool
 
 }
 
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::CIpLocalPoolGroupContainsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::CIpLocalPoolGroupContainsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::CIpLocalPoolGroupContainsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::CIpLocalPoolGroupContainsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupContainsTable::CIpLocalPoolGroupContainsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -850,33 +850,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::CIpLocalPool
 
 }
 
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cIpLocalPoolGroupEntry")
     {
-        auto c = std::make_shared<CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::CIpLocalPoolGroupEntry>();
-        c->parent = this;
-        ciplocalpoolgroupentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::CIpLocalPoolGroupEntry>();
+        ent_->parent = this;
+        ciplocalpoolgroupentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciplocalpoolgroupentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciplocalpoolgroupentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -951,16 +951,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::CIpLocalPool
 
 }
 
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::CIpLocalPoolGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::CIpLocalPoolGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::CIpLocalPoolGroupEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::CIpLocalPoolGroupEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPLOCALPOOLMIB::CIpLocalPoolGroupTable::CIpLocalPoolGroupEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1064,33 +1064,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::CIpLocalPool
 
 }
 
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cIpLocalPoolStatsEntry")
     {
-        auto c = std::make_shared<CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::CIpLocalPoolStatsEntry>();
-        c->parent = this;
-        ciplocalpoolstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::CIpLocalPoolStatsEntry>();
+        ent_->parent = this;
+        ciplocalpoolstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciplocalpoolstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciplocalpoolstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1185,16 +1185,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::CIpLocalPool
 
 }
 
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::CIpLocalPoolStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::CIpLocalPoolStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::CIpLocalPoolStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::CIpLocalPoolStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPLOCALPOOLMIB::CIpLocalPoolStatsTable::CIpLocalPoolStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1348,33 +1348,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::CIpLocalPool
 
 }
 
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cIpLocalPoolAllocEntry")
     {
-        auto c = std::make_shared<CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::CIpLocalPoolAllocEntry>();
-        c->parent = this;
-        ciplocalpoolallocentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::CIpLocalPoolAllocEntry>();
+        ent_->parent = this;
+        ciplocalpoolallocentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciplocalpoolallocentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciplocalpoolallocentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1459,16 +1459,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPLOCALPOOLMIB::CIpLocalPool
 
 }
 
-std::shared_ptr<Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::CIpLocalPoolAllocEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::CIpLocalPoolAllocEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::CIpLocalPoolAllocEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::CIpLocalPoolAllocEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPLOCALPOOLMIB::CIpLocalPoolAllocTable::CIpLocalPoolAllocEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAJITTERMIB::get_name_lea
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAJITTERMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaUdpJitterTmplTable")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAJITTERMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cipslaudpjittertmpltable != nullptr)
     {
-        children["cipslaUdpJitterTmplTable"] = cipslaudpjittertmpltable;
+        _children["cipslaUdpJitterTmplTable"] = cipslaudpjittertmpltable;
     }
 
     if(cipslaicmpjittertmpltable != nullptr)
     {
-        children["cipslaIcmpJitterTmplTable"] = cipslaicmpjittertmpltable;
+        _children["cipslaIcmpJitterTmplTable"] = cipslaicmpjittertmpltable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSLAJITTERMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void CISCOIPSLAJITTERMIB::set_filter(const std::string & value_path, YFilter yfi
 {
 }
 
-std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIPSLAJITTERMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIPSLAJITTERMIB>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAJITTERMIB::CipslaUdpJit
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaUdpJitterTmplEntry")
     {
-        auto c = std::make_shared<CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry>();
-        c->parent = this;
-        cipslaudpjittertmplentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry>();
+        ent_->parent = this;
+        cipslaudpjittertmplentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipslaudpjittertmplentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipslaudpjittertmplentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -397,16 +397,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAJITTERMIB::CipslaUdpJit
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSLAJITTERMIB::CipslaUdpJitterTmplTable::CipslaUdpJitterTmplEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -770,33 +770,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAJITTERMIB::CipslaIcmpJi
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaIcmpJitterTmplEntry")
     {
-        auto c = std::make_shared<CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::CipslaIcmpJitterTmplEntry>();
-        c->parent = this;
-        cipslaicmpjittertmplentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::CipslaIcmpJitterTmplEntry>();
+        ent_->parent = this;
+        cipslaicmpjittertmplentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipslaicmpjittertmplentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipslaicmpjittertmplentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -923,16 +923,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAJITTERMIB::CipslaIcmpJi
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::CipslaIcmpJitterTmplEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::CipslaIcmpJitterTmplEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::CipslaIcmpJitterTmplEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::CipslaIcmpJitterTmplEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSLAJITTERMIB::CipslaIcmpJitterTmplTable::CipslaIcmpJitterTmplEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

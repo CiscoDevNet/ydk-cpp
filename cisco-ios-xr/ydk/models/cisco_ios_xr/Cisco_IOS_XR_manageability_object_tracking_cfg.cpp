@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "object-tracking")
     {
-        auto c = std::make_shared<ObjectTrackings::ObjectTracking>();
-        c->parent = this;
-        object_tracking.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTrackings::ObjectTracking>();
+        ent_->parent = this;
+        object_tracking.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : object_tracking.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : object_tracking.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void ObjectTrackings::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> ObjectTrackings::clone_ptr() const
+std::shared_ptr<ydk::Entity> ObjectTrackings::clone_ptr() const
 {
     return std::make_shared<ObjectTrackings>();
 }
@@ -235,7 +235,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
@@ -303,46 +303,46 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(action != nullptr)
     {
-        children["action"] = action;
+        _children["action"] = action;
     }
 
     if(type_bfd_rtr != nullptr)
     {
-        children["type-bfd-rtr"] = type_bfd_rtr;
+        _children["type-bfd-rtr"] = type_bfd_rtr;
     }
 
     if(type_interface != nullptr)
     {
-        children["type-interface"] = type_interface;
+        _children["type-interface"] = type_interface;
     }
 
     if(type_rtr != nullptr)
     {
-        children["type-rtr"] = type_rtr;
+        _children["type-rtr"] = type_rtr;
     }
 
     if(type_list != nullptr)
     {
-        children["type-list"] = type_list;
+        _children["type-list"] = type_list;
     }
 
     if(type_route != nullptr)
     {
-        children["type-route"] = type_route;
+        _children["type-route"] = type_route;
     }
 
     if(type_boolean_list != nullptr)
     {
-        children["type-boolean-list"] = type_boolean_list;
+        _children["type-boolean-list"] = type_boolean_list;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -486,7 +486,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action-err-dis")
     {
@@ -500,16 +500,16 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::Action::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::Action::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::Action::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(action_err_dis != nullptr)
     {
-        children["action-err-dis"] = action_err_dis;
+        _children["action-err-dis"] = action_err_dis;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -586,33 +586,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::Action::ActionErrDis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::Action::ActionErrDis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action-err-di")
     {
-        auto c = std::make_shared<ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi>();
-        c->parent = this;
-        action_err_di.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi>();
+        ent_->parent = this;
+        action_err_di.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::Action::ActionErrDis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::Action::ActionErrDis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : action_err_di.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : action_err_di.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::Action::ActionErrDis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -677,16 +677,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::Action::ActionErrDis::ActionErrDi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -764,7 +764,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBfdRtr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeBfdRtr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bfd-rtr")
     {
@@ -778,16 +778,16 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBfdRtr::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBfdRtr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeBfdRtr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bfd_rtr != nullptr)
     {
-        children["bfd-rtr"] = bfd_rtr;
+        _children["bfd-rtr"] = bfd_rtr;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeBfdRtr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -858,16 +858,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeBfdRtr::BfdRtr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -966,16 +966,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1044,16 +1044,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeRtr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeRtr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeRtr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeRtr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeRtr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1143,7 +1143,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-weight")
     {
@@ -1184,31 +1184,31 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(threshold_weight != nullptr)
     {
-        children["threshold-weight"] = threshold_weight;
+        _children["threshold-weight"] = threshold_weight;
     }
 
     if(threshold_percentage_object != nullptr)
     {
-        children["threshold-percentage-object"] = threshold_percentage_object;
+        _children["threshold-percentage-object"] = threshold_percentage_object;
     }
 
     if(threshold_percentage != nullptr)
     {
-        children["threshold-percentage"] = threshold_percentage;
+        _children["threshold-percentage"] = threshold_percentage;
     }
 
     if(threshold_weight_object != nullptr)
     {
-        children["threshold-weight-object"] = threshold_weight_object;
+        _children["threshold-weight-object"] = threshold_weight_object;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1287,7 +1287,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-limits")
     {
@@ -1301,16 +1301,16 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeig
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(threshold_limits != nullptr)
     {
-        children["threshold-limits"] = threshold_limits;
+        _children["threshold-limits"] = threshold_limits;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1369,7 +1369,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-up-values")
     {
@@ -1383,16 +1383,16 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeig
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(threshold_up_values != nullptr)
     {
-        children["threshold-up-values"] = threshold_up_values;
+        _children["threshold-up-values"] = threshold_up_values;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1459,33 +1459,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-up-value")
     {
-        auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue>();
-        c->parent = this;
-        threshold_up_value.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue>();
+        ent_->parent = this;
+        threshold_up_value.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : threshold_up_value.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : threshold_up_value.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1549,16 +1549,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1645,33 +1645,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "object")
     {
-        auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object>();
-        c->parent = this;
-        object.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object>();
+        ent_->parent = this;
+        object.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : object.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : object.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1735,16 +1735,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1823,7 +1823,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-limits")
     {
@@ -1837,16 +1837,16 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPerc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(threshold_limits != nullptr)
     {
-        children["threshold-limits"] = threshold_limits;
+        _children["threshold-limits"] = threshold_limits;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1905,7 +1905,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-up-values")
     {
@@ -1919,16 +1919,16 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPerc
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(threshold_up_values != nullptr)
     {
-        children["threshold-up-values"] = threshold_up_values;
+        _children["threshold-up-values"] = threshold_up_values;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1995,33 +1995,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-up-value")
     {
-        auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue>();
-        c->parent = this;
-        threshold_up_value.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue>();
+        ent_->parent = this;
+        threshold_up_value.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : threshold_up_value.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : threshold_up_value.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2085,16 +2085,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2181,33 +2181,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "object")
     {
-        auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object>();
-        c->parent = this;
-        object.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object>();
+        ent_->parent = this;
+        object.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : object.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : object.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2271,16 +2271,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2363,7 +2363,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-address")
     {
@@ -2377,16 +2377,16 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeRoute::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeRoute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeRoute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ip_address != nullptr)
     {
-        children["ip-address"] = ip_address;
+        _children["ip-address"] = ip_address;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2459,16 +2459,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2551,7 +2551,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "or-objects")
     {
@@ -2574,21 +2574,21 @@ std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(or_objects != nullptr)
     {
-        children["or-objects"] = or_objects;
+        _children["or-objects"] = or_objects;
     }
 
     if(and_objects != nullptr)
     {
-        children["and-objects"] = and_objects;
+        _children["and-objects"] = and_objects;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeBooleanList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2655,33 +2655,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "or-object")
     {
-        auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject>();
-        c->parent = this;
-        or_object.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject>();
+        ent_->parent = this;
+        or_object.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : or_object.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : or_object.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2745,16 +2745,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2841,33 +2841,33 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "and-object")
     {
-        auto c = std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject>();
-        c->parent = this;
-        and_object.append(c);
-        return c;
+        auto ent_ = std::make_shared<ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject>();
+        ent_->parent = this;
+        and_object.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : and_object.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : and_object.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2931,16 +2931,16 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 }
 
-std::shared_ptr<Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > MemorySummary::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> MemorySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MemorySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> MemorySummary::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MemorySummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MemorySummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void MemorySummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void MemorySummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MemorySummary::clone_ptr() const
+std::shared_ptr<ydk::Entity> MemorySummary::clone_ptr() const
 {
     return std::make_shared<MemorySummary>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::get_name_le
 
 }
 
-std::shared_ptr<Entity> MemorySummary::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MemorySummary::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<MemorySummary::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<MemorySummary::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MemorySummary::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MemorySummary::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -276,7 +276,7 @@ std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::get_n
 
 }
 
-std::shared_ptr<Entity> MemorySummary::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MemorySummary::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
@@ -299,21 +299,21 @@ std::shared_ptr<Entity> MemorySummary::Nodes::Node::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MemorySummary::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void MemorySummary::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -418,16 +418,16 @@ std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::Summa
 
 }
 
-std::shared_ptr<Entity> MemorySummary::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MemorySummary::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MemorySummary::Nodes::Node::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MemorySummary::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -662,33 +662,33 @@ std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> MemorySummary::Nodes::Node::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MemorySummary::Nodes::Node::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "shared-window")
     {
-        auto c = std::make_shared<MemorySummary::Nodes::Node::Detail::SharedWindow>();
-        c->parent = this;
-        shared_window.append(c);
-        return c;
+        auto ent_ = std::make_shared<MemorySummary::Nodes::Node::Detail::SharedWindow>();
+        ent_->parent = this;
+        shared_window.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MemorySummary::Nodes::Node::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : shared_window.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : shared_window.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MemorySummary::Nodes::Node::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -921,16 +921,16 @@ std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::Detai
 
 }
 
-std::shared_ptr<Entity> MemorySummary::Nodes::Node::Detail::SharedWindow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MemorySummary::Nodes::Node::Detail::SharedWindow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Detail::SharedWindow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MemorySummary::Nodes::Node::Detail::SharedWindow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MemorySummary::Nodes::Node::Detail::SharedWindow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

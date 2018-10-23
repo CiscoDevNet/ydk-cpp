@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Exception::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> Exception::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Exception::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "file")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Exception::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Exception::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Exception::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(file != nullptr)
     {
-        children["file"] = file;
+        _children["file"] = file;
     }
 
-    return children;
+    return _children;
 }
 
 void Exception::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Exception::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Exception::clone_ptr() const
+std::shared_ptr<ydk::Entity> Exception::clone_ptr() const
 {
     return std::make_shared<Exception>();
 }
@@ -174,16 +174,16 @@ std::vector<std::pair<std::string, LeafData> > Exception::File::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Exception::File::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Exception::File::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Exception::File::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Exception::File::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Exception::File::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

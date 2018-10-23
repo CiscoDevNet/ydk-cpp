@@ -96,7 +96,7 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mteResource")
     {
@@ -209,71 +209,71 @@ std::shared_ptr<Entity> DISMANEVENTMIB::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mteresource != nullptr)
     {
-        children["mteResource"] = mteresource;
+        _children["mteResource"] = mteresource;
     }
 
     if(mtetrigger != nullptr)
     {
-        children["mteTrigger"] = mtetrigger;
+        _children["mteTrigger"] = mtetrigger;
     }
 
     if(mteevent != nullptr)
     {
-        children["mteEvent"] = mteevent;
+        _children["mteEvent"] = mteevent;
     }
 
     if(mtetriggertable != nullptr)
     {
-        children["mteTriggerTable"] = mtetriggertable;
+        _children["mteTriggerTable"] = mtetriggertable;
     }
 
     if(mtetriggerdeltatable != nullptr)
     {
-        children["mteTriggerDeltaTable"] = mtetriggerdeltatable;
+        _children["mteTriggerDeltaTable"] = mtetriggerdeltatable;
     }
 
     if(mtetriggerexistencetable != nullptr)
     {
-        children["mteTriggerExistenceTable"] = mtetriggerexistencetable;
+        _children["mteTriggerExistenceTable"] = mtetriggerexistencetable;
     }
 
     if(mtetriggerbooleantable != nullptr)
     {
-        children["mteTriggerBooleanTable"] = mtetriggerbooleantable;
+        _children["mteTriggerBooleanTable"] = mtetriggerbooleantable;
     }
 
     if(mtetriggerthresholdtable != nullptr)
     {
-        children["mteTriggerThresholdTable"] = mtetriggerthresholdtable;
+        _children["mteTriggerThresholdTable"] = mtetriggerthresholdtable;
     }
 
     if(mteobjectstable != nullptr)
     {
-        children["mteObjectsTable"] = mteobjectstable;
+        _children["mteObjectsTable"] = mteobjectstable;
     }
 
     if(mteeventtable != nullptr)
     {
-        children["mteEventTable"] = mteeventtable;
+        _children["mteEventTable"] = mteeventtable;
     }
 
     if(mteeventnotificationtable != nullptr)
     {
-        children["mteEventNotificationTable"] = mteeventnotificationtable;
+        _children["mteEventNotificationTable"] = mteeventnotificationtable;
     }
 
     if(mteeventsettable != nullptr)
     {
-        children["mteEventSetTable"] = mteeventsettable;
+        _children["mteEventSetTable"] = mteeventsettable;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEVENTMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -284,7 +284,7 @@ void DISMANEVENTMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::clone_ptr() const
 {
     return std::make_shared<DISMANEVENTMIB>();
 }
@@ -380,16 +380,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteResource::get_
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteResource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteResource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteResource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteResource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteResource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -505,16 +505,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteTrigger::get_n
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteTrigger::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteTrigger::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -590,16 +590,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteEvent::get_nam
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteEvent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteEvent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteEvent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -683,33 +683,33 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteTriggerTable::
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteTriggerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteTriggerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mteTriggerEntry")
     {
-        auto c = std::make_shared<DISMANEVENTMIB::MteTriggerTable::MteTriggerEntry>();
-        c->parent = this;
-        mtetriggerentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DISMANEVENTMIB::MteTriggerTable::MteTriggerEntry>();
+        ent_->parent = this;
+        mtetriggerentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteTriggerTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteTriggerTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mtetriggerentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mtetriggerentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteTriggerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -833,16 +833,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteTriggerTable::
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteTriggerTable::MteTriggerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteTriggerTable::MteTriggerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteTriggerTable::MteTriggerEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteTriggerTable::MteTriggerEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteTriggerTable::MteTriggerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1064,33 +1064,33 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteTriggerDeltaTa
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteTriggerDeltaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteTriggerDeltaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mteTriggerDeltaEntry")
     {
-        auto c = std::make_shared<DISMANEVENTMIB::MteTriggerDeltaTable::MteTriggerDeltaEntry>();
-        c->parent = this;
-        mtetriggerdeltaentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DISMANEVENTMIB::MteTriggerDeltaTable::MteTriggerDeltaEntry>();
+        ent_->parent = this;
+        mtetriggerdeltaentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteTriggerDeltaTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteTriggerDeltaTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mtetriggerdeltaentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mtetriggerdeltaentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteTriggerDeltaTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1174,16 +1174,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteTriggerDeltaTa
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteTriggerDeltaTable::MteTriggerDeltaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteTriggerDeltaTable::MteTriggerDeltaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteTriggerDeltaTable::MteTriggerDeltaEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteTriggerDeltaTable::MteTriggerDeltaEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteTriggerDeltaTable::MteTriggerDeltaEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1307,33 +1307,33 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteTriggerExisten
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteTriggerExistenceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteTriggerExistenceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mteTriggerExistenceEntry")
     {
-        auto c = std::make_shared<DISMANEVENTMIB::MteTriggerExistenceTable::MteTriggerExistenceEntry>();
-        c->parent = this;
-        mtetriggerexistenceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DISMANEVENTMIB::MteTriggerExistenceTable::MteTriggerExistenceEntry>();
+        ent_->parent = this;
+        mtetriggerexistenceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteTriggerExistenceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteTriggerExistenceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mtetriggerexistenceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mtetriggerexistenceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteTriggerExistenceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1429,16 +1429,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteTriggerExisten
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteTriggerExistenceTable::MteTriggerExistenceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteTriggerExistenceTable::MteTriggerExistenceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteTriggerExistenceTable::MteTriggerExistenceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteTriggerExistenceTable::MteTriggerExistenceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteTriggerExistenceTable::MteTriggerExistenceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1588,33 +1588,33 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteTriggerBoolean
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteTriggerBooleanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteTriggerBooleanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mteTriggerBooleanEntry")
     {
-        auto c = std::make_shared<DISMANEVENTMIB::MteTriggerBooleanTable::MteTriggerBooleanEntry>();
-        c->parent = this;
-        mtetriggerbooleanentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DISMANEVENTMIB::MteTriggerBooleanTable::MteTriggerBooleanEntry>();
+        ent_->parent = this;
+        mtetriggerbooleanentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteTriggerBooleanTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteTriggerBooleanTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mtetriggerbooleanentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mtetriggerbooleanentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteTriggerBooleanTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1714,16 +1714,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteTriggerBoolean
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteTriggerBooleanTable::MteTriggerBooleanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteTriggerBooleanTable::MteTriggerBooleanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteTriggerBooleanTable::MteTriggerBooleanEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteTriggerBooleanTable::MteTriggerBooleanEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteTriggerBooleanTable::MteTriggerBooleanEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1887,33 +1887,33 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteTriggerThresho
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteTriggerThresholdTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteTriggerThresholdTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mteTriggerThresholdEntry")
     {
-        auto c = std::make_shared<DISMANEVENTMIB::MteTriggerThresholdTable::MteTriggerThresholdEntry>();
-        c->parent = this;
-        mtetriggerthresholdentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DISMANEVENTMIB::MteTriggerThresholdTable::MteTriggerThresholdEntry>();
+        ent_->parent = this;
+        mtetriggerthresholdentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteTriggerThresholdTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteTriggerThresholdTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mtetriggerthresholdentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mtetriggerthresholdentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteTriggerThresholdTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2045,16 +2045,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteTriggerThresho
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteTriggerThresholdTable::MteTriggerThresholdEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteTriggerThresholdTable::MteTriggerThresholdEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteTriggerThresholdTable::MteTriggerThresholdEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteTriggerThresholdTable::MteTriggerThresholdEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteTriggerThresholdTable::MteTriggerThresholdEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2298,33 +2298,33 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteObjectsTable::
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteObjectsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteObjectsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mteObjectsEntry")
     {
-        auto c = std::make_shared<DISMANEVENTMIB::MteObjectsTable::MteObjectsEntry>();
-        c->parent = this;
-        mteobjectsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DISMANEVENTMIB::MteObjectsTable::MteObjectsEntry>();
+        ent_->parent = this;
+        mteobjectsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteObjectsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteObjectsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mteobjectsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mteobjectsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteObjectsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2413,16 +2413,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteObjectsTable::
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteObjectsTable::MteObjectsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteObjectsTable::MteObjectsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteObjectsTable::MteObjectsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteObjectsTable::MteObjectsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteObjectsTable::MteObjectsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2556,33 +2556,33 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteEventTable::ge
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteEventTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteEventTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mteEventEntry")
     {
-        auto c = std::make_shared<DISMANEVENTMIB::MteEventTable::MteEventEntry>();
-        c->parent = this;
-        mteevententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DISMANEVENTMIB::MteEventTable::MteEventEntry>();
+        ent_->parent = this;
+        mteevententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteEventTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteEventTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mteevententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mteevententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteEventTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2670,16 +2670,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteEventTable::Mt
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteEventTable::MteEventEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteEventTable::MteEventEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteEventTable::MteEventEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteEventTable::MteEventEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteEventTable::MteEventEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2811,33 +2811,33 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteEventNotificat
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteEventNotificationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteEventNotificationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mteEventNotificationEntry")
     {
-        auto c = std::make_shared<DISMANEVENTMIB::MteEventNotificationTable::MteEventNotificationEntry>();
-        c->parent = this;
-        mteeventnotificationentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DISMANEVENTMIB::MteEventNotificationTable::MteEventNotificationEntry>();
+        ent_->parent = this;
+        mteeventnotificationentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteEventNotificationTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteEventNotificationTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mteeventnotificationentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mteeventnotificationentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteEventNotificationTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2921,16 +2921,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteEventNotificat
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteEventNotificationTable::MteEventNotificationEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteEventNotificationTable::MteEventNotificationEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteEventNotificationTable::MteEventNotificationEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteEventNotificationTable::MteEventNotificationEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteEventNotificationTable::MteEventNotificationEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3054,33 +3054,33 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteEventSetTable:
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteEventSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteEventSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mteEventSetEntry")
     {
-        auto c = std::make_shared<DISMANEVENTMIB::MteEventSetTable::MteEventSetEntry>();
-        c->parent = this;
-        mteeventsetentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DISMANEVENTMIB::MteEventSetTable::MteEventSetEntry>();
+        ent_->parent = this;
+        mteeventsetentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteEventSetTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteEventSetTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mteeventsetentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mteeventsetentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteEventSetTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3176,16 +3176,16 @@ std::vector<std::pair<std::string, LeafData> > DISMANEVENTMIB::MteEventSetTable:
 
 }
 
-std::shared_ptr<Entity> DISMANEVENTMIB::MteEventSetTable::MteEventSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DISMANEVENTMIB::MteEventSetTable::MteEventSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEVENTMIB::MteEventSetTable::MteEventSetEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DISMANEVENTMIB::MteEventSetTable::MteEventSetEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DISMANEVENTMIB::MteEventSetTable::MteEventSetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Dwdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ports")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Dwdm::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ports != nullptr)
     {
-        children["ports"] = ports;
+        _children["ports"] = ports;
     }
 
-    return children;
+    return _children;
 }
 
 void Dwdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Dwdm::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Dwdm::clone_ptr() const
+std::shared_ptr<ydk::Entity> Dwdm::clone_ptr() const
 {
     return std::make_shared<Dwdm>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port")
     {
-        auto c = std::make_shared<Dwdm::Ports::Port>();
-        c->parent = this;
-        port.append(c);
-        return c;
+        auto ent_ = std::make_shared<Dwdm::Ports::Port>();
+        ent_->parent = this;
+        port.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : port.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : port.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Dwdm::Ports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -280,7 +280,7 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prbs")
     {
@@ -312,26 +312,26 @@ std::shared_ptr<Entity> Dwdm::Ports::Port::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prbs != nullptr)
     {
-        children["prbs"] = prbs;
+        _children["prbs"] = prbs;
     }
 
     if(optics != nullptr)
     {
-        children["optics"] = optics;
+        _children["optics"] = optics;
     }
 
     if(info != nullptr)
     {
-        children["info"] = info;
+        _children["info"] = info;
     }
 
-    return children;
+    return _children;
 }
 
 void Dwdm::Ports::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -404,7 +404,7 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::get_name
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Prbs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "twenty-four-hours-bucket")
     {
@@ -427,21 +427,21 @@ std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Prbs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(twenty_four_hours_bucket != nullptr)
     {
-        children["twenty-four-hours-bucket"] = twenty_four_hours_bucket;
+        _children["twenty-four-hours-bucket"] = twenty_four_hours_bucket;
     }
 
     if(fifteen_minutes_bucket != nullptr)
     {
-        children["fifteen-minutes-bucket"] = fifteen_minutes_bucket;
+        _children["fifteen-minutes-bucket"] = fifteen_minutes_bucket;
     }
 
-    return children;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Prbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -500,7 +500,7 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::TwentyFo
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "twenty-four-hours-statistics")
     {
@@ -514,16 +514,16 @@ std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(twenty_four_hours_statistics != nullptr)
     {
-        children["twenty-four-hours-statistics"] = twenty_four_hours_statistics;
+        _children["twenty-four-hours-statistics"] = twenty_four_hours_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -598,33 +598,33 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::TwentyFo
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prbs-entry")
     {
-        auto c = std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry>();
-        c->parent = this;
-        prbs_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry>();
+        ent_->parent = this;
+        prbs_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prbs_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prbs_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -739,16 +739,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::TwentyFo
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Prbs::TwentyFourHoursBucket::TwentyFourHoursStatistics::PrbsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -907,7 +907,7 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::FifteenM
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fifteen-minutes-statistics")
     {
@@ -921,16 +921,16 @@ std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fifteen_minutes_statistics != nullptr)
     {
-        children["fifteen-minutes-statistics"] = fifteen_minutes_statistics;
+        _children["fifteen-minutes-statistics"] = fifteen_minutes_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1005,33 +1005,33 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::FifteenM
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prbs-entry")
     {
-        auto c = std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry>();
-        c->parent = this;
-        prbs_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry>();
+        ent_->parent = this;
+        prbs_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : prbs_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : prbs_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1146,16 +1146,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Prbs::FifteenM
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Prbs::FifteenMinutesBucket::FifteenMinutesStatistics::PrbsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1314,7 +1314,7 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Optics::get_na
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Optics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Optics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "wave-info")
     {
@@ -1328,16 +1328,16 @@ std::shared_ptr<Entity> Dwdm::Ports::Port::Optics::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Optics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Optics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(wave_info != nullptr)
     {
-        children["wave-info"] = wave_info;
+        _children["wave-info"] = wave_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Optics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1404,16 +1404,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Optics::WaveIn
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Optics::WaveInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Optics::WaveInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Optics::WaveInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Optics::WaveInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Optics::WaveInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1535,7 +1535,7 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::get_name
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "g709-info")
     {
@@ -1594,41 +1594,41 @@ std::shared_ptr<Entity> Dwdm::Ports::Port::Info::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(g709_info != nullptr)
     {
-        children["g709-info"] = g709_info;
+        _children["g709-info"] = g709_info;
     }
 
     if(optics_info != nullptr)
     {
-        children["optics-info"] = optics_info;
+        _children["optics-info"] = optics_info;
     }
 
     if(tdc_info != nullptr)
     {
-        children["tdc-info"] = tdc_info;
+        _children["tdc-info"] = tdc_info;
     }
 
     if(network_srlg_info != nullptr)
     {
-        children["network-srlg-info"] = network_srlg_info;
+        _children["network-srlg-info"] = network_srlg_info;
     }
 
     if(proactive != nullptr)
     {
-        children["proactive"] = proactive;
+        _children["proactive"] = proactive;
     }
 
     if(signal_log != nullptr)
     {
-        children["signal-log"] = signal_log;
+        _children["signal-log"] = signal_log;
     }
 
-    return children;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1822,7 +1822,7 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fec-mismatch")
     {
@@ -1872,36 +1872,36 @@ std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fec_mismatch != nullptr)
     {
-        children["fec-mismatch"] = fec_mismatch;
+        _children["fec-mismatch"] = fec_mismatch;
     }
 
     if(ec_tca != nullptr)
     {
-        children["ec-tca"] = ec_tca;
+        _children["ec-tca"] = ec_tca;
     }
 
     if(uc_tca != nullptr)
     {
-        children["uc-tca"] = uc_tca;
+        _children["uc-tca"] = uc_tca;
     }
 
     if(otu_info != nullptr)
     {
-        children["otu-info"] = otu_info;
+        _children["otu-info"] = otu_info;
     }
 
     if(odu_info != nullptr)
     {
-        children["odu-info"] = odu_info;
+        _children["odu-info"] = odu_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2192,16 +2192,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::FecMismatch::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::FecMismatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2316,16 +2316,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::EcTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::EcTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::EcTca::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::EcTca::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::EcTca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2450,16 +2450,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::UcTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::UcTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::UcTca::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::UcTca::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::UcTca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2673,7 +2673,7 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "los")
     {
@@ -2903,136 +2903,136 @@ std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(los != nullptr)
     {
-        children["los"] = los;
+        _children["los"] = los;
     }
 
     if(lof != nullptr)
     {
-        children["lof"] = lof;
+        _children["lof"] = lof;
     }
 
     if(lom != nullptr)
     {
-        children["lom"] = lom;
+        _children["lom"] = lom;
     }
 
     if(oof != nullptr)
     {
-        children["oof"] = oof;
+        _children["oof"] = oof;
     }
 
     if(oom != nullptr)
     {
-        children["oom"] = oom;
+        _children["oom"] = oom;
     }
 
     if(ais != nullptr)
     {
-        children["ais"] = ais;
+        _children["ais"] = ais;
     }
 
     if(iae != nullptr)
     {
-        children["iae"] = iae;
+        _children["iae"] = iae;
     }
 
     if(bdi != nullptr)
     {
-        children["bdi"] = bdi;
+        _children["bdi"] = bdi;
     }
 
     if(tim != nullptr)
     {
-        children["tim"] = tim;
+        _children["tim"] = tim;
     }
 
     if(eoc != nullptr)
     {
-        children["eoc"] = eoc;
+        _children["eoc"] = eoc;
     }
 
     if(sf_ber != nullptr)
     {
-        children["sf-ber"] = sf_ber;
+        _children["sf-ber"] = sf_ber;
     }
 
     if(sd_ber != nullptr)
     {
-        children["sd-ber"] = sd_ber;
+        _children["sd-ber"] = sd_ber;
     }
 
     if(prefec_sf_ber != nullptr)
     {
-        children["prefec-sf-ber"] = prefec_sf_ber;
+        _children["prefec-sf-ber"] = prefec_sf_ber;
     }
 
     if(prefec_sd_ber != nullptr)
     {
-        children["prefec-sd-ber"] = prefec_sd_ber;
+        _children["prefec-sd-ber"] = prefec_sd_ber;
     }
 
     if(bbe_tca != nullptr)
     {
-        children["bbe-tca"] = bbe_tca;
+        _children["bbe-tca"] = bbe_tca;
     }
 
     if(es_tca != nullptr)
     {
-        children["es-tca"] = es_tca;
+        _children["es-tca"] = es_tca;
     }
 
     if(bbe != nullptr)
     {
-        children["bbe"] = bbe;
+        _children["bbe"] = bbe;
     }
 
     if(es != nullptr)
     {
-        children["es"] = es;
+        _children["es"] = es;
     }
 
     if(ses != nullptr)
     {
-        children["ses"] = ses;
+        _children["ses"] = ses;
     }
 
     if(uas != nullptr)
     {
-        children["uas"] = uas;
+        _children["uas"] = uas;
     }
 
     if(fc != nullptr)
     {
-        children["fc"] = fc;
+        _children["fc"] = fc;
     }
 
     if(bber != nullptr)
     {
-        children["bber"] = bber;
+        _children["bber"] = bber;
     }
 
     if(esr != nullptr)
     {
-        children["esr"] = esr;
+        _children["esr"] = esr;
     }
 
     if(sesr != nullptr)
     {
-        children["sesr"] = sesr;
+        _children["sesr"] = sesr;
     }
 
     if(tti != nullptr)
     {
-        children["tti"] = tti;
+        _children["tti"] = tti;
     }
 
-    return children;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3123,16 +3123,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Los::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3243,16 +3243,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lof::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3363,16 +3363,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Lom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3483,16 +3483,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oof::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3603,16 +3603,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Oom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3723,16 +3723,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ais::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3843,16 +3843,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Iae::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3963,16 +3963,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bdi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4083,16 +4083,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4203,16 +4203,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Eoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4327,16 +4327,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::SfBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4461,16 +4461,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::SdBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4595,16 +4595,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSfBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4729,16 +4729,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::PrefecSdBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4863,16 +4863,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::BbeTca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4997,16 +4997,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::EsTca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5115,16 +5115,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5193,16 +5193,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Es::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5271,16 +5271,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Ses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5349,16 +5349,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Uas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5427,16 +5427,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Fc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5505,16 +5505,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Bber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5583,16 +5583,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Esr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5661,16 +5661,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Sesr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5855,16 +5855,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OtuInfo::Tti::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6308,7 +6308,7 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oci")
     {
@@ -6493,111 +6493,111 @@ std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(oci != nullptr)
     {
-        children["oci"] = oci;
+        _children["oci"] = oci;
     }
 
     if(ais != nullptr)
     {
-        children["ais"] = ais;
+        _children["ais"] = ais;
     }
 
     if(lck != nullptr)
     {
-        children["lck"] = lck;
+        _children["lck"] = lck;
     }
 
     if(bdi != nullptr)
     {
-        children["bdi"] = bdi;
+        _children["bdi"] = bdi;
     }
 
     if(eoc != nullptr)
     {
-        children["eoc"] = eoc;
+        _children["eoc"] = eoc;
     }
 
     if(ptim != nullptr)
     {
-        children["ptim"] = ptim;
+        _children["ptim"] = ptim;
     }
 
     if(tim != nullptr)
     {
-        children["tim"] = tim;
+        _children["tim"] = tim;
     }
 
     if(sf_ber != nullptr)
     {
-        children["sf-ber"] = sf_ber;
+        _children["sf-ber"] = sf_ber;
     }
 
     if(sd_ber != nullptr)
     {
-        children["sd-ber"] = sd_ber;
+        _children["sd-ber"] = sd_ber;
     }
 
     if(bbe_tca != nullptr)
     {
-        children["bbe-tca"] = bbe_tca;
+        _children["bbe-tca"] = bbe_tca;
     }
 
     if(es_tca != nullptr)
     {
-        children["es-tca"] = es_tca;
+        _children["es-tca"] = es_tca;
     }
 
     if(bbe != nullptr)
     {
-        children["bbe"] = bbe;
+        _children["bbe"] = bbe;
     }
 
     if(es != nullptr)
     {
-        children["es"] = es;
+        _children["es"] = es;
     }
 
     if(ses != nullptr)
     {
-        children["ses"] = ses;
+        _children["ses"] = ses;
     }
 
     if(uas != nullptr)
     {
-        children["uas"] = uas;
+        _children["uas"] = uas;
     }
 
     if(fc != nullptr)
     {
-        children["fc"] = fc;
+        _children["fc"] = fc;
     }
 
     if(bber != nullptr)
     {
-        children["bber"] = bber;
+        _children["bber"] = bber;
     }
 
     if(esr != nullptr)
     {
-        children["esr"] = esr;
+        _children["esr"] = esr;
     }
 
     if(sesr != nullptr)
     {
-        children["sesr"] = sesr;
+        _children["sesr"] = sesr;
     }
 
     if(tti != nullptr)
     {
-        children["tti"] = tti;
+        _children["tti"] = tti;
     }
 
-    return children;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6688,16 +6688,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Oci::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6808,16 +6808,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ais::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6928,16 +6928,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Lck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7048,16 +7048,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bdi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7168,16 +7168,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Eoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7288,16 +7288,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ptim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7408,16 +7408,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Tim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7532,16 +7532,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::SfBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7666,16 +7666,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::SdBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7800,16 +7800,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::BbeTca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7934,16 +7934,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::EsTca::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8052,16 +8052,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8130,16 +8130,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Es::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8208,16 +8208,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Ses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8286,16 +8286,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Uas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8364,16 +8364,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Fc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8442,16 +8442,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Bber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8520,16 +8520,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Esr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8598,16 +8598,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Sesr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8792,16 +8792,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::G709Info
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::G709Info::OduInfo::Tti::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9312,16 +9312,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::OpticsIn
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::OpticsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::OpticsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::OpticsInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::OpticsInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::OpticsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9794,16 +9794,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::TdcInfo:
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::TdcInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::TdcInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::TdcInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::TdcInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::TdcInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9943,16 +9943,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::NetworkS
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::NetworkSrlgInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::NetworkSrlgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10123,16 +10123,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::Proactiv
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::Proactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::Proactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::Proactive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::Proactive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::Proactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10465,16 +10465,16 @@ std::vector<std::pair<std::string, LeafData> > Dwdm::Ports::Port::Info::SignalLo
 
 }
 
-std::shared_ptr<Entity> Dwdm::Ports::Port::Info::SignalLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dwdm::Ports::Port::Info::SignalLog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dwdm::Ports::Port::Info::SignalLog::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dwdm::Ports::Port::Info::SignalLog::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dwdm::Ports::Port::Info::SignalLog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10553,7 +10553,7 @@ std::vector<std::pair<std::string, LeafData> > Vtxp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Vtxp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vtxp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dwdm-vtxp")
     {
@@ -10567,16 +10567,16 @@ std::shared_ptr<Entity> Vtxp::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vtxp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vtxp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dwdm_vtxp != nullptr)
     {
-        children["dwdm-vtxp"] = dwdm_vtxp;
+        _children["dwdm-vtxp"] = dwdm_vtxp;
     }
 
-    return children;
+    return _children;
 }
 
 void Vtxp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10587,7 +10587,7 @@ void Vtxp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Vtxp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Vtxp::clone_ptr() const
 {
     return std::make_shared<Vtxp>();
 }
@@ -10667,7 +10667,7 @@ std::vector<std::pair<std::string, LeafData> > Vtxp::DwdmVtxp::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Vtxp::DwdmVtxp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vtxp::DwdmVtxp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port-vtxps")
     {
@@ -10681,16 +10681,16 @@ std::shared_ptr<Entity> Vtxp::DwdmVtxp::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vtxp::DwdmVtxp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vtxp::DwdmVtxp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(port_vtxps != nullptr)
     {
-        children["port-vtxps"] = port_vtxps;
+        _children["port-vtxps"] = port_vtxps;
     }
 
-    return children;
+    return _children;
 }
 
 void Vtxp::DwdmVtxp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10764,33 +10764,33 @@ std::vector<std::pair<std::string, LeafData> > Vtxp::DwdmVtxp::PortVtxps::get_na
 
 }
 
-std::shared_ptr<Entity> Vtxp::DwdmVtxp::PortVtxps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vtxp::DwdmVtxp::PortVtxps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port-vtxp")
     {
-        auto c = std::make_shared<Vtxp::DwdmVtxp::PortVtxps::PortVtxp>();
-        c->parent = this;
-        port_vtxp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vtxp::DwdmVtxp::PortVtxps::PortVtxp>();
+        ent_->parent = this;
+        port_vtxp.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vtxp::DwdmVtxp::PortVtxps::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vtxp::DwdmVtxp::PortVtxps::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : port_vtxp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : port_vtxp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vtxp::DwdmVtxp::PortVtxps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10862,7 +10862,7 @@ std::vector<std::pair<std::string, LeafData> > Vtxp::DwdmVtxp::PortVtxps::PortVt
 
 }
 
-std::shared_ptr<Entity> Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "info")
     {
@@ -10876,16 +10876,16 @@ std::shared_ptr<Entity> Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vtxp::DwdmVtxp::PortVtxps::PortVtxp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(info != nullptr)
     {
-        children["info"] = info;
+        _children["info"] = info;
     }
 
-    return children;
+    return _children;
 }
 
 void Vtxp::DwdmVtxp::PortVtxps::PortVtxp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10954,16 +10954,16 @@ std::vector<std::pair<std::string, LeafData> > Vtxp::DwdmVtxp::PortVtxps::PortVt
 
 }
 
-std::shared_ptr<Entity> Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

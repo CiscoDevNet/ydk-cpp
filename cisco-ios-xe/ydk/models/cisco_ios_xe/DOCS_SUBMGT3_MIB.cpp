@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > DOCSSUBMGT3MIB::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> DOCSSUBMGT3MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSSUBMGT3MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsSubmgt3Base")
     {
@@ -118,36 +118,36 @@ std::shared_ptr<Entity> DOCSSUBMGT3MIB::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSSUBMGT3MIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSSUBMGT3MIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(docssubmgt3base != nullptr)
     {
-        children["docsSubmgt3Base"] = docssubmgt3base;
+        _children["docsSubmgt3Base"] = docssubmgt3base;
     }
 
     if(docssubmgt3cpectrltable != nullptr)
     {
-        children["docsSubmgt3CpeCtrlTable"] = docssubmgt3cpectrltable;
+        _children["docsSubmgt3CpeCtrlTable"] = docssubmgt3cpectrltable;
     }
 
     if(docssubmgt3cpeiptable != nullptr)
     {
-        children["docsSubmgt3CpeIpTable"] = docssubmgt3cpeiptable;
+        _children["docsSubmgt3CpeIpTable"] = docssubmgt3cpeiptable;
     }
 
     if(docssubmgt3grptable != nullptr)
     {
-        children["docsSubmgt3GrpTable"] = docssubmgt3grptable;
+        _children["docsSubmgt3GrpTable"] = docssubmgt3grptable;
     }
 
     if(docssubmgt3filtergrptable != nullptr)
     {
-        children["docsSubmgt3FilterGrpTable"] = docssubmgt3filtergrptable;
+        _children["docsSubmgt3FilterGrpTable"] = docssubmgt3filtergrptable;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSSUBMGT3MIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -158,7 +158,7 @@ void DOCSSUBMGT3MIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> DOCSSUBMGT3MIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> DOCSSUBMGT3MIB::clone_ptr() const
 {
     return std::make_shared<DOCSSUBMGT3MIB>();
 }
@@ -290,16 +290,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSSUBMGT3MIB::DocsSubmgt3Base::
 
 }
 
-std::shared_ptr<Entity> DOCSSUBMGT3MIB::DocsSubmgt3Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSSUBMGT3MIB::DocsSubmgt3Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSSUBMGT3MIB::DocsSubmgt3Base::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSSUBMGT3MIB::DocsSubmgt3Base::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSSUBMGT3MIB::DocsSubmgt3Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -513,33 +513,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSSUBMGT3MIB::DocsSubmgt3CpeCtr
 
 }
 
-std::shared_ptr<Entity> DOCSSUBMGT3MIB::DocsSubmgt3CpeCtrlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSSUBMGT3MIB::DocsSubmgt3CpeCtrlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsSubmgt3CpeCtrlEntry")
     {
-        auto c = std::make_shared<DOCSSUBMGT3MIB::DocsSubmgt3CpeCtrlTable::DocsSubmgt3CpeCtrlEntry>();
-        c->parent = this;
-        docssubmgt3cpectrlentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSSUBMGT3MIB::DocsSubmgt3CpeCtrlTable::DocsSubmgt3CpeCtrlEntry>();
+        ent_->parent = this;
+        docssubmgt3cpectrlentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSSUBMGT3MIB::DocsSubmgt3CpeCtrlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSSUBMGT3MIB::DocsSubmgt3CpeCtrlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docssubmgt3cpectrlentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docssubmgt3cpectrlentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSSUBMGT3MIB::DocsSubmgt3CpeCtrlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -630,16 +630,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSSUBMGT3MIB::DocsSubmgt3CpeCtr
 
 }
 
-std::shared_ptr<Entity> DOCSSUBMGT3MIB::DocsSubmgt3CpeCtrlTable::DocsSubmgt3CpeCtrlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSSUBMGT3MIB::DocsSubmgt3CpeCtrlTable::DocsSubmgt3CpeCtrlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSSUBMGT3MIB::DocsSubmgt3CpeCtrlTable::DocsSubmgt3CpeCtrlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSSUBMGT3MIB::DocsSubmgt3CpeCtrlTable::DocsSubmgt3CpeCtrlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSSUBMGT3MIB::DocsSubmgt3CpeCtrlTable::DocsSubmgt3CpeCtrlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -783,33 +783,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSSUBMGT3MIB::DocsSubmgt3CpeIpT
 
 }
 
-std::shared_ptr<Entity> DOCSSUBMGT3MIB::DocsSubmgt3CpeIpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSSUBMGT3MIB::DocsSubmgt3CpeIpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsSubmgt3CpeIpEntry")
     {
-        auto c = std::make_shared<DOCSSUBMGT3MIB::DocsSubmgt3CpeIpTable::DocsSubmgt3CpeIpEntry>();
-        c->parent = this;
-        docssubmgt3cpeipentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSSUBMGT3MIB::DocsSubmgt3CpeIpTable::DocsSubmgt3CpeIpEntry>();
+        ent_->parent = this;
+        docssubmgt3cpeipentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSSUBMGT3MIB::DocsSubmgt3CpeIpTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSSUBMGT3MIB::DocsSubmgt3CpeIpTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docssubmgt3cpeipentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docssubmgt3cpeipentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSSUBMGT3MIB::DocsSubmgt3CpeIpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -901,16 +901,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSSUBMGT3MIB::DocsSubmgt3CpeIpT
 
 }
 
-std::shared_ptr<Entity> DOCSSUBMGT3MIB::DocsSubmgt3CpeIpTable::DocsSubmgt3CpeIpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSSUBMGT3MIB::DocsSubmgt3CpeIpTable::DocsSubmgt3CpeIpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSSUBMGT3MIB::DocsSubmgt3CpeIpTable::DocsSubmgt3CpeIpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSSUBMGT3MIB::DocsSubmgt3CpeIpTable::DocsSubmgt3CpeIpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSSUBMGT3MIB::DocsSubmgt3CpeIpTable::DocsSubmgt3CpeIpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1054,33 +1054,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSSUBMGT3MIB::DocsSubmgt3GrpTab
 
 }
 
-std::shared_ptr<Entity> DOCSSUBMGT3MIB::DocsSubmgt3GrpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSSUBMGT3MIB::DocsSubmgt3GrpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsSubmgt3GrpEntry")
     {
-        auto c = std::make_shared<DOCSSUBMGT3MIB::DocsSubmgt3GrpTable::DocsSubmgt3GrpEntry>();
-        c->parent = this;
-        docssubmgt3grpentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSSUBMGT3MIB::DocsSubmgt3GrpTable::DocsSubmgt3GrpEntry>();
+        ent_->parent = this;
+        docssubmgt3grpentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSSUBMGT3MIB::DocsSubmgt3GrpTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSSUBMGT3MIB::DocsSubmgt3GrpTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docssubmgt3grpentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docssubmgt3grpentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSSUBMGT3MIB::DocsSubmgt3GrpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1195,16 +1195,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSSUBMGT3MIB::DocsSubmgt3GrpTab
 
 }
 
-std::shared_ptr<Entity> DOCSSUBMGT3MIB::DocsSubmgt3GrpTable::DocsSubmgt3GrpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSSUBMGT3MIB::DocsSubmgt3GrpTable::DocsSubmgt3GrpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSSUBMGT3MIB::DocsSubmgt3GrpTable::DocsSubmgt3GrpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSSUBMGT3MIB::DocsSubmgt3GrpTable::DocsSubmgt3GrpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSSUBMGT3MIB::DocsSubmgt3GrpTable::DocsSubmgt3GrpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1408,33 +1408,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSSUBMGT3MIB::DocsSubmgt3Filter
 
 }
 
-std::shared_ptr<Entity> DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsSubmgt3FilterGrpEntry")
     {
-        auto c = std::make_shared<DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::DocsSubmgt3FilterGrpEntry>();
-        c->parent = this;
-        docssubmgt3filtergrpentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::DocsSubmgt3FilterGrpEntry>();
+        ent_->parent = this;
+        docssubmgt3filtergrpentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docssubmgt3filtergrpentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docssubmgt3filtergrpentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1614,16 +1614,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSSUBMGT3MIB::DocsSubmgt3Filter
 
 }
 
-std::shared_ptr<Entity> DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::DocsSubmgt3FilterGrpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::DocsSubmgt3FilterGrpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::DocsSubmgt3FilterGrpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::DocsSubmgt3FilterGrpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSSUBMGT3MIB::DocsSubmgt3FilterGrpTable::DocsSubmgt3FilterGrpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

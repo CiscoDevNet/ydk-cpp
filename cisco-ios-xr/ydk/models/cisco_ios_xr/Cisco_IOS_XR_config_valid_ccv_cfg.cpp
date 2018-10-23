@@ -57,7 +57,7 @@ std::vector<std::pair<std::string, LeafData> > Configurationvalidation::get_name
 
 }
 
-std::shared_ptr<Entity> Configurationvalidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Configurationvalidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "failure-type-actions")
     {
@@ -71,16 +71,16 @@ std::shared_ptr<Entity> Configurationvalidation::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Configurationvalidation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Configurationvalidation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(failure_type_actions != nullptr)
     {
-        children["failure-type-actions"] = failure_type_actions;
+        _children["failure-type-actions"] = failure_type_actions;
     }
 
-    return children;
+    return _children;
 }
 
 void Configurationvalidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -101,7 +101,7 @@ void Configurationvalidation::set_filter(const std::string & value_path, YFilter
     }
 }
 
-std::shared_ptr<Entity> Configurationvalidation::clone_ptr() const
+std::shared_ptr<ydk::Entity> Configurationvalidation::clone_ptr() const
 {
     return std::make_shared<Configurationvalidation>();
 }
@@ -189,33 +189,33 @@ std::vector<std::pair<std::string, LeafData> > Configurationvalidation::FailureT
 
 }
 
-std::shared_ptr<Entity> Configurationvalidation::FailureTypeActions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Configurationvalidation::FailureTypeActions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "failure-type-action")
     {
-        auto c = std::make_shared<Configurationvalidation::FailureTypeActions::FailureTypeAction>();
-        c->parent = this;
-        failure_type_action.append(c);
-        return c;
+        auto ent_ = std::make_shared<Configurationvalidation::FailureTypeActions::FailureTypeAction>();
+        ent_->parent = this;
+        failure_type_action.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Configurationvalidation::FailureTypeActions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Configurationvalidation::FailureTypeActions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : failure_type_action.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : failure_type_action.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Configurationvalidation::FailureTypeActions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -286,16 +286,16 @@ std::vector<std::pair<std::string, LeafData> > Configurationvalidation::FailureT
 
 }
 
-std::shared_ptr<Entity> Configurationvalidation::FailureTypeActions::FailureTypeAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Configurationvalidation::FailureTypeActions::FailureTypeAction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Configurationvalidation::FailureTypeActions::FailureTypeAction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Configurationvalidation::FailureTypeActions::FailureTypeAction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Configurationvalidation::FailureTypeActions::FailureTypeAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > MemoryStatistics::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> MemoryStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MemoryStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "memory-statistic")
     {
-        auto c = std::make_shared<MemoryStatistics::MemoryStatistic>();
-        c->parent = this;
-        memory_statistic.append(c);
-        return c;
+        auto ent_ = std::make_shared<MemoryStatistics::MemoryStatistic>();
+        ent_->parent = this;
+        memory_statistic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MemoryStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MemoryStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : memory_statistic.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : memory_statistic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MemoryStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void MemoryStatistics::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> MemoryStatistics::clone_ptr() const
+std::shared_ptr<ydk::Entity> MemoryStatistics::clone_ptr() const
 {
     return std::make_shared<MemoryStatistics>();
 }
@@ -198,16 +198,16 @@ std::vector<std::pair<std::string, LeafData> > MemoryStatistics::MemoryStatistic
 
 }
 
-std::shared_ptr<Entity> MemoryStatistics::MemoryStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MemoryStatistics::MemoryStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MemoryStatistics::MemoryStatistic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MemoryStatistics::MemoryStatistic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MemoryStatistics::MemoryStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

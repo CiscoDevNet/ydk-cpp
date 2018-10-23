@@ -57,16 +57,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -135,16 +135,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -213,16 +213,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Shutdown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -372,14 +372,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "area")
     {
-        auto c = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area>();
-        c->parent = this;
-        area.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area>();
+        ent_->parent = this;
+        area.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "authentication")
@@ -465,10 +465,10 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
 
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "network")
@@ -501,89 +501,89 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : area.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : area.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(bfd != nullptr)
     {
-        children["bfd"] = bfd;
+        _children["bfd"] = bfd;
     }
 
     if(cost != nullptr)
     {
-        children["cost"] = cost;
+        _children["cost"] = cost;
     }
 
     if(database_filter != nullptr)
     {
-        children["database-filter"] = database_filter;
+        _children["database-filter"] = database_filter;
     }
 
     if(demand_circuit != nullptr)
     {
-        children["demand-circuit"] = demand_circuit;
+        _children["demand-circuit"] = demand_circuit;
     }
 
     if(flood_reduction != nullptr)
     {
-        children["flood-reduction"] = flood_reduction;
+        _children["flood-reduction"] = flood_reduction;
     }
 
     if(manet != nullptr)
     {
-        children["manet"] = manet;
+        _children["manet"] = manet;
     }
 
     if(mtu_ignore != nullptr)
     {
-        children["mtu-ignore"] = mtu_ignore;
+        _children["mtu-ignore"] = mtu_ignore;
     }
 
     if(multi_area != nullptr)
     {
-        children["multi-area"] = multi_area;
+        _children["multi-area"] = multi_area;
     }
 
-    count = 0;
-    for (auto c : neighbor.entities())
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(network != nullptr)
     {
-        children["network"] = network;
+        _children["network"] = network;
     }
 
     if(prefix_suppression != nullptr)
     {
-        children["prefix-suppression"] = prefix_suppression;
+        _children["prefix-suppression"] = prefix_suppression;
     }
 
     if(shutdown != nullptr)
     {
-        children["shutdown"] = shutdown;
+        _children["shutdown"] = shutdown;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -697,16 +697,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Area::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -789,16 +789,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -877,16 +877,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -959,7 +959,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
@@ -973,16 +973,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1059,7 +1059,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hysteresis")
     {
@@ -1082,21 +1082,21 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(hysteresis != nullptr)
     {
-        children["hysteresis"] = hysteresis;
+        _children["hysteresis"] = hysteresis;
     }
 
     if(weight != nullptr)
     {
-        children["weight"] = weight;
+        _children["weight"] = weight;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1169,16 +1169,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1265,7 +1265,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "L2-factor")
     {
@@ -1306,31 +1306,31 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2_factor != nullptr)
     {
-        children["L2-factor"] = l2_factor;
+        _children["L2-factor"] = l2_factor;
     }
 
     if(latency != nullptr)
     {
-        children["latency"] = latency;
+        _children["latency"] = latency;
     }
 
     if(resources != nullptr)
     {
-        children["resources"] = resources;
+        _children["resources"] = resources;
     }
 
     if(throughput != nullptr)
     {
-        children["throughput"] = throughput;
+        _children["throughput"] = throughput;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1389,16 +1389,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1467,16 +1467,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1545,16 +1545,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1623,16 +1623,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1705,16 +1705,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1797,16 +1797,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::DemandCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1885,16 +1885,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::FloodReduction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1963,7 +1963,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peering")
     {
@@ -1977,16 +1977,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peering != nullptr)
     {
-        children["peering"] = peering;
+        _children["peering"] = peering;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2050,7 +2050,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cost")
     {
@@ -2064,16 +2064,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cost != nullptr)
     {
-        children["cost"] = cost;
+        _children["cost"] = cost;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2146,16 +2146,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2234,16 +2234,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MtuIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2320,16 +2320,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2436,7 +2436,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-filter")
     {
@@ -2450,16 +2450,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_filter != nullptr)
     {
-        children["database-filter"] = database_filter;
+        _children["database-filter"] = database_filter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2558,16 +2558,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2652,7 +2652,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "point-to-multipoint")
     {
@@ -2666,16 +2666,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(point_to_multipoint != nullptr)
     {
-        children["point-to-multipoint"] = point_to_multipoint;
+        _children["point-to-multipoint"] = point_to_multipoint;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2774,16 +2774,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2852,16 +2852,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2930,16 +2930,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv4::Shutdown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3089,14 +3089,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "area")
     {
-        auto c = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area>();
-        c->parent = this;
-        area.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area>();
+        ent_->parent = this;
+        area.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "authentication")
@@ -3182,10 +3182,10 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
 
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "network")
@@ -3218,89 +3218,89 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : area.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : area.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(authentication != nullptr)
     {
-        children["authentication"] = authentication;
+        _children["authentication"] = authentication;
     }
 
     if(bfd != nullptr)
     {
-        children["bfd"] = bfd;
+        _children["bfd"] = bfd;
     }
 
     if(cost != nullptr)
     {
-        children["cost"] = cost;
+        _children["cost"] = cost;
     }
 
     if(database_filter != nullptr)
     {
-        children["database-filter"] = database_filter;
+        _children["database-filter"] = database_filter;
     }
 
     if(demand_circuit != nullptr)
     {
-        children["demand-circuit"] = demand_circuit;
+        _children["demand-circuit"] = demand_circuit;
     }
 
     if(flood_reduction != nullptr)
     {
-        children["flood-reduction"] = flood_reduction;
+        _children["flood-reduction"] = flood_reduction;
     }
 
     if(manet != nullptr)
     {
-        children["manet"] = manet;
+        _children["manet"] = manet;
     }
 
     if(mtu_ignore != nullptr)
     {
-        children["mtu-ignore"] = mtu_ignore;
+        _children["mtu-ignore"] = mtu_ignore;
     }
 
     if(multi_area != nullptr)
     {
-        children["multi-area"] = multi_area;
+        _children["multi-area"] = multi_area;
     }
 
-    count = 0;
-    for (auto c : neighbor.entities())
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(network != nullptr)
     {
-        children["network"] = network;
+        _children["network"] = network;
     }
 
     if(prefix_suppression != nullptr)
     {
-        children["prefix-suppression"] = prefix_suppression;
+        _children["prefix-suppression"] = prefix_suppression;
     }
 
     if(shutdown != nullptr)
     {
-        children["shutdown"] = shutdown;
+        _children["shutdown"] = shutdown;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3414,16 +3414,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Area::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3506,16 +3506,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3594,16 +3594,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3676,7 +3676,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
@@ -3690,16 +3690,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3776,7 +3776,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hysteresis")
     {
@@ -3799,21 +3799,21 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(hysteresis != nullptr)
     {
-        children["hysteresis"] = hysteresis;
+        _children["hysteresis"] = hysteresis;
     }
 
     if(weight != nullptr)
     {
-        children["weight"] = weight;
+        _children["weight"] = weight;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3886,16 +3886,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3982,7 +3982,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "L2-factor")
     {
@@ -4023,31 +4023,31 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2_factor != nullptr)
     {
-        children["L2-factor"] = l2_factor;
+        _children["L2-factor"] = l2_factor;
     }
 
     if(latency != nullptr)
     {
-        children["latency"] = latency;
+        _children["latency"] = latency;
     }
 
     if(resources != nullptr)
     {
-        children["resources"] = resources;
+        _children["resources"] = resources;
     }
 
     if(throughput != nullptr)
     {
-        children["throughput"] = throughput;
+        _children["throughput"] = throughput;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4106,16 +4106,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4184,16 +4184,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4262,16 +4262,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4340,16 +4340,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4422,16 +4422,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4514,16 +4514,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::DemandCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4602,16 +4602,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::FloodReduction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4680,7 +4680,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peering")
     {
@@ -4694,16 +4694,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peering != nullptr)
     {
-        children["peering"] = peering;
+        _children["peering"] = peering;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4767,7 +4767,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cost")
     {
@@ -4781,16 +4781,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cost != nullptr)
     {
-        children["cost"] = cost;
+        _children["cost"] = cost;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4863,16 +4863,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4951,16 +4951,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MtuIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5037,16 +5037,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5153,7 +5153,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-filter")
     {
@@ -5167,16 +5167,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_filter != nullptr)
     {
-        children["database-filter"] = database_filter;
+        _children["database-filter"] = database_filter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5275,16 +5275,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5369,7 +5369,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "point-to-multipoint")
     {
@@ -5383,16 +5383,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::I
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(point_to_multipoint != nullptr)
     {
-        children["point-to-multipoint"] = point_to_multipoint;
+        _children["point-to-multipoint"] = point_to_multipoint;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5491,16 +5491,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5569,16 +5569,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5647,16 +5647,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::ProcessId::Ipv6::Shutdown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5734,7 +5734,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipsec")
     {
@@ -5748,16 +5748,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authenticati
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipsec != nullptr)
     {
-        children["ipsec"] = ipsec;
+        _children["ipsec"] = ipsec;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5845,7 +5845,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "md5")
     {
@@ -5868,21 +5868,21 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authenticati
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(md5 != nullptr)
     {
-        children["md5"] = md5;
+        _children["md5"] = md5;
     }
 
     if(sha1 != nullptr)
     {
-        children["sha1"] = sha1;
+        _children["sha1"] = sha1;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5951,7 +5951,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-string")
     {
@@ -5965,16 +5965,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authenticati
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_string != nullptr)
     {
-        children["key-string"] = key_string;
+        _children["key-string"] = key_string;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6037,16 +6037,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Md5::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6125,7 +6125,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-string")
     {
@@ -6139,16 +6139,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authenticati
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_string != nullptr)
     {
-        children["key-string"] = key_string;
+        _children["key-string"] = key_string;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6211,16 +6211,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Authentication::Ipsec::Sha1::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6299,16 +6299,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Bfd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Bfd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6381,7 +6381,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
@@ -6395,16 +6395,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6481,7 +6481,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hysteresis")
     {
@@ -6504,21 +6504,21 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynami
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(hysteresis != nullptr)
     {
-        children["hysteresis"] = hysteresis;
+        _children["hysteresis"] = hysteresis;
     }
 
     if(weight != nullptr)
     {
-        children["weight"] = weight;
+        _children["weight"] = weight;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6591,16 +6591,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Hysteresis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6687,7 +6687,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "L2-factor")
     {
@@ -6728,31 +6728,31 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynami
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2_factor != nullptr)
     {
-        children["L2-factor"] = l2_factor;
+        _children["L2-factor"] = l2_factor;
     }
 
     if(latency != nullptr)
     {
-        children["latency"] = latency;
+        _children["latency"] = latency;
     }
 
     if(resources != nullptr)
     {
-        children["resources"] = resources;
+        _children["resources"] = resources;
     }
 
     if(throughput != nullptr)
     {
-        children["throughput"] = throughput;
+        _children["throughput"] = throughput;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6811,16 +6811,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::L2Factor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6889,16 +6889,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Latency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6967,16 +6967,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7045,16 +7045,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Cost::Dynamic::Weight::Throughput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7123,16 +7123,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7201,16 +7201,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::DemandCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7284,7 +7284,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipsec")
     {
@@ -7298,16 +7298,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipsec != nullptr)
     {
-        children["ipsec"] = ipsec;
+        _children["ipsec"] = ipsec;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Encryption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7389,7 +7389,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipsec_3des")
     {
@@ -7412,21 +7412,21 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipsec_3des != nullptr)
     {
-        children["ipsec_3des"] = ipsec_3des;
+        _children["ipsec_3des"] = ipsec_3des;
     }
 
     if(aes_cbc != nullptr)
     {
-        children["aes-cbc"] = aes_cbc;
+        _children["aes-cbc"] = aes_cbc;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7505,7 +7505,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-string")
     {
@@ -7519,16 +7519,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_string != nullptr)
     {
-        children["key-string"] = key_string;
+        _children["key-string"] = key_string;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7591,16 +7591,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::KeyString::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::KeyString::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::Ipsec3des::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7687,7 +7687,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aes-cbc-128")
     {
@@ -7719,26 +7719,26 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aes_cbc_128 != nullptr)
     {
-        children["aes-cbc-128"] = aes_cbc_128;
+        _children["aes-cbc-128"] = aes_cbc_128;
     }
 
     if(aes_192 != nullptr)
     {
-        children["aes-192"] = aes_192;
+        _children["aes-192"] = aes_192;
     }
 
     if(aes_256 != nullptr)
     {
-        children["aes-256"] = aes_256;
+        _children["aes-256"] = aes_256;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7797,7 +7797,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-string")
     {
@@ -7811,16 +7811,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_string != nullptr)
     {
-        children["key-string"] = key_string;
+        _children["key-string"] = key_string;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7883,16 +7883,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7971,7 +7971,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-string")
     {
@@ -7985,16 +7985,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_string != nullptr)
     {
-        children["key-string"] = key_string;
+        _children["key-string"] = key_string;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8057,16 +8057,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8145,7 +8145,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-string")
     {
@@ -8159,16 +8159,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_string != nullptr)
     {
-        children["key-string"] = key_string;
+        _children["key-string"] = key_string;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8231,16 +8231,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8319,7 +8319,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peering")
     {
@@ -8333,16 +8333,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Manet::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Manet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Manet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peering != nullptr)
     {
-        children["peering"] = peering;
+        _children["peering"] = peering;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Manet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8406,7 +8406,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cost")
     {
@@ -8420,16 +8420,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Manet::Peeri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cost != nullptr)
     {
-        children["cost"] = cost;
+        _children["cost"] = cost;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8502,16 +8502,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8594,16 +8594,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::MultiArea::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::MultiArea::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8700,7 +8700,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-filter")
     {
@@ -8714,16 +8714,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Neighbor::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_filter != nullptr)
     {
-        children["database-filter"] = database_filter;
+        _children["database-filter"] = database_filter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8822,16 +8822,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Neighbor::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8916,7 +8916,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "point-to-multipoint")
     {
@@ -8930,16 +8930,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Network::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(point_to_multipoint != nullptr)
     {
-        children["point-to-multipoint"] = point_to_multipoint;
+        _children["point-to-multipoint"] = point_to_multipoint;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9038,16 +9038,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9116,16 +9116,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Ospfv3::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9193,7 +9193,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Udld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Udld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port")
     {
@@ -9207,16 +9207,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Udld::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Udld::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Udld::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(port != nullptr)
     {
-        children["port"] = port;
+        _children["port"] = port;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Udld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9279,16 +9279,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Udld::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Udld::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Udld::Port::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Udld::Port::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Udld::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9370,7 +9370,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "manual")
     {
@@ -9393,21 +9393,21 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(manual != nullptr)
     {
-        children["manual"] = manual;
+        _children["manual"] = manual;
     }
 
     if(role_based != nullptr)
     {
-        children["role-based"] = role_based;
+        _children["role-based"] = role_based;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9474,7 +9474,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::Manual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "policy")
     {
@@ -9506,26 +9506,26 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::Manual::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::Manual::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(policy != nullptr)
     {
-        children["policy"] = policy;
+        _children["policy"] = policy;
     }
 
     if(sap != nullptr)
     {
-        children["sap"] = sap;
+        _children["sap"] = sap;
     }
 
     if(propagate != nullptr)
     {
-        children["propagate"] = propagate;
+        _children["propagate"] = propagate;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::Manual::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9584,7 +9584,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::Manual::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static")
     {
@@ -9598,16 +9598,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Policy:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Policy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Policy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(static_ != nullptr)
     {
-        children["static"] = static_;
+        _children["static"] = static_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::Manual::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9670,16 +9670,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Policy::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::Manual::Policy::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Policy::Static::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Policy::Static::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::Manual::Policy::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9766,33 +9766,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pmk")
     {
-        auto c = std::make_shared<Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk>();
-        c->parent = this;
-        pmk.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk>();
+        ent_->parent = this;
+        pmk.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pmk.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pmk.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::Manual::Sap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9857,7 +9857,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mode-list")
     {
@@ -9871,16 +9871,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pm
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mode_list != nullptr)
     {
-        children["mode-list"] = mode_list;
+        _children["mode-list"] = mode_list;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9951,7 +9951,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "gcm-encrypt")
     {
@@ -9974,21 +9974,21 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pm
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(gcm_encrypt != nullptr)
     {
-        children["gcm-encrypt"] = gcm_encrypt;
+        _children["gcm-encrypt"] = gcm_encrypt;
     }
 
     if(no_encap != nullptr)
     {
-        children["no-encap"] = no_encap;
+        _children["no-encap"] = no_encap;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10046,7 +10046,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "gmac")
     {
@@ -10060,16 +10060,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pm
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(gmac != nullptr)
     {
-        children["gmac"] = gmac;
+        _children["gmac"] = gmac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10128,16 +10128,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10205,7 +10205,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "gmac")
     {
@@ -10219,16 +10219,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pm
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(gmac != nullptr)
     {
-        children["gmac"] = gmac;
+        _children["gmac"] = gmac;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10287,16 +10287,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10365,16 +10365,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::Manual::Propagate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::Manual::Propagate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Propagate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::Manual::Propagate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::Manual::Propagate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10462,7 +10462,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::RoleBased::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::RoleBased::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sgt-map")
     {
@@ -10476,16 +10476,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::RoleBased::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::RoleBased::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::RoleBased::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sgt_map != nullptr)
     {
-        children["sgt-map"] = sgt_map;
+        _children["sgt-map"] = sgt_map;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::RoleBased::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10566,16 +10566,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::Cts::RoleBased::SgtMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::Cts::RoleBased::SgtMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::Cts::RoleBased::SgtMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::Cts::RoleBased::SgtMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::Cts::RoleBased::SgtMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10654,7 +10654,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::AnalysisModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::AnalysisModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "monitoring")
     {
@@ -10668,16 +10668,16 @@ std::shared_ptr<Entity> Native::Interface::GigabitEthernet::AnalysisModule::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::AnalysisModule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::AnalysisModule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(monitoring != nullptr)
     {
-        children["monitoring"] = monitoring;
+        _children["monitoring"] = monitoring;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::AnalysisModule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10736,16 +10736,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::GigabitEtherne
 
 }
 
-std::shared_ptr<Entity> Native::Interface::GigabitEthernet::AnalysisModule::Monitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::GigabitEthernet::AnalysisModule::Monitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::GigabitEthernet::AnalysisModule::Monitoring::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::GigabitEthernet::AnalysisModule::Monitoring::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::GigabitEthernet::AnalysisModule::Monitoring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11253,7 +11253,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "switchport-conf")
     {
@@ -11419,10 +11419,10 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::get_child_by_name
 
     if(child_yang_name == "hold-queue")
     {
-        auto c = std::make_shared<Native::Interface::TwoGigabitEthernet::HoldQueue>();
-        c->parent = this;
-        hold_queue.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::TwoGigabitEthernet::HoldQueue>();
+        ent_->parent = this;
+        hold_queue.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "mpls")
@@ -11778,10 +11778,10 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::get_child_by_name
 
     if(child_yang_name == "Cisco-IOS-XE-switch:vlan-range")
     {
-        auto c = std::make_shared<Native::Interface::TwoGigabitEthernet::VlanRange>();
-        c->parent = this;
-        vlan_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Interface::TwoGigabitEthernet::VlanRange>();
+        ent_->parent = this;
+        vlan_range.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-switch:switch")
@@ -12048,459 +12048,459 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(switchport_conf != nullptr)
     {
-        children["switchport-conf"] = switchport_conf;
+        _children["switchport-conf"] = switchport_conf;
     }
 
     if(switchport != nullptr)
     {
-        children["switchport"] = switchport;
+        _children["switchport"] = switchport;
     }
 
     if(stackwise_virtual != nullptr)
     {
-        children["stackwise-virtual"] = stackwise_virtual;
+        _children["stackwise-virtual"] = stackwise_virtual;
     }
 
     if(arp != nullptr)
     {
-        children["arp"] = arp;
+        _children["arp"] = arp;
     }
 
     if(backup != nullptr)
     {
-        children["backup"] = backup;
+        _children["backup"] = backup;
     }
 
     if(cemoudp != nullptr)
     {
-        children["cemoudp"] = cemoudp;
+        _children["cemoudp"] = cemoudp;
     }
 
     if(cws_tunnel != nullptr)
     {
-        children["cws-tunnel"] = cws_tunnel;
+        _children["cws-tunnel"] = cws_tunnel;
     }
 
     if(l2protocol_tunnel != nullptr)
     {
-        children["l2protocol-tunnel"] = l2protocol_tunnel;
+        _children["l2protocol-tunnel"] = l2protocol_tunnel;
     }
 
     if(encapsulation != nullptr)
     {
-        children["encapsulation"] = encapsulation;
+        _children["encapsulation"] = encapsulation;
     }
 
     if(fair_queue_conf != nullptr)
     {
-        children["fair-queue-conf"] = fair_queue_conf;
+        _children["fair-queue-conf"] = fair_queue_conf;
     }
 
     if(fair_queue != nullptr)
     {
-        children["fair-queue"] = fair_queue;
+        _children["fair-queue"] = fair_queue;
     }
 
     if(flowcontrol != nullptr)
     {
-        children["flowcontrol"] = flowcontrol;
+        _children["flowcontrol"] = flowcontrol;
     }
 
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(keepalive_settings != nullptr)
     {
-        children["keepalive-settings"] = keepalive_settings;
+        _children["keepalive-settings"] = keepalive_settings;
     }
 
     if(bfd != nullptr)
     {
-        children["bfd"] = bfd;
+        _children["bfd"] = bfd;
     }
 
     if(bandwidth != nullptr)
     {
-        children["bandwidth"] = bandwidth;
+        _children["bandwidth"] = bandwidth;
     }
 
     if(dampening != nullptr)
     {
-        children["dampening"] = dampening;
+        _children["dampening"] = dampening;
     }
 
     if(domain != nullptr)
     {
-        children["domain"] = domain;
+        _children["domain"] = domain;
     }
 
-    count = 0;
-    for (auto c : hold_queue.entities())
+    count_ = 0;
+    for (auto ent_ : hold_queue.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(mpls != nullptr)
     {
-        children["mpls"] = mpls;
+        _children["mpls"] = mpls;
     }
 
     if(ip_vrf != nullptr)
     {
-        children["ip-vrf"] = ip_vrf;
+        _children["ip-vrf"] = ip_vrf;
     }
 
     if(vrf != nullptr)
     {
-        children["vrf"] = vrf;
+        _children["vrf"] = vrf;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(logging != nullptr)
     {
-        children["logging"] = logging;
+        _children["logging"] = logging;
     }
 
     if(mdix != nullptr)
     {
-        children["mdix"] = mdix;
+        _children["mdix"] = mdix;
     }
 
     if(mop != nullptr)
     {
-        children["mop"] = mop;
+        _children["mop"] = mop;
     }
 
     if(interface_qos != nullptr)
     {
-        children["interface_qos"] = interface_qos;
+        _children["interface_qos"] = interface_qos;
     }
 
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
     if(standby != nullptr)
     {
-        children["standby"] = standby;
+        _children["standby"] = standby;
     }
 
     if(access_session != nullptr)
     {
-        children["access-session"] = access_session;
+        _children["access-session"] = access_session;
     }
 
     if(storm_control != nullptr)
     {
-        children["storm-control"] = storm_control;
+        _children["storm-control"] = storm_control;
     }
 
     if(trust != nullptr)
     {
-        children["trust"] = trust;
+        _children["trust"] = trust;
     }
 
     if(priority_queue != nullptr)
     {
-        children["priority-queue"] = priority_queue;
+        _children["priority-queue"] = priority_queue;
     }
 
     if(rcv_queue != nullptr)
     {
-        children["rcv-queue"] = rcv_queue;
+        _children["rcv-queue"] = rcv_queue;
     }
 
     if(peer != nullptr)
     {
-        children["peer"] = peer;
+        _children["peer"] = peer;
     }
 
     if(pm_path != nullptr)
     {
-        children["pm-path"] = pm_path;
+        _children["pm-path"] = pm_path;
     }
 
     if(carrier_delay != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:carrier-delay"] = carrier_delay;
+        _children["Cisco-IOS-XE-ethernet:carrier-delay"] = carrier_delay;
     }
 
     if(channel_group != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:channel-group"] = channel_group;
+        _children["Cisco-IOS-XE-ethernet:channel-group"] = channel_group;
     }
 
     if(ethernet != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:ethernet"] = ethernet;
+        _children["Cisco-IOS-XE-ethernet:ethernet"] = ethernet;
     }
 
     if(eapol != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:eapol"] = eapol;
+        _children["Cisco-IOS-XE-ethernet:eapol"] = eapol;
     }
 
     if(synchronous != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:synchronous"] = synchronous;
+        _children["Cisco-IOS-XE-ethernet:synchronous"] = synchronous;
     }
 
     if(speed != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:speed"] = speed;
+        _children["Cisco-IOS-XE-ethernet:speed"] = speed;
     }
 
     if(negotiation != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:negotiation"] = negotiation;
+        _children["Cisco-IOS-XE-ethernet:negotiation"] = negotiation;
     }
 
     if(plim != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:plim"] = plim;
+        _children["Cisco-IOS-XE-ethernet:plim"] = plim;
     }
 
     if(pppoe != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:pppoe"] = pppoe;
+        _children["Cisco-IOS-XE-ethernet:pppoe"] = pppoe;
     }
 
     if(service != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:service"] = service;
+        _children["Cisco-IOS-XE-ethernet:service"] = service;
     }
 
     if(lacp != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:lacp"] = lacp;
+        _children["Cisco-IOS-XE-ethernet:lacp"] = lacp;
     }
 
     if(cisco_ios_xe_ethernet_macsec_option != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:macsec-option"] = cisco_ios_xe_ethernet_macsec_option;
+        _children["Cisco-IOS-XE-ethernet:macsec-option"] = cisco_ios_xe_ethernet_macsec_option;
     }
 
     if(service_policy != nullptr)
     {
-        children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
+        _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
     }
 
     if(auto_ != nullptr)
     {
-        children["Cisco-IOS-XE-switch:auto"] = auto_;
+        _children["Cisco-IOS-XE-switch:auto"] = auto_;
     }
 
     if(datalink != nullptr)
     {
-        children["Cisco-IOS-XE-switch:datalink"] = datalink;
+        _children["Cisco-IOS-XE-switch:datalink"] = datalink;
     }
 
     if(energywise != nullptr)
     {
-        children["Cisco-IOS-XE-switch:energywise"] = energywise;
+        _children["Cisco-IOS-XE-switch:energywise"] = energywise;
     }
 
     if(location != nullptr)
     {
-        children["Cisco-IOS-XE-switch:location"] = location;
+        _children["Cisco-IOS-XE-switch:location"] = location;
     }
 
     if(mac != nullptr)
     {
-        children["Cisco-IOS-XE-switch:mac"] = mac;
+        _children["Cisco-IOS-XE-switch:mac"] = mac;
     }
 
     if(macro != nullptr)
     {
-        children["Cisco-IOS-XE-switch:macro"] = macro;
+        _children["Cisco-IOS-XE-switch:macro"] = macro;
     }
 
     if(dual_active != nullptr)
     {
-        children["Cisco-IOS-XE-switch:dual-active"] = dual_active;
+        _children["Cisco-IOS-XE-switch:dual-active"] = dual_active;
     }
 
     if(load_balancing != nullptr)
     {
-        children["Cisco-IOS-XE-switch:load-balancing"] = load_balancing;
+        _children["Cisco-IOS-XE-switch:load-balancing"] = load_balancing;
     }
 
-    count = 0;
-    for (auto c : vlan_range.entities())
+    count_ = 0;
+    for (auto ent_ : vlan_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(switch_ != nullptr)
     {
-        children["Cisco-IOS-XE-switch:switch"] = switch_;
+        _children["Cisco-IOS-XE-switch:switch"] = switch_;
     }
 
     if(srr_queue != nullptr)
     {
-        children["Cisco-IOS-XE-switch:srr-queue"] = srr_queue;
+        _children["Cisco-IOS-XE-switch:srr-queue"] = srr_queue;
     }
 
     if(cisco_ios_xe_switch_macsec_option_ != nullptr)
     {
-        children["Cisco-IOS-XE-switch:macsec-option"] = cisco_ios_xe_switch_macsec_option_;
+        _children["Cisco-IOS-XE-switch:macsec-option"] = cisco_ios_xe_switch_macsec_option_;
     }
 
     if(device_tracking != nullptr)
     {
-        children["Cisco-IOS-XE-switch:device-tracking"] = device_tracking;
+        _children["Cisco-IOS-XE-switch:device-tracking"] = device_tracking;
     }
 
     if(snmp != nullptr)
     {
-        children["Cisco-IOS-XE-snmp:snmp"] = snmp;
+        _children["Cisco-IOS-XE-snmp:snmp"] = snmp;
     }
 
     if(crypto != nullptr)
     {
-        children["Cisco-IOS-XE-crypto:crypto"] = crypto;
+        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
     }
 
     if(mka != nullptr)
     {
-        children["Cisco-IOS-XE-mka:mka"] = mka;
+        _children["Cisco-IOS-XE-mka:mka"] = mka;
     }
 
     if(et_analytics != nullptr)
     {
-        children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
+        _children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
     }
 
     if(zone_member != nullptr)
     {
-        children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
+        _children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
     }
 
     if(utd != nullptr)
     {
-        children["Cisco-IOS-XE-utd:utd"] = utd;
+        _children["Cisco-IOS-XE-utd:utd"] = utd;
     }
 
     if(xconnect != nullptr)
     {
-        children["Cisco-IOS-XE-l2vpn:xconnect"] = xconnect;
+        _children["Cisco-IOS-XE-l2vpn:xconnect"] = xconnect;
     }
 
     if(evpn != nullptr)
     {
-        children["Cisco-IOS-XE-l2vpn:evpn"] = evpn;
+        _children["Cisco-IOS-XE-l2vpn:evpn"] = evpn;
     }
 
     if(fabric_domain != nullptr)
     {
-        children["Cisco-IOS-XE-iwanfabric:fabric-domain"] = fabric_domain;
+        _children["Cisco-IOS-XE-iwanfabric:fabric-domain"] = fabric_domain;
     }
 
     if(mvrp != nullptr)
     {
-        children["Cisco-IOS-XE-mvrp:mvrp"] = mvrp;
+        _children["Cisco-IOS-XE-mvrp:mvrp"] = mvrp;
     }
 
     if(lisp != nullptr)
     {
-        children["Cisco-IOS-XE-lisp:lisp"] = lisp;
+        _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
     }
 
     if(power != nullptr)
     {
-        children["Cisco-IOS-XE-power:power"] = power;
+        _children["Cisco-IOS-XE-power:power"] = power;
     }
 
     if(cdp != nullptr)
     {
-        children["Cisco-IOS-XE-cdp:cdp"] = cdp;
+        _children["Cisco-IOS-XE-cdp:cdp"] = cdp;
     }
 
     if(ntp != nullptr)
     {
-        children["Cisco-IOS-XE-ntp:ntp"] = ntp;
+        _children["Cisco-IOS-XE-ntp:ntp"] = ntp;
     }
 
     if(authentication != nullptr)
     {
-        children["Cisco-IOS-XE-sanet:authentication"] = authentication;
+        _children["Cisco-IOS-XE-sanet:authentication"] = authentication;
     }
 
     if(mab != nullptr)
     {
-        children["Cisco-IOS-XE-sanet:mab"] = mab;
+        _children["Cisco-IOS-XE-sanet:mab"] = mab;
     }
 
     if(dot1x != nullptr)
     {
-        children["Cisco-IOS-XE-dot1x:dot1x"] = dot1x;
+        _children["Cisco-IOS-XE-dot1x:dot1x"] = dot1x;
     }
 
     if(spanning_tree != nullptr)
     {
-        children["Cisco-IOS-XE-spanning-tree:spanning-tree"] = spanning_tree;
+        _children["Cisco-IOS-XE-spanning-tree:spanning-tree"] = spanning_tree;
     }
 
     if(performance != nullptr)
     {
-        children["Cisco-IOS-XE-ezpm:performance"] = performance;
+        _children["Cisco-IOS-XE-ezpm:performance"] = performance;
     }
 
     if(umbrella != nullptr)
     {
-        children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
+        _children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
     }
 
     if(lldp != nullptr)
     {
-        children["Cisco-IOS-XE-lldp:lldp"] = lldp;
+        _children["Cisco-IOS-XE-lldp:lldp"] = lldp;
     }
 
     if(ospfv3 != nullptr)
     {
-        children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
+        _children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
     }
 
     if(udld != nullptr)
     {
-        children["Cisco-IOS-XE-udld:udld"] = udld;
+        _children["Cisco-IOS-XE-udld:udld"] = udld;
     }
 
     if(cts != nullptr)
     {
-        children["Cisco-IOS-XE-cts:cts"] = cts;
+        _children["Cisco-IOS-XE-cts:cts"] = cts;
     }
 
     if(analysis_module != nullptr)
     {
-        children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
+        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12739,16 +12739,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::SwitchportConf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::SwitchportConf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::SwitchportConf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::SwitchportConf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::SwitchportConf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12869,7 +12869,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-switch:access")
     {
@@ -12973,66 +12973,66 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access != nullptr)
     {
-        children["Cisco-IOS-XE-switch:access"] = access;
+        _children["Cisco-IOS-XE-switch:access"] = access;
     }
 
     if(block != nullptr)
     {
-        children["Cisco-IOS-XE-switch:block"] = block;
+        _children["Cisco-IOS-XE-switch:block"] = block;
     }
 
     if(mode != nullptr)
     {
-        children["Cisco-IOS-XE-switch:mode"] = mode;
+        _children["Cisco-IOS-XE-switch:mode"] = mode;
     }
 
     if(port_security != nullptr)
     {
-        children["Cisco-IOS-XE-switch:port-security"] = port_security;
+        _children["Cisco-IOS-XE-switch:port-security"] = port_security;
     }
 
     if(trunk != nullptr)
     {
-        children["Cisco-IOS-XE-switch:trunk"] = trunk;
+        _children["Cisco-IOS-XE-switch:trunk"] = trunk;
     }
 
     if(voice != nullptr)
     {
-        children["Cisco-IOS-XE-switch:voice"] = voice;
+        _children["Cisco-IOS-XE-switch:voice"] = voice;
     }
 
     if(priority != nullptr)
     {
-        children["Cisco-IOS-XE-switch:priority"] = priority;
+        _children["Cisco-IOS-XE-switch:priority"] = priority;
     }
 
     if(autostate != nullptr)
     {
-        children["Cisco-IOS-XE-switch:autostate"] = autostate;
+        _children["Cisco-IOS-XE-switch:autostate"] = autostate;
     }
 
     if(private_vlan != nullptr)
     {
-        children["Cisco-IOS-XE-switch:private-vlan"] = private_vlan;
+        _children["Cisco-IOS-XE-switch:private-vlan"] = private_vlan;
     }
 
     if(vepa != nullptr)
     {
-        children["Cisco-IOS-XE-switch:vepa"] = vepa;
+        _children["Cisco-IOS-XE-switch:vepa"] = vepa;
     }
 
     if(device_tracking != nullptr)
     {
-        children["Cisco-IOS-XE-switch:device-tracking"] = device_tracking;
+        _children["Cisco-IOS-XE-switch:device-tracking"] = device_tracking;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13121,7 +13121,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan")
     {
@@ -13135,16 +13135,16 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Acces
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Access::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Access::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vlan != nullptr)
     {
-        children["vlan"] = vlan;
+        _children["vlan"] = vlan;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Access::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13207,16 +13207,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Access::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Access::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Access::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Access::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Access::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13299,16 +13299,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Block::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Block::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Block::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Block::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Block::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13401,7 +13401,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access")
     {
@@ -13442,31 +13442,31 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Mode:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Mode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Mode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access != nullptr)
     {
-        children["access"] = access;
+        _children["access"] = access;
     }
 
     if(dot1q_tunnel != nullptr)
     {
-        children["dot1q-tunnel"] = dot1q_tunnel;
+        _children["dot1q-tunnel"] = dot1q_tunnel;
     }
 
     if(private_vlan != nullptr)
     {
-        children["private-vlan"] = private_vlan;
+        _children["private-vlan"] = private_vlan;
     }
 
     if(trunk != nullptr)
     {
-        children["trunk"] = trunk;
+        _children["trunk"] = trunk;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13531,16 +13531,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Mode::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Mode::Access::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Mode::Access::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Mode::Access::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Mode::Access::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13593,16 +13593,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Mode::Dot1qTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Mode::Dot1qTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Mode::Dot1qTunnel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Mode::Dot1qTunnel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Mode::Dot1qTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13663,16 +13663,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Mode::PrivateVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Mode::PrivateVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Mode::PrivateVlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Mode::PrivateVlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Mode::PrivateVlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13747,16 +13747,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Mode::Trunk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Mode::Trunk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Mode::Trunk::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Mode::Trunk::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Mode::Trunk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13826,7 +13826,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aging")
     {
@@ -13858,26 +13858,26 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::PortS
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aging != nullptr)
     {
-        children["aging"] = aging;
+        _children["aging"] = aging;
     }
 
     if(mac_address != nullptr)
     {
-        children["mac-address"] = mac_address;
+        _children["mac-address"] = mac_address;
     }
 
     if(maximum != nullptr)
     {
-        children["maximum"] = maximum;
+        _children["maximum"] = maximum;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13954,16 +13954,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Aging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Aging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Aging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Aging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Aging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14060,16 +14060,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::MacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::MacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14162,16 +14162,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Maximum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Maximum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::PortSecurity::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14263,7 +14263,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "allowed")
     {
@@ -14295,26 +14295,26 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(allowed != nullptr)
     {
-        children["allowed"] = allowed;
+        _children["allowed"] = allowed;
     }
 
     if(native != nullptr)
     {
-        children["native"] = native;
+        _children["native"] = native;
     }
 
     if(pruning != nullptr)
     {
-        children["pruning"] = pruning;
+        _children["pruning"] = pruning;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Trunk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14383,7 +14383,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Allowed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Allowed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan")
     {
@@ -14397,16 +14397,16 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Allowed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Allowed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vlan != nullptr)
     {
-        children["vlan"] = vlan;
+        _children["vlan"] = vlan;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Allowed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14495,16 +14495,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Allowed::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Allowed::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Allowed::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Allowed::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Allowed::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14621,16 +14621,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Native_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Native_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Native_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Native_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Native_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14699,7 +14699,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Pruning::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Pruning::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan")
     {
@@ -14713,16 +14713,16 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Pruning::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Pruning::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vlan != nullptr)
     {
-        children["vlan"] = vlan;
+        _children["vlan"] = vlan;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Pruning::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14817,16 +14817,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Pruning::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Pruning::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Pruning::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Pruning::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Trunk::Pruning::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14935,7 +14935,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Voice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Voice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan")
     {
@@ -14958,21 +14958,21 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Voice
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Voice::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Voice::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vlan != nullptr)
     {
-        children["vlan"] = vlan;
+        _children["vlan"] = vlan;
     }
 
     if(detect != nullptr)
     {
-        children["detect"] = detect;
+        _children["detect"] = detect;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Voice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15035,16 +15035,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Voice::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Voice::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Voice::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Voice::Vlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Voice::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15122,7 +15122,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Voice::Detect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Voice::Detect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cisco-phone")
     {
@@ -15136,16 +15136,16 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Voice
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Voice::Detect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Voice::Detect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cisco_phone != nullptr)
     {
-        children["cisco-phone"] = cisco_phone;
+        _children["cisco-phone"] = cisco_phone;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Voice::Detect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15204,16 +15204,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Voice::Detect::CiscoPhone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Voice::Detect::CiscoPhone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Voice::Detect::CiscoPhone::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Voice::Detect::CiscoPhone::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Voice::Detect::CiscoPhone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15282,7 +15282,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "extend")
     {
@@ -15296,16 +15296,16 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Prior
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Priority::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Priority::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(extend != nullptr)
     {
-        children["extend"] = extend;
+        _children["extend"] = extend;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15368,16 +15368,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Priority::Extend::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Priority::Extend::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Priority::Extend::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Priority::Extend::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Priority::Extend::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15456,16 +15456,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Autostate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Autostate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Autostate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Autostate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Autostate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15542,7 +15542,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "association")
     {
@@ -15574,26 +15574,26 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Priva
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(association != nullptr)
     {
-        children["association"] = association;
+        _children["association"] = association;
     }
 
     if(host_association != nullptr)
     {
-        children["host-association"] = host_association;
+        _children["host-association"] = host_association;
     }
 
     if(mapping != nullptr)
     {
-        children["mapping"] = mapping;
+        _children["mapping"] = mapping;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15656,7 +15656,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "host")
     {
@@ -15679,21 +15679,21 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Priva
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(host != nullptr)
     {
-        children["host"] = host;
+        _children["host"] = host;
     }
 
     if(mapping != nullptr)
     {
-        children["mapping"] = mapping;
+        _children["mapping"] = mapping;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15756,16 +15756,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::Host::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::Host::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15856,16 +15856,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::Mapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::Mapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::Mapping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::Mapping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Association::Mapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15968,16 +15968,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::HostAssociation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::HostAssociation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::HostAssociation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::HostAssociation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::HostAssociation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16068,16 +16068,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Mapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Mapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Mapping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Mapping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::PrivateVlan::Mapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16176,16 +16176,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::Vepa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::Vepa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Vepa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::Vepa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::Vepa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16254,16 +16254,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Switchport::DeviceTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Switchport::DeviceTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Switchport::DeviceTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Switchport::DeviceTracking::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Switchport::DeviceTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16336,16 +16336,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::StackwiseVirtual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::StackwiseVirtual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::StackwiseVirtual::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::StackwiseVirtual::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::StackwiseVirtual::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16424,16 +16424,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Arp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Arp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Arp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Arp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Arp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16510,7 +16510,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "delay")
     {
@@ -16542,26 +16542,26 @@ std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Backup::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Backup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Backup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(delay != nullptr)
     {
-        children["delay"] = delay;
+        _children["delay"] = delay;
     }
 
     if(interface != nullptr)
     {
-        children["interface"] = interface;
+        _children["interface"] = interface;
     }
 
     if(load != nullptr)
     {
-        children["load"] = load;
+        _children["load"] = load;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Backup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16624,16 +16624,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthe
 
 }
 
-std::shared_ptr<Entity> Native::Interface::TwoGigabitEthernet::Backup::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Backup::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::TwoGigabitEthernet::Backup::Delay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Backup::Delay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Interface::TwoGigabitEthernet::Backup::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > Rcc::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Rcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> Rcc::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void Rcc::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Rcc::clone_ptr() const
+std::shared_ptr<ydk::Entity> Rcc::clone_ptr() const
 {
     return std::make_shared<Rcc>();
 }
@@ -192,7 +192,7 @@ std::vector<std::pair<std::string, LeafData> > Rcc::Ipv6::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> Rcc::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcc::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lcc")
     {
@@ -224,26 +224,26 @@ std::shared_ptr<Entity> Rcc::Ipv6::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcc::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcc::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lcc != nullptr)
     {
-        children["lcc"] = lcc;
+        _children["lcc"] = lcc;
     }
 
     if(unicast != nullptr)
     {
-        children["unicast"] = unicast;
+        _children["unicast"] = unicast;
     }
 
     if(multicast != nullptr)
     {
-        children["multicast"] = multicast;
+        _children["multicast"] = multicast;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcc::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -313,16 +313,16 @@ std::vector<std::pair<std::string, LeafData> > Rcc::Ipv6::Lcc::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Rcc::Ipv6::Lcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcc::Ipv6::Lcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcc::Ipv6::Lcc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcc::Ipv6::Lcc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rcc::Ipv6::Lcc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -412,16 +412,16 @@ std::vector<std::pair<std::string, LeafData> > Rcc::Ipv6::Unicast::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Rcc::Ipv6::Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcc::Ipv6::Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcc::Ipv6::Unicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcc::Ipv6::Unicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rcc::Ipv6::Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -511,16 +511,16 @@ std::vector<std::pair<std::string, LeafData> > Rcc::Ipv6::Multicast::get_name_le
 
 }
 
-std::shared_ptr<Entity> Rcc::Ipv6::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcc::Ipv6::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcc::Ipv6::Multicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcc::Ipv6::Multicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rcc::Ipv6::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -614,7 +614,7 @@ std::vector<std::pair<std::string, LeafData> > Rcc::Ipv4::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> Rcc::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcc::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lcc")
     {
@@ -646,26 +646,26 @@ std::shared_ptr<Entity> Rcc::Ipv4::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcc::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcc::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lcc != nullptr)
     {
-        children["lcc"] = lcc;
+        _children["lcc"] = lcc;
     }
 
     if(unicast != nullptr)
     {
-        children["unicast"] = unicast;
+        _children["unicast"] = unicast;
     }
 
     if(multicast != nullptr)
     {
-        children["multicast"] = multicast;
+        _children["multicast"] = multicast;
     }
 
-    return children;
+    return _children;
 }
 
 void Rcc::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -735,16 +735,16 @@ std::vector<std::pair<std::string, LeafData> > Rcc::Ipv4::Lcc::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Rcc::Ipv4::Lcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcc::Ipv4::Lcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcc::Ipv4::Lcc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcc::Ipv4::Lcc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rcc::Ipv4::Lcc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -834,16 +834,16 @@ std::vector<std::pair<std::string, LeafData> > Rcc::Ipv4::Unicast::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Rcc::Ipv4::Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcc::Ipv4::Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcc::Ipv4::Unicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcc::Ipv4::Unicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rcc::Ipv4::Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -933,16 +933,16 @@ std::vector<std::pair<std::string, LeafData> > Rcc::Ipv4::Multicast::get_name_le
 
 }
 
-std::shared_ptr<Entity> Rcc::Ipv4::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Rcc::Ipv4::Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rcc::Ipv4::Multicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Rcc::Ipv4::Multicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Rcc::Ipv4::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

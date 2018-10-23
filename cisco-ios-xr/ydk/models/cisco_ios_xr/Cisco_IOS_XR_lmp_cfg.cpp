@@ -57,7 +57,7 @@ std::vector<std::pair<std::string, LeafData> > Lmp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Lmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "gmpls-uni")
     {
@@ -71,16 +71,16 @@ std::shared_ptr<Entity> Lmp::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(gmpls_uni != nullptr)
     {
-        children["gmpls-uni"] = gmpls_uni;
+        _children["gmpls-uni"] = gmpls_uni;
     }
 
-    return children;
+    return _children;
 }
 
 void Lmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -101,7 +101,7 @@ void Lmp::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Lmp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Lmp::clone_ptr() const
 {
     return std::make_shared<Lmp>();
 }
@@ -188,7 +188,7 @@ std::vector<std::pair<std::string, LeafData> > Lmp::GmplsUni::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Lmp::GmplsUni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::GmplsUni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbors")
     {
@@ -220,26 +220,26 @@ std::shared_ptr<Entity> Lmp::GmplsUni::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::GmplsUni::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(neighbors != nullptr)
     {
-        children["neighbors"] = neighbors;
+        _children["neighbors"] = neighbors;
     }
 
     if(router_id != nullptr)
     {
-        children["router-id"] = router_id;
+        _children["router-id"] = router_id;
     }
 
     if(controllers != nullptr)
     {
-        children["controllers"] = controllers;
+        _children["controllers"] = controllers;
     }
 
-    return children;
+    return _children;
 }
 
 void Lmp::GmplsUni::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -313,33 +313,33 @@ std::vector<std::pair<std::string, LeafData> > Lmp::GmplsUni::Neighbors::get_nam
 
 }
 
-std::shared_ptr<Entity> Lmp::GmplsUni::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::GmplsUni::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Lmp::GmplsUni::Neighbors::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Neighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::GmplsUni::Neighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Lmp::GmplsUni::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -419,7 +419,7 @@ std::vector<std::pair<std::string, LeafData> > Lmp::GmplsUni::Neighbors::Neighbo
 
 }
 
-std::shared_ptr<Entity> Lmp::GmplsUni::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::GmplsUni::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipcc")
     {
@@ -433,16 +433,16 @@ std::shared_ptr<Entity> Lmp::GmplsUni::Neighbors::Neighbor::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Neighbors::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::GmplsUni::Neighbors::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipcc != nullptr)
     {
-        children["ipcc"] = ipcc;
+        _children["ipcc"] = ipcc;
     }
 
-    return children;
+    return _children;
 }
 
 void Lmp::GmplsUni::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -531,7 +531,7 @@ std::vector<std::pair<std::string, LeafData> > Lmp::GmplsUni::Neighbors::Neighbo
 
 }
 
-std::shared_ptr<Entity> Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "routed")
     {
@@ -545,16 +545,16 @@ std::shared_ptr<Entity> Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(routed != nullptr)
     {
-        children["routed"] = routed;
+        _children["routed"] = routed;
     }
 
-    return children;
+    return _children;
 }
 
 void Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -613,16 +613,16 @@ std::vector<std::pair<std::string, LeafData> > Lmp::GmplsUni::Neighbors::Neighbo
 
 }
 
-std::shared_ptr<Entity> Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::Routed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::Routed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::Routed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::Routed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::Routed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -702,16 +702,16 @@ std::vector<std::pair<std::string, LeafData> > Lmp::GmplsUni::RouterId::get_name
 
 }
 
-std::shared_ptr<Entity> Lmp::GmplsUni::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::GmplsUni::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::RouterId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::GmplsUni::RouterId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lmp::GmplsUni::RouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -805,33 +805,33 @@ std::vector<std::pair<std::string, LeafData> > Lmp::GmplsUni::Controllers::get_n
 
 }
 
-std::shared_ptr<Entity> Lmp::GmplsUni::Controllers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::GmplsUni::Controllers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "controller")
     {
-        auto c = std::make_shared<Lmp::GmplsUni::Controllers::Controller>();
-        c->parent = this;
-        controller.append(c);
-        return c;
+        auto ent_ = std::make_shared<Lmp::GmplsUni::Controllers::Controller>();
+        ent_->parent = this;
+        controller.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Controllers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::GmplsUni::Controllers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : controller.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : controller.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Lmp::GmplsUni::Controllers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -911,7 +911,7 @@ std::vector<std::pair<std::string, LeafData> > Lmp::GmplsUni::Controllers::Contr
 
 }
 
-std::shared_ptr<Entity> Lmp::GmplsUni::Controllers::Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::GmplsUni::Controllers::Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local-link-id")
     {
@@ -934,21 +934,21 @@ std::shared_ptr<Entity> Lmp::GmplsUni::Controllers::Controller::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Controllers::Controller::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::GmplsUni::Controllers::Controller::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(local_link_id != nullptr)
     {
-        children["local-link-id"] = local_link_id;
+        _children["local-link-id"] = local_link_id;
     }
 
     if(adjacency != nullptr)
     {
-        children["adjacency"] = adjacency;
+        _children["adjacency"] = adjacency;
     }
 
-    return children;
+    return _children;
 }
 
 void Lmp::GmplsUni::Controllers::Controller::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1035,16 +1035,16 @@ std::vector<std::pair<std::string, LeafData> > Lmp::GmplsUni::Controllers::Contr
 
 }
 
-std::shared_ptr<Entity> Lmp::GmplsUni::Controllers::Controller::LocalLinkId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::GmplsUni::Controllers::Controller::LocalLinkId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Controllers::Controller::LocalLinkId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::GmplsUni::Controllers::Controller::LocalLinkId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lmp::GmplsUni::Controllers::Controller::LocalLinkId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1133,7 +1133,7 @@ std::vector<std::pair<std::string, LeafData> > Lmp::GmplsUni::Controllers::Contr
 
 }
 
-std::shared_ptr<Entity> Lmp::GmplsUni::Controllers::Controller::Adjacency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::GmplsUni::Controllers::Controller::Adjacency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "remote-neighbor")
     {
@@ -1147,16 +1147,16 @@ std::shared_ptr<Entity> Lmp::GmplsUni::Controllers::Controller::Adjacency::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Controllers::Controller::Adjacency::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::GmplsUni::Controllers::Controller::Adjacency::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(remote_neighbor != nullptr)
     {
-        children["remote-neighbor"] = remote_neighbor;
+        _children["remote-neighbor"] = remote_neighbor;
     }
 
-    return children;
+    return _children;
 }
 
 void Lmp::GmplsUni::Controllers::Controller::Adjacency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1232,7 +1232,7 @@ std::vector<std::pair<std::string, LeafData> > Lmp::GmplsUni::Controllers::Contr
 
 }
 
-std::shared_ptr<Entity> Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-id")
     {
@@ -1255,21 +1255,21 @@ std::shared_ptr<Entity> Lmp::GmplsUni::Controllers::Controller::Adjacency::Remot
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_id != nullptr)
     {
-        children["interface-id"] = interface_id;
+        _children["interface-id"] = interface_id;
     }
 
     if(link_id != nullptr)
     {
-        children["link-id"] = link_id;
+        _children["link-id"] = link_id;
     }
 
-    return children;
+    return _children;
 }
 
 void Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1366,16 +1366,16 @@ std::vector<std::pair<std::string, LeafData> > Lmp::GmplsUni::Controllers::Contr
 
 }
 
-std::shared_ptr<Entity> Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::InterfaceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::InterfaceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::InterfaceId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::InterfaceId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::InterfaceId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1472,16 +1472,16 @@ std::vector<std::pair<std::string, LeafData> > Lmp::GmplsUni::Controllers::Contr
 
 }
 
-std::shared_ptr<Entity> Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

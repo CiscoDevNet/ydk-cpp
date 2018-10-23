@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > TUNNELMIB::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> TUNNELMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TUNNELMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnelIfTable")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> TUNNELMIB::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TUNNELMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tunneliftable != nullptr)
     {
-        children["tunnelIfTable"] = tunneliftable;
+        _children["tunnelIfTable"] = tunneliftable;
     }
 
     if(tunnelconfigtable != nullptr)
     {
-        children["tunnelConfigTable"] = tunnelconfigtable;
+        _children["tunnelConfigTable"] = tunnelconfigtable;
     }
 
     if(tunnelinetconfigtable != nullptr)
     {
-        children["tunnelInetConfigTable"] = tunnelinetconfigtable;
+        _children["tunnelInetConfigTable"] = tunnelinetconfigtable;
     }
 
-    return children;
+    return _children;
 }
 
 void TUNNELMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void TUNNELMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> TUNNELMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> TUNNELMIB::clone_ptr() const
 {
     return std::make_shared<TUNNELMIB>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > TUNNELMIB::TunnelIfTable::get_nam
 
 }
 
-std::shared_ptr<Entity> TUNNELMIB::TunnelIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TUNNELMIB::TunnelIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnelIfEntry")
     {
-        auto c = std::make_shared<TUNNELMIB::TunnelIfTable::TunnelIfEntry>();
-        c->parent = this;
-        tunnelifentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TUNNELMIB::TunnelIfTable::TunnelIfEntry>();
+        ent_->parent = this;
+        tunnelifentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::TunnelIfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TUNNELMIB::TunnelIfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tunnelifentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tunnelifentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TUNNELMIB::TunnelIfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -347,16 +347,16 @@ std::vector<std::pair<std::string, LeafData> > TUNNELMIB::TunnelIfTable::TunnelI
 
 }
 
-std::shared_ptr<Entity> TUNNELMIB::TunnelIfTable::TunnelIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TUNNELMIB::TunnelIfTable::TunnelIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::TunnelIfTable::TunnelIfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TUNNELMIB::TunnelIfTable::TunnelIfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TUNNELMIB::TunnelIfTable::TunnelIfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -550,33 +550,33 @@ std::vector<std::pair<std::string, LeafData> > TUNNELMIB::TunnelConfigTable::get
 
 }
 
-std::shared_ptr<Entity> TUNNELMIB::TunnelConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TUNNELMIB::TunnelConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnelConfigEntry")
     {
-        auto c = std::make_shared<TUNNELMIB::TunnelConfigTable::TunnelConfigEntry>();
-        c->parent = this;
-        tunnelconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TUNNELMIB::TunnelConfigTable::TunnelConfigEntry>();
+        ent_->parent = this;
+        tunnelconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::TunnelConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TUNNELMIB::TunnelConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tunnelconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tunnelconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TUNNELMIB::TunnelConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -666,16 +666,16 @@ std::vector<std::pair<std::string, LeafData> > TUNNELMIB::TunnelConfigTable::Tun
 
 }
 
-std::shared_ptr<Entity> TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TUNNELMIB::TunnelConfigTable::TunnelConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -809,33 +809,33 @@ std::vector<std::pair<std::string, LeafData> > TUNNELMIB::TunnelInetConfigTable:
 
 }
 
-std::shared_ptr<Entity> TUNNELMIB::TunnelInetConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TUNNELMIB::TunnelInetConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnelInetConfigEntry")
     {
-        auto c = std::make_shared<TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry>();
-        c->parent = this;
-        tunnelinetconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry>();
+        ent_->parent = this;
+        tunnelinetconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::TunnelInetConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TUNNELMIB::TunnelInetConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tunnelinetconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tunnelinetconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TUNNELMIB::TunnelInetConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -934,16 +934,16 @@ std::vector<std::pair<std::string, LeafData> > TUNNELMIB::TunnelInetConfigTable:
 
 }
 
-std::shared_ptr<Entity> TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TUNNELMIB::TunnelInetConfigTable::TunnelInetConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

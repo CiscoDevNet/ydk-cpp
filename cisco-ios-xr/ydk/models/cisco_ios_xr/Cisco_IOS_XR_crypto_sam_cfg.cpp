@@ -51,7 +51,7 @@ std::vector<std::pair<std::string, LeafData> > Sam::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Sam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prompt-interval")
     {
@@ -65,16 +65,16 @@ std::shared_ptr<Entity> Sam::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prompt_interval != nullptr)
     {
-        children["prompt-interval"] = prompt_interval;
+        _children["prompt-interval"] = prompt_interval;
     }
 
-    return children;
+    return _children;
 }
 
 void Sam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -85,7 +85,7 @@ void Sam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Sam::clone_ptr() const
+std::shared_ptr<ydk::Entity> Sam::clone_ptr() const
 {
     return std::make_shared<Sam>();
 }
@@ -169,16 +169,16 @@ std::vector<std::pair<std::string, LeafData> > Sam::PromptInterval::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Sam::PromptInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Sam::PromptInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Sam::PromptInterval::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Sam::PromptInterval::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Sam::PromptInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

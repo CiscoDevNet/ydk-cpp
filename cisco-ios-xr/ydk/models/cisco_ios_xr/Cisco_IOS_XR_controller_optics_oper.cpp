@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> OpticsOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optics-ports")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> OpticsOper::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(optics_ports != nullptr)
     {
-        children["optics-ports"] = optics_ports;
+        _children["optics-ports"] = optics_ports;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void OpticsOper::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> OpticsOper::clone_ptr() const
+std::shared_ptr<ydk::Entity> OpticsOper::clone_ptr() const
 {
     return std::make_shared<OpticsOper>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::get_name
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optics-port")
     {
-        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort>();
-        c->parent = this;
-        optics_port.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticsOper::OpticsPorts::OpticsPort>();
+        ent_->parent = this;
+        optics_port.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : optics_port.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : optics_port.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -292,7 +292,7 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optics-dwdm-carrier-channel-map")
     {
@@ -351,41 +351,41 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(optics_dwdm_carrier_channel_map != nullptr)
     {
-        children["optics-dwdm-carrier-channel-map"] = optics_dwdm_carrier_channel_map;
+        _children["optics-dwdm-carrier-channel-map"] = optics_dwdm_carrier_channel_map;
     }
 
     if(ots_spectrum_info != nullptr)
     {
-        children["ots-spectrum-info"] = ots_spectrum_info;
+        _children["ots-spectrum-info"] = ots_spectrum_info;
     }
 
     if(optics_dwdm_carrier_channel_map_flexi != nullptr)
     {
-        children["optics-dwdm-carrier-channel-map-flexi"] = optics_dwdm_carrier_channel_map_flexi;
+        _children["optics-dwdm-carrier-channel-map-flexi"] = optics_dwdm_carrier_channel_map_flexi;
     }
 
     if(optics_info != nullptr)
     {
-        children["optics-info"] = optics_info;
+        _children["optics-info"] = optics_info;
     }
 
     if(optics_lanes != nullptr)
     {
-        children["optics-lanes"] = optics_lanes;
+        _children["optics-lanes"] = optics_lanes;
     }
 
     if(optics_db_info != nullptr)
     {
-        children["optics-db-info"] = optics_db_info;
+        _children["optics-db-info"] = optics_db_info;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -474,33 +474,33 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dwdm-carrier-map-info")
     {
-        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo>();
-        c->parent = this;
-        dwdm_carrier_map_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo>();
+        ent_->parent = this;
+        dwdm_carrier_map_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dwdm_carrier_map_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dwdm_carrier_map_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -601,16 +601,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -709,7 +709,7 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spectrum-info")
     {
@@ -723,16 +723,16 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spectrum_info != nullptr)
     {
-        children["spectrum-info"] = spectrum_info;
+        _children["spectrum-info"] = spectrum_info;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -811,33 +811,33 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spectrum-slice-power-info")
     {
-        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo>();
-        c->parent = this;
-        spectrum_slice_power_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo>();
+        ent_->parent = this;
+        spectrum_slice_power_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : spectrum_slice_power_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : spectrum_slice_power_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -950,16 +950,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1108,33 +1108,33 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dwdm-carrier-map-info")
     {
-        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo>();
-        c->parent = this;
-        dwdm_carrier_map_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo>();
+        ent_->parent = this;
+        dwdm_carrier_map_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : dwdm_carrier_map_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : dwdm_carrier_map_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1235,16 +1235,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1783,7 +1783,7 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-srlg-info")
     {
@@ -1859,69 +1859,69 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_chi
 
     if(child_yang_name == "lane-data")
     {
-        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData>();
-        c->parent = this;
-        lane_data.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData>();
+        ent_->parent = this;
+        lane_data.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network_srlg_info != nullptr)
     {
-        children["network-srlg-info"] = network_srlg_info;
+        _children["network-srlg-info"] = network_srlg_info;
     }
 
     if(optics_alarm_info != nullptr)
     {
-        children["optics-alarm-info"] = optics_alarm_info;
+        _children["optics-alarm-info"] = optics_alarm_info;
     }
 
     if(ots_alarm_info != nullptr)
     {
-        children["ots-alarm-info"] = ots_alarm_info;
+        _children["ots-alarm-info"] = ots_alarm_info;
     }
 
     if(transceiver_info != nullptr)
     {
-        children["transceiver-info"] = transceiver_info;
+        _children["transceiver-info"] = transceiver_info;
     }
 
     if(ext_param_val != nullptr)
     {
-        children["ext-param-val"] = ext_param_val;
+        _children["ext-param-val"] = ext_param_val;
     }
 
     if(ext_param_threshold_val != nullptr)
     {
-        children["ext-param-threshold-val"] = ext_param_threshold_val;
+        _children["ext-param-threshold-val"] = ext_param_threshold_val;
     }
 
     if(extended_alarm_alarm_info != nullptr)
     {
-        children["extended-alarm-alarm-info"] = extended_alarm_alarm_info;
+        _children["extended-alarm-alarm-info"] = extended_alarm_alarm_info;
     }
 
     if(ains_info != nullptr)
     {
-        children["ains-info"] = ains_info;
+        _children["ains-info"] = ains_info;
     }
 
-    count = 0;
-    for (auto c : lane_data.entities())
+    count_ = 0;
+    for (auto ent_ : lane_data.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2988,33 +2988,33 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-srlg-array")
     {
-        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray>();
-        c->parent = this;
-        network_srlg_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray>();
+        ent_->parent = this;
+        network_srlg_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : network_srlg_array.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : network_srlg_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3087,16 +3087,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3361,7 +3361,7 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "high-rx-power")
     {
@@ -3798,251 +3798,251 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(high_rx_power != nullptr)
     {
-        children["high-rx-power"] = high_rx_power;
+        _children["high-rx-power"] = high_rx_power;
     }
 
     if(low_rx_power != nullptr)
     {
-        children["low-rx-power"] = low_rx_power;
+        _children["low-rx-power"] = low_rx_power;
     }
 
     if(high_tx_power != nullptr)
     {
-        children["high-tx-power"] = high_tx_power;
+        _children["high-tx-power"] = high_tx_power;
     }
 
     if(low_tx_power != nullptr)
     {
-        children["low-tx-power"] = low_tx_power;
+        _children["low-tx-power"] = low_tx_power;
     }
 
     if(high_lbc != nullptr)
     {
-        children["high-lbc"] = high_lbc;
+        _children["high-lbc"] = high_lbc;
     }
 
     if(low_temperature != nullptr)
     {
-        children["low-temperature"] = low_temperature;
+        _children["low-temperature"] = low_temperature;
     }
 
     if(high_temperature != nullptr)
     {
-        children["high-temperature"] = high_temperature;
+        _children["high-temperature"] = high_temperature;
     }
 
     if(low_voltage != nullptr)
     {
-        children["low-voltage"] = low_voltage;
+        _children["low-voltage"] = low_voltage;
     }
 
     if(high_voltage != nullptr)
     {
-        children["high-voltage"] = high_voltage;
+        _children["high-voltage"] = high_voltage;
     }
 
     if(high_rx1_power != nullptr)
     {
-        children["high-rx1-power"] = high_rx1_power;
+        _children["high-rx1-power"] = high_rx1_power;
     }
 
     if(high_rx2_power != nullptr)
     {
-        children["high-rx2-power"] = high_rx2_power;
+        _children["high-rx2-power"] = high_rx2_power;
     }
 
     if(high_rx3_power != nullptr)
     {
-        children["high-rx3-power"] = high_rx3_power;
+        _children["high-rx3-power"] = high_rx3_power;
     }
 
     if(high_rx4_power != nullptr)
     {
-        children["high-rx4-power"] = high_rx4_power;
+        _children["high-rx4-power"] = high_rx4_power;
     }
 
     if(low_rx1_power != nullptr)
     {
-        children["low-rx1-power"] = low_rx1_power;
+        _children["low-rx1-power"] = low_rx1_power;
     }
 
     if(low_rx2_power != nullptr)
     {
-        children["low-rx2-power"] = low_rx2_power;
+        _children["low-rx2-power"] = low_rx2_power;
     }
 
     if(low_rx3_power != nullptr)
     {
-        children["low-rx3-power"] = low_rx3_power;
+        _children["low-rx3-power"] = low_rx3_power;
     }
 
     if(low_rx4_power != nullptr)
     {
-        children["low-rx4-power"] = low_rx4_power;
+        _children["low-rx4-power"] = low_rx4_power;
     }
 
     if(high_tx1_power != nullptr)
     {
-        children["high-tx1-power"] = high_tx1_power;
+        _children["high-tx1-power"] = high_tx1_power;
     }
 
     if(high_tx2_power != nullptr)
     {
-        children["high-tx2-power"] = high_tx2_power;
+        _children["high-tx2-power"] = high_tx2_power;
     }
 
     if(high_tx3_power != nullptr)
     {
-        children["high-tx3-power"] = high_tx3_power;
+        _children["high-tx3-power"] = high_tx3_power;
     }
 
     if(high_tx4_power != nullptr)
     {
-        children["high-tx4-power"] = high_tx4_power;
+        _children["high-tx4-power"] = high_tx4_power;
     }
 
     if(low_tx1_power != nullptr)
     {
-        children["low-tx1-power"] = low_tx1_power;
+        _children["low-tx1-power"] = low_tx1_power;
     }
 
     if(low_tx2_power != nullptr)
     {
-        children["low-tx2-power"] = low_tx2_power;
+        _children["low-tx2-power"] = low_tx2_power;
     }
 
     if(low_tx3_power != nullptr)
     {
-        children["low-tx3-power"] = low_tx3_power;
+        _children["low-tx3-power"] = low_tx3_power;
     }
 
     if(low_tx4_power != nullptr)
     {
-        children["low-tx4-power"] = low_tx4_power;
+        _children["low-tx4-power"] = low_tx4_power;
     }
 
     if(high_tx1lbc != nullptr)
     {
-        children["high-tx1lbc"] = high_tx1lbc;
+        _children["high-tx1lbc"] = high_tx1lbc;
     }
 
     if(high_tx2lbc != nullptr)
     {
-        children["high-tx2lbc"] = high_tx2lbc;
+        _children["high-tx2lbc"] = high_tx2lbc;
     }
 
     if(high_tx3lbc != nullptr)
     {
-        children["high-tx3lbc"] = high_tx3lbc;
+        _children["high-tx3lbc"] = high_tx3lbc;
     }
 
     if(high_tx4lbc != nullptr)
     {
-        children["high-tx4lbc"] = high_tx4lbc;
+        _children["high-tx4lbc"] = high_tx4lbc;
     }
 
     if(low_tx1lbc != nullptr)
     {
-        children["low-tx1lbc"] = low_tx1lbc;
+        _children["low-tx1lbc"] = low_tx1lbc;
     }
 
     if(low_tx2lbc != nullptr)
     {
-        children["low-tx2lbc"] = low_tx2lbc;
+        _children["low-tx2lbc"] = low_tx2lbc;
     }
 
     if(low_tx3lbc != nullptr)
     {
-        children["low-tx3lbc"] = low_tx3lbc;
+        _children["low-tx3lbc"] = low_tx3lbc;
     }
 
     if(low_tx4lbc != nullptr)
     {
-        children["low-tx4lbc"] = low_tx4lbc;
+        _children["low-tx4lbc"] = low_tx4lbc;
     }
 
     if(rx_los != nullptr)
     {
-        children["rx-los"] = rx_los;
+        _children["rx-los"] = rx_los;
     }
 
     if(tx_los != nullptr)
     {
-        children["tx-los"] = tx_los;
+        _children["tx-los"] = tx_los;
     }
 
     if(rx_lol != nullptr)
     {
-        children["rx-lol"] = rx_lol;
+        _children["rx-lol"] = rx_lol;
     }
 
     if(tx_lol != nullptr)
     {
-        children["tx-lol"] = tx_lol;
+        _children["tx-lol"] = tx_lol;
     }
 
     if(tx_fault != nullptr)
     {
-        children["tx-fault"] = tx_fault;
+        _children["tx-fault"] = tx_fault;
     }
 
     if(hidgd != nullptr)
     {
-        children["hidgd"] = hidgd;
+        _children["hidgd"] = hidgd;
     }
 
     if(oorcd != nullptr)
     {
-        children["oorcd"] = oorcd;
+        _children["oorcd"] = oorcd;
     }
 
     if(osnr != nullptr)
     {
-        children["osnr"] = osnr;
+        _children["osnr"] = osnr;
     }
 
     if(wvlool != nullptr)
     {
-        children["wvlool"] = wvlool;
+        _children["wvlool"] = wvlool;
     }
 
     if(mea != nullptr)
     {
-        children["mea"] = mea;
+        _children["mea"] = mea;
     }
 
     if(imp_removal != nullptr)
     {
-        children["imp-removal"] = imp_removal;
+        _children["imp-removal"] = imp_removal;
     }
 
     if(rx_loc != nullptr)
     {
-        children["rx-loc"] = rx_loc;
+        _children["rx-loc"] = rx_loc;
     }
 
     if(amp_gain_deg_low != nullptr)
     {
-        children["amp-gain-deg-low"] = amp_gain_deg_low;
+        _children["amp-gain-deg-low"] = amp_gain_deg_low;
     }
 
     if(amp_gain_deg_high != nullptr)
     {
-        children["amp-gain-deg-high"] = amp_gain_deg_high;
+        _children["amp-gain-deg-high"] = amp_gain_deg_high;
     }
 
     if(txpwr_mismatch != nullptr)
     {
-        children["txpwr-mismatch"] = txpwr_mismatch;
+        _children["txpwr-mismatch"] = txpwr_mismatch;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4105,16 +4105,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4197,16 +4197,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4289,16 +4289,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4381,16 +4381,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4473,16 +4473,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4565,16 +4565,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4657,16 +4657,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperature::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperature::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4749,16 +4749,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4841,16 +4841,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4933,16 +4933,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5025,16 +5025,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5117,16 +5117,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5209,16 +5209,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5301,16 +5301,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5393,16 +5393,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5485,16 +5485,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5577,16 +5577,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5669,16 +5669,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5761,16 +5761,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5853,16 +5853,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5945,16 +5945,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6037,16 +6037,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6129,16 +6129,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6221,16 +6221,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6313,16 +6313,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6405,16 +6405,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6497,16 +6497,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6589,16 +6589,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6681,16 +6681,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6773,16 +6773,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6865,16 +6865,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6957,16 +6957,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7049,16 +7049,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7141,16 +7141,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7233,16 +7233,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7325,16 +7325,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7417,16 +7417,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7509,16 +7509,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7601,16 +7601,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7693,16 +7693,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7785,16 +7785,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7877,16 +7877,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7969,16 +7969,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8061,16 +8061,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8153,16 +8153,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8245,16 +8245,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8337,16 +8337,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8429,16 +8429,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8561,7 +8561,7 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "low-tx-power")
     {
@@ -8674,71 +8674,71 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlar
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(low_tx_power != nullptr)
     {
-        children["low-tx-power"] = low_tx_power;
+        _children["low-tx-power"] = low_tx_power;
     }
 
     if(low_rx_power != nullptr)
     {
-        children["low-rx-power"] = low_rx_power;
+        _children["low-rx-power"] = low_rx_power;
     }
 
     if(rx_los_p != nullptr)
     {
-        children["rx-los-p"] = rx_los_p;
+        _children["rx-los-p"] = rx_los_p;
     }
 
     if(rx_loc != nullptr)
     {
-        children["rx-loc"] = rx_loc;
+        _children["rx-loc"] = rx_loc;
     }
 
     if(amp_gain_deg_low != nullptr)
     {
-        children["amp-gain-deg-low"] = amp_gain_deg_low;
+        _children["amp-gain-deg-low"] = amp_gain_deg_low;
     }
 
     if(amp_gain_deg_high != nullptr)
     {
-        children["amp-gain-deg-high"] = amp_gain_deg_high;
+        _children["amp-gain-deg-high"] = amp_gain_deg_high;
     }
 
     if(auto_laser_shut != nullptr)
     {
-        children["auto-laser-shut"] = auto_laser_shut;
+        _children["auto-laser-shut"] = auto_laser_shut;
     }
 
     if(auto_power_red != nullptr)
     {
-        children["auto-power-red"] = auto_power_red;
+        _children["auto-power-red"] = auto_power_red;
     }
 
     if(auto_ampli_ctrl_disabled != nullptr)
     {
-        children["auto-ampli-ctrl-disabled"] = auto_ampli_ctrl_disabled;
+        _children["auto-ampli-ctrl-disabled"] = auto_ampli_ctrl_disabled;
     }
 
     if(auto_ampli_ctrl_config_mismatch != nullptr)
     {
-        children["auto-ampli-ctrl-config-mismatch"] = auto_ampli_ctrl_config_mismatch;
+        _children["auto-ampli-ctrl-config-mismatch"] = auto_ampli_ctrl_config_mismatch;
     }
 
     if(switch_to_protect != nullptr)
     {
-        children["switch-to-protect"] = switch_to_protect;
+        _children["switch-to-protect"] = switch_to_protect;
     }
 
     if(auto_ampli_ctrl_running != nullptr)
     {
-        children["auto-ampli-ctrl-running"] = auto_ampli_ctrl_running;
+        _children["auto-ampli-ctrl-running"] = auto_ampli_ctrl_running;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8801,16 +8801,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8893,16 +8893,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8985,16 +8985,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9077,16 +9077,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9169,16 +9169,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9261,16 +9261,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9353,16 +9353,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9445,16 +9445,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9537,16 +9537,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9629,16 +9629,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9721,16 +9721,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9813,16 +9813,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9961,16 +9961,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10273,16 +10273,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10813,16 +10813,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11637,7 +11637,7 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lo-snr")
     {
@@ -11912,161 +11912,161 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::Extende
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lo_snr != nullptr)
     {
-        children["lo-snr"] = lo_snr;
+        _children["lo-snr"] = lo_snr;
     }
 
     if(hi_snr1 != nullptr)
     {
-        children["hi-snr1"] = hi_snr1;
+        _children["hi-snr1"] = hi_snr1;
     }
 
     if(lo_snr1 != nullptr)
     {
-        children["lo-snr1"] = lo_snr1;
+        _children["lo-snr1"] = lo_snr1;
     }
 
     if(hi_snr2 != nullptr)
     {
-        children["hi-snr2"] = hi_snr2;
+        _children["hi-snr2"] = hi_snr2;
     }
 
     if(lo_isi1 != nullptr)
     {
-        children["lo-isi1"] = lo_isi1;
+        _children["lo-isi1"] = lo_isi1;
     }
 
     if(hi_isi1 != nullptr)
     {
-        children["hi-isi1"] = hi_isi1;
+        _children["hi-isi1"] = hi_isi1;
     }
 
     if(lo_isi2 != nullptr)
     {
-        children["lo-isi2"] = lo_isi2;
+        _children["lo-isi2"] = lo_isi2;
     }
 
     if(hi_isi2 != nullptr)
     {
-        children["hi-isi2"] = hi_isi2;
+        _children["hi-isi2"] = hi_isi2;
     }
 
     if(lo_pam1 != nullptr)
     {
-        children["lo-pam1"] = lo_pam1;
+        _children["lo-pam1"] = lo_pam1;
     }
 
     if(hi_pam1 != nullptr)
     {
-        children["hi-pam1"] = hi_pam1;
+        _children["hi-pam1"] = hi_pam1;
     }
 
     if(lo_pam2 != nullptr)
     {
-        children["lo-pam2"] = lo_pam2;
+        _children["lo-pam2"] = lo_pam2;
     }
 
     if(hi_pam2 != nullptr)
     {
-        children["hi-pam2"] = hi_pam2;
+        _children["hi-pam2"] = hi_pam2;
     }
 
     if(lo_tec1 != nullptr)
     {
-        children["lo-tec1"] = lo_tec1;
+        _children["lo-tec1"] = lo_tec1;
     }
 
     if(hi_tec1 != nullptr)
     {
-        children["hi-tec1"] = hi_tec1;
+        _children["hi-tec1"] = hi_tec1;
     }
 
     if(lo_tec2 != nullptr)
     {
-        children["lo-tec2"] = lo_tec2;
+        _children["lo-tec2"] = lo_tec2;
     }
 
     if(hi_tec2 != nullptr)
     {
-        children["hi-tec2"] = hi_tec2;
+        _children["hi-tec2"] = hi_tec2;
     }
 
     if(lo_laser_freq1 != nullptr)
     {
-        children["lo-laser-freq1"] = lo_laser_freq1;
+        _children["lo-laser-freq1"] = lo_laser_freq1;
     }
 
     if(hi_laser_freq1 != nullptr)
     {
-        children["hi-laser-freq1"] = hi_laser_freq1;
+        _children["hi-laser-freq1"] = hi_laser_freq1;
     }
 
     if(lo_laser_freq2 != nullptr)
     {
-        children["lo-laser-freq2"] = lo_laser_freq2;
+        _children["lo-laser-freq2"] = lo_laser_freq2;
     }
 
     if(hi_laser_freq2 != nullptr)
     {
-        children["hi-laser-freq2"] = hi_laser_freq2;
+        _children["hi-laser-freq2"] = hi_laser_freq2;
     }
 
     if(hi_pre_fecber_cur_acc != nullptr)
     {
-        children["hi-pre-fecber-cur-acc"] = hi_pre_fecber_cur_acc;
+        _children["hi-pre-fecber-cur-acc"] = hi_pre_fecber_cur_acc;
     }
 
     if(hi_pre_fecber_min != nullptr)
     {
-        children["hi-pre-fecber-min"] = hi_pre_fecber_min;
+        _children["hi-pre-fecber-min"] = hi_pre_fecber_min;
     }
 
     if(hi_pre_fecber_max != nullptr)
     {
-        children["hi-pre-fecber-max"] = hi_pre_fecber_max;
+        _children["hi-pre-fecber-max"] = hi_pre_fecber_max;
     }
 
     if(hi_pre_fecber_prior_acc != nullptr)
     {
-        children["hi-pre-fecber-prior-acc"] = hi_pre_fecber_prior_acc;
+        _children["hi-pre-fecber-prior-acc"] = hi_pre_fecber_prior_acc;
     }
 
     if(hi_pre_fecber_cur != nullptr)
     {
-        children["hi-pre-fecber-cur"] = hi_pre_fecber_cur;
+        _children["hi-pre-fecber-cur"] = hi_pre_fecber_cur;
     }
 
     if(hi_uncorrected_ber_cur_acc != nullptr)
     {
-        children["hi-uncorrected-ber-cur-acc"] = hi_uncorrected_ber_cur_acc;
+        _children["hi-uncorrected-ber-cur-acc"] = hi_uncorrected_ber_cur_acc;
     }
 
     if(hi_uncorrected_ber_min != nullptr)
     {
-        children["hi-uncorrected-ber-min"] = hi_uncorrected_ber_min;
+        _children["hi-uncorrected-ber-min"] = hi_uncorrected_ber_min;
     }
 
     if(hi_uncorrected_ber_max != nullptr)
     {
-        children["hi-uncorrected-ber-max"] = hi_uncorrected_ber_max;
+        _children["hi-uncorrected-ber-max"] = hi_uncorrected_ber_max;
     }
 
     if(hi_uncorrected_ber_prior_acc != nullptr)
     {
-        children["hi-uncorrected-ber-prior-acc"] = hi_uncorrected_ber_prior_acc;
+        _children["hi-uncorrected-ber-prior-acc"] = hi_uncorrected_ber_prior_acc;
     }
 
     if(hi_uncorrected_ber_cur != nullptr)
     {
-        children["hi-uncorrected-ber-cur"] = hi_uncorrected_ber_cur;
+        _children["hi-uncorrected-ber-cur"] = hi_uncorrected_ber_cur;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12129,16 +12129,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12221,16 +12221,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12313,16 +12313,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12405,16 +12405,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12497,16 +12497,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12589,16 +12589,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12681,16 +12681,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12773,16 +12773,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12865,16 +12865,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12957,16 +12957,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13049,16 +13049,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13141,16 +13141,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13233,16 +13233,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13325,16 +13325,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13417,16 +13417,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13509,16 +13509,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13601,16 +13601,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13693,16 +13693,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13785,16 +13785,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13877,16 +13877,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13969,16 +13969,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCurAcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCurAcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCurAcc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCurAcc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCurAcc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14061,16 +14061,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMin::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMin::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14153,16 +14153,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMax::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMax::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMax::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMax::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMax::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14245,16 +14245,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberPriorAcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberPriorAcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberPriorAcc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberPriorAcc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberPriorAcc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14337,16 +14337,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCur::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCur::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCur::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCur::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCur::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14429,16 +14429,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCurAcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCurAcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCurAcc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCurAcc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCurAcc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14521,16 +14521,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMin::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMin::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14613,16 +14613,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMax::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMax::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMax::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMax::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMax::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14705,16 +14705,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerPriorAcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerPriorAcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerPriorAcc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerPriorAcc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerPriorAcc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14797,16 +14797,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14893,16 +14893,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::AinsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::AinsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::AinsInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::AinsInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::AinsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15028,7 +15028,7 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lane-alarm-info")
     {
@@ -15042,16 +15042,16 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneDat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lane_alarm_info != nullptr)
     {
-        children["lane-alarm-info"] = lane_alarm_info;
+        _children["lane-alarm-info"] = lane_alarm_info;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15216,7 +15216,7 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "high-rx-power")
     {
@@ -15266,36 +15266,36 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneDat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(high_rx_power != nullptr)
     {
-        children["high-rx-power"] = high_rx_power;
+        _children["high-rx-power"] = high_rx_power;
     }
 
     if(low_rx_power != nullptr)
     {
-        children["low-rx-power"] = low_rx_power;
+        _children["low-rx-power"] = low_rx_power;
     }
 
     if(high_tx_power != nullptr)
     {
-        children["high-tx-power"] = high_tx_power;
+        _children["high-tx-power"] = high_tx_power;
     }
 
     if(low_tx_power != nullptr)
     {
-        children["low-tx-power"] = low_tx_power;
+        _children["low-tx-power"] = low_tx_power;
     }
 
     if(high_lbc != nullptr)
     {
-        children["high-lbc"] = high_lbc;
+        _children["high-lbc"] = high_lbc;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15358,16 +15358,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15450,16 +15450,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15542,16 +15542,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15634,16 +15634,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15726,16 +15726,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15822,33 +15822,33 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optics-lane")
     {
-        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane>();
-        c->parent = this;
-        optics_lane.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane>();
+        ent_->parent = this;
+        optics_lane.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : optics_lane.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : optics_lane.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15949,7 +15949,7 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lane-alarm-info")
     {
@@ -15963,16 +15963,16 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::Optics
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lane_alarm_info != nullptr)
     {
-        children["lane-alarm-info"] = lane_alarm_info;
+        _children["lane-alarm-info"] = lane_alarm_info;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16147,7 +16147,7 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "high-rx-power")
     {
@@ -16197,36 +16197,36 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::Optics
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(high_rx_power != nullptr)
     {
-        children["high-rx-power"] = high_rx_power;
+        _children["high-rx-power"] = high_rx_power;
     }
 
     if(low_rx_power != nullptr)
     {
-        children["low-rx-power"] = low_rx_power;
+        _children["low-rx-power"] = low_rx_power;
     }
 
     if(high_tx_power != nullptr)
     {
-        children["high-tx-power"] = high_tx_power;
+        _children["high-tx-power"] = high_tx_power;
     }
 
     if(low_tx_power != nullptr)
     {
-        children["low-tx-power"] = low_tx_power;
+        _children["low-tx-power"] = low_tx_power;
     }
 
     if(high_lbc != nullptr)
     {
-        children["high-lbc"] = high_lbc;
+        _children["high-lbc"] = high_lbc;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16289,16 +16289,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16381,16 +16381,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16473,16 +16473,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16565,16 +16565,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16657,16 +16657,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16754,7 +16754,7 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-srlg-info")
     {
@@ -16768,16 +16768,16 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network_srlg_info != nullptr)
     {
-        children["network-srlg-info"] = network_srlg_info;
+        _children["network-srlg-info"] = network_srlg_info;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16864,33 +16864,33 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-srlg-array")
     {
-        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray>();
-        c->parent = this;
-        network_srlg_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray>();
+        ent_->parent = this;
+        network_srlg_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : network_srlg_array.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : network_srlg_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16963,16 +16963,16 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -80,7 +80,7 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsTeScalars")
     {
@@ -157,51 +157,51 @@ std::shared_ptr<Entity> MPLSTESTDMIB::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mplstescalars != nullptr)
     {
-        children["mplsTeScalars"] = mplstescalars;
+        _children["mplsTeScalars"] = mplstescalars;
     }
 
     if(mplsteobjects != nullptr)
     {
-        children["mplsTeObjects"] = mplsteobjects;
+        _children["mplsTeObjects"] = mplsteobjects;
     }
 
     if(mplstunneltable != nullptr)
     {
-        children["mplsTunnelTable"] = mplstunneltable;
+        _children["mplsTunnelTable"] = mplstunneltable;
     }
 
     if(mplstunnelhoptable != nullptr)
     {
-        children["mplsTunnelHopTable"] = mplstunnelhoptable;
+        _children["mplsTunnelHopTable"] = mplstunnelhoptable;
     }
 
     if(mplstunnelresourcetable != nullptr)
     {
-        children["mplsTunnelResourceTable"] = mplstunnelresourcetable;
+        _children["mplsTunnelResourceTable"] = mplstunnelresourcetable;
     }
 
     if(mplstunnelarhoptable != nullptr)
     {
-        children["mplsTunnelARHopTable"] = mplstunnelarhoptable;
+        _children["mplsTunnelARHopTable"] = mplstunnelarhoptable;
     }
 
     if(mplstunnelchoptable != nullptr)
     {
-        children["mplsTunnelCHopTable"] = mplstunnelchoptable;
+        _children["mplsTunnelCHopTable"] = mplstunnelchoptable;
     }
 
     if(mplstunnelcrldprestable != nullptr)
     {
-        children["mplsTunnelCRLDPResTable"] = mplstunnelcrldprestable;
+        _children["mplsTunnelCRLDPResTable"] = mplstunnelcrldprestable;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSTESTDMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -212,7 +212,7 @@ void MPLSTESTDMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::clone_ptr() const
 {
     return std::make_shared<MPLSTESTDMIB>();
 }
@@ -308,16 +308,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTeScalars::get_
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTeScalars::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTeScalars::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTeScalars::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTeScalars::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTeScalars::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -443,16 +443,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTeObjects::get_
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTeObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTeObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTeObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTeObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTeObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -566,33 +566,33 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelTable::ge
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTunnelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsTunnelEntry")
     {
-        auto c = std::make_shared<MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry>();
-        c->parent = this;
-        mplstunnelentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry>();
+        ent_->parent = this;
+        mplstunnelentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTunnelTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mplstunnelentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mplstunnelentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTunnelTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -826,16 +826,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelTable::Mp
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1327,33 +1327,33 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelHopTable:
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTunnelHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsTunnelHopEntry")
     {
-        auto c = std::make_shared<MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry>();
-        c->parent = this;
-        mplstunnelhopentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry>();
+        ent_->parent = this;
+        mplstunnelhopentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelHopTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTunnelHopTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mplstunnelhopentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mplstunnelhopentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTunnelHopTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1478,16 +1478,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelHopTable:
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTunnelHopTable::MplsTunnelHopEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1711,33 +1711,33 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelResourceT
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelResourceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTunnelResourceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsTunnelResourceEntry")
     {
-        auto c = std::make_shared<MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry>();
-        c->parent = this;
-        mplstunnelresourceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry>();
+        ent_->parent = this;
+        mplstunnelresourceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelResourceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTunnelResourceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mplstunnelresourceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mplstunnelresourceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTunnelResourceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1840,16 +1840,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelResourceT
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTunnelResourceTable::MplsTunnelResourceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2023,33 +2023,33 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelARHopTabl
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelARHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTunnelARHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsTunnelARHopEntry")
     {
-        auto c = std::make_shared<MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry>();
-        c->parent = this;
-        mplstunnelarhopentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry>();
+        ent_->parent = this;
+        mplstunnelarhopentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelARHopTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTunnelARHopTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mplstunnelarhopentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mplstunnelarhopentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTunnelARHopTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2137,16 +2137,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelARHopTabl
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTunnelARHopTable::MplsTunnelARHopEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2280,33 +2280,33 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelCHopTable
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelCHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTunnelCHopTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsTunnelCHopEntry")
     {
-        auto c = std::make_shared<MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry>();
-        c->parent = this;
-        mplstunnelchopentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry>();
+        ent_->parent = this;
+        mplstunnelchopentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelCHopTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTunnelCHopTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mplstunnelchopentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mplstunnelchopentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTunnelCHopTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2406,16 +2406,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelCHopTable
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTunnelCHopTable::MplsTunnelCHopEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2579,33 +2579,33 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelCRLDPResT
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelCRLDPResTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTunnelCRLDPResTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsTunnelCRLDPResEntry")
     {
-        auto c = std::make_shared<MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry>();
-        c->parent = this;
-        mplstunnelcrldpresentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry>();
+        ent_->parent = this;
+        mplstunnelcrldpresentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelCRLDPResTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTunnelCRLDPResTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mplstunnelcrldpresentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mplstunnelcrldpresentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTunnelCRLDPResTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2700,16 +2700,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSTESTDMIB::MplsTunnelCRLDPResT
 
 }
 
-std::shared_ptr<Entity> MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSTESTDMIB::MplsTunnelCRLDPResTable::MplsTunnelCRLDPResEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

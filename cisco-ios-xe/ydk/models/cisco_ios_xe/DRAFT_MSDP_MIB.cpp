@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DRAFTMSDPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msdp")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DRAFTMSDPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(msdp != nullptr)
     {
-        children["msdp"] = msdp;
+        _children["msdp"] = msdp;
     }
 
     if(msdprequeststable != nullptr)
     {
-        children["msdpRequestsTable"] = msdprequeststable;
+        _children["msdpRequestsTable"] = msdprequeststable;
     }
 
     if(msdppeertable != nullptr)
     {
-        children["msdpPeerTable"] = msdppeertable;
+        _children["msdpPeerTable"] = msdppeertable;
     }
 
     if(msdpsacachetable != nullptr)
     {
-        children["msdpSACacheTable"] = msdpsacachetable;
+        _children["msdpSACacheTable"] = msdpsacachetable;
     }
 
-    return children;
+    return _children;
 }
 
 void DRAFTMSDPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void DRAFTMSDPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> DRAFTMSDPMIB::clone_ptr() const
 {
     return std::make_shared<DRAFTMSDPMIB>();
 }
@@ -232,16 +232,16 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdp::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::Msdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DRAFTMSDPMIB::Msdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DRAFTMSDPMIB::Msdp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DRAFTMSDPMIB::Msdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -355,33 +355,33 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::MsdpRequestsTable::
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::MsdpRequestsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DRAFTMSDPMIB::MsdpRequestsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msdpRequestsEntry")
     {
-        auto c = std::make_shared<DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry>();
-        c->parent = this;
-        msdprequestsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry>();
+        ent_->parent = this;
+        msdprequestsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::MsdpRequestsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DRAFTMSDPMIB::MsdpRequestsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : msdprequestsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : msdprequestsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DRAFTMSDPMIB::MsdpRequestsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -461,16 +461,16 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::MsdpRequestsTable::
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -584,33 +584,33 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::MsdpPeerTable::get_
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::MsdpPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DRAFTMSDPMIB::MsdpPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msdpPeerEntry")
     {
-        auto c = std::make_shared<DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry>();
-        c->parent = this;
-        msdppeerentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry>();
+        ent_->parent = this;
+        msdppeerentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::MsdpPeerTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DRAFTMSDPMIB::MsdpPeerTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : msdppeerentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : msdppeerentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DRAFTMSDPMIB::MsdpPeerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -801,16 +801,16 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::MsdpPeerTable::Msdp
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1204,33 +1204,33 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::MsdpSACacheTable::g
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::MsdpSACacheTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DRAFTMSDPMIB::MsdpSACacheTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msdpSACacheEntry")
     {
-        auto c = std::make_shared<DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry>();
-        c->parent = this;
-        msdpsacacheentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry>();
+        ent_->parent = this;
+        msdpsacacheentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::MsdpSACacheTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DRAFTMSDPMIB::MsdpSACacheTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : msdpsacacheentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : msdpsacacheentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DRAFTMSDPMIB::MsdpSACacheTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1335,16 +1335,16 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::MsdpSACacheTable::M
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

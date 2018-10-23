@@ -112,7 +112,7 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "system")
     {
@@ -261,91 +261,91 @@ std::shared_ptr<Entity> RFC1213MIB::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(system != nullptr)
     {
-        children["system"] = system;
+        _children["system"] = system;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
     if(icmp != nullptr)
     {
-        children["icmp"] = icmp;
+        _children["icmp"] = icmp;
     }
 
     if(tcp != nullptr)
     {
-        children["tcp"] = tcp;
+        _children["tcp"] = tcp;
     }
 
     if(udp != nullptr)
     {
-        children["udp"] = udp;
+        _children["udp"] = udp;
     }
 
     if(egp != nullptr)
     {
-        children["egp"] = egp;
+        _children["egp"] = egp;
     }
 
     if(snmp != nullptr)
     {
-        children["snmp"] = snmp;
+        _children["snmp"] = snmp;
     }
 
     if(iftable != nullptr)
     {
-        children["ifTable"] = iftable;
+        _children["ifTable"] = iftable;
     }
 
     if(attable != nullptr)
     {
-        children["atTable"] = attable;
+        _children["atTable"] = attable;
     }
 
     if(ipaddrtable != nullptr)
     {
-        children["ipAddrTable"] = ipaddrtable;
+        _children["ipAddrTable"] = ipaddrtable;
     }
 
     if(iproutetable != nullptr)
     {
-        children["ipRouteTable"] = iproutetable;
+        _children["ipRouteTable"] = iproutetable;
     }
 
     if(ipnettomediatable != nullptr)
     {
-        children["ipNetToMediaTable"] = ipnettomediatable;
+        _children["ipNetToMediaTable"] = ipnettomediatable;
     }
 
     if(tcpconntable != nullptr)
     {
-        children["tcpConnTable"] = tcpconntable;
+        _children["tcpConnTable"] = tcpconntable;
     }
 
     if(udptable != nullptr)
     {
-        children["udpTable"] = udptable;
+        _children["udpTable"] = udptable;
     }
 
     if(egpneightable != nullptr)
     {
-        children["egpNeighTable"] = egpneightable;
+        _children["egpNeighTable"] = egpneightable;
     }
 
-    return children;
+    return _children;
 }
 
 void RFC1213MIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -356,7 +356,7 @@ void RFC1213MIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> RFC1213MIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> RFC1213MIB::clone_ptr() const
 {
     return std::make_shared<RFC1213MIB>();
 }
@@ -460,16 +460,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::System::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::System::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::System::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::System::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::System::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -605,16 +605,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Interfaces::get_name_
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -766,16 +766,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Ip::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1141,16 +1141,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Icmp::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::Icmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Icmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::Icmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::Icmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1528,16 +1528,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Tcp::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Tcp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::Tcp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1755,16 +1755,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Udp::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::Udp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Udp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::Udp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1886,16 +1886,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Egp::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Egp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::Egp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Egp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::Egp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::Egp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2119,16 +2119,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::Snmp::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Snmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::Snmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2482,33 +2482,33 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IfTable::get_name_lea
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::IfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::IfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ifEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::IfTable::IfEntry>();
-        c->parent = this;
-        ifentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RFC1213MIB::IfTable::IfEntry>();
+        ent_->parent = this;
+        ifentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::IfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ifentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ifentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RFC1213MIB::IfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2659,16 +2659,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IfTable::IfEntry::get
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::IfTable::IfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::IfTable::IfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IfTable::IfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::IfTable::IfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::IfTable::IfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2962,33 +2962,33 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::AtTable::get_name_lea
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::AtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::AtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::AtTable::AtEntry>();
-        c->parent = this;
-        atentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RFC1213MIB::AtTable::AtEntry>();
+        ent_->parent = this;
+        atentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::AtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::AtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : atentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : atentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RFC1213MIB::AtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3069,16 +3069,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::AtTable::AtEntry::get
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::AtTable::AtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::AtTable::AtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::AtTable::AtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::AtTable::AtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::AtTable::AtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3192,33 +3192,33 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IpAddrTable::get_name
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::IpAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::IpAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipAddrEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::IpAddrTable::IpAddrEntry>();
-        c->parent = this;
-        ipaddrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RFC1213MIB::IpAddrTable::IpAddrEntry>();
+        ent_->parent = this;
+        ipaddrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IpAddrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::IpAddrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipaddrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipaddrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RFC1213MIB::IpAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3301,16 +3301,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IpAddrTable::IpAddrEn
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::IpAddrTable::IpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::IpAddrTable::IpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IpAddrTable::IpAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::IpAddrTable::IpAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::IpAddrTable::IpAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3434,33 +3434,33 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IpRouteTable::get_nam
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::IpRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::IpRouteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipRouteEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::IpRouteTable::IpRouteEntry>();
-        c->parent = this;
-        iprouteentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RFC1213MIB::IpRouteTable::IpRouteEntry>();
+        ent_->parent = this;
+        iprouteentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IpRouteTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::IpRouteTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : iprouteentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : iprouteentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RFC1213MIB::IpRouteTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3575,16 +3575,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IpRouteTable::IpRoute
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::IpRouteTable::IpRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::IpRouteTable::IpRouteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IpRouteTable::IpRouteEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::IpRouteTable::IpRouteEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::IpRouteTable::IpRouteEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3788,33 +3788,33 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IpNetToMediaTable::ge
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::IpNetToMediaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::IpNetToMediaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipNetToMediaEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry>();
-        c->parent = this;
-        ipnettomediaentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry>();
+        ent_->parent = this;
+        ipnettomediaentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IpNetToMediaTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::IpNetToMediaTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipnettomediaentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipnettomediaentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RFC1213MIB::IpNetToMediaTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3894,16 +3894,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::IpNetToMediaTable::Ip
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::IpNetToMediaTable::IpNetToMediaEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4017,33 +4017,33 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::TcpConnTable::get_nam
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::TcpConnTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::TcpConnTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcpConnEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::TcpConnTable::TcpConnEntry>();
-        c->parent = this;
-        tcpconnentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RFC1213MIB::TcpConnTable::TcpConnEntry>();
+        ent_->parent = this;
+        tcpconnentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::TcpConnTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::TcpConnTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tcpconnentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tcpconnentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RFC1213MIB::TcpConnTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4129,16 +4129,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::TcpConnTable::TcpConn
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::TcpConnTable::TcpConnEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::TcpConnTable::TcpConnEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::TcpConnTable::TcpConnEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::TcpConnTable::TcpConnEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::TcpConnTable::TcpConnEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4262,33 +4262,33 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::UdpTable::get_name_le
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::UdpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::UdpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "udpEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::UdpTable::UdpEntry>();
-        c->parent = this;
-        udpentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RFC1213MIB::UdpTable::UdpEntry>();
+        ent_->parent = this;
+        udpentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::UdpTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::UdpTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : udpentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : udpentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RFC1213MIB::UdpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4360,16 +4360,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::UdpTable::UdpEntry::g
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::UdpTable::UdpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::UdpTable::UdpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::UdpTable::UdpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::UdpTable::UdpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::UdpTable::UdpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4463,33 +4463,33 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::EgpNeighTable::get_na
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::EgpNeighTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::EgpNeighTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "egpNeighEntry")
     {
-        auto c = std::make_shared<RFC1213MIB::EgpNeighTable::EgpNeighEntry>();
-        c->parent = this;
-        egpneighentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<RFC1213MIB::EgpNeighTable::EgpNeighEntry>();
+        ent_->parent = this;
+        egpneighentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::EgpNeighTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::EgpNeighTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : egpneighentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : egpneighentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RFC1213MIB::EgpNeighTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4612,16 +4612,16 @@ std::vector<std::pair<std::string, LeafData> > RFC1213MIB::EgpNeighTable::EgpNei
 
 }
 
-std::shared_ptr<Entity> RFC1213MIB::EgpNeighTable::EgpNeighEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RFC1213MIB::EgpNeighTable::EgpNeighEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::EgpNeighTable::EgpNeighEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RFC1213MIB::EgpNeighTable::EgpNeighEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RFC1213MIB::EgpNeighTable::EgpNeighEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

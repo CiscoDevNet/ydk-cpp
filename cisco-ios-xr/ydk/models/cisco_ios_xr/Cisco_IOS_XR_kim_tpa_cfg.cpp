@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > Tpa::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Tpa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf-names")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> Tpa::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrf_names != nullptr)
     {
-        children["vrf-names"] = vrf_names;
+        _children["vrf-names"] = vrf_names;
     }
 
     if(logging != nullptr)
     {
-        children["logging"] = logging;
+        _children["logging"] = logging;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Tpa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void Tpa::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Tpa::clone_ptr() const
+std::shared_ptr<ydk::Entity> Tpa::clone_ptr() const
 {
     return std::make_shared<Tpa>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Tpa::VrfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::VrfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf-name")
     {
-        auto c = std::make_shared<Tpa::VrfNames::VrfName>();
-        c->parent = this;
-        vrf_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Tpa::VrfNames::VrfName>();
+        ent_->parent = this;
+        vrf_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::VrfNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Tpa::VrfNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -316,7 +316,7 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::get_name_
 
 }
 
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::VrfNames::VrfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "east-west-names")
     {
@@ -339,21 +339,21 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::VrfNames::VrfName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(east_west_names != nullptr)
     {
-        children["east-west-names"] = east_west_names;
+        _children["east-west-names"] = east_west_names;
     }
 
     if(address_family != nullptr)
     {
-        children["address-family"] = address_family;
+        _children["address-family"] = address_family;
     }
 
-    return children;
+    return _children;
 }
 
 void Tpa::VrfNames::VrfName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -440,33 +440,33 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::EastWestN
 
 }
 
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::EastWestNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::VrfNames::VrfName::EastWestNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "east-west-name")
     {
-        auto c = std::make_shared<Tpa::VrfNames::VrfName::EastWestNames::EastWestName>();
-        c->parent = this;
-        east_west_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Tpa::VrfNames::VrfName::EastWestNames::EastWestName>();
+        ent_->parent = this;
+        east_west_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::EastWestNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::VrfNames::VrfName::EastWestNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : east_west_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : east_west_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Tpa::VrfNames::VrfName::EastWestNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -534,16 +534,16 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::EastWestN
 
 }
 
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::EastWestNames::EastWestName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::VrfNames::VrfName::EastWestNames::EastWestName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::EastWestNames::EastWestName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::VrfNames::VrfName::EastWestNames::EastWestName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tpa::VrfNames::VrfName::EastWestNames::EastWestName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -636,7 +636,7 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFa
 
 }
 
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::VrfNames::VrfName::AddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6")
     {
@@ -659,21 +659,21 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::VrfNames::VrfName::AddressFamily::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
-    return children;
+    return _children;
 }
 
 void Tpa::VrfNames::VrfName::AddressFamily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -741,7 +741,7 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFa
 
 }
 
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-names")
     {
@@ -764,21 +764,21 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_names != nullptr)
     {
-        children["interface-names"] = interface_names;
+        _children["interface-names"] = interface_names;
     }
 
     if(update_source != nullptr)
     {
-        children["update-source"] = update_source;
+        _children["update-source"] = update_source;
     }
 
-    return children;
+    return _children;
 }
 
 void Tpa::VrfNames::VrfName::AddressFamily::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -855,33 +855,33 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFa
 
 }
 
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-name")
     {
-        auto c = std::make_shared<Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::InterfaceName>();
-        c->parent = this;
-        interface_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::InterfaceName>();
+        ent_->parent = this;
+        interface_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -945,16 +945,16 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFa
 
 }
 
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::InterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::InterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::InterfaceName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::InterfaceName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::InterfaceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1037,16 +1037,16 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFa
 
 }
 
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::UpdateSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::UpdateSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::UpdateSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv6::UpdateSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tpa::VrfNames::VrfName::AddressFamily::Ipv6::UpdateSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1134,7 +1134,7 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFa
 
 }
 
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-names")
     {
@@ -1157,21 +1157,21 @@ std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_names != nullptr)
     {
-        children["interface-names"] = interface_names;
+        _children["interface-names"] = interface_names;
     }
 
     if(update_source != nullptr)
     {
-        children["update-source"] = update_source;
+        _children["update-source"] = update_source;
     }
 
-    return children;
+    return _children;
 }
 
 void Tpa::VrfNames::VrfName::AddressFamily::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1248,33 +1248,33 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFa
 
 }
 
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-name")
     {
-        auto c = std::make_shared<Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::InterfaceName>();
-        c->parent = this;
-        interface_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::InterfaceName>();
+        ent_->parent = this;
+        interface_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1338,16 +1338,16 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFa
 
 }
 
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::InterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::InterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::InterfaceName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::InterfaceName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::InterfaceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1430,16 +1430,16 @@ std::vector<std::pair<std::string, LeafData> > Tpa::VrfNames::VrfName::AddressFa
 
 }
 
-std::shared_ptr<Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::UpdateSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::UpdateSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::UpdateSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::VrfNames::VrfName::AddressFamily::Ipv4::UpdateSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tpa::VrfNames::VrfName::AddressFamily::Ipv4::UpdateSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1525,7 +1525,7 @@ std::vector<std::pair<std::string, LeafData> > Tpa::Logging::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Tpa::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "kim")
     {
@@ -1539,16 +1539,16 @@ std::shared_ptr<Entity> Tpa::Logging::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::Logging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::Logging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(kim != nullptr)
     {
-        children["kim"] = kim;
+        _children["kim"] = kim;
     }
 
-    return children;
+    return _children;
 }
 
 void Tpa::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1618,16 +1618,16 @@ std::vector<std::pair<std::string, LeafData> > Tpa::Logging::Kim::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Tpa::Logging::Kim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::Logging::Kim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::Logging::Kim::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::Logging::Kim::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tpa::Logging::Kim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1721,16 +1721,16 @@ std::vector<std::pair<std::string, LeafData> > Tpa::Statistics::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Tpa::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Tpa::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Tpa::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Tpa::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Tpa::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

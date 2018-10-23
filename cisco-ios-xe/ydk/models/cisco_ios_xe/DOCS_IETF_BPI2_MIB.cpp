@@ -100,7 +100,7 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIetfBpi2CodeDownloadControl")
     {
@@ -222,76 +222,76 @@ std::shared_ptr<Entity> DOCSIETFBPI2MIB::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(docsietfbpi2codedownloadcontrol != nullptr)
     {
-        children["docsIetfBpi2CodeDownloadControl"] = docsietfbpi2codedownloadcontrol;
+        _children["docsIetfBpi2CodeDownloadControl"] = docsietfbpi2codedownloadcontrol;
     }
 
     if(docsietfbpi2cmbasetable != nullptr)
     {
-        children["docsIetfBpi2CmBaseTable"] = docsietfbpi2cmbasetable;
+        _children["docsIetfBpi2CmBaseTable"] = docsietfbpi2cmbasetable;
     }
 
     if(docsietfbpi2cmtektable != nullptr)
     {
-        children["docsIetfBpi2CmTEKTable"] = docsietfbpi2cmtektable;
+        _children["docsIetfBpi2CmTEKTable"] = docsietfbpi2cmtektable;
     }
 
     if(docsietfbpi2cmipmulticastmaptable != nullptr)
     {
-        children["docsIetfBpi2CmIpMulticastMapTable"] = docsietfbpi2cmipmulticastmaptable;
+        _children["docsIetfBpi2CmIpMulticastMapTable"] = docsietfbpi2cmipmulticastmaptable;
     }
 
     if(docsietfbpi2cmdevicecerttable != nullptr)
     {
-        children["docsIetfBpi2CmDeviceCertTable"] = docsietfbpi2cmdevicecerttable;
+        _children["docsIetfBpi2CmDeviceCertTable"] = docsietfbpi2cmdevicecerttable;
     }
 
     if(docsietfbpi2cmcryptosuitetable != nullptr)
     {
-        children["docsIetfBpi2CmCryptoSuiteTable"] = docsietfbpi2cmcryptosuitetable;
+        _children["docsIetfBpi2CmCryptoSuiteTable"] = docsietfbpi2cmcryptosuitetable;
     }
 
     if(docsietfbpi2cmtsbasetable != nullptr)
     {
-        children["docsIetfBpi2CmtsBaseTable"] = docsietfbpi2cmtsbasetable;
+        _children["docsIetfBpi2CmtsBaseTable"] = docsietfbpi2cmtsbasetable;
     }
 
     if(docsietfbpi2cmtsauthtable != nullptr)
     {
-        children["docsIetfBpi2CmtsAuthTable"] = docsietfbpi2cmtsauthtable;
+        _children["docsIetfBpi2CmtsAuthTable"] = docsietfbpi2cmtsauthtable;
     }
 
     if(docsietfbpi2cmtstektable != nullptr)
     {
-        children["docsIetfBpi2CmtsTEKTable"] = docsietfbpi2cmtstektable;
+        _children["docsIetfBpi2CmtsTEKTable"] = docsietfbpi2cmtstektable;
     }
 
     if(docsietfbpi2cmtsipmulticastmaptable != nullptr)
     {
-        children["docsIetfBpi2CmtsIpMulticastMapTable"] = docsietfbpi2cmtsipmulticastmaptable;
+        _children["docsIetfBpi2CmtsIpMulticastMapTable"] = docsietfbpi2cmtsipmulticastmaptable;
     }
 
     if(docsietfbpi2cmtsmulticastauthtable != nullptr)
     {
-        children["docsIetfBpi2CmtsMulticastAuthTable"] = docsietfbpi2cmtsmulticastauthtable;
+        _children["docsIetfBpi2CmtsMulticastAuthTable"] = docsietfbpi2cmtsmulticastauthtable;
     }
 
     if(docsietfbpi2cmtsprovisionedcmcerttable != nullptr)
     {
-        children["docsIetfBpi2CmtsProvisionedCmCertTable"] = docsietfbpi2cmtsprovisionedcmcerttable;
+        _children["docsIetfBpi2CmtsProvisionedCmCertTable"] = docsietfbpi2cmtsprovisionedcmcerttable;
     }
 
     if(docsietfbpi2cmtscacerttable != nullptr)
     {
-        children["docsIetfBpi2CmtsCACertTable"] = docsietfbpi2cmtscacerttable;
+        _children["docsIetfBpi2CmtsCACertTable"] = docsietfbpi2cmtscacerttable;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -302,7 +302,7 @@ void DOCSIETFBPI2MIB::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::clone_ptr() const
 {
     return std::make_shared<DOCSIETFBPI2MIB>();
 }
@@ -414,16 +414,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Code
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CodeDownloadControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CodeDownloadControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CodeDownloadControl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CodeDownloadControl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CodeDownloadControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -587,33 +587,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2CmBa
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIetfBpi2CmBaseEntry")
     {
-        auto c = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::DocsIetfBpi2CmBaseEntry>();
-        c->parent = this;
-        docsietfbpi2cmbaseentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::DocsIetfBpi2CmBaseEntry>();
+        ent_->parent = this;
+        docsietfbpi2cmbaseentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsietfbpi2cmbaseentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsietfbpi2cmbaseentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -780,16 +780,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2CmBa
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::DocsIetfBpi2CmBaseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::DocsIetfBpi2CmBaseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::DocsIetfBpi2CmBaseEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::DocsIetfBpi2CmBaseEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmBaseTable::DocsIetfBpi2CmBaseEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1123,33 +1123,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2CmTE
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIetfBpi2CmTEKEntry")
     {
-        auto c = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::DocsIetfBpi2CmTEKEntry>();
-        c->parent = this;
-        docsietfbpi2cmtekentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::DocsIetfBpi2CmTEKEntry>();
+        ent_->parent = this;
+        docsietfbpi2cmtekentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsietfbpi2cmtekentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsietfbpi2cmtekentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1285,16 +1285,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2CmTE
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::DocsIetfBpi2CmTEKEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::DocsIetfBpi2CmTEKEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::DocsIetfBpi2CmTEKEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::DocsIetfBpi2CmTEKEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmTEKTable::DocsIetfBpi2CmTEKEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1548,33 +1548,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2CmIp
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIetfBpi2CmIpMulticastMapEntry")
     {
-        auto c = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::DocsIetfBpi2CmIpMulticastMapEntry>();
-        c->parent = this;
-        docsietfbpi2cmipmulticastmapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::DocsIetfBpi2CmIpMulticastMapEntry>();
+        ent_->parent = this;
+        docsietfbpi2cmipmulticastmapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsietfbpi2cmipmulticastmapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsietfbpi2cmipmulticastmapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1682,16 +1682,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2CmIp
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::DocsIetfBpi2CmIpMulticastMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::DocsIetfBpi2CmIpMulticastMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::DocsIetfBpi2CmIpMulticastMapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::DocsIetfBpi2CmIpMulticastMapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmIpMulticastMapTable::DocsIetfBpi2CmIpMulticastMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1875,33 +1875,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2CmDe
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmDeviceCertTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmDeviceCertTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIetfBpi2CmDeviceCertEntry")
     {
-        auto c = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmDeviceCertTable::DocsIetfBpi2CmDeviceCertEntry>();
-        c->parent = this;
-        docsietfbpi2cmdevicecertentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmDeviceCertTable::DocsIetfBpi2CmDeviceCertEntry>();
+        ent_->parent = this;
+        docsietfbpi2cmdevicecertentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmDeviceCertTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmDeviceCertTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsietfbpi2cmdevicecertentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsietfbpi2cmdevicecertentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmDeviceCertTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1976,16 +1976,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2CmDe
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmDeviceCertTable::DocsIetfBpi2CmDeviceCertEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmDeviceCertTable::DocsIetfBpi2CmDeviceCertEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmDeviceCertTable::DocsIetfBpi2CmDeviceCertEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmDeviceCertTable::DocsIetfBpi2CmDeviceCertEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmDeviceCertTable::DocsIetfBpi2CmDeviceCertEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2089,33 +2089,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2CmCr
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmCryptoSuiteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmCryptoSuiteTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIetfBpi2CmCryptoSuiteEntry")
     {
-        auto c = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmCryptoSuiteTable::DocsIetfBpi2CmCryptoSuiteEntry>();
-        c->parent = this;
-        docsietfbpi2cmcryptosuiteentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmCryptoSuiteTable::DocsIetfBpi2CmCryptoSuiteEntry>();
+        ent_->parent = this;
+        docsietfbpi2cmcryptosuiteentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmCryptoSuiteTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmCryptoSuiteTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsietfbpi2cmcryptosuiteentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsietfbpi2cmcryptosuiteentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmCryptoSuiteTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2195,16 +2195,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2CmCr
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmCryptoSuiteTable::DocsIetfBpi2CmCryptoSuiteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmCryptoSuiteTable::DocsIetfBpi2CmCryptoSuiteEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmCryptoSuiteTable::DocsIetfBpi2CmCryptoSuiteEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmCryptoSuiteTable::DocsIetfBpi2CmCryptoSuiteEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmCryptoSuiteTable::DocsIetfBpi2CmCryptoSuiteEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2318,33 +2318,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIetfBpi2CmtsBaseEntry")
     {
-        auto c = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::DocsIetfBpi2CmtsBaseEntry>();
-        c->parent = this;
-        docsietfbpi2cmtsbaseentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::DocsIetfBpi2CmtsBaseEntry>();
+        ent_->parent = this;
+        docsietfbpi2cmtsbaseentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsietfbpi2cmtsbaseentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsietfbpi2cmtsbaseentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2459,16 +2459,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::DocsIetfBpi2CmtsBaseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::DocsIetfBpi2CmtsBaseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::DocsIetfBpi2CmtsBaseEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::DocsIetfBpi2CmtsBaseEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsBaseTable::DocsIetfBpi2CmtsBaseEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2672,33 +2672,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIetfBpi2CmtsAuthEntry")
     {
-        auto c = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry>();
-        c->parent = this;
-        docsietfbpi2cmtsauthentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry>();
+        ent_->parent = this;
+        docsietfbpi2cmtsauthentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsietfbpi2cmtsauthentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsietfbpi2cmtsauthentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2850,16 +2850,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsAuthTable::DocsIetfBpi2CmtsAuthEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3153,33 +3153,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIetfBpi2CmtsTEKEntry")
     {
-        auto c = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::DocsIetfBpi2CmtsTEKEntry>();
-        c->parent = this;
-        docsietfbpi2cmtstekentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::DocsIetfBpi2CmtsTEKEntry>();
+        ent_->parent = this;
+        docsietfbpi2cmtstekentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsietfbpi2cmtstekentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsietfbpi2cmtstekentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3315,16 +3315,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::DocsIetfBpi2CmtsTEKEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::DocsIetfBpi2CmtsTEKEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::DocsIetfBpi2CmtsTEKEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::DocsIetfBpi2CmtsTEKEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsTEKTable::DocsIetfBpi2CmtsTEKEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3578,33 +3578,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIetfBpi2CmtsIpMulticastMapEntry")
     {
-        auto c = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::DocsIetfBpi2CmtsIpMulticastMapEntry>();
-        c->parent = this;
-        docsietfbpi2cmtsipmulticastmapentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::DocsIetfBpi2CmtsIpMulticastMapEntry>();
+        ent_->parent = this;
+        docsietfbpi2cmtsipmulticastmapentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsietfbpi2cmtsipmulticastmapentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsietfbpi2cmtsipmulticastmapentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3732,16 +3732,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::DocsIetfBpi2CmtsIpMulticastMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::DocsIetfBpi2CmtsIpMulticastMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::DocsIetfBpi2CmtsIpMulticastMapEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::DocsIetfBpi2CmtsIpMulticastMapEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsIpMulticastMapTable::DocsIetfBpi2CmtsIpMulticastMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3975,33 +3975,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsMulticastAuthTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsMulticastAuthTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIetfBpi2CmtsMulticastAuthEntry")
     {
-        auto c = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsMulticastAuthTable::DocsIetfBpi2CmtsMulticastAuthEntry>();
-        c->parent = this;
-        docsietfbpi2cmtsmulticastauthentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsMulticastAuthTable::DocsIetfBpi2CmtsMulticastAuthEntry>();
+        ent_->parent = this;
+        docsietfbpi2cmtsmulticastauthentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsMulticastAuthTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsMulticastAuthTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsietfbpi2cmtsmulticastauthentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsietfbpi2cmtsmulticastauthentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsMulticastAuthTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4082,16 +4082,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsMulticastAuthTable::DocsIetfBpi2CmtsMulticastAuthEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsMulticastAuthTable::DocsIetfBpi2CmtsMulticastAuthEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsMulticastAuthTable::DocsIetfBpi2CmtsMulticastAuthEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsMulticastAuthTable::DocsIetfBpi2CmtsMulticastAuthEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsMulticastAuthTable::DocsIetfBpi2CmtsMulticastAuthEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4205,33 +4205,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIetfBpi2CmtsProvisionedCmCertEntry")
     {
-        auto c = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::DocsIetfBpi2CmtsProvisionedCmCertEntry>();
-        c->parent = this;
-        docsietfbpi2cmtsprovisionedcmcertentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::DocsIetfBpi2CmtsProvisionedCmCertEntry>();
+        ent_->parent = this;
+        docsietfbpi2cmtsprovisionedcmcertentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsietfbpi2cmtsprovisionedcmcertentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsietfbpi2cmtsprovisionedcmcertentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4314,16 +4314,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::DocsIetfBpi2CmtsProvisionedCmCertEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::DocsIetfBpi2CmtsProvisionedCmCertEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::DocsIetfBpi2CmtsProvisionedCmCertEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::DocsIetfBpi2CmtsProvisionedCmCertEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsProvisionedCmCertTable::DocsIetfBpi2CmtsProvisionedCmCertEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4447,33 +4447,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIetfBpi2CmtsCACertEntry")
     {
-        auto c = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry>();
-        c->parent = this;
-        docsietfbpi2cmtscacertentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry>();
+        ent_->parent = this;
+        docsietfbpi2cmtscacertentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsietfbpi2cmtscacertentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsietfbpi2cmtscacertentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4572,16 +4572,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIETFBPI2MIB::DocsIetfBpi2Cmts
 
 }
 
-std::shared_ptr<Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

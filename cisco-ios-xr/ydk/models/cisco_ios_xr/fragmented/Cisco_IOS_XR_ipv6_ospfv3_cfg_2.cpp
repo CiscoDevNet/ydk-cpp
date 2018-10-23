@@ -61,7 +61,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tiebreakers")
     {
@@ -75,16 +75,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerP
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(tiebreakers != nullptr)
     {
-        children["tiebreakers"] = tiebreakers;
+        _children["tiebreakers"] = tiebreakers;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -171,33 +171,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tiebreaker")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker>();
-        c->parent = this;
-        tiebreaker.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker>();
+        ent_->parent = this;
+        tiebreaker.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tiebreaker.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tiebreaker.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -261,16 +261,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -354,7 +354,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Distance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Distance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfv3")
     {
@@ -368,16 +368,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Distance::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Distance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Distance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ospfv3 != nullptr)
     {
-        children["ospfv3"] = ospfv3;
+        _children["ospfv3"] = ospfv3;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Distance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -454,16 +454,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Distance::Ospfv3_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Distance::Ospfv3_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Distance::Ospfv3_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Distance::Ospfv3_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Distance::Ospfv3_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -561,7 +561,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Maximum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "redistributed-prefixes")
     {
@@ -575,16 +575,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Maximum::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Maximum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Maximum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(redistributed_prefixes != nullptr)
     {
-        children["redistributed-prefixes"] = redistributed_prefixes;
+        _children["redistributed-prefixes"] = redistributed_prefixes;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -671,16 +671,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Maximum::RedistributedPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Maximum::RedistributedPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Maximum::RedistributedPrefixes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Maximum::RedistributedPrefixes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Maximum::RedistributedPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -777,33 +777,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "redistribute")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute>();
-        c->parent = this;
-        redistribute.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute>();
+        ent_->parent = this;
+        redistribute.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : redistribute.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : redistribute.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -900,7 +900,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "connected-or-static-or-subscriber-or-mobile")
     {
@@ -913,68 +913,68 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Re
 
     if(child_yang_name == "bgp")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp>();
-        c->parent = this;
-        bgp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp>();
+        ent_->parent = this;
+        bgp.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-or-isis-or-application")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication>();
-        c->parent = this;
-        ospfv3_or_isis_or_application.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication>();
+        ent_->parent = this;
+        ospfv3_or_isis_or_application.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "eigrp")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp>();
-        c->parent = this;
-        eigrp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp>();
+        ent_->parent = this;
+        eigrp.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(connected_or_static_or_subscriber_or_mobile != nullptr)
     {
-        children["connected-or-static-or-subscriber-or-mobile"] = connected_or_static_or_subscriber_or_mobile;
+        _children["connected-or-static-or-subscriber-or-mobile"] = connected_or_static_or_subscriber_or_mobile;
     }
 
-    count = 0;
-    for (auto c : bgp.entities())
+    count_ = 0;
+    for (auto ent_ : bgp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv3_or_isis_or_application.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_or_isis_or_application.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : eigrp.entities())
+    count_ = 0;
+    for (auto ent_ : eigrp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1091,16 +1091,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1347,16 +1347,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1618,16 +1618,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1879,16 +1879,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2087,7 +2087,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa")
     {
@@ -2101,16 +2101,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Ignore::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Ignore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Ignore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa != nullptr)
     {
-        children["lsa"] = lsa;
+        _children["lsa"] = lsa;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Ignore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2169,16 +2169,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Ignore::Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Ignore::Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Ignore::Lsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Ignore::Lsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Ignore::Lsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2247,7 +2247,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "distribute-outs")
     {
@@ -2261,16 +2261,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(distribute_outs != nullptr)
     {
-        children["distribute-outs"] = distribute_outs;
+        _children["distribute-outs"] = distribute_outs;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2337,33 +2337,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "distribute-out")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut>();
-        c->parent = this;
-        distribute_out.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut>();
+        ent_->parent = this;
+        distribute_out.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : distribute_out.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : distribute_out.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2461,67 +2461,67 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp>();
-        c->parent = this;
-        bgp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp>();
+        ent_->parent = this;
+        bgp.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ospfv3-or-isis")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis>();
-        c->parent = this;
-        ospfv3_or_isis.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis>();
+        ent_->parent = this;
+        ospfv3_or_isis.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "eigrp")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp>();
-        c->parent = this;
-        eigrp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp>();
+        ent_->parent = this;
+        eigrp.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bgp.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bgp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ospfv3_or_isis.entities())
+    count_ = 0;
+    for (auto ent_ : ospfv3_or_isis.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : eigrp.entities())
+    count_ = 0;
+    for (auto ent_ : eigrp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2610,16 +2610,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2713,16 +2713,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2806,16 +2806,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2894,7 +2894,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "in")
     {
@@ -2908,16 +2908,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(in != nullptr)
     {
-        children["in"] = in;
+        _children["in"] = in;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2976,16 +2976,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList::In::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList::In::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList::In::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList::In::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList::In::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3062,7 +3062,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rbit")
     {
@@ -3094,26 +3094,26 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rbit != nullptr)
     {
-        children["rbit"] = rbit;
+        _children["rbit"] = rbit;
     }
 
     if(v6bit != nullptr)
     {
-        children["v6bit"] = v6bit;
+        _children["v6bit"] = v6bit;
     }
 
     if(max_metric != nullptr)
     {
-        children["max-metric"] = max_metric;
+        _children["max-metric"] = max_metric;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3197,7 +3197,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "on-startup")
     {
@@ -3211,16 +3211,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(on_startup != nullptr)
     {
-        children["on-startup"] = on_startup;
+        _children["on-startup"] = on_startup;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3343,16 +3343,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::OnStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::OnStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::OnStartup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::OnStartup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::OnStartup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3452,7 +3452,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "on-startup")
     {
@@ -3466,16 +3466,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(on_startup != nullptr)
     {
-        children["on-startup"] = on_startup;
+        _children["on-startup"] = on_startup;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3588,16 +3588,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::OnStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::OnStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::OnStartup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::OnStartup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::OnStartup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3709,7 +3709,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "on-startup")
     {
@@ -3723,16 +3723,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(on_startup != nullptr)
     {
-        children["on-startup"] = on_startup;
+        _children["on-startup"] = on_startup;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3875,16 +3875,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::OnStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::OnStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::OnStartup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::OnStartup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::OnStartup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3971,16 +3971,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Bfd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Bfd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4069,7 +4069,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -4083,16 +4083,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseFilter::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4151,16 +4151,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseFilter::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseFilter::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseFilter::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseFilter::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseFilter::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4237,16 +4237,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Capability::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Capability::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Capability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4347,16 +4347,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Authentication::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4471,16 +4471,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::GracefulRestart::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::GracefulRestart::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4588,7 +4588,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DefaultInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DefaultInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "originate")
     {
@@ -4602,16 +4602,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DefaultInformatio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DefaultInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DefaultInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(originate != nullptr)
     {
-        children["originate"] = originate;
+        _children["originate"] = originate;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DefaultInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4686,16 +4686,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DefaultInformation::Originate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DefaultInformation::Originate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DefaultInformation::Originate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DefaultInformation::Originate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DefaultInformation::Originate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4804,7 +4804,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fast-reroute")
     {
@@ -4818,16 +4818,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(fast_reroute != nullptr)
     {
-        children["fast-reroute"] = fast_reroute;
+        _children["fast-reroute"] = fast_reroute;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4895,7 +4895,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "per-link")
     {
@@ -4918,21 +4918,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::Fas
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(per_link != nullptr)
     {
-        children["per-link"] = per_link;
+        _children["per-link"] = per_link;
     }
 
     if(per_prefix != nullptr)
     {
-        children["per-prefix"] = per_prefix;
+        _children["per-prefix"] = per_prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5010,7 +5010,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "candidate-interfaces")
     {
@@ -5033,21 +5033,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::Fas
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(candidate_interfaces != nullptr)
     {
-        children["candidate-interfaces"] = candidate_interfaces;
+        _children["candidate-interfaces"] = candidate_interfaces;
     }
 
     if(exclude_interfaces != nullptr)
     {
-        children["exclude-interfaces"] = exclude_interfaces;
+        _children["exclude-interfaces"] = exclude_interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5124,33 +5124,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "candidate-interface")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface>();
-        c->parent = this;
-        candidate_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface>();
+        ent_->parent = this;
+        candidate_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : candidate_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : candidate_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5210,16 +5210,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5296,33 +5296,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exclude-interface")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface>();
-        c->parent = this;
-        exclude_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface>();
+        ent_->parent = this;
+        exclude_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : exclude_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : exclude_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5382,16 +5382,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5469,7 +5469,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "candidate-interfaces")
     {
@@ -5492,21 +5492,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::Fas
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(candidate_interfaces != nullptr)
     {
-        children["candidate-interfaces"] = candidate_interfaces;
+        _children["candidate-interfaces"] = candidate_interfaces;
     }
 
     if(exclude_interfaces != nullptr)
     {
-        children["exclude-interfaces"] = exclude_interfaces;
+        _children["exclude-interfaces"] = exclude_interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5583,33 +5583,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "candidate-interface")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface>();
-        c->parent = this;
-        candidate_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface>();
+        ent_->parent = this;
+        candidate_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : candidate_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : candidate_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5669,16 +5669,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5755,33 +5755,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exclude-interface")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface>();
-        c->parent = this;
-        exclude_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface>();
+        ent_->parent = this;
+        exclude_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : exclude_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : exclude_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5841,16 +5841,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5939,16 +5939,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Encryption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Encryption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Encryption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Encryption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Encryption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6071,16 +6071,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AutoCost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::AutoCost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::AutoCost::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::AutoCost::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::AutoCost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6163,16 +6163,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Af::g
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Af::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Af::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Af::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6259,33 +6259,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Trace
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::TraceBufs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::TraceBufs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace-buf")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::TraceBufs::TraceBuf>();
-        c->parent = this;
-        trace_buf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::TraceBufs::TraceBuf>();
+        ent_->parent = this;
+        trace_buf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::TraceBufs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::TraceBufs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace_buf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace_buf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::TraceBufs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6349,16 +6349,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Trace
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::TraceBufs::TraceBuf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::TraceBufs::TraceBuf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::TraceBufs::TraceBuf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::TraceBufs::TraceBuf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::TraceBufs::TraceBuf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

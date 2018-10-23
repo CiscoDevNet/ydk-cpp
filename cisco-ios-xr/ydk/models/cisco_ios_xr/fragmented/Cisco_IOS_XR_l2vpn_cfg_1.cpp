@@ -57,16 +57,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -145,16 +145,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -239,16 +239,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -370,7 +370,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-label-load-balance")
     {
@@ -384,16 +384,16 @@ std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flow_label_load_balance != nullptr)
     {
-        children["flow-label-load-balance"] = flow_label_load_balance;
+        _children["flow-label-load-balance"] = flow_label_load_balance;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -486,16 +486,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -582,33 +582,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route-target")
     {
-        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget>();
-        c->parent = this;
-        route_target.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget>();
+        ent_->parent = this;
+        route_target.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : route_target.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : route_target.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -696,50 +696,50 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "two-byte-as-or-four-byte-as")
     {
-        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs>();
-        c->parent = this;
-        two_byte_as_or_four_byte_as.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs>();
+        ent_->parent = this;
+        two_byte_as_or_four_byte_as.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ipv4-address")
     {
-        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address>();
-        c->parent = this;
-        ipv4_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address>();
+        ent_->parent = this;
+        ipv4_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : two_byte_as_or_four_byte_as.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : two_byte_as_or_four_byte_as.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipv4_address.entities())
+    count_ = 0;
+    for (auto ent_ : ipv4_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -824,16 +824,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -918,16 +918,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1014,33 +1014,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bridge-domainvni")
     {
-        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni>();
-        c->parent = this;
-        bridge_domainvni.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni>();
+        ent_->parent = this;
+        bridge_domainvni.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bridge_domainvni.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bridge_domainvni.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1100,16 +1100,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1186,33 +1186,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bd-attachment-circuit")
     {
-        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit>();
-        c->parent = this;
-        bd_attachment_circuit.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit>();
+        ent_->parent = this;
+        bd_attachment_circuit.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bd_attachment_circuit.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bd_attachment_circuit.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1317,7 +1317,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-ip-source-guard")
     {
@@ -1385,46 +1385,46 @@ std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_ip_source_guard != nullptr)
     {
-        children["interface-ip-source-guard"] = interface_ip_source_guard;
+        _children["interface-ip-source-guard"] = interface_ip_source_guard;
     }
 
     if(interface_dai != nullptr)
     {
-        children["interface-dai"] = interface_dai;
+        _children["interface-dai"] = interface_dai;
     }
 
     if(interface_profile != nullptr)
     {
-        children["interface-profile"] = interface_profile;
+        _children["interface-profile"] = interface_profile;
     }
 
     if(bdac_storm_control_types != nullptr)
     {
-        children["bdac-storm-control-types"] = bdac_storm_control_types;
+        _children["bdac-storm-control-types"] = bdac_storm_control_types;
     }
 
     if(split_horizon != nullptr)
     {
-        children["split-horizon"] = split_horizon;
+        _children["split-horizon"] = split_horizon;
     }
 
     if(static_mac_addresses != nullptr)
     {
-        children["static-mac-addresses"] = static_mac_addresses;
+        _children["static-mac-addresses"] = static_mac_addresses;
     }
 
     if(interface_mac != nullptr)
     {
-        children["interface-mac"] = interface_mac;
+        _children["interface-mac"] = interface_mac;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1541,16 +1541,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1652,7 +1652,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-dai-address-validation")
     {
@@ -1666,16 +1666,16 @@ std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_dai_address_validation != nullptr)
     {
-        children["interface-dai-address-validation"] = interface_dai_address_validation;
+        _children["interface-dai-address-validation"] = interface_dai_address_validation;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1776,16 +1776,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1888,16 +1888,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1984,33 +1984,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bdac-storm-control-type")
     {
-        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType>();
-        c->parent = this;
-        bdac_storm_control_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType>();
+        ent_->parent = this;
+        bdac_storm_control_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bdac_storm_control_type.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bdac_storm_control_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2075,7 +2075,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "storm-control-unit")
     {
@@ -2089,16 +2089,16 @@ std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(storm_control_unit != nullptr)
     {
-        children["storm-control-unit"] = storm_control_unit;
+        _children["storm-control-unit"] = storm_control_unit;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2171,16 +2171,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2259,7 +2259,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "split-horizon-group-id")
     {
@@ -2273,16 +2273,16 @@ std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(split_horizon_group_id != nullptr)
     {
-        children["split-horizon-group-id"] = split_horizon_group_id;
+        _children["split-horizon-group-id"] = split_horizon_group_id;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2341,16 +2341,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2427,33 +2427,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "static-mac-address")
     {
-        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress>();
-        c->parent = this;
-        static_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress>();
+        ent_->parent = this;
+        static_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : static_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : static_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2513,16 +2513,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2608,7 +2608,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-mac-aging")
     {
@@ -2640,26 +2640,26 @@ std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_mac_aging != nullptr)
     {
-        children["interface-mac-aging"] = interface_mac_aging;
+        _children["interface-mac-aging"] = interface_mac_aging;
     }
 
     if(interface_mac_secure != nullptr)
     {
-        children["interface-mac-secure"] = interface_mac_secure;
+        _children["interface-mac-secure"] = interface_mac_secure;
     }
 
     if(interface_mac_limit != nullptr)
     {
-        children["interface-mac-limit"] = interface_mac_limit;
+        _children["interface-mac-limit"] = interface_mac_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2742,16 +2742,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2842,16 +2842,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2958,16 +2958,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3064,33 +3064,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bd-pseudowire-evpn")
     {
-        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn>();
-        c->parent = this;
-        bd_pseudowire_evpn.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn>();
+        ent_->parent = this;
+        bd_pseudowire_evpn.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bd_pseudowire_evpn.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bd_pseudowire_evpn.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3155,16 +3155,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3247,16 +3247,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3344,7 +3344,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dai-address-validation")
     {
@@ -3358,16 +3358,16 @@ std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dai_address_validation != nullptr)
     {
-        children["dai-address-validation"] = dai_address_validation;
+        _children["dai-address-validation"] = dai_address_validation;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3458,16 +3458,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3574,33 +3574,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "routed-interface")
     {
-        auto c = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface>();
-        c->parent = this;
-        routed_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface>();
+        ent_->parent = this;
+        routed_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : routed_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : routed_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3665,7 +3665,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "routed-interface-split-horizon-group")
     {
@@ -3679,16 +3679,16 @@ std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(routed_interface_split_horizon_group != nullptr)
     {
-        children["routed-interface-split-horizon-group"] = routed_interface_split_horizon_group;
+        _children["routed-interface-split-horizon-group"] = routed_interface_split_horizon_group;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3757,16 +3757,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3850,33 +3850,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pseudowire-class")
     {
-        auto c = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass>();
-        c->parent = this;
-        pseudowire_class.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::PseudowireClasses::PseudowireClass>();
+        ent_->parent = this;
+        pseudowire_class.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pseudowire_class.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pseudowire_class.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3964,7 +3964,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2tpv3-encapsulation")
     {
@@ -3996,26 +3996,26 @@ std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(l2tpv3_encapsulation != nullptr)
     {
-        children["l2tpv3-encapsulation"] = l2tpv3_encapsulation;
+        _children["l2tpv3-encapsulation"] = l2tpv3_encapsulation;
     }
 
     if(backup_disable_delay != nullptr)
     {
-        children["backup-disable-delay"] = backup_disable_delay;
+        _children["backup-disable-delay"] = backup_disable_delay;
     }
 
     if(mpls_encapsulation != nullptr)
     {
-        children["mpls-encapsulation"] = mpls_encapsulation;
+        _children["mpls-encapsulation"] = mpls_encapsulation;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::PseudowireClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4141,7 +4141,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sequencing")
     {
@@ -4182,31 +4182,31 @@ std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2t
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sequencing != nullptr)
     {
-        children["sequencing"] = sequencing;
+        _children["sequencing"] = sequencing;
     }
 
     if(type_of_service != nullptr)
     {
-        children["type-of-service"] = type_of_service;
+        _children["type-of-service"] = type_of_service;
     }
 
     if(signaling_protocol != nullptr)
     {
-        children["signaling-protocol"] = signaling_protocol;
+        _children["signaling-protocol"] = signaling_protocol;
     }
 
     if(path_mtu != nullptr)
     {
-        children["path-mtu"] = path_mtu;
+        _children["path-mtu"] = path_mtu;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4329,16 +4329,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::Sequencing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4421,16 +4421,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::TypeOfService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4513,16 +4513,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::SignalingProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4605,16 +4605,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::PseudowireClass::L2tpv3Encapsulation::PathMtu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4697,16 +4697,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4830,7 +4830,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sequencing")
     {
@@ -4871,31 +4871,31 @@ std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::Mpl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sequencing != nullptr)
     {
-        children["sequencing"] = sequencing;
+        _children["sequencing"] = sequencing;
     }
 
     if(mpls_redundancy != nullptr)
     {
-        children["mpls-redundancy"] = mpls_redundancy;
+        _children["mpls-redundancy"] = mpls_redundancy;
     }
 
     if(preferred_path != nullptr)
     {
-        children["preferred-path"] = preferred_path;
+        _children["preferred-path"] = preferred_path;
     }
 
     if(load_balance_group != nullptr)
     {
-        children["load-balance-group"] = load_balance_group;
+        _children["load-balance-group"] = load_balance_group;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5038,16 +5038,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5130,16 +5130,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5230,16 +5230,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5347,7 +5347,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-label-load-balance")
     {
@@ -5361,16 +5361,16 @@ std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::Mpl
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flow_label_load_balance != nullptr)
     {
-        children["flow-label-load-balance"] = flow_label_load_balance;
+        _children["flow-label-load-balance"] = flow_label_load_balance;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5453,16 +5453,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::PseudowireClasse
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5556,33 +5556,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::ge
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-switch")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch>();
-        c->parent = this;
-        vlan_switch.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch>();
+        ent_->parent = this;
+        vlan_switch.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vlan_switch.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vlan_switch.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5670,7 +5670,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-switch-ports")
     {
@@ -5720,36 +5720,36 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vlan_switch_ports != nullptr)
     {
-        children["vlan-switch-ports"] = vlan_switch_ports;
+        _children["vlan-switch-ports"] = vlan_switch_ports;
     }
 
     if(vni_ranges != nullptr)
     {
-        children["vni-ranges"] = vni_ranges;
+        _children["vni-ranges"] = vni_ranges;
     }
 
     if(vlan_ranges != nullptr)
     {
-        children["vlan-ranges"] = vlan_ranges;
+        _children["vlan-ranges"] = vlan_ranges;
     }
 
     if(routed_interface_ranges != nullptr)
     {
-        children["routed-interface-ranges"] = routed_interface_ranges;
+        _children["routed-interface-ranges"] = routed_interface_ranges;
     }
 
     if(bridge_domains != nullptr)
     {
-        children["bridge-domains"] = bridge_domains;
+        _children["bridge-domains"] = bridge_domains;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5826,33 +5826,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::VlanSwitchPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::VlanSwitchPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlan-switch-port")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::VlanSwitchPorts::VlanSwitchPort>();
-        c->parent = this;
-        vlan_switch_port.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::VlanSwitchPorts::VlanSwitchPort>();
+        ent_->parent = this;
+        vlan_switch_port.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::VlanSwitchPorts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::VlanSwitchPorts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vlan_switch_port.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vlan_switch_port.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::VlanSwitchPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5912,16 +5912,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::VlanSwitchPorts::VlanSwitchPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::VlanSwitchPorts::VlanSwitchPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::VlanSwitchPorts::VlanSwitchPort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::VlanSwitchPorts::VlanSwitchPort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::VlanSwitchPorts::VlanSwitchPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6058,16 +6058,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::VniRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::VniRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::VniRanges::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::VniRanges::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::VniRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6374,16 +6374,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::VlanRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::VlanRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::VlanRanges::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::VlanRanges::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::VlanRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6690,16 +6690,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::RoutedInterfaceRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::RoutedInterfaceRanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::RoutedInterfaceRanges::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::RoutedInterfaceRanges::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::RoutedInterfaceRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6946,33 +6946,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bridge-domain")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain>();
-        c->parent = this;
-        bridge_domain.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain>();
+        ent_->parent = this;
+        bridge_domain.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bridge_domain.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bridge_domain.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7137,7 +7137,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bd-storm-controls")
     {
@@ -7277,86 +7277,86 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bd_storm_controls != nullptr)
     {
-        children["bd-storm-controls"] = bd_storm_controls;
+        _children["bd-storm-controls"] = bd_storm_controls;
     }
 
     if(member_vnis != nullptr)
     {
-        children["member-vnis"] = member_vnis;
+        _children["member-vnis"] = member_vnis;
     }
 
     if(bridge_domain_mac != nullptr)
     {
-        children["bridge-domain-mac"] = bridge_domain_mac;
+        _children["bridge-domain-mac"] = bridge_domain_mac;
     }
 
     if(nv_satellite != nullptr)
     {
-        children["nv-satellite"] = nv_satellite;
+        _children["nv-satellite"] = nv_satellite;
     }
 
     if(bridge_domain_pbb != nullptr)
     {
-        children["bridge-domain-pbb"] = bridge_domain_pbb;
+        _children["bridge-domain-pbb"] = bridge_domain_pbb;
     }
 
     if(bridge_domain_evis != nullptr)
     {
-        children["bridge-domain-evis"] = bridge_domain_evis;
+        _children["bridge-domain-evis"] = bridge_domain_evis;
     }
 
     if(access_vfis != nullptr)
     {
-        children["access-vfis"] = access_vfis;
+        _children["access-vfis"] = access_vfis;
     }
 
     if(bd_pseudowires != nullptr)
     {
-        children["bd-pseudowires"] = bd_pseudowires;
+        _children["bd-pseudowires"] = bd_pseudowires;
     }
 
     if(vfis != nullptr)
     {
-        children["vfis"] = vfis;
+        _children["vfis"] = vfis;
     }
 
     if(bridge_domainvnis != nullptr)
     {
-        children["bridge-domainvnis"] = bridge_domainvnis;
+        _children["bridge-domainvnis"] = bridge_domainvnis;
     }
 
     if(bd_attachment_circuits != nullptr)
     {
-        children["bd-attachment-circuits"] = bd_attachment_circuits;
+        _children["bd-attachment-circuits"] = bd_attachment_circuits;
     }
 
     if(bd_pseudowire_evpns != nullptr)
     {
-        children["bd-pseudowire-evpns"] = bd_pseudowire_evpns;
+        _children["bd-pseudowire-evpns"] = bd_pseudowire_evpns;
     }
 
     if(ip_source_guard != nullptr)
     {
-        children["ip-source-guard"] = ip_source_guard;
+        _children["ip-source-guard"] = ip_source_guard;
     }
 
     if(dai != nullptr)
     {
-        children["dai"] = dai;
+        _children["dai"] = dai;
     }
 
     if(routed_interfaces != nullptr)
     {
-        children["routed-interfaces"] = routed_interfaces;
+        _children["routed-interfaces"] = routed_interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7543,33 +7543,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bd-storm-control")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl>();
-        c->parent = this;
-        bd_storm_control.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl>();
+        ent_->parent = this;
+        bd_storm_control.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bd_storm_control.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bd_storm_control.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7634,7 +7634,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "storm-control-unit")
     {
@@ -7648,16 +7648,16 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(storm_control_unit != nullptr)
     {
-        children["storm-control-unit"] = storm_control_unit;
+        _children["storm-control-unit"] = storm_control_unit;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7730,16 +7730,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl::StormControlUnit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl::StormControlUnit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl::StormControlUnit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl::StormControlUnit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl::StormControlUnit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7826,33 +7826,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "member-vni")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni>();
-        c->parent = this;
-        member_vni.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni>();
+        ent_->parent = this;
+        member_vni.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : member_vni.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : member_vni.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7917,7 +7917,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "member-vni-static-mac-addresses")
     {
@@ -7931,16 +7931,16 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(member_vni_static_mac_addresses != nullptr)
     {
-        children["member-vni-static-mac-addresses"] = member_vni_static_mac_addresses;
+        _children["member-vni-static-mac-addresses"] = member_vni_static_mac_addresses;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8017,33 +8017,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::MemberVniStaticMacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::MemberVniStaticMacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "member-vni-static-mac-address")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::MemberVniStaticMacAddresses::MemberVniStaticMacAddress>();
-        c->parent = this;
-        member_vni_static_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::MemberVniStaticMacAddresses::MemberVniStaticMacAddress>();
+        ent_->parent = this;
+        member_vni_static_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::MemberVniStaticMacAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::MemberVniStaticMacAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : member_vni_static_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : member_vni_static_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::MemberVniStaticMacAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8107,16 +8107,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::MemberVniStaticMacAddresses::MemberVniStaticMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::MemberVniStaticMacAddresses::MemberVniStaticMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::MemberVniStaticMacAddresses::MemberVniStaticMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::MemberVniStaticMacAddresses::MemberVniStaticMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::MemberVniStaticMacAddresses::MemberVniStaticMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8232,7 +8232,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bd-mac-limit")
     {
@@ -8273,31 +8273,31 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bd_mac_limit != nullptr)
     {
-        children["bd-mac-limit"] = bd_mac_limit;
+        _children["bd-mac-limit"] = bd_mac_limit;
     }
 
     if(bd_mac_filters != nullptr)
     {
-        children["bd-mac-filters"] = bd_mac_filters;
+        _children["bd-mac-filters"] = bd_mac_filters;
     }
 
     if(mac_secure != nullptr)
     {
-        children["mac-secure"] = mac_secure;
+        _children["mac-secure"] = mac_secure;
     }
 
     if(bd_mac_aging != nullptr)
     {
-        children["bd-mac-aging"] = bd_mac_aging;
+        _children["bd-mac-aging"] = bd_mac_aging;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8424,16 +8424,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8530,33 +8530,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bd-mac-filter")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacFilters::BdMacFilter>();
-        c->parent = this;
-        bd_mac_filter.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacFilters::BdMacFilter>();
+        ent_->parent = this;
+        bd_mac_filter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacFilters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacFilters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bd_mac_filter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bd_mac_filter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacFilters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8620,16 +8620,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacFilters::BdMacFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacFilters::BdMacFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacFilters::BdMacFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacFilters::BdMacFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacFilters::BdMacFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8720,16 +8720,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8832,16 +8832,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacAging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacAging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacAging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacAging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::BdMacAging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8924,16 +8924,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::NvSatellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::NvSatellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::NvSatellite::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::NvSatellite::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::NvSatellite::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9016,7 +9016,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pbb-edges")
     {
@@ -9039,21 +9039,21 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pbb_edges != nullptr)
     {
-        children["pbb-edges"] = pbb_edges;
+        _children["pbb-edges"] = pbb_edges;
     }
 
     if(pbb_core != nullptr)
     {
-        children["pbb-core"] = pbb_core;
+        _children["pbb-core"] = pbb_core;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9120,33 +9120,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pbb-edge")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge>();
-        c->parent = this;
-        pbb_edge.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge>();
+        ent_->parent = this;
+        pbb_edge.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pbb_edge.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pbb_edge.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9236,7 +9236,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pbb-edge-split-horizon-group")
     {
@@ -9277,31 +9277,31 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pbb_edge_split_horizon_group != nullptr)
     {
-        children["pbb-edge-split-horizon-group"] = pbb_edge_split_horizon_group;
+        _children["pbb-edge-split-horizon-group"] = pbb_edge_split_horizon_group;
     }
 
     if(pbb_static_mac_mappings != nullptr)
     {
-        children["pbb-static-mac-mappings"] = pbb_static_mac_mappings;
+        _children["pbb-static-mac-mappings"] = pbb_static_mac_mappings;
     }
 
     if(pbb_edge_dhcp_profile != nullptr)
     {
-        children["pbb-edge-dhcp-profile"] = pbb_edge_dhcp_profile;
+        _children["pbb-edge-dhcp-profile"] = pbb_edge_dhcp_profile;
     }
 
     if(pbb_edge_mac != nullptr)
     {
-        children["pbb-edge-mac"] = pbb_edge_mac;
+        _children["pbb-edge-mac"] = pbb_edge_mac;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9400,16 +9400,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeSplitHorizonGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeSplitHorizonGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeSplitHorizonGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeSplitHorizonGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeSplitHorizonGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9486,33 +9486,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbStaticMacMappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbStaticMacMappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pbb-static-mac-mapping")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbStaticMacMappings::PbbStaticMacMapping>();
-        c->parent = this;
-        pbb_static_mac_mapping.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbStaticMacMappings::PbbStaticMacMapping>();
+        ent_->parent = this;
+        pbb_static_mac_mapping.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbStaticMacMappings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbStaticMacMappings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pbb_static_mac_mapping.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pbb_static_mac_mapping.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbStaticMacMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9576,16 +9576,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbStaticMacMappings::PbbStaticMacMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbStaticMacMappings::PbbStaticMacMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbStaticMacMappings::PbbStaticMacMapping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbStaticMacMappings::PbbStaticMacMapping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbStaticMacMappings::PbbStaticMacMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9668,16 +9668,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeDhcpProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeDhcpProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeDhcpProfile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeDhcpProfile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeDhcpProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9769,7 +9769,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pbb-edge-mac-limit")
     {
@@ -9801,26 +9801,26 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pbb_edge_mac_limit != nullptr)
     {
-        children["pbb-edge-mac-limit"] = pbb_edge_mac_limit;
+        _children["pbb-edge-mac-limit"] = pbb_edge_mac_limit;
     }
 
     if(pbb_edge_mac_aging != nullptr)
     {
-        children["pbb-edge-mac-aging"] = pbb_edge_mac_aging;
+        _children["pbb-edge-mac-aging"] = pbb_edge_mac_aging;
     }
 
     if(pbb_edge_mac_secure != nullptr)
     {
-        children["pbb-edge-mac-secure"] = pbb_edge_mac_secure;
+        _children["pbb-edge-mac-secure"] = pbb_edge_mac_secure;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9897,16 +9897,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9999,16 +9999,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacAging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacAging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacAging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacAging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacAging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10103,16 +10103,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10246,7 +10246,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pbb-core-mac")
     {
@@ -10278,26 +10278,26 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pbb_core_mac != nullptr)
     {
-        children["pbb-core-mac"] = pbb_core_mac;
+        _children["pbb-core-mac"] = pbb_core_mac;
     }
 
     if(pbb_core_evis != nullptr)
     {
-        children["pbb-core-evis"] = pbb_core_evis;
+        _children["pbb-core-evis"] = pbb_core_evis;
     }
 
     if(pbb_core_dhcp_profile != nullptr)
     {
-        children["pbb-core-dhcp-profile"] = pbb_core_dhcp_profile;
+        _children["pbb-core-dhcp-profile"] = pbb_core_dhcp_profile;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10405,7 +10405,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pbb-core-mac-aging")
     {
@@ -10428,21 +10428,21 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pbb_core_mac_aging != nullptr)
     {
-        children["pbb-core-mac-aging"] = pbb_core_mac_aging;
+        _children["pbb-core-mac-aging"] = pbb_core_mac_aging;
     }
 
     if(pbb_core_mac_limit != nullptr)
     {
-        children["pbb-core-mac-limit"] = pbb_core_mac_limit;
+        _children["pbb-core-mac-limit"] = pbb_core_mac_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10515,16 +10515,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacAging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacAging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacAging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacAging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacAging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10611,16 +10611,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::PbbCoreMacLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10717,33 +10717,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreEvis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreEvis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pbb-core-evi")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreEvis::PbbCoreEvi>();
-        c->parent = this;
-        pbb_core_evi.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreEvis::PbbCoreEvi>();
+        ent_->parent = this;
+        pbb_core_evi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreEvis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreEvis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pbb_core_evi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pbb_core_evi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreEvis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10803,16 +10803,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreEvis::PbbCoreEvi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreEvis::PbbCoreEvi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreEvis::PbbCoreEvi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreEvis::PbbCoreEvi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreEvis::PbbCoreEvi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10885,16 +10885,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreDhcpProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreDhcpProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreDhcpProfile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreDhcpProfile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreDhcpProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10981,33 +10981,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainEvis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainEvis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bridge-domain-evi")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi>();
-        c->parent = this;
-        bridge_domain_evi.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi>();
+        ent_->parent = this;
+        bridge_domain_evi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainEvis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainEvis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bridge_domain_evi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bridge_domain_evi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainEvis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11067,16 +11067,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainEvis::BridgeDomainEvi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11153,33 +11153,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-vfi")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi>();
-        c->parent = this;
-        access_vfi.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi>();
+        ent_->parent = this;
+        access_vfi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_vfi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_vfi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11248,7 +11248,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-vfi-pseudowires")
     {
@@ -11262,16 +11262,16 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_vfi_pseudowires != nullptr)
     {
-        children["access-vfi-pseudowires"] = access_vfi_pseudowires;
+        _children["access-vfi-pseudowires"] = access_vfi_pseudowires;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11358,33 +11358,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-vfi-pseudowire")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire>();
-        c->parent = this;
-        access_vfi_pseudowire.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire>();
+        ent_->parent = this;
+        access_vfi_pseudowire.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_vfi_pseudowire.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_vfi_pseudowire.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11458,7 +11458,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-vfi-pseudowire-static-mac-addresses")
     {
@@ -11472,16 +11472,16 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(access_vfi_pseudowire_static_mac_addresses != nullptr)
     {
-        children["access-vfi-pseudowire-static-mac-addresses"] = access_vfi_pseudowire_static_mac_addresses;
+        _children["access-vfi-pseudowire-static-mac-addresses"] = access_vfi_pseudowire_static_mac_addresses;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11578,33 +11578,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::AccessVfiPseudowireStaticMacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::AccessVfiPseudowireStaticMacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "access-vfi-pseudowire-static-mac-address")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::AccessVfiPseudowireStaticMacAddresses::AccessVfiPseudowireStaticMacAddress>();
-        c->parent = this;
-        access_vfi_pseudowire_static_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::AccessVfiPseudowireStaticMacAddresses::AccessVfiPseudowireStaticMacAddress>();
+        ent_->parent = this;
+        access_vfi_pseudowire_static_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::AccessVfiPseudowireStaticMacAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::AccessVfiPseudowireStaticMacAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : access_vfi_pseudowire_static_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : access_vfi_pseudowire_static_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::AccessVfiPseudowireStaticMacAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11664,16 +11664,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::AccessVfiPseudowireStaticMacAddresses::AccessVfiPseudowireStaticMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::AccessVfiPseudowireStaticMacAddresses::AccessVfiPseudowireStaticMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::AccessVfiPseudowireStaticMacAddresses::AccessVfiPseudowireStaticMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::AccessVfiPseudowireStaticMacAddresses::AccessVfiPseudowireStaticMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::AccessVfis::AccessVfi::AccessVfiPseudowires::AccessVfiPseudowire::AccessVfiPseudowireStaticMacAddresses::AccessVfiPseudowireStaticMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11750,33 +11750,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bd-pseudowire")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire>();
-        c->parent = this;
-        bd_pseudowire.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire>();
+        ent_->parent = this;
+        bd_pseudowire.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bd_pseudowire.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bd_pseudowire.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11898,7 +11898,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pseudowire-dai")
     {
@@ -11984,56 +11984,56 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pseudowire_dai != nullptr)
     {
-        children["pseudowire-dai"] = pseudowire_dai;
+        _children["pseudowire-dai"] = pseudowire_dai;
     }
 
     if(bdpw_storm_control_types != nullptr)
     {
-        children["bdpw-storm-control-types"] = bdpw_storm_control_types;
+        _children["bdpw-storm-control-types"] = bdpw_storm_control_types;
     }
 
     if(pseudowire_profile != nullptr)
     {
-        children["pseudowire-profile"] = pseudowire_profile;
+        _children["pseudowire-profile"] = pseudowire_profile;
     }
 
     if(bd_pw_static_mac_addresses != nullptr)
     {
-        children["bd-pw-static-mac-addresses"] = bd_pw_static_mac_addresses;
+        _children["bd-pw-static-mac-addresses"] = bd_pw_static_mac_addresses;
     }
 
     if(pseudowire_ip_source_guard != nullptr)
     {
-        children["pseudowire-ip-source-guard"] = pseudowire_ip_source_guard;
+        _children["pseudowire-ip-source-guard"] = pseudowire_ip_source_guard;
     }
 
     if(pseudowire_mac != nullptr)
     {
-        children["pseudowire-mac"] = pseudowire_mac;
+        _children["pseudowire-mac"] = pseudowire_mac;
     }
 
     if(bd_pw_split_horizon != nullptr)
     {
-        children["bd-pw-split-horizon"] = bd_pw_split_horizon;
+        _children["bd-pw-split-horizon"] = bd_pw_split_horizon;
     }
 
     if(bd_pw_mpls_static_labels != nullptr)
     {
-        children["bd-pw-mpls-static-labels"] = bd_pw_mpls_static_labels;
+        _children["bd-pw-mpls-static-labels"] = bd_pw_mpls_static_labels;
     }
 
     if(bridge_domain_backup_pseudowires != nullptr)
     {
-        children["bridge-domain-backup-pseudowires"] = bridge_domain_backup_pseudowires;
+        _children["bridge-domain-backup-pseudowires"] = bridge_domain_backup_pseudowires;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12175,7 +12175,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pseudowire-dai-address-validation")
     {
@@ -12189,16 +12189,16 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pseudowire_dai_address_validation != nullptr)
     {
-        children["pseudowire-dai-address-validation"] = pseudowire_dai_address_validation;
+        _children["pseudowire-dai-address-validation"] = pseudowire_dai_address_validation;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12295,16 +12295,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai::PseudowireDaiAddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai::PseudowireDaiAddressValidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai::PseudowireDaiAddressValidation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai::PseudowireDaiAddressValidation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai::PseudowireDaiAddressValidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12401,33 +12401,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bdpw-storm-control-type")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType>();
-        c->parent = this;
-        bdpw_storm_control_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType>();
+        ent_->parent = this;
+        bdpw_storm_control_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bdpw_storm_control_type.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bdpw_storm_control_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12492,7 +12492,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "storm-control-unit")
     {
@@ -12506,16 +12506,16 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(storm_control_unit != nullptr)
     {
-        children["storm-control-unit"] = storm_control_unit;
+        _children["storm-control-unit"] = storm_control_unit;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12588,16 +12588,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType::StormControlUnit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType::StormControlUnit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType::StormControlUnit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType::StormControlUnit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType::StormControlUnit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12680,16 +12680,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireProfile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireProfile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12776,33 +12776,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwStaticMacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwStaticMacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bd-pw-static-mac-address")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwStaticMacAddresses::BdPwStaticMacAddress>();
-        c->parent = this;
-        bd_pw_static_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwStaticMacAddresses::BdPwStaticMacAddress>();
+        ent_->parent = this;
+        bd_pw_static_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwStaticMacAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwStaticMacAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bd_pw_static_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bd_pw_static_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwStaticMacAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12862,16 +12862,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwStaticMacAddresses::BdPwStaticMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwStaticMacAddresses::BdPwStaticMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwStaticMacAddresses::BdPwStaticMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwStaticMacAddresses::BdPwStaticMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwStaticMacAddresses::BdPwStaticMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12948,16 +12948,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireIpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireIpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireIpSourceGuard::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireIpSourceGuard::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireIpSourceGuard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13067,7 +13067,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pseudowire-mac-secure")
     {
@@ -13099,26 +13099,26 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pseudowire_mac_secure != nullptr)
     {
-        children["pseudowire-mac-secure"] = pseudowire_mac_secure;
+        _children["pseudowire-mac-secure"] = pseudowire_mac_secure;
     }
 
     if(pseudowire_mac_aging != nullptr)
     {
-        children["pseudowire-mac-aging"] = pseudowire_mac_aging;
+        _children["pseudowire-mac-aging"] = pseudowire_mac_aging;
     }
 
     if(pseudowire_mac_limit != nullptr)
     {
-        children["pseudowire-mac-limit"] = pseudowire_mac_limit;
+        _children["pseudowire-mac-limit"] = pseudowire_mac_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13219,16 +13219,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13331,16 +13331,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacAging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacAging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacAging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacAging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacAging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13427,16 +13427,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13525,7 +13525,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwSplitHorizon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwSplitHorizon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bd-pw-split-horizon-group")
     {
@@ -13539,16 +13539,16 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwSplitHorizon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwSplitHorizon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bd_pw_split_horizon_group != nullptr)
     {
-        children["bd-pw-split-horizon-group"] = bd_pw_split_horizon_group;
+        _children["bd-pw-split-horizon-group"] = bd_pw_split_horizon_group;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwSplitHorizon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13607,16 +13607,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwSplitHorizon::BdPwSplitHorizonGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwSplitHorizon::BdPwSplitHorizonGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwSplitHorizon::BdPwSplitHorizonGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwSplitHorizon::BdPwSplitHorizonGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwSplitHorizon::BdPwSplitHorizonGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13689,16 +13689,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwMplsStaticLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwMplsStaticLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwMplsStaticLabels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwMplsStaticLabels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwMplsStaticLabels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13785,33 +13785,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BridgeDomainBackupPseudowires::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BridgeDomainBackupPseudowires::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bridge-domain-backup-pseudowire")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BridgeDomainBackupPseudowires::BridgeDomainBackupPseudowire>();
-        c->parent = this;
-        bridge_domain_backup_pseudowire.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BridgeDomainBackupPseudowires::BridgeDomainBackupPseudowire>();
+        ent_->parent = this;
+        bridge_domain_backup_pseudowire.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BridgeDomainBackupPseudowires::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BridgeDomainBackupPseudowires::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bridge_domain_backup_pseudowire.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bridge_domain_backup_pseudowire.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BridgeDomainBackupPseudowires::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13880,16 +13880,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BridgeDomainBackupPseudowires::BridgeDomainBackupPseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BridgeDomainBackupPseudowires::BridgeDomainBackupPseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BridgeDomainBackupPseudowires::BridgeDomainBackupPseudowire::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BridgeDomainBackupPseudowires::BridgeDomainBackupPseudowire::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BridgeDomainBackupPseudowires::BridgeDomainBackupPseudowire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13986,33 +13986,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vfi")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi>();
-        c->parent = this;
-        vfi.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi>();
+        ent_->parent = this;
+        vfi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vfi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vfi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14093,7 +14093,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "multicast-p2mp")
     {
@@ -14125,26 +14125,26 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(multicast_p2mp != nullptr)
     {
-        children["multicast-p2mp"] = multicast_p2mp;
+        _children["multicast-p2mp"] = multicast_p2mp;
     }
 
     if(vfi_pseudowires != nullptr)
     {
-        children["vfi-pseudowires"] = vfi_pseudowires;
+        _children["vfi-pseudowires"] = vfi_pseudowires;
     }
 
     if(bgp_auto_discovery != nullptr)
     {
-        children["bgp-auto-discovery"] = bgp_auto_discovery;
+        _children["bgp-auto-discovery"] = bgp_auto_discovery;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14242,7 +14242,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transports")
     {
@@ -14265,21 +14265,21 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(transports != nullptr)
     {
-        children["transports"] = transports;
+        _children["transports"] = transports;
     }
 
     if(signalings != nullptr)
     {
-        children["signalings"] = signalings;
+        _children["signalings"] = signalings;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14356,33 +14356,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Transports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Transports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "transport")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Transports::Transport>();
-        c->parent = this;
-        transport.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Transports::Transport>();
+        ent_->parent = this;
+        transport.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Transports::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Transports::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : transport.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : transport.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Transports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14446,16 +14446,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Transports::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Transports::Transport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Transports::Transport::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Transports::Transport::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Transports::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14542,33 +14542,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Signalings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Signalings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "signaling")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Signalings::Signaling>();
-        c->parent = this;
-        signaling.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Signalings::Signaling>();
+        ent_->parent = this;
+        signaling.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Signalings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Signalings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : signaling.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : signaling.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Signalings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14628,16 +14628,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Signalings::Signaling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Signalings::Signaling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Signalings::Signaling::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Signalings::Signaling::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2mp::Signalings::Signaling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14714,33 +14714,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vfi-pseudowire")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire>();
-        c->parent = this;
-        vfi_pseudowire.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire>();
+        ent_->parent = this;
+        vfi_pseudowire.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vfi_pseudowire.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vfi_pseudowire.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14830,7 +14830,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vfi-pw-dhcp-snoop")
     {
@@ -14862,26 +14862,26 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vfi_pw_dhcp_snoop != nullptr)
     {
-        children["vfi-pw-dhcp-snoop"] = vfi_pw_dhcp_snoop;
+        _children["vfi-pw-dhcp-snoop"] = vfi_pw_dhcp_snoop;
     }
 
     if(vfi_pw_mpls_static_labels != nullptr)
     {
-        children["vfi-pw-mpls-static-labels"] = vfi_pw_mpls_static_labels;
+        _children["vfi-pw-mpls-static-labels"] = vfi_pw_mpls_static_labels;
     }
 
     if(pseudowire_static_mac_addresses != nullptr)
     {
-        children["pseudowire-static-mac-addresses"] = pseudowire_static_mac_addresses;
+        _children["pseudowire-static-mac-addresses"] = pseudowire_static_mac_addresses;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14994,16 +14994,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::VfiPwDhcpSnoop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::VfiPwDhcpSnoop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::VfiPwDhcpSnoop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::VfiPwDhcpSnoop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::VfiPwDhcpSnoop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15086,16 +15086,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::VfiPwMplsStaticLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::VfiPwMplsStaticLabels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::VfiPwMplsStaticLabels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::VfiPwMplsStaticLabels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::VfiPwMplsStaticLabels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15182,33 +15182,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::PseudowireStaticMacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::PseudowireStaticMacAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pseudowire-static-mac-address")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::PseudowireStaticMacAddresses::PseudowireStaticMacAddress>();
-        c->parent = this;
-        pseudowire_static_mac_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::PseudowireStaticMacAddresses::PseudowireStaticMacAddress>();
+        ent_->parent = this;
+        pseudowire_static_mac_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::PseudowireStaticMacAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::PseudowireStaticMacAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pseudowire_static_mac_address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pseudowire_static_mac_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::PseudowireStaticMacAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15268,16 +15268,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::PseudowireStaticMacAddresses::PseudowireStaticMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::PseudowireStaticMacAddresses::PseudowireStaticMacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::PseudowireStaticMacAddresses::PseudowireStaticMacAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::PseudowireStaticMacAddresses::PseudowireStaticMacAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::PseudowireStaticMacAddresses::PseudowireStaticMacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15375,7 +15375,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ldp-signaling-protocol")
     {
@@ -15425,36 +15425,36 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ldp_signaling_protocol != nullptr)
     {
-        children["ldp-signaling-protocol"] = ldp_signaling_protocol;
+        _children["ldp-signaling-protocol"] = ldp_signaling_protocol;
     }
 
     if(bgp_route_policy != nullptr)
     {
-        children["bgp-route-policy"] = bgp_route_policy;
+        _children["bgp-route-policy"] = bgp_route_policy;
     }
 
     if(route_distinguisher != nullptr)
     {
-        children["route-distinguisher"] = route_distinguisher;
+        _children["route-distinguisher"] = route_distinguisher;
     }
 
     if(bgp_signaling_protocol != nullptr)
     {
-        children["bgp-signaling-protocol"] = bgp_signaling_protocol;
+        _children["bgp-signaling-protocol"] = bgp_signaling_protocol;
     }
 
     if(route_targets != nullptr)
     {
-        children["route-targets"] = route_targets;
+        _children["route-targets"] = route_targets;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15552,7 +15552,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vpls-id")
     {
@@ -15575,21 +15575,21 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vpls_id != nullptr)
     {
-        children["vpls-id"] = vpls_id;
+        _children["vpls-id"] = vpls_id;
     }
 
     if(flow_label_load_balance != nullptr)
     {
-        children["flow-label-load-balance"] = flow_label_load_balance;
+        _children["flow-label-load-balance"] = flow_label_load_balance;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15674,16 +15674,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::VplsId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::VplsId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::VplsId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::VplsId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::VplsId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15796,16 +15796,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15884,16 +15884,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15978,16 +15978,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16109,7 +16109,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "flow-label-load-balance")
     {
@@ -16123,16 +16123,16 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(flow_label_load_balance != nullptr)
     {
-        children["flow-label-load-balance"] = flow_label_load_balance;
+        _children["flow-label-load-balance"] = flow_label_load_balance;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16225,16 +16225,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16321,33 +16321,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "route-target")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget>();
-        c->parent = this;
-        route_target.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget>();
+        ent_->parent = this;
+        route_target.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : route_target.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : route_target.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16435,50 +16435,50 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "two-byte-as-or-four-byte-as")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs>();
-        c->parent = this;
-        two_byte_as_or_four_byte_as.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs>();
+        ent_->parent = this;
+        two_byte_as_or_four_byte_as.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ipv4-address")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address>();
-        c->parent = this;
-        ipv4_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address>();
+        ent_->parent = this;
+        ipv4_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : two_byte_as_or_four_byte_as.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : two_byte_as_or_four_byte_as.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipv4_address.entities())
+    count_ = 0;
+    for (auto ent_ : ipv4_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16563,16 +16563,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16657,16 +16657,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16753,33 +16753,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainvnis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainvnis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bridge-domainvni")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni>();
-        c->parent = this;
-        bridge_domainvni.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni>();
+        ent_->parent = this;
+        bridge_domainvni.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainvnis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainvnis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bridge_domainvni.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bridge_domainvni.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainvnis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16839,16 +16839,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainvnis::BridgeDomainvni::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16925,33 +16925,33 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bd-attachment-circuit")
     {
-        auto c = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit>();
-        c->parent = this;
-        bd_attachment_circuit.append(c);
-        return c;
+        auto ent_ = std::make_shared<L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit>();
+        ent_->parent = this;
+        bd_attachment_circuit.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bd_attachment_circuit.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bd_attachment_circuit.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17056,7 +17056,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-ip-source-guard")
     {
@@ -17124,46 +17124,46 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_ip_source_guard != nullptr)
     {
-        children["interface-ip-source-guard"] = interface_ip_source_guard;
+        _children["interface-ip-source-guard"] = interface_ip_source_guard;
     }
 
     if(interface_dai != nullptr)
     {
-        children["interface-dai"] = interface_dai;
+        _children["interface-dai"] = interface_dai;
     }
 
     if(interface_profile != nullptr)
     {
-        children["interface-profile"] = interface_profile;
+        _children["interface-profile"] = interface_profile;
     }
 
     if(bdac_storm_control_types != nullptr)
     {
-        children["bdac-storm-control-types"] = bdac_storm_control_types;
+        _children["bdac-storm-control-types"] = bdac_storm_control_types;
     }
 
     if(split_horizon != nullptr)
     {
-        children["split-horizon"] = split_horizon;
+        _children["split-horizon"] = split_horizon;
     }
 
     if(static_mac_addresses != nullptr)
     {
-        children["static-mac-addresses"] = static_mac_addresses;
+        _children["static-mac-addresses"] = static_mac_addresses;
     }
 
     if(interface_mac != nullptr)
     {
-        children["interface-mac"] = interface_mac;
+        _children["interface-mac"] = interface_mac;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17280,16 +17280,16 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17391,7 +17391,7 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::VlanSwitches::Vl
 
 }
 
-std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-dai-address-validation")
     {
@@ -17405,16 +17405,16 @@ std::shared_ptr<Entity> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_dai_address_validation != nullptr)
     {
-        children["interface-dai-address-validation"] = interface_dai_address_validation;
+        _children["interface-dai-address-validation"] = interface_dai_address_validation;
     }
 
-    return children;
+    return _children;
 }
 
 void L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -116,7 +116,7 @@ std::vector<std::pair<std::string, LeafData> > EstablishSubscription::get_name_l
 
 }
 
-std::shared_ptr<Entity> EstablishSubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EstablishSubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -139,21 +139,21 @@ std::shared_ptr<Entity> EstablishSubscription::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EstablishSubscription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EstablishSubscription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void EstablishSubscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -164,7 +164,7 @@ void EstablishSubscription::set_filter(const std::string & value_path, YFilter y
 {
 }
 
-std::shared_ptr<Entity> EstablishSubscription::clone_ptr() const
+std::shared_ptr<ydk::Entity> EstablishSubscription::clone_ptr() const
 {
     return std::make_shared<EstablishSubscription>();
 }
@@ -314,16 +314,16 @@ std::vector<std::pair<std::string, LeafData> > EstablishSubscription::Input::get
 
 }
 
-std::shared_ptr<Entity> EstablishSubscription::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EstablishSubscription::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EstablishSubscription::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EstablishSubscription::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EstablishSubscription::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -625,16 +625,16 @@ std::vector<std::pair<std::string, LeafData> > EstablishSubscription::Output::ge
 
 }
 
-std::shared_ptr<Entity> EstablishSubscription::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EstablishSubscription::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EstablishSubscription::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EstablishSubscription::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EstablishSubscription::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -871,7 +871,7 @@ std::vector<std::pair<std::string, LeafData> > CreateSubscription::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> CreateSubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CreateSubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -885,16 +885,16 @@ std::shared_ptr<Entity> CreateSubscription::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CreateSubscription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CreateSubscription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
-    return children;
+    return _children;
 }
 
 void CreateSubscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -905,7 +905,7 @@ void CreateSubscription::set_filter(const std::string & value_path, YFilter yfil
 {
 }
 
-std::shared_ptr<Entity> CreateSubscription::clone_ptr() const
+std::shared_ptr<ydk::Entity> CreateSubscription::clone_ptr() const
 {
     return std::make_shared<CreateSubscription>();
 }
@@ -1001,16 +1001,16 @@ std::vector<std::pair<std::string, LeafData> > CreateSubscription::Input::get_na
 
 }
 
-std::shared_ptr<Entity> CreateSubscription::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CreateSubscription::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CreateSubscription::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CreateSubscription::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CreateSubscription::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1123,7 +1123,7 @@ std::vector<std::pair<std::string, LeafData> > ModifySubscription::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> ModifySubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ModifySubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -1146,21 +1146,21 @@ std::shared_ptr<Entity> ModifySubscription::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ModifySubscription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ModifySubscription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void ModifySubscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1171,7 +1171,7 @@ void ModifySubscription::set_filter(const std::string & value_path, YFilter yfil
 {
 }
 
-std::shared_ptr<Entity> ModifySubscription::clone_ptr() const
+std::shared_ptr<ydk::Entity> ModifySubscription::clone_ptr() const
 {
     return std::make_shared<ModifySubscription>();
 }
@@ -1305,16 +1305,16 @@ std::vector<std::pair<std::string, LeafData> > ModifySubscription::Input::get_na
 
 }
 
-std::shared_ptr<Entity> ModifySubscription::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ModifySubscription::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ModifySubscription::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ModifySubscription::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ModifySubscription::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1576,16 +1576,16 @@ std::vector<std::pair<std::string, LeafData> > ModifySubscription::Output::get_n
 
 }
 
-std::shared_ptr<Entity> ModifySubscription::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ModifySubscription::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ModifySubscription::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ModifySubscription::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ModifySubscription::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1826,7 +1826,7 @@ std::vector<std::pair<std::string, LeafData> > DeleteSubscription::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> DeleteSubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DeleteSubscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -1849,21 +1849,21 @@ std::shared_ptr<Entity> DeleteSubscription::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DeleteSubscription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DeleteSubscription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void DeleteSubscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1874,7 +1874,7 @@ void DeleteSubscription::set_filter(const std::string & value_path, YFilter yfil
 {
 }
 
-std::shared_ptr<Entity> DeleteSubscription::clone_ptr() const
+std::shared_ptr<ydk::Entity> DeleteSubscription::clone_ptr() const
 {
     return std::make_shared<DeleteSubscription>();
 }
@@ -1954,16 +1954,16 @@ std::vector<std::pair<std::string, LeafData> > DeleteSubscription::Input::get_na
 
 }
 
-std::shared_ptr<Entity> DeleteSubscription::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DeleteSubscription::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DeleteSubscription::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DeleteSubscription::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DeleteSubscription::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2039,16 +2039,16 @@ std::vector<std::pair<std::string, LeafData> > DeleteSubscription::Output::get_n
 
 }
 
-std::shared_ptr<Entity> DeleteSubscription::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DeleteSubscription::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DeleteSubscription::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DeleteSubscription::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DeleteSubscription::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2128,16 +2128,16 @@ std::vector<std::pair<std::string, LeafData> > Streams::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> Streams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Streams::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Streams::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Streams::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Streams::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2157,7 +2157,7 @@ void Streams::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Streams::clone_ptr() const
+std::shared_ptr<ydk::Entity> Streams::clone_ptr() const
 {
     return std::make_shared<Streams>();
 }
@@ -2238,33 +2238,33 @@ std::vector<std::pair<std::string, LeafData> > Filters::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> Filters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Filters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "filter")
     {
-        auto c = std::make_shared<Filters::Filter>();
-        c->parent = this;
-        filter.append(c);
-        return c;
+        auto ent_ = std::make_shared<Filters::Filter>();
+        ent_->parent = this;
+        filter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Filters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Filters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : filter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : filter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Filters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2275,7 +2275,7 @@ void Filters::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Filters::clone_ptr() const
+std::shared_ptr<ydk::Entity> Filters::clone_ptr() const
 {
     return std::make_shared<Filters>();
 }
@@ -2368,16 +2368,16 @@ std::vector<std::pair<std::string, LeafData> > Filters::Filter::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Filters::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Filters::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Filters::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Filters::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Filters::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2484,33 +2484,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriptionConfig::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> SubscriptionConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriptionConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subscription")
     {
-        auto c = std::make_shared<SubscriptionConfig::Subscription>();
-        c->parent = this;
-        subscription.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriptionConfig::Subscription>();
+        ent_->parent = this;
+        subscription.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriptionConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriptionConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : subscription.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : subscription.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriptionConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2521,7 +2521,7 @@ void SubscriptionConfig::set_filter(const std::string & value_path, YFilter yfil
 {
 }
 
-std::shared_ptr<Entity> SubscriptionConfig::clone_ptr() const
+std::shared_ptr<ydk::Entity> SubscriptionConfig::clone_ptr() const
 {
     return std::make_shared<SubscriptionConfig>();
 }
@@ -2693,7 +2693,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriptionConfig::Subscription:
 
 }
 
-std::shared_ptr<Entity> SubscriptionConfig::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriptionConfig::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "receivers")
     {
@@ -2707,16 +2707,16 @@ std::shared_ptr<Entity> SubscriptionConfig::Subscription::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriptionConfig::Subscription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriptionConfig::Subscription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(receivers != nullptr)
     {
-        children["receivers"] = receivers;
+        _children["receivers"] = receivers;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriptionConfig::Subscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2981,33 +2981,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriptionConfig::Subscription:
 
 }
 
-std::shared_ptr<Entity> SubscriptionConfig::Subscription::Receivers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriptionConfig::Subscription::Receivers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "receiver")
     {
-        auto c = std::make_shared<SubscriptionConfig::Subscription::Receivers::Receiver>();
-        c->parent = this;
-        receiver.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriptionConfig::Subscription::Receivers::Receiver>();
+        ent_->parent = this;
+        receiver.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriptionConfig::Subscription::Receivers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriptionConfig::Subscription::Receivers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : receiver.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : receiver.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriptionConfig::Subscription::Receivers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3075,16 +3075,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriptionConfig::Subscription:
 
 }
 
-std::shared_ptr<Entity> SubscriptionConfig::Subscription::Receivers::Receiver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriptionConfig::Subscription::Receivers::Receiver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriptionConfig::Subscription::Receivers::Receiver::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriptionConfig::Subscription::Receivers::Receiver::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriptionConfig::Subscription::Receivers::Receiver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3181,33 +3181,33 @@ std::vector<std::pair<std::string, LeafData> > Subscriptions::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Subscriptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subscription")
     {
-        auto c = std::make_shared<Subscriptions::Subscription>();
-        c->parent = this;
-        subscription.append(c);
-        return c;
+        auto ent_ = std::make_shared<Subscriptions::Subscription>();
+        ent_->parent = this;
+        subscription.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : subscription.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : subscription.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3218,7 +3218,7 @@ void Subscriptions::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Subscriptions::clone_ptr() const
+std::shared_ptr<ydk::Entity> Subscriptions::clone_ptr() const
 {
     return std::make_shared<Subscriptions>();
 }
@@ -3398,7 +3398,7 @@ std::vector<std::pair<std::string, LeafData> > Subscriptions::Subscription::get_
 
 }
 
-std::shared_ptr<Entity> Subscriptions::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriptions::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "receivers")
     {
@@ -3412,16 +3412,16 @@ std::shared_ptr<Entity> Subscriptions::Subscription::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriptions::Subscription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriptions::Subscription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(receivers != nullptr)
     {
-        children["receivers"] = receivers;
+        _children["receivers"] = receivers;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriptions::Subscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3706,33 +3706,33 @@ std::vector<std::pair<std::string, LeafData> > Subscriptions::Subscription::Rece
 
 }
 
-std::shared_ptr<Entity> Subscriptions::Subscription::Receivers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriptions::Subscription::Receivers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "receiver")
     {
-        auto c = std::make_shared<Subscriptions::Subscription::Receivers::Receiver>();
-        c->parent = this;
-        receiver.append(c);
-        return c;
+        auto ent_ = std::make_shared<Subscriptions::Subscription::Receivers::Receiver>();
+        ent_->parent = this;
+        receiver.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriptions::Subscription::Receivers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriptions::Subscription::Receivers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : receiver.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : receiver.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Subscriptions::Subscription::Receivers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3800,16 +3800,16 @@ std::vector<std::pair<std::string, LeafData> > Subscriptions::Subscription::Rece
 
 }
 
-std::shared_ptr<Entity> Subscriptions::Subscription::Receivers::Receiver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Subscriptions::Subscription::Receivers::Receiver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Subscriptions::Subscription::Receivers::Receiver::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Subscriptions::Subscription::Receivers::Receiver::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Subscriptions::Subscription::Receivers::Receiver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

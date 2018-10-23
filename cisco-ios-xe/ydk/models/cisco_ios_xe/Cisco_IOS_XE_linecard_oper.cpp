@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > LinecardOperData::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> LinecardOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LinecardOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "linecard")
     {
-        auto c = std::make_shared<LinecardOperData::Linecard>();
-        c->parent = this;
-        linecard.append(c);
-        return c;
+        auto ent_ = std::make_shared<LinecardOperData::Linecard>();
+        ent_->parent = this;
+        linecard.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LinecardOperData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LinecardOperData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : linecard.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : linecard.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LinecardOperData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void LinecardOperData::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> LinecardOperData::clone_ptr() const
+std::shared_ptr<ydk::Entity> LinecardOperData::clone_ptr() const
 {
     return std::make_shared<LinecardOperData>();
 }
@@ -182,16 +182,16 @@ std::vector<std::pair<std::string, LeafData> > LinecardOperData::Linecard::get_n
 
 }
 
-std::shared_ptr<Entity> LinecardOperData::Linecard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LinecardOperData::Linecard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LinecardOperData::Linecard::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LinecardOperData::Linecard::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LinecardOperData::Linecard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -92,7 +92,7 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsQosPktClassTable")
     {
@@ -196,66 +196,66 @@ std::shared_ptr<Entity> DOCSQOSMIB::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(docsqospktclasstable != nullptr)
     {
-        children["docsQosPktClassTable"] = docsqospktclasstable;
+        _children["docsQosPktClassTable"] = docsqospktclasstable;
     }
 
     if(docsqosparamsettable != nullptr)
     {
-        children["docsQosParamSetTable"] = docsqosparamsettable;
+        _children["docsQosParamSetTable"] = docsqosparamsettable;
     }
 
     if(docsqosserviceflowtable != nullptr)
     {
-        children["docsQosServiceFlowTable"] = docsqosserviceflowtable;
+        _children["docsQosServiceFlowTable"] = docsqosserviceflowtable;
     }
 
     if(docsqosserviceflowstatstable != nullptr)
     {
-        children["docsQosServiceFlowStatsTable"] = docsqosserviceflowstatstable;
+        _children["docsQosServiceFlowStatsTable"] = docsqosserviceflowstatstable;
     }
 
     if(docsqosupstreamstatstable != nullptr)
     {
-        children["docsQosUpstreamStatsTable"] = docsqosupstreamstatstable;
+        _children["docsQosUpstreamStatsTable"] = docsqosupstreamstatstable;
     }
 
     if(docsqosdynamicservicestatstable != nullptr)
     {
-        children["docsQosDynamicServiceStatsTable"] = docsqosdynamicservicestatstable;
+        _children["docsQosDynamicServiceStatsTable"] = docsqosdynamicservicestatstable;
     }
 
     if(docsqosserviceflowlogtable != nullptr)
     {
-        children["docsQosServiceFlowLogTable"] = docsqosserviceflowlogtable;
+        _children["docsQosServiceFlowLogTable"] = docsqosserviceflowlogtable;
     }
 
     if(docsqosserviceclasstable != nullptr)
     {
-        children["docsQosServiceClassTable"] = docsqosserviceclasstable;
+        _children["docsQosServiceClassTable"] = docsqosserviceclasstable;
     }
 
     if(docsqosserviceclasspolicytable != nullptr)
     {
-        children["docsQosServiceClassPolicyTable"] = docsqosserviceclasspolicytable;
+        _children["docsQosServiceClassPolicyTable"] = docsqosserviceclasspolicytable;
     }
 
     if(docsqosphstable != nullptr)
     {
-        children["docsQosPHSTable"] = docsqosphstable;
+        _children["docsQosPHSTable"] = docsqosphstable;
     }
 
     if(docsqoscmtsmactosrvflowtable != nullptr)
     {
-        children["docsQosCmtsMacToSrvFlowTable"] = docsqoscmtsmactosrvflowtable;
+        _children["docsQosCmtsMacToSrvFlowTable"] = docsqoscmtsmactosrvflowtable;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSQOSMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -266,7 +266,7 @@ void DOCSQOSMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::clone_ptr() const
 {
     return std::make_shared<DOCSQOSMIB>();
 }
@@ -354,33 +354,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosPktClassTable:
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosPktClassTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosPktClassTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsQosPktClassEntry")
     {
-        auto c = std::make_shared<DOCSQOSMIB::DocsQosPktClassTable::DocsQosPktClassEntry>();
-        c->parent = this;
-        docsqospktclassentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSQOSMIB::DocsQosPktClassTable::DocsQosPktClassEntry>();
+        ent_->parent = this;
+        docsqospktclassentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosPktClassTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosPktClassTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsqospktclassentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsqospktclassentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosPktClassTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -593,16 +593,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosPktClassTable:
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosPktClassTable::DocsQosPktClassEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosPktClassTable::DocsQosPktClassEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosPktClassTable::DocsQosPktClassEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosPktClassTable::DocsQosPktClassEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosPktClassTable::DocsQosPktClassEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1044,33 +1044,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosParamSetTable:
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosParamSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosParamSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsQosParamSetEntry")
     {
-        auto c = std::make_shared<DOCSQOSMIB::DocsQosParamSetTable::DocsQosParamSetEntry>();
-        c->parent = this;
-        docsqosparamsetentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSQOSMIB::DocsQosParamSetTable::DocsQosParamSetEntry>();
+        ent_->parent = this;
+        docsqosparamsetentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosParamSetTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosParamSetTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsqosparamsetentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsqosparamsetentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosParamSetTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1231,16 +1231,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosParamSetTable:
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosParamSetTable::DocsQosParamSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosParamSetTable::DocsQosParamSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosParamSetTable::DocsQosParamSetEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosParamSetTable::DocsQosParamSetEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosParamSetTable::DocsQosParamSetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1552,33 +1552,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosServiceFlowTab
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosServiceFlowTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosServiceFlowTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsQosServiceFlowEntry")
     {
-        auto c = std::make_shared<DOCSQOSMIB::DocsQosServiceFlowTable::DocsQosServiceFlowEntry>();
-        c->parent = this;
-        docsqosserviceflowentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSQOSMIB::DocsQosServiceFlowTable::DocsQosServiceFlowEntry>();
+        ent_->parent = this;
+        docsqosserviceflowentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosServiceFlowTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosServiceFlowTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsqosserviceflowentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsqosserviceflowentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosServiceFlowTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1698,16 +1698,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosServiceFlowTab
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosServiceFlowTable::DocsQosServiceFlowEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosServiceFlowTable::DocsQosServiceFlowEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosServiceFlowTable::DocsQosServiceFlowEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosServiceFlowTable::DocsQosServiceFlowEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosServiceFlowTable::DocsQosServiceFlowEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1921,33 +1921,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosServiceFlowSta
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosServiceFlowStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosServiceFlowStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsQosServiceFlowStatsEntry")
     {
-        auto c = std::make_shared<DOCSQOSMIB::DocsQosServiceFlowStatsTable::DocsQosServiceFlowStatsEntry>();
-        c->parent = this;
-        docsqosserviceflowstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSQOSMIB::DocsQosServiceFlowStatsTable::DocsQosServiceFlowStatsEntry>();
+        ent_->parent = this;
+        docsqosserviceflowstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosServiceFlowStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosServiceFlowStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsqosserviceflowstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsqosserviceflowstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosServiceFlowStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2047,16 +2047,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosServiceFlowSta
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosServiceFlowStatsTable::DocsQosServiceFlowStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosServiceFlowStatsTable::DocsQosServiceFlowStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosServiceFlowStatsTable::DocsQosServiceFlowStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosServiceFlowStatsTable::DocsQosServiceFlowStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosServiceFlowStatsTable::DocsQosServiceFlowStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2220,33 +2220,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosUpstreamStatsT
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosUpstreamStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosUpstreamStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsQosUpstreamStatsEntry")
     {
-        auto c = std::make_shared<DOCSQOSMIB::DocsQosUpstreamStatsTable::DocsQosUpstreamStatsEntry>();
-        c->parent = this;
-        docsqosupstreamstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSQOSMIB::DocsQosUpstreamStatsTable::DocsQosUpstreamStatsEntry>();
+        ent_->parent = this;
+        docsqosupstreamstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosUpstreamStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosUpstreamStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsqosupstreamstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsqosupstreamstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosUpstreamStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2330,16 +2330,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosUpstreamStatsT
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosUpstreamStatsTable::DocsQosUpstreamStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosUpstreamStatsTable::DocsQosUpstreamStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosUpstreamStatsTable::DocsQosUpstreamStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosUpstreamStatsTable::DocsQosUpstreamStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosUpstreamStatsTable::DocsQosUpstreamStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2463,33 +2463,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosDynamicService
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosDynamicServiceStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosDynamicServiceStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsQosDynamicServiceStatsEntry")
     {
-        auto c = std::make_shared<DOCSQOSMIB::DocsQosDynamicServiceStatsTable::DocsQosDynamicServiceStatsEntry>();
-        c->parent = this;
-        docsqosdynamicservicestatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSQOSMIB::DocsQosDynamicServiceStatsTable::DocsQosDynamicServiceStatsEntry>();
+        ent_->parent = this;
+        docsqosdynamicservicestatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosDynamicServiceStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosDynamicServiceStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsqosdynamicservicestatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsqosdynamicservicestatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosDynamicServiceStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2645,16 +2645,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosDynamicService
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosDynamicServiceStatsTable::DocsQosDynamicServiceStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosDynamicServiceStatsTable::DocsQosDynamicServiceStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosDynamicServiceStatsTable::DocsQosDynamicServiceStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosDynamicServiceStatsTable::DocsQosDynamicServiceStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosDynamicServiceStatsTable::DocsQosDynamicServiceStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2958,33 +2958,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosServiceFlowLog
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosServiceFlowLogTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosServiceFlowLogTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsQosServiceFlowLogEntry")
     {
-        auto c = std::make_shared<DOCSQOSMIB::DocsQosServiceFlowLogTable::DocsQosServiceFlowLogEntry>();
-        c->parent = this;
-        docsqosserviceflowlogentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSQOSMIB::DocsQosServiceFlowLogTable::DocsQosServiceFlowLogEntry>();
+        ent_->parent = this;
+        docsqosserviceflowlogentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosServiceFlowLogTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosServiceFlowLogTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsqosserviceflowlogentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsqosserviceflowlogentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosServiceFlowLogTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3107,16 +3107,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosServiceFlowLog
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosServiceFlowLogTable::DocsQosServiceFlowLogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosServiceFlowLogTable::DocsQosServiceFlowLogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosServiceFlowLogTable::DocsQosServiceFlowLogEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosServiceFlowLogTable::DocsQosServiceFlowLogEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosServiceFlowLogTable::DocsQosServiceFlowLogEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3340,33 +3340,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosServiceClassTa
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosServiceClassTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosServiceClassTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsQosServiceClassEntry")
     {
-        auto c = std::make_shared<DOCSQOSMIB::DocsQosServiceClassTable::DocsQosServiceClassEntry>();
-        c->parent = this;
-        docsqosserviceclassentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSQOSMIB::DocsQosServiceClassTable::DocsQosServiceClassEntry>();
+        ent_->parent = this;
+        docsqosserviceclassentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosServiceClassTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosServiceClassTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsqosserviceclassentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsqosserviceclassentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosServiceClassTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3521,16 +3521,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosServiceClassTa
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosServiceClassTable::DocsQosServiceClassEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosServiceClassTable::DocsQosServiceClassEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosServiceClassTable::DocsQosServiceClassEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosServiceClassTable::DocsQosServiceClassEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosServiceClassTable::DocsQosServiceClassEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3834,33 +3834,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosServiceClassPo
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosServiceClassPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosServiceClassPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsQosServiceClassPolicyEntry")
     {
-        auto c = std::make_shared<DOCSQOSMIB::DocsQosServiceClassPolicyTable::DocsQosServiceClassPolicyEntry>();
-        c->parent = this;
-        docsqosserviceclasspolicyentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSQOSMIB::DocsQosServiceClassPolicyTable::DocsQosServiceClassPolicyEntry>();
+        ent_->parent = this;
+        docsqosserviceclasspolicyentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosServiceClassPolicyTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosServiceClassPolicyTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsqosserviceclasspolicyentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsqosserviceclasspolicyentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosServiceClassPolicyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3939,16 +3939,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosServiceClassPo
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosServiceClassPolicyTable::DocsQosServiceClassPolicyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosServiceClassPolicyTable::DocsQosServiceClassPolicyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosServiceClassPolicyTable::DocsQosServiceClassPolicyEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosServiceClassPolicyTable::DocsQosServiceClassPolicyEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosServiceClassPolicyTable::DocsQosServiceClassPolicyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4062,33 +4062,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosPHSTable::get_
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosPHSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosPHSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsQosPHSEntry")
     {
-        auto c = std::make_shared<DOCSQOSMIB::DocsQosPHSTable::DocsQosPHSEntry>();
-        c->parent = this;
-        docsqosphsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSQOSMIB::DocsQosPHSTable::DocsQosPHSEntry>();
+        ent_->parent = this;
+        docsqosphsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosPHSTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosPHSTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsqosphsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsqosphsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosPHSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4189,16 +4189,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosPHSTable::Docs
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosPHSTable::DocsQosPHSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosPHSTable::DocsQosPHSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosPHSTable::DocsQosPHSEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosPHSTable::DocsQosPHSEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosPHSTable::DocsQosPHSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4362,33 +4362,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosCmtsMacToSrvFl
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosCmtsMacToSrvFlowTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosCmtsMacToSrvFlowTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsQosCmtsMacToSrvFlowEntry")
     {
-        auto c = std::make_shared<DOCSQOSMIB::DocsQosCmtsMacToSrvFlowTable::DocsQosCmtsMacToSrvFlowEntry>();
-        c->parent = this;
-        docsqoscmtsmactosrvflowentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSQOSMIB::DocsQosCmtsMacToSrvFlowTable::DocsQosCmtsMacToSrvFlowEntry>();
+        ent_->parent = this;
+        docsqoscmtsmactosrvflowentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosCmtsMacToSrvFlowTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosCmtsMacToSrvFlowTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsqoscmtsmactosrvflowentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsqoscmtsmactosrvflowentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosCmtsMacToSrvFlowTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4464,16 +4464,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSQOSMIB::DocsQosCmtsMacToSrvFl
 
 }
 
-std::shared_ptr<Entity> DOCSQOSMIB::DocsQosCmtsMacToSrvFlowTable::DocsQosCmtsMacToSrvFlowEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSQOSMIB::DocsQosCmtsMacToSrvFlowTable::DocsQosCmtsMacToSrvFlowEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSQOSMIB::DocsQosCmtsMacToSrvFlowTable::DocsQosCmtsMacToSrvFlowEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSQOSMIB::DocsQosCmtsMacToSrvFlowTable::DocsQosCmtsMacToSrvFlowEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSQOSMIB::DocsQosCmtsMacToSrvFlowTable::DocsQosCmtsMacToSrvFlowEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

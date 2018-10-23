@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > Grpc::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Grpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Grpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> Grpc::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Grpc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Grpc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(status != nullptr)
     {
-        children["status"] = status;
+        _children["status"] = status;
     }
 
-    return children;
+    return _children;
 }
 
 void Grpc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void Grpc::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Grpc::clone_ptr() const
+std::shared_ptr<ydk::Entity> Grpc::clone_ptr() const
 {
     return std::make_shared<Grpc>();
 }
@@ -264,16 +264,16 @@ std::vector<std::pair<std::string, LeafData> > Grpc::Statistics::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Grpc::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Grpc::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Grpc::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Grpc::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Grpc::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -585,16 +585,16 @@ std::vector<std::pair<std::string, LeafData> > Grpc::Status::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Grpc::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Grpc::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Grpc::Status::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Grpc::Status::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Grpc::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

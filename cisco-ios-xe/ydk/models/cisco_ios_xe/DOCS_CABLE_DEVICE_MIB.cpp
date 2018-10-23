@@ -108,7 +108,7 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsDevBase")
     {
@@ -248,86 +248,86 @@ std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(docsdevbase != nullptr)
     {
-        children["docsDevBase"] = docsdevbase;
+        _children["docsDevBase"] = docsdevbase;
     }
 
     if(docsdevsoftware != nullptr)
     {
-        children["docsDevSoftware"] = docsdevsoftware;
+        _children["docsDevSoftware"] = docsdevsoftware;
     }
 
     if(docsdevserver != nullptr)
     {
-        children["docsDevServer"] = docsdevserver;
+        _children["docsDevServer"] = docsdevserver;
     }
 
     if(docsdevevent != nullptr)
     {
-        children["docsDevEvent"] = docsdevevent;
+        _children["docsDevEvent"] = docsdevevent;
     }
 
     if(docsdevfilter != nullptr)
     {
-        children["docsDevFilter"] = docsdevfilter;
+        _children["docsDevFilter"] = docsdevfilter;
     }
 
     if(docsdevcpe != nullptr)
     {
-        children["docsDevCpe"] = docsdevcpe;
+        _children["docsDevCpe"] = docsdevcpe;
     }
 
     if(docsdevnmaccesstable != nullptr)
     {
-        children["docsDevNmAccessTable"] = docsdevnmaccesstable;
+        _children["docsDevNmAccessTable"] = docsdevnmaccesstable;
     }
 
     if(docsdevevcontroltable != nullptr)
     {
-        children["docsDevEvControlTable"] = docsdevevcontroltable;
+        _children["docsDevEvControlTable"] = docsdevevcontroltable;
     }
 
     if(docsdeveventtable != nullptr)
     {
-        children["docsDevEventTable"] = docsdeveventtable;
+        _children["docsDevEventTable"] = docsdeveventtable;
     }
 
     if(docsdevfilterllctable != nullptr)
     {
-        children["docsDevFilterLLCTable"] = docsdevfilterllctable;
+        _children["docsDevFilterLLCTable"] = docsdevfilterllctable;
     }
 
     if(docsdevfilteriptable != nullptr)
     {
-        children["docsDevFilterIpTable"] = docsdevfilteriptable;
+        _children["docsDevFilterIpTable"] = docsdevfilteriptable;
     }
 
     if(docsdevfilterpolicytable != nullptr)
     {
-        children["docsDevFilterPolicyTable"] = docsdevfilterpolicytable;
+        _children["docsDevFilterPolicyTable"] = docsdevfilterpolicytable;
     }
 
     if(docsdevfiltertostable != nullptr)
     {
-        children["docsDevFilterTosTable"] = docsdevfiltertostable;
+        _children["docsDevFilterTosTable"] = docsdevfiltertostable;
     }
 
     if(docsdevcpetable != nullptr)
     {
-        children["docsDevCpeTable"] = docsdevcpetable;
+        _children["docsDevCpeTable"] = docsdevcpetable;
     }
 
     if(docsdevcpeinettable != nullptr)
     {
-        children["docsDevCpeInetTable"] = docsdevcpeinettable;
+        _children["docsDevCpeInetTable"] = docsdevcpeinettable;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -338,7 +338,7 @@ void DOCSCABLEDEVICEMIB::set_filter(const std::string & value_path, YFilter yfil
 {
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::clone_ptr() const
 {
     return std::make_shared<DOCSCABLEDEVICEMIB>();
 }
@@ -442,16 +442,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevBase::
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevBase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevBase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -615,16 +615,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevSoftwa
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevSoftware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevSoftware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevSoftware::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevSoftware::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevSoftware::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -810,16 +810,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevServer
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1027,16 +1027,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevEvent:
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevEvent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevEvent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevEvent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1196,16 +1196,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevFilter
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1295,16 +1295,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevCpe::g
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevCpe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevCpe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevCpe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevCpe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevCpe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1398,33 +1398,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevNmAcce
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsDevNmAccessEntry")
     {
-        auto c = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::DocsDevNmAccessEntry>();
-        c->parent = this;
-        docsdevnmaccessentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::DocsDevNmAccessEntry>();
+        ent_->parent = this;
+        docsdevnmaccessentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsdevnmaccessentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsdevnmaccessentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1519,16 +1519,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevNmAcce
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::DocsDevNmAccessEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::DocsDevNmAccessEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::DocsDevNmAccessEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::DocsDevNmAccessEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevNmAccessTable::DocsDevNmAccessEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1682,33 +1682,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevEvCont
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevEvControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevEvControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsDevEvControlEntry")
     {
-        auto c = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevEvControlTable::DocsDevEvControlEntry>();
-        c->parent = this;
-        docsdevevcontrolentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevEvControlTable::DocsDevEvControlEntry>();
+        ent_->parent = this;
+        docsdevevcontrolentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevEvControlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevEvControlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsdevevcontrolentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsdevevcontrolentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevEvControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1779,16 +1779,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevEvCont
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevEvControlTable::DocsDevEvControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevEvControlTable::DocsDevEvControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevEvControlTable::DocsDevEvControlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevEvControlTable::DocsDevEvControlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevEvControlTable::DocsDevEvControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1882,33 +1882,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevEventT
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevEventTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevEventTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsDevEventEntry")
     {
-        auto c = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevEventTable::DocsDevEventEntry>();
-        c->parent = this;
-        docsdevevententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevEventTable::DocsDevEventEntry>();
+        ent_->parent = this;
+        docsdevevententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevEventTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevEventTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsdevevententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsdevevententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevEventTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1999,16 +1999,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevEventT
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevEventTable::DocsDevEventEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevEventTable::DocsDevEventEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevEventTable::DocsDevEventEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevEventTable::DocsDevEventEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevEventTable::DocsDevEventEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2152,33 +2152,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevFilter
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsDevFilterLLCEntry")
     {
-        auto c = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::DocsDevFilterLLCEntry>();
-        c->parent = this;
-        docsdevfilterllcentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::DocsDevFilterLLCEntry>();
+        ent_->parent = this;
+        docsdevfilterllcentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsdevfilterllcentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsdevfilterllcentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2265,16 +2265,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevFilter
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::DocsDevFilterLLCEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::DocsDevFilterLLCEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::DocsDevFilterLLCEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::DocsDevFilterLLCEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevFilterLLCTable::DocsDevFilterLLCEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2408,33 +2408,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevFilter
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsDevFilterIpEntry")
     {
-        auto c = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::DocsDevFilterIpEntry>();
-        c->parent = this;
-        docsdevfilteripentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::DocsDevFilterIpEntry>();
+        ent_->parent = this;
+        docsdevfilteripentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsdevfilteripentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsdevfilteripentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2577,16 +2577,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevFilter
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::DocsDevFilterIpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::DocsDevFilterIpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::DocsDevFilterIpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::DocsDevFilterIpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevFilterIpTable::DocsDevFilterIpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2860,33 +2860,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevFilter
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevFilterPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevFilterPolicyTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsDevFilterPolicyEntry")
     {
-        auto c = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevFilterPolicyTable::DocsDevFilterPolicyEntry>();
-        c->parent = this;
-        docsdevfilterpolicyentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevFilterPolicyTable::DocsDevFilterPolicyEntry>();
+        ent_->parent = this;
+        docsdevfilterpolicyentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterPolicyTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterPolicyTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsdevfilterpolicyentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsdevfilterpolicyentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevFilterPolicyTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2965,16 +2965,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevFilter
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevFilterPolicyTable::DocsDevFilterPolicyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevFilterPolicyTable::DocsDevFilterPolicyEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterPolicyTable::DocsDevFilterPolicyEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterPolicyTable::DocsDevFilterPolicyEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevFilterPolicyTable::DocsDevFilterPolicyEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3088,33 +3088,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevFilter
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevFilterTosTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevFilterTosTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsDevFilterTosEntry")
     {
-        auto c = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevFilterTosTable::DocsDevFilterTosEntry>();
-        c->parent = this;
-        docsdevfiltertosentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevFilterTosTable::DocsDevFilterTosEntry>();
+        ent_->parent = this;
+        docsdevfiltertosentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterTosTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterTosTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsdevfiltertosentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsdevfiltertosentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevFilterTosTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3193,16 +3193,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevFilter
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevFilterTosTable::DocsDevFilterTosEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevFilterTosTable::DocsDevFilterTosEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterTosTable::DocsDevFilterTosEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevFilterTosTable::DocsDevFilterTosEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevFilterTosTable::DocsDevFilterTosEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3316,33 +3316,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevCpeTab
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevCpeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevCpeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsDevCpeEntry")
     {
-        auto c = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevCpeTable::DocsDevCpeEntry>();
-        c->parent = this;
-        docsdevcpeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevCpeTable::DocsDevCpeEntry>();
+        ent_->parent = this;
+        docsdevcpeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevCpeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevCpeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsdevcpeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsdevcpeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevCpeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3417,16 +3417,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevCpeTab
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevCpeTable::DocsDevCpeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevCpeTable::DocsDevCpeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevCpeTable::DocsDevCpeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevCpeTable::DocsDevCpeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevCpeTable::DocsDevCpeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3530,33 +3530,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevCpeIne
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsDevCpeInetEntry")
     {
-        auto c = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::DocsDevCpeInetEntry>();
-        c->parent = this;
-        docsdevcpeinetentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::DocsDevCpeInetEntry>();
+        ent_->parent = this;
+        docsdevcpeinetentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsdevcpeinetentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsdevcpeinetentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3636,16 +3636,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSCABLEDEVICEMIB::DocsDevCpeIne
 
 }
 
-std::shared_ptr<Entity> DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::DocsDevCpeInetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::DocsDevCpeInetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::DocsDevCpeInetEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::DocsDevCpeInetEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSCABLEDEVICEMIB::DocsDevCpeInetTable::DocsDevCpeInetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

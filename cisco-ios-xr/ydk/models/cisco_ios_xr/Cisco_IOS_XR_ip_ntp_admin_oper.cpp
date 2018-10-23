@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "racks")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Ntp::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(racks != nullptr)
     {
-        children["racks"] = racks;
+        _children["racks"] = racks;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Ntp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Ntp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ntp::clone_ptr() const
 {
     return std::make_shared<Ntp>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rack")
     {
-        auto c = std::make_shared<Ntp::Racks::Rack>();
-        c->parent = this;
-        rack.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::Racks::Rack>();
+        ent_->parent = this;
+        rack.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rack.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rack.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -272,7 +272,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slots")
     {
@@ -286,16 +286,16 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(slots != nullptr)
     {
-        children["slots"] = slots;
+        _children["slots"] = slots;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -372,33 +372,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::get_name
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slot")
     {
-        auto c = std::make_shared<Ntp::Racks::Rack::Slots::Slot>();
-        c->parent = this;
-        slot.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::Racks::Rack::Slots::Slot>();
+        ent_->parent = this;
+        slot.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : slot.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : slot.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -463,7 +463,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::ge
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instances")
     {
@@ -477,16 +477,16 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(instances != nullptr)
     {
-        children["instances"] = instances;
+        _children["instances"] = instances;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -563,33 +563,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance")
     {
-        auto c = std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance>();
-        c->parent = this;
-        instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance>();
+        ent_->parent = this;
+        instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -662,7 +662,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "status")
     {
@@ -694,26 +694,26 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(status != nullptr)
     {
-        children["status"] = status;
+        _children["status"] = status;
     }
 
     if(associations != nullptr)
     {
-        children["associations"] = associations;
+        _children["associations"] = associations;
     }
 
     if(associations_detail != nullptr)
     {
-        children["associations-detail"] = associations_detail;
+        _children["associations-detail"] = associations_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -843,7 +843,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sys-ref-time")
     {
@@ -866,21 +866,21 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Stat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sys_ref_time != nullptr)
     {
-        children["sys-ref-time"] = sys_ref_time;
+        _children["sys-ref-time"] = sys_ref_time;
     }
 
     if(sys_drift != nullptr)
     {
-        children["sys-drift"] = sys_drift;
+        _children["sys-drift"] = sys_drift;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1083,7 +1083,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sec")
     {
@@ -1106,21 +1106,21 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Stat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sec != nullptr)
     {
-        children["sec"] = sec;
+        _children["sec"] = sec;
     }
 
     if(frac_secs != nullptr)
     {
-        children["frac-secs"] = frac_secs;
+        _children["frac-secs"] = frac_secs;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1179,16 +1179,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1257,16 +1257,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1339,7 +1339,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sec")
     {
@@ -1362,21 +1362,21 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Stat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sec != nullptr)
     {
-        children["sec"] = sec;
+        _children["sec"] = sec;
     }
 
     if(frac_secs != nullptr)
     {
-        children["frac-secs"] = frac_secs;
+        _children["frac-secs"] = frac_secs;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1435,16 +1435,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1513,16 +1513,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1607,33 +1607,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-summary-info")
     {
-        auto c = std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo>();
-        c->parent = this;
-        peer_summary_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo>();
+        ent_->parent = this;
+        peer_summary_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : peer_summary_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : peer_summary_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1717,7 +1717,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-info-common")
     {
@@ -1731,16 +1731,16 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Asso
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peer_info_common != nullptr)
     {
-        children["peer-info-common"] = peer_info_common;
+        _children["peer-info-common"] = peer_info_common;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1853,16 +1853,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::PeerInfoCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::PeerInfoCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::PeerInfoCommon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::PeerInfoCommon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::PeerInfoCommon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2057,33 +2057,33 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-detail-info")
     {
-        auto c = std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo>();
-        c->parent = this;
-        peer_detail_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo>();
+        ent_->parent = this;
+        peer_detail_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : peer_detail_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : peer_detail_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2238,7 +2238,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-info-common")
     {
@@ -2287,54 +2287,54 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Asso
 
     if(child_yang_name == "filter-detail")
     {
-        auto c = std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail>();
-        c->parent = this;
-        filter_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail>();
+        ent_->parent = this;
+        filter_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(peer_info_common != nullptr)
     {
-        children["peer-info-common"] = peer_info_common;
+        _children["peer-info-common"] = peer_info_common;
     }
 
     if(ref_time != nullptr)
     {
-        children["ref-time"] = ref_time;
+        _children["ref-time"] = ref_time;
     }
 
     if(originate_time != nullptr)
     {
-        children["originate-time"] = originate_time;
+        _children["originate-time"] = originate_time;
     }
 
     if(receive_time != nullptr)
     {
-        children["receive-time"] = receive_time;
+        _children["receive-time"] = receive_time;
     }
 
     if(transmit_time != nullptr)
     {
-        children["transmit-time"] = transmit_time;
+        _children["transmit-time"] = transmit_time;
     }
 
-    count = 0;
-    for (auto c : filter_detail.entities())
+    count_ = 0;
+    for (auto ent_ : filter_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2557,16 +2557,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2749,7 +2749,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sec")
     {
@@ -2772,21 +2772,21 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Asso
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sec != nullptr)
     {
-        children["sec"] = sec;
+        _children["sec"] = sec;
     }
 
     if(frac_secs != nullptr)
     {
-        children["frac-secs"] = frac_secs;
+        _children["frac-secs"] = frac_secs;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2845,16 +2845,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2923,16 +2923,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3005,7 +3005,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sec")
     {
@@ -3028,21 +3028,21 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Asso
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sec != nullptr)
     {
-        children["sec"] = sec;
+        _children["sec"] = sec;
     }
 
     if(frac_secs != nullptr)
     {
-        children["frac-secs"] = frac_secs;
+        _children["frac-secs"] = frac_secs;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3101,16 +3101,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3179,16 +3179,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3261,7 +3261,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sec")
     {
@@ -3284,21 +3284,21 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Asso
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sec != nullptr)
     {
-        children["sec"] = sec;
+        _children["sec"] = sec;
     }
 
     if(frac_secs != nullptr)
     {
-        children["frac-secs"] = frac_secs;
+        _children["frac-secs"] = frac_secs;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3357,16 +3357,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3435,16 +3435,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3517,7 +3517,7 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sec")
     {
@@ -3540,21 +3540,21 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Asso
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sec != nullptr)
     {
-        children["sec"] = sec;
+        _children["sec"] = sec;
     }
 
     if(frac_secs != nullptr)
     {
-        children["frac-secs"] = frac_secs;
+        _children["frac-secs"] = frac_secs;
     }
 
-    return children;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3613,16 +3613,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3691,16 +3691,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3777,16 +3777,16 @@ std::vector<std::pair<std::string, LeafData> > Ntp::Racks::Rack::Slots::Slot::In
 
 }
 
-std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

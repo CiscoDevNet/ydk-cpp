@@ -93,7 +93,7 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Vpdn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "history")
     {
@@ -170,51 +170,51 @@ std::shared_ptr<Entity> Vpdn::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(history != nullptr)
     {
-        children["history"] = history;
+        _children["history"] = history;
     }
 
     if(redundancy != nullptr)
     {
-        children["redundancy"] = redundancy;
+        _children["redundancy"] = redundancy;
     }
 
     if(local != nullptr)
     {
-        children["local"] = local;
+        _children["local"] = local;
     }
 
     if(templates != nullptr)
     {
-        children["templates"] = templates;
+        _children["templates"] = templates;
     }
 
     if(caller_id != nullptr)
     {
-        children["caller-id"] = caller_id;
+        _children["caller-id"] = caller_id;
     }
 
     if(vpd_ngroups != nullptr)
     {
-        children["vpd-ngroups"] = vpd_ngroups;
+        _children["vpd-ngroups"] = vpd_ngroups;
     }
 
     if(loggings != nullptr)
     {
-        children["loggings"] = loggings;
+        _children["loggings"] = loggings;
     }
 
     if(l2tp != nullptr)
     {
-        children["l2tp"] = l2tp;
+        _children["l2tp"] = l2tp;
     }
 
-    return children;
+    return _children;
 }
 
 void Vpdn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -255,7 +255,7 @@ void Vpdn::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Vpdn::clone_ptr() const
+std::shared_ptr<ydk::Entity> Vpdn::clone_ptr() const
 {
     return std::make_shared<Vpdn>();
 }
@@ -335,16 +335,16 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::History::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Vpdn::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vpdn::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -425,7 +425,7 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Redundancy::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Vpdn::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "process-failures")
     {
@@ -439,16 +439,16 @@ std::shared_ptr<Entity> Vpdn::Redundancy::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Redundancy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Redundancy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(process_failures != nullptr)
     {
-        children["process-failures"] = process_failures;
+        _children["process-failures"] = process_failures;
     }
 
-    return children;
+    return _children;
 }
 
 void Vpdn::Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -524,16 +524,16 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Redundancy::ProcessFailures
 
 }
 
-std::shared_ptr<Entity> Vpdn::Redundancy::ProcessFailures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::Redundancy::ProcessFailures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Redundancy::ProcessFailures::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Redundancy::ProcessFailures::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vpdn::Redundancy::ProcessFailures::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -621,16 +621,16 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Local::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Vpdn::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Local::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Local::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vpdn::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -744,33 +744,33 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::Templates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "template")
     {
-        auto c = std::make_shared<Vpdn::Templates::Template>();
-        c->parent = this;
-        template_.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vpdn::Templates::Template>();
+        ent_->parent = this;
+        template_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Templates::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : template_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : template_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vpdn::Templates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -874,7 +874,7 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::get_na
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::Templates::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "caller-id")
     {
@@ -924,36 +924,36 @@ std::shared_ptr<Entity> Vpdn::Templates::Template::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Templates::Template::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(caller_id != nullptr)
     {
-        children["caller-id"] = caller_id;
+        _children["caller-id"] = caller_id;
     }
 
     if(vpn != nullptr)
     {
-        children["vpn"] = vpn;
+        _children["vpn"] = vpn;
     }
 
     if(tunnel != nullptr)
     {
-        children["tunnel"] = tunnel;
+        _children["tunnel"] = tunnel;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
-    return children;
+    return _children;
 }
 
 void Vpdn::Templates::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1062,16 +1062,16 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::Caller
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template::CallerId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::Templates::Template::CallerId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::CallerId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Templates::Template::CallerId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vpdn::Templates::Template::CallerId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1145,7 +1145,7 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::Vpn::g
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template::Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::Templates::Template::Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "id")
     {
@@ -1159,16 +1159,16 @@ std::shared_ptr<Entity> Vpdn::Templates::Template::Vpn::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::Vpn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Templates::Template::Vpn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(id != nullptr)
     {
-        children["id"] = id;
+        _children["id"] = id;
     }
 
-    return children;
+    return _children;
 }
 
 void Vpdn::Templates::Template::Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1241,16 +1241,16 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::Vpn::I
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template::Vpn::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::Templates::Template::Vpn::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::Vpn::Id::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Templates::Template::Vpn::Id::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vpdn::Templates::Template::Vpn::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1329,16 +1329,16 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::Tunnel
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::Templates::Template::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Templates::Template::Tunnel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vpdn::Templates::Template::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1407,16 +1407,16 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::Ip::ge
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::Templates::Template::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Templates::Template::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vpdn::Templates::Template::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1489,16 +1489,16 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::Ipv4::
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::Templates::Template::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Templates::Template::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vpdn::Templates::Template::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1584,16 +1584,16 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::CallerId::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Vpdn::CallerId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::CallerId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::CallerId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::CallerId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vpdn::CallerId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1677,33 +1677,33 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::VpdNgroups::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Vpdn::VpdNgroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::VpdNgroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vpd-ngroup")
     {
-        auto c = std::make_shared<Vpdn::VpdNgroups::VpdNgroup>();
-        c->parent = this;
-        vpd_ngroup.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vpdn::VpdNgroups::VpdNgroup>();
+        ent_->parent = this;
+        vpd_ngroup.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdNgroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::VpdNgroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vpd_ngroup.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vpd_ngroup.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vpdn::VpdNgroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1811,7 +1811,7 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::VpdNgroups::VpdNgroup::get_
 
 }
 
-std::shared_ptr<Entity> Vpdn::VpdNgroups::VpdNgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::VpdNgroups::VpdNgroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vpn-id")
     {
@@ -1834,21 +1834,21 @@ std::shared_ptr<Entity> Vpdn::VpdNgroups::VpdNgroup::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdNgroups::VpdNgroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::VpdNgroups::VpdNgroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vpn_id != nullptr)
     {
-        children["vpn-id"] = vpn_id;
+        _children["vpn-id"] = vpn_id;
     }
 
     if(ip != nullptr)
     {
-        children["ip"] = ip;
+        _children["ip"] = ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Vpdn::VpdNgroups::VpdNgroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2001,16 +2001,16 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::VpdNgroups::VpdNgroup::VpnI
 
 }
 
-std::shared_ptr<Entity> Vpdn::VpdNgroups::VpdNgroup::VpnId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::VpdNgroups::VpdNgroup::VpnId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdNgroups::VpdNgroup::VpnId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::VpdNgroups::VpdNgroup::VpnId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vpdn::VpdNgroups::VpdNgroup::VpnId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2089,16 +2089,16 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::VpdNgroups::VpdNgroup::Ip::
 
 }
 
-std::shared_ptr<Entity> Vpdn::VpdNgroups::VpdNgroup::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::VpdNgroups::VpdNgroup::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdNgroups::VpdNgroup::Ip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::VpdNgroups::VpdNgroup::Ip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vpdn::VpdNgroups::VpdNgroup::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2182,33 +2182,33 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Loggings::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Vpdn::Loggings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::Loggings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "logging")
     {
-        auto c = std::make_shared<Vpdn::Loggings::Logging>();
-        c->parent = this;
-        logging.append(c);
-        return c;
+        auto ent_ = std::make_shared<Vpdn::Loggings::Logging>();
+        ent_->parent = this;
+        logging.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Loggings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Loggings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : logging.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : logging.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Vpdn::Loggings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2275,16 +2275,16 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Loggings::Logging::get_name
 
 }
 
-std::shared_ptr<Entity> Vpdn::Loggings::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::Loggings::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Loggings::Logging::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Loggings::Logging::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vpdn::Loggings::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2369,7 +2369,7 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::L2tp::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Vpdn::L2tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::L2tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-id")
     {
@@ -2383,16 +2383,16 @@ std::shared_ptr<Entity> Vpdn::L2tp::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2tp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::L2tp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(session_id != nullptr)
     {
-        children["session-id"] = session_id;
+        _children["session-id"] = session_id;
     }
 
-    return children;
+    return _children;
 }
 
 void Vpdn::L2tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2478,7 +2478,7 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::L2tp::SessionId::get_name_l
 
 }
 
-std::shared_ptr<Entity> Vpdn::L2tp::SessionId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::L2tp::SessionId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "space")
     {
@@ -2492,16 +2492,16 @@ std::shared_ptr<Entity> Vpdn::L2tp::SessionId::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2tp::SessionId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::L2tp::SessionId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(space != nullptr)
     {
-        children["space"] = space;
+        _children["space"] = space;
     }
 
-    return children;
+    return _children;
 }
 
 void Vpdn::L2tp::SessionId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2567,16 +2567,16 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::L2tp::SessionId::Space::get
 
 }
 
-std::shared_ptr<Entity> Vpdn::L2tp::SessionId::Space::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Vpdn::L2tp::SessionId::Space::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2tp::SessionId::Space::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::L2tp::SessionId::Space::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Vpdn::L2tp::SessionId::Space::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

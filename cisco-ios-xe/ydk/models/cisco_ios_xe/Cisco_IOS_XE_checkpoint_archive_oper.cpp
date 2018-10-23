@@ -65,7 +65,7 @@ std::vector<std::pair<std::string, LeafData> > CheckpointArchives::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> CheckpointArchives::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CheckpointArchives::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "archives")
     {
@@ -79,16 +79,16 @@ std::shared_ptr<Entity> CheckpointArchives::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CheckpointArchives::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CheckpointArchives::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(archives != nullptr)
     {
-        children["archives"] = archives;
+        _children["archives"] = archives;
     }
 
-    return children;
+    return _children;
 }
 
 void CheckpointArchives::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -129,7 +129,7 @@ void CheckpointArchives::set_filter(const std::string & value_path, YFilter yfil
     }
 }
 
-std::shared_ptr<Entity> CheckpointArchives::clone_ptr() const
+std::shared_ptr<ydk::Entity> CheckpointArchives::clone_ptr() const
 {
     return std::make_shared<CheckpointArchives>();
 }
@@ -217,33 +217,33 @@ std::vector<std::pair<std::string, LeafData> > CheckpointArchives::Archives::get
 
 }
 
-std::shared_ptr<Entity> CheckpointArchives::Archives::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CheckpointArchives::Archives::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "archive")
     {
-        auto c = std::make_shared<CheckpointArchives::Archives::Archive>();
-        c->parent = this;
-        archive.append(c);
-        return c;
+        auto ent_ = std::make_shared<CheckpointArchives::Archives::Archive>();
+        ent_->parent = this;
+        archive.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CheckpointArchives::Archives::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CheckpointArchives::Archives::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : archive.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : archive.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CheckpointArchives::Archives::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -314,16 +314,16 @@ std::vector<std::pair<std::string, LeafData> > CheckpointArchives::Archives::Arc
 
 }
 
-std::shared_ptr<Entity> CheckpointArchives::Archives::Archive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CheckpointArchives::Archives::Archive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CheckpointArchives::Archives::Archive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CheckpointArchives::Archives::Archive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CheckpointArchives::Archives::Archive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

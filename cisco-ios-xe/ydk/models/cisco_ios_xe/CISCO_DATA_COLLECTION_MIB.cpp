@@ -76,7 +76,7 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::get_name_
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdcVFile")
     {
@@ -144,46 +144,46 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cdcvfile != nullptr)
     {
-        children["cdcVFile"] = cdcvfile;
+        _children["cdcVFile"] = cdcvfile;
     }
 
     if(cdcvfiletable != nullptr)
     {
-        children["cdcVFileTable"] = cdcvfiletable;
+        _children["cdcVFileTable"] = cdcvfiletable;
     }
 
     if(cdcvfilemgmttable != nullptr)
     {
-        children["cdcVFileMgmtTable"] = cdcvfilemgmttable;
+        _children["cdcVFileMgmtTable"] = cdcvfilemgmttable;
     }
 
     if(cdcdgtable != nullptr)
     {
-        children["cdcDGTable"] = cdcdgtable;
+        _children["cdcDGTable"] = cdcdgtable;
     }
 
     if(cdcdgbaseobjecttable != nullptr)
     {
-        children["cdcDGBaseObjectTable"] = cdcdgbaseobjecttable;
+        _children["cdcDGBaseObjectTable"] = cdcdgbaseobjecttable;
     }
 
     if(cdcdginstancetable != nullptr)
     {
-        children["cdcDGInstanceTable"] = cdcdginstancetable;
+        _children["cdcDGInstanceTable"] = cdcdginstancetable;
     }
 
     if(cdcfilexferconftable != nullptr)
     {
-        children["cdcFileXferConfTable"] = cdcfilexferconftable;
+        _children["cdcFileXferConfTable"] = cdcfilexferconftable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -194,7 +194,7 @@ void CISCODATACOLLECTIONMIB::set_filter(const std::string & value_path, YFilter 
 {
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::clone_ptr() const
 {
     return std::make_shared<CISCODATACOLLECTIONMIB>();
 }
@@ -278,16 +278,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcVFile:
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcVFile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::CdcVFile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcVFile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::CdcVFile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::CdcVFile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -381,33 +381,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcVFileT
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcVFileTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::CdcVFileTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdcVFileEntry")
     {
-        auto c = std::make_shared<CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry>();
-        c->parent = this;
-        cdcvfileentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry>();
+        ent_->parent = this;
+        cdcvfileentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcVFileTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::CdcVFileTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdcvfileentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdcvfileentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::CdcVFileTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -530,16 +530,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcVFileT
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -763,33 +763,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcVFileM
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdcVFileMgmtEntry")
     {
-        auto c = std::make_shared<CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry>();
-        c->parent = this;
-        cdcvfilemgmtentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry>();
+        ent_->parent = this;
+        cdcvfilemgmtentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdcvfilemgmtentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdcvfilemgmtentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -889,16 +889,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcVFileM
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::CdcVFileMgmtTable::CdcVFileMgmtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1062,33 +1062,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcDGTabl
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcDGTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::CdcDGTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdcDGEntry")
     {
-        auto c = std::make_shared<CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry>();
-        c->parent = this;
-        cdcdgentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry>();
+        ent_->parent = this;
+        cdcdgentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcDGTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::CdcDGTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdcdgentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdcdgentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::CdcDGTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1195,16 +1195,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcDGTabl
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::CdcDGTable::CdcDGEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1388,33 +1388,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcDGBase
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdcDGBaseObjectEntry")
     {
-        auto c = std::make_shared<CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry>();
-        c->parent = this;
-        cdcdgbaseobjectentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry>();
+        ent_->parent = this;
+        cdcdgbaseobjectentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdcdgbaseobjectentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdcdgbaseobjectentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1498,16 +1498,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcDGBase
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::CdcDGBaseObjectTable::CdcDGBaseObjectEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1631,33 +1631,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcDGInst
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcDGInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::CdcDGInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdcDGInstanceEntry")
     {
-        auto c = std::make_shared<CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry>();
-        c->parent = this;
-        cdcdginstanceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry>();
+        ent_->parent = this;
+        cdcdginstanceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcDGInstanceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::CdcDGInstanceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdcdginstanceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdcdginstanceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::CdcDGInstanceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1753,16 +1753,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcDGInst
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::CdcDGInstanceTable::CdcDGInstanceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1916,33 +1916,33 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcFileXf
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcFileXferConfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::CdcFileXferConfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdcFileXferConfEntry")
     {
-        auto c = std::make_shared<CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry>();
-        c->parent = this;
-        cdcfilexferconfentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry>();
+        ent_->parent = this;
+        cdcfilexferconfentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcFileXferConfTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::CdcFileXferConfTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdcfilexferconfentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdcfilexferconfentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::CdcFileXferConfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2033,16 +2033,16 @@ std::vector<std::pair<std::string, LeafData> > CISCODATACOLLECTIONMIB::CdcFileXf
 
 }
 
-std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

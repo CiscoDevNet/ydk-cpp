@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAECHOMIB::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAECHOMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAECHOMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaIcmpEchoTmplTable")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> CISCOIPSLAECHOMIB::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAECHOMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cipslaicmpechotmpltable != nullptr)
     {
-        children["cipslaIcmpEchoTmplTable"] = cipslaicmpechotmpltable;
+        _children["cipslaIcmpEchoTmplTable"] = cipslaicmpechotmpltable;
     }
 
     if(cipslaudpechotmpltable != nullptr)
     {
-        children["cipslaUdpEchoTmplTable"] = cipslaudpechotmpltable;
+        _children["cipslaUdpEchoTmplTable"] = cipslaudpechotmpltable;
     }
 
     if(cipslatcpconntmpltable != nullptr)
     {
-        children["cipslaTcpConnTmplTable"] = cipslatcpconntmpltable;
+        _children["cipslaTcpConnTmplTable"] = cipslatcpconntmpltable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSLAECHOMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void CISCOIPSLAECHOMIB::set_filter(const std::string & value_path, YFilter yfilt
 {
 }
 
-std::shared_ptr<Entity> CISCOIPSLAECHOMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIPSLAECHOMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIPSLAECHOMIB>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAECHOMIB::CipslaIcmpEcho
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaIcmpEchoTmplEntry")
     {
-        auto c = std::make_shared<CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::CipslaIcmpEchoTmplEntry>();
-        c->parent = this;
-        cipslaicmpechotmplentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::CipslaIcmpEchoTmplEntry>();
+        ent_->parent = this;
+        cipslaicmpechotmplentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipslaicmpechotmplentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipslaicmpechotmplentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -371,16 +371,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAECHOMIB::CipslaIcmpEcho
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::CipslaIcmpEchoTmplEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::CipslaIcmpEchoTmplEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::CipslaIcmpEchoTmplEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::CipslaIcmpEchoTmplEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::CipslaIcmpEchoTmplEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -634,33 +634,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAECHOMIB::CipslaUdpEchoT
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaUdpEchoTmplEntry")
     {
-        auto c = std::make_shared<CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::CipslaUdpEchoTmplEntry>();
-        c->parent = this;
-        cipslaudpechotmplentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::CipslaUdpEchoTmplEntry>();
+        ent_->parent = this;
+        cipslaudpechotmplentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipslaudpechotmplentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipslaudpechotmplentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -803,16 +803,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAECHOMIB::CipslaUdpEchoT
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::CipslaUdpEchoTmplEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::CipslaUdpEchoTmplEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::CipslaUdpEchoTmplEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::CipslaUdpEchoTmplEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::CipslaUdpEchoTmplEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1086,33 +1086,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAECHOMIB::CipslaTcpConnT
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cipslaTcpConnTmplEntry")
     {
-        auto c = std::make_shared<CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::CipslaTcpConnTmplEntry>();
-        c->parent = this;
-        cipslatcpconntmplentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::CipslaTcpConnTmplEntry>();
+        ent_->parent = this;
+        cipslatcpconntmplentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cipslatcpconntmplentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cipslatcpconntmplentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1247,16 +1247,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPSLAECHOMIB::CipslaTcpConnT
 
 }
 
-std::shared_ptr<Entity> CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::CipslaTcpConnTmplEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::CipslaTcpConnTmplEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::CipslaTcpConnTmplEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::CipslaTcpConnTmplEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::CipslaTcpConnTmplEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

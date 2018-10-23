@@ -104,7 +104,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpStatus")
     {
@@ -235,81 +235,81 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vtpstatus != nullptr)
     {
-        children["vtpStatus"] = vtpstatus;
+        _children["vtpStatus"] = vtpstatus;
     }
 
     if(internalvlaninfo != nullptr)
     {
-        children["internalVlanInfo"] = internalvlaninfo;
+        _children["internalVlanInfo"] = internalvlaninfo;
     }
 
     if(vlantrunkports != nullptr)
     {
-        children["vlanTrunkPorts"] = vlantrunkports;
+        _children["vlanTrunkPorts"] = vlantrunkports;
     }
 
     if(vlanstatistics != nullptr)
     {
-        children["vlanStatistics"] = vlanstatistics;
+        _children["vlanStatistics"] = vlanstatistics;
     }
 
     if(managementdomaintable != nullptr)
     {
-        children["managementDomainTable"] = managementdomaintable;
+        _children["managementDomainTable"] = managementdomaintable;
     }
 
     if(vtpvlantable != nullptr)
     {
-        children["vtpVlanTable"] = vtpvlantable;
+        _children["vtpVlanTable"] = vtpvlantable;
     }
 
     if(vtpinternalvlantable != nullptr)
     {
-        children["vtpInternalVlanTable"] = vtpinternalvlantable;
+        _children["vtpInternalVlanTable"] = vtpinternalvlantable;
     }
 
     if(vtpvlanedittable != nullptr)
     {
-        children["vtpVlanEditTable"] = vtpvlanedittable;
+        _children["vtpVlanEditTable"] = vtpvlanedittable;
     }
 
     if(vtpvlanlocalshutdowntable != nullptr)
     {
-        children["vtpVlanLocalShutdownTable"] = vtpvlanlocalshutdowntable;
+        _children["vtpVlanLocalShutdownTable"] = vtpvlanlocalshutdowntable;
     }
 
     if(vlantrunkporttable != nullptr)
     {
-        children["vlanTrunkPortTable"] = vlantrunkporttable;
+        _children["vlanTrunkPortTable"] = vlantrunkporttable;
     }
 
     if(vtpdiscovertable != nullptr)
     {
-        children["vtpDiscoverTable"] = vtpdiscovertable;
+        _children["vtpDiscoverTable"] = vtpdiscovertable;
     }
 
     if(vtpdiscoverresulttable != nullptr)
     {
-        children["vtpDiscoverResultTable"] = vtpdiscoverresulttable;
+        _children["vtpDiscoverResultTable"] = vtpdiscoverresulttable;
     }
 
     if(vtpdatabasetable != nullptr)
     {
-        children["vtpDatabaseTable"] = vtpdatabasetable;
+        _children["vtpDatabaseTable"] = vtpdatabasetable;
     }
 
     if(vtpauthenticationtable != nullptr)
     {
-        children["vtpAuthenticationTable"] = vtpauthenticationtable;
+        _children["vtpAuthenticationTable"] = vtpauthenticationtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVTPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -320,7 +320,7 @@ void CISCOVTPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::clone_ptr() const
 {
     return std::make_shared<CISCOVTPMIB>();
 }
@@ -416,16 +416,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpStatus::get_name_
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -541,16 +541,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::InternalVlanInfo::ge
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::InternalVlanInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::InternalVlanInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::InternalVlanInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::InternalVlanInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::InternalVlanInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -630,16 +630,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VlanTrunkPorts::get_
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VlanTrunkPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VlanTrunkPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VlanTrunkPorts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VlanTrunkPorts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::VlanTrunkPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -737,16 +737,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VlanStatistics::get_
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VlanStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VlanStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VlanStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VlanStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::VlanStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -860,33 +860,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::ManagementDomainTabl
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::ManagementDomainTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::ManagementDomainTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "managementDomainEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry>();
-        c->parent = this;
-        managementdomainentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry>();
+        ent_->parent = this;
+        managementdomainentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::ManagementDomainTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::ManagementDomainTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : managementdomainentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : managementdomainentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVTPMIB::ManagementDomainTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1077,16 +1077,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::ManagementDomainTabl
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1480,33 +1480,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpVlanTable::get_na
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpVlanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpVlanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpVlanEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::VtpVlanTable::VtpVlanEntry>();
-        c->parent = this;
-        vtpvlanentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVTPMIB::VtpVlanTable::VtpVlanEntry>();
+        ent_->parent = this;
+        vtpvlanentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpVlanTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpVlanTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vtpvlanentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vtpvlanentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpVlanTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1650,16 +1650,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpVlanTable::VtpVla
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1931,33 +1931,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpInternalVlanTable
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpInternalVlanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpInternalVlanTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpInternalVlanEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry>();
-        c->parent = this;
-        vtpinternalvlanentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry>();
+        ent_->parent = this;
+        vtpinternalvlanentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpInternalVlanTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpInternalVlanTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vtpinternalvlanentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vtpinternalvlanentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpInternalVlanTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2033,16 +2033,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpInternalVlanTable
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2146,33 +2146,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpVlanEditTable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpVlanEditTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpVlanEditTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpVlanEditEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry>();
-        c->parent = this;
-        vtpvlaneditentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry>();
+        ent_->parent = this;
+        vtpvlaneditentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpVlanEditTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpVlanEditTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vtpvlaneditentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vtpvlaneditentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpVlanEditTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2320,16 +2320,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpVlanEditTable::Vt
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2609,33 +2609,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpVlanLocalShutdown
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpVlanLocalShutdownTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpVlanLocalShutdownTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpVlanLocalShutdownEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry>();
-        c->parent = this;
-        vtpvlanlocalshutdownentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry>();
+        ent_->parent = this;
+        vtpvlanlocalshutdownentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpVlanLocalShutdownTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpVlanLocalShutdownTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vtpvlanlocalshutdownentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vtpvlanlocalshutdownentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpVlanLocalShutdownTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2711,16 +2711,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpVlanLocalShutdown
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2824,33 +2824,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VlanTrunkPortTable::
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VlanTrunkPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VlanTrunkPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vlanTrunkPortEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry>();
-        c->parent = this;
-        vlantrunkportentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry>();
+        ent_->parent = this;
+        vlantrunkportentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VlanTrunkPortTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VlanTrunkPortTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vlantrunkportentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vlantrunkportentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVTPMIB::VlanTrunkPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3061,16 +3061,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VlanTrunkPortTable::
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3514,33 +3514,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpDiscoverTable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpDiscoverTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpDiscoverTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpDiscoverEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry>();
-        c->parent = this;
-        vtpdiscoverentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry>();
+        ent_->parent = this;
+        vtpdiscoverentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpDiscoverTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpDiscoverTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vtpdiscoverentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vtpdiscoverentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpDiscoverTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3619,16 +3619,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpDiscoverTable::Vt
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3742,33 +3742,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpDiscoverResultTab
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpDiscoverResultTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpDiscoverResultTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpDiscoverResultEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry>();
-        c->parent = this;
-        vtpdiscoverresultentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry>();
+        ent_->parent = this;
+        vtpdiscoverresultentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpDiscoverResultTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpDiscoverResultTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vtpdiscoverresultentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vtpdiscoverresultentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpDiscoverResultTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3864,16 +3864,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpDiscoverResultTab
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4027,33 +4027,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpDatabaseTable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpDatabaseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpDatabaseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpDatabaseEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry>();
-        c->parent = this;
-        vtpdatabaseentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry>();
+        ent_->parent = this;
+        vtpdatabaseentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpDatabaseTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpDatabaseTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vtpdatabaseentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vtpdatabaseentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpDatabaseTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4153,16 +4153,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpDatabaseTable::Vt
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4326,33 +4326,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpAuthenticationTab
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpAuthenticationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpAuthenticationTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vtpAuthEntry")
     {
-        auto c = std::make_shared<CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry>();
-        c->parent = this;
-        vtpauthentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry>();
+        ent_->parent = this;
+        vtpauthentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpAuthenticationTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpAuthenticationTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vtpauthentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vtpauthentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpAuthenticationTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4431,16 +4431,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVTPMIB::VtpAuthenticationTab
 
 }
 
-std::shared_ptr<Entity> CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

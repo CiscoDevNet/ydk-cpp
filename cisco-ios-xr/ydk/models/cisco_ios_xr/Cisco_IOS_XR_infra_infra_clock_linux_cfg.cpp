@@ -51,7 +51,7 @@ std::vector<std::pair<std::string, LeafData> > Clock::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "time-zone")
     {
@@ -65,16 +65,16 @@ std::shared_ptr<Entity> Clock::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Clock::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Clock::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(time_zone != nullptr)
     {
-        children["time-zone"] = time_zone;
+        _children["time-zone"] = time_zone;
     }
 
-    return children;
+    return _children;
 }
 
 void Clock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -85,7 +85,7 @@ void Clock::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Clock::clone_ptr() const
+std::shared_ptr<ydk::Entity> Clock::clone_ptr() const
 {
     return std::make_shared<Clock>();
 }
@@ -169,16 +169,16 @@ std::vector<std::pair<std::string, LeafData> > Clock::TimeZone::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Clock::TimeZone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Clock::TimeZone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Clock::TimeZone::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Clock::TimeZone::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Clock::TimeZone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

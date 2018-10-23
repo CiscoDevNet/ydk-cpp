@@ -54,7 +54,7 @@ std::vector<std::pair<std::string, LeafData> > BootIntegrityOperData::get_name_l
 
 }
 
-std::shared_ptr<Entity> BootIntegrityOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BootIntegrityOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "boot-integrity")
     {
@@ -77,21 +77,21 @@ std::shared_ptr<Entity> BootIntegrityOperData::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BootIntegrityOperData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BootIntegrityOperData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(boot_integrity != nullptr)
     {
-        children["boot-integrity"] = boot_integrity;
+        _children["boot-integrity"] = boot_integrity;
     }
 
     if(sudi_certificate != nullptr)
     {
-        children["sudi-certificate"] = sudi_certificate;
+        _children["sudi-certificate"] = sudi_certificate;
     }
 
-    return children;
+    return _children;
 }
 
 void BootIntegrityOperData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -102,7 +102,7 @@ void BootIntegrityOperData::set_filter(const std::string & value_path, YFilter y
 {
 }
 
-std::shared_ptr<Entity> BootIntegrityOperData::clone_ptr() const
+std::shared_ptr<ydk::Entity> BootIntegrityOperData::clone_ptr() const
 {
     return std::make_shared<BootIntegrityOperData>();
 }
@@ -241,50 +241,50 @@ std::vector<std::pair<std::string, LeafData> > BootIntegrityOperData::BootIntegr
 
 }
 
-std::shared_ptr<Entity> BootIntegrityOperData::BootIntegrity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BootIntegrityOperData::BootIntegrity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pcr-register")
     {
-        auto c = std::make_shared<BootIntegrityOperData::BootIntegrity::PcrRegister>();
-        c->parent = this;
-        pcr_register.append(c);
-        return c;
+        auto ent_ = std::make_shared<BootIntegrityOperData::BootIntegrity::PcrRegister>();
+        ent_->parent = this;
+        pcr_register.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "package-signature")
     {
-        auto c = std::make_shared<BootIntegrityOperData::BootIntegrity::PackageSignature>();
-        c->parent = this;
-        package_signature.append(c);
-        return c;
+        auto ent_ = std::make_shared<BootIntegrityOperData::BootIntegrity::PackageSignature>();
+        ent_->parent = this;
+        package_signature.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BootIntegrityOperData::BootIntegrity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BootIntegrityOperData::BootIntegrity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pcr_register.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pcr_register.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : package_signature.entities())
+    count_ = 0;
+    for (auto ent_ : package_signature.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void BootIntegrityOperData::BootIntegrity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -455,16 +455,16 @@ std::vector<std::pair<std::string, LeafData> > BootIntegrityOperData::BootIntegr
 
 }
 
-std::shared_ptr<Entity> BootIntegrityOperData::BootIntegrity::PcrRegister::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BootIntegrityOperData::BootIntegrity::PcrRegister::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BootIntegrityOperData::BootIntegrity::PcrRegister::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BootIntegrityOperData::BootIntegrity::PcrRegister::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BootIntegrityOperData::BootIntegrity::PcrRegister::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -555,16 +555,16 @@ std::vector<std::pair<std::string, LeafData> > BootIntegrityOperData::BootIntegr
 
 }
 
-std::shared_ptr<Entity> BootIntegrityOperData::BootIntegrity::PackageSignature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BootIntegrityOperData::BootIntegrity::PackageSignature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BootIntegrityOperData::BootIntegrity::PackageSignature::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BootIntegrityOperData::BootIntegrity::PackageSignature::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BootIntegrityOperData::BootIntegrity::PackageSignature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -662,16 +662,16 @@ std::vector<std::pair<std::string, LeafData> > BootIntegrityOperData::SudiCertif
 
 }
 
-std::shared_ptr<Entity> BootIntegrityOperData::SudiCertificate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BootIntegrityOperData::SudiCertificate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BootIntegrityOperData::SudiCertificate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BootIntegrityOperData::SudiCertificate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BootIntegrityOperData::SudiCertificate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

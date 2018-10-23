@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> SpanMonitorSession::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void SpanMonitorSession::set_filter(const std::string & value_path, YFilter yfil
 {
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::clone_ptr() const
+std::shared_ptr<ydk::Entity> SpanMonitorSession::clone_ptr() const
 {
     return std::make_shared<SpanMonitorSession>();
 }
@@ -188,7 +188,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::get_n
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -211,21 +211,21 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(global_sessions != nullptr)
     {
-        children["global-sessions"] = global_sessions;
+        _children["global-sessions"] = global_sessions;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -299,33 +299,33 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::Stati
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistic")
     {
-        auto c = std::make_shared<SpanMonitorSession::Global::Statistics::Statistic>();
-        c->parent = this;
-        statistic.append(c);
-        return c;
+        auto ent_ = std::make_shared<SpanMonitorSession::Global::Statistics::Statistic>();
+        ent_->parent = this;
+        statistic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : statistic.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : statistic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Global::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -421,16 +421,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::Stati
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::Statistics::Statistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::Statistics::Statistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Statistics::Statistic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::Statistics::Statistic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Global::Statistics::Statistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -584,33 +584,33 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::Globa
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::GlobalSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global-session")
     {
-        auto c = std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession>();
-        c->parent = this;
-        global_session.append(c);
-        return c;
+        auto ent_ = std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession>();
+        ent_->parent = this;
+        global_session.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::GlobalSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : global_session.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : global_session.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Global::GlobalSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -718,7 +718,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::Globa
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination-data")
     {
@@ -750,26 +750,26 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSessio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination_data != nullptr)
     {
-        children["destination-data"] = destination_data;
+        _children["destination-data"] = destination_data;
     }
 
     if(destination_id != nullptr)
     {
-        children["destination-id"] = destination_id;
+        _children["destination-id"] = destination_id;
     }
 
     if(inject_interface != nullptr)
     {
-        children["inject-interface"] = inject_interface;
+        _children["inject-interface"] = inject_interface;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Global::GlobalSessions::GlobalSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -929,7 +929,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::Globa
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-data")
     {
@@ -970,31 +970,31 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSessio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_data != nullptr)
     {
-        children["interface-data"] = interface_data;
+        _children["interface-data"] = interface_data;
     }
 
     if(pseudowire_data != nullptr)
     {
-        children["pseudowire-data"] = pseudowire_data;
+        _children["pseudowire-data"] = pseudowire_data;
     }
 
     if(next_hop_ipv4_data != nullptr)
     {
-        children["next-hop-ipv4-data"] = next_hop_ipv4_data;
+        _children["next-hop-ipv4-data"] = next_hop_ipv4_data;
     }
 
     if(next_hop_ipv6_data != nullptr)
     {
-        children["next-hop-ipv6-data"] = next_hop_ipv6_data;
+        _children["next-hop-ipv6-data"] = next_hop_ipv6_data;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1077,16 +1077,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::Globa
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1169,16 +1169,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::Globa
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1265,16 +1265,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::Globa
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1371,16 +1371,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::Globa
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1490,7 +1490,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::Globa
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-address-and-vrf")
     {
@@ -1513,21 +1513,21 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSessio
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_address_and_vrf != nullptr)
     {
-        children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
+        _children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
     }
 
     if(ipv6_address_and_vrf != nullptr)
     {
-        children["ipv6-address-and-vrf"] = ipv6_address_and_vrf;
+        _children["ipv6-address-and-vrf"] = ipv6_address_and_vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1630,16 +1630,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::Globa
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1722,16 +1722,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::Globa
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1810,16 +1810,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::Globa
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1903,33 +1903,33 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::get_na
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<SpanMonitorSession::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<SpanMonitorSession::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2009,7 +2009,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "attachments")
     {
@@ -2041,26 +2041,26 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(attachments != nullptr)
     {
-        children["attachments"] = attachments;
+        _children["attachments"] = attachments;
     }
 
     if(hardware_sessions != nullptr)
     {
-        children["hardware-sessions"] = hardware_sessions;
+        _children["hardware-sessions"] = hardware_sessions;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2137,33 +2137,33 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Attachments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "attachment")
     {
-        auto c = std::make_shared<SpanMonitorSession::Nodes::Node::Attachments::Attachment>();
-        c->parent = this;
-        attachment.append(c);
-        return c;
+        auto ent_ = std::make_shared<SpanMonitorSession::Nodes::Node::Attachments::Attachment>();
+        ent_->parent = this;
+        attachment.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Attachments::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Attachments::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : attachment.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : attachment.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Attachments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2285,7 +2285,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "traffic-parameters")
     {
@@ -2308,21 +2308,21 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(traffic_parameters != nullptr)
     {
-        children["traffic-parameters"] = traffic_parameters;
+        _children["traffic-parameters"] = traffic_parameters;
     }
 
     if(destination_id != nullptr)
     {
-        children["destination-id"] = destination_id;
+        _children["destination-id"] = destination_id;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Attachments::Attachment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2541,16 +2541,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2690,7 +2690,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-address-and-vrf")
     {
@@ -2713,21 +2713,21 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_address_and_vrf != nullptr)
     {
-        children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
+        _children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
     }
 
     if(ipv6_address_and_vrf != nullptr)
     {
-        children["ipv6-address-and-vrf"] = ipv6_address_and_vrf;
+        _children["ipv6-address-and-vrf"] = ipv6_address_and_vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2830,16 +2830,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2922,16 +2922,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3018,33 +3018,33 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hardware-session")
     {
-        auto c = std::make_shared<SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession>();
-        c->parent = this;
-        hardware_session.append(c);
-        return c;
+        auto ent_ = std::make_shared<SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession>();
+        ent_->parent = this;
+        hardware_session.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hardware_session.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hardware_session.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::HardwareSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3144,7 +3144,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination-id")
     {
@@ -3158,16 +3158,16 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::Hardw
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination_id != nullptr)
     {
-        children["destination-id"] = destination_id;
+        _children["destination-id"] = destination_id;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3347,7 +3347,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-address-and-vrf")
     {
@@ -3370,21 +3370,21 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::Hardw
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_address_and_vrf != nullptr)
     {
-        children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
+        _children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
     }
 
     if(ipv6_address_and_vrf != nullptr)
     {
-        children["ipv6-address-and-vrf"] = ipv6_address_and_vrf;
+        _children["ipv6-address-and-vrf"] = ipv6_address_and_vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3487,16 +3487,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3579,16 +3579,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3675,33 +3675,33 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3797,7 +3797,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination-id")
     {
@@ -3819,39 +3819,39 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
 
     if(child_yang_name == "attachment")
     {
-        auto c = std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment>();
-        c->parent = this;
-        attachment.append(c);
-        return c;
+        auto ent_ = std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment>();
+        ent_->parent = this;
+        attachment.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination_id != nullptr)
     {
-        children["destination-id"] = destination_id;
+        _children["destination-id"] = destination_id;
     }
 
     if(traffic_mirroring_parameters != nullptr)
     {
-        children["traffic-mirroring-parameters"] = traffic_mirroring_parameters;
+        _children["traffic-mirroring-parameters"] = traffic_mirroring_parameters;
     }
 
-    count = 0;
-    for (auto c : attachment.entities())
+    count_ = 0;
+    for (auto ent_ : attachment.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3981,7 +3981,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-address-and-vrf")
     {
@@ -4004,21 +4004,21 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_address_and_vrf != nullptr)
     {
-        children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
+        _children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
     }
 
     if(ipv6_address_and_vrf != nullptr)
     {
-        children["ipv6-address-and-vrf"] = ipv6_address_and_vrf;
+        _children["ipv6-address-and-vrf"] = ipv6_address_and_vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4121,16 +4121,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4213,16 +4213,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4321,16 +4321,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4458,7 +4458,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination-id")
     {
@@ -4481,21 +4481,21 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(destination_id != nullptr)
     {
-        children["destination-id"] = destination_id;
+        _children["destination-id"] = destination_id;
     }
 
     if(traffic_mirroring_parameters != nullptr)
     {
-        children["traffic-mirroring-parameters"] = traffic_mirroring_parameters;
+        _children["traffic-mirroring-parameters"] = traffic_mirroring_parameters;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4585,7 +4585,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-address-and-vrf")
     {
@@ -4608,21 +4608,21 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_address_and_vrf != nullptr)
     {
-        children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
+        _children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
     }
 
     if(ipv6_address_and_vrf != nullptr)
     {
-        children["ipv6-address-and-vrf"] = ipv6_address_and_vrf;
+        _children["ipv6-address-and-vrf"] = ipv6_address_and_vrf;
     }
 
-    return children;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4725,16 +4725,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4817,16 +4817,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4925,16 +4925,16 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

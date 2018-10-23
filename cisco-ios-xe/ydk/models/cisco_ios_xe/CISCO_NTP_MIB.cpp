@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> CISCONTPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONTPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cntpSystem")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> CISCONTPMIB::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONTPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cntpsystem != nullptr)
     {
-        children["cntpSystem"] = cntpsystem;
+        _children["cntpSystem"] = cntpsystem;
     }
 
     if(cntppeersvartable != nullptr)
     {
-        children["cntpPeersVarTable"] = cntppeersvartable;
+        _children["cntpPeersVarTable"] = cntppeersvartable;
     }
 
     if(cntpfilterregistertable != nullptr)
     {
-        children["cntpFilterRegisterTable"] = cntpfilterregistertable;
+        _children["cntpFilterRegisterTable"] = cntpfilterregistertable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCONTPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void CISCONTPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCONTPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCONTPMIB::clone_ptr() const
 {
     return std::make_shared<CISCONTPMIB>();
 }
@@ -242,16 +242,16 @@ std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::CntpSystem::get_name
 
 }
 
-std::shared_ptr<Entity> CISCONTPMIB::CntpSystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONTPMIB::CntpSystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::CntpSystem::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONTPMIB::CntpSystem::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCONTPMIB::CntpSystem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -435,33 +435,33 @@ std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::CntpPeersVarTable::g
 
 }
 
-std::shared_ptr<Entity> CISCONTPMIB::CntpPeersVarTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONTPMIB::CntpPeersVarTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cntpPeersVarEntry")
     {
-        auto c = std::make_shared<CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry>();
-        c->parent = this;
-        cntppeersvarentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry>();
+        ent_->parent = this;
+        cntppeersvarentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::CntpPeersVarTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONTPMIB::CntpPeersVarTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cntppeersvarentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cntppeersvarentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCONTPMIB::CntpPeersVarTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -648,16 +648,16 @@ std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::CntpPeersVarTable::C
 
 }
 
-std::shared_ptr<Entity> CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1041,33 +1041,33 @@ std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::CntpFilterRegisterTa
 
 }
 
-std::shared_ptr<Entity> CISCONTPMIB::CntpFilterRegisterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONTPMIB::CntpFilterRegisterTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cntpFilterRegisterEntry")
     {
-        auto c = std::make_shared<CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry>();
-        c->parent = this;
-        cntpfilterregisterentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry>();
+        ent_->parent = this;
+        cntpfilterregisterentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::CntpFilterRegisterTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONTPMIB::CntpFilterRegisterTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cntpfilterregisterentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cntpfilterregisterentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCONTPMIB::CntpFilterRegisterTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1151,16 +1151,16 @@ std::vector<std::pair<std::string, LeafData> > CISCONTPMIB::CntpFilterRegisterTa
 
 }
 
-std::shared_ptr<Entity> CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::ge
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-function-path")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_function_path != nullptr)
     {
-        children["service-function-path"] = service_function_path;
+        _children["service-function-path"] = service_function_path;
     }
 
     if(service_function != nullptr)
     {
-        children["service-function"] = service_function;
+        _children["service-function"] = service_function;
     }
 
     if(service_function_forwarder != nullptr)
     {
-        children["service-function-forwarder"] = service_function_forwarder;
+        _children["service-function-forwarder"] = service_function_forwarder;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void GlobalServiceFunctionChaining::set_filter(const std::string & value_path, Y
 {
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::clone_ptr() const
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::clone_ptr() const
 {
     return std::make_shared<GlobalServiceFunctionChaining>();
 }
@@ -202,7 +202,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-ids")
     {
@@ -216,16 +216,16 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_ids != nullptr)
     {
-        children["path-ids"] = path_ids;
+        _children["path-ids"] = path_ids;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -299,33 +299,33 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-id")
     {
-        auto c = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId>();
-        c->parent = this;
-        path_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId>();
+        ent_->parent = this;
+        path_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : path_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : path_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -401,7 +401,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stats")
     {
@@ -424,21 +424,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(stats != nullptr)
     {
-        children["stats"] = stats;
+        _children["stats"] = stats;
     }
 
     if(service_indexes != nullptr)
     {
-        children["service-indexes"] = service_indexes;
+        _children["service-indexes"] = service_indexes;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -511,7 +511,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
@@ -534,21 +534,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
     if(summarized != nullptr)
     {
-        children["summarized"] = summarized;
+        _children["summarized"] = summarized;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -618,7 +618,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -631,34 +631,34 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
 
     if(child_yang_name == "si-arr")
     {
-        auto c = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr>();
-        c->parent = this;
-        si_arr.append(c);
-        return c;
+        auto ent_ = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr>();
+        ent_->parent = this;
+        si_arr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    count = 0;
-    for (auto c : si_arr.entities())
+    count_ = 0;
+    for (auto ent_ : si_arr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -742,7 +742,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sfp")
     {
@@ -801,41 +801,41 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sfp != nullptr)
     {
-        children["sfp"] = sfp;
+        _children["sfp"] = sfp;
     }
 
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
     if(sf != nullptr)
     {
-        children["sf"] = sf;
+        _children["sf"] = sf;
     }
 
     if(sff != nullptr)
     {
-        children["sff"] = sff;
+        _children["sff"] = sff;
     }
 
     if(sff_local != nullptr)
     {
-        children["sff-local"] = sff_local;
+        _children["sff-local"] = sff_local;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -908,7 +908,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spi-si")
     {
@@ -931,21 +931,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1008,16 +1008,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1100,16 +1100,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1192,16 +1192,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1284,16 +1284,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1376,16 +1376,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1468,16 +1468,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1568,16 +1568,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1681,7 +1681,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -1695,16 +1695,16 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1782,7 +1782,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spi-si")
     {
@@ -1805,21 +1805,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1892,16 +1892,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1984,16 +1984,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2083,7 +2083,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -2096,34 +2096,34 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
 
     if(child_yang_name == "si-arr")
     {
-        auto c = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr>();
-        c->parent = this;
-        si_arr.append(c);
-        return c;
+        auto ent_ = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr>();
+        ent_->parent = this;
+        si_arr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    count = 0;
-    for (auto c : si_arr.entities())
+    count_ = 0;
+    for (auto ent_ : si_arr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2207,7 +2207,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sfp")
     {
@@ -2266,41 +2266,41 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sfp != nullptr)
     {
-        children["sfp"] = sfp;
+        _children["sfp"] = sfp;
     }
 
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
     if(sf != nullptr)
     {
-        children["sf"] = sf;
+        _children["sf"] = sf;
     }
 
     if(sff != nullptr)
     {
-        children["sff"] = sff;
+        _children["sff"] = sff;
     }
 
     if(sff_local != nullptr)
     {
-        children["sff-local"] = sff_local;
+        _children["sff-local"] = sff_local;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2373,7 +2373,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spi-si")
     {
@@ -2396,21 +2396,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2473,16 +2473,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2565,16 +2565,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2657,16 +2657,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2749,16 +2749,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2841,16 +2841,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2933,16 +2933,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3033,16 +3033,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3146,7 +3146,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -3160,16 +3160,16 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3247,7 +3247,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spi-si")
     {
@@ -3270,21 +3270,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3357,16 +3357,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3449,16 +3449,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3545,33 +3545,33 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-index")
     {
-        auto c = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex>();
-        c->parent = this;
-        service_index.append(c);
-        return c;
+        auto ent_ = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex>();
+        ent_->parent = this;
+        service_index.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : service_index.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : service_index.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3647,7 +3647,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -3660,34 +3660,34 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
 
     if(child_yang_name == "si-arr")
     {
-        auto c = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr>();
-        c->parent = this;
-        si_arr.append(c);
-        return c;
+        auto ent_ = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr>();
+        ent_->parent = this;
+        si_arr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    count = 0;
-    for (auto c : si_arr.entities())
+    count_ = 0;
+    for (auto ent_ : si_arr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3781,7 +3781,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sfp")
     {
@@ -3840,41 +3840,41 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sfp != nullptr)
     {
-        children["sfp"] = sfp;
+        _children["sfp"] = sfp;
     }
 
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
     if(sf != nullptr)
     {
-        children["sf"] = sf;
+        _children["sf"] = sf;
     }
 
     if(sff != nullptr)
     {
-        children["sff"] = sff;
+        _children["sff"] = sff;
     }
 
     if(sff_local != nullptr)
     {
-        children["sff-local"] = sff_local;
+        _children["sff-local"] = sff_local;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3947,7 +3947,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spi-si")
     {
@@ -3970,21 +3970,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4047,16 +4047,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4139,16 +4139,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4231,16 +4231,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4323,16 +4323,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4415,16 +4415,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4507,16 +4507,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4607,16 +4607,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4720,7 +4720,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -4734,16 +4734,16 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4821,7 +4821,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spi-si")
     {
@@ -4844,21 +4844,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::Path
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4931,16 +4931,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5023,16 +5023,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5118,7 +5118,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sf-names")
     {
@@ -5132,16 +5132,16 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sf_names != nullptr)
     {
-        children["sf-names"] = sf_names;
+        _children["sf-names"] = sf_names;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5215,33 +5215,33 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sf-name")
     {
-        auto c = std::make_shared<GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName>();
-        c->parent = this;
-        sf_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName>();
+        ent_->parent = this;
+        sf_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sf_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sf_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5324,7 +5324,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -5337,34 +5337,34 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames:
 
     if(child_yang_name == "si-arr")
     {
-        auto c = std::make_shared<GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr>();
-        c->parent = this;
-        si_arr.append(c);
-        return c;
+        auto ent_ = std::make_shared<GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr>();
+        ent_->parent = this;
+        si_arr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    count = 0;
-    for (auto c : si_arr.entities())
+    count_ = 0;
+    for (auto ent_ : si_arr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5458,7 +5458,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sfp")
     {
@@ -5517,41 +5517,41 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sfp != nullptr)
     {
-        children["sfp"] = sfp;
+        _children["sfp"] = sfp;
     }
 
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
     if(sf != nullptr)
     {
-        children["sf"] = sf;
+        _children["sf"] = sf;
     }
 
     if(sff != nullptr)
     {
-        children["sff"] = sff;
+        _children["sff"] = sff;
     }
 
     if(sff_local != nullptr)
     {
-        children["sff-local"] = sff_local;
+        _children["sff-local"] = sff_local;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5624,7 +5624,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spi-si")
     {
@@ -5647,21 +5647,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5724,16 +5724,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5816,16 +5816,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5908,16 +5908,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6000,16 +6000,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6092,16 +6092,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6184,16 +6184,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6284,16 +6284,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SffLocal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SffLocal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SffLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6397,7 +6397,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -6411,16 +6411,16 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6498,7 +6498,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spi-si")
     {
@@ -6521,21 +6521,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6608,16 +6608,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6700,16 +6700,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6799,7 +6799,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sff-names")
     {
@@ -6822,21 +6822,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sff_names != nullptr)
     {
-        children["sff-names"] = sff_names;
+        _children["sff-names"] = sff_names;
     }
 
     if(local != nullptr)
     {
-        children["local"] = local;
+        _children["local"] = local;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6910,33 +6910,33 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sff-name")
     {
-        auto c = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName>();
-        c->parent = this;
-        sff_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName>();
+        ent_->parent = this;
+        sff_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sff_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sff_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7019,7 +7019,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -7032,34 +7032,34 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder:
 
     if(child_yang_name == "si-arr")
     {
-        auto c = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr>();
-        c->parent = this;
-        si_arr.append(c);
-        return c;
+        auto ent_ = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr>();
+        ent_->parent = this;
+        si_arr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    count = 0;
-    for (auto c : si_arr.entities())
+    count_ = 0;
+    for (auto ent_ : si_arr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7153,7 +7153,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sfp")
     {
@@ -7212,41 +7212,41 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sfp != nullptr)
     {
-        children["sfp"] = sfp;
+        _children["sfp"] = sfp;
     }
 
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
     if(sf != nullptr)
     {
-        children["sf"] = sf;
+        _children["sf"] = sf;
     }
 
     if(sff != nullptr)
     {
-        children["sff"] = sff;
+        _children["sff"] = sff;
     }
 
     if(sff_local != nullptr)
     {
-        children["sff-local"] = sff_local;
+        _children["sff-local"] = sff_local;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7319,7 +7319,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spi-si")
     {
@@ -7342,21 +7342,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7419,16 +7419,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7511,16 +7511,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7603,16 +7603,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7695,16 +7695,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7787,16 +7787,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7879,16 +7879,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7979,16 +7979,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8092,7 +8092,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -8106,16 +8106,16 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8193,7 +8193,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spi-si")
     {
@@ -8216,21 +8216,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8303,16 +8303,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8395,16 +8395,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8490,7 +8490,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "error")
     {
@@ -8504,16 +8504,16 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(error != nullptr)
     {
-        children["error"] = error;
+        _children["error"] = error;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8590,7 +8590,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -8603,34 +8603,34 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder:
 
     if(child_yang_name == "si-arr")
     {
-        auto c = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr>();
-        c->parent = this;
-        si_arr.append(c);
-        return c;
+        auto ent_ = std::make_shared<GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr>();
+        ent_->parent = this;
+        si_arr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    count = 0;
-    for (auto c : si_arr.entities())
+    count_ = 0;
+    for (auto ent_ : si_arr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8721,7 +8721,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sfp")
     {
@@ -8780,41 +8780,41 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sfp != nullptr)
     {
-        children["sfp"] = sfp;
+        _children["sfp"] = sfp;
     }
 
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
     if(sf != nullptr)
     {
-        children["sf"] = sf;
+        _children["sf"] = sf;
     }
 
     if(sff != nullptr)
     {
-        children["sff"] = sff;
+        _children["sff"] = sff;
     }
 
     if(sff_local != nullptr)
     {
-        children["sff-local"] = sff_local;
+        _children["sff-local"] = sff_local;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8894,7 +8894,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spi-si")
     {
@@ -8917,21 +8917,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9001,16 +9001,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9100,16 +9100,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9199,16 +9199,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9298,16 +9298,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9397,16 +9397,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9496,16 +9496,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9603,16 +9603,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SffLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SffLocal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SffLocal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SffLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9723,7 +9723,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data")
     {
@@ -9737,16 +9737,16 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(data != nullptr)
     {
-        children["data"] = data;
+        _children["data"] = data;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9831,7 +9831,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spi-si")
     {
@@ -9854,21 +9854,21 @@ std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spi_si != nullptr)
     {
-        children["spi-si"] = spi_si;
+        _children["spi-si"] = spi_si;
     }
 
     if(term != nullptr)
     {
-        children["term"] = term;
+        _children["term"] = term;
     }
 
-    return children;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9948,16 +9948,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10047,16 +10047,16 @@ std::vector<std::pair<std::string, LeafData> > GlobalServiceFunctionChaining::Se
 
 }
 
-std::shared_ptr<Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

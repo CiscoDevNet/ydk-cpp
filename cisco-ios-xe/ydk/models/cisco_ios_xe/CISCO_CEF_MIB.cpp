@@ -128,7 +128,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefFIB")
     {
@@ -313,111 +313,111 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ceffib != nullptr)
     {
-        children["cefFIB"] = ceffib;
+        _children["cefFIB"] = ceffib;
     }
 
     if(cefcc != nullptr)
     {
-        children["cefCC"] = cefcc;
+        _children["cefCC"] = cefcc;
     }
 
     if(cefnotifcntl != nullptr)
     {
-        children["cefNotifCntl"] = cefnotifcntl;
+        _children["cefNotifCntl"] = cefnotifcntl;
     }
 
     if(ceffibsummarytable != nullptr)
     {
-        children["cefFIBSummaryTable"] = ceffibsummarytable;
+        _children["cefFIBSummaryTable"] = ceffibsummarytable;
     }
 
     if(cefprefixtable != nullptr)
     {
-        children["cefPrefixTable"] = cefprefixtable;
+        _children["cefPrefixTable"] = cefprefixtable;
     }
 
     if(ceflmprefixtable != nullptr)
     {
-        children["cefLMPrefixTable"] = ceflmprefixtable;
+        _children["cefLMPrefixTable"] = ceflmprefixtable;
     }
 
     if(cefpathtable != nullptr)
     {
-        children["cefPathTable"] = cefpathtable;
+        _children["cefPathTable"] = cefpathtable;
     }
 
     if(cefadjsummarytable != nullptr)
     {
-        children["cefAdjSummaryTable"] = cefadjsummarytable;
+        _children["cefAdjSummaryTable"] = cefadjsummarytable;
     }
 
     if(cefadjtable != nullptr)
     {
-        children["cefAdjTable"] = cefadjtable;
+        _children["cefAdjTable"] = cefadjtable;
     }
 
     if(ceffeselectiontable != nullptr)
     {
-        children["cefFESelectionTable"] = ceffeselectiontable;
+        _children["cefFESelectionTable"] = ceffeselectiontable;
     }
 
     if(cefcfgtable != nullptr)
     {
-        children["cefCfgTable"] = cefcfgtable;
+        _children["cefCfgTable"] = cefcfgtable;
     }
 
     if(cefresourcetable != nullptr)
     {
-        children["cefResourceTable"] = cefresourcetable;
+        _children["cefResourceTable"] = cefresourcetable;
     }
 
     if(cefinttable != nullptr)
     {
-        children["cefIntTable"] = cefinttable;
+        _children["cefIntTable"] = cefinttable;
     }
 
     if(cefpeertable != nullptr)
     {
-        children["cefPeerTable"] = cefpeertable;
+        _children["cefPeerTable"] = cefpeertable;
     }
 
     if(cefpeerfibtable != nullptr)
     {
-        children["cefPeerFIBTable"] = cefpeerfibtable;
+        _children["cefPeerFIBTable"] = cefpeerfibtable;
     }
 
     if(cefccglobaltable != nullptr)
     {
-        children["cefCCGlobalTable"] = cefccglobaltable;
+        _children["cefCCGlobalTable"] = cefccglobaltable;
     }
 
     if(cefcctypetable != nullptr)
     {
-        children["cefCCTypeTable"] = cefcctypetable;
+        _children["cefCCTypeTable"] = cefcctypetable;
     }
 
     if(cefinconsistencyrecordtable != nullptr)
     {
-        children["cefInconsistencyRecordTable"] = cefinconsistencyrecordtable;
+        _children["cefInconsistencyRecordTable"] = cefinconsistencyrecordtable;
     }
 
     if(cefstatsprefixlentable != nullptr)
     {
-        children["cefStatsPrefixLenTable"] = cefstatsprefixlentable;
+        _children["cefStatsPrefixLenTable"] = cefstatsprefixlentable;
     }
 
     if(cefswitchingstatstable != nullptr)
     {
-        children["cefSwitchingStatsTable"] = cefswitchingstatstable;
+        _children["cefSwitchingStatsTable"] = cefswitchingstatstable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -428,7 +428,7 @@ void CISCOCEFMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::clone_ptr() const
 {
     return std::make_shared<CISCOCEFMIB>();
 }
@@ -508,16 +508,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefFIB::get_name_lea
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefFIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefFIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefFIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefFIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefFIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -601,16 +601,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCC::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefCC::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefCC::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCC::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefCC::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefCC::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -722,16 +722,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefNotifCntl::get_na
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefNotifCntl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefNotifCntl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefNotifCntl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefNotifCntl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefNotifCntl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -855,33 +855,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefFIBSummaryTable::
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefFIBSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefFIBSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefFIBSummaryEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry>();
-        c->parent = this;
-        ceffibsummaryentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry>();
+        ent_->parent = this;
+        ceffibsummaryentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefFIBSummaryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefFIBSummaryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceffibsummaryentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceffibsummaryentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefFIBSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -957,16 +957,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefFIBSummaryTable::
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1070,33 +1070,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPrefixTable::get_
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefPrefixEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefPrefixTable::CefPrefixEntry>();
-        c->parent = this;
-        cefprefixentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefPrefixTable::CefPrefixEntry>();
+        ent_->parent = this;
+        cefprefixentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPrefixTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefPrefixTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefprefixentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefprefixentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefPrefixTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1230,16 +1230,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPrefixTable::CefP
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1483,33 +1483,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefLMPrefixTable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefLMPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefLMPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefLMPrefixEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry>();
-        c->parent = this;
-        ceflmprefixentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry>();
+        ent_->parent = this;
+        ceflmprefixentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefLMPrefixTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefLMPrefixTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceflmprefixentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceflmprefixentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefLMPrefixTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1602,16 +1602,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefLMPrefixTable::Ce
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1755,33 +1755,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPathTable::get_na
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefPathTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefPathTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefPathEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefPathTable::CefPathEntry>();
-        c->parent = this;
-        cefpathentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefPathTable::CefPathEntry>();
+        ent_->parent = this;
+        cefpathentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPathTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefPathTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefpathentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefpathentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefPathTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1884,16 +1884,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPathTable::CefPat
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefPathTable::CefPathEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefPathTable::CefPathEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPathTable::CefPathEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefPathTable::CefPathEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefPathTable::CefPathEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2057,33 +2057,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefAdjSummaryTable::
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefAdjSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefAdjSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefAdjSummaryEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry>();
-        c->parent = this;
-        cefadjsummaryentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry>();
+        ent_->parent = this;
+        cefadjsummaryentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefAdjSummaryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefAdjSummaryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefadjsummaryentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefadjsummaryentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefAdjSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2171,16 +2171,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefAdjSummaryTable::
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2314,33 +2314,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefAdjTable::get_nam
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefAdjTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefAdjTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefAdjEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefAdjTable::CefAdjEntry>();
-        c->parent = this;
-        cefadjentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefAdjTable::CefAdjEntry>();
+        ent_->parent = this;
+        cefadjentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefAdjTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefAdjTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefadjentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefadjentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefAdjTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2468,16 +2468,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefAdjTable::CefAdjE
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefAdjTable::CefAdjEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefAdjTable::CefAdjEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefAdjTable::CefAdjEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefAdjTable::CefAdjEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefAdjTable::CefAdjEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2699,33 +2699,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefFESelectionTable:
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefFESelectionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefFESelectionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefFESelectionEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry>();
-        c->parent = this;
-        ceffeselectionentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry>();
+        ent_->parent = this;
+        ceffeselectionentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefFESelectionTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefFESelectionTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ceffeselectionentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ceffeselectionentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefFESelectionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2838,16 +2838,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefFESelectionTable:
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3041,33 +3041,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCfgTable::get_nam
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefCfgEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefCfgTable::CefCfgEntry>();
-        c->parent = this;
-        cefcfgentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefCfgTable::CefCfgEntry>();
+        ent_->parent = this;
+        cefcfgentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCfgTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefCfgTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcfgentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcfgentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3175,16 +3175,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCfgTable::CefCfgE
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefCfgTable::CefCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefCfgTable::CefCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCfgTable::CefCfgEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefCfgTable::CefCfgEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefCfgTable::CefCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3366,33 +3366,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefResourceTable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefResourceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefResourceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefResourceEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefResourceTable::CefResourceEntry>();
-        c->parent = this;
-        cefresourceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefResourceTable::CefResourceEntry>();
+        ent_->parent = this;
+        cefresourceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefResourceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefResourceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefresourceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefresourceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefResourceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3467,16 +3467,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefResourceTable::Ce
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefResourceTable::CefResourceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefResourceTable::CefResourceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefResourceTable::CefResourceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefResourceTable::CefResourceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefResourceTable::CefResourceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3580,33 +3580,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefIntTable::get_nam
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefIntTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefIntTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefIntEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefIntTable::CefIntEntry>();
-        c->parent = this;
-        cefintentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefIntTable::CefIntEntry>();
+        ent_->parent = this;
+        cefintentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefIntTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefIntTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefintentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefintentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefIntTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3695,16 +3695,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefIntTable::CefIntE
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefIntTable::CefIntEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefIntTable::CefIntEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefIntTable::CefIntEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefIntTable::CefIntEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefIntTable::CefIntEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3838,33 +3838,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPeerTable::get_na
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefPeerEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefPeerTable::CefPeerEntry>();
-        c->parent = this;
-        cefpeerentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefPeerTable::CefPeerEntry>();
+        ent_->parent = this;
+        cefpeerentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPeerTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefPeerTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefpeerentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefpeerentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefPeerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3944,16 +3944,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPeerTable::CefPee
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefPeerTable::CefPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefPeerTable::CefPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPeerTable::CefPeerEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefPeerTable::CefPeerEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefPeerTable::CefPeerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4067,33 +4067,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPeerFIBTable::get
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefPeerFIBTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefPeerFIBTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefPeerFIBEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry>();
-        c->parent = this;
-        cefpeerfibentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry>();
+        ent_->parent = this;
+        cefpeerfibentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPeerFIBTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefPeerFIBTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefpeerfibentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefpeerfibentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefPeerFIBTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4174,16 +4174,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPeerFIBTable::Cef
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4297,33 +4297,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCCGlobalTable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefCCGlobalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefCCGlobalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefCCGlobalEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry>();
-        c->parent = this;
-        cefccglobalentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry>();
+        ent_->parent = this;
+        cefccglobalentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCCGlobalTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefCCGlobalTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefccglobalentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefccglobalentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefCCGlobalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4414,16 +4414,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCCGlobalTable::Ce
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4567,33 +4567,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCCTypeTable::get_
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefCCTypeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefCCTypeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefCCTypeEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry>();
-        c->parent = this;
-        cefcctypeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry>();
+        ent_->parent = this;
+        cefcctypeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCCTypeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefCCTypeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefcctypeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefcctypeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefCCTypeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4693,16 +4693,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCCTypeTable::CefC
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4866,33 +4866,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefInconsistencyReco
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefInconsistencyRecordTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefInconsistencyRecordTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefInconsistencyRecordEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry>();
-        c->parent = this;
-        cefinconsistencyrecordentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry>();
+        ent_->parent = this;
+        cefinconsistencyrecordentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefInconsistencyRecordTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefInconsistencyRecordTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefinconsistencyrecordentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefinconsistencyrecordentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefInconsistencyRecordTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4992,16 +4992,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefInconsistencyReco
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5165,33 +5165,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefStatsPrefixLenTab
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefStatsPrefixLenTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefStatsPrefixLenTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefStatsPrefixLenEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry>();
-        c->parent = this;
-        cefstatsprefixlenentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry>();
+        ent_->parent = this;
+        cefstatsprefixlenentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefStatsPrefixLenTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefStatsPrefixLenTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefstatsprefixlenentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefstatsprefixlenentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefStatsPrefixLenTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5300,16 +5300,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefStatsPrefixLenTab
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5493,33 +5493,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefSwitchingStatsTab
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefSwitchingStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefSwitchingStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefSwitchingStatsEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry>();
-        c->parent = this;
-        cefswitchingstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry>();
+        ent_->parent = this;
+        cefswitchingstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefSwitchingStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefSwitchingStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cefswitchingstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cefswitchingstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCEFMIB::CefSwitchingStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5624,16 +5624,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefSwitchingStatsTab
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

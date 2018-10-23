@@ -76,7 +76,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Diag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default")
     {
@@ -144,46 +144,46 @@ std::shared_ptr<Entity> Diag::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_ != nullptr)
     {
-        children["default"] = default_;
+        _children["default"] = default_;
     }
 
     if(fans != nullptr)
     {
-        children["fans"] = fans;
+        _children["fans"] = fans;
     }
 
     if(power_supply != nullptr)
     {
-        children["power-supply"] = power_supply;
+        _children["power-supply"] = power_supply;
     }
 
     if(chassis != nullptr)
     {
-        children["chassis"] = chassis;
+        _children["chassis"] = chassis;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(eeprom != nullptr)
     {
-        children["eeprom"] = eeprom;
+        _children["eeprom"] = eeprom;
     }
 
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -194,7 +194,7 @@ void Diag::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Diag::clone_ptr() const
+std::shared_ptr<ydk::Entity> Diag::clone_ptr() const
 {
     return std::make_shared<Diag>();
 }
@@ -282,33 +282,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Default::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Diag::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default_list")
     {
-        auto c = std::make_shared<Diag::Default::DefaultList>();
-        c->parent = this;
-        default_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Default::DefaultList>();
+        ent_->parent = this;
+        default_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Default::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Default::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : default_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : default_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -380,7 +380,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Default::DefaultList::get_n
 
 }
 
-std::shared_ptr<Entity> Diag::Default::DefaultList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Default::DefaultList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default-data")
     {
@@ -394,16 +394,16 @@ std::shared_ptr<Entity> Diag::Default::DefaultList::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Default::DefaultList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Default::DefaultList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_data != nullptr)
     {
-        children["default-data"] = default_data;
+        _children["default-data"] = default_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Default::DefaultList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -483,16 +483,16 @@ std::vector<std::pair<std::string, LeafData> > Diag::Default::DefaultList::Defau
 
 }
 
-std::shared_ptr<Entity> Diag::Default::DefaultList::DefaultData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Default::DefaultList::DefaultData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Default::DefaultList::DefaultData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Default::DefaultList::DefaultData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Diag::Default::DefaultList::DefaultData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -574,33 +574,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Fans::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Diag::Fans::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Fans::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fans_list")
     {
-        auto c = std::make_shared<Diag::Fans::FansList>();
-        c->parent = this;
-        fans_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Fans::FansList>();
+        ent_->parent = this;
+        fans_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Fans::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Fans::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fans_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fans_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Fans::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -672,7 +672,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Fans::FansList::get_name_le
 
 }
 
-std::shared_ptr<Entity> Diag::Fans::FansList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Fans::FansList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default-data")
     {
@@ -686,16 +686,16 @@ std::shared_ptr<Entity> Diag::Fans::FansList::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Fans::FansList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Fans::FansList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_data != nullptr)
     {
-        children["default-data"] = default_data;
+        _children["default-data"] = default_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Fans::FansList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -775,16 +775,16 @@ std::vector<std::pair<std::string, LeafData> > Diag::Fans::FansList::DefaultData
 
 }
 
-std::shared_ptr<Entity> Diag::Fans::FansList::DefaultData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Fans::FansList::DefaultData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Fans::FansList::DefaultData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Fans::FansList::DefaultData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Diag::Fans::FansList::DefaultData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -866,33 +866,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::PowerSupply::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Diag::PowerSupply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::PowerSupply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pwr_list")
     {
-        auto c = std::make_shared<Diag::PowerSupply::PwrList>();
-        c->parent = this;
-        pwr_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::PowerSupply::PwrList>();
+        ent_->parent = this;
+        pwr_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::PowerSupply::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::PowerSupply::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pwr_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pwr_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::PowerSupply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -964,7 +964,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::PowerSupply::PwrList::get_n
 
 }
 
-std::shared_ptr<Entity> Diag::PowerSupply::PwrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::PowerSupply::PwrList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default-data")
     {
@@ -978,16 +978,16 @@ std::shared_ptr<Entity> Diag::PowerSupply::PwrList::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::PowerSupply::PwrList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::PowerSupply::PwrList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_data != nullptr)
     {
-        children["default-data"] = default_data;
+        _children["default-data"] = default_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::PowerSupply::PwrList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1067,16 +1067,16 @@ std::vector<std::pair<std::string, LeafData> > Diag::PowerSupply::PwrList::Defau
 
 }
 
-std::shared_ptr<Entity> Diag::PowerSupply::PwrList::DefaultData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::PowerSupply::PwrList::DefaultData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::PowerSupply::PwrList::DefaultData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::PowerSupply::PwrList::DefaultData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Diag::PowerSupply::PwrList::DefaultData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1154,7 +1154,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Chassis::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Diag::Chassis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Chassis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "chassis_cnt")
     {
@@ -1177,21 +1177,21 @@ std::shared_ptr<Entity> Diag::Chassis::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Chassis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Chassis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(chassis_cnt != nullptr)
     {
-        children["chassis_cnt"] = chassis_cnt;
+        _children["chassis_cnt"] = chassis_cnt;
     }
 
     if(chassis_eeprom_cnt != nullptr)
     {
-        children["chassis_eeprom_cnt"] = chassis_eeprom_cnt;
+        _children["chassis_eeprom_cnt"] = chassis_eeprom_cnt;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Chassis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1265,33 +1265,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Chassis::ChassisCnt::get_na
 
 }
 
-std::shared_ptr<Entity> Diag::Chassis::ChassisCnt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Chassis::ChassisCnt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "chassis_list")
     {
-        auto c = std::make_shared<Diag::Chassis::ChassisCnt::ChassisList>();
-        c->parent = this;
-        chassis_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Chassis::ChassisCnt::ChassisList>();
+        ent_->parent = this;
+        chassis_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Chassis::ChassisCnt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Chassis::ChassisCnt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : chassis_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : chassis_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Chassis::ChassisCnt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1363,7 +1363,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Chassis::ChassisCnt::Chassi
 
 }
 
-std::shared_ptr<Entity> Diag::Chassis::ChassisCnt::ChassisList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Chassis::ChassisCnt::ChassisList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default-data")
     {
@@ -1377,16 +1377,16 @@ std::shared_ptr<Entity> Diag::Chassis::ChassisCnt::ChassisList::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Chassis::ChassisCnt::ChassisList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Chassis::ChassisCnt::ChassisList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_data != nullptr)
     {
-        children["default-data"] = default_data;
+        _children["default-data"] = default_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Chassis::ChassisCnt::ChassisList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1466,16 +1466,16 @@ std::vector<std::pair<std::string, LeafData> > Diag::Chassis::ChassisCnt::Chassi
 
 }
 
-std::shared_ptr<Entity> Diag::Chassis::ChassisCnt::ChassisList::DefaultData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Chassis::ChassisCnt::ChassisList::DefaultData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Chassis::ChassisCnt::ChassisList::DefaultData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Chassis::ChassisCnt::ChassisList::DefaultData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Diag::Chassis::ChassisCnt::ChassisList::DefaultData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1557,33 +1557,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Chassis::ChassisEepromCnt::
 
 }
 
-std::shared_ptr<Entity> Diag::Chassis::ChassisEepromCnt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Chassis::ChassisEepromCnt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "chassis_eeprom_list")
     {
-        auto c = std::make_shared<Diag::Chassis::ChassisEepromCnt::ChassisEepromList>();
-        c->parent = this;
-        chassis_eeprom_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Chassis::ChassisEepromCnt::ChassisEepromList>();
+        ent_->parent = this;
+        chassis_eeprom_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Chassis::ChassisEepromCnt::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Chassis::ChassisEepromCnt::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : chassis_eeprom_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : chassis_eeprom_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Chassis::ChassisEepromCnt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1655,7 +1655,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Chassis::ChassisEepromCnt::
 
 }
 
-std::shared_ptr<Entity> Diag::Chassis::ChassisEepromCnt::ChassisEepromList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Chassis::ChassisEepromCnt::ChassisEepromList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eeprom-data")
     {
@@ -1669,16 +1669,16 @@ std::shared_ptr<Entity> Diag::Chassis::ChassisEepromCnt::ChassisEepromList::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Chassis::ChassisEepromCnt::ChassisEepromList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Chassis::ChassisEepromCnt::ChassisEepromList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(eeprom_data != nullptr)
     {
-        children["eeprom-data"] = eeprom_data;
+        _children["eeprom-data"] = eeprom_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Chassis::ChassisEepromCnt::ChassisEepromList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1758,16 +1758,16 @@ std::vector<std::pair<std::string, LeafData> > Diag::Chassis::ChassisEepromCnt::
 
 }
 
-std::shared_ptr<Entity> Diag::Chassis::ChassisEepromCnt::ChassisEepromList::EepromData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Chassis::ChassisEepromCnt::ChassisEepromList::EepromData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Chassis::ChassisEepromCnt::ChassisEepromList::EepromData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Chassis::ChassisEepromCnt::ChassisEepromList::EepromData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Diag::Chassis::ChassisEepromCnt::ChassisEepromList::EepromData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1849,33 +1849,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Summary::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Diag::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary_list")
     {
-        auto c = std::make_shared<Diag::Summary::SummaryList>();
-        c->parent = this;
-        summary_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Summary::SummaryList>();
+        ent_->parent = this;
+        summary_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : summary_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : summary_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1947,7 +1947,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Summary::SummaryList::get_n
 
 }
 
-std::shared_ptr<Entity> Diag::Summary::SummaryList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Summary::SummaryList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary-data")
     {
@@ -1961,16 +1961,16 @@ std::shared_ptr<Entity> Diag::Summary::SummaryList::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Summary::SummaryList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Summary::SummaryList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary_data != nullptr)
     {
-        children["summary-data"] = summary_data;
+        _children["summary-data"] = summary_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Summary::SummaryList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2050,16 +2050,16 @@ std::vector<std::pair<std::string, LeafData> > Diag::Summary::SummaryList::Summa
 
 }
 
-std::shared_ptr<Entity> Diag::Summary::SummaryList::SummaryData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Summary::SummaryList::SummaryData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Summary::SummaryList::SummaryData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Summary::SummaryList::SummaryData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Diag::Summary::SummaryList::SummaryData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2141,33 +2141,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Eeprom::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Diag::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eeprom_list")
     {
-        auto c = std::make_shared<Diag::Eeprom::EepromList>();
-        c->parent = this;
-        eeprom_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Eeprom::EepromList>();
+        ent_->parent = this;
+        eeprom_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Eeprom::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Eeprom::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : eeprom_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : eeprom_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Eeprom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2239,7 +2239,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Eeprom::EepromList::get_nam
 
 }
 
-std::shared_ptr<Entity> Diag::Eeprom::EepromList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Eeprom::EepromList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eeprom-data")
     {
@@ -2253,16 +2253,16 @@ std::shared_ptr<Entity> Diag::Eeprom::EepromList::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Eeprom::EepromList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Eeprom::EepromList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(eeprom_data != nullptr)
     {
-        children["eeprom-data"] = eeprom_data;
+        _children["eeprom-data"] = eeprom_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Eeprom::EepromList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2342,16 +2342,16 @@ std::vector<std::pair<std::string, LeafData> > Diag::Eeprom::EepromList::EepromD
 
 }
 
-std::shared_ptr<Entity> Diag::Eeprom::EepromList::EepromData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Eeprom::EepromList::EepromData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Eeprom::EepromList::EepromData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Eeprom::EepromList::EepromData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Diag::Eeprom::EepromList::EepromData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2433,33 +2433,33 @@ std::vector<std::pair<std::string, LeafData> > Diag::Detail::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> Diag::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail_list")
     {
-        auto c = std::make_shared<Diag::Detail::DetailList>();
-        c->parent = this;
-        detail_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Diag::Detail::DetailList>();
+        ent_->parent = this;
+        detail_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : detail_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : detail_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2531,7 +2531,7 @@ std::vector<std::pair<std::string, LeafData> > Diag::Detail::DetailList::get_nam
 
 }
 
-std::shared_ptr<Entity> Diag::Detail::DetailList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Detail::DetailList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail-data")
     {
@@ -2545,16 +2545,16 @@ std::shared_ptr<Entity> Diag::Detail::DetailList::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Detail::DetailList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Detail::DetailList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail_data != nullptr)
     {
-        children["detail-data"] = detail_data;
+        _children["detail-data"] = detail_data;
     }
 
-    return children;
+    return _children;
 }
 
 void Diag::Detail::DetailList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2634,16 +2634,16 @@ std::vector<std::pair<std::string, LeafData> > Diag::Detail::DetailList::DetailD
 
 }
 
-std::shared_ptr<Entity> Diag::Detail::DetailList::DetailData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Diag::Detail::DetailList::DetailData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Diag::Detail::DetailList::DetailData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Diag::Detail::DetailList::DetailData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Diag::Detail::DetailList::DetailData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

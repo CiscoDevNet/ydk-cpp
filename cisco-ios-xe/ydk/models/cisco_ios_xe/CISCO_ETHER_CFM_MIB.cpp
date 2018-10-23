@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> CISCOETHERCFMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOETHERCFMMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cecCfmEvents")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> CISCOETHERCFMMIB::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOETHERCFMMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOETHERCFMMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ceccfmevents != nullptr)
     {
-        children["cecCfmEvents"] = ceccfmevents;
+        _children["cecCfmEvents"] = ceccfmevents;
     }
 
     if(cethercfmeventtable != nullptr)
     {
-        children["cEtherCfmEventTable"] = cethercfmeventtable;
+        _children["cEtherCfmEventTable"] = cethercfmeventtable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOETHERCFMMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void CISCOETHERCFMMIB::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> CISCOETHERCFMMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOETHERCFMMIB::clone_ptr() const
 {
     return std::make_shared<CISCOETHERCFMMIB>();
 }
@@ -184,16 +184,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::CecCfmEvents::g
 
 }
 
-std::shared_ptr<Entity> CISCOETHERCFMMIB::CecCfmEvents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOETHERCFMMIB::CecCfmEvents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOETHERCFMMIB::CecCfmEvents::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOETHERCFMMIB::CecCfmEvents::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOETHERCFMMIB::CecCfmEvents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -277,33 +277,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::CEtherCfmEventT
 
 }
 
-std::shared_ptr<Entity> CISCOETHERCFMMIB::CEtherCfmEventTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOETHERCFMMIB::CEtherCfmEventTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cEtherCfmEventEntry")
     {
-        auto c = std::make_shared<CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry>();
-        c->parent = this;
-        cethercfmevententry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry>();
+        ent_->parent = this;
+        cethercfmevententry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOETHERCFMMIB::CEtherCfmEventTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOETHERCFMMIB::CEtherCfmEventTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cethercfmevententry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cethercfmevententry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOETHERCFMMIB::CEtherCfmEventTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -436,16 +436,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOETHERCFMMIB::CEtherCfmEventT
 
 }
 
-std::shared_ptr<Entity> CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

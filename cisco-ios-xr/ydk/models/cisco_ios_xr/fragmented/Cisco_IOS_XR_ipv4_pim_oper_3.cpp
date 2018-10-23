@@ -61,16 +61,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::NetI
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::RpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::RpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::RpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -167,16 +167,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::NetI
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddressNetio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddressNetio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddressNetio::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddressNetio::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddressNetio::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -273,16 +273,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::NetI
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNetio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNetio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNetio::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNetio::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNetio::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -386,33 +386,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Bidi
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::BidirDfStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::BidirDfStates::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bidir-df-state")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::BidirDfStates::BidirDfState>();
-        c->parent = this;
-        bidir_df_state.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::BidirDfStates::BidirDfState>();
+        ent_->parent = this;
+        bidir_df_state.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::BidirDfStates::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::BidirDfStates::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bidir_df_state.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bidir_df_state.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::BidirDfStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -511,7 +511,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Bidi
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::BidirDfStates::BidirDfState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::BidirDfStates::BidirDfState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rp-address-xr")
     {
@@ -525,16 +525,16 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::BidirDfStates::BidirDfState
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::BidirDfStates::BidirDfState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::BidirDfStates::BidirDfState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rp_address_xr != nullptr)
     {
-        children["rp-address-xr"] = rp_address_xr;
+        _children["rp-address-xr"] = rp_address_xr;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::BidirDfStates::BidirDfState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -688,16 +688,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Bidi
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::BidirDfStates::BidirDfState::RpAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::BidirDfStates::BidirDfState::RpAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::BidirDfStates::BidirDfState::RpAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::BidirDfStates::BidirDfState::RpAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::BidirDfStates::BidirDfState::RpAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -801,33 +801,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Topologies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "topology")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::Topologies::Topology>();
-        c->parent = this;
-        topology.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::Topologies::Topology>();
+        ent_->parent = this;
+        topology.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Topologies::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Topologies::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : topology.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : topology.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Topologies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1161,7 +1161,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Topologies::Topology::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-address-xr")
     {
@@ -1237,69 +1237,69 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::Topology::get_c
 
     if(child_yang_name == "outgoing-interface")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::Topologies::Topology::OutgoingInterface>();
-        c->parent = this;
-        outgoing_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::Topologies::Topology::OutgoingInterface>();
+        ent_->parent = this;
+        outgoing_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Topologies::Topology::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Topologies::Topology::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(group_address_xr != nullptr)
     {
-        children["group-address-xr"] = group_address_xr;
+        _children["group-address-xr"] = group_address_xr;
     }
 
     if(source_address_xr != nullptr)
     {
-        children["source-address-xr"] = source_address_xr;
+        _children["source-address-xr"] = source_address_xr;
     }
 
     if(rp_address != nullptr)
     {
-        children["rp-address"] = rp_address;
+        _children["rp-address"] = rp_address;
     }
 
     if(rpf_neighbor != nullptr)
     {
-        children["rpf-neighbor"] = rpf_neighbor;
+        _children["rpf-neighbor"] = rpf_neighbor;
     }
 
     if(secondary_rpf_neighbor != nullptr)
     {
-        children["secondary-rpf-neighbor"] = secondary_rpf_neighbor;
+        _children["secondary-rpf-neighbor"] = secondary_rpf_neighbor;
     }
 
     if(rpf_root != nullptr)
     {
-        children["rpf-root"] = rpf_root;
+        _children["rpf-root"] = rpf_root;
     }
 
     if(proxy_address != nullptr)
     {
-        children["proxy-address"] = proxy_address;
+        _children["proxy-address"] = proxy_address;
     }
 
     if(orig_src_address != nullptr)
     {
-        children["orig-src-address"] = orig_src_address;
+        _children["orig-src-address"] = orig_src_address;
     }
 
-    count = 0;
-    for (auto c : outgoing_interface.entities())
+    count_ = 0;
+    for (auto ent_ : outgoing_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Topologies::Topology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1943,16 +1943,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::Topology::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Topologies::Topology::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Topologies::Topology::GroupAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Topologies::Topology::GroupAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Topologies::Topology::GroupAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2056,16 +2056,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::Topology::SourceAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Topologies::Topology::SourceAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Topologies::Topology::SourceAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Topologies::Topology::SourceAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Topologies::Topology::SourceAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2169,16 +2169,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::Topology::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Topologies::Topology::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Topologies::Topology::RpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Topologies::Topology::RpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Topologies::Topology::RpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2282,16 +2282,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::Topology::RpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Topologies::Topology::RpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Topologies::Topology::RpfNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Topologies::Topology::RpfNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Topologies::Topology::RpfNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2395,16 +2395,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::Topology::SecondaryRpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Topologies::Topology::SecondaryRpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Topologies::Topology::SecondaryRpfNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Topologies::Topology::SecondaryRpfNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Topologies::Topology::SecondaryRpfNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2508,16 +2508,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::Topology::RpfRoot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Topologies::Topology::RpfRoot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Topologies::Topology::RpfRoot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Topologies::Topology::RpfRoot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Topologies::Topology::RpfRoot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2621,16 +2621,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::Topology::ProxyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Topologies::Topology::ProxyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Topologies::Topology::ProxyAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Topologies::Topology::ProxyAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Topologies::Topology::ProxyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2734,16 +2734,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::Topology::OrigSrcAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Topologies::Topology::OrigSrcAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Topologies::Topology::OrigSrcAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Topologies::Topology::OrigSrcAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Topologies::Topology::OrigSrcAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2952,7 +2952,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::Topology::OutgoingInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Topologies::Topology::OutgoingInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "assert-winner")
     {
@@ -2966,16 +2966,16 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::Topology::Outgo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Topologies::Topology::OutgoingInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Topologies::Topology::OutgoingInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(assert_winner != nullptr)
     {
-        children["assert-winner"] = assert_winner;
+        _children["assert-winner"] = assert_winner;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Topologies::Topology::OutgoingInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3329,16 +3329,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Topologies::Topology::OutgoingInterface::AssertWinner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Topologies::Topology::OutgoingInterface::AssertWinner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Topologies::Topology::OutgoingInterface::AssertWinner::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Topologies::Topology::OutgoingInterface::AssertWinner::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Topologies::Topology::OutgoingInterface::AssertWinner::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3442,33 +3442,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::BgpA
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::BgpAfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::BgpAfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp-af")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::BgpAfs::BgpAf>();
-        c->parent = this;
-        bgp_af.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::BgpAfs::BgpAf>();
+        ent_->parent = this;
+        bgp_af.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::BgpAfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::BgpAfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bgp_af.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bgp_af.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::BgpAfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3563,7 +3563,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::BgpA
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::BgpAfs::BgpAf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::BgpAfs::BgpAf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
@@ -3595,26 +3595,26 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::BgpAfs::BgpAf::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::BgpAfs::BgpAf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::BgpAfs::BgpAf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
     if(group != nullptr)
     {
-        children["group"] = group;
+        _children["group"] = group;
     }
 
     if(next_hop != nullptr)
     {
-        children["next-hop"] = next_hop;
+        _children["next-hop"] = next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::BgpAfs::BgpAf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3738,16 +3738,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::BgpA
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::BgpAfs::BgpAf::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::BgpAfs::BgpAf::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::BgpAfs::BgpAf::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::BgpAfs::BgpAf::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::BgpAfs::BgpAf::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3851,16 +3851,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::BgpA
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::BgpAfs::BgpAf::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::BgpAfs::BgpAf::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::BgpAfs::BgpAf::Group::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::BgpAfs::BgpAf::Group::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::BgpAfs::BgpAf::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3964,16 +3964,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::BgpA
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::BgpAfs::BgpAf::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::BgpAfs::BgpAf::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::BgpAfs::BgpAf::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::BgpAfs::BgpAf::NextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::BgpAfs::BgpAf::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4065,16 +4065,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Auto
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::AutoRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::AutoRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::AutoRp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::AutoRp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::AutoRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4146,33 +4146,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::TopologyInterfaceFlagRouteCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::TopologyInterfaceFlagRouteCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "topology-interface-flag-route-count")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount>();
-        c->parent = this;
-        topology_interface_flag_route_count.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount>();
+        ent_->parent = this;
+        topology_interface_flag_route_count.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::TopologyInterfaceFlagRouteCounts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::TopologyInterfaceFlagRouteCounts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : topology_interface_flag_route_count.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : topology_interface_flag_route_count.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::TopologyInterfaceFlagRouteCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4263,16 +4263,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4416,33 +4416,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Grou
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapSources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::GroupMapSources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-map-source")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::GroupMapSources::GroupMapSource>();
-        c->parent = this;
-        group_map_source.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::GroupMapSources::GroupMapSource>();
+        ent_->parent = this;
+        group_map_source.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::GroupMapSources::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::GroupMapSources::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group_map_source.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group_map_source.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::GroupMapSources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4549,7 +4549,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Grou
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source-of-information")
     {
@@ -4572,21 +4572,21 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapSources::GroupMapSo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source_of_information != nullptr)
     {
-        children["source-of-information"] = source_of_information;
+        _children["source-of-information"] = source_of_information;
     }
 
     if(group_map_information != nullptr)
     {
-        children["group-map-information"] = group_map_information;
+        _children["group-map-information"] = group_map_information;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4750,16 +4750,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Grou
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::SourceOfInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::SourceOfInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::SourceOfInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::SourceOfInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::SourceOfInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4892,7 +4892,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Grou
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
@@ -4915,21 +4915,21 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapSources::GroupMapSo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
     if(rp_address != nullptr)
     {
-        children["rp-address"] = rp_address;
+        _children["rp-address"] = rp_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5083,16 +5083,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Grou
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5196,16 +5196,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Grou
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5573,33 +5573,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Traf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::TrafficCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::TrafficCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "packet-queue")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::TrafficCounters::PacketQueue>();
-        c->parent = this;
-        packet_queue.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::TrafficCounters::PacketQueue>();
+        ent_->parent = this;
+        packet_queue.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::TrafficCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::TrafficCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : packet_queue.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : packet_queue.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::TrafficCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6334,7 +6334,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Traf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::TrafficCounters::PacketQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::TrafficCounters::PacketQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "packet-queue-state")
     {
@@ -6357,21 +6357,21 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::TrafficCounters::PacketQueu
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::TrafficCounters::PacketQueue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::TrafficCounters::PacketQueue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(packet_queue_state != nullptr)
     {
-        children["packet-queue-state"] = packet_queue_state;
+        _children["packet-queue-state"] = packet_queue_state;
     }
 
     if(packet_queue_stats != nullptr)
     {
-        children["packet-queue-stats"] = packet_queue_stats;
+        _children["packet-queue-stats"] = packet_queue_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::TrafficCounters::PacketQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6455,16 +6455,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Traf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::TrafficCounters::PacketQueue::PacketQueueState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::TrafficCounters::PacketQueue::PacketQueueState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::TrafficCounters::PacketQueue::PacketQueueState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::TrafficCounters::PacketQueue::PacketQueueState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::TrafficCounters::PacketQueue::PacketQueueState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6576,16 +6576,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Traf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::TrafficCounters::PacketQueue::PacketQueueStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::TrafficCounters::PacketQueue::PacketQueueStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::TrafficCounters::PacketQueue::PacketQueueStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::TrafficCounters::PacketQueue::PacketQueueStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::TrafficCounters::PacketQueue::PacketQueueStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6709,33 +6709,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Grou
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapRpfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::GroupMapRpfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-map-rpf")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf>();
-        c->parent = this;
-        group_map_rpf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf>();
+        ent_->parent = this;
+        group_map_rpf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::GroupMapRpfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::GroupMapRpfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group_map_rpf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group_map_rpf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::GroupMapRpfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6842,7 +6842,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Grou
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rpf-neighbor")
     {
@@ -6865,21 +6865,21 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rpf_neighbor != nullptr)
     {
-        children["rpf-neighbor"] = rpf_neighbor;
+        _children["rpf-neighbor"] = rpf_neighbor;
     }
 
     if(group_map_information != nullptr)
     {
-        children["group-map-information"] = group_map_information;
+        _children["group-map-information"] = group_map_information;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7043,16 +7043,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Grou
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7185,7 +7185,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Grou
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
@@ -7208,21 +7208,21 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
     if(rp_address != nullptr)
     {
-        children["rp-address"] = rp_address;
+        _children["rp-address"] = rp_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7376,16 +7376,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Grou
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7489,16 +7489,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Grou
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7750,16 +7750,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Summ
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8229,7 +8229,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Gre:
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Gre::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Gre::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "gre-hashes")
     {
@@ -8252,21 +8252,21 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::Gre::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Gre::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Gre::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(gre_hashes != nullptr)
     {
-        children["gre-hashes"] = gre_hashes;
+        _children["gre-hashes"] = gre_hashes;
     }
 
     if(gre_next_hops != nullptr)
     {
-        children["gre-next-hops"] = gre_next_hops;
+        _children["gre-next-hops"] = gre_next_hops;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Gre::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8340,33 +8340,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Gre:
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Gre::GreHashes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Gre::GreHashes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "gre-hash")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::Gre::GreHashes::GreHash>();
-        c->parent = this;
-        gre_hash.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::Gre::GreHashes::GreHash>();
+        ent_->parent = this;
+        gre_hash.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Gre::GreHashes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Gre::GreHashes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : gre_hash.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : gre_hash.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Gre::GreHashes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8447,16 +8447,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Gre:
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Gre::GreHashes::GreHash::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Gre::GreHashes::GreHash::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Gre::GreHashes::GreHash::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Gre::GreHashes::GreHash::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Gre::GreHashes::GreHash::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8570,33 +8570,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Gre:
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Gre::GreNextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Gre::GreNextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "gre-next-hop")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop>();
-        c->parent = this;
-        gre_next_hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop>();
+        ent_->parent = this;
+        gre_next_hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Gre::GreNextHops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Gre::GreNextHops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : gre_next_hop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : gre_next_hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Gre::GreNextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8691,7 +8691,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Gre:
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "registered-address")
     {
@@ -8704,34 +8704,34 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHo
 
     if(child_yang_name == "gre-path")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath>();
-        c->parent = this;
-        gre_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath>();
+        ent_->parent = this;
+        gre_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(registered_address != nullptr)
     {
-        children["registered-address"] = registered_address;
+        _children["registered-address"] = registered_address;
     }
 
-    count = 0;
-    for (auto c : gre_path.entities())
+    count_ = 0;
+    for (auto ent_ : gre_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8838,16 +8838,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Gre:
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8961,7 +8961,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Gre:
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "gre-neighbor")
     {
@@ -8984,21 +8984,21 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(gre_neighbor != nullptr)
     {
-        children["gre-neighbor"] = gre_neighbor;
+        _children["gre-neighbor"] = gre_neighbor;
     }
 
     if(gre_next_hop != nullptr)
     {
-        children["gre-next-hop"] = gre_next_hop;
+        _children["gre-next-hop"] = gre_next_hop;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9115,16 +9115,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Gre:
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9221,16 +9221,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Gre:
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9334,33 +9334,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Bidi
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::BidirDfWinners::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::BidirDfWinners::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bidir-df-winner")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner>();
-        c->parent = this;
-        bidir_df_winner.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner>();
+        ent_->parent = this;
+        bidir_df_winner.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::BidirDfWinners::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::BidirDfWinners::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bidir_df_winner.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bidir_df_winner.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::BidirDfWinners::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9463,7 +9463,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Bidi
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rp-address-xr")
     {
@@ -9486,21 +9486,21 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rp_address_xr != nullptr)
     {
-        children["rp-address-xr"] = rp_address_xr;
+        _children["rp-address-xr"] = rp_address_xr;
     }
 
     if(df_winner != nullptr)
     {
-        children["df-winner"] = df_winner;
+        _children["df-winner"] = df_winner;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9654,16 +9654,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Bidi
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9767,16 +9767,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Bidi
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9880,33 +9880,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Tabl
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::TableContexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::TableContexts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "table-context")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::TableContexts::TableContext>();
-        c->parent = this;
-        table_context.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::TableContexts::TableContext>();
+        ent_->parent = this;
+        table_context.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::TableContexts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::TableContexts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : table_context.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : table_context.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::TableContexts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10020,16 +10020,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Tabl
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::TableContexts::TableContext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::TableContexts::TableContext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::TableContexts::TableContext::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::TableContexts::TableContext::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::TableContexts::TableContext::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10233,33 +10233,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Neig
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::NeighborSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::NeighborSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-summary")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::NeighborSummaries::NeighborSummary>();
-        c->parent = this;
-        neighbor_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::NeighborSummaries::NeighborSummary>();
+        ent_->parent = this;
+        neighbor_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::NeighborSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::NeighborSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::NeighborSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10334,16 +10334,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Neig
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::NeighborSummaries::NeighborSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::NeighborSummaries::NeighborSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::NeighborSummaries::NeighborSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::NeighborSummaries::NeighborSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::NeighborSummaries::NeighborSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11103,7 +11103,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Cont
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "remote-default-group")
     {
@@ -11125,73 +11125,73 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::Context::get_child_by_name(
 
     if(child_yang_name == "export-route-target")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::Context::ExportRouteTarget>();
-        c->parent = this;
-        export_route_target.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::Context::ExportRouteTarget>();
+        ent_->parent = this;
+        export_route_target.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "import-route-target")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::Context::ImportRouteTarget>();
-        c->parent = this;
-        import_route_target.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::Context::ImportRouteTarget>();
+        ent_->parent = this;
+        import_route_target.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "anycast-rp-range")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::Context::AnycastRpRange>();
-        c->parent = this;
-        anycast_rp_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::Context::AnycastRpRange>();
+        ent_->parent = this;
+        anycast_rp_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Context::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Context::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(remote_default_group != nullptr)
     {
-        children["remote-default-group"] = remote_default_group;
+        _children["remote-default-group"] = remote_default_group;
     }
 
     if(rpf_default_table != nullptr)
     {
-        children["rpf-default-table"] = rpf_default_table;
+        _children["rpf-default-table"] = rpf_default_table;
     }
 
-    count = 0;
-    for (auto c : export_route_target.entities())
+    count_ = 0;
+    for (auto ent_ : export_route_target.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : import_route_target.entities())
+    count_ = 0;
+    for (auto ent_ : import_route_target.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : anycast_rp_range.entities())
+    count_ = 0;
+    for (auto ent_ : anycast_rp_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12803,16 +12803,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Cont
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Context::RemoteDefaultGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Context::RemoteDefaultGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Context::RemoteDefaultGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Context::RemoteDefaultGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Context::RemoteDefaultGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12948,16 +12948,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Cont
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Context::RpfDefaultTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Context::RpfDefaultTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Context::RpfDefaultTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Context::RpfDefaultTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Context::RpfDefaultTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13157,16 +13157,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Cont
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Context::ExportRouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Context::ExportRouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Context::ExportRouteTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Context::ExportRouteTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Context::ExportRouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13326,16 +13326,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Cont
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Context::ImportRouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Context::ImportRouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Context::ImportRouteTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Context::ImportRouteTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Context::ImportRouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13480,7 +13480,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Cont
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Context::AnycastRpRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Context::AnycastRpRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
@@ -13494,16 +13494,16 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::Context::AnycastRpRange::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Context::AnycastRpRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Context::AnycastRpRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Context::AnycastRpRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13597,16 +13597,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Cont
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Context::AnycastRpRange::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Context::AnycastRpRange::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Context::AnycastRpRange::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Context::AnycastRpRange::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Context::AnycastRpRange::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13710,33 +13710,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::TopologyEntryFlagRouteCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::TopologyEntryFlagRouteCounts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "topology-entry-flag-route-count")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount>();
-        c->parent = this;
-        topology_entry_flag_route_count.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount>();
+        ent_->parent = this;
+        topology_entry_flag_route_count.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::TopologyEntryFlagRouteCounts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::TopologyEntryFlagRouteCounts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : topology_entry_flag_route_count.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : topology_entry_flag_route_count.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::TopologyEntryFlagRouteCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13827,16 +13827,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Topo
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13976,7 +13976,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::RpfR
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::RpfRedirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::RpfRedirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "redirect-route-databases")
     {
@@ -13999,21 +13999,21 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::RpfRedirect::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::RpfRedirect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::RpfRedirect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(redirect_route_databases != nullptr)
     {
-        children["redirect-route-databases"] = redirect_route_databases;
+        _children["redirect-route-databases"] = redirect_route_databases;
     }
 
     if(bundle_interfaces != nullptr)
     {
-        children["bundle-interfaces"] = bundle_interfaces;
+        _children["bundle-interfaces"] = bundle_interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::RpfRedirect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14087,33 +14087,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::RpfR
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "redirect-route-database")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase>();
-        c->parent = this;
-        redirect_route_database.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase>();
+        ent_->parent = this;
+        redirect_route_database.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : redirect_route_database.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : redirect_route_database.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14211,7 +14211,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::RpfR
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-address-xr")
     {
@@ -14233,39 +14233,39 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteD
 
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(group_address_xr != nullptr)
     {
-        children["group-address-xr"] = group_address_xr;
+        _children["group-address-xr"] = group_address_xr;
     }
 
     if(source_address_xr != nullptr)
     {
-        children["source-address-xr"] = source_address_xr;
+        _children["source-address-xr"] = source_address_xr;
     }
 
-    count = 0;
-    for (auto c : interface.entities())
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14379,16 +14379,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::RpfR
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14492,16 +14492,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::RpfR
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14622,7 +14622,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::RpfR
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rpf-address")
     {
@@ -14636,16 +14636,16 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteD
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rpf_address != nullptr)
     {
-        children["rpf-address"] = rpf_address;
+        _children["rpf-address"] = rpf_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14779,16 +14779,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::RpfR
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14892,33 +14892,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::RpfR
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::RpfRedirect::BundleInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::RpfRedirect::BundleInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bundle-interface")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface>();
-        c->parent = this;
-        bundle_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface>();
+        ent_->parent = this;
+        bundle_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::RpfRedirect::BundleInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::RpfRedirect::BundleInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bundle_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bundle_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::RpfRedirect::BundleInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15024,16 +15024,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::RpfR
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15217,33 +15217,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Tunn
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Tunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnel")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::Tunnels::Tunnel>();
-        c->parent = this;
-        tunnel.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::Tunnels::Tunnel>();
+        ent_->parent = this;
+        tunnel.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Tunnels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Tunnels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : tunnel.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tunnel.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15331,7 +15331,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Tunn
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Tunnels::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source-address")
     {
@@ -15372,31 +15372,31 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::Tunnels::Tunnel::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Tunnels::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Tunnels::Tunnel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source_address != nullptr)
     {
-        children["source-address"] = source_address;
+        _children["source-address"] = source_address;
     }
 
     if(rp_address != nullptr)
     {
-        children["rp-address"] = rp_address;
+        _children["rp-address"] = rp_address;
     }
 
     if(source_address_netio != nullptr)
     {
-        children["source-address-netio"] = source_address_netio;
+        _children["source-address-netio"] = source_address_netio;
     }
 
     if(group_address_netio != nullptr)
     {
-        children["group-address-netio"] = group_address_netio;
+        _children["group-address-netio"] = group_address_netio;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15483,16 +15483,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Tunn
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Tunnels::Tunnel::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Tunnels::Tunnel::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Tunnels::Tunnel::SourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Tunnels::Tunnel::SourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Tunnels::Tunnel::SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15589,16 +15589,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Tunn
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Tunnels::Tunnel::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Tunnels::Tunnel::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Tunnels::Tunnel::RpAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Tunnels::Tunnel::RpAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Tunnels::Tunnel::RpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15695,16 +15695,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Tunn
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15801,16 +15801,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Tunn
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15914,33 +15914,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Mult
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::MulticastStaticRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::MulticastStaticRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "multicast-static-route")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute>();
-        c->parent = this;
-        multicast_static_route.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute>();
+        ent_->parent = this;
+        multicast_static_route.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::MulticastStaticRoutes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::MulticastStaticRoutes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : multicast_static_route.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : multicast_static_route.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::MulticastStaticRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16035,7 +16035,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Mult
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
@@ -16058,21 +16058,21 @@ std::shared_ptr<Entity> Pim::Active::DefaultContext::MulticastStaticRoutes::Mult
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
     if(nexthop != nullptr)
     {
-        children["nexthop"] = nexthop;
+        _children["nexthop"] = nexthop;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16206,16 +16206,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Mult
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16319,16 +16319,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Mult
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16432,33 +16432,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Neig
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::Neighbors::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::Neighbors::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Neighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Neighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16600,33 +16600,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Neig
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Neighbors::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-address-xr")
     {
-        auto c = std::make_shared<Pim::Active::DefaultContext::Neighbors::Neighbor::NeighborAddressXr>();
-        c->parent = this;
-        neighbor_address_xr.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::DefaultContext::Neighbors::Neighbor::NeighborAddressXr>();
+        ent_->parent = this;
+        neighbor_address_xr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Neighbors::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Neighbors::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor_address_xr.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor_address_xr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16870,16 +16870,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Neig
 
 }
 
-std::shared_ptr<Entity> Pim::Active::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16987,7 +16987,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Process::get_name_le
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Process::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsr")
     {
@@ -17028,31 +17028,31 @@ std::shared_ptr<Entity> Pim::Active::Process::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Process::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Process::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nsr != nullptr)
     {
-        children["nsr"] = nsr;
+        _children["nsr"] = nsr;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(nsf != nullptr)
     {
-        children["nsf"] = nsf;
+        _children["nsf"] = nsf;
     }
 
     if(issu != nullptr)
     {
-        children["issu"] = issu;
+        _children["issu"] = issu;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17166,16 +17166,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Process::Nsr::get_na
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Process::Nsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Process::Nsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Process::Nsr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Process::Nsr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Process::Nsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17527,16 +17527,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Process::Summary::ge
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Process::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Process::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Process::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Process::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Process::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18050,16 +18050,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Process::Nsf::get_na
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Process::Nsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Process::Nsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Process::Nsf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Process::Nsf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Process::Nsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18319,16 +18319,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Process::Issu::get_n
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Process::Issu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Process::Issu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Process::Issu::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Process::Issu::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Process::Issu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18572,33 +18572,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18802,7 +18802,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::get_name_
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ifrs-interfaces")
     {
@@ -19113,181 +19113,181 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ifrs_interfaces != nullptr)
     {
-        children["ifrs-interfaces"] = ifrs_interfaces;
+        _children["ifrs-interfaces"] = ifrs_interfaces;
     }
 
     if(safs != nullptr)
     {
-        children["safs"] = safs;
+        _children["safs"] = safs;
     }
 
     if(interface_statistics != nullptr)
     {
-        children["interface-statistics"] = interface_statistics;
+        _children["interface-statistics"] = interface_statistics;
     }
 
     if(topology_route_count != nullptr)
     {
-        children["topology-route-count"] = topology_route_count;
+        _children["topology-route-count"] = topology_route_count;
     }
 
     if(jp_statistics != nullptr)
     {
-        children["jp-statistics"] = jp_statistics;
+        _children["jp-statistics"] = jp_statistics;
     }
 
     if(mib_databases != nullptr)
     {
-        children["mib-databases"] = mib_databases;
+        _children["mib-databases"] = mib_databases;
     }
 
     if(neighbor_old_formats != nullptr)
     {
-        children["neighbor-old-formats"] = neighbor_old_formats;
+        _children["neighbor-old-formats"] = neighbor_old_formats;
     }
 
     if(ifrs_summary != nullptr)
     {
-        children["ifrs-summary"] = ifrs_summary;
+        _children["ifrs-summary"] = ifrs_summary;
     }
 
     if(ranges != nullptr)
     {
-        children["ranges"] = ranges;
+        _children["ranges"] = ranges;
     }
 
     if(interface_old_formats != nullptr)
     {
-        children["interface-old-formats"] = interface_old_formats;
+        _children["interface-old-formats"] = interface_old_formats;
     }
 
     if(bsr != nullptr)
     {
-        children["bsr"] = bsr;
+        _children["bsr"] = bsr;
     }
 
     if(route_policy != nullptr)
     {
-        children["route-policy"] = route_policy;
+        _children["route-policy"] = route_policy;
     }
 
     if(rpf_summary != nullptr)
     {
-        children["rpf-summary"] = rpf_summary;
+        _children["rpf-summary"] = rpf_summary;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(net_io_tunnels != nullptr)
     {
-        children["net-io-tunnels"] = net_io_tunnels;
+        _children["net-io-tunnels"] = net_io_tunnels;
     }
 
     if(bidir_df_states != nullptr)
     {
-        children["bidir-df-states"] = bidir_df_states;
+        _children["bidir-df-states"] = bidir_df_states;
     }
 
     if(topologies != nullptr)
     {
-        children["topologies"] = topologies;
+        _children["topologies"] = topologies;
     }
 
     if(bgp_afs != nullptr)
     {
-        children["bgp-afs"] = bgp_afs;
+        _children["bgp-afs"] = bgp_afs;
     }
 
     if(auto_rp != nullptr)
     {
-        children["auto-rp"] = auto_rp;
+        _children["auto-rp"] = auto_rp;
     }
 
     if(topology_interface_flag_route_counts != nullptr)
     {
-        children["topology-interface-flag-route-counts"] = topology_interface_flag_route_counts;
+        _children["topology-interface-flag-route-counts"] = topology_interface_flag_route_counts;
     }
 
     if(group_map_sources != nullptr)
     {
-        children["group-map-sources"] = group_map_sources;
+        _children["group-map-sources"] = group_map_sources;
     }
 
     if(traffic_counters != nullptr)
     {
-        children["traffic-counters"] = traffic_counters;
+        _children["traffic-counters"] = traffic_counters;
     }
 
     if(group_map_rpfs != nullptr)
     {
-        children["group-map-rpfs"] = group_map_rpfs;
+        _children["group-map-rpfs"] = group_map_rpfs;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(gre != nullptr)
     {
-        children["gre"] = gre;
+        _children["gre"] = gre;
     }
 
     if(bidir_df_winners != nullptr)
     {
-        children["bidir-df-winners"] = bidir_df_winners;
+        _children["bidir-df-winners"] = bidir_df_winners;
     }
 
     if(table_contexts != nullptr)
     {
-        children["table-contexts"] = table_contexts;
+        _children["table-contexts"] = table_contexts;
     }
 
     if(neighbor_summaries != nullptr)
     {
-        children["neighbor-summaries"] = neighbor_summaries;
+        _children["neighbor-summaries"] = neighbor_summaries;
     }
 
     if(context != nullptr)
     {
-        children["context"] = context;
+        _children["context"] = context;
     }
 
     if(topology_entry_flag_route_counts != nullptr)
     {
-        children["topology-entry-flag-route-counts"] = topology_entry_flag_route_counts;
+        _children["topology-entry-flag-route-counts"] = topology_entry_flag_route_counts;
     }
 
     if(rpf_redirect != nullptr)
     {
-        children["rpf-redirect"] = rpf_redirect;
+        _children["rpf-redirect"] = rpf_redirect;
     }
 
     if(tunnels != nullptr)
     {
-        children["tunnels"] = tunnels;
+        _children["tunnels"] = tunnels;
     }
 
     if(multicast_static_routes != nullptr)
     {
-        children["multicast-static-routes"] = multicast_static_routes;
+        _children["multicast-static-routes"] = multicast_static_routes;
     }
 
     if(neighbors != nullptr)
     {
-        children["neighbors"] = neighbors;
+        _children["neighbors"] = neighbors;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19364,33 +19364,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::IfrsInter
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::IfrsInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::IfrsInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ifrs-interface")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface>();
-        c->parent = this;
-        ifrs_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface>();
+        ent_->parent = this;
+        ifrs_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::IfrsInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::IfrsInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ifrs_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ifrs_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::IfrsInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19590,7 +19590,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::IfrsInter
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dr-address")
     {
@@ -19603,34 +19603,34 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::g
 
     if(child_yang_name == "interface-address")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress>();
-        c->parent = this;
-        interface_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress>();
+        ent_->parent = this;
+        interface_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dr_address != nullptr)
     {
-        children["dr-address"] = dr_address;
+        _children["dr-address"] = dr_address;
     }
 
-    count = 0;
-    for (auto c : interface_address.entities())
+    count_ = 0;
+    for (auto ent_ : interface_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20017,16 +20017,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::IfrsInter
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20123,16 +20123,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::IfrsInter
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20229,33 +20229,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::get
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "saf")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::Safs::Saf>();
-        c->parent = this;
-        saf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::Safs::Saf>();
+        ent_->parent = this;
+        saf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : saf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : saf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20331,7 +20331,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rpf-hash-source-groups")
     {
@@ -20363,26 +20363,26 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rpf_hash_source_groups != nullptr)
     {
-        children["rpf-hash-source-groups"] = rpf_hash_source_groups;
+        _children["rpf-hash-source-groups"] = rpf_hash_source_groups;
     }
 
     if(rpf_hash_sources != nullptr)
     {
-        children["rpf-hash-sources"] = rpf_hash_sources;
+        _children["rpf-hash-sources"] = rpf_hash_sources;
     }
 
     if(rpfs != nullptr)
     {
-        children["rpfs"] = rpfs;
+        _children["rpfs"] = rpfs;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20469,33 +20469,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rpf-hash-source-group")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup>();
-        c->parent = this;
-        rpf_hash_source_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup>();
+        ent_->parent = this;
+        rpf_hash_source_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rpf_hash_source_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rpf_hash_source_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20587,7 +20587,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop-address")
     {
@@ -20610,21 +20610,21 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop_address != nullptr)
     {
-        children["next-hop-address"] = next_hop_address;
+        _children["next-hop-address"] = next_hop_address;
     }
 
     if(secondary_next_hop_address != nullptr)
     {
-        children["secondary-next-hop-address"] = secondary_next_hop_address;
+        _children["secondary-next-hop-address"] = secondary_next_hop_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20761,16 +20761,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::NextHopAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20867,16 +20867,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSourceGroup::SecondaryNextHopAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20973,33 +20973,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rpf-hash-source")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource>();
-        c->parent = this;
-        rpf_hash_source.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource>();
+        ent_->parent = this;
+        rpf_hash_source.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rpf_hash_source.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rpf_hash_source.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21083,7 +21083,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "next-hop-address")
     {
@@ -21106,21 +21106,21 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(next_hop_address != nullptr)
     {
-        children["next-hop-address"] = next_hop_address;
+        _children["next-hop-address"] = next_hop_address;
     }
 
     if(secondary_next_hop_address != nullptr)
     {
-        children["secondary-next-hop-address"] = secondary_next_hop_address;
+        _children["secondary-next-hop-address"] = secondary_next_hop_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21237,16 +21237,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::NextHopAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21343,16 +21343,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::SecondaryNextHopAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21449,33 +21449,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rpf")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf>();
-        c->parent = this;
-        rpf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf>();
+        ent_->parent = this;
+        rpf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rpf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rpf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21567,7 +21567,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "registered-address-xr")
     {
@@ -21580,34 +21580,34 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::get_child_
 
     if(child_yang_name == "rpf-path")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath>();
-        c->parent = this;
-        rpf_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath>();
+        ent_->parent = this;
+        rpf_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(registered_address_xr != nullptr)
     {
-        children["registered-address-xr"] = registered_address_xr;
+        _children["registered-address-xr"] = registered_address_xr;
     }
 
-    count = 0;
-    for (auto c : rpf_path.entities())
+    count_ = 0;
+    for (auto ent_ : rpf_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21724,16 +21724,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RegisteredAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21855,7 +21855,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rpf-neighbor")
     {
@@ -21878,21 +21878,21 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rpf_neighbor != nullptr)
     {
-        children["rpf-neighbor"] = rpf_neighbor;
+        _children["rpf-neighbor"] = rpf_neighbor;
     }
 
     if(rpf_nexthop != nullptr)
     {
-        children["rpf-nexthop"] = rpf_nexthop;
+        _children["rpf-nexthop"] = rpf_nexthop;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22029,16 +22029,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22135,16 +22135,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Safs::Saf
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::RpfNexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22241,33 +22241,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Interface
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::InterfaceStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-statistic")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic>();
-        c->parent = this;
-        interface_statistic.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic>();
+        ent_->parent = this;
+        interface_statistic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::InterfaceStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::InterfaceStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_statistic.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_statistic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::InterfaceStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22411,16 +22411,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Interface
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::InterfaceStatistics::InterfaceStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22719,16 +22719,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::TopologyR
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::TopologyRouteCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::TopologyRouteCount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::TopologyRouteCount::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::TopologyRouteCount::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::TopologyRouteCount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22855,33 +22855,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::JpStatist
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::JpStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::JpStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "jp-statistic")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::JpStatistics::JpStatistic>();
-        c->parent = this;
-        jp_statistic.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::JpStatistics::JpStatistic>();
+        ent_->parent = this;
+        jp_statistic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::JpStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::JpStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : jp_statistic.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : jp_statistic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::JpStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22989,16 +22989,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::JpStatist
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::JpStatistics::JpStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::JpStatistics::JpStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::JpStatistics::JpStatistic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::JpStatistics::JpStatistic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::JpStatistics::JpStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23195,33 +23195,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::MibDataba
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::MibDatabases::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::MibDatabases::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mib-database")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase>();
-        c->parent = this;
-        mib_database.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase>();
+        ent_->parent = this;
+        mib_database.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::MibDatabases::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::MibDatabases::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mib_database.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mib_database.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::MibDatabases::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23365,7 +23365,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::MibDataba
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source-address-xr")
     {
@@ -23406,31 +23406,31 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source_address_xr != nullptr)
     {
-        children["source-address-xr"] = source_address_xr;
+        _children["source-address-xr"] = source_address_xr;
     }
 
     if(group_address_xr != nullptr)
     {
-        children["group-address-xr"] = group_address_xr;
+        _children["group-address-xr"] = group_address_xr;
     }
 
     if(rpf_neighbor != nullptr)
     {
-        children["rpf-neighbor"] = rpf_neighbor;
+        _children["rpf-neighbor"] = rpf_neighbor;
     }
 
     if(rpf_root != nullptr)
     {
-        children["rpf-root"] = rpf_root;
+        _children["rpf-root"] = rpf_root;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23677,16 +23677,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::MibDataba
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::SourceAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23783,16 +23783,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::MibDataba
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::GroupAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::GroupAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::GroupAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23889,16 +23889,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::MibDataba
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::RpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::RpfNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::RpfNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::RpfNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::RpfNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23995,16 +23995,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::MibDataba
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::RpfRoot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::RpfRoot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::RpfRoot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::RpfRoot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::MibDatabases::MibDatabase::RpfRoot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24101,33 +24101,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::NeighborO
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::NeighborOldFormats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::NeighborOldFormats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-old-format")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat>();
-        c->parent = this;
-        neighbor_old_format.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat>();
+        ent_->parent = this;
+        neighbor_old_format.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::NeighborOldFormats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::NeighborOldFormats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor_old_format.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor_old_format.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::NeighborOldFormats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24262,33 +24262,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::NeighborO
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-address-xr")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr>();
-        c->parent = this;
-        neighbor_address_xr.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr>();
+        ent_->parent = this;
+        neighbor_address_xr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor_address_xr.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor_address_xr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24525,16 +24525,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::NeighborO
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24627,16 +24627,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::IfrsSumma
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::IfrsSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::IfrsSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::IfrsSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::IfrsSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::IfrsSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24723,33 +24723,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Ranges::g
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Ranges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Ranges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::Ranges::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::Ranges::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Ranges::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Ranges::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : range.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Ranges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24844,7 +24844,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Ranges::R
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rp-address-xr")
     {
@@ -24866,39 +24866,39 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::get_child_by_name
 
     if(child_yang_name == "group-range")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange>();
-        c->parent = this;
-        group_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange>();
+        ent_->parent = this;
+        group_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Ranges::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Ranges::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rp_address_xr != nullptr)
     {
-        children["rp-address-xr"] = rp_address_xr;
+        _children["rp-address-xr"] = rp_address_xr;
     }
 
     if(source_of_information != nullptr)
     {
-        children["source-of-information"] = source_of_information;
+        _children["source-of-information"] = source_of_information;
     }
 
-    count = 0;
-    for (auto c : group_range.entities())
+    count_ = 0;
+    for (auto ent_ : group_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Ranges::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25015,16 +25015,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Ranges::R
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::RpAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::RpAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Ranges::Range::RpAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Ranges::Range::RpAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Ranges::Range::RpAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25121,16 +25121,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Ranges::R
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::SourceOfInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::SourceOfInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Ranges::Range::SourceOfInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Ranges::Range::SourceOfInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Ranges::Range::SourceOfInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25236,7 +25236,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Ranges::R
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix")
     {
@@ -25259,21 +25259,21 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
     if(source_of_information != nullptr)
     {
-        children["source-of-information"] = source_of_information;
+        _children["source-of-information"] = source_of_information;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25370,16 +25370,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Ranges::R
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25476,16 +25476,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Ranges::R
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Ranges::Range::GroupRange::SourceOfInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25582,33 +25582,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Interface
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-old-format")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat>();
-        c->parent = this;
-        interface_old_format.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat>();
+        ent_->parent = this;
+        interface_old_format.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_old_format.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_old_format.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::InterfaceOldFormats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25808,7 +25808,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Interface
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dr-address")
     {
@@ -25821,34 +25821,34 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOl
 
     if(child_yang_name == "interface-address")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress>();
-        c->parent = this;
-        interface_address.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress>();
+        ent_->parent = this;
+        interface_address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dr_address != nullptr)
     {
-        children["dr-address"] = dr_address;
+        _children["dr-address"] = dr_address;
     }
 
-    count = 0;
-    for (auto c : interface_address.entities())
+    count_ = 0;
+    for (auto ent_ : interface_address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26235,16 +26235,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Interface
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::DrAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::DrAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::DrAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::DrAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::DrAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26341,16 +26341,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Interface
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26447,7 +26447,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Bsr::get_
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Bsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Bsr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rp-caches")
     {
@@ -26479,26 +26479,26 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Bsr::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Bsr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Bsr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rp_caches != nullptr)
     {
-        children["rp-caches"] = rp_caches;
+        _children["rp-caches"] = rp_caches;
     }
 
     if(candidate_rps != nullptr)
     {
-        children["candidate-rps"] = candidate_rps;
+        _children["candidate-rps"] = candidate_rps;
     }
 
     if(bsr_elections != nullptr)
     {
-        children["bsr-elections"] = bsr_elections;
+        _children["bsr-elections"] = bsr_elections;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Bsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26565,33 +26565,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Bsr::RpCa
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rp-cache")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache>();
-        c->parent = this;
-        rp_cache.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache>();
+        ent_->parent = this;
+        rp_cache.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : rp_cache.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rp_cache.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Bsr::RpCaches::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26668,7 +26668,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Bsr::RpCa
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-prefix-xr")
     {
@@ -26691,21 +26691,21 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(group_prefix_xr != nullptr)
     {
-        children["group-prefix-xr"] = group_prefix_xr;
+        _children["group-prefix-xr"] = group_prefix_xr;
     }
 
     if(candidate_rp_list != nullptr)
     {
-        children["candidate-rp-list"] = candidate_rp_list;
+        _children["candidate-rp-list"] = candidate_rp_list;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26802,16 +26802,16 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Bsr::RpCa
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::GroupPrefixXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26908,33 +26908,33 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Bsr::RpCa
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pim-bsr-crp-bag")
     {
-        auto c = std::make_shared<Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag>();
-        c->parent = this;
-        pim_bsr_crp_bag.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag>();
+        ent_->parent = this;
+        pim_bsr_crp_bag.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pim_bsr_crp_bag.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pim_bsr_crp_bag.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27014,7 +27014,7 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::Vrfs::Vrf::Bsr::RpCa
 
 }
 
-std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "candidate-rp-address")
     {
@@ -27028,16 +27028,16 @@ std::shared_ptr<Entity> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::Candidat
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(candidate_rp_address != nullptr)
     {
-        children["candidate-rp-address"] = candidate_rp_address;
+        _children["candidate-rp-address"] = candidate_rp_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Pim::Active::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

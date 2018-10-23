@@ -64,16 +64,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::PeerGroups::PeerGroup::AfiSa
 
 }
 
-std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -184,16 +184,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::PeerGroups::PeerGroup::AfiSa
 
 }
 
-std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnVpls::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -292,7 +292,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::PeerGroups::PeerGroup::AfiSa
 
 }
 
-std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "prefix-limit")
     {
@@ -306,16 +306,16 @@ std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(prefix_limit != nullptr)
     {
-        children["prefix-limit"] = prefix_limit;
+        _children["prefix-limit"] = prefix_limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -378,7 +378,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::PeerGroups::PeerGroup::AfiSa
 
 }
 
-std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -401,21 +401,21 @@ std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -486,16 +486,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::PeerGroups::PeerGroup::AfiSa
 
 }
 
-std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -606,16 +606,16 @@ std::vector<std::pair<std::string, LeafData> > Bgp::PeerGroups::PeerGroup::AfiSa
 
 }
 
-std::shared_ptr<Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2vpnEvpn::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

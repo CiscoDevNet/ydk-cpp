@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> Watchdog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Watchdog::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Watchdog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Watchdog::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Watchdog::clone_ptr() const
+std::shared_ptr<ydk::Entity> Watchdog::clone_ptr() const
 {
     return std::make_shared<Watchdog>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::Nodes::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Watchdog::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Watchdog::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Watchdog::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Watchdog::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -280,7 +280,7 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::Nodes::Node::get_name_l
 
 }
 
-std::shared_ptr<Entity> Watchdog::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-memory")
     {
@@ -312,26 +312,26 @@ std::shared_ptr<Entity> Watchdog::Nodes::Node::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(threshold_memory != nullptr)
     {
-        children["threshold-memory"] = threshold_memory;
+        _children["threshold-memory"] = threshold_memory;
     }
 
     if(memory_state != nullptr)
     {
-        children["memory-state"] = memory_state;
+        _children["memory-state"] = memory_state;
     }
 
     if(overload_state != nullptr)
     {
-        children["overload-state"] = overload_state;
+        _children["overload-state"] = overload_state;
     }
 
-    return children;
+    return _children;
 }
 
 void Watchdog::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -404,7 +404,7 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::Nodes::Node::ThresholdM
 
 }
 
-std::shared_ptr<Entity> Watchdog::Nodes::Node::ThresholdMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::Nodes::Node::ThresholdMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default")
     {
@@ -427,21 +427,21 @@ std::shared_ptr<Entity> Watchdog::Nodes::Node::ThresholdMemory::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::ThresholdMemory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::Nodes::Node::ThresholdMemory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_ != nullptr)
     {
-        children["default"] = default_;
+        _children["default"] = default_;
     }
 
     if(configured != nullptr)
     {
-        children["configured"] = configured;
+        _children["configured"] = configured;
     }
 
-    return children;
+    return _children;
 }
 
 void Watchdog::Nodes::Node::ThresholdMemory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -504,7 +504,7 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::Nodes::Node::ThresholdM
 
 }
 
-std::shared_ptr<Entity> Watchdog::Nodes::Node::ThresholdMemory::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::Nodes::Node::ThresholdMemory::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "configured-memory")
     {
@@ -527,21 +527,21 @@ std::shared_ptr<Entity> Watchdog::Nodes::Node::ThresholdMemory::Default::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::ThresholdMemory::Default::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::Nodes::Node::ThresholdMemory::Default::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(configured_memory != nullptr)
     {
-        children["configured-memory"] = configured_memory;
+        _children["configured-memory"] = configured_memory;
     }
 
     if(memory != nullptr)
     {
-        children["memory"] = memory;
+        _children["memory"] = memory;
     }
 
-    return children;
+    return _children;
 }
 
 void Watchdog::Nodes::Node::ThresholdMemory::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -608,16 +608,16 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::Nodes::Node::ThresholdM
 
 }
 
-std::shared_ptr<Entity> Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Watchdog::Nodes::Node::ThresholdMemory::Default::ConfiguredMemory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -714,16 +714,16 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::Nodes::Node::ThresholdM
 
 }
 
-std::shared_ptr<Entity> Watchdog::Nodes::Node::ThresholdMemory::Default::Memory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::Nodes::Node::ThresholdMemory::Default::Memory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::ThresholdMemory::Default::Memory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::Nodes::Node::ThresholdMemory::Default::Memory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Watchdog::Nodes::Node::ThresholdMemory::Default::Memory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -820,16 +820,16 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::Nodes::Node::ThresholdM
 
 }
 
-std::shared_ptr<Entity> Watchdog::Nodes::Node::ThresholdMemory::Configured::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::Nodes::Node::ThresholdMemory::Configured::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::ThresholdMemory::Configured::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::Nodes::Node::ThresholdMemory::Configured::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Watchdog::Nodes::Node::ThresholdMemory::Configured::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -926,16 +926,16 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::Nodes::Node::MemoryStat
 
 }
 
-std::shared_ptr<Entity> Watchdog::Nodes::Node::MemoryState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::Nodes::Node::MemoryState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::MemoryState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::Nodes::Node::MemoryState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Watchdog::Nodes::Node::MemoryState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1048,7 +1048,7 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::Nodes::Node::OverloadSt
 
 }
 
-std::shared_ptr<Entity> Watchdog::Nodes::Node::OverloadState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::Nodes::Node::OverloadState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "current-throttle")
     {
@@ -1061,34 +1061,34 @@ std::shared_ptr<Entity> Watchdog::Nodes::Node::OverloadState::get_child_by_name(
 
     if(child_yang_name == "last-throttle")
     {
-        auto c = std::make_shared<Watchdog::Nodes::Node::OverloadState::LastThrottle>();
-        c->parent = this;
-        last_throttle.append(c);
-        return c;
+        auto ent_ = std::make_shared<Watchdog::Nodes::Node::OverloadState::LastThrottle>();
+        ent_->parent = this;
+        last_throttle.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::OverloadState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::Nodes::Node::OverloadState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(current_throttle != nullptr)
     {
-        children["current-throttle"] = current_throttle;
+        _children["current-throttle"] = current_throttle;
     }
 
-    count = 0;
-    for (auto c : last_throttle.entities())
+    count_ = 0;
+    for (auto ent_ : last_throttle.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Watchdog::Nodes::Node::OverloadState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1181,16 +1181,16 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::Nodes::Node::OverloadSt
 
 }
 
-std::shared_ptr<Entity> Watchdog::Nodes::Node::OverloadState::CurrentThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::Nodes::Node::OverloadState::CurrentThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::OverloadState::CurrentThrottle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::Nodes::Node::OverloadState::CurrentThrottle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Watchdog::Nodes::Node::OverloadState::CurrentThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1277,16 +1277,16 @@ std::vector<std::pair<std::string, LeafData> > Watchdog::Nodes::Node::OverloadSt
 
 }
 
-std::shared_ptr<Entity> Watchdog::Nodes::Node::OverloadState::LastThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Watchdog::Nodes::Node::OverloadState::LastThrottle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Watchdog::Nodes::Node::OverloadState::LastThrottle::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Watchdog::Nodes::Node::OverloadState::LastThrottle::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Watchdog::Nodes::Node::OverloadState::LastThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

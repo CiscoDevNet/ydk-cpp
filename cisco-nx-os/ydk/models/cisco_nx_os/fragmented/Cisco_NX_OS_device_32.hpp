@@ -676,7 +676,7 @@ class System::IntfItems::PhysItems::PhysIfList::PhysItems_::FcotItems : public y
         ydk::YLeaf state; //type: EthpmFcotState
         ydk::YLeaf flags; //type: EthpmFcotFlags
         ydk::YLeaf type; //type: EthpmFcotType
-        ydk::YLeaf typename; //type: string
+        ydk::YLeaf typename_; //type: string
         ydk::YLeaf eid; //type: string
         ydk::YLeaf xcvrid; //type: uint8
         ydk::YLeaf xcvrextid; //type: uint8
@@ -801,7 +801,7 @@ class System::IntfItems::PhysItems::PhysIfList::PhysItems_::Fcotx2Items : public
         ydk::YLeaf state; //type: EthpmFcotState
         ydk::YLeaf flags; //type: EthpmFcotFlags
         ydk::YLeaf type; //type: EthpmFcotType
-        ydk::YLeaf typename; //type: string
+        ydk::YLeaf typename_; //type: string
         ydk::YLeaf eid; //type: string
         ydk::YLeaf xcvrtype; //type: uint8
         ydk::YLeaf connecttype; //type: uint8

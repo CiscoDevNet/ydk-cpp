@@ -58,16 +58,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::PrefixList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::PrefixList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::PrefixList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -145,7 +145,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RemovePrivateAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RemovePrivateAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -159,16 +159,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RemovePrivateAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RemovePrivateAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RemovePrivateAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -227,16 +227,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RemovePrivateAs::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RemovePrivateAs::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RemovePrivateAs::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RemovePrivateAs::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RemovePrivateAs::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -310,16 +310,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RouteMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RouteMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::RouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -398,16 +398,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SendCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SendCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SendCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SendCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SendCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -479,7 +479,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detection")
     {
@@ -502,21 +502,21 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detection != nullptr)
     {
-        children["detection"] = detection;
+        _children["detection"] = detection;
     }
 
     if(split_update_group != nullptr)
     {
-        children["split-update-group"] = split_update_group;
+        _children["split-update-group"] = split_update_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -575,16 +575,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::Detection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::Detection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::Detection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -652,7 +652,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
@@ -666,16 +666,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -734,16 +734,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -926,7 +926,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "advertise")
     {
@@ -948,18 +948,18 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
 
     if(child_yang_name == "distribute-list")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::DistributeList>();
-        c->parent = this;
-        distribute_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::DistributeList>();
+        ent_->parent = this;
+        distribute_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "filter-list")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::FilterList>();
-        c->parent = this;
-        filter_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::FilterList>();
+        ent_->parent = this;
+        filter_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "inherit")
@@ -991,10 +991,10 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
 
     if(child_yang_name == "prefix-list")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::PrefixList>();
-        c->parent = this;
-        prefix_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::PrefixList>();
+        ent_->parent = this;
+        prefix_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "remove-private-as")
@@ -1008,10 +1008,10 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
 
     if(child_yang_name == "route-map")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RouteMap>();
-        c->parent = this;
-        route_map.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RouteMap>();
+        ent_->parent = this;
+        route_map.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "send-community")
@@ -1035,87 +1035,87 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(advertise != nullptr)
     {
-        children["advertise"] = advertise;
+        _children["advertise"] = advertise;
     }
 
     if(allowas_in != nullptr)
     {
-        children["allowas-in"] = allowas_in;
+        _children["allowas-in"] = allowas_in;
     }
 
-    count = 0;
-    for (auto c : distribute_list.entities())
+    count_ = 0;
+    for (auto ent_ : distribute_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : filter_list.entities())
+    count_ = 0;
+    for (auto ent_ : filter_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(inherit != nullptr)
     {
-        children["inherit"] = inherit;
+        _children["inherit"] = inherit;
     }
 
     if(maximum_prefix != nullptr)
     {
-        children["maximum-prefix"] = maximum_prefix;
+        _children["maximum-prefix"] = maximum_prefix;
     }
 
     if(next_hop_self != nullptr)
     {
-        children["next-hop-self"] = next_hop_self;
+        _children["next-hop-self"] = next_hop_self;
     }
 
-    count = 0;
-    for (auto c : prefix_list.entities())
+    count_ = 0;
+    for (auto ent_ : prefix_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(remove_private_as != nullptr)
     {
-        children["remove-private-as"] = remove_private_as;
+        _children["remove-private-as"] = remove_private_as;
     }
 
-    count = 0;
-    for (auto c : route_map.entities())
+    count_ = 0;
+    for (auto ent_ : route_map.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(send_community != nullptr)
     {
-        children["send-community"] = send_community;
+        _children["send-community"] = send_community;
     }
 
     if(slow_peer != nullptr)
     {
-        children["slow-peer"] = slow_peer;
+        _children["slow-peer"] = slow_peer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1293,7 +1293,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "additional-paths")
     {
@@ -1316,21 +1316,21 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(additional_paths != nullptr)
     {
-        children["additional-paths"] = additional_paths;
+        _children["additional-paths"] = additional_paths;
     }
 
     if(diverse_path != nullptr)
     {
-        children["diverse-path"] = diverse_path;
+        _children["diverse-path"] = diverse_path;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1405,7 +1405,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -1437,26 +1437,26 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
     if(best != nullptr)
     {
-        children["best"] = best;
+        _children["best"] = best;
     }
 
     if(group_best != nullptr)
     {
-        children["group-best"] = group_best;
+        _children["group-best"] = group_best;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1518,7 +1518,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "best")
     {
@@ -1541,21 +1541,21 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(best != nullptr)
     {
-        children["best"] = best;
+        _children["best"] = best;
     }
 
     if(group_best != nullptr)
     {
-        children["group-best"] = group_best;
+        _children["group-best"] = group_best;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1622,33 +1622,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::Best::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::Best::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "best-range")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::Best::BestRange>();
-        c->parent = this;
-        best_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::Best::BestRange>();
+        ent_->parent = this;
+        best_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::Best::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::Best::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : best_range.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : best_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::Best::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1712,16 +1712,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::Best::BestRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::Best::BestRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::Best::BestRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::Best::BestRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::Best::BestRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1800,16 +1800,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::GroupBest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::GroupBest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::GroupBest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::GroupBest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::All::GroupBest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1886,33 +1886,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "best-range")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::BestRange>();
-        c->parent = this;
-        best_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::BestRange>();
+        ent_->parent = this;
+        best_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : best_range.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : best_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1980,7 +1980,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::BestRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::BestRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-best")
     {
@@ -1994,16 +1994,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::BestRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::BestRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(group_best != nullptr)
     {
-        children["group-best"] = group_best;
+        _children["group-best"] = group_best;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::BestRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2082,16 +2082,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::BestRange::GroupBest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::BestRange::GroupBest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::BestRange::GroupBest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::BestRange::GroupBest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::Best::BestRange::GroupBest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2164,16 +2164,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::GroupBest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::GroupBest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::GroupBest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::GroupBest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::AdditionalPaths::GroupBest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2256,7 +2256,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::DiversePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::DiversePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "backup")
     {
@@ -2270,16 +2270,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::DiversePath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::DiversePath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(backup != nullptr)
     {
-        children["backup"] = backup;
+        _children["backup"] = backup;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::DiversePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2348,16 +2348,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::DiversePath::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::DiversePath::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::DiversePath::Backup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::DiversePath::Backup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Advertise::DiversePath::Backup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2426,16 +2426,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::AllowasIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::AllowasIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::AllowasIn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::AllowasIn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::AllowasIn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2509,16 +2509,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::DistributeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::DistributeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::DistributeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2602,16 +2602,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::FilterList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::FilterList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::FilterList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::FilterList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::FilterList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2694,16 +2694,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Inherit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Inherit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Inherit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Inherit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::Inherit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2794,16 +2794,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::MaximumPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::MaximumPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2902,16 +2902,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::NextHopSelf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::NextHopSelf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::NextHopSelf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::NextHopSelf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::NextHopSelf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2985,16 +2985,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::PrefixList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::PrefixList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::PrefixList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3072,7 +3072,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RemovePrivateAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RemovePrivateAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -3086,16 +3086,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RemovePrivateAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RemovePrivateAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RemovePrivateAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3154,16 +3154,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RemovePrivateAs::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RemovePrivateAs::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RemovePrivateAs::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RemovePrivateAs::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RemovePrivateAs::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3237,16 +3237,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RouteMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RouteMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::RouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3325,16 +3325,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SendCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SendCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SendCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SendCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SendCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3406,7 +3406,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detection")
     {
@@ -3429,21 +3429,21 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detection != nullptr)
     {
-        children["detection"] = detection;
+        _children["detection"] = detection;
     }
 
     if(split_update_group != nullptr)
     {
-        children["split-update-group"] = split_update_group;
+        _children["split-update-group"] = split_update_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3502,16 +3502,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::Detection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::Detection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::Detection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3579,7 +3579,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
@@ -3593,16 +3593,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::SplitUpdateGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::SplitUpdateGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::SplitUpdateGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3661,16 +3661,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3739,7 +3739,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context")
     {
@@ -3753,16 +3753,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(context != nullptr)
     {
-        children["context"] = context;
+        _children["context"] = context;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3829,33 +3829,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context_word")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::Context::ContextWord>();
-        c->parent = this;
-        context_word.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::Context::ContextWord>();
+        ent_->parent = this;
+        context_word.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::Context::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::Context::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : context_word.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : context_word.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3915,16 +3915,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::Context::ContextWord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::Context::ContextWord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::Context::ContextWord::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::Context::ContextWord::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Unicast::Snmp::Context::ContextWord::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4011,7 +4011,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp")
     {
@@ -4033,10 +4033,10 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
 
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "snmp")
@@ -4051,35 +4051,35 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
     if(peer_group != nullptr)
     {
-        children["peer-group"] = peer_group;
+        _children["peer-group"] = peer_group;
     }
 
-    count = 0;
-    for (auto c : neighbor.entities())
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(snmp != nullptr)
     {
-        children["snmp"] = snmp;
+        _children["snmp"] = snmp;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4178,7 +4178,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aggregate-timer")
     {
@@ -4246,46 +4246,46 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aggregate_timer != nullptr)
     {
-        children["aggregate-timer"] = aggregate_timer;
+        _children["aggregate-timer"] = aggregate_timer;
     }
 
     if(dampening != nullptr)
     {
-        children["dampening"] = dampening;
+        _children["dampening"] = dampening;
     }
 
     if(default_ != nullptr)
     {
-        children["default"] = default_;
+        _children["default"] = default_;
     }
 
     if(nexthop != nullptr)
     {
-        children["nexthop"] = nexthop;
+        _children["nexthop"] = nexthop;
     }
 
     if(route_map != nullptr)
     {
-        children["route-map"] = route_map;
+        _children["route-map"] = route_map;
     }
 
     if(slow_peer != nullptr)
     {
-        children["slow-peer"] = slow_peer;
+        _children["slow-peer"] = slow_peer;
     }
 
     if(update_group != nullptr)
     {
-        children["update-group"] = update_group;
+        _children["update-group"] = update_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4388,16 +4388,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::AggregateTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::AggregateTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::AggregateTimer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::AggregateTimer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::AggregateTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4481,7 +4481,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Dampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Dampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dampen")
     {
@@ -4495,16 +4495,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Dampening::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Dampening::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dampen != nullptr)
     {
-        children["dampen"] = dampen;
+        _children["dampen"] = dampen;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Dampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4585,16 +4585,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Dampening::Dampen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Dampening::Dampen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Dampening::Dampen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Dampening::Dampen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Dampening::Dampen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4693,16 +4693,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Default::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Default::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4776,7 +4776,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trigger")
     {
@@ -4790,16 +4790,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Nexthop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Nexthop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(trigger != nullptr)
     {
-        children["trigger"] = trigger;
+        _children["trigger"] = trigger;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Nexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4872,16 +4872,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Nexthop::Trigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Nexthop::Trigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Nexthop::Trigger::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Nexthop::Trigger::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::Nexthop::Trigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4960,16 +4960,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::RouteMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::RouteMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::RouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5041,7 +5041,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detection")
     {
@@ -5064,21 +5064,21 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detection != nullptr)
     {
-        children["detection"] = detection;
+        _children["detection"] = detection;
     }
 
     if(split_update_group != nullptr)
     {
-        children["split-update-group"] = split_update_group;
+        _children["split-update-group"] = split_update_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5141,16 +5141,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::Detection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::Detection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::Detection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5228,7 +5228,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
@@ -5242,16 +5242,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::SplitUpdateGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::SplitUpdateGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::SplitUpdateGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5310,16 +5310,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5388,7 +5388,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::UpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::UpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "split")
     {
@@ -5402,16 +5402,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::UpdateGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::UpdateGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(split != nullptr)
     {
-        children["split"] = split;
+        _children["split"] = split;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::UpdateGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5470,16 +5470,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::UpdateGroup::Split::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::UpdateGroup::Split::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::UpdateGroup::Split::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::UpdateGroup::Split::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Bgp_::UpdateGroup::Split::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5556,33 +5556,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5755,7 +5755,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "allowas-in")
     {
@@ -5777,18 +5777,18 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
 
     if(child_yang_name == "distribute-list")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::DistributeList>();
-        c->parent = this;
-        distribute_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::DistributeList>();
+        ent_->parent = this;
+        distribute_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "filter-list")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::FilterList>();
-        c->parent = this;
-        filter_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::FilterList>();
+        ent_->parent = this;
+        filter_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "inherit")
@@ -5820,10 +5820,10 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
 
     if(child_yang_name == "prefix-list")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::PrefixList>();
-        c->parent = this;
-        prefix_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::PrefixList>();
+        ent_->parent = this;
+        prefix_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "remove-private-as")
@@ -5837,10 +5837,10 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
 
     if(child_yang_name == "route-map")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RouteMap>();
-        c->parent = this;
-        route_map.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RouteMap>();
+        ent_->parent = this;
+        route_map.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "send-community")
@@ -5864,87 +5864,87 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(allowas_in != nullptr)
     {
-        children["allowas-in"] = allowas_in;
+        _children["allowas-in"] = allowas_in;
     }
 
     if(capability != nullptr)
     {
-        children["capability"] = capability;
+        _children["capability"] = capability;
     }
 
-    count = 0;
-    for (auto c : distribute_list.entities())
+    count_ = 0;
+    for (auto ent_ : distribute_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : filter_list.entities())
+    count_ = 0;
+    for (auto ent_ : filter_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(inherit != nullptr)
     {
-        children["inherit"] = inherit;
+        _children["inherit"] = inherit;
     }
 
     if(maximum_prefix != nullptr)
     {
-        children["maximum-prefix"] = maximum_prefix;
+        _children["maximum-prefix"] = maximum_prefix;
     }
 
     if(next_hop_self != nullptr)
     {
-        children["next-hop-self"] = next_hop_self;
+        _children["next-hop-self"] = next_hop_self;
     }
 
-    count = 0;
-    for (auto c : prefix_list.entities())
+    count_ = 0;
+    for (auto ent_ : prefix_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(remove_private_as != nullptr)
     {
-        children["remove-private-as"] = remove_private_as;
+        _children["remove-private-as"] = remove_private_as;
     }
 
-    count = 0;
-    for (auto c : route_map.entities())
+    count_ = 0;
+    for (auto ent_ : route_map.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(send_community != nullptr)
     {
-        children["send-community"] = send_community;
+        _children["send-community"] = send_community;
     }
 
     if(slow_peer != nullptr)
     {
-        children["slow-peer"] = slow_peer;
+        _children["slow-peer"] = slow_peer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6113,16 +6113,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::AllowasIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::AllowasIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::AllowasIn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::AllowasIn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::AllowasIn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6191,7 +6191,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "orf")
     {
@@ -6205,16 +6205,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Capability::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Capability::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(orf != nullptr)
     {
-        children["orf"] = orf;
+        _children["orf"] = orf;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Capability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6284,16 +6284,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Capability::Orf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Capability::Orf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Capability::Orf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Capability::Orf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Capability::Orf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6365,16 +6365,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::DistributeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::DistributeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::DistributeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6458,16 +6458,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::FilterList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::FilterList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::FilterList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::FilterList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::FilterList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6550,16 +6550,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Inherit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Inherit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Inherit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Inherit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::Inherit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6650,16 +6650,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::MaximumPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::MaximumPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6758,16 +6758,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::NextHopSelf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::NextHopSelf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::NextHopSelf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::NextHopSelf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::NextHopSelf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6841,16 +6841,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::PrefixList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::PrefixList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::PrefixList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6928,7 +6928,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RemovePrivateAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RemovePrivateAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -6942,16 +6942,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RemovePrivateAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RemovePrivateAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RemovePrivateAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7010,16 +7010,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RemovePrivateAs::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RemovePrivateAs::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RemovePrivateAs::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RemovePrivateAs::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RemovePrivateAs::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7093,16 +7093,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RouteMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RouteMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::RouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7181,16 +7181,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SendCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SendCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SendCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SendCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SendCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7262,7 +7262,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detection")
     {
@@ -7285,21 +7285,21 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detection != nullptr)
     {
-        children["detection"] = detection;
+        _children["detection"] = detection;
     }
 
     if(split_update_group != nullptr)
     {
-        children["split-update-group"] = split_update_group;
+        _children["split-update-group"] = split_update_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7358,16 +7358,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::Detection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::Detection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::Detection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7435,7 +7435,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
@@ -7449,16 +7449,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7517,16 +7517,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7709,7 +7709,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "allowas-in")
     {
@@ -7731,18 +7731,18 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
 
     if(child_yang_name == "distribute-list")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::DistributeList>();
-        c->parent = this;
-        distribute_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::DistributeList>();
+        ent_->parent = this;
+        distribute_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "filter-list")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::FilterList>();
-        c->parent = this;
-        filter_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::FilterList>();
+        ent_->parent = this;
+        filter_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "inherit")
@@ -7774,10 +7774,10 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
 
     if(child_yang_name == "prefix-list")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::PrefixList>();
-        c->parent = this;
-        prefix_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::PrefixList>();
+        ent_->parent = this;
+        prefix_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "remove-private-as")
@@ -7791,10 +7791,10 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
 
     if(child_yang_name == "route-map")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RouteMap>();
-        c->parent = this;
-        route_map.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RouteMap>();
+        ent_->parent = this;
+        route_map.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "send-community")
@@ -7818,87 +7818,87 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(allowas_in != nullptr)
     {
-        children["allowas-in"] = allowas_in;
+        _children["allowas-in"] = allowas_in;
     }
 
     if(capability != nullptr)
     {
-        children["capability"] = capability;
+        _children["capability"] = capability;
     }
 
-    count = 0;
-    for (auto c : distribute_list.entities())
+    count_ = 0;
+    for (auto ent_ : distribute_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : filter_list.entities())
+    count_ = 0;
+    for (auto ent_ : filter_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(inherit != nullptr)
     {
-        children["inherit"] = inherit;
+        _children["inherit"] = inherit;
     }
 
     if(maximum_prefix != nullptr)
     {
-        children["maximum-prefix"] = maximum_prefix;
+        _children["maximum-prefix"] = maximum_prefix;
     }
 
     if(next_hop_self != nullptr)
     {
-        children["next-hop-self"] = next_hop_self;
+        _children["next-hop-self"] = next_hop_self;
     }
 
-    count = 0;
-    for (auto c : prefix_list.entities())
+    count_ = 0;
+    for (auto ent_ : prefix_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(remove_private_as != nullptr)
     {
-        children["remove-private-as"] = remove_private_as;
+        _children["remove-private-as"] = remove_private_as;
     }
 
-    count = 0;
-    for (auto c : route_map.entities())
+    count_ = 0;
+    for (auto ent_ : route_map.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(send_community != nullptr)
     {
-        children["send-community"] = send_community;
+        _children["send-community"] = send_community;
     }
 
     if(slow_peer != nullptr)
     {
-        children["slow-peer"] = slow_peer;
+        _children["slow-peer"] = slow_peer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8067,16 +8067,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::AllowasIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::AllowasIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::AllowasIn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::AllowasIn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::AllowasIn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8145,7 +8145,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Capability::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "orf")
     {
@@ -8159,16 +8159,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Capability::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Capability::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(orf != nullptr)
     {
-        children["orf"] = orf;
+        _children["orf"] = orf;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Capability::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8238,16 +8238,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Capability::Orf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Capability::Orf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Capability::Orf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Capability::Orf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Capability::Orf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8319,16 +8319,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::DistributeList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::DistributeList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::DistributeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8412,16 +8412,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::FilterList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::FilterList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::FilterList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::FilterList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::FilterList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8504,16 +8504,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Inherit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Inherit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Inherit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Inherit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::Inherit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8604,16 +8604,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::MaximumPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::MaximumPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8712,16 +8712,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::NextHopSelf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::NextHopSelf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::NextHopSelf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::NextHopSelf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::NextHopSelf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8795,16 +8795,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::PrefixList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::PrefixList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::PrefixList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::PrefixList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8882,7 +8882,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RemovePrivateAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RemovePrivateAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -8896,16 +8896,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RemovePrivateAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RemovePrivateAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RemovePrivateAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8964,16 +8964,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RemovePrivateAs::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RemovePrivateAs::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RemovePrivateAs::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RemovePrivateAs::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RemovePrivateAs::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9047,16 +9047,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RouteMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RouteMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::RouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9135,16 +9135,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SendCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SendCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SendCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SendCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SendCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9216,7 +9216,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detection")
     {
@@ -9239,21 +9239,21 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detection != nullptr)
     {
-        children["detection"] = detection;
+        _children["detection"] = detection;
     }
 
     if(split_update_group != nullptr)
     {
-        children["split-update-group"] = split_update_group;
+        _children["split-update-group"] = split_update_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9312,16 +9312,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::Detection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::Detection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::Detection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9389,7 +9389,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
@@ -9403,16 +9403,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::SplitUpdateGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::SplitUpdateGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::SplitUpdateGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9471,16 +9471,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9549,7 +9549,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context")
     {
@@ -9563,16 +9563,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6M
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(context != nullptr)
     {
-        children["context"] = context;
+        _children["context"] = context;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9639,33 +9639,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context_word")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::Context::ContextWord>();
-        c->parent = this;
-        context_word.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::Context::ContextWord>();
+        ent_->parent = this;
+        context_word.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::Context::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::Context::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : context_word.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : context_word.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9725,16 +9725,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::Context::ContextWord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::Context::ContextWord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::Context::ContextWord::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::Context::ContextWord::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Multicast::Snmp::Context::ContextWord::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9825,7 +9825,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp")
     {
@@ -9856,10 +9856,10 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
 
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "snmp")
@@ -9874,40 +9874,40 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
     if(maximum_paths != nullptr)
     {
-        children["maximum-paths"] = maximum_paths;
+        _children["maximum-paths"] = maximum_paths;
     }
 
     if(peer_group != nullptr)
     {
-        children["peer-group"] = peer_group;
+        _children["peer-group"] = peer_group;
     }
 
-    count = 0;
-    for (auto c : neighbor.entities())
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(snmp != nullptr)
     {
-        children["snmp"] = snmp;
+        _children["snmp"] = snmp;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9979,7 +9979,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nexthop")
     {
@@ -10011,26 +10011,26 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nexthop != nullptr)
     {
-        children["nexthop"] = nexthop;
+        _children["nexthop"] = nexthop;
     }
 
     if(route_map != nullptr)
     {
-        children["route-map"] = route_map;
+        _children["route-map"] = route_map;
     }
 
     if(slow_peer != nullptr)
     {
-        children["slow-peer"] = slow_peer;
+        _children["slow-peer"] = slow_peer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10104,7 +10104,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trigger")
     {
@@ -10118,16 +10118,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::Nexthop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::Nexthop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(trigger != nullptr)
     {
-        children["trigger"] = trigger;
+        _children["trigger"] = trigger;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::Nexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10200,16 +10200,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::Nexthop::Trigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::Nexthop::Trigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::Nexthop::Trigger::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::Nexthop::Trigger::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::Nexthop::Trigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10288,16 +10288,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::RouteMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::RouteMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::RouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10369,7 +10369,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detection")
     {
@@ -10392,21 +10392,21 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detection != nullptr)
     {
-        children["detection"] = detection;
+        _children["detection"] = detection;
     }
 
     if(split_update_group != nullptr)
     {
-        children["split-update-group"] = split_update_group;
+        _children["split-update-group"] = split_update_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10469,16 +10469,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::Detection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::Detection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::Detection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10556,7 +10556,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
@@ -10570,16 +10570,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::SplitUpdateGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::SplitUpdateGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::SplitUpdateGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10638,16 +10638,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10729,7 +10729,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ibgp")
     {
@@ -10752,21 +10752,21 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ibgp != nullptr)
     {
-        children["ibgp"] = ibgp;
+        _children["ibgp"] = ibgp;
     }
 
     if(external_rtfilter != nullptr)
     {
-        children["external-rtfilter"] = external_rtfilter;
+        _children["external-rtfilter"] = external_rtfilter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10849,16 +10849,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::Ibgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::Ibgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::Ibgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::Ibgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::Ibgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10937,16 +10937,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::ExternalRtfilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::ExternalRtfilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::ExternalRtfilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::ExternalRtfilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::MaximumPaths::ExternalRtfilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11023,33 +11023,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11169,7 +11169,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "allowas-in")
     {
@@ -11218,10 +11218,10 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
 
     if(child_yang_name == "route-map")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RouteMap>();
-        c->parent = this;
-        route_map.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RouteMap>();
+        ent_->parent = this;
+        route_map.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "send-community")
@@ -11245,55 +11245,55 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(allowas_in != nullptr)
     {
-        children["allowas-in"] = allowas_in;
+        _children["allowas-in"] = allowas_in;
     }
 
     if(inherit != nullptr)
     {
-        children["inherit"] = inherit;
+        _children["inherit"] = inherit;
     }
 
     if(maximum_prefix != nullptr)
     {
-        children["maximum-prefix"] = maximum_prefix;
+        _children["maximum-prefix"] = maximum_prefix;
     }
 
     if(next_hop_self != nullptr)
     {
-        children["next-hop-self"] = next_hop_self;
+        _children["next-hop-self"] = next_hop_self;
     }
 
     if(remove_private_as != nullptr)
     {
-        children["remove-private-as"] = remove_private_as;
+        _children["remove-private-as"] = remove_private_as;
     }
 
-    count = 0;
-    for (auto c : route_map.entities())
+    count_ = 0;
+    for (auto ent_ : route_map.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(send_community != nullptr)
     {
-        children["send-community"] = send_community;
+        _children["send-community"] = send_community;
     }
 
     if(slow_peer != nullptr)
     {
-        children["slow-peer"] = slow_peer;
+        _children["slow-peer"] = slow_peer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11422,16 +11422,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::AllowasIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::AllowasIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::AllowasIn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::AllowasIn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::AllowasIn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11504,16 +11504,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::Inherit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::Inherit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::Inherit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::Inherit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::Inherit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11604,16 +11604,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::MaximumPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::MaximumPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11712,16 +11712,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::NextHopSelf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::NextHopSelf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::NextHopSelf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::NextHopSelf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::NextHopSelf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11789,7 +11789,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RemovePrivateAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RemovePrivateAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -11803,16 +11803,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RemovePrivateAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RemovePrivateAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RemovePrivateAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11871,16 +11871,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RemovePrivateAs::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RemovePrivateAs::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RemovePrivateAs::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RemovePrivateAs::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RemovePrivateAs::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11954,16 +11954,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RouteMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RouteMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::RouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12042,16 +12042,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SendCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SendCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SendCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SendCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SendCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12123,7 +12123,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detection")
     {
@@ -12146,21 +12146,21 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detection != nullptr)
     {
-        children["detection"] = detection;
+        _children["detection"] = detection;
     }
 
     if(split_update_group != nullptr)
     {
-        children["split-update-group"] = split_update_group;
+        _children["split-update-group"] = split_update_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12219,16 +12219,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::Detection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::Detection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::Detection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12296,7 +12296,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
@@ -12310,16 +12310,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12378,16 +12378,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::PeerGroup::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12517,7 +12517,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "allowas-in")
     {
@@ -12566,10 +12566,10 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
 
     if(child_yang_name == "route-map")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RouteMap>();
-        c->parent = this;
-        route_map.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RouteMap>();
+        ent_->parent = this;
+        route_map.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "send-community")
@@ -12593,55 +12593,55 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(allowas_in != nullptr)
     {
-        children["allowas-in"] = allowas_in;
+        _children["allowas-in"] = allowas_in;
     }
 
     if(inherit != nullptr)
     {
-        children["inherit"] = inherit;
+        _children["inherit"] = inherit;
     }
 
     if(maximum_prefix != nullptr)
     {
-        children["maximum-prefix"] = maximum_prefix;
+        _children["maximum-prefix"] = maximum_prefix;
     }
 
     if(next_hop_self != nullptr)
     {
-        children["next-hop-self"] = next_hop_self;
+        _children["next-hop-self"] = next_hop_self;
     }
 
     if(remove_private_as != nullptr)
     {
-        children["remove-private-as"] = remove_private_as;
+        _children["remove-private-as"] = remove_private_as;
     }
 
-    count = 0;
-    for (auto c : route_map.entities())
+    count_ = 0;
+    for (auto ent_ : route_map.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(send_community != nullptr)
     {
-        children["send-community"] = send_community;
+        _children["send-community"] = send_community;
     }
 
     if(slow_peer != nullptr)
     {
-        children["slow-peer"] = slow_peer;
+        _children["slow-peer"] = slow_peer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12770,16 +12770,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::AllowasIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::AllowasIn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::AllowasIn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::AllowasIn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::AllowasIn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12852,16 +12852,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::Inherit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::Inherit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::Inherit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::Inherit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::Inherit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12952,16 +12952,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::MaximumPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::MaximumPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13060,16 +13060,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::NextHopSelf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::NextHopSelf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::NextHopSelf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::NextHopSelf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::NextHopSelf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13137,7 +13137,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RemovePrivateAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RemovePrivateAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
@@ -13151,16 +13151,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RemovePrivateAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RemovePrivateAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(all != nullptr)
     {
-        children["all"] = all;
+        _children["all"] = all;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RemovePrivateAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13219,16 +13219,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RemovePrivateAs::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RemovePrivateAs::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RemovePrivateAs::All::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RemovePrivateAs::All::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RemovePrivateAs::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13302,16 +13302,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RouteMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RouteMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::RouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13390,16 +13390,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SendCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SendCommunity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SendCommunity::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SendCommunity::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SendCommunity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13471,7 +13471,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detection")
     {
@@ -13494,21 +13494,21 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detection != nullptr)
     {
-        children["detection"] = detection;
+        _children["detection"] = detection;
     }
 
     if(split_update_group != nullptr)
     {
-        children["split-update-group"] = split_update_group;
+        _children["split-update-group"] = split_update_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13567,16 +13567,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::Detection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::Detection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::Detection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13644,7 +13644,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
@@ -13658,16 +13658,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::SplitUpdateGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::SplitUpdateGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::SplitUpdateGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13726,16 +13726,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Neighbor::SlowPeer::SplitUpdateGroup::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13804,7 +13804,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context")
     {
@@ -13818,16 +13818,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6F
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(context != nullptr)
     {
-        children["context"] = context;
+        _children["context"] = context;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13894,33 +13894,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::Context::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "context_word")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::Context::ContextWord>();
-        c->parent = this;
-        context_word.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::Context::ContextWord>();
+        ent_->parent = this;
+        context_word.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::Context::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::Context::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : context_word.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : context_word.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::Context::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13980,16 +13980,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::Context::ContextWord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::Context::ContextWord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::Context::ContextWord::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::Context::ContextWord::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Vpnv6::Vpnv6Flowspec::Snmp::Context::ContextWord::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14064,7 +14064,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsap")
     {
@@ -14078,16 +14078,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nsap != nullptr)
     {
-        children["nsap"] = nsap;
+        _children["nsap"] = nsap;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Nsap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14198,7 +14198,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp")
     {
@@ -14238,18 +14238,18 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::
 
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "network")
     {
-        auto c = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Network>();
-        c->parent = this;
-        network.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Network>();
+        ent_->parent = this;
+        network.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "snmp")
@@ -14264,54 +14264,54 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(bgp != nullptr)
     {
-        children["bgp"] = bgp;
+        _children["bgp"] = bgp;
     }
 
     if(default_information != nullptr)
     {
-        children["default-information"] = default_information;
+        _children["default-information"] = default_information;
     }
 
     if(maximum_paths != nullptr)
     {
-        children["maximum-paths"] = maximum_paths;
+        _children["maximum-paths"] = maximum_paths;
     }
 
     if(peer_group != nullptr)
     {
-        children["peer-group"] = peer_group;
+        _children["peer-group"] = peer_group;
     }
 
-    count = 0;
-    for (auto c : neighbor.entities())
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : network.entities())
+    count_ = 0;
+    for (auto ent_ : network.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(snmp != nullptr)
     {
-        children["snmp"] = snmp;
+        _children["snmp"] = snmp;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14412,7 +14412,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aggregate-timer")
     {
@@ -14462,36 +14462,36 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(aggregate_timer != nullptr)
     {
-        children["aggregate-timer"] = aggregate_timer;
+        _children["aggregate-timer"] = aggregate_timer;
     }
 
     if(dampening != nullptr)
     {
-        children["dampening"] = dampening;
+        _children["dampening"] = dampening;
     }
 
     if(nexthop != nullptr)
     {
-        children["nexthop"] = nexthop;
+        _children["nexthop"] = nexthop;
     }
 
     if(route_map != nullptr)
     {
-        children["route-map"] = route_map;
+        _children["route-map"] = route_map;
     }
 
     if(slow_peer != nullptr)
     {
-        children["slow-peer"] = slow_peer;
+        _children["slow-peer"] = slow_peer;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14594,16 +14594,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::AggregateTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::AggregateTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::AggregateTimer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::AggregateTimer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::AggregateTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14687,7 +14687,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Dampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Dampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dampen")
     {
@@ -14701,16 +14701,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Dampening::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Dampening::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dampen != nullptr)
     {
-        children["dampen"] = dampen;
+        _children["dampen"] = dampen;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Dampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14791,16 +14791,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Dampening::Dampen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Dampening::Dampen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Dampening::Dampen::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Dampening::Dampen::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Dampening::Dampen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14904,7 +14904,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trigger")
     {
@@ -14918,16 +14918,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Nexthop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Nexthop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(trigger != nullptr)
     {
-        children["trigger"] = trigger;
+        _children["trigger"] = trigger;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Nexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15000,16 +15000,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Nexthop::Trigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Nexthop::Trigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Nexthop::Trigger::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Nexthop::Trigger::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::Nexthop::Trigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15088,16 +15088,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::RouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::RouteMap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::RouteMap::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::RouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15169,7 +15169,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detection")
     {
@@ -15192,21 +15192,21 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detection != nullptr)
     {
-        children["detection"] = detection;
+        _children["detection"] = detection;
     }
 
     if(split_update_group != nullptr)
     {
-        children["split-update-group"] = split_update_group;
+        _children["split-update-group"] = split_update_group;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15269,16 +15269,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::Detection::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::Detection::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::Detection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15356,7 +15356,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::SplitUpdateGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dynamic")
     {
@@ -15370,16 +15370,16 @@ std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::SplitUpdateGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::SplitUpdateGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::SplitUpdateGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15438,16 +15438,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Bgp::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::Bgp::AddressFamily::NoVrf::Nsap::Nsap_::Bgp_::SlowPeer::SplitUpdateGroup::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

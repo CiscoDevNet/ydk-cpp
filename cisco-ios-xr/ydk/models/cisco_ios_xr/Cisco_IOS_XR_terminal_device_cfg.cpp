@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > LogicalChannels::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> LogicalChannels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LogicalChannels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "channel")
     {
-        auto c = std::make_shared<LogicalChannels::Channel>();
-        c->parent = this;
-        channel.append(c);
-        return c;
+        auto ent_ = std::make_shared<LogicalChannels::Channel>();
+        ent_->parent = this;
+        channel.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LogicalChannels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : channel.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : channel.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LogicalChannels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void LogicalChannels::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> LogicalChannels::clone_ptr() const
+std::shared_ptr<ydk::Entity> LogicalChannels::clone_ptr() const
 {
     return std::make_shared<LogicalChannels>();
 }
@@ -219,7 +219,7 @@ std::vector<std::pair<std::string, LeafData> > LogicalChannels::Channel::get_nam
 
 }
 
-std::shared_ptr<Entity> LogicalChannels::Channel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LogicalChannels::Channel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "logical-channel-assignments")
     {
@@ -242,21 +242,21 @@ std::shared_ptr<Entity> LogicalChannels::Channel::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LogicalChannels::Channel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(logical_channel_assignments != nullptr)
     {
-        children["logical-channel-assignments"] = logical_channel_assignments;
+        _children["logical-channel-assignments"] = logical_channel_assignments;
     }
 
     if(otn != nullptr)
     {
-        children["otn"] = otn;
+        _children["otn"] = otn;
     }
 
-    return children;
+    return _children;
 }
 
 void LogicalChannels::Channel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -413,33 +413,33 @@ std::vector<std::pair<std::string, LeafData> > LogicalChannels::Channel::Logical
 
 }
 
-std::shared_ptr<Entity> LogicalChannels::Channel::LogicalChannelAssignments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LogicalChannels::Channel::LogicalChannelAssignments::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "logical-channel-assignment")
     {
-        auto c = std::make_shared<LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment>();
-        c->parent = this;
-        logical_channel_assignment.append(c);
-        return c;
+        auto ent_ = std::make_shared<LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment>();
+        ent_->parent = this;
+        logical_channel_assignment.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::LogicalChannelAssignments::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LogicalChannels::Channel::LogicalChannelAssignments::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : logical_channel_assignment.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : logical_channel_assignment.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LogicalChannels::Channel::LogicalChannelAssignments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -519,16 +519,16 @@ std::vector<std::pair<std::string, LeafData> > LogicalChannels::Channel::Logical
 
 }
 
-std::shared_ptr<Entity> LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -655,16 +655,16 @@ std::vector<std::pair<std::string, LeafData> > LogicalChannels::Channel::Otn::ge
 
 }
 
-std::shared_ptr<Entity> LogicalChannels::Channel::Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LogicalChannels::Channel::Otn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::Otn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LogicalChannels::Channel::Otn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LogicalChannels::Channel::Otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -761,33 +761,33 @@ std::vector<std::pair<std::string, LeafData> > OpticalChannels::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> OpticalChannels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalChannels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "optical-channel")
     {
-        auto c = std::make_shared<OpticalChannels::OpticalChannel>();
-        c->parent = this;
-        optical_channel.append(c);
-        return c;
+        auto ent_ = std::make_shared<OpticalChannels::OpticalChannel>();
+        ent_->parent = this;
+        optical_channel.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalChannels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalChannels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : optical_channel.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : optical_channel.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void OpticalChannels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -798,7 +798,7 @@ void OpticalChannels::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> OpticalChannels::clone_ptr() const
+std::shared_ptr<ydk::Entity> OpticalChannels::clone_ptr() const
 {
     return std::make_shared<OpticalChannels>();
 }
@@ -887,16 +887,16 @@ std::vector<std::pair<std::string, LeafData> > OpticalChannels::OpticalChannel::
 
 }
 
-std::shared_ptr<Entity> OpticalChannels::OpticalChannel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OpticalChannels::OpticalChannel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticalChannels::OpticalChannel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OpticalChannels::OpticalChannel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OpticalChannels::OpticalChannel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -1894,7 +1894,7 @@ class System::SatmItems::FabpItems::FabPList::RemotefcotItems : public ydk::Enti
         ydk::YLeaf state; //type: EthpmFcotState
         ydk::YLeaf flags; //type: EthpmFcotFlags
         ydk::YLeaf type; //type: EthpmFcotType
-        ydk::YLeaf typename; //type: string
+        ydk::YLeaf typename_; //type: string
         ydk::YLeaf xcvrid; //type: uint8
         ydk::YLeaf xcvrextid; //type: uint8
         ydk::YLeaf connecttype; //type: uint8
@@ -1952,7 +1952,7 @@ class System::SatmItems::FabpItems::FabPList::Remotefcotx2Items : public ydk::En
         ydk::YLeaf state; //type: EthpmFcotState
         ydk::YLeaf flags; //type: EthpmFcotFlags
         ydk::YLeaf type; //type: EthpmFcotType
-        ydk::YLeaf typename; //type: string
+        ydk::YLeaf typename_; //type: string
         ydk::YLeaf connecttype; //type: uint8
         ydk::YLeaf bitencoding; //type: uint8
         ydk::YLeaf bitratembps; //type: string

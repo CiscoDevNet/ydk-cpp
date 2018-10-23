@@ -86,16 +86,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -260,16 +260,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::Lsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::Lsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::Lsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -397,7 +397,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spf-stat-time")
     {
@@ -411,16 +411,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::Sp
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spf_stat_time != nullptr)
     {
-        children["spf-stat-time"] = spf_stat_time;
+        _children["spf-stat-time"] = spf_stat_time;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -529,16 +529,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -763,16 +763,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::RawioStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::RawioStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::RawioStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::RawioStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::RawioStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1043,16 +1043,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::PrefixPriorityStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::PrefixPriorityStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::PrefixPriorityStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::PrefixPriorityStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::PrefixPriorityStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1187,16 +1187,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::VrfRibBatchStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::VrfRibBatchStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::VrfRibBatchStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::VrfRibBatchStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::VrfRibBatchStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1363,7 +1363,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocol")
     {
@@ -1395,26 +1395,26 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(protocol != nullptr)
     {
-        children["protocol"] = protocol;
+        _children["protocol"] = protocol;
     }
 
     if(ospfv3 != nullptr)
     {
-        children["ospfv3"] = ospfv3;
+        _children["ospfv3"] = ospfv3;
     }
 
     if(route != nullptr)
     {
-        children["route"] = route;
+        _children["route"] = route;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1493,16 +1493,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Protocol::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Protocol::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1844,7 +1844,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "domain-id")
     {
@@ -1857,51 +1857,51 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_:
 
     if(child_yang_name == "stub-router")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter>();
-        c->parent = this;
-        stub_router.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter>();
+        ent_->parent = this;
+        stub_router.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ipfrr-tiebreakers")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::IpfrrTiebreakers>();
-        c->parent = this;
-        ipfrr_tiebreakers.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::IpfrrTiebreakers>();
+        ent_->parent = this;
+        ipfrr_tiebreakers.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(domain_id != nullptr)
     {
-        children["domain-id"] = domain_id;
+        _children["domain-id"] = domain_id;
     }
 
-    count = 0;
-    for (auto c : stub_router.entities())
+    count_ = 0;
+    for (auto ent_ : stub_router.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipfrr_tiebreakers.entities())
+    count_ = 0;
+    for (auto ent_ : ipfrr_tiebreakers.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2471,7 +2471,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "primary-domain-id")
     {
@@ -2484,34 +2484,34 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_:
 
     if(child_yang_name == "secondary-domain-id")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::SecondaryDomainId>();
-        c->parent = this;
-        secondary_domain_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::SecondaryDomainId>();
+        ent_->parent = this;
+        secondary_domain_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(primary_domain_id != nullptr)
     {
-        children["primary-domain-id"] = primary_domain_id;
+        _children["primary-domain-id"] = primary_domain_id;
     }
 
-    count = 0;
-    for (auto c : secondary_domain_id.entities())
+    count_ = 0;
+    for (auto ent_ : secondary_domain_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2574,16 +2574,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::PrimaryDomainId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::PrimaryDomainId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::PrimaryDomainId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::PrimaryDomainId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::PrimaryDomainId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2666,16 +2666,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::SecondaryDomainId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::SecondaryDomainId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::SecondaryDomainId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::SecondaryDomainId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::DomainId::SecondaryDomainId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2810,7 +2810,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "unset-time")
     {
@@ -2841,44 +2841,44 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_:
 
     if(child_yang_name == "trigger")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger>();
-        c->parent = this;
-        trigger.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger>();
+        ent_->parent = this;
+        trigger.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(unset_time != nullptr)
     {
-        children["unset-time"] = unset_time;
+        _children["unset-time"] = unset_time;
     }
 
     if(start_time != nullptr)
     {
-        children["start-time"] = start_time;
+        _children["start-time"] = start_time;
     }
 
     if(abr_resume_time != nullptr)
     {
-        children["abr-resume-time"] = abr_resume_time;
+        _children["abr-resume-time"] = abr_resume_time;
     }
 
-    count = 0;
-    for (auto c : trigger.entities())
+    count_ = 0;
+    for (auto ent_ : trigger.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3031,16 +3031,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::UnsetTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::UnsetTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::UnsetTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::UnsetTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::UnsetTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3123,16 +3123,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::StartTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::StartTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::StartTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::StartTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::StartTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3215,16 +3215,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::AbrResumeTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::AbrResumeTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::AbrResumeTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::AbrResumeTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::AbrResumeTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3324,7 +3324,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "unset-time")
     {
@@ -3347,21 +3347,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(unset_time != nullptr)
     {
-        children["unset-time"] = unset_time;
+        _children["unset-time"] = unset_time;
     }
 
     if(start_time != nullptr)
     {
-        children["start-time"] = start_time;
+        _children["start-time"] = start_time;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3464,16 +3464,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::UnsetTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::UnsetTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::UnsetTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::UnsetTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::UnsetTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3556,16 +3556,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::StartTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::StartTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::StartTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::StartTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::StubRouter::Trigger::StartTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3648,16 +3648,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::IpfrrTiebreakers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::IpfrrTiebreakers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::IpfrrTiebreakers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::IpfrrTiebreakers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Ospfv3_::IpfrrTiebreakers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3776,16 +3776,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Route::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Route::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::Summary::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3962,33 +3962,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "retransmission")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission>();
-        c->parent = this;
-        retransmission.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission>();
+        ent_->parent = this;
+        retransmission.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : retransmission.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : retransmission.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4113,67 +4113,67 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "retransmissionvirtual-link-db")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb>();
-        c->parent = this;
-        retransmissionvirtual_link_db.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb>();
+        ent_->parent = this;
+        retransmissionvirtual_link_db.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "retransmission-area-db")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb>();
-        c->parent = this;
-        retransmission_area_db.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb>();
+        ent_->parent = this;
+        retransmission_area_db.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "retransmission-asdb")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb>();
-        c->parent = this;
-        retransmission_asdb.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb>();
+        ent_->parent = this;
+        retransmission_asdb.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : retransmissionvirtual_link_db.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : retransmissionvirtual_link_db.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : retransmission_area_db.entities())
+    count_ = 0;
+    for (auto ent_ : retransmission_area_db.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : retransmission_asdb.entities())
+    count_ = 0;
+    for (auto ent_ : retransmission_asdb.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4338,16 +4338,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4472,16 +4472,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4606,16 +4606,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4732,33 +4732,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bad-checksum")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum>();
-        c->parent = this;
-        bad_checksum.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum>();
+        ent_->parent = this;
+        bad_checksum.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bad_checksum.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bad_checksum.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4835,7 +4835,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "timestamp")
     {
@@ -4849,16 +4849,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::Bad
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(timestamp != nullptr)
     {
-        children["timestamp"] = timestamp;
+        _children["timestamp"] = timestamp;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4961,16 +4961,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::Timestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::Timestamp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::Timestamp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::Timestamp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::BadChecksums::BadChecksum::Timestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5049,7 +5049,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-summary")
     {
@@ -5063,16 +5063,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_summary != nullptr)
     {
-        children["database-summary"] = database_summary;
+        _children["database-summary"] = database_summary;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5151,7 +5151,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-counters")
     {
@@ -5164,34 +5164,34 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTa
 
     if(child_yang_name == "area-database")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase>();
-        c->parent = this;
-        area_database.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase>();
+        ent_->parent = this;
+        area_database.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_counters != nullptr)
     {
-        children["database-counters"] = database_counters;
+        _children["database-counters"] = database_counters;
     }
 
-    count = 0;
-    for (auto c : area_database.entities())
+    count_ = 0;
+    for (auto ent_ : area_database.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5323,16 +5323,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5428,7 +5428,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "area-database-summary")
     {
@@ -5442,16 +5442,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(area_database_summary != nullptr)
     {
-        children["area-database-summary"] = area_database_summary;
+        _children["area-database-summary"] = area_database_summary;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5573,16 +5573,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5681,33 +5681,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor>();
-        c->parent = this;
-        neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5823,7 +5823,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-detail")
     {
@@ -5846,21 +5846,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(neighbor_detail != nullptr)
     {
-        children["neighbor-detail"] = neighbor_detail;
+        _children["neighbor-detail"] = neighbor_detail;
     }
 
     if(neighbor_bfd_info != nullptr)
     {
-        children["neighbor-bfd-info"] = neighbor_bfd_info;
+        _children["neighbor-bfd-info"] = neighbor_bfd_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6094,7 +6094,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-retransmission")
     {
@@ -6108,16 +6108,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(neighbor_retransmission != nullptr)
     {
-        children["neighbor-retransmission"] = neighbor_retransmission;
+        _children["neighbor-retransmission"] = neighbor_retransmission;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6374,16 +6374,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborRetransmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborRetransmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborRetransmission::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborRetransmission::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborRetransmission::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6676,16 +6676,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborBfdInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborBfdInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborBfdInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborBfdInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::NeighborProcessTable::Neighbor::NeighborBfdInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6772,33 +6772,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "fast-reroute")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute>();
-        c->parent = this;
-        fast_reroute.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute>();
+        ent_->parent = this;
+        fast_reroute.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : fast_reroute.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : fast_reroute.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6885,33 +6885,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipfrr-topo")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::IpfrrTopo>();
-        c->parent = this;
-        ipfrr_topo.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::IpfrrTopo>();
+        ent_->parent = this;
+        ipfrr_topo.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipfrr_topo.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipfrr_topo.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7044,16 +7044,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::IpfrrTopo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::IpfrrTopo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::IpfrrTopo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::IpfrrTopo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::FastReroutes::FastReroute::IpfrrTopo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7190,33 +7190,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-brief")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::InterfaceBrief>();
-        c->parent = this;
-        interface_brief.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::InterfaceBrief>();
+        ent_->parent = this;
+        interface_brief.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_brief.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_brief.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7300,16 +7300,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::InterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::InterfaceBrief::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::InterfaceBrief::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::InterfaceBrief::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceBriefProcessTable::InterfaceBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7446,33 +7446,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-detail")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail>();
-        c->parent = this;
-        neighbor_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail>();
+        ent_->parent = this;
+        neighbor_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : neighbor_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : neighbor_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7588,7 +7588,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-detail")
     {
@@ -7611,21 +7611,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailPro
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(neighbor_detail != nullptr)
     {
-        children["neighbor-detail"] = neighbor_detail;
+        _children["neighbor-detail"] = neighbor_detail;
     }
 
     if(neighbor_bfd_info != nullptr)
     {
-        children["neighbor-bfd-info"] = neighbor_bfd_info;
+        _children["neighbor-bfd-info"] = neighbor_bfd_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7859,7 +7859,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbor-retransmission")
     {
@@ -7873,16 +7873,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailPro
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(neighbor_retransmission != nullptr)
     {
-        children["neighbor-retransmission"] = neighbor_retransmission;
+        _children["neighbor-retransmission"] = neighbor_retransmission;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8139,16 +8139,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8441,16 +8441,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborBfdInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborBfdInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborBfdInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborBfdInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Vrfs::Vrf::NeighborDetailProcessTable::NeighborDetail::NeighborBfdInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8561,7 +8561,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsr-stats")
     {
@@ -8647,56 +8647,56 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nsr_stats != nullptr)
     {
-        children["nsr-stats"] = nsr_stats;
+        _children["nsr-stats"] = nsr_stats;
     }
 
     if(rib_thread_stats != nullptr)
     {
-        children["rib-thread-stats"] = rib_thread_stats;
+        _children["rib-thread-stats"] = rib_thread_stats;
     }
 
     if(issu_stats != nullptr)
     {
-        children["issu-stats"] = issu_stats;
+        _children["issu-stats"] = issu_stats;
     }
 
     if(nsr_pl_stats != nullptr)
     {
-        children["nsr-pl-stats"] = nsr_pl_stats;
+        _children["nsr-pl-stats"] = nsr_pl_stats;
     }
 
     if(protocol_stats != nullptr)
     {
-        children["protocol-stats"] = protocol_stats;
+        _children["protocol-stats"] = protocol_stats;
     }
 
     if(spf_stats != nullptr)
     {
-        children["spf-stats"] = spf_stats;
+        _children["spf-stats"] = spf_stats;
     }
 
     if(rawio_stats != nullptr)
     {
-        children["rawio-stats"] = rawio_stats;
+        _children["rawio-stats"] = rawio_stats;
     }
 
     if(prefix_priority_stats != nullptr)
     {
-        children["prefix-priority-stats"] = prefix_priority_stats;
+        _children["prefix-priority-stats"] = prefix_priority_stats;
     }
 
     if(vrf_rib_batch_stats != nullptr)
     {
-        children["vrf-rib-batch-stats"] = vrf_rib_batch_stats;
+        _children["vrf-rib-batch-stats"] = vrf_rib_batch_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8894,7 +8894,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::NsrStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsr-thd-stats")
     {
@@ -8916,56 +8916,56 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrStats::get_ch
 
     if(child_yang_name == "nsr-issu-milestone")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrStats::NsrIssuMilestone>();
-        c->parent = this;
-        nsr_issu_milestone.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrStats::NsrIssuMilestone>();
+        ent_->parent = this;
+        nsr_issu_milestone.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "nsr-err-history")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory>();
-        c->parent = this;
-        nsr_err_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory>();
+        ent_->parent = this;
+        nsr_err_history.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nsr_thd_stats != nullptr)
     {
-        children["nsr-thd-stats"] = nsr_thd_stats;
+        _children["nsr-thd-stats"] = nsr_thd_stats;
     }
 
     if(nsr_rtr_thd_sched != nullptr)
     {
-        children["nsr-rtr-thd-sched"] = nsr_rtr_thd_sched;
+        _children["nsr-rtr-thd-sched"] = nsr_rtr_thd_sched;
     }
 
-    count = 0;
-    for (auto c : nsr_issu_milestone.entities())
+    count_ = 0;
+    for (auto ent_ : nsr_issu_milestone.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : nsr_err_history.entities())
+    count_ = 0;
+    for (auto ent_ : nsr_err_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::NsrStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9290,33 +9290,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrThdStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrThdStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsr-pri")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrStats::NsrThdStats::NsrPri>();
-        c->parent = this;
-        nsr_pri.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrStats::NsrThdStats::NsrPri>();
+        ent_->parent = this;
+        nsr_pri.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrThdStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrThdStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nsr_pri.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nsr_pri.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::NsrStats::NsrThdStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9487,16 +9487,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrThdStats::NsrPri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrThdStats::NsrPri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrThdStats::NsrPri::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrThdStats::NsrPri::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::NsrStats::NsrThdStats::NsrPri::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9685,33 +9685,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrRtrThdSched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrRtrThdSched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsr-pri")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrStats::NsrRtrThdSched::NsrPri>();
-        c->parent = this;
-        nsr_pri.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrStats::NsrRtrThdSched::NsrPri>();
+        ent_->parent = this;
+        nsr_pri.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrRtrThdSched::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrRtrThdSched::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nsr_pri.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nsr_pri.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::NsrStats::NsrRtrThdSched::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9882,16 +9882,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrRtrThdSched::NsrPri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrRtrThdSched::NsrPri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrRtrThdSched::NsrPri::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrRtrThdSched::NsrPri::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::NsrStats::NsrRtrThdSched::NsrPri::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10044,16 +10044,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrIssuMilestone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrIssuMilestone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrIssuMilestone::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrIssuMilestone::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::NsrStats::NsrIssuMilestone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10148,33 +10148,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsr-error-info")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::NsrErrorInfo>();
-        c->parent = this;
-        nsr_error_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::NsrErrorInfo>();
+        ent_->parent = this;
+        nsr_error_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nsr_error_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nsr_error_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10262,7 +10262,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::NsrErrorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::NsrErrorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "last-err-time")
     {
@@ -10276,16 +10276,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrErr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::NsrErrorInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::NsrErrorInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(last_err_time != nullptr)
     {
-        children["last-err-time"] = last_err_time;
+        _children["last-err-time"] = last_err_time;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::NsrErrorInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10368,16 +10368,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::NsrErrorInfo::LastErrTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::NsrErrorInfo::LastErrTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::NsrErrorInfo::LastErrTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::NsrErrorInfo::LastErrTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::NsrStats::NsrErrHistory::NsrErrorInfo::LastErrTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10552,7 +10552,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::RibThreadStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::RibThreadStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thread-q")
     {
@@ -10574,39 +10574,39 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::RibThreadStats::
 
     if(child_yang_name == "holdq")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::RibThreadStats::Holdq>();
-        c->parent = this;
-        holdq.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::RibThreadStats::Holdq>();
+        ent_->parent = this;
+        holdq.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::RibThreadStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::RibThreadStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(thread_q != nullptr)
     {
-        children["thread-q"] = thread_q;
+        _children["thread-q"] = thread_q;
     }
 
     if(rib_base_time != nullptr)
     {
-        children["rib-base-time"] = rib_base_time;
+        _children["rib-base-time"] = rib_base_time;
     }
 
-    count = 0;
-    for (auto c : holdq.entities())
+    count_ = 0;
+    for (auto ent_ : holdq.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::RibThreadStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10905,16 +10905,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::RibThreadStats::ThreadQ::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::RibThreadStats::ThreadQ::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::RibThreadStats::ThreadQ::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::RibThreadStats::ThreadQ::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::RibThreadStats::ThreadQ::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11087,16 +11087,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::RibThreadStats::RibBaseTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::RibThreadStats::RibBaseTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::RibThreadStats::RibBaseTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::RibThreadStats::RibBaseTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::RibThreadStats::RibBaseTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11215,16 +11215,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::RibThreadStats::Holdq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::RibThreadStats::Holdq::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::RibThreadStats::Holdq::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::RibThreadStats::Holdq::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::RibThreadStats::Holdq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11532,7 +11532,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::IssuStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::IssuStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsr-thd-stats")
     {
@@ -11554,56 +11554,56 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::IssuStats::get_c
 
     if(child_yang_name == "nsr-issu-milestone")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::IssuStats::NsrIssuMilestone>();
-        c->parent = this;
-        nsr_issu_milestone.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::IssuStats::NsrIssuMilestone>();
+        ent_->parent = this;
+        nsr_issu_milestone.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "nsr-err-history")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory>();
-        c->parent = this;
-        nsr_err_history.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory>();
+        ent_->parent = this;
+        nsr_err_history.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nsr_thd_stats != nullptr)
     {
-        children["nsr-thd-stats"] = nsr_thd_stats;
+        _children["nsr-thd-stats"] = nsr_thd_stats;
     }
 
     if(nsr_rtr_thd_sched != nullptr)
     {
-        children["nsr-rtr-thd-sched"] = nsr_rtr_thd_sched;
+        _children["nsr-rtr-thd-sched"] = nsr_rtr_thd_sched;
     }
 
-    count = 0;
-    for (auto c : nsr_issu_milestone.entities())
+    count_ = 0;
+    for (auto ent_ : nsr_issu_milestone.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : nsr_err_history.entities())
+    count_ = 0;
+    for (auto ent_ : nsr_err_history.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::IssuStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11928,33 +11928,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrThdStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrThdStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsr-pri")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::IssuStats::NsrThdStats::NsrPri>();
-        c->parent = this;
-        nsr_pri.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::IssuStats::NsrThdStats::NsrPri>();
+        ent_->parent = this;
+        nsr_pri.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrThdStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrThdStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nsr_pri.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nsr_pri.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::IssuStats::NsrThdStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12125,16 +12125,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrThdStats::NsrPri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrThdStats::NsrPri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrThdStats::NsrPri::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrThdStats::NsrPri::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::IssuStats::NsrThdStats::NsrPri::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12323,33 +12323,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrRtrThdSched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrRtrThdSched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsr-pri")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::IssuStats::NsrRtrThdSched::NsrPri>();
-        c->parent = this;
-        nsr_pri.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::IssuStats::NsrRtrThdSched::NsrPri>();
+        ent_->parent = this;
+        nsr_pri.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrRtrThdSched::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrRtrThdSched::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nsr_pri.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nsr_pri.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::IssuStats::NsrRtrThdSched::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12520,16 +12520,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrRtrThdSched::NsrPri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrRtrThdSched::NsrPri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrRtrThdSched::NsrPri::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrRtrThdSched::NsrPri::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::IssuStats::NsrRtrThdSched::NsrPri::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12682,16 +12682,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrIssuMilestone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrIssuMilestone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrIssuMilestone::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrIssuMilestone::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::IssuStats::NsrIssuMilestone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12786,33 +12786,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nsr-error-info")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::NsrErrorInfo>();
-        c->parent = this;
-        nsr_error_info.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::NsrErrorInfo>();
+        ent_->parent = this;
+        nsr_error_info.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nsr_error_info.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nsr_error_info.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12900,7 +12900,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::NsrErrorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::NsrErrorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "last-err-time")
     {
@@ -12914,16 +12914,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrEr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::NsrErrorInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::NsrErrorInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(last_err_time != nullptr)
     {
-        children["last-err-time"] = last_err_time;
+        _children["last-err-time"] = last_err_time;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::NsrErrorInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13006,16 +13006,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::NsrErrorInfo::LastErrTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::NsrErrorInfo::LastErrTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::NsrErrorInfo::LastErrTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::NsrErrorInfo::LastErrTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::IssuStats::NsrErrHistory::NsrErrorInfo::LastErrTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13102,33 +13102,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrPlStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::NsrPlStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ncd-pri")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri>();
-        c->parent = this;
-        ncd_pri.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri>();
+        ent_->parent = this;
+        ncd_pri.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::NsrPlStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::NsrPlStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ncd_pri.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ncd_pri.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::NsrPlStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13235,50 +13235,50 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "num-sent-drop")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumSentDrop>();
-        c->parent = this;
-        num_sent_drop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumSentDrop>();
+        ent_->parent = this;
+        num_sent_drop.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "num-recv-drop")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumRecvDrop>();
-        c->parent = this;
-        num_recv_drop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumRecvDrop>();
+        ent_->parent = this;
+        num_recv_drop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : num_sent_drop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : num_sent_drop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : num_recv_drop.entities())
+    count_ = 0;
+    for (auto ent_ : num_recv_drop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13364,16 +13364,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumSentDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumSentDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumSentDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumSentDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumSentDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13451,16 +13451,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumRecvDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumRecvDrop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumRecvDrop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumRecvDrop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::NsrPlStats::NcdPri::NumRecvDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13535,33 +13535,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::ProtocolStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::ProtocolStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocol-stat")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::ProtocolStats::ProtocolStat>();
-        c->parent = this;
-        protocol_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::ProtocolStats::ProtocolStat>();
+        ent_->parent = this;
+        protocol_stat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::ProtocolStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::ProtocolStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : protocol_stat.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : protocol_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::ProtocolStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13713,16 +13713,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::ProtocolStats::ProtocolStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::ProtocolStats::ProtocolStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::ProtocolStats::ProtocolStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::ProtocolStats::ProtocolStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::ProtocolStats::ProtocolStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14032,7 +14032,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::SpfStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::SpfStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spf-header")
     {
@@ -14045,34 +14045,34 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::SpfStats::get_ch
 
     if(child_yang_name == "spf-runtime")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime>();
-        c->parent = this;
-        spf_runtime.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime>();
+        ent_->parent = this;
+        spf_runtime.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spf_header != nullptr)
     {
-        children["spf-header"] = spf_header;
+        _children["spf-header"] = spf_header;
     }
 
-    count = 0;
-    for (auto c : spf_runtime.entities())
+    count_ = 0;
+    for (auto ent_ : spf_runtime.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::SpfStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14147,33 +14147,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "area-summary")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::SpfStats::SpfHeader::AreaSummary>();
-        c->parent = this;
-        area_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::SpfStats::SpfHeader::AreaSummary>();
+        ent_->parent = this;
+        area_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : area_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : area_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::SpfStats::SpfHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14256,16 +14256,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfHeader::AreaSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfHeader::AreaSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfHeader::AreaSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfHeader::AreaSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::SpfStats::SpfHeader::AreaSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14387,7 +14387,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "global-time")
     {
@@ -14400,51 +14400,51 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRun
 
     if(child_yang_name == "lsa")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::Lsa>();
-        c->parent = this;
-        lsa.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::Lsa>();
+        ent_->parent = this;
+        lsa.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "area-stat")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::AreaStat>();
-        c->parent = this;
-        area_stat.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::AreaStat>();
+        ent_->parent = this;
+        area_stat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(global_time != nullptr)
     {
-        children["global-time"] = global_time;
+        _children["global-time"] = global_time;
     }
 
-    count = 0;
-    for (auto c : lsa.entities())
+    count_ = 0;
+    for (auto ent_ : lsa.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : area_stat.entities())
+    count_ = 0;
+    for (auto ent_ : area_stat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14585,16 +14585,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::GlobalTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::GlobalTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::GlobalTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::GlobalTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::GlobalTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14759,16 +14759,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::Lsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::Lsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::Lsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14896,7 +14896,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::AreaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::AreaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "spf-stat-time")
     {
@@ -14910,16 +14910,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRun
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::AreaStat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::AreaStat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(spf_stat_time != nullptr)
     {
-        children["spf-stat-time"] = spf_stat_time;
+        _children["spf-stat-time"] = spf_stat_time;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::AreaStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15028,16 +15028,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15262,16 +15262,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::RawioStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::RawioStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::RawioStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::RawioStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::RawioStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15542,16 +15542,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::PrefixPriorityStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::PrefixPriorityStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::PrefixPriorityStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::PrefixPriorityStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::PrefixPriorityStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15686,16 +15686,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Stati
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::Statistics::VrfRibBatchStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::Statistics::VrfRibBatchStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Statistics::VrfRibBatchStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::Statistics::VrfRibBatchStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::Statistics::VrfRibBatchStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15950,7 +15950,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary-prefixes")
     {
@@ -16180,136 +16180,136 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(summary_prefixes != nullptr)
     {
-        children["summary-prefixes"] = summary_prefixes;
+        _children["summary-prefixes"] = summary_prefixes;
     }
 
     if(border_routers != nullptr)
     {
-        children["border-routers"] = border_routers;
+        _children["border-routers"] = border_routers;
     }
 
     if(sham_link_table != nullptr)
     {
-        children["sham-link-table"] = sham_link_table;
+        _children["sham-link-table"] = sham_link_table;
     }
 
     if(area_informations != nullptr)
     {
-        children["area-informations"] = area_informations;
+        _children["area-informations"] = area_informations;
     }
 
     if(database_table != nullptr)
     {
-        children["database-table"] = database_table;
+        _children["database-table"] = database_table;
     }
 
     if(interface_process_table != nullptr)
     {
-        children["interface-process-table"] = interface_process_table;
+        _children["interface-process-table"] = interface_process_table;
     }
 
     if(redistributions != nullptr)
     {
-        children["redistributions"] = redistributions;
+        _children["redistributions"] = redistributions;
     }
 
     if(external_routes != nullptr)
     {
-        children["external-routes"] = external_routes;
+        _children["external-routes"] = external_routes;
     }
 
     if(request_list_process_table != nullptr)
     {
-        children["request-list-process-table"] = request_list_process_table;
+        _children["request-list-process-table"] = request_list_process_table;
     }
 
     if(virtual_link != nullptr)
     {
-        children["virtual-link"] = virtual_link;
+        _children["virtual-link"] = virtual_link;
     }
 
     if(flood_list_process_table != nullptr)
     {
-        children["flood-list-process-table"] = flood_list_process_table;
+        _children["flood-list-process-table"] = flood_list_process_table;
     }
 
     if(route_summary != nullptr)
     {
-        children["route-summary"] = route_summary;
+        _children["route-summary"] = route_summary;
     }
 
     if(areas != nullptr)
     {
-        children["areas"] = areas;
+        _children["areas"] = areas;
     }
 
     if(internal_routes != nullptr)
     {
-        children["internal-routes"] = internal_routes;
+        _children["internal-routes"] = internal_routes;
     }
 
     if(protocol_areas != nullptr)
     {
-        children["protocol-areas"] = protocol_areas;
+        _children["protocol-areas"] = protocol_areas;
     }
 
     if(connected_routes != nullptr)
     {
-        children["connected-routes"] = connected_routes;
+        _children["connected-routes"] = connected_routes;
     }
 
     if(vrf_statistics != nullptr)
     {
-        children["vrf-statistics"] = vrf_statistics;
+        _children["vrf-statistics"] = vrf_statistics;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(retransmission_list_process_table != nullptr)
     {
-        children["retransmission-list-process-table"] = retransmission_list_process_table;
+        _children["retransmission-list-process-table"] = retransmission_list_process_table;
     }
 
     if(bad_checksums != nullptr)
     {
-        children["bad-checksums"] = bad_checksums;
+        _children["bad-checksums"] = bad_checksums;
     }
 
     if(database_summary_table != nullptr)
     {
-        children["database-summary-table"] = database_summary_table;
+        _children["database-summary-table"] = database_summary_table;
     }
 
     if(neighbor_process_table != nullptr)
     {
-        children["neighbor-process-table"] = neighbor_process_table;
+        _children["neighbor-process-table"] = neighbor_process_table;
     }
 
     if(fast_reroutes != nullptr)
     {
-        children["fast-reroutes"] = fast_reroutes;
+        _children["fast-reroutes"] = fast_reroutes;
     }
 
     if(interface_brief_process_table != nullptr)
     {
-        children["interface-brief-process-table"] = interface_brief_process_table;
+        _children["interface-brief-process-table"] = interface_brief_process_table;
     }
 
     if(neighbor_detail_process_table != nullptr)
     {
-        children["neighbor-detail-process-table"] = neighbor_detail_process_table;
+        _children["neighbor-detail-process-table"] = neighbor_detail_process_table;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16376,33 +16376,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary-prefix")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::SummaryPrefix>();
-        c->parent = this;
-        summary_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::SummaryPrefix>();
+        ent_->parent = this;
+        summary_prefix.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : summary_prefix.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : summary_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16477,16 +16477,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::SummaryPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::SummaryPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::SummaryPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::SummaryPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::SummaryPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16603,33 +16603,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::BorderRouters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::BorderRouters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "border-router")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter>();
-        c->parent = this;
-        border_router.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter>();
+        ent_->parent = this;
+        border_router.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::BorderRouters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::BorderRouters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : border_router.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : border_router.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::BorderRouters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16701,33 +16701,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "border-router-path")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::BorderRouterPath>();
-        c->parent = this;
-        border_router_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::BorderRouterPath>();
+        ent_->parent = this;
+        border_router_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : border_router_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : border_router_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16820,16 +16820,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::BorderRouterPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::BorderRouterPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::BorderRouterPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::BorderRouterPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::BorderRouters::BorderRouter::BorderRouterPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17071,7 +17071,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sham-link-neighbor")
     {
@@ -17085,16 +17085,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sham_link_neighbor != nullptr)
     {
-        children["sham-link-neighbor"] = sham_link_neighbor;
+        _children["sham-link-neighbor"] = sham_link_neighbor;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17442,7 +17442,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sham-link-retransmission")
     {
@@ -17456,16 +17456,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::S
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sham_link_retransmission != nullptr)
     {
-        children["sham-link-retransmission"] = sham_link_retransmission;
+        _children["sham-link-retransmission"] = sham_link_retransmission;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17632,16 +17632,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17938,33 +17938,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::AreaInformations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::AreaInformations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "area-information")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation>();
-        c->parent = this;
-        area_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation>();
+        ent_->parent = this;
+        area_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::AreaInformations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::AreaInformations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : area_information.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : area_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::AreaInformations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18120,33 +18120,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "area-range")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation::AreaRange>();
-        c->parent = this;
-        area_range.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation::AreaRange>();
+        ent_->parent = this;
+        area_range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : area_range.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : area_range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18441,16 +18441,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation::AreaRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation::AreaRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation::AreaRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation::AreaRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::AreaInformations::AreaInformation::AreaRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18563,7 +18563,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-table")
     {
@@ -18586,21 +18586,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_table != nullptr)
     {
-        children["lsa-table"] = lsa_table;
+        _children["lsa-table"] = lsa_table;
     }
 
     if(lsa_internal_table != nullptr)
     {
-        children["lsa-internal-table"] = lsa_internal_table;
+        _children["lsa-internal-table"] = lsa_internal_table;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18667,33 +18667,33 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa>();
-        c->parent = this;
-        lsa.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa>();
+        ent_->parent = this;
+        lsa.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lsa.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lsa.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18773,7 +18773,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-info")
     {
@@ -18787,16 +18787,16 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_info != nullptr)
     {
-        children["lsa-info"] = lsa_info;
+        _children["lsa-info"] = lsa_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18962,7 +18962,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-summary-info")
     {
@@ -19093,81 +19093,81 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_summary_info != nullptr)
     {
-        children["lsa-summary-info"] = lsa_summary_info;
+        _children["lsa-summary-info"] = lsa_summary_info;
     }
 
     if(router_lsa_type != nullptr)
     {
-        children["router-lsa-type"] = router_lsa_type;
+        _children["router-lsa-type"] = router_lsa_type;
     }
 
     if(network_lsa_type != nullptr)
     {
-        children["network-lsa-type"] = network_lsa_type;
+        _children["network-lsa-type"] = network_lsa_type;
     }
 
     if(inter_area_prefix_lsa_type != nullptr)
     {
-        children["inter-area-prefix-lsa-type"] = inter_area_prefix_lsa_type;
+        _children["inter-area-prefix-lsa-type"] = inter_area_prefix_lsa_type;
     }
 
     if(inter_area_router_lsa_type != nullptr)
     {
-        children["inter-area-router-lsa-type"] = inter_area_router_lsa_type;
+        _children["inter-area-router-lsa-type"] = inter_area_router_lsa_type;
     }
 
     if(external_lsa_type != nullptr)
     {
-        children["external-lsa-type"] = external_lsa_type;
+        _children["external-lsa-type"] = external_lsa_type;
     }
 
     if(nssalsa_type != nullptr)
     {
-        children["nssalsa-type"] = nssalsa_type;
+        _children["nssalsa-type"] = nssalsa_type;
     }
 
     if(link_lsa_type != nullptr)
     {
-        children["link-lsa-type"] = link_lsa_type;
+        _children["link-lsa-type"] = link_lsa_type;
     }
 
     if(intra_area_prefix_lsa_type != nullptr)
     {
-        children["intra-area-prefix-lsa-type"] = intra_area_prefix_lsa_type;
+        _children["intra-area-prefix-lsa-type"] = intra_area_prefix_lsa_type;
     }
 
     if(grace_lsa != nullptr)
     {
-        children["grace-lsa"] = grace_lsa;
+        _children["grace-lsa"] = grace_lsa;
     }
 
     if(unknown_link_lsa_type != nullptr)
     {
-        children["unknown-link-lsa-type"] = unknown_link_lsa_type;
+        _children["unknown-link-lsa-type"] = unknown_link_lsa_type;
     }
 
     if(unknown_area_lsa_type != nullptr)
     {
-        children["unknown-area-lsa-type"] = unknown_area_lsa_type;
+        _children["unknown-area-lsa-type"] = unknown_area_lsa_type;
     }
 
     if(unknown_aslsa_type != nullptr)
     {
-        children["unknown-aslsa-type"] = unknown_aslsa_type;
+        _children["unknown-aslsa-type"] = unknown_aslsa_type;
     }
 
     if(unknown_lsa_type != nullptr)
     {
-        children["unknown-lsa-type"] = unknown_lsa_type;
+        _children["unknown-lsa-type"] = unknown_lsa_type;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19289,7 +19289,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -19312,21 +19312,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19537,16 +19537,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19767,16 +19767,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20049,7 +20049,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -20080,44 +20080,44 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
 
     if(child_yang_name == "link")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link>();
-        c->parent = this;
-        link.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link>();
+        ent_->parent = this;
+        link.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
     if(rpf_path != nullptr)
     {
-        children["rpf-path"] = rpf_path;
+        _children["rpf-path"] = rpf_path;
     }
 
-    count = 0;
-    for (auto c : link.entities())
+    count_ = 0;
+    for (auto ent_ : link.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20218,16 +20218,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20448,16 +20448,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20710,16 +20710,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20814,16 +20814,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20951,7 +20951,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -20974,21 +20974,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21087,16 +21087,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21317,16 +21317,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21592,7 +21592,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -21615,21 +21615,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21750,16 +21750,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21980,16 +21980,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22247,7 +22247,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -22270,21 +22270,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22385,16 +22385,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22615,16 +22615,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22910,7 +22910,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -22933,21 +22933,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23118,16 +23118,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23348,16 +23348,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23643,7 +23643,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -23666,21 +23666,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23851,16 +23851,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24081,16 +24081,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24383,7 +24383,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -24405,39 +24405,39 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
 
     if(child_yang_name == "prefix")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix>();
-        c->parent = this;
-        prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix>();
+        ent_->parent = this;
+        prefix.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
-    count = 0;
-    for (auto c : prefix.entities())
+    count_ = 0;
+    for (auto ent_ : prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24598,16 +24598,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24828,16 +24828,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25102,16 +25102,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25248,7 +25248,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -25270,39 +25270,39 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
 
     if(child_yang_name == "prefix")
     {
-        auto c = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix>();
-        c->parent = this;
-        prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix>();
+        ent_->parent = this;
+        prefix.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
-    count = 0;
-    for (auto c : prefix.entities())
+    count_ = 0;
+    for (auto ent_ : prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25423,16 +25423,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25653,16 +25653,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25927,16 +25927,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26078,7 +26078,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -26101,21 +26101,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26276,16 +26276,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26506,16 +26506,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26789,7 +26789,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -26812,21 +26812,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26967,16 +26967,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27197,16 +27197,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27480,7 +27480,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -27503,21 +27503,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27658,16 +27658,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27888,16 +27888,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -28171,7 +28171,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -28194,21 +28194,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -28349,16 +28349,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -28579,16 +28579,16 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -28862,7 +28862,7 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Defau
 
 }
 
-std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsa-header")
     {
@@ -28885,21 +28885,21 @@ std::shared_ptr<Entity> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsa_header != nullptr)
     {
-        children["lsa-header"] = lsa_header;
+        _children["lsa-header"] = lsa_header;
     }
 
     if(lsa_detail != nullptr)
     {
-        children["lsa-detail"] = lsa_detail;
+        _children["lsa-detail"] = lsa_detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

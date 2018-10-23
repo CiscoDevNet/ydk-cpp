@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > VrrpOperData::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> VrrpOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VrrpOperData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrrp-oper-state")
     {
-        auto c = std::make_shared<VrrpOperData::VrrpOperState>();
-        c->parent = this;
-        vrrp_oper_state.append(c);
-        return c;
+        auto ent_ = std::make_shared<VrrpOperData::VrrpOperState>();
+        ent_->parent = this;
+        vrrp_oper_state.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VrrpOperData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VrrpOperData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrrp_oper_state.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrrp_oper_state.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void VrrpOperData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void VrrpOperData::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> VrrpOperData::clone_ptr() const
+std::shared_ptr<ydk::Entity> VrrpOperData::clone_ptr() const
 {
     return std::make_shared<VrrpOperData>();
 }
@@ -318,33 +318,33 @@ std::vector<std::pair<std::string, LeafData> > VrrpOperData::VrrpOperState::get_
 
 }
 
-std::shared_ptr<Entity> VrrpOperData::VrrpOperState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VrrpOperData::VrrpOperState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "track-list")
     {
-        auto c = std::make_shared<VrrpOperData::VrrpOperState::TrackList>();
-        c->parent = this;
-        track_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<VrrpOperData::VrrpOperState::TrackList>();
+        ent_->parent = this;
+        track_list.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VrrpOperData::VrrpOperState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VrrpOperData::VrrpOperState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : track_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : track_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void VrrpOperData::VrrpOperState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -705,16 +705,16 @@ std::vector<std::pair<std::string, LeafData> > VrrpOperData::VrrpOperState::Trac
 
 }
 
-std::shared_ptr<Entity> VrrpOperData::VrrpOperState::TrackList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VrrpOperData::VrrpOperState::TrackList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VrrpOperData::VrrpOperState::TrackList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VrrpOperData::VrrpOperState::TrackList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VrrpOperData::VrrpOperState::TrackList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

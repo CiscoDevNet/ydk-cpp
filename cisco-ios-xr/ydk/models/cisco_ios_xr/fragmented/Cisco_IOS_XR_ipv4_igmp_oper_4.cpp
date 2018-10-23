@@ -60,16 +60,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Int
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -166,16 +166,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Int
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update::GroupAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -279,33 +279,33 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ran
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::Ranges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::Ranges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "range")
     {
-        auto c = std::make_shared<Igmp::Active::DefaultContext::Ranges::Range>();
-        c->parent = this;
-        range.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Active::DefaultContext::Ranges::Range>();
+        ent_->parent = this;
+        range.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Ranges::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::Ranges::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : range.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : range.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::Ranges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -392,7 +392,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ran
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::Ranges::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::Ranges::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-address-xr")
     {
@@ -406,16 +406,16 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::Ranges::Range::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Ranges::Range::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::Ranges::Range::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(group_address_xr != nullptr)
     {
-        children["group-address-xr"] = group_address_xr;
+        _children["group-address-xr"] = group_address_xr;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::Ranges::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -539,16 +539,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ran
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::Ranges::Range::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::Ranges::Range::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Ranges::Range::GroupAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::Ranges::Range::GroupAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::Ranges::Range::GroupAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -652,33 +652,33 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ifr
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::IfrsInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ifrs-interface")
     {
-        auto c = std::make_shared<Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface>();
-        c->parent = this;
-        ifrs_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface>();
+        ent_->parent = this;
+        ifrs_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ifrs_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ifrs_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::IfrsInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -754,7 +754,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ifr
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "igmp-interface-entry")
     {
@@ -768,16 +768,16 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterf
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(igmp_interface_entry != nullptr)
     {
-        children["igmp-interface-entry"] = igmp_interface_entry;
+        _children["igmp-interface-entry"] = igmp_interface_entry;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1057,7 +1057,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ifr
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -1089,26 +1089,26 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterf
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
     if(querier_address != nullptr)
     {
-        children["querier-address"] = querier_address;
+        _children["querier-address"] = querier_address;
     }
 
     if(subscriber_address != nullptr)
     {
-        children["subscriber-address"] = subscriber_address;
+        _children["subscriber-address"] = subscriber_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1655,16 +1655,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ifr
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1761,16 +1761,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ifr
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::QuerierAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1867,16 +1867,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ifr
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::IfrsInterfaces::IfrsInterface::IgmpInterfaceEntry::SubscriberAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2108,16 +2108,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Tra
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::TrafficCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::TrafficCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::TrafficCounters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::TrafficCounters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::TrafficCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2541,33 +2541,33 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Gro
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group")
     {
-        auto c = std::make_shared<Igmp::Active::DefaultContext::Groups::Group>();
-        c->parent = this;
-        group.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Active::DefaultContext::Groups::Group>();
+        ent_->parent = this;
+        group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Groups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::Groups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2698,7 +2698,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Gro
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-address-xr")
     {
@@ -2730,26 +2730,26 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::Groups::Group::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Groups::Group::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::Groups::Group::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(group_address_xr != nullptr)
     {
-        children["group-address-xr"] = group_address_xr;
+        _children["group-address-xr"] = group_address_xr;
     }
 
     if(last_reporter != nullptr)
     {
-        children["last-reporter"] = last_reporter;
+        _children["last-reporter"] = last_reporter;
     }
 
     if(source_address != nullptr)
     {
-        children["source-address"] = source_address;
+        _children["source-address"] = source_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2963,16 +2963,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Gro
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::Groups::Group::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::Groups::Group::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Groups::Group::GroupAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::Groups::Group::GroupAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::Groups::Group::GroupAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3076,16 +3076,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Gro
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::Groups::Group::LastReporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::Groups::Group::LastReporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Groups::Group::LastReporter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::Groups::Group::LastReporter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::Groups::Group::LastReporter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3189,16 +3189,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Gro
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::Groups::Group::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::Groups::Group::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::Groups::Group::SourceAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::Groups::Group::SourceAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::Groups::Group::SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3306,16 +3306,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Gro
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::GroupSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::GroupSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::GroupSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::GroupSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::GroupSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3425,16 +3425,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ifr
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::IfrsInterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::IfrsInterfaceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::IfrsInterfaceSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::IfrsInterfaceSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::IfrsInterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3528,33 +3528,33 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Glo
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::GlobalInterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3826,7 +3826,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Glo
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -3858,26 +3858,26 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::Inte
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
     if(querier_address != nullptr)
     {
-        children["querier-address"] = querier_address;
+        _children["querier-address"] = querier_address;
     }
 
     if(subscriber_address != nullptr)
     {
-        children["subscriber-address"] = subscriber_address;
+        _children["subscriber-address"] = subscriber_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4434,16 +4434,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Glo
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4540,16 +4540,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Glo
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::QuerierAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4646,16 +4646,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Glo
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::GlobalInterfaceTable::Interface::SubscriberAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4759,33 +4759,33 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ssm
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::SsmMapDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ssm-map-detail")
     {
-        auto c = std::make_shared<Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail>();
-        c->parent = this;
-        ssm_map_detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail>();
+        ent_->parent = this;
+        ssm_map_detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::SsmMapDetails::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::SsmMapDetails::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ssm_map_detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ssm_map_detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::SsmMapDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4887,7 +4887,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ssm
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-info")
     {
@@ -4900,34 +4900,34 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetai
 
     if(child_yang_name == "sources")
     {
-        auto c = std::make_shared<Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::Sources>();
-        c->parent = this;
-        sources.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::Sources>();
+        ent_->parent = this;
+        sources.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(map_info != nullptr)
     {
-        children["map-info"] = map_info;
+        _children["map-info"] = map_info;
     }
 
-    count = 0;
-    for (auto c : sources.entities())
+    count_ = 0;
+    for (auto ent_ : sources.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5062,7 +5062,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ssm
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-address-xr")
     {
@@ -5076,16 +5076,16 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetai
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(group_address_xr != nullptr)
     {
-        children["group-address-xr"] = group_address_xr;
+        _children["group-address-xr"] = group_address_xr;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5179,16 +5179,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ssm
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo::GroupAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5292,16 +5292,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Ssm
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5405,33 +5405,33 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Int
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-state-off")
     {
-        auto c = std::make_shared<Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff>();
-        c->parent = this;
-        interface_state_off.append(c);
-        return c;
+        auto ent_ = std::make_shared<Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff>();
+        ent_->parent = this;
+        interface_state_off.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface_state_off.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface_state_off.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::InterfaceStateOffs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5703,7 +5703,7 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Int
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -5735,26 +5735,26 @@ std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::Interf
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
     if(querier_address != nullptr)
     {
-        children["querier-address"] = querier_address;
+        _children["querier-address"] = querier_address;
     }
 
     if(subscriber_address != nullptr)
     {
-        children["subscriber-address"] = subscriber_address;
+        _children["subscriber-address"] = subscriber_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6311,16 +6311,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Int
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6417,16 +6417,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Int
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::QuerierAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6523,16 +6523,16 @@ std::vector<std::pair<std::string, LeafData> > Igmp::Active::DefaultContext::Int
 
 }
 
-std::shared_ptr<Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

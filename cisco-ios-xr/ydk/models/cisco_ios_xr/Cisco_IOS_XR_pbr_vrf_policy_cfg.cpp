@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > VrfPolicy::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> VrfPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VrfPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<VrfPolicy::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<VrfPolicy::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VrfPolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VrfPolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void VrfPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void VrfPolicy::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> VrfPolicy::clone_ptr() const
+std::shared_ptr<ydk::Entity> VrfPolicy::clone_ptr() const
 {
     return std::make_shared<VrfPolicy>();
 }
@@ -190,33 +190,33 @@ std::vector<std::pair<std::string, LeafData> > VrfPolicy::Vrf::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> VrfPolicy::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VrfPolicy::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "afi")
     {
-        auto c = std::make_shared<VrfPolicy::Vrf::Afi>();
-        c->parent = this;
-        afi.append(c);
-        return c;
+        auto ent_ = std::make_shared<VrfPolicy::Vrf::Afi>();
+        ent_->parent = this;
+        afi.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VrfPolicy::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VrfPolicy::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : afi.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : afi.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void VrfPolicy::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -290,16 +290,16 @@ std::vector<std::pair<std::string, LeafData> > VrfPolicy::Vrf::Afi::get_name_lea
 
 }
 
-std::shared_ptr<Entity> VrfPolicy::Vrf::Afi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> VrfPolicy::Vrf::Afi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> VrfPolicy::Vrf::Afi::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> VrfPolicy::Vrf::Afi::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void VrfPolicy::Vrf::Afi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

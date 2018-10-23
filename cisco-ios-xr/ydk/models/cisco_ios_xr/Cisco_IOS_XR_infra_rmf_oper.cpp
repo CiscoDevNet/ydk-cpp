@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > Redundancy::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> Redundancy::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Redundancy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Redundancy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
-    return children;
+    return _children;
 }
 
 void Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void Redundancy::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Redundancy::clone_ptr() const
+std::shared_ptr<ydk::Entity> Redundancy::clone_ptr() const
 {
     return std::make_shared<Redundancy>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > Redundancy::Nodes::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Redundancy::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Redundancy::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Redundancy::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Redundancy::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Redundancy::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Redundancy::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -306,7 +306,7 @@ std::vector<std::pair<std::string, LeafData> > Redundancy::Nodes::Node::get_name
 
 }
 
-std::shared_ptr<Entity> Redundancy::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Redundancy::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "redundancy")
     {
@@ -320,16 +320,16 @@ std::shared_ptr<Entity> Redundancy::Nodes::Node::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Redundancy::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(redundancy != nullptr)
     {
-        children["redundancy"] = redundancy;
+        _children["redundancy"] = redundancy;
     }
 
-    return children;
+    return _children;
 }
 
 void Redundancy::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -462,33 +462,33 @@ std::vector<std::pair<std::string, LeafData> > Redundancy::Nodes::Node::Redundan
 
 }
 
-std::shared_ptr<Entity> Redundancy::Nodes::Node::Redundancy_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Redundancy::Nodes::Node::Redundancy_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "groupinfo")
     {
-        auto c = std::make_shared<Redundancy::Nodes::Node::Redundancy_::Groupinfo>();
-        c->parent = this;
-        groupinfo.append(c);
-        return c;
+        auto ent_ = std::make_shared<Redundancy::Nodes::Node::Redundancy_::Groupinfo>();
+        ent_->parent = this;
+        groupinfo.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::Node::Redundancy_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Redundancy::Nodes::Node::Redundancy_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : groupinfo.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : groupinfo.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Redundancy::Nodes::Node::Redundancy_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -599,16 +599,16 @@ std::vector<std::pair<std::string, LeafData> > Redundancy::Nodes::Node::Redundan
 
 }
 
-std::shared_ptr<Entity> Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Redundancy::Nodes::Node::Redundancy_::Groupinfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -726,33 +726,33 @@ std::vector<std::pair<std::string, LeafData> > Redundancy::Summary::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Redundancy::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Redundancy::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "red-pair")
     {
-        auto c = std::make_shared<Redundancy::Summary::RedPair>();
-        c->parent = this;
-        red_pair.append(c);
-        return c;
+        auto ent_ = std::make_shared<Redundancy::Summary::RedPair>();
+        ent_->parent = this;
+        red_pair.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Redundancy::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Redundancy::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : red_pair.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : red_pair.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Redundancy::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -852,33 +852,33 @@ std::vector<std::pair<std::string, LeafData> > Redundancy::Summary::RedPair::get
 
 }
 
-std::shared_ptr<Entity> Redundancy::Summary::RedPair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Redundancy::Summary::RedPair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "groupinfo")
     {
-        auto c = std::make_shared<Redundancy::Summary::RedPair::Groupinfo>();
-        c->parent = this;
-        groupinfo.append(c);
-        return c;
+        auto ent_ = std::make_shared<Redundancy::Summary::RedPair::Groupinfo>();
+        ent_->parent = this;
+        groupinfo.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Redundancy::Summary::RedPair::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Redundancy::Summary::RedPair::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : groupinfo.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : groupinfo.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Redundancy::Summary::RedPair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -996,16 +996,16 @@ std::vector<std::pair<std::string, LeafData> > Redundancy::Summary::RedPair::Gro
 
 }
 
-std::shared_ptr<Entity> Redundancy::Summary::RedPair::Groupinfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Redundancy::Summary::RedPair::Groupinfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Redundancy::Summary::RedPair::Groupinfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Redundancy::Summary::RedPair::Groupinfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Redundancy::Summary::RedPair::Groupinfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

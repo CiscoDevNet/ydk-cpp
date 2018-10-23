@@ -77,33 +77,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-stats")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats>();
-        c->parent = this;
-        class_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats>();
+        ent_->parent = this;
+        class_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -268,7 +268,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "general-stats")
     {
@@ -308,83 +308,83 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
 
     if(child_yang_name == "queue-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray>();
-        c->parent = this;
-        queue_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray>();
+        ent_->parent = this;
+        queue_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "police-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray>();
-        c->parent = this;
-        police_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray>();
+        ent_->parent = this;
+        police_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "wred-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray>();
-        c->parent = this;
-        wred_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray>();
+        ent_->parent = this;
+        wred_stats_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(general_stats != nullptr)
     {
-        children["general-stats"] = general_stats;
+        _children["general-stats"] = general_stats;
     }
 
     if(iphc_stats != nullptr)
     {
-        children["iphc-stats"] = iphc_stats;
+        _children["iphc-stats"] = iphc_stats;
     }
 
     if(child_policy != nullptr)
     {
-        children["child-policy"] = child_policy;
+        _children["child-policy"] = child_policy;
     }
 
     if(cac_stats != nullptr)
     {
-        children["cac-stats"] = cac_stats;
+        _children["cac-stats"] = cac_stats;
     }
 
-    count = 0;
-    for (auto c : queue_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : queue_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : police_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : police_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : wred_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : wred_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -525,16 +525,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -727,16 +727,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -939,33 +939,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-stats")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_>();
-        c->parent = this;
-        class_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_>();
+        ent_->parent = this;
+        class_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1126,7 +1126,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "general-stats")
     {
@@ -1157,78 +1157,78 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
 
     if(child_yang_name == "queue-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
-        c->parent = this;
-        queue_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
+        ent_->parent = this;
+        queue_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "police-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
-        c->parent = this;
-        police_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
+        ent_->parent = this;
+        police_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "wred-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
-        c->parent = this;
-        wred_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
+        ent_->parent = this;
+        wred_stats_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(general_stats != nullptr)
     {
-        children["general-stats"] = general_stats;
+        _children["general-stats"] = general_stats;
     }
 
     if(iphc_stats != nullptr)
     {
-        children["iphc-stats"] = iphc_stats;
+        _children["iphc-stats"] = iphc_stats;
     }
 
     if(cac_stats != nullptr)
     {
-        children["cac-stats"] = cac_stats;
+        _children["cac-stats"] = cac_stats;
     }
 
-    count = 0;
-    for (auto c : queue_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : queue_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : police_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : police_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : wred_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : wred_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1369,16 +1369,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1571,16 +1571,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1779,16 +1779,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2013,67 +2013,67 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "queue-instance-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
-        c->parent = this;
-        queue_instance_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
+        ent_->parent = this;
+        queue_instance_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-average-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
-        c->parent = this;
-        queue_average_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
+        ent_->parent = this;
+        queue_average_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-max-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
-        c->parent = this;
-        queue_max_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
+        ent_->parent = this;
+        queue_max_length.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : queue_instance_length.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : queue_instance_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_average_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_average_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_max_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_max_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2326,16 +2326,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2418,16 +2418,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2510,16 +2510,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2651,7 +2651,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "color-class-stats")
     {
@@ -2665,16 +2665,16 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(color_class_stats != nullptr)
     {
-        children["color-class-stats"] = color_class_stats;
+        _children["color-class-stats"] = color_class_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2931,16 +2931,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3223,33 +3223,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "red-label")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
-        c->parent = this;
-        red_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
+        ent_->parent = this;
+        red_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : red_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : red_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3402,16 +3402,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3510,16 +3510,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3744,67 +3744,67 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "queue-instance-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
-        c->parent = this;
-        queue_instance_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
+        ent_->parent = this;
+        queue_instance_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-average-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
-        c->parent = this;
-        queue_average_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
+        ent_->parent = this;
+        queue_average_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-max-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
-        c->parent = this;
-        queue_max_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
+        ent_->parent = this;
+        queue_max_length.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : queue_instance_length.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : queue_instance_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_average_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_average_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_max_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_max_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4057,16 +4057,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4149,16 +4149,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4241,16 +4241,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4382,7 +4382,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "color-class-stats")
     {
@@ -4396,16 +4396,16 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(color_class_stats != nullptr)
     {
-        children["color-class-stats"] = color_class_stats;
+        _children["color-class-stats"] = color_class_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4662,16 +4662,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4954,33 +4954,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "red-label")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel>();
-        c->parent = this;
-        red_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel>();
+        ent_->parent = this;
+        red_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : red_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : red_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5133,16 +5133,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5221,7 +5221,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-policy-names")
     {
@@ -5235,16 +5235,16 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_policy_names != nullptr)
     {
-        children["service-policy-names"] = service_policy_names;
+        _children["service-policy-names"] = service_policy_names;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5311,33 +5311,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-policy-instance")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance>();
-        c->parent = this;
-        service_policy_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance>();
+        ent_->parent = this;
+        service_policy_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : service_policy_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : service_policy_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5402,7 +5402,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -5416,16 +5416,16 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5518,33 +5518,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-stats")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats>();
-        c->parent = this;
-        class_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats>();
+        ent_->parent = this;
+        class_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5709,7 +5709,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "general-stats")
     {
@@ -5749,83 +5749,83 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
 
     if(child_yang_name == "queue-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray>();
-        c->parent = this;
-        queue_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray>();
+        ent_->parent = this;
+        queue_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "police-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray>();
-        c->parent = this;
-        police_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray>();
+        ent_->parent = this;
+        police_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "wred-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray>();
-        c->parent = this;
-        wred_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray>();
+        ent_->parent = this;
+        wred_stats_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(general_stats != nullptr)
     {
-        children["general-stats"] = general_stats;
+        _children["general-stats"] = general_stats;
     }
 
     if(iphc_stats != nullptr)
     {
-        children["iphc-stats"] = iphc_stats;
+        _children["iphc-stats"] = iphc_stats;
     }
 
     if(child_policy != nullptr)
     {
-        children["child-policy"] = child_policy;
+        _children["child-policy"] = child_policy;
     }
 
     if(cac_stats != nullptr)
     {
-        children["cac-stats"] = cac_stats;
+        _children["cac-stats"] = cac_stats;
     }
 
-    count = 0;
-    for (auto c : queue_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : queue_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : police_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : police_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : wred_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : wred_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5966,16 +5966,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6168,16 +6168,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6380,33 +6380,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-stats")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_>();
-        c->parent = this;
-        class_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_>();
+        ent_->parent = this;
+        class_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6567,7 +6567,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "general-stats")
     {
@@ -6598,78 +6598,78 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
 
     if(child_yang_name == "queue-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
-        c->parent = this;
-        queue_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
+        ent_->parent = this;
+        queue_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "police-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
-        c->parent = this;
-        police_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
+        ent_->parent = this;
+        police_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "wred-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
-        c->parent = this;
-        wred_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
+        ent_->parent = this;
+        wred_stats_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(general_stats != nullptr)
     {
-        children["general-stats"] = general_stats;
+        _children["general-stats"] = general_stats;
     }
 
     if(iphc_stats != nullptr)
     {
-        children["iphc-stats"] = iphc_stats;
+        _children["iphc-stats"] = iphc_stats;
     }
 
     if(cac_stats != nullptr)
     {
-        children["cac-stats"] = cac_stats;
+        _children["cac-stats"] = cac_stats;
     }
 
-    count = 0;
-    for (auto c : queue_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : queue_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : police_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : police_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : wred_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : wred_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6810,16 +6810,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7012,16 +7012,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7220,16 +7220,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7454,67 +7454,67 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "queue-instance-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
-        c->parent = this;
-        queue_instance_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
+        ent_->parent = this;
+        queue_instance_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-average-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
-        c->parent = this;
-        queue_average_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
+        ent_->parent = this;
+        queue_average_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-max-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
-        c->parent = this;
-        queue_max_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
+        ent_->parent = this;
+        queue_max_length.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : queue_instance_length.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : queue_instance_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_average_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_average_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_max_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_max_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7767,16 +7767,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7859,16 +7859,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7951,16 +7951,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8092,7 +8092,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "color-class-stats")
     {
@@ -8106,16 +8106,16 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(color_class_stats != nullptr)
     {
-        children["color-class-stats"] = color_class_stats;
+        _children["color-class-stats"] = color_class_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8372,16 +8372,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8664,33 +8664,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "red-label")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
-        c->parent = this;
-        red_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
+        ent_->parent = this;
+        red_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : red_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : red_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8843,16 +8843,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8951,16 +8951,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9185,67 +9185,67 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "queue-instance-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
-        c->parent = this;
-        queue_instance_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
+        ent_->parent = this;
+        queue_instance_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-average-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
-        c->parent = this;
-        queue_average_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
+        ent_->parent = this;
+        queue_average_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-max-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
-        c->parent = this;
-        queue_max_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
+        ent_->parent = this;
+        queue_max_length.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : queue_instance_length.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : queue_instance_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_average_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_average_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_max_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_max_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9498,16 +9498,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9590,16 +9590,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9682,16 +9682,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9823,7 +9823,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "color-class-stats")
     {
@@ -9837,16 +9837,16 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(color_class_stats != nullptr)
     {
-        children["color-class-stats"] = color_class_stats;
+        _children["color-class-stats"] = color_class_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10103,16 +10103,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10395,33 +10395,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "red-label")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel>();
-        c->parent = this;
-        red_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel>();
+        ent_->parent = this;
+        red_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : red_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : red_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10574,16 +10574,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10662,7 +10662,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-policy-names")
     {
@@ -10676,16 +10676,16 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(service_policy_names != nullptr)
     {
-        children["service-policy-names"] = service_policy_names;
+        _children["service-policy-names"] = service_policy_names;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10752,33 +10752,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "service-policy-instance")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance>();
-        c->parent = this;
-        service_policy_instance.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance>();
+        ent_->parent = this;
+        service_policy_instance.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : service_policy_instance.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : service_policy_instance.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10843,7 +10843,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -10857,16 +10857,16 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10959,33 +10959,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-stats")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats>();
-        c->parent = this;
-        class_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats>();
+        ent_->parent = this;
+        class_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11150,7 +11150,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "general-stats")
     {
@@ -11190,83 +11190,83 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
 
     if(child_yang_name == "queue-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray>();
-        c->parent = this;
-        queue_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray>();
+        ent_->parent = this;
+        queue_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "police-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray>();
-        c->parent = this;
-        police_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray>();
+        ent_->parent = this;
+        police_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "wred-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray>();
-        c->parent = this;
-        wred_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray>();
+        ent_->parent = this;
+        wred_stats_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(general_stats != nullptr)
     {
-        children["general-stats"] = general_stats;
+        _children["general-stats"] = general_stats;
     }
 
     if(iphc_stats != nullptr)
     {
-        children["iphc-stats"] = iphc_stats;
+        _children["iphc-stats"] = iphc_stats;
     }
 
     if(child_policy != nullptr)
     {
-        children["child-policy"] = child_policy;
+        _children["child-policy"] = child_policy;
     }
 
     if(cac_stats != nullptr)
     {
-        children["cac-stats"] = cac_stats;
+        _children["cac-stats"] = cac_stats;
     }
 
-    count = 0;
-    for (auto c : queue_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : queue_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : police_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : police_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : wred_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : wred_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11407,16 +11407,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::GeneralStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11609,16 +11609,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11821,33 +11821,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-stats")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_>();
-        c->parent = this;
-        class_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_>();
+        ent_->parent = this;
+        class_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12008,7 +12008,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "general-stats")
     {
@@ -12039,78 +12039,78 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
 
     if(child_yang_name == "queue-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
-        c->parent = this;
-        queue_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
+        ent_->parent = this;
+        queue_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "police-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
-        c->parent = this;
-        police_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
+        ent_->parent = this;
+        police_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "wred-stats-array")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
-        c->parent = this;
-        wred_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
+        ent_->parent = this;
+        wred_stats_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(general_stats != nullptr)
     {
-        children["general-stats"] = general_stats;
+        _children["general-stats"] = general_stats;
     }
 
     if(iphc_stats != nullptr)
     {
-        children["iphc-stats"] = iphc_stats;
+        _children["iphc-stats"] = iphc_stats;
     }
 
     if(cac_stats != nullptr)
     {
-        children["cac-stats"] = cac_stats;
+        _children["cac-stats"] = cac_stats;
     }
 
-    count = 0;
-    for (auto c : queue_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : queue_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : police_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : police_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : wred_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : wred_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12251,16 +12251,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12453,16 +12453,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12661,16 +12661,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12895,67 +12895,67 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "queue-instance-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
-        c->parent = this;
-        queue_instance_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
+        ent_->parent = this;
+        queue_instance_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-average-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
-        c->parent = this;
-        queue_average_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
+        ent_->parent = this;
+        queue_average_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-max-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
-        c->parent = this;
-        queue_max_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
+        ent_->parent = this;
+        queue_max_length.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : queue_instance_length.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : queue_instance_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_average_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_average_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_max_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_max_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13208,16 +13208,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13300,16 +13300,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13392,16 +13392,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13533,7 +13533,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "color-class-stats")
     {
@@ -13547,16 +13547,16 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(color_class_stats != nullptr)
     {
-        children["color-class-stats"] = color_class_stats;
+        _children["color-class-stats"] = color_class_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13813,16 +13813,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14105,33 +14105,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "red-label")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
-        c->parent = this;
-        red_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
+        ent_->parent = this;
+        red_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : red_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : red_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14284,16 +14284,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14392,16 +14392,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14626,67 +14626,67 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "queue-instance-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
-        c->parent = this;
-        queue_instance_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
+        ent_->parent = this;
+        queue_instance_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-average-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
-        c->parent = this;
-        queue_average_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
+        ent_->parent = this;
+        queue_average_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-max-length")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
-        c->parent = this;
-        queue_max_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
+        ent_->parent = this;
+        queue_max_length.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : queue_instance_length.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : queue_instance_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_average_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_average_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_max_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_max_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14939,16 +14939,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15031,16 +15031,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15123,16 +15123,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15264,7 +15264,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "color-class-stats")
     {
@@ -15278,16 +15278,16 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(color_class_stats != nullptr)
     {
-        children["color-class-stats"] = color_class_stats;
+        _children["color-class-stats"] = color_class_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15544,16 +15544,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15836,33 +15836,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "red-label")
     {
-        auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel>();
-        c->parent = this;
-        red_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel>();
+        ent_->parent = this;
+        red_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : red_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : red_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16015,16 +16015,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::Nodes::Node::PolicyMap::Inte
 
 }
 
-std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16110,7 +16110,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vo-q")
     {
@@ -16124,16 +16124,16 @@ std::shared_ptr<Entity> Qos::QosGlobal::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vo_q != nullptr)
     {
-        children["vo-q"] = vo_q;
+        _children["vo-q"] = vo_q;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16199,7 +16199,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vo-q-statistics")
     {
@@ -16213,16 +16213,16 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vo_q_statistics != nullptr)
     {
-        children["vo-q-statistics"] = vo_q_statistics;
+        _children["vo-q-statistics"] = vo_q_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16288,7 +16288,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vo-qinterfaces")
     {
@@ -16302,16 +16302,16 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vo_qinterfaces != nullptr)
     {
-        children["vo-qinterfaces"] = vo_qinterfaces;
+        _children["vo-qinterfaces"] = vo_qinterfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16385,33 +16385,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vo-qinterface")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface>();
-        c->parent = this;
-        vo_qinterface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface>();
+        ent_->parent = this;
+        vo_qinterface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vo_qinterface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vo_qinterface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16487,7 +16487,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output-vo-q")
     {
@@ -16510,21 +16510,21 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(output_vo_q != nullptr)
     {
-        children["output-vo-q"] = output_vo_q;
+        _children["output-vo-q"] = output_vo_q;
     }
 
     if(vo_q_member_interfaces != nullptr)
     {
-        children["vo-q-member-interfaces"] = vo_q_member_interfaces;
+        _children["vo-q-member-interfaces"] = vo_q_member_interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16597,7 +16597,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "locationvo-qs")
     {
@@ -16620,21 +16620,21 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(locationvo_qs != nullptr)
     {
-        children["locationvo-qs"] = locationvo_qs;
+        _children["locationvo-qs"] = locationvo_qs;
     }
 
     if(vo_q_stats != nullptr)
     {
-        children["vo-q-stats"] = vo_q_stats;
+        _children["vo-q-stats"] = vo_q_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16701,33 +16701,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "locationvo-q")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ>();
-        c->parent = this;
-        locationvo_q.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ>();
+        ent_->parent = this;
+        locationvo_q.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : locationvo_q.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : locationvo_q.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16792,7 +16792,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vo-q-stats")
     {
@@ -16806,16 +16806,16 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vo_q_stats != nullptr)
     {
-        children["vo-q-stats"] = vo_q_stats;
+        _children["vo-q-stats"] = vo_q_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16908,33 +16908,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-stats")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats>();
-        c->parent = this;
-        class_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats>();
+        ent_->parent = this;
+        class_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17099,7 +17099,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "general-stats")
     {
@@ -17139,83 +17139,83 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
 
     if(child_yang_name == "queue-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray>();
-        c->parent = this;
-        queue_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray>();
+        ent_->parent = this;
+        queue_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "police-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray>();
-        c->parent = this;
-        police_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray>();
+        ent_->parent = this;
+        police_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "wred-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray>();
-        c->parent = this;
-        wred_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray>();
+        ent_->parent = this;
+        wred_stats_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(general_stats != nullptr)
     {
-        children["general-stats"] = general_stats;
+        _children["general-stats"] = general_stats;
     }
 
     if(iphc_stats != nullptr)
     {
-        children["iphc-stats"] = iphc_stats;
+        _children["iphc-stats"] = iphc_stats;
     }
 
     if(child_policy != nullptr)
     {
-        children["child-policy"] = child_policy;
+        _children["child-policy"] = child_policy;
     }
 
     if(cac_stats != nullptr)
     {
-        children["cac-stats"] = cac_stats;
+        _children["cac-stats"] = cac_stats;
     }
 
-    count = 0;
-    for (auto c : queue_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : queue_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : police_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : police_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : wred_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : wred_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17356,16 +17356,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::GeneralStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::GeneralStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::GeneralStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17558,16 +17558,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::IphcStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::IphcStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::IphcStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17770,33 +17770,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-stats")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_>();
-        c->parent = this;
-        class_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_>();
+        ent_->parent = this;
+        class_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17957,7 +17957,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "general-stats")
     {
@@ -17988,78 +17988,78 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
 
     if(child_yang_name == "queue-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
-        c->parent = this;
-        queue_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
+        ent_->parent = this;
+        queue_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "police-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
-        c->parent = this;
-        police_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
+        ent_->parent = this;
+        police_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "wred-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
-        c->parent = this;
-        wred_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
+        ent_->parent = this;
+        wred_stats_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(general_stats != nullptr)
     {
-        children["general-stats"] = general_stats;
+        _children["general-stats"] = general_stats;
     }
 
     if(iphc_stats != nullptr)
     {
-        children["iphc-stats"] = iphc_stats;
+        _children["iphc-stats"] = iphc_stats;
     }
 
     if(cac_stats != nullptr)
     {
-        children["cac-stats"] = cac_stats;
+        _children["cac-stats"] = cac_stats;
     }
 
-    count = 0;
-    for (auto c : queue_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : queue_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : police_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : police_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : wred_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : wred_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18200,16 +18200,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::GeneralStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18402,16 +18402,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::IphcStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18610,16 +18610,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::CacStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18844,67 +18844,67 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "queue-instance-length")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
-        c->parent = this;
-        queue_instance_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
+        ent_->parent = this;
+        queue_instance_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-average-length")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
-        c->parent = this;
-        queue_average_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
+        ent_->parent = this;
+        queue_average_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-max-length")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
-        c->parent = this;
-        queue_max_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
+        ent_->parent = this;
+        queue_max_length.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : queue_instance_length.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : queue_instance_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_average_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_average_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_max_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_max_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19157,16 +19157,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19249,16 +19249,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19341,16 +19341,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19482,7 +19482,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "color-class-stats")
     {
@@ -19496,16 +19496,16 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(color_class_stats != nullptr)
     {
-        children["color-class-stats"] = color_class_stats;
+        _children["color-class-stats"] = color_class_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19762,16 +19762,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20054,33 +20054,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "red-label")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
-        c->parent = this;
-        red_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
+        ent_->parent = this;
+        red_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : red_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : red_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20233,16 +20233,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20341,16 +20341,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::CacStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::CacStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::CacStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20575,67 +20575,67 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "queue-instance-length")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength>();
-        c->parent = this;
-        queue_instance_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength>();
+        ent_->parent = this;
+        queue_instance_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-average-length")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength>();
-        c->parent = this;
-        queue_average_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength>();
+        ent_->parent = this;
+        queue_average_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-max-length")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength>();
-        c->parent = this;
-        queue_max_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength>();
+        ent_->parent = this;
+        queue_max_length.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : queue_instance_length.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : queue_instance_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_average_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_average_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_max_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_max_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20888,16 +20888,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20980,16 +20980,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21072,16 +21072,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21213,7 +21213,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "color-class-stats")
     {
@@ -21227,16 +21227,16 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(color_class_stats != nullptr)
     {
-        children["color-class-stats"] = color_class_stats;
+        _children["color-class-stats"] = color_class_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21493,16 +21493,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21785,33 +21785,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "red-label")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::RedLabel>();
-        c->parent = this;
-        red_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::RedLabel>();
+        ent_->parent = this;
+        red_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : red_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : red_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21964,16 +21964,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::RedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::RedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22076,33 +22076,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-stats")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats>();
-        c->parent = this;
-        class_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats>();
+        ent_->parent = this;
+        class_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22267,7 +22267,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "general-stats")
     {
@@ -22307,83 +22307,83 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
 
     if(child_yang_name == "queue-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray>();
-        c->parent = this;
-        queue_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray>();
+        ent_->parent = this;
+        queue_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "police-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray>();
-        c->parent = this;
-        police_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray>();
+        ent_->parent = this;
+        police_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "wred-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray>();
-        c->parent = this;
-        wred_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray>();
+        ent_->parent = this;
+        wred_stats_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(general_stats != nullptr)
     {
-        children["general-stats"] = general_stats;
+        _children["general-stats"] = general_stats;
     }
 
     if(iphc_stats != nullptr)
     {
-        children["iphc-stats"] = iphc_stats;
+        _children["iphc-stats"] = iphc_stats;
     }
 
     if(child_policy != nullptr)
     {
-        children["child-policy"] = child_policy;
+        _children["child-policy"] = child_policy;
     }
 
     if(cac_stats != nullptr)
     {
-        children["cac-stats"] = cac_stats;
+        _children["cac-stats"] = cac_stats;
     }
 
-    count = 0;
-    for (auto c : queue_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : queue_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : police_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : police_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : wred_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : wred_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22524,16 +22524,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::GeneralStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::GeneralStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::GeneralStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22726,16 +22726,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::IphcStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::IphcStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::IphcStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22938,33 +22938,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-stats")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_>();
-        c->parent = this;
-        class_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_>();
+        ent_->parent = this;
+        class_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23125,7 +23125,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "general-stats")
     {
@@ -23156,78 +23156,78 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
 
     if(child_yang_name == "queue-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
-        c->parent = this;
-        queue_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
+        ent_->parent = this;
+        queue_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "police-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
-        c->parent = this;
-        police_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
+        ent_->parent = this;
+        police_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "wred-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
-        c->parent = this;
-        wred_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
+        ent_->parent = this;
+        wred_stats_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(general_stats != nullptr)
     {
-        children["general-stats"] = general_stats;
+        _children["general-stats"] = general_stats;
     }
 
     if(iphc_stats != nullptr)
     {
-        children["iphc-stats"] = iphc_stats;
+        _children["iphc-stats"] = iphc_stats;
     }
 
     if(cac_stats != nullptr)
     {
-        children["cac-stats"] = cac_stats;
+        _children["cac-stats"] = cac_stats;
     }
 
-    count = 0;
-    for (auto c : queue_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : queue_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : police_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : police_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : wred_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : wred_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23368,16 +23368,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::GeneralStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23570,16 +23570,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::IphcStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -23778,16 +23778,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::CacStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24012,67 +24012,67 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "queue-instance-length")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
-        c->parent = this;
-        queue_instance_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
+        ent_->parent = this;
+        queue_instance_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-average-length")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
-        c->parent = this;
-        queue_average_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
+        ent_->parent = this;
+        queue_average_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-max-length")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
-        c->parent = this;
-        queue_max_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
+        ent_->parent = this;
+        queue_max_length.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : queue_instance_length.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : queue_instance_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_average_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_average_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_max_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_max_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24325,16 +24325,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24417,16 +24417,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24509,16 +24509,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24650,7 +24650,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "color-class-stats")
     {
@@ -24664,16 +24664,16 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(color_class_stats != nullptr)
     {
-        children["color-class-stats"] = color_class_stats;
+        _children["color-class-stats"] = color_class_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -24930,16 +24930,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25222,33 +25222,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "red-label")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
-        c->parent = this;
-        red_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
+        ent_->parent = this;
+        red_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : red_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : red_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25401,16 +25401,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25509,16 +25509,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::CacStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::CacStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::CacStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::CacStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -25743,67 +25743,67 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "queue-instance-length")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength>();
-        c->parent = this;
-        queue_instance_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength>();
+        ent_->parent = this;
+        queue_instance_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-average-length")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength>();
-        c->parent = this;
-        queue_average_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength>();
+        ent_->parent = this;
+        queue_average_length.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "queue-max-length")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength>();
-        c->parent = this;
-        queue_max_length.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength>();
+        ent_->parent = this;
+        queue_max_length.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : queue_instance_length.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : queue_instance_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_average_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_average_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : queue_max_length.entities())
+    count_ = 0;
+    for (auto ent_ : queue_max_length.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26056,16 +26056,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26148,16 +26148,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26240,16 +26240,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26381,7 +26381,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "color-class-stats")
     {
@@ -26395,16 +26395,16 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(color_class_stats != nullptr)
     {
-        children["color-class-stats"] = color_class_stats;
+        _children["color-class-stats"] = color_class_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26661,16 +26661,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -26953,33 +26953,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "red-label")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::RedLabel>();
-        c->parent = this;
-        red_label.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::RedLabel>();
+        ent_->parent = this;
+        red_label.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : red_label.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : red_label.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27132,16 +27132,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::RedLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::RedLabel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::RedLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27228,33 +27228,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vo-q-member-interface")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface>();
-        c->parent = this;
-        vo_q_member_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface>();
+        ent_->parent = this;
+        vo_q_member_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vo_q_member_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vo_q_member_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27319,7 +27319,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vo-qoutput")
     {
@@ -27333,16 +27333,16 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vo_qoutput != nullptr)
     {
-        children["vo-qoutput"] = vo_qoutput;
+        _children["vo-qoutput"] = vo_qoutput;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27411,7 +27411,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vo-q-stats")
     {
@@ -27425,16 +27425,16 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vo_q_stats != nullptr)
     {
-        children["vo-q-stats"] = vo_q_stats;
+        _children["vo-q-stats"] = vo_q_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27517,33 +27517,33 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-stats")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats>();
-        c->parent = this;
-        class_stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats>();
+        ent_->parent = this;
+        class_stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : class_stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : class_stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27708,7 +27708,7 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "general-stats")
     {
@@ -27748,83 +27748,83 @@ std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQin
 
     if(child_yang_name == "queue-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray>();
-        c->parent = this;
-        queue_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray>();
+        ent_->parent = this;
+        queue_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "police-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::PoliceStatsArray>();
-        c->parent = this;
-        police_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::PoliceStatsArray>();
+        ent_->parent = this;
+        police_stats_array.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "wred-stats-array")
     {
-        auto c = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray>();
-        c->parent = this;
-        wred_stats_array.append(c);
-        return c;
+        auto ent_ = std::make_shared<Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray>();
+        ent_->parent = this;
+        wred_stats_array.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(general_stats != nullptr)
     {
-        children["general-stats"] = general_stats;
+        _children["general-stats"] = general_stats;
     }
 
     if(iphc_stats != nullptr)
     {
-        children["iphc-stats"] = iphc_stats;
+        _children["iphc-stats"] = iphc_stats;
     }
 
     if(child_policy != nullptr)
     {
-        children["child-policy"] = child_policy;
+        _children["child-policy"] = child_policy;
     }
 
     if(cac_stats != nullptr)
     {
-        children["cac-stats"] = cac_stats;
+        _children["cac-stats"] = cac_stats;
     }
 
-    count = 0;
-    for (auto c : queue_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : queue_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : police_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : police_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : wred_stats_array.entities())
+    count_ = 0;
+    for (auto ent_ : wred_stats_array.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -27965,16 +27965,16 @@ std::vector<std::pair<std::string, LeafData> > Qos::QosGlobal::VoQ::VoQStatistic
 
 }
 
-std::shared_ptr<Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::GeneralStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::GeneralStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::GeneralStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::GeneralStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

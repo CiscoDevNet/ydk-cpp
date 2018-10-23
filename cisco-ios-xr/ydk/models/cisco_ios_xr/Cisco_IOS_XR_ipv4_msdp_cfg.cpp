@@ -65,7 +65,7 @@ std::vector<std::pair<std::string, LeafData> > Msdp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Msdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
@@ -88,21 +88,21 @@ std::shared_ptr<Entity> Msdp::get_child_by_name(const std::string & child_yang_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
     if(default_context != nullptr)
     {
-        children["default-context"] = default_context;
+        _children["default-context"] = default_context;
     }
 
-    return children;
+    return _children;
 }
 
 void Msdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -133,7 +133,7 @@ void Msdp::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Msdp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Msdp::clone_ptr() const
 {
     return std::make_shared<Msdp>();
 }
@@ -221,33 +221,33 @@ std::vector<std::pair<std::string, LeafData> > Msdp::Vrfs::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Msdp::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Msdp::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Msdp::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Msdp::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -354,7 +354,7 @@ std::vector<std::pair<std::string, LeafData> > Msdp::Vrfs::Vrf::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Msdp::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cache-state")
     {
@@ -395,31 +395,31 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cache_state != nullptr)
     {
-        children["cache-state"] = cache_state;
+        _children["cache-state"] = cache_state;
     }
 
     if(keep_alive != nullptr)
     {
-        children["keep-alive"] = keep_alive;
+        _children["keep-alive"] = keep_alive;
     }
 
     if(peers != nullptr)
     {
-        children["peers"] = peers;
+        _children["peers"] = peers;
     }
 
     if(sa_filters != nullptr)
     {
-        children["sa-filters"] = sa_filters;
+        _children["sa-filters"] = sa_filters;
     }
 
-    return children;
+    return _children;
 }
 
 void Msdp::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -556,16 +556,16 @@ std::vector<std::pair<std::string, LeafData> > Msdp::Vrfs::Vrf::CacheState::get_
 
 }
 
-std::shared_ptr<Entity> Msdp::Vrfs::Vrf::CacheState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::Vrfs::Vrf::CacheState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::CacheState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::Vrfs::Vrf::CacheState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Msdp::Vrfs::Vrf::CacheState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -658,16 +658,16 @@ std::vector<std::pair<std::string, LeafData> > Msdp::Vrfs::Vrf::KeepAlive::get_n
 
 }
 
-std::shared_ptr<Entity> Msdp::Vrfs::Vrf::KeepAlive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::Vrfs::Vrf::KeepAlive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::KeepAlive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::Vrfs::Vrf::KeepAlive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Msdp::Vrfs::Vrf::KeepAlive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -754,33 +754,33 @@ std::vector<std::pair<std::string, LeafData> > Msdp::Vrfs::Vrf::Peers::get_name_
 
 }
 
-std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::Vrfs::Vrf::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer")
     {
-        auto c = std::make_shared<Msdp::Vrfs::Vrf::Peers::Peer>();
-        c->parent = this;
-        peer.append(c);
-        return c;
+        auto ent_ = std::make_shared<Msdp::Vrfs::Vrf::Peers::Peer>();
+        ent_->parent = this;
+        peer.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::Vrfs::Vrf::Peers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : peer.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : peer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Msdp::Vrfs::Vrf::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -887,7 +887,7 @@ std::vector<std::pair<std::string, LeafData> > Msdp::Vrfs::Vrf::Peers::Peer::get
 
 }
 
-std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::Vrfs::Vrf::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "remote-as")
     {
@@ -919,26 +919,26 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::Peer::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::Peer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::Vrfs::Vrf::Peers::Peer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(remote_as != nullptr)
     {
-        children["remote-as"] = remote_as;
+        _children["remote-as"] = remote_as;
     }
 
     if(keep_alive != nullptr)
     {
-        children["keep-alive"] = keep_alive;
+        _children["keep-alive"] = keep_alive;
     }
 
     if(sa_filters != nullptr)
     {
-        children["sa-filters"] = sa_filters;
+        _children["sa-filters"] = sa_filters;
     }
 
-    return children;
+    return _children;
 }
 
 void Msdp::Vrfs::Vrf::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1101,16 +1101,16 @@ std::vector<std::pair<std::string, LeafData> > Msdp::Vrfs::Vrf::Peers::Peer::Rem
 
 }
 
-std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::Peer::RemoteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::Vrfs::Vrf::Peers::Peer::RemoteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::Peer::RemoteAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::Vrfs::Vrf::Peers::Peer::RemoteAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Msdp::Vrfs::Vrf::Peers::Peer::RemoteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1193,16 +1193,16 @@ std::vector<std::pair<std::string, LeafData> > Msdp::Vrfs::Vrf::Peers::Peer::Kee
 
 }
 
-std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::Peer::KeepAlive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::Vrfs::Vrf::Peers::Peer::KeepAlive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::Peer::KeepAlive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::Vrfs::Vrf::Peers::Peer::KeepAlive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Msdp::Vrfs::Vrf::Peers::Peer::KeepAlive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1289,33 +1289,33 @@ std::vector<std::pair<std::string, LeafData> > Msdp::Vrfs::Vrf::Peers::Peer::SaF
 
 }
 
-std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sa-filter")
     {
-        auto c = std::make_shared<Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter>();
-        c->parent = this;
-        sa_filter.append(c);
-        return c;
+        auto ent_ = std::make_shared<Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter>();
+        ent_->parent = this;
+        sa_filter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sa_filter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sa_filter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1384,16 +1384,16 @@ std::vector<std::pair<std::string, LeafData> > Msdp::Vrfs::Vrf::Peers::Peer::SaF
 
 }
 
-std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1490,33 +1490,33 @@ std::vector<std::pair<std::string, LeafData> > Msdp::Vrfs::Vrf::SaFilters::get_n
 
 }
 
-std::shared_ptr<Entity> Msdp::Vrfs::Vrf::SaFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::Vrfs::Vrf::SaFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sa-filter")
     {
-        auto c = std::make_shared<Msdp::Vrfs::Vrf::SaFilters::SaFilter>();
-        c->parent = this;
-        sa_filter.append(c);
-        return c;
+        auto ent_ = std::make_shared<Msdp::Vrfs::Vrf::SaFilters::SaFilter>();
+        ent_->parent = this;
+        sa_filter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::SaFilters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::Vrfs::Vrf::SaFilters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sa_filter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sa_filter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Msdp::Vrfs::Vrf::SaFilters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1585,16 +1585,16 @@ std::vector<std::pair<std::string, LeafData> > Msdp::Vrfs::Vrf::SaFilters::SaFil
 
 }
 
-std::shared_ptr<Entity> Msdp::Vrfs::Vrf::SaFilters::SaFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::Vrfs::Vrf::SaFilters::SaFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::SaFilters::SaFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::Vrfs::Vrf::SaFilters::SaFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Msdp::Vrfs::Vrf::SaFilters::SaFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1726,7 +1726,7 @@ std::vector<std::pair<std::string, LeafData> > Msdp::DefaultContext::get_name_le
 
 }
 
-std::shared_ptr<Entity> Msdp::DefaultContext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::DefaultContext::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cache-state")
     {
@@ -1767,31 +1767,31 @@ std::shared_ptr<Entity> Msdp::DefaultContext::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::DefaultContext::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cache_state != nullptr)
     {
-        children["cache-state"] = cache_state;
+        _children["cache-state"] = cache_state;
     }
 
     if(keep_alive != nullptr)
     {
-        children["keep-alive"] = keep_alive;
+        _children["keep-alive"] = keep_alive;
     }
 
     if(peers != nullptr)
     {
-        children["peers"] = peers;
+        _children["peers"] = peers;
     }
 
     if(sa_filters != nullptr)
     {
-        children["sa-filters"] = sa_filters;
+        _children["sa-filters"] = sa_filters;
     }
 
-    return children;
+    return _children;
 }
 
 void Msdp::DefaultContext::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1925,16 +1925,16 @@ std::vector<std::pair<std::string, LeafData> > Msdp::DefaultContext::CacheState:
 
 }
 
-std::shared_ptr<Entity> Msdp::DefaultContext::CacheState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::DefaultContext::CacheState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::CacheState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::DefaultContext::CacheState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Msdp::DefaultContext::CacheState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2034,16 +2034,16 @@ std::vector<std::pair<std::string, LeafData> > Msdp::DefaultContext::KeepAlive::
 
 }
 
-std::shared_ptr<Entity> Msdp::DefaultContext::KeepAlive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::DefaultContext::KeepAlive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::KeepAlive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::DefaultContext::KeepAlive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Msdp::DefaultContext::KeepAlive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2137,33 +2137,33 @@ std::vector<std::pair<std::string, LeafData> > Msdp::DefaultContext::Peers::get_
 
 }
 
-std::shared_ptr<Entity> Msdp::DefaultContext::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::DefaultContext::Peers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer")
     {
-        auto c = std::make_shared<Msdp::DefaultContext::Peers::Peer>();
-        c->parent = this;
-        peer.append(c);
-        return c;
+        auto ent_ = std::make_shared<Msdp::DefaultContext::Peers::Peer>();
+        ent_->parent = this;
+        peer.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::DefaultContext::Peers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : peer.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : peer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Msdp::DefaultContext::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2277,7 +2277,7 @@ std::vector<std::pair<std::string, LeafData> > Msdp::DefaultContext::Peers::Peer
 
 }
 
-std::shared_ptr<Entity> Msdp::DefaultContext::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::DefaultContext::Peers::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "remote-as")
     {
@@ -2309,26 +2309,26 @@ std::shared_ptr<Entity> Msdp::DefaultContext::Peers::Peer::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::Peer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::DefaultContext::Peers::Peer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(remote_as != nullptr)
     {
-        children["remote-as"] = remote_as;
+        _children["remote-as"] = remote_as;
     }
 
     if(keep_alive != nullptr)
     {
-        children["keep-alive"] = keep_alive;
+        _children["keep-alive"] = keep_alive;
     }
 
     if(sa_filters != nullptr)
     {
-        children["sa-filters"] = sa_filters;
+        _children["sa-filters"] = sa_filters;
     }
 
-    return children;
+    return _children;
 }
 
 void Msdp::DefaultContext::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2491,16 +2491,16 @@ std::vector<std::pair<std::string, LeafData> > Msdp::DefaultContext::Peers::Peer
 
 }
 
-std::shared_ptr<Entity> Msdp::DefaultContext::Peers::Peer::RemoteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::DefaultContext::Peers::Peer::RemoteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::Peer::RemoteAs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::DefaultContext::Peers::Peer::RemoteAs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Msdp::DefaultContext::Peers::Peer::RemoteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2583,16 +2583,16 @@ std::vector<std::pair<std::string, LeafData> > Msdp::DefaultContext::Peers::Peer
 
 }
 
-std::shared_ptr<Entity> Msdp::DefaultContext::Peers::Peer::KeepAlive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::DefaultContext::Peers::Peer::KeepAlive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::Peer::KeepAlive::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::DefaultContext::Peers::Peer::KeepAlive::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Msdp::DefaultContext::Peers::Peer::KeepAlive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2679,33 +2679,33 @@ std::vector<std::pair<std::string, LeafData> > Msdp::DefaultContext::Peers::Peer
 
 }
 
-std::shared_ptr<Entity> Msdp::DefaultContext::Peers::Peer::SaFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::DefaultContext::Peers::Peer::SaFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sa-filter")
     {
-        auto c = std::make_shared<Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter>();
-        c->parent = this;
-        sa_filter.append(c);
-        return c;
+        auto ent_ = std::make_shared<Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter>();
+        ent_->parent = this;
+        sa_filter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::Peer::SaFilters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::DefaultContext::Peers::Peer::SaFilters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sa_filter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sa_filter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Msdp::DefaultContext::Peers::Peer::SaFilters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2774,16 +2774,16 @@ std::vector<std::pair<std::string, LeafData> > Msdp::DefaultContext::Peers::Peer
 
 }
 
-std::shared_ptr<Entity> Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2887,33 +2887,33 @@ std::vector<std::pair<std::string, LeafData> > Msdp::DefaultContext::SaFilters::
 
 }
 
-std::shared_ptr<Entity> Msdp::DefaultContext::SaFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::DefaultContext::SaFilters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sa-filter")
     {
-        auto c = std::make_shared<Msdp::DefaultContext::SaFilters::SaFilter>();
-        c->parent = this;
-        sa_filter.append(c);
-        return c;
+        auto ent_ = std::make_shared<Msdp::DefaultContext::SaFilters::SaFilter>();
+        ent_->parent = this;
+        sa_filter.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::SaFilters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::DefaultContext::SaFilters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sa_filter.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sa_filter.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Msdp::DefaultContext::SaFilters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2989,16 +2989,16 @@ std::vector<std::pair<std::string, LeafData> > Msdp::DefaultContext::SaFilters::
 
 }
 
-std::shared_ptr<Entity> Msdp::DefaultContext::SaFilters::SaFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Msdp::DefaultContext::SaFilters::SaFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::SaFilters::SaFilter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Msdp::DefaultContext::SaFilters::SaFilter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Msdp::DefaultContext::SaFilters::SaFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

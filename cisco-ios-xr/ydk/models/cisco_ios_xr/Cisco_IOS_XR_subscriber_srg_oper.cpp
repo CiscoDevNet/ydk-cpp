@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyManager::get_
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "groups")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> SubscriberRedundancyManager::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyManager::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(groups != nullptr)
     {
-        children["groups"] = groups;
+        _children["groups"] = groups;
     }
 
     if(summary != nullptr)
     {
-        children["summary"] = summary;
+        _children["summary"] = summary;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancyManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void SubscriberRedundancyManager::set_filter(const std::string & value_path, YFi
 {
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyManager::clone_ptr() const
+std::shared_ptr<ydk::Entity> SubscriberRedundancyManager::clone_ptr() const
 {
     return std::make_shared<SubscriberRedundancyManager>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyManager::Grou
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyManager::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyManager::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group")
     {
-        auto c = std::make_shared<SubscriberRedundancyManager::Groups::Group>();
-        c->parent = this;
-        group.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancyManager::Groups::Group>();
+        ent_->parent = this;
+        group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::Groups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyManager::Groups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancyManager::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -355,16 +355,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyManager::Grou
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyManager::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyManager::Groups::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::Groups::Group::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyManager::Groups::Group::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancyManager::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -630,16 +630,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyManager::Summ
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyManager::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyManager::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyManager::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancyManager::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -873,33 +873,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyManager::Inte
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyManager::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyManager::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<SubscriberRedundancyManager::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancyManager::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyManager::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancyManager::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -986,16 +986,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyManager::Inte
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyManager::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyManager::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyManager::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancyManager::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1114,7 +1114,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::get_na
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -1128,16 +1128,16 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1148,7 +1148,7 @@ void SubscriberRedundancyAgent::set_filter(const std::string & value_path, YFilt
 {
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::clone_ptr() const
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::clone_ptr() const
 {
     return std::make_shared<SubscriberRedundancyAgent>();
 }
@@ -1236,33 +1236,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancyAgent::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1346,7 +1346,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-id-xr")
     {
@@ -1387,31 +1387,31 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(group_id_xr != nullptr)
     {
-        children["group-id-xr"] = group_id_xr;
+        _children["group-id-xr"] = group_id_xr;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
     if(group_summaries != nullptr)
     {
-        children["group-summaries"] = group_summaries;
+        _children["group-summaries"] = group_summaries;
     }
 
     if(group_ids != nullptr)
     {
-        children["group-ids"] = group_ids;
+        _children["group-ids"] = group_ids;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1488,33 +1488,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-id")
     {
-        auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId>();
-        c->parent = this;
-        group_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId>();
+        ent_->parent = this;
+        group_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1637,50 +1637,50 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-detailed-information")
     {
-        auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation>();
-        c->parent = this;
-        session_detailed_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation>();
+        ent_->parent = this;
+        session_detailed_information.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "session-sync-error-information")
     {
-        auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation>();
-        c->parent = this;
-        session_sync_error_information.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation>();
+        ent_->parent = this;
+        session_sync_error_information.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session_detailed_information.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session_detailed_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : session_sync_error_information.entities())
+    count_ = 0;
+    for (auto ent_ : session_sync_error_information.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1865,16 +1865,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1991,16 +1991,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2097,33 +2097,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2247,7 +2247,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-oper")
     {
@@ -2269,39 +2269,39 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Inte
 
     if(child_yang_name == "client-status")
     {
-        auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus>();
-        c->parent = this;
-        client_status.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus>();
+        ent_->parent = this;
+        client_status.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(interface_oper != nullptr)
     {
-        children["interface-oper"] = interface_oper;
+        _children["interface-oper"] = interface_oper;
     }
 
     if(interface_status != nullptr)
     {
-        children["interface-status"] = interface_status;
+        _children["interface-status"] = interface_status;
     }
 
-    count = 0;
-    for (auto c : client_status.entities())
+    count_ = 0;
+    for (auto ent_ : client_status.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2496,16 +2496,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2642,16 +2642,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2802,16 +2802,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2918,33 +2918,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-summary")
     {
-        auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary>();
-        c->parent = this;
-        group_summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary>();
+        ent_->parent = this;
+        group_summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group_summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group_summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3052,16 +3052,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3258,33 +3258,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-id")
     {
-        auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId>();
-        c->parent = this;
-        group_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId>();
+        ent_->parent = this;
+        group_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : group_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : group_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::GroupIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3508,33 +3508,33 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3995,16 +3995,16 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancyAgent::Nodes:
 
 }
 
-std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

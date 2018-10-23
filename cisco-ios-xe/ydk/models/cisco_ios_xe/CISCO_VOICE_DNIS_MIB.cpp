@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDNISMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVOICEDNISMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvDnisMappingTable")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> CISCOVOICEDNISMIB::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVOICEDNISMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cvdnismappingtable != nullptr)
     {
-        children["cvDnisMappingTable"] = cvdnismappingtable;
+        _children["cvDnisMappingTable"] = cvdnismappingtable;
     }
 
     if(cvdnisnodetable != nullptr)
     {
-        children["cvDnisNodeTable"] = cvdnisnodetable;
+        _children["cvDnisNodeTable"] = cvdnisnodetable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVOICEDNISMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void CISCOVOICEDNISMIB::set_filter(const std::string & value_path, YFilter yfilt
 {
 }
 
-std::shared_ptr<Entity> CISCOVOICEDNISMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOVOICEDNISMIB::clone_ptr() const
 {
     return std::make_shared<CISCOVOICEDNISMIB>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::CvDnisMappingT
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDNISMIB::CvDnisMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVOICEDNISMIB::CvDnisMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvDnisMappingEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry>();
-        c->parent = this;
-        cvdnismappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry>();
+        ent_->parent = this;
+        cvdnismappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::CvDnisMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVOICEDNISMIB::CvDnisMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cvdnismappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cvdnismappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVOICEDNISMIB::CvDnisMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -301,16 +301,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::CvDnisMappingT
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVOICEDNISMIB::CvDnisMappingTable::CvDnisMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -434,33 +434,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::CvDnisNodeTabl
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDNISMIB::CvDnisNodeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVOICEDNISMIB::CvDnisNodeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvDnisNodeEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry>();
-        c->parent = this;
-        cvdnisnodeentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry>();
+        ent_->parent = this;
+        cvdnisnodeentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::CvDnisNodeTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVOICEDNISMIB::CvDnisNodeTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cvdnisnodeentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cvdnisnodeentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOVOICEDNISMIB::CvDnisNodeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -544,16 +544,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDNISMIB::CvDnisNodeTabl
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOVOICEDNISMIB::CvDnisNodeTable::CvDnisNodeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

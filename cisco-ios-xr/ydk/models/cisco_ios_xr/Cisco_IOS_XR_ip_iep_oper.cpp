@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > ExplicitPaths::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> ExplicitPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ExplicitPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "identifiers")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> ExplicitPaths::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ExplicitPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(identifiers != nullptr)
     {
-        children["identifiers"] = identifiers;
+        _children["identifiers"] = identifiers;
     }
 
     if(names != nullptr)
     {
-        children["names"] = names;
+        _children["names"] = names;
     }
 
-    return children;
+    return _children;
 }
 
 void ExplicitPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void ExplicitPaths::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ExplicitPaths::clone_ptr() const
+std::shared_ptr<ydk::Entity> ExplicitPaths::clone_ptr() const
 {
     return std::make_shared<ExplicitPaths>();
 }
@@ -192,33 +192,33 @@ std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Identifiers::get_n
 
 }
 
-std::shared_ptr<Entity> ExplicitPaths::Identifiers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ExplicitPaths::Identifiers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "identifier")
     {
-        auto c = std::make_shared<ExplicitPaths::Identifiers::Identifier>();
-        c->parent = this;
-        identifier.append(c);
-        return c;
+        auto ent_ = std::make_shared<ExplicitPaths::Identifiers::Identifier>();
+        ent_->parent = this;
+        identifier.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Identifiers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ExplicitPaths::Identifiers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : identifier.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : identifier.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ExplicitPaths::Identifiers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -301,33 +301,33 @@ std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Identifiers::Ident
 
 }
 
-std::shared_ptr<Entity> ExplicitPaths::Identifiers::Identifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ExplicitPaths::Identifiers::Identifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
-        auto c = std::make_shared<ExplicitPaths::Identifiers::Identifier::Address>();
-        c->parent = this;
-        address.append(c);
-        return c;
+        auto ent_ = std::make_shared<ExplicitPaths::Identifiers::Identifier::Address>();
+        ent_->parent = this;
+        address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Identifiers::Identifier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ExplicitPaths::Identifiers::Identifier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ExplicitPaths::Identifiers::Identifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -426,16 +426,16 @@ std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Identifiers::Ident
 
 }
 
-std::shared_ptr<Entity> ExplicitPaths::Identifiers::Identifier::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ExplicitPaths::Identifiers::Identifier::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Identifiers::Identifier::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ExplicitPaths::Identifiers::Identifier::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ExplicitPaths::Identifiers::Identifier::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -569,33 +569,33 @@ std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Names::get_name_le
 
 }
 
-std::shared_ptr<Entity> ExplicitPaths::Names::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ExplicitPaths::Names::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "name")
     {
-        auto c = std::make_shared<ExplicitPaths::Names::Name>();
-        c->parent = this;
-        name.append(c);
-        return c;
+        auto ent_ = std::make_shared<ExplicitPaths::Names::Name>();
+        ent_->parent = this;
+        name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Names::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ExplicitPaths::Names::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ExplicitPaths::Names::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -678,33 +678,33 @@ std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Names::Name::get_n
 
 }
 
-std::shared_ptr<Entity> ExplicitPaths::Names::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ExplicitPaths::Names::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
-        auto c = std::make_shared<ExplicitPaths::Names::Name::Address>();
-        c->parent = this;
-        address.append(c);
-        return c;
+        auto ent_ = std::make_shared<ExplicitPaths::Names::Name::Address>();
+        ent_->parent = this;
+        address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Names::Name::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ExplicitPaths::Names::Name::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ExplicitPaths::Names::Name::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -803,16 +803,16 @@ std::vector<std::pair<std::string, LeafData> > ExplicitPaths::Names::Name::Addre
 
 }
 
-std::shared_ptr<Entity> ExplicitPaths::Names::Name::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ExplicitPaths::Names::Name::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Names::Name::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ExplicitPaths::Names::Name::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ExplicitPaths::Names::Name::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

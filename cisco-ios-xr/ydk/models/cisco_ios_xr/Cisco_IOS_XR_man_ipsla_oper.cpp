@@ -64,7 +64,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Ipsla::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mpls-data")
     {
@@ -105,31 +105,31 @@ std::shared_ptr<Entity> Ipsla::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mpls_data != nullptr)
     {
-        children["mpls-data"] = mpls_data;
+        _children["mpls-data"] = mpls_data;
     }
 
     if(responder != nullptr)
     {
-        children["responder"] = responder;
+        _children["responder"] = responder;
     }
 
     if(operation_data != nullptr)
     {
-        children["operation-data"] = operation_data;
+        _children["operation-data"] = operation_data;
     }
 
     if(application_info != nullptr)
     {
-        children["application-info"] = application_info;
+        _children["application-info"] = application_info;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -140,7 +140,7 @@ void Ipsla::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Ipsla::clone_ptr() const
+std::shared_ptr<ydk::Entity> Ipsla::clone_ptr() const
 {
     return std::make_shared<Ipsla>();
 }
@@ -224,7 +224,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsp-monitors")
     {
@@ -247,21 +247,21 @@ std::shared_ptr<Entity> Ipsla::MplsData::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsp_monitors != nullptr)
     {
-        children["lsp-monitors"] = lsp_monitors;
+        _children["lsp-monitors"] = lsp_monitors;
     }
 
     if(discovery != nullptr)
     {
-        children["discovery"] = discovery;
+        _children["discovery"] = discovery;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::MplsData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -335,33 +335,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::LspMonitors::get
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::LspMonitors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsp-monitor")
     {
-        auto c = std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor>();
-        c->parent = this;
-        lsp_monitor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor>();
+        ent_->parent = this;
+        lsp_monitor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::LspMonitors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lsp_monitor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lsp_monitor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::MplsData::LspMonitors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -441,7 +441,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::LspMonitors::Lsp
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::LspMonitors::LspMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -473,26 +473,26 @@ std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(operations != nullptr)
     {
-        children["operations"] = operations;
+        _children["operations"] = operations;
     }
 
     if(scan_queues != nullptr)
     {
-        children["scan-queues"] = scan_queues;
+        _children["scan-queues"] = scan_queues;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::MplsData::LspMonitors::LspMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -573,16 +573,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::LspMonitors::Lsp
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::LspMonitors::LspMonitor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::MplsData::LspMonitors::LspMonitor::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -689,33 +689,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::LspMonitors::Lsp
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "operation")
     {
-        auto c = std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation>();
-        c->parent = this;
-        operation_.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation>();
+        ent_->parent = this;
+        operation_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : operation_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : operation_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::MplsData::LspMonitors::LspMonitor::Operations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -784,7 +784,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::LspMonitors::Lsp
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -807,21 +807,21 @@ std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Op
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(lpd_paths != nullptr)
     {
-        children["lpd-paths"] = lpd_paths;
+        _children["lpd-paths"] = lpd_paths;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -902,16 +902,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::LspMonitors::Lsp
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1018,33 +1018,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::LspMonitors::Lsp
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lpd-path")
     {
-        auto c = std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath>();
-        c->parent = this;
-        lpd_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath>();
+        ent_->parent = this;
+        lpd_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lpd_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lpd_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1129,7 +1129,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::LspMonitors::Lsp
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-id")
     {
@@ -1143,16 +1143,16 @@ std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Op
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_id != nullptr)
     {
-        children["path-id"] = path_id;
+        _children["path-id"] = path_id;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1293,16 +1293,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::LspMonitors::Lsp
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::PathId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::PathId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::PathId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::PathId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath::PathId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1407,33 +1407,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::LspMonitors::Lsp
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "scan-queue")
     {
-        auto c = std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue>();
-        c->parent = this;
-        scan_queue.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue>();
+        ent_->parent = this;
+        scan_queue.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : scan_queue.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : scan_queue.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1505,16 +1505,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::LspMonitors::Lsp
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1620,7 +1620,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::Discovery::get_n
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::Discovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::Discovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vpn")
     {
@@ -1634,16 +1634,16 @@ std::shared_ptr<Entity> Ipsla::MplsData::Discovery::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::Discovery::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::Discovery::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vpn != nullptr)
     {
-        children["vpn"] = vpn;
+        _children["vpn"] = vpn;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::MplsData::Discovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1713,7 +1713,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::Discovery::Vpn::
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::Discovery::Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::Discovery::Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -1736,21 +1736,21 @@ std::shared_ptr<Entity> Ipsla::MplsData::Discovery::Vpn::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::Discovery::Vpn::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::Discovery::Vpn::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(nexthops != nullptr)
     {
-        children["nexthops"] = nexthops;
+        _children["nexthops"] = nexthops;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::MplsData::Discovery::Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1816,16 +1816,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::Discovery::Vpn::
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::Discovery::Vpn::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::Discovery::Vpn::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::Discovery::Vpn::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::Discovery::Vpn::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::MplsData::Discovery::Vpn::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1909,33 +1909,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::Discovery::Vpn::
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::Discovery::Vpn::Nexthops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::Discovery::Vpn::Nexthops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nexthop")
     {
-        auto c = std::make_shared<Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop>();
-        c->parent = this;
-        nexthop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop>();
+        ent_->parent = this;
+        nexthop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::Discovery::Vpn::Nexthops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::Discovery::Vpn::Nexthops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nexthop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nexthop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::MplsData::Discovery::Vpn::Nexthops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2011,7 +2011,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::Discovery::Vpn::
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
@@ -2034,21 +2034,21 @@ std::shared_ptr<Entity> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(vrfs != nullptr)
     {
-        children["vrfs"] = vrfs;
+        _children["vrfs"] = vrfs;
     }
 
     if(prefix != nullptr)
     {
-        children["prefix"] = prefix;
+        _children["prefix"] = prefix;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2125,33 +2125,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::Discovery::Vpn::
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf>();
-        c->parent = this;
-        vrf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf>();
+        ent_->parent = this;
+        vrf.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : vrf.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2215,16 +2215,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::Discovery::Vpn::
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2307,16 +2307,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::MplsData::Discovery::Vpn::
 
 }
 
-std::shared_ptr<Entity> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2402,7 +2402,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::Responder::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Ipsla::Responder::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::Responder::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ports")
     {
@@ -2416,16 +2416,16 @@ std::shared_ptr<Entity> Ipsla::Responder::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::Responder::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::Responder::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ports != nullptr)
     {
-        children["ports"] = ports;
+        _children["ports"] = ports;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::Responder::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2499,33 +2499,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::Responder::Ports::get_name
 
 }
 
-std::shared_ptr<Entity> Ipsla::Responder::Ports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::Responder::Ports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "port")
     {
-        auto c = std::make_shared<Ipsla::Responder::Ports::Port>();
-        c->parent = this;
-        port.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::Responder::Ports::Port>();
+        ent_->parent = this;
+        port.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::Responder::Ports::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::Responder::Ports::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : port.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : port.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::Responder::Ports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2644,33 +2644,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::Responder::Ports::Port::ge
 
 }
 
-std::shared_ptr<Entity> Ipsla::Responder::Ports::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::Responder::Ports::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sender")
     {
-        auto c = std::make_shared<Ipsla::Responder::Ports::Port::Sender>();
-        c->parent = this;
-        sender.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::Responder::Ports::Port::Sender>();
+        ent_->parent = this;
+        sender.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::Responder::Ports::Port::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::Responder::Ports::Port::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sender.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sender.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::Responder::Ports::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2847,16 +2847,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::Responder::Ports::Port::Se
 
 }
 
-std::shared_ptr<Entity> Ipsla::Responder::Ports::Port::Sender::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::Responder::Ports::Port::Sender::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::Responder::Ports::Port::Sender::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::Responder::Ports::Port::Sender::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::Responder::Ports::Port::Sender::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2952,7 +2952,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::get_name_le
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "operations")
     {
@@ -2966,16 +2966,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(operations != nullptr)
     {
-        children["operations"] = operations;
+        _children["operations"] = operations;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3049,33 +3049,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "operation")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation>();
-        c->parent = this;
-        operation_.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation>();
+        ent_->parent = this;
+        operation_.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : operation_.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : operation_.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3159,7 +3159,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common")
     {
@@ -3200,31 +3200,31 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common != nullptr)
     {
-        children["common"] = common;
+        _children["common"] = common;
     }
 
     if(lpd != nullptr)
     {
-        children["lpd"] = lpd;
+        _children["lpd"] = lpd;
     }
 
     if(history != nullptr)
     {
-        children["history"] = history;
+        _children["history"] = history;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3293,7 +3293,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Common::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "operational-state")
     {
@@ -3307,16 +3307,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Common::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Common::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Common::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(operational_state != nullptr)
     {
-        children["operational-state"] = operational_state;
+        _children["operational-state"] = operational_state;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Common::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3423,16 +3423,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Common::OperationalState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Common::OperationalState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Common::OperationalState::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Common::OperationalState::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Common::OperationalState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3625,7 +3625,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -3648,21 +3648,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(status != nullptr)
     {
-        children["status"] = status;
+        _children["status"] = status;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3725,7 +3725,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "latest")
     {
@@ -3748,21 +3748,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statis
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(latest != nullptr)
     {
-        children["latest"] = latest;
+        _children["latest"] = latest;
     }
 
     if(aggregated != nullptr)
     {
-        children["aggregated"] = aggregated;
+        _children["aggregated"] = aggregated;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3821,7 +3821,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "target")
     {
@@ -3835,16 +3835,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statis
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(target != nullptr)
     {
-        children["target"] = target;
+        _children["target"] = target;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3976,7 +3976,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "target-address")
     {
@@ -3990,16 +3990,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statis
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(target_address != nullptr)
     {
-        children["target-address"] = target_address;
+        _children["target-address"] = target_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4259,7 +4259,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-prefix-target")
     {
@@ -4291,26 +4291,26 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statis
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_prefix_target != nullptr)
     {
-        children["ipv4-prefix-target"] = ipv4_prefix_target;
+        _children["ipv4-prefix-target"] = ipv4_prefix_target;
     }
 
     if(tunnel_id_target != nullptr)
     {
-        children["tunnel-id-target"] = tunnel_id_target;
+        _children["tunnel-id-target"] = tunnel_id_target;
     }
 
     if(ipv4_pseudowire_target != nullptr)
     {
-        children["ipv4-pseudowire-target"] = ipv4_pseudowire_target;
+        _children["ipv4-pseudowire-target"] = ipv4_pseudowire_target;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4403,16 +4403,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PrefixTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PrefixTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PrefixTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PrefixTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PrefixTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4491,16 +4491,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::TunnelIdTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::TunnelIdTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::TunnelIdTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::TunnelIdTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::TunnelIdTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4573,16 +4573,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PseudowireTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PseudowireTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PseudowireTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PseudowireTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Latest::Target::TargetAddress::Ipv4PseudowireTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4661,7 +4661,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hours")
     {
@@ -4675,16 +4675,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statis
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(hours != nullptr)
     {
-        children["hours"] = hours;
+        _children["hours"] = hours;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4751,33 +4751,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hour")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour>();
-        c->parent = this;
-        hour.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour>();
+        ent_->parent = this;
+        hour.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hour.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hour.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4914,7 +4914,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "target-address")
     {
@@ -4928,16 +4928,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statis
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(target_address != nullptr)
     {
-        children["target-address"] = target_address;
+        _children["target-address"] = target_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5207,7 +5207,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-prefix-target")
     {
@@ -5239,26 +5239,26 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statis
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_prefix_target != nullptr)
     {
-        children["ipv4-prefix-target"] = ipv4_prefix_target;
+        _children["ipv4-prefix-target"] = ipv4_prefix_target;
     }
 
     if(tunnel_id_target != nullptr)
     {
-        children["tunnel-id-target"] = tunnel_id_target;
+        _children["tunnel-id-target"] = tunnel_id_target;
     }
 
     if(ipv4_pseudowire_target != nullptr)
     {
-        children["ipv4-pseudowire-target"] = ipv4_pseudowire_target;
+        _children["ipv4-pseudowire-target"] = ipv4_pseudowire_target;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5351,16 +5351,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PrefixTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PrefixTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PrefixTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PrefixTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PrefixTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5439,16 +5439,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::TunnelIdTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::TunnelIdTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::TunnelIdTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::TunnelIdTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::TunnelIdTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5521,16 +5521,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PseudowireTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PseudowireTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PseudowireTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PseudowireTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour::TargetAddress::Ipv4PseudowireTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5613,7 +5613,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lpd-paths")
     {
@@ -5636,21 +5636,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lpd_paths != nullptr)
     {
-        children["lpd-paths"] = lpd_paths;
+        _children["lpd-paths"] = lpd_paths;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5717,33 +5717,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lpd-path")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath>();
-        c->parent = this;
-        lpd_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath>();
+        ent_->parent = this;
+        lpd_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lpd_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lpd_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5812,7 +5812,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-id")
     {
@@ -5826,16 +5826,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_id != nullptr)
     {
-        children["path-id"] = path_id;
+        _children["path-id"] = path_id;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5936,16 +5936,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::PathId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::PathId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::PathId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::PathId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::PathId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6067,7 +6067,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "target-address")
     {
@@ -6081,16 +6081,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(target_address != nullptr)
     {
-        children["target-address"] = target_address;
+        _children["target-address"] = target_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Status::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6230,7 +6230,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-prefix-target")
     {
@@ -6262,26 +6262,26 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_prefix_target != nullptr)
     {
-        children["ipv4-prefix-target"] = ipv4_prefix_target;
+        _children["ipv4-prefix-target"] = ipv4_prefix_target;
     }
 
     if(tunnel_id_target != nullptr)
     {
-        children["tunnel-id-target"] = tunnel_id_target;
+        _children["tunnel-id-target"] = tunnel_id_target;
     }
 
     if(ipv4_pseudowire_target != nullptr)
     {
-        children["ipv4-pseudowire-target"] = ipv4_pseudowire_target;
+        _children["ipv4-pseudowire-target"] = ipv4_pseudowire_target;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6374,16 +6374,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PrefixTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PrefixTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PrefixTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PrefixTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PrefixTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6462,16 +6462,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::TunnelIdTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::TunnelIdTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::TunnelIdTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::TunnelIdTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::TunnelIdTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6544,16 +6544,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PseudowireTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PseudowireTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PseudowireTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PseudowireTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Lpd::Status::State::TargetAddress::Ipv4PseudowireTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6636,7 +6636,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path")
     {
@@ -6659,21 +6659,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path != nullptr)
     {
-        children["path"] = path;
+        _children["path"] = path;
     }
 
     if(target != nullptr)
     {
-        children["target"] = target;
+        _children["target"] = target;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6732,7 +6732,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lifes")
     {
@@ -6746,16 +6746,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Pa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Path::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Path::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lifes != nullptr)
     {
-        children["lifes"] = lifes;
+        _children["lifes"] = lifes;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6822,33 +6822,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "life")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life>();
-        c->parent = this;
-        life.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life>();
+        ent_->parent = this;
+        life.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : life.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : life.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Path::Lifes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6913,7 +6913,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "buckets")
     {
@@ -6927,16 +6927,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Pa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(buckets != nullptr)
     {
-        children["buckets"] = buckets;
+        _children["buckets"] = buckets;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7013,33 +7013,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bucket")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket>();
-        c->parent = this;
-        bucket.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket>();
+        ent_->parent = this;
+        bucket.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bucket.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bucket.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7104,7 +7104,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "samples")
     {
@@ -7118,16 +7118,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Pa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(samples != nullptr)
     {
-        children["samples"] = samples;
+        _children["samples"] = samples;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7204,33 +7204,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sample")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample>();
-        c->parent = this;
-        sample.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample>();
+        ent_->parent = this;
+        sample.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sample.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sample.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7307,7 +7307,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "target-address")
     {
@@ -7321,16 +7321,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Pa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(target_address != nullptr)
     {
-        children["target-address"] = target_address;
+        _children["target-address"] = target_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7450,7 +7450,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-prefix-target")
     {
@@ -7482,26 +7482,26 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Pa
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_prefix_target != nullptr)
     {
-        children["ipv4-prefix-target"] = ipv4_prefix_target;
+        _children["ipv4-prefix-target"] = ipv4_prefix_target;
     }
 
     if(tunnel_id_target != nullptr)
     {
-        children["tunnel-id-target"] = tunnel_id_target;
+        _children["tunnel-id-target"] = tunnel_id_target;
     }
 
     if(ipv4_pseudowire_target != nullptr)
     {
-        children["ipv4-pseudowire-target"] = ipv4_pseudowire_target;
+        _children["ipv4-pseudowire-target"] = ipv4_pseudowire_target;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7594,16 +7594,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PrefixTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PrefixTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PrefixTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PrefixTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PrefixTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7682,16 +7682,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::TunnelIdTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::TunnelIdTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::TunnelIdTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::TunnelIdTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::TunnelIdTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7764,16 +7764,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PseudowireTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PseudowireTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PseudowireTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PseudowireTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample::TargetAddress::Ipv4PseudowireTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7852,7 +7852,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lifes")
     {
@@ -7866,16 +7866,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Ta
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Target::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Target::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lifes != nullptr)
     {
-        children["lifes"] = lifes;
+        _children["lifes"] = lifes;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Target::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7942,33 +7942,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "life")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life>();
-        c->parent = this;
-        life.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life>();
+        ent_->parent = this;
+        life.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : life.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : life.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Target::Lifes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8033,7 +8033,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "buckets")
     {
@@ -8047,16 +8047,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Ta
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(buckets != nullptr)
     {
-        children["buckets"] = buckets;
+        _children["buckets"] = buckets;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8133,33 +8133,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bucket")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket>();
-        c->parent = this;
-        bucket.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket>();
+        ent_->parent = this;
+        bucket.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bucket.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bucket.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8236,7 +8236,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "target-address")
     {
@@ -8250,16 +8250,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Ta
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(target_address != nullptr)
     {
-        children["target-address"] = target_address;
+        _children["target-address"] = target_address;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8379,7 +8379,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-prefix-target")
     {
@@ -8411,26 +8411,26 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Ta
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4_prefix_target != nullptr)
     {
-        children["ipv4-prefix-target"] = ipv4_prefix_target;
+        _children["ipv4-prefix-target"] = ipv4_prefix_target;
     }
 
     if(tunnel_id_target != nullptr)
     {
-        children["tunnel-id-target"] = tunnel_id_target;
+        _children["tunnel-id-target"] = tunnel_id_target;
     }
 
     if(ipv4_pseudowire_target != nullptr)
     {
-        children["ipv4-pseudowire-target"] = ipv4_pseudowire_target;
+        _children["ipv4-pseudowire-target"] = ipv4_pseudowire_target;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8523,16 +8523,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PrefixTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PrefixTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PrefixTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PrefixTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PrefixTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8611,16 +8611,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::TunnelIdTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::TunnelIdTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::TunnelIdTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::TunnelIdTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::TunnelIdTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8693,16 +8693,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PseudowireTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PseudowireTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PseudowireTarget::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PseudowireTarget::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket::TargetAddress::Ipv4PseudowireTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8785,7 +8785,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "latest")
     {
@@ -8808,21 +8808,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(latest != nullptr)
     {
-        children["latest"] = latest;
+        _children["latest"] = latest;
     }
 
     if(aggregated != nullptr)
     {
-        children["aggregated"] = aggregated;
+        _children["aggregated"] = aggregated;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8889,7 +8889,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "target")
     {
@@ -8921,26 +8921,26 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(target != nullptr)
     {
-        children["target"] = target;
+        _children["target"] = target;
     }
 
     if(hops != nullptr)
     {
-        children["hops"] = hops;
+        _children["hops"] = hops;
     }
 
     if(lpd_paths != nullptr)
     {
-        children["lpd-paths"] = lpd_paths;
+        _children["lpd-paths"] = lpd_paths;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9003,7 +9003,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common-stats")
     {
@@ -9026,21 +9026,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common_stats != nullptr)
     {
-        children["common-stats"] = common_stats;
+        _children["common-stats"] = common_stats;
     }
 
     if(specific_stats != nullptr)
     {
-        children["specific-stats"] = specific_stats;
+        _children["specific-stats"] = specific_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9167,16 +9167,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::CommonStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::CommonStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::CommonStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9424,7 +9424,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "icmp-path-jitter-stats")
     {
@@ -9447,21 +9447,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(icmp_path_jitter_stats != nullptr)
     {
-        children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
+        _children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
     }
 
     if(udp_jitter_stats != nullptr)
     {
-        children["udp-jitter-stats"] = udp_jitter_stats;
+        _children["udp-jitter-stats"] = udp_jitter_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9634,16 +9634,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::IcmpPathJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::IcmpPathJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::IcmpPathJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10128,16 +10128,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::UdpJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::UdpJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::Target::SpecificStats::UdpJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10604,33 +10604,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hop")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop>();
-        c->parent = this;
-        hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop>();
+        ent_->parent = this;
+        hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10699,7 +10699,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common-stats")
     {
@@ -10722,21 +10722,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common_stats != nullptr)
     {
-        children["common-stats"] = common_stats;
+        _children["common-stats"] = common_stats;
     }
 
     if(specific_stats != nullptr)
     {
-        children["specific-stats"] = specific_stats;
+        _children["specific-stats"] = specific_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10873,16 +10873,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::CommonStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::CommonStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::CommonStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11130,7 +11130,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "icmp-path-jitter-stats")
     {
@@ -11153,21 +11153,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(icmp_path_jitter_stats != nullptr)
     {
-        children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
+        _children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
     }
 
     if(udp_jitter_stats != nullptr)
     {
-        children["udp-jitter-stats"] = udp_jitter_stats;
+        _children["udp-jitter-stats"] = udp_jitter_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11340,16 +11340,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::IcmpPathJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::IcmpPathJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::IcmpPathJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11834,16 +11834,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::UdpJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::UdpJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats::UdpJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12310,33 +12310,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lpd-path")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath>();
-        c->parent = this;
-        lpd_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath>();
+        ent_->parent = this;
+        lpd_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lpd_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lpd_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12405,7 +12405,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-id")
     {
@@ -12419,16 +12419,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_id != nullptr)
     {
-        children["path-id"] = path_id;
+        _children["path-id"] = path_id;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12529,16 +12529,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::PathId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::PathId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::PathId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::PathId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::PathId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12639,7 +12639,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "enhanced-intervals")
     {
@@ -12662,21 +12662,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(enhanced_intervals != nullptr)
     {
-        children["enhanced-intervals"] = enhanced_intervals;
+        _children["enhanced-intervals"] = enhanced_intervals;
     }
 
     if(hours != nullptr)
     {
-        children["hours"] = hours;
+        _children["hours"] = hours;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12743,33 +12743,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "enhanced-interval")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval>();
-        c->parent = this;
-        enhanced_interval.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval>();
+        ent_->parent = this;
+        enhanced_interval.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : enhanced_interval.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : enhanced_interval.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12834,7 +12834,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "start-times")
     {
@@ -12848,16 +12848,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(start_times != nullptr)
     {
-        children["start-times"] = start_times;
+        _children["start-times"] = start_times;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12934,33 +12934,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "start-time")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime>();
-        c->parent = this;
-        start_time.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime>();
+        ent_->parent = this;
+        start_time.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : start_time.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : start_time.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13029,7 +13029,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common-stats")
     {
@@ -13052,21 +13052,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common_stats != nullptr)
     {
-        children["common-stats"] = common_stats;
+        _children["common-stats"] = common_stats;
     }
 
     if(specific_stats != nullptr)
     {
-        children["specific-stats"] = specific_stats;
+        _children["specific-stats"] = specific_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13203,16 +13203,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::CommonStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::CommonStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::CommonStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13460,7 +13460,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "icmp-path-jitter-stats")
     {
@@ -13483,21 +13483,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(icmp_path_jitter_stats != nullptr)
     {
-        children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
+        _children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
     }
 
     if(udp_jitter_stats != nullptr)
     {
-        children["udp-jitter-stats"] = udp_jitter_stats;
+        _children["udp-jitter-stats"] = udp_jitter_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13670,16 +13670,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::IcmpPathJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::IcmpPathJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::IcmpPathJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14164,16 +14164,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::UdpJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::UdpJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime::SpecificStats::UdpJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14640,33 +14640,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hour")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour>();
-        c->parent = this;
-        hour.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour>();
+        ent_->parent = this;
+        hour.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hour.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hour.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14735,7 +14735,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "distributed")
     {
@@ -14758,21 +14758,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(distributed != nullptr)
     {
-        children["distributed"] = distributed;
+        _children["distributed"] = distributed;
     }
 
     if(non_distributed != nullptr)
     {
-        children["non-distributed"] = non_distributed;
+        _children["non-distributed"] = non_distributed;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14845,7 +14845,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "paths")
     {
@@ -14868,21 +14868,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(paths != nullptr)
     {
-        children["paths"] = paths;
+        _children["paths"] = paths;
     }
 
     if(target != nullptr)
     {
-        children["target"] = target;
+        _children["target"] = target;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14949,33 +14949,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path>();
-        c->parent = this;
-        path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path>();
+        ent_->parent = this;
+        path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15040,7 +15040,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hops")
     {
@@ -15054,16 +15054,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(hops != nullptr)
     {
-        children["hops"] = hops;
+        _children["hops"] = hops;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15140,33 +15140,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hop")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop>();
-        c->parent = this;
-        hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop>();
+        ent_->parent = this;
+        hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15231,7 +15231,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "distribution-intervals")
     {
@@ -15245,16 +15245,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(distribution_intervals != nullptr)
     {
-        children["distribution-intervals"] = distribution_intervals;
+        _children["distribution-intervals"] = distribution_intervals;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15331,33 +15331,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "distribution-interval")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval>();
-        c->parent = this;
-        distribution_interval.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval>();
+        ent_->parent = this;
+        distribution_interval.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : distribution_interval.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : distribution_interval.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15426,7 +15426,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common-stats")
     {
@@ -15449,21 +15449,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common_stats != nullptr)
     {
-        children["common-stats"] = common_stats;
+        _children["common-stats"] = common_stats;
     }
 
     if(specific_stats != nullptr)
     {
-        children["specific-stats"] = specific_stats;
+        _children["specific-stats"] = specific_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15600,16 +15600,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::CommonStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::CommonStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::CommonStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15857,7 +15857,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "icmp-path-jitter-stats")
     {
@@ -15880,21 +15880,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(icmp_path_jitter_stats != nullptr)
     {
-        children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
+        _children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
     }
 
     if(udp_jitter_stats != nullptr)
     {
-        children["udp-jitter-stats"] = udp_jitter_stats;
+        _children["udp-jitter-stats"] = udp_jitter_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16067,16 +16067,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16561,16 +16561,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17029,7 +17029,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "distribution-intervals")
     {
@@ -17043,16 +17043,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(distribution_intervals != nullptr)
     {
-        children["distribution-intervals"] = distribution_intervals;
+        _children["distribution-intervals"] = distribution_intervals;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17119,33 +17119,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "distribution-interval")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval>();
-        c->parent = this;
-        distribution_interval.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval>();
+        ent_->parent = this;
+        distribution_interval.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : distribution_interval.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : distribution_interval.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17214,7 +17214,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common-stats")
     {
@@ -17237,21 +17237,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common_stats != nullptr)
     {
-        children["common-stats"] = common_stats;
+        _children["common-stats"] = common_stats;
     }
 
     if(specific_stats != nullptr)
     {
-        children["specific-stats"] = specific_stats;
+        _children["specific-stats"] = specific_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17388,16 +17388,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::CommonStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::CommonStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::CommonStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17645,7 +17645,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "icmp-path-jitter-stats")
     {
@@ -17668,21 +17668,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(icmp_path_jitter_stats != nullptr)
     {
-        children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
+        _children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
     }
 
     if(udp_jitter_stats != nullptr)
     {
-        children["udp-jitter-stats"] = udp_jitter_stats;
+        _children["udp-jitter-stats"] = udp_jitter_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -17855,16 +17855,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::IcmpPathJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18349,16 +18349,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats::UdpJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18825,7 +18825,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "target")
     {
@@ -18857,26 +18857,26 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(target != nullptr)
     {
-        children["target"] = target;
+        _children["target"] = target;
     }
 
     if(paths != nullptr)
     {
-        children["paths"] = paths;
+        _children["paths"] = paths;
     }
 
     if(lpd_paths != nullptr)
     {
-        children["lpd-paths"] = lpd_paths;
+        _children["lpd-paths"] = lpd_paths;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -18939,7 +18939,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common-stats")
     {
@@ -18962,21 +18962,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common_stats != nullptr)
     {
-        children["common-stats"] = common_stats;
+        _children["common-stats"] = common_stats;
     }
 
     if(specific_stats != nullptr)
     {
-        children["specific-stats"] = specific_stats;
+        _children["specific-stats"] = specific_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19103,16 +19103,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::CommonStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::CommonStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::CommonStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19360,7 +19360,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "icmp-path-jitter-stats")
     {
@@ -19383,21 +19383,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(icmp_path_jitter_stats != nullptr)
     {
-        children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
+        _children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
     }
 
     if(udp_jitter_stats != nullptr)
     {
-        children["udp-jitter-stats"] = udp_jitter_stats;
+        _children["udp-jitter-stats"] = udp_jitter_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -19570,16 +19570,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::IcmpPathJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::IcmpPathJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::IcmpPathJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20064,16 +20064,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::UdpJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::UdpJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Target::SpecificStats::UdpJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20540,33 +20540,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path>();
-        c->parent = this;
-        path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path>();
+        ent_->parent = this;
+        path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20631,7 +20631,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hops")
     {
@@ -20645,16 +20645,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(hops != nullptr)
     {
-        children["hops"] = hops;
+        _children["hops"] = hops;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20731,33 +20731,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hop")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop>();
-        c->parent = this;
-        hop.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop>();
+        ent_->parent = this;
+        hop.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : hop.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hop.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -20826,7 +20826,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "common-stats")
     {
@@ -20849,21 +20849,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(common_stats != nullptr)
     {
-        children["common-stats"] = common_stats;
+        _children["common-stats"] = common_stats;
     }
 
     if(specific_stats != nullptr)
     {
-        children["specific-stats"] = specific_stats;
+        _children["specific-stats"] = specific_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21000,16 +21000,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::CommonStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::CommonStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::CommonStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::CommonStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21257,7 +21257,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "icmp-path-jitter-stats")
     {
@@ -21280,21 +21280,21 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(icmp_path_jitter_stats != nullptr)
     {
-        children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
+        _children["icmp-path-jitter-stats"] = icmp_path_jitter_stats;
     }
 
     if(udp_jitter_stats != nullptr)
     {
-        children["udp-jitter-stats"] = udp_jitter_stats;
+        _children["udp-jitter-stats"] = udp_jitter_stats;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21467,16 +21467,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::IcmpPathJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::IcmpPathJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::IcmpPathJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::IcmpPathJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -21961,16 +21961,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::UdpJitterStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::UdpJitterStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::UdpJitterStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats::UdpJitterStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22437,33 +22437,33 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lpd-path")
     {
-        auto c = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath>();
-        c->parent = this;
-        lpd_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath>();
+        ent_->parent = this;
+        lpd_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lpd_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lpd_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22532,7 +22532,7 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-id")
     {
@@ -22546,16 +22546,16 @@ std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(path_id != nullptr)
     {
-        children["path-id"] = path_id;
+        _children["path-id"] = path_id;
     }
 
-    return children;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22656,16 +22656,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::OperationData::Operations:
 
 }
 
-std::shared_ptr<Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::PathId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::PathId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::PathId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::PathId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::PathId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -22815,16 +22815,16 @@ std::vector<std::pair<std::string, LeafData> > Ipsla::ApplicationInfo::get_name_
 
 }
 
-std::shared_ptr<Entity> Ipsla::ApplicationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Ipsla::ApplicationInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipsla::ApplicationInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipsla::ApplicationInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Ipsla::ApplicationInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

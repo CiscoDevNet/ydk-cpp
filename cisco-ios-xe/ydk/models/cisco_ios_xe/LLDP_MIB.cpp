@@ -96,7 +96,7 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpConfiguration")
     {
@@ -209,71 +209,71 @@ std::shared_ptr<Entity> LLDPMIB::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lldpconfiguration != nullptr)
     {
-        children["lldpConfiguration"] = lldpconfiguration;
+        _children["lldpConfiguration"] = lldpconfiguration;
     }
 
     if(lldpstatistics != nullptr)
     {
-        children["lldpStatistics"] = lldpstatistics;
+        _children["lldpStatistics"] = lldpstatistics;
     }
 
     if(lldplocalsystemdata != nullptr)
     {
-        children["lldpLocalSystemData"] = lldplocalsystemdata;
+        _children["lldpLocalSystemData"] = lldplocalsystemdata;
     }
 
     if(lldpportconfigtable != nullptr)
     {
-        children["lldpPortConfigTable"] = lldpportconfigtable;
+        _children["lldpPortConfigTable"] = lldpportconfigtable;
     }
 
     if(lldpstatstxporttable != nullptr)
     {
-        children["lldpStatsTxPortTable"] = lldpstatstxporttable;
+        _children["lldpStatsTxPortTable"] = lldpstatstxporttable;
     }
 
     if(lldpstatsrxporttable != nullptr)
     {
-        children["lldpStatsRxPortTable"] = lldpstatsrxporttable;
+        _children["lldpStatsRxPortTable"] = lldpstatsrxporttable;
     }
 
     if(lldplocporttable != nullptr)
     {
-        children["lldpLocPortTable"] = lldplocporttable;
+        _children["lldpLocPortTable"] = lldplocporttable;
     }
 
     if(lldplocmanaddrtable != nullptr)
     {
-        children["lldpLocManAddrTable"] = lldplocmanaddrtable;
+        _children["lldpLocManAddrTable"] = lldplocmanaddrtable;
     }
 
     if(lldpremtable != nullptr)
     {
-        children["lldpRemTable"] = lldpremtable;
+        _children["lldpRemTable"] = lldpremtable;
     }
 
     if(lldpremmanaddrtable != nullptr)
     {
-        children["lldpRemManAddrTable"] = lldpremmanaddrtable;
+        _children["lldpRemManAddrTable"] = lldpremmanaddrtable;
     }
 
     if(lldpremunknowntlvtable != nullptr)
     {
-        children["lldpRemUnknownTLVTable"] = lldpremunknowntlvtable;
+        _children["lldpRemUnknownTLVTable"] = lldpremunknowntlvtable;
     }
 
     if(lldpremorgdefinfotable != nullptr)
     {
-        children["lldpRemOrgDefInfoTable"] = lldpremorgdefinfotable;
+        _children["lldpRemOrgDefInfoTable"] = lldpremorgdefinfotable;
     }
 
-    return children;
+    return _children;
 }
 
 void LLDPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -284,7 +284,7 @@ void LLDPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> LLDPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> LLDPMIB::clone_ptr() const
 {
     return std::make_shared<LLDPMIB>();
 }
@@ -380,16 +380,16 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpConfiguration::get_n
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpConfiguration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpConfiguration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LLDPMIB::LldpConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -521,16 +521,16 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpStatistics::get_name
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LLDPMIB::LldpStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -666,16 +666,16 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpLocalSystemData::get
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpLocalSystemData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpLocalSystemData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpLocalSystemData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpLocalSystemData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LLDPMIB::LldpLocalSystemData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -805,33 +805,33 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpPortConfigTable::get
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpPortConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpPortConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpPortConfigEntry")
     {
-        auto c = std::make_shared<LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry>();
-        c->parent = this;
-        lldpportconfigentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry>();
+        ent_->parent = this;
+        lldpportconfigentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpPortConfigTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpPortConfigTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lldpportconfigentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lldpportconfigentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LLDPMIB::LldpPortConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -910,16 +910,16 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpPortConfigTable::Lld
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1031,33 +1031,33 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpStatsTxPortTable::ge
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpStatsTxPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpStatsTxPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpStatsTxPortEntry")
     {
-        auto c = std::make_shared<LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry>();
-        c->parent = this;
-        lldpstatstxportentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry>();
+        ent_->parent = this;
+        lldpstatstxportentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpStatsTxPortTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpStatsTxPortTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lldpstatstxportentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lldpstatstxportentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LLDPMIB::LldpStatsTxPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1128,16 +1128,16 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpStatsTxPortTable::Ll
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1231,33 +1231,33 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpStatsRxPortTable::ge
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpStatsRxPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpStatsRxPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpStatsRxPortEntry")
     {
-        auto c = std::make_shared<LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry>();
-        c->parent = this;
-        lldpstatsrxportentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry>();
+        ent_->parent = this;
+        lldpstatsrxportentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpStatsRxPortTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpStatsRxPortTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lldpstatsrxportentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lldpstatsrxportentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LLDPMIB::LldpStatsRxPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1348,16 +1348,16 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpStatsRxPortTable::Ll
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1501,33 +1501,33 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpLocPortTable::get_na
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpLocPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpLocPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpLocPortEntry")
     {
-        auto c = std::make_shared<LLDPMIB::LldpLocPortTable::LldpLocPortEntry>();
-        c->parent = this;
-        lldplocportentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LLDPMIB::LldpLocPortTable::LldpLocPortEntry>();
+        ent_->parent = this;
+        lldplocportentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpLocPortTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpLocPortTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lldplocportentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lldplocportentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LLDPMIB::LldpLocPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1606,16 +1606,16 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpLocPortTable::LldpLo
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpLocPortTable::LldpLocPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpLocPortTable::LldpLocPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpLocPortTable::LldpLocPortEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpLocPortTable::LldpLocPortEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LLDPMIB::LldpLocPortTable::LldpLocPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1729,33 +1729,33 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpLocManAddrTable::get
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpLocManAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpLocManAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpLocManAddrEntry")
     {
-        auto c = std::make_shared<LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry>();
-        c->parent = this;
-        lldplocmanaddrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry>();
+        ent_->parent = this;
+        lldplocmanaddrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpLocManAddrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpLocManAddrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lldplocmanaddrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lldplocmanaddrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LLDPMIB::LldpLocManAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1847,16 +1847,16 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpLocManAddrTable::Lld
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2000,33 +2000,33 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemTable::get_name_l
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpRemTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpRemTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpRemEntry")
     {
-        auto c = std::make_shared<LLDPMIB::LldpRemTable::LldpRemEntry>();
-        c->parent = this;
-        lldprementry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LLDPMIB::LldpRemTable::LldpRemEntry>();
+        ent_->parent = this;
+        lldprementry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpRemTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lldprementry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lldprementry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LLDPMIB::LldpRemTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2139,16 +2139,16 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemTable::LldpRemEnt
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpRemTable::LldpRemEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpRemTable::LldpRemEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemTable::LldpRemEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpRemTable::LldpRemEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LLDPMIB::LldpRemTable::LldpRemEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2338,33 +2338,33 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemManAddrTable::get
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpRemManAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpRemManAddrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpRemManAddrEntry")
     {
-        auto c = std::make_shared<LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry>();
-        c->parent = this;
-        lldpremmanaddrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry>();
+        ent_->parent = this;
+        lldpremmanaddrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemManAddrTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpRemManAddrTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lldpremmanaddrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lldpremmanaddrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LLDPMIB::LldpRemManAddrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2463,16 +2463,16 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemManAddrTable::Lld
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2626,33 +2626,33 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemUnknownTLVTable::
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpRemUnknownTLVTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpRemUnknownTLVTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpRemUnknownTLVEntry")
     {
-        auto c = std::make_shared<LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry>();
-        c->parent = this;
-        lldpremunknowntlventry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry>();
+        ent_->parent = this;
+        lldpremunknowntlventry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemUnknownTLVTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpRemUnknownTLVTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lldpremunknowntlventry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lldpremunknowntlventry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LLDPMIB::LldpRemUnknownTLVTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2738,16 +2738,16 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemUnknownTLVTable::
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2871,33 +2871,33 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemOrgDefInfoTable::
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpRemOrgDefInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpRemOrgDefInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lldpRemOrgDefInfoEntry")
     {
-        auto c = std::make_shared<LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry>();
-        c->parent = this;
-        lldpremorgdefinfoentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry>();
+        ent_->parent = this;
+        lldpremorgdefinfoentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemOrgDefInfoTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpRemOrgDefInfoTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : lldpremorgdefinfoentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lldpremorgdefinfoentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void LLDPMIB::LldpRemOrgDefInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2993,16 +2993,16 @@ std::vector<std::pair<std::string, LeafData> > LLDPMIB::LldpRemOrgDefInfoTable::
 
 }
 
-std::shared_ptr<Entity> LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

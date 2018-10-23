@@ -196,7 +196,7 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmCapabilities")
     {
@@ -534,196 +534,196 @@ std::shared_ptr<Entity> DOCSIF3MIB::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(docsif3cmcapabilities != nullptr)
     {
-        children["docsIf3CmCapabilities"] = docsif3cmcapabilities;
+        _children["docsIf3CmCapabilities"] = docsif3cmcapabilities;
     }
 
     if(docsif3cmtscmctrl != nullptr)
     {
-        children["docsIf3CmtsCmCtrl"] = docsif3cmtscmctrl;
+        _children["docsIf3CmtsCmCtrl"] = docsif3cmtscmctrl;
     }
 
     if(docsif3cmenergymgtcfg != nullptr)
     {
-        children["docsIf3CmEnergyMgtCfg"] = docsif3cmenergymgtcfg;
+        _children["docsIf3CmEnergyMgtCfg"] = docsif3cmenergymgtcfg;
     }
 
     if(docsif3cmspectrumanalysisctrlcmd != nullptr)
     {
-        children["docsIf3CmSpectrumAnalysisCtrlCmd"] = docsif3cmspectrumanalysisctrlcmd;
+        _children["docsIf3CmSpectrumAnalysisCtrlCmd"] = docsif3cmspectrumanalysisctrlcmd;
     }
 
     if(docsif3cmstatustable != nullptr)
     {
-        children["docsIf3CmStatusTable"] = docsif3cmstatustable;
+        _children["docsIf3CmStatusTable"] = docsif3cmstatustable;
     }
 
     if(docsif3cmstatusustable != nullptr)
     {
-        children["docsIf3CmStatusUsTable"] = docsif3cmstatusustable;
+        _children["docsIf3CmStatusUsTable"] = docsif3cmstatusustable;
     }
 
     if(docsif3cmtscmregstatustable != nullptr)
     {
-        children["docsIf3CmtsCmRegStatusTable"] = docsif3cmtscmregstatustable;
+        _children["docsIf3CmtsCmRegStatusTable"] = docsif3cmtscmregstatustable;
     }
 
     if(docsif3cmtscmusstatustable != nullptr)
     {
-        children["docsIf3CmtsCmUsStatusTable"] = docsif3cmtscmusstatustable;
+        _children["docsIf3CmtsCmUsStatusTable"] = docsif3cmtscmusstatustable;
     }
 
     if(docsif3mdchcfgtable != nullptr)
     {
-        children["docsIf3MdChCfgTable"] = docsif3mdchcfgtable;
+        _children["docsIf3MdChCfgTable"] = docsif3mdchcfgtable;
     }
 
     if(docsif3rcccfgtable != nullptr)
     {
-        children["docsIf3RccCfgTable"] = docsif3rcccfgtable;
+        _children["docsIf3RccCfgTable"] = docsif3rcccfgtable;
     }
 
     if(docsif3rccstatustable != nullptr)
     {
-        children["docsIf3RccStatusTable"] = docsif3rccstatustable;
+        _children["docsIf3RccStatusTable"] = docsif3rccstatustable;
     }
 
     if(docsif3rxchcfgtable != nullptr)
     {
-        children["docsIf3RxChCfgTable"] = docsif3rxchcfgtable;
+        _children["docsIf3RxChCfgTable"] = docsif3rxchcfgtable;
     }
 
     if(docsif3rxchstatustable != nullptr)
     {
-        children["docsIf3RxChStatusTable"] = docsif3rxchstatustable;
+        _children["docsIf3RxChStatusTable"] = docsif3rxchstatustable;
     }
 
     if(docsif3rxmodulecfgtable != nullptr)
     {
-        children["docsIf3RxModuleCfgTable"] = docsif3rxmodulecfgtable;
+        _children["docsIf3RxModuleCfgTable"] = docsif3rxmodulecfgtable;
     }
 
     if(docsif3rxmodulestatustable != nullptr)
     {
-        children["docsIf3RxModuleStatusTable"] = docsif3rxmodulestatustable;
+        _children["docsIf3RxModuleStatusTable"] = docsif3rxmodulestatustable;
     }
 
     if(docsif3mdnodestatustable != nullptr)
     {
-        children["docsIf3MdNodeStatusTable"] = docsif3mdnodestatustable;
+        _children["docsIf3MdNodeStatusTable"] = docsif3mdnodestatustable;
     }
 
     if(docsif3mddssgstatustable != nullptr)
     {
-        children["docsIf3MdDsSgStatusTable"] = docsif3mddssgstatustable;
+        _children["docsIf3MdDsSgStatusTable"] = docsif3mddssgstatustable;
     }
 
     if(docsif3mdussgstatustable != nullptr)
     {
-        children["docsIf3MdUsSgStatusTable"] = docsif3mdussgstatustable;
+        _children["docsIf3MdUsSgStatusTable"] = docsif3mdussgstatustable;
     }
 
     if(docsif3mdustodschmappingtable != nullptr)
     {
-        children["docsIf3MdUsToDsChMappingTable"] = docsif3mdustodschmappingtable;
+        _children["docsIf3MdUsToDsChMappingTable"] = docsif3mdustodschmappingtable;
     }
 
     if(docsif3mdcfgtable != nullptr)
     {
-        children["docsIf3MdCfgTable"] = docsif3mdcfgtable;
+        _children["docsIf3MdCfgTable"] = docsif3mdcfgtable;
     }
 
     if(docsif3bondinggrpcfgtable != nullptr)
     {
-        children["docsIf3BondingGrpCfgTable"] = docsif3bondinggrpcfgtable;
+        _children["docsIf3BondingGrpCfgTable"] = docsif3bondinggrpcfgtable;
     }
 
     if(docsif3dsbondinggrpstatustable != nullptr)
     {
-        children["docsIf3DsBondingGrpStatusTable"] = docsif3dsbondinggrpstatustable;
+        _children["docsIf3DsBondingGrpStatusTable"] = docsif3dsbondinggrpstatustable;
     }
 
     if(docsif3usbondinggrpstatustable != nullptr)
     {
-        children["docsIf3UsBondingGrpStatusTable"] = docsif3usbondinggrpstatustable;
+        _children["docsIf3UsBondingGrpStatusTable"] = docsif3usbondinggrpstatustable;
     }
 
     if(docsif3uschexttable != nullptr)
     {
-        children["docsIf3UsChExtTable"] = docsif3uschexttable;
+        _children["docsIf3UsChExtTable"] = docsif3uschexttable;
     }
 
     if(docsif3uschsettable != nullptr)
     {
-        children["docsIf3UsChSetTable"] = docsif3uschsettable;
+        _children["docsIf3UsChSetTable"] = docsif3uschsettable;
     }
 
     if(docsif3dschsettable != nullptr)
     {
-        children["docsIf3DsChSetTable"] = docsif3dschsettable;
+        _children["docsIf3DsChSetTable"] = docsif3dschsettable;
     }
 
     if(docsif3signalqualityexttable != nullptr)
     {
-        children["docsIf3SignalQualityExtTable"] = docsif3signalqualityexttable;
+        _children["docsIf3SignalQualityExtTable"] = docsif3signalqualityexttable;
     }
 
     if(docsif3cmtssignalqualityexttable != nullptr)
     {
-        children["docsIf3CmtsSignalQualityExtTable"] = docsif3cmtssignalqualityexttable;
+        _children["docsIf3CmtsSignalQualityExtTable"] = docsif3cmtssignalqualityexttable;
     }
 
     if(docsif3cmtsspectrumanalysismeastable != nullptr)
     {
-        children["docsIf3CmtsSpectrumAnalysisMeasTable"] = docsif3cmtsspectrumanalysismeastable;
+        _children["docsIf3CmtsSpectrumAnalysisMeasTable"] = docsif3cmtsspectrumanalysismeastable;
     }
 
     if(docsif3cmdpvstatstable != nullptr)
     {
-        children["docsIf3CmDpvStatsTable"] = docsif3cmdpvstatstable;
+        _children["docsIf3CmDpvStatsTable"] = docsif3cmdpvstatstable;
     }
 
     if(docsif3cmeventctrltable != nullptr)
     {
-        children["docsIf3CmEventCtrlTable"] = docsif3cmeventctrltable;
+        _children["docsIf3CmEventCtrlTable"] = docsif3cmeventctrltable;
     }
 
     if(docsif3cmtseventctrltable != nullptr)
     {
-        children["docsIf3CmtsEventCtrlTable"] = docsif3cmtseventctrltable;
+        _children["docsIf3CmtsEventCtrlTable"] = docsif3cmtseventctrltable;
     }
 
     if(docsif3cmmdcfgtable != nullptr)
     {
-        children["docsIf3CmMdCfgTable"] = docsif3cmmdcfgtable;
+        _children["docsIf3CmMdCfgTable"] = docsif3cmmdcfgtable;
     }
 
     if(docsif3cmenergymgt1x1cfgtable != nullptr)
     {
-        children["docsIf3CmEnergyMgt1x1CfgTable"] = docsif3cmenergymgt1x1cfgtable;
+        _children["docsIf3CmEnergyMgt1x1CfgTable"] = docsif3cmenergymgt1x1cfgtable;
     }
 
     if(docsif3cmspectrumanalysismeastable != nullptr)
     {
-        children["docsIf3CmSpectrumAnalysisMeasTable"] = docsif3cmspectrumanalysismeastable;
+        _children["docsIf3CmSpectrumAnalysisMeasTable"] = docsif3cmspectrumanalysismeastable;
     }
 
     if(docsif3cmtscmemstatstable != nullptr)
     {
-        children["docsIf3CmtsCmEmStatsTable"] = docsif3cmtscmemstatstable;
+        _children["docsIf3CmtsCmEmStatsTable"] = docsif3cmtscmemstatstable;
     }
 
     if(docsif3cmem1x1statstable != nullptr)
     {
-        children["docsIf3CmEm1x1StatsTable"] = docsif3cmem1x1statstable;
+        _children["docsIf3CmEm1x1StatsTable"] = docsif3cmem1x1statstable;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -734,7 +734,7 @@ void DOCSIF3MIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::clone_ptr() const
 {
     return std::make_shared<DOCSIF3MIB>();
 }
@@ -818,16 +818,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmCapabilities
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmCapabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmCapabilities::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmCapabilities::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmCapabilities::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmCapabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -929,16 +929,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmtsCmCtrl::ge
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmtsCmCtrl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmtsCmCtrl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmtsCmCtrl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmtsCmCtrl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmtsCmCtrl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1058,16 +1058,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmEnergyMgtCfg
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmEnergyMgtCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmEnergyMgtCfg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmEnergyMgtCfg::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmEnergyMgtCfg::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmEnergyMgtCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1183,16 +1183,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmSpectrumAnal
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmSpectrumAnalysisCtrlCmd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmSpectrumAnalysisCtrlCmd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmSpectrumAnalysisCtrlCmd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmSpectrumAnalysisCtrlCmd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmSpectrumAnalysisCtrlCmd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1356,33 +1356,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmStatusTable:
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmStatusEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmStatusTable::DocsIf3CmStatusEntry>();
-        c->parent = this;
-        docsif3cmstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmStatusTable::DocsIf3CmStatusEntry>();
+        ent_->parent = this;
+        docsif3cmstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1501,16 +1501,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmStatusTable:
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmStatusTable::DocsIf3CmStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmStatusTable::DocsIf3CmStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmStatusTable::DocsIf3CmStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmStatusTable::DocsIf3CmStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmStatusTable::DocsIf3CmStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1724,33 +1724,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmStatusUsTabl
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmStatusUsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmStatusUsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmStatusUsEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmStatusUsTable::DocsIf3CmStatusUsEntry>();
-        c->parent = this;
-        docsif3cmstatususentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmStatusUsTable::DocsIf3CmStatusUsEntry>();
+        ent_->parent = this;
+        docsif3cmstatususentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmStatusUsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmStatusUsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmstatususentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmstatususentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmStatusUsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1853,16 +1853,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmStatusUsTabl
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmStatusUsTable::DocsIf3CmStatusUsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmStatusUsTable::DocsIf3CmStatusUsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmStatusUsTable::DocsIf3CmStatusUsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmStatusUsTable::DocsIf3CmStatusUsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmStatusUsTable::DocsIf3CmStatusUsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2036,33 +2036,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmtsCmRegStatu
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmtsCmRegStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmtsCmRegStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmtsCmRegStatusEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmtsCmRegStatusTable::DocsIf3CmtsCmRegStatusEntry>();
-        c->parent = this;
-        docsif3cmtscmregstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmtsCmRegStatusTable::DocsIf3CmtsCmRegStatusEntry>();
+        ent_->parent = this;
+        docsif3cmtscmregstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmtsCmRegStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmtsCmRegStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmtscmregstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmtscmregstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmtsCmRegStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2193,16 +2193,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmtsCmRegStatu
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmtsCmRegStatusTable::DocsIf3CmtsCmRegStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmtsCmRegStatusTable::DocsIf3CmtsCmRegStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmtsCmRegStatusTable::DocsIf3CmtsCmRegStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmtsCmRegStatusTable::DocsIf3CmtsCmRegStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmtsCmRegStatusTable::DocsIf3CmtsCmRegStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2442,33 +2442,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmtsCmUsStatus
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmtsCmUsStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmtsCmUsStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmtsCmUsStatusEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmtsCmUsStatusTable::DocsIf3CmtsCmUsStatusEntry>();
-        c->parent = this;
-        docsif3cmtscmusstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmtsCmUsStatusTable::DocsIf3CmtsCmUsStatusEntry>();
+        ent_->parent = this;
+        docsif3cmtscmusstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmtsCmUsStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmtsCmUsStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmtscmusstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmtscmusstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmtsCmUsStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2584,16 +2584,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmtsCmUsStatus
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmtsCmUsStatusTable::DocsIf3CmtsCmUsStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmtsCmUsStatusTable::DocsIf3CmtsCmUsStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmtsCmUsStatusTable::DocsIf3CmtsCmUsStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmtsCmUsStatusTable::DocsIf3CmtsCmUsStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmtsCmUsStatusTable::DocsIf3CmtsCmUsStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2797,33 +2797,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3MdChCfgTable::
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3MdChCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3MdChCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3MdChCfgEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3MdChCfgTable::DocsIf3MdChCfgEntry>();
-        c->parent = this;
-        docsif3mdchcfgentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3MdChCfgTable::DocsIf3MdChCfgEntry>();
+        ent_->parent = this;
+        docsif3mdchcfgentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3MdChCfgTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3MdChCfgTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3mdchcfgentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3mdchcfgentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3MdChCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2911,16 +2911,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3MdChCfgTable::
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3MdChCfgTable::DocsIf3MdChCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3MdChCfgTable::DocsIf3MdChCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3MdChCfgTable::DocsIf3MdChCfgEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3MdChCfgTable::DocsIf3MdChCfgEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3MdChCfgTable::DocsIf3MdChCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3052,33 +3052,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3RccCfgTable::g
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3RccCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3RccCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3RccCfgEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3RccCfgTable::DocsIf3RccCfgEntry>();
-        c->parent = this;
-        docsif3rcccfgentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3RccCfgTable::DocsIf3RccCfgEntry>();
+        ent_->parent = this;
+        docsif3rcccfgentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3RccCfgTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3RccCfgTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3rcccfgentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3rcccfgentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3RccCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3167,16 +3167,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3RccCfgTable::D
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3RccCfgTable::DocsIf3RccCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3RccCfgTable::DocsIf3RccCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3RccCfgTable::DocsIf3RccCfgEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3RccCfgTable::DocsIf3RccCfgEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3RccCfgTable::DocsIf3RccCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3310,33 +3310,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3RccStatusTable
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3RccStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3RccStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3RccStatusEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3RccStatusTable::DocsIf3RccStatusEntry>();
-        c->parent = this;
-        docsif3rccstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3RccStatusTable::DocsIf3RccStatusEntry>();
+        ent_->parent = this;
+        docsif3rccstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3RccStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3RccStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3rccstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3rccstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3RccStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3425,16 +3425,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3RccStatusTable
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3RccStatusTable::DocsIf3RccStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3RccStatusTable::DocsIf3RccStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3RccStatusTable::DocsIf3RccStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3RccStatusTable::DocsIf3RccStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3RccStatusTable::DocsIf3RccStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3568,33 +3568,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3RxChCfgTable::
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3RxChCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3RxChCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3RxChCfgEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3RxChCfgTable::DocsIf3RxChCfgEntry>();
-        c->parent = this;
-        docsif3rxchcfgentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3RxChCfgTable::DocsIf3RxChCfgEntry>();
+        ent_->parent = this;
+        docsif3rxchcfgentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3RxChCfgTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3RxChCfgTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3rxchcfgentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3rxchcfgentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3RxChCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3692,16 +3692,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3RxChCfgTable::
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3RxChCfgTable::DocsIf3RxChCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3RxChCfgTable::DocsIf3RxChCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3RxChCfgTable::DocsIf3RxChCfgEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3RxChCfgTable::DocsIf3RxChCfgEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3RxChCfgTable::DocsIf3RxChCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3855,33 +3855,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3RxChStatusTabl
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3RxChStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3RxChStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3RxChStatusEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3RxChStatusTable::DocsIf3RxChStatusEntry>();
-        c->parent = this;
-        docsif3rxchstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3RxChStatusTable::DocsIf3RxChStatusEntry>();
+        ent_->parent = this;
+        docsif3rxchstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3RxChStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3RxChStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3rxchstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3rxchstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3RxChStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3975,16 +3975,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3RxChStatusTabl
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3RxChStatusTable::DocsIf3RxChStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3RxChStatusTable::DocsIf3RxChStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3RxChStatusTable::DocsIf3RxChStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3RxChStatusTable::DocsIf3RxChStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3RxChStatusTable::DocsIf3RxChStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4128,33 +4128,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3RxModuleCfgTab
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3RxModuleCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3RxModuleCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3RxModuleCfgEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3RxModuleCfgTable::DocsIf3RxModuleCfgEntry>();
-        c->parent = this;
-        docsif3rxmodulecfgentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3RxModuleCfgTable::DocsIf3RxModuleCfgEntry>();
+        ent_->parent = this;
+        docsif3rxmodulecfgentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3RxModuleCfgTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3RxModuleCfgTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3rxmodulecfgentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3rxmodulecfgentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3RxModuleCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4248,16 +4248,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3RxModuleCfgTab
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3RxModuleCfgTable::DocsIf3RxModuleCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3RxModuleCfgTable::DocsIf3RxModuleCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3RxModuleCfgTable::DocsIf3RxModuleCfgEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3RxModuleCfgTable::DocsIf3RxModuleCfgEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3RxModuleCfgTable::DocsIf3RxModuleCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4401,33 +4401,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3RxModuleStatus
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3RxModuleStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3RxModuleStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3RxModuleStatusEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3RxModuleStatusTable::DocsIf3RxModuleStatusEntry>();
-        c->parent = this;
-        docsif3rxmodulestatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3RxModuleStatusTable::DocsIf3RxModuleStatusEntry>();
+        ent_->parent = this;
+        docsif3rxmodulestatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3RxModuleStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3RxModuleStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3rxmodulestatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3rxmodulestatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3RxModuleStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4517,16 +4517,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3RxModuleStatus
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3RxModuleStatusTable::DocsIf3RxModuleStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3RxModuleStatusTable::DocsIf3RxModuleStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3RxModuleStatusTable::DocsIf3RxModuleStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3RxModuleStatusTable::DocsIf3RxModuleStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3RxModuleStatusTable::DocsIf3RxModuleStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4660,33 +4660,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3MdNodeStatusTa
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3MdNodeStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3MdNodeStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3MdNodeStatusEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3MdNodeStatusTable::DocsIf3MdNodeStatusEntry>();
-        c->parent = this;
-        docsif3mdnodestatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3MdNodeStatusTable::DocsIf3MdNodeStatusEntry>();
+        ent_->parent = this;
+        docsif3mdnodestatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3MdNodeStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3MdNodeStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3mdnodestatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3mdnodestatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3MdNodeStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4771,16 +4771,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3MdNodeStatusTa
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3MdNodeStatusTable::DocsIf3MdNodeStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3MdNodeStatusTable::DocsIf3MdNodeStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3MdNodeStatusTable::DocsIf3MdNodeStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3MdNodeStatusTable::DocsIf3MdNodeStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3MdNodeStatusTable::DocsIf3MdNodeStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4904,33 +4904,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3MdDsSgStatusTa
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3MdDsSgStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3MdDsSgStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3MdDsSgStatusEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3MdDsSgStatusTable::DocsIf3MdDsSgStatusEntry>();
-        c->parent = this;
-        docsif3mddssgstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3MdDsSgStatusTable::DocsIf3MdDsSgStatusEntry>();
+        ent_->parent = this;
+        docsif3mddssgstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3MdDsSgStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3MdDsSgStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3mddssgstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3mddssgstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3MdDsSgStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5006,16 +5006,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3MdDsSgStatusTa
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3MdDsSgStatusTable::DocsIf3MdDsSgStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3MdDsSgStatusTable::DocsIf3MdDsSgStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3MdDsSgStatusTable::DocsIf3MdDsSgStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3MdDsSgStatusTable::DocsIf3MdDsSgStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3MdDsSgStatusTable::DocsIf3MdDsSgStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5119,33 +5119,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3MdUsSgStatusTa
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3MdUsSgStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3MdUsSgStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3MdUsSgStatusEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3MdUsSgStatusTable::DocsIf3MdUsSgStatusEntry>();
-        c->parent = this;
-        docsif3mdussgstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3MdUsSgStatusTable::DocsIf3MdUsSgStatusEntry>();
+        ent_->parent = this;
+        docsif3mdussgstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3MdUsSgStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3MdUsSgStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3mdussgstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3mdussgstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3MdUsSgStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5221,16 +5221,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3MdUsSgStatusTa
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3MdUsSgStatusTable::DocsIf3MdUsSgStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3MdUsSgStatusTable::DocsIf3MdUsSgStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3MdUsSgStatusTable::DocsIf3MdUsSgStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3MdUsSgStatusTable::DocsIf3MdUsSgStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3MdUsSgStatusTable::DocsIf3MdUsSgStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5334,33 +5334,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3MdUsToDsChMapp
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3MdUsToDsChMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3MdUsToDsChMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3MdUsToDsChMappingEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3MdUsToDsChMappingTable::DocsIf3MdUsToDsChMappingEntry>();
-        c->parent = this;
-        docsif3mdustodschmappingentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3MdUsToDsChMappingTable::DocsIf3MdUsToDsChMappingEntry>();
+        ent_->parent = this;
+        docsif3mdustodschmappingentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3MdUsToDsChMappingTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3MdUsToDsChMappingTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3mdustodschmappingentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3mdustodschmappingentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3MdUsToDsChMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5437,16 +5437,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3MdUsToDsChMapp
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3MdUsToDsChMappingTable::DocsIf3MdUsToDsChMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3MdUsToDsChMappingTable::DocsIf3MdUsToDsChMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3MdUsToDsChMappingTable::DocsIf3MdUsToDsChMappingEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3MdUsToDsChMappingTable::DocsIf3MdUsToDsChMappingEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3MdUsToDsChMappingTable::DocsIf3MdUsToDsChMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5550,33 +5550,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3MdCfgTable::ge
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3MdCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3MdCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3MdCfgEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry>();
-        c->parent = this;
-        docsif3mdcfgentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry>();
+        ent_->parent = this;
+        docsif3mdcfgentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3MdCfgTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3MdCfgTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3mdcfgentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3mdcfgentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3MdCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5707,16 +5707,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3MdCfgTable::Do
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3MdCfgTable::DocsIf3MdCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5960,33 +5960,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3BondingGrpCfgT
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3BondingGrpCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3BondingGrpCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3BondingGrpCfgEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3BondingGrpCfgTable::DocsIf3BondingGrpCfgEntry>();
-        c->parent = this;
-        docsif3bondinggrpcfgentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3BondingGrpCfgTable::DocsIf3BondingGrpCfgEntry>();
+        ent_->parent = this;
+        docsif3bondinggrpcfgentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3BondingGrpCfgTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3BondingGrpCfgTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3bondinggrpcfgentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3bondinggrpcfgentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3BondingGrpCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6083,16 +6083,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3BondingGrpCfgT
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3BondingGrpCfgTable::DocsIf3BondingGrpCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3BondingGrpCfgTable::DocsIf3BondingGrpCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3BondingGrpCfgTable::DocsIf3BondingGrpCfgEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3BondingGrpCfgTable::DocsIf3BondingGrpCfgEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3BondingGrpCfgTable::DocsIf3BondingGrpCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6246,33 +6246,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3DsBondingGrpSt
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3DsBondingGrpStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3DsBondingGrpStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3DsBondingGrpStatusEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3DsBondingGrpStatusTable::DocsIf3DsBondingGrpStatusEntry>();
-        c->parent = this;
-        docsif3dsbondinggrpstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3DsBondingGrpStatusTable::DocsIf3DsBondingGrpStatusEntry>();
+        ent_->parent = this;
+        docsif3dsbondinggrpstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3DsBondingGrpStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3DsBondingGrpStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3dsbondinggrpstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3dsbondinggrpstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3DsBondingGrpStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6352,16 +6352,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3DsBondingGrpSt
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3DsBondingGrpStatusTable::DocsIf3DsBondingGrpStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3DsBondingGrpStatusTable::DocsIf3DsBondingGrpStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3DsBondingGrpStatusTable::DocsIf3DsBondingGrpStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3DsBondingGrpStatusTable::DocsIf3DsBondingGrpStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3DsBondingGrpStatusTable::DocsIf3DsBondingGrpStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6475,33 +6475,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3UsBondingGrpSt
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3UsBondingGrpStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3UsBondingGrpStatusTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3UsBondingGrpStatusEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3UsBondingGrpStatusTable::DocsIf3UsBondingGrpStatusEntry>();
-        c->parent = this;
-        docsif3usbondinggrpstatusentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3UsBondingGrpStatusTable::DocsIf3UsBondingGrpStatusEntry>();
+        ent_->parent = this;
+        docsif3usbondinggrpstatusentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3UsBondingGrpStatusTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3UsBondingGrpStatusTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3usbondinggrpstatusentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3usbondinggrpstatusentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3UsBondingGrpStatusTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6581,16 +6581,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3UsBondingGrpSt
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3UsBondingGrpStatusTable::DocsIf3UsBondingGrpStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3UsBondingGrpStatusTable::DocsIf3UsBondingGrpStatusEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3UsBondingGrpStatusTable::DocsIf3UsBondingGrpStatusEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3UsBondingGrpStatusTable::DocsIf3UsBondingGrpStatusEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3UsBondingGrpStatusTable::DocsIf3UsBondingGrpStatusEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6704,33 +6704,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3UsChExtTable::
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3UsChExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3UsChExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3UsChExtEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3UsChExtTable::DocsIf3UsChExtEntry>();
-        c->parent = this;
-        docsif3uschextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3UsChExtTable::DocsIf3UsChExtEntry>();
+        ent_->parent = this;
+        docsif3uschextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3UsChExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3UsChExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3uschextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3uschextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3UsChExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6805,16 +6805,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3UsChExtTable::
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3UsChExtTable::DocsIf3UsChExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3UsChExtTable::DocsIf3UsChExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3UsChExtTable::DocsIf3UsChExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3UsChExtTable::DocsIf3UsChExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3UsChExtTable::DocsIf3UsChExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6918,33 +6918,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3UsChSetTable::
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3UsChSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3UsChSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3UsChSetEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3UsChSetTable::DocsIf3UsChSetEntry>();
-        c->parent = this;
-        docsif3uschsetentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3UsChSetTable::DocsIf3UsChSetEntry>();
+        ent_->parent = this;
+        docsif3uschsetentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3UsChSetTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3UsChSetTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3uschsetentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3uschsetentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3UsChSetTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7020,16 +7020,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3UsChSetTable::
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3UsChSetTable::DocsIf3UsChSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3UsChSetTable::DocsIf3UsChSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3UsChSetTable::DocsIf3UsChSetEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3UsChSetTable::DocsIf3UsChSetEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3UsChSetTable::DocsIf3UsChSetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7133,33 +7133,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3DsChSetTable::
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3DsChSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3DsChSetTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3DsChSetEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3DsChSetTable::DocsIf3DsChSetEntry>();
-        c->parent = this;
-        docsif3dschsetentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3DsChSetTable::DocsIf3DsChSetEntry>();
+        ent_->parent = this;
+        docsif3dschsetentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3DsChSetTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3DsChSetTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3dschsetentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3dschsetentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3DsChSetTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7235,16 +7235,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3DsChSetTable::
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3DsChSetTable::DocsIf3DsChSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3DsChSetTable::DocsIf3DsChSetEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3DsChSetTable::DocsIf3DsChSetEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3DsChSetTable::DocsIf3DsChSetEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3DsChSetTable::DocsIf3DsChSetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7348,33 +7348,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3SignalQualityE
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3SignalQualityExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3SignalQualityExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3SignalQualityExtEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3SignalQualityExtTable::DocsIf3SignalQualityExtEntry>();
-        c->parent = this;
-        docsif3signalqualityextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3SignalQualityExtTable::DocsIf3SignalQualityExtEntry>();
+        ent_->parent = this;
+        docsif3signalqualityextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3SignalQualityExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3SignalQualityExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3signalqualityextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3signalqualityextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3SignalQualityExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7449,16 +7449,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3SignalQualityE
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3SignalQualityExtTable::DocsIf3SignalQualityExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3SignalQualityExtTable::DocsIf3SignalQualityExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3SignalQualityExtTable::DocsIf3SignalQualityExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3SignalQualityExtTable::DocsIf3SignalQualityExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3SignalQualityExtTable::DocsIf3SignalQualityExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7562,33 +7562,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmtsSignalQual
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmtsSignalQualityExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmtsSignalQualityExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmtsSignalQualityExtEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmtsSignalQualityExtTable::DocsIf3CmtsSignalQualityExtEntry>();
-        c->parent = this;
-        docsif3cmtssignalqualityextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmtsSignalQualityExtTable::DocsIf3CmtsSignalQualityExtEntry>();
+        ent_->parent = this;
+        docsif3cmtssignalqualityextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmtsSignalQualityExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmtsSignalQualityExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmtssignalqualityextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmtssignalqualityextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmtsSignalQualityExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7663,16 +7663,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmtsSignalQual
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmtsSignalQualityExtTable::DocsIf3CmtsSignalQualityExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmtsSignalQualityExtTable::DocsIf3CmtsSignalQualityExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmtsSignalQualityExtTable::DocsIf3CmtsSignalQualityExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmtsSignalQualityExtTable::DocsIf3CmtsSignalQualityExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmtsSignalQualityExtTable::DocsIf3CmtsSignalQualityExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7776,33 +7776,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmtsSpectrumAn
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmtsSpectrumAnalysisMeasTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmtsSpectrumAnalysisMeasTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmtsSpectrumAnalysisMeasEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmtsSpectrumAnalysisMeasTable::DocsIf3CmtsSpectrumAnalysisMeasEntry>();
-        c->parent = this;
-        docsif3cmtsspectrumanalysismeasentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmtsSpectrumAnalysisMeasTable::DocsIf3CmtsSpectrumAnalysisMeasEntry>();
+        ent_->parent = this;
+        docsif3cmtsspectrumanalysismeasentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmtsSpectrumAnalysisMeasTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmtsSpectrumAnalysisMeasTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmtsspectrumanalysismeasentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmtsspectrumanalysismeasentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmtsSpectrumAnalysisMeasTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7881,16 +7881,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmtsSpectrumAn
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmtsSpectrumAnalysisMeasTable::DocsIf3CmtsSpectrumAnalysisMeasEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmtsSpectrumAnalysisMeasTable::DocsIf3CmtsSpectrumAnalysisMeasEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmtsSpectrumAnalysisMeasTable::DocsIf3CmtsSpectrumAnalysisMeasEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmtsSpectrumAnalysisMeasTable::DocsIf3CmtsSpectrumAnalysisMeasEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmtsSpectrumAnalysisMeasTable::DocsIf3CmtsSpectrumAnalysisMeasEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8004,33 +8004,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmDpvStatsTabl
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmDpvStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmDpvStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmDpvStatsEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmDpvStatsTable::DocsIf3CmDpvStatsEntry>();
-        c->parent = this;
-        docsif3cmdpvstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmDpvStatsTable::DocsIf3CmDpvStatsEntry>();
+        ent_->parent = this;
+        docsif3cmdpvstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmDpvStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmDpvStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmdpvstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmdpvstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmDpvStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8130,16 +8130,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmDpvStatsTabl
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmDpvStatsTable::DocsIf3CmDpvStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmDpvStatsTable::DocsIf3CmDpvStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmDpvStatsTable::DocsIf3CmDpvStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmDpvStatsTable::DocsIf3CmDpvStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmDpvStatsTable::DocsIf3CmDpvStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8303,33 +8303,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmEventCtrlTab
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmEventCtrlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmEventCtrlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmEventCtrlEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmEventCtrlTable::DocsIf3CmEventCtrlEntry>();
-        c->parent = this;
-        docsif3cmeventctrlentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmEventCtrlTable::DocsIf3CmEventCtrlEntry>();
+        ent_->parent = this;
+        docsif3cmeventctrlentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmEventCtrlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmEventCtrlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmeventctrlentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmeventctrlentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmEventCtrlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8400,16 +8400,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmEventCtrlTab
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmEventCtrlTable::DocsIf3CmEventCtrlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmEventCtrlTable::DocsIf3CmEventCtrlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmEventCtrlTable::DocsIf3CmEventCtrlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmEventCtrlTable::DocsIf3CmEventCtrlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmEventCtrlTable::DocsIf3CmEventCtrlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8503,33 +8503,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmtsEventCtrlT
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmtsEventCtrlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmtsEventCtrlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmtsEventCtrlEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmtsEventCtrlTable::DocsIf3CmtsEventCtrlEntry>();
-        c->parent = this;
-        docsif3cmtseventctrlentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmtsEventCtrlTable::DocsIf3CmtsEventCtrlEntry>();
+        ent_->parent = this;
+        docsif3cmtseventctrlentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmtsEventCtrlTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmtsEventCtrlTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmtseventctrlentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmtseventctrlentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmtsEventCtrlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8600,16 +8600,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmtsEventCtrlT
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmtsEventCtrlTable::DocsIf3CmtsEventCtrlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmtsEventCtrlTable::DocsIf3CmtsEventCtrlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmtsEventCtrlTable::DocsIf3CmtsEventCtrlEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmtsEventCtrlTable::DocsIf3CmtsEventCtrlEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmtsEventCtrlTable::DocsIf3CmtsEventCtrlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8703,33 +8703,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmMdCfgTable::
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmMdCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmMdCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmMdCfgEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmMdCfgTable::DocsIf3CmMdCfgEntry>();
-        c->parent = this;
-        docsif3cmmdcfgentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmMdCfgTable::DocsIf3CmMdCfgEntry>();
+        ent_->parent = this;
+        docsif3cmmdcfgentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmMdCfgTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmMdCfgTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmmdcfgentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmmdcfgentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmMdCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8812,16 +8812,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmMdCfgTable::
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmMdCfgTable::DocsIf3CmMdCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmMdCfgTable::DocsIf3CmMdCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmMdCfgTable::DocsIf3CmMdCfgEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmMdCfgTable::DocsIf3CmMdCfgEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmMdCfgTable::DocsIf3CmMdCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8945,33 +8945,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmEnergyMgt1x1
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmEnergyMgt1x1CfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmEnergyMgt1x1CfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmEnergyMgt1x1CfgEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmEnergyMgt1x1CfgTable::DocsIf3CmEnergyMgt1x1CfgEntry>();
-        c->parent = this;
-        docsif3cmenergymgt1x1cfgentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmEnergyMgt1x1CfgTable::DocsIf3CmEnergyMgt1x1CfgEntry>();
+        ent_->parent = this;
+        docsif3cmenergymgt1x1cfgentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmEnergyMgt1x1CfgTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmEnergyMgt1x1CfgTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmenergymgt1x1cfgentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmenergymgt1x1cfgentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmEnergyMgt1x1CfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9054,16 +9054,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmEnergyMgt1x1
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmEnergyMgt1x1CfgTable::DocsIf3CmEnergyMgt1x1CfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmEnergyMgt1x1CfgTable::DocsIf3CmEnergyMgt1x1CfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmEnergyMgt1x1CfgTable::DocsIf3CmEnergyMgt1x1CfgEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmEnergyMgt1x1CfgTable::DocsIf3CmEnergyMgt1x1CfgEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmEnergyMgt1x1CfgTable::DocsIf3CmEnergyMgt1x1CfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9187,33 +9187,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmSpectrumAnal
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmSpectrumAnalysisMeasTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmSpectrumAnalysisMeasTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmSpectrumAnalysisMeasEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmSpectrumAnalysisMeasTable::DocsIf3CmSpectrumAnalysisMeasEntry>();
-        c->parent = this;
-        docsif3cmspectrumanalysismeasentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmSpectrumAnalysisMeasTable::DocsIf3CmSpectrumAnalysisMeasEntry>();
+        ent_->parent = this;
+        docsif3cmspectrumanalysismeasentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmSpectrumAnalysisMeasTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmSpectrumAnalysisMeasTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmspectrumanalysismeasentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmspectrumanalysismeasentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmSpectrumAnalysisMeasTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9288,16 +9288,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmSpectrumAnal
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmSpectrumAnalysisMeasTable::DocsIf3CmSpectrumAnalysisMeasEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmSpectrumAnalysisMeasTable::DocsIf3CmSpectrumAnalysisMeasEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmSpectrumAnalysisMeasTable::DocsIf3CmSpectrumAnalysisMeasEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmSpectrumAnalysisMeasTable::DocsIf3CmSpectrumAnalysisMeasEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmSpectrumAnalysisMeasTable::DocsIf3CmSpectrumAnalysisMeasEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9401,33 +9401,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmtsCmEmStatsT
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmtsCmEmStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmtsCmEmStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmtsCmEmStatsEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmtsCmEmStatsTable::DocsIf3CmtsCmEmStatsEntry>();
-        c->parent = this;
-        docsif3cmtscmemstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmtsCmEmStatsTable::DocsIf3CmtsCmEmStatsEntry>();
+        ent_->parent = this;
+        docsif3cmtscmemstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmtsCmEmStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmtsCmEmStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmtscmemstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmtscmemstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmtsCmEmStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9498,16 +9498,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmtsCmEmStatsT
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmtsCmEmStatsTable::DocsIf3CmtsCmEmStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmtsCmEmStatsTable::DocsIf3CmtsCmEmStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmtsCmEmStatsTable::DocsIf3CmtsCmEmStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmtsCmEmStatsTable::DocsIf3CmtsCmEmStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmtsCmEmStatsTable::DocsIf3CmtsCmEmStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9601,33 +9601,33 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmEm1x1StatsTa
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "docsIf3CmEm1x1StatsEntry")
     {
-        auto c = std::make_shared<DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::DocsIf3CmEm1x1StatsEntry>();
-        c->parent = this;
-        docsif3cmem1x1statsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::DocsIf3CmEm1x1StatsEntry>();
+        ent_->parent = this;
+        docsif3cmem1x1statsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : docsif3cmem1x1statsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : docsif3cmem1x1statsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9718,16 +9718,16 @@ std::vector<std::pair<std::string, LeafData> > DOCSIF3MIB::DocsIf3CmEm1x1StatsTa
 
 }
 
-std::shared_ptr<Entity> DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::DocsIf3CmEm1x1StatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::DocsIf3CmEm1x1StatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::DocsIf3CmEm1x1StatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::DocsIf3CmEm1x1StatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::DocsIf3CmEm1x1StatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

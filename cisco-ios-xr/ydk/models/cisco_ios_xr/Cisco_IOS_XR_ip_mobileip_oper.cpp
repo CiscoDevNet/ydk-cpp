@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> Pmipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lma")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Pmipv6::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lma != nullptr)
     {
-        children["lma"] = lma;
+        _children["lma"] = lma;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Pmipv6::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Pmipv6::clone_ptr() const
+std::shared_ptr<ydk::Entity> Pmipv6::clone_ptr() const
 {
     return std::make_shared<Pmipv6>();
 }
@@ -178,7 +178,7 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statistics")
     {
@@ -219,31 +219,31 @@ std::shared_ptr<Entity> Pmipv6::Lma::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(bindings != nullptr)
     {
-        children["bindings"] = bindings;
+        _children["bindings"] = bindings;
     }
 
     if(heartbeats != nullptr)
     {
-        children["heartbeats"] = heartbeats;
+        _children["heartbeats"] = heartbeats;
     }
 
     if(config_variables != nullptr)
     {
-        children["config-variables"] = config_variables;
+        _children["config-variables"] = config_variables;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -321,7 +321,7 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::get_name
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "customer-statistics")
     {
@@ -362,31 +362,31 @@ std::shared_ptr<Entity> Pmipv6::Lma::Statistics::get_child_by_name(const std::st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(customer_statistics != nullptr)
     {
-        children["customer-statistics"] = customer_statistics;
+        _children["customer-statistics"] = customer_statistics;
     }
 
     if(license != nullptr)
     {
-        children["license"] = license;
+        _children["license"] = license;
     }
 
     if(global != nullptr)
     {
-        children["global"] = global;
+        _children["global"] = global;
     }
 
     if(mag_statistics != nullptr)
     {
-        children["mag-statistics"] = mag_statistics;
+        _children["mag-statistics"] = mag_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -460,33 +460,33 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Customer
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::CustomerStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::CustomerStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "customer-statistic")
     {
-        auto c = std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic>();
-        c->parent = this;
-        customer_statistic.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic>();
+        ent_->parent = this;
+        customer_statistic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : customer_statistic.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : customer_statistic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::CustomerStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -582,7 +582,7 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Customer
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocol-statistics")
     {
@@ -605,21 +605,21 @@ std::shared_ptr<Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerSta
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(protocol_statistics != nullptr)
     {
-        children["protocol-statistics"] = protocol_statistics;
+        _children["protocol-statistics"] = protocol_statistics;
     }
 
     if(accounting_statistics != nullptr)
     {
-        children["accounting-statistics"] = accounting_statistics;
+        _children["accounting-statistics"] = accounting_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -758,7 +758,7 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Customer
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pbu-receive-statistics")
     {
@@ -817,41 +817,41 @@ std::shared_ptr<Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerSta
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pbu_receive_statistics != nullptr)
     {
-        children["pbu-receive-statistics"] = pbu_receive_statistics;
+        _children["pbu-receive-statistics"] = pbu_receive_statistics;
     }
 
     if(pba_send_statistics != nullptr)
     {
-        children["pba-send-statistics"] = pba_send_statistics;
+        _children["pba-send-statistics"] = pba_send_statistics;
     }
 
     if(pbri_send_statistics != nullptr)
     {
-        children["pbri-send-statistics"] = pbri_send_statistics;
+        _children["pbri-send-statistics"] = pbri_send_statistics;
     }
 
     if(pbri_receive_statistics != nullptr)
     {
-        children["pbri-receive-statistics"] = pbri_receive_statistics;
+        _children["pbri-receive-statistics"] = pbri_receive_statistics;
     }
 
     if(pbra_send_statistics != nullptr)
     {
-        children["pbra-send-statistics"] = pbra_send_statistics;
+        _children["pbra-send-statistics"] = pbra_send_statistics;
     }
 
     if(pbra_receive_statistics != nullptr)
     {
-        children["pbra-receive-statistics"] = pbra_receive_statistics;
+        _children["pbra-receive-statistics"] = pbra_receive_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -914,16 +914,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Customer
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbuReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbuReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbuReceiveStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbuReceiveStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbuReceiveStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1110,16 +1110,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Customer
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbaSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbaSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbaSendStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbaSendStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbaSendStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1502,16 +1502,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Customer
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriSendStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriSendStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriSendStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1734,16 +1734,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Customer
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriReceiveStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriReceiveStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriReceiveStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1966,16 +1966,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Customer
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraSendStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraSendStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraSendStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2198,16 +2198,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Customer
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraReceiveStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraReceiveStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraReceiveStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2394,16 +2394,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Customer
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::AccountingStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::AccountingStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::AccountingStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::AccountingStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::AccountingStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2511,16 +2511,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::License:
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::License::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::License::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::License::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::License::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::License::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2655,7 +2655,7 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Global::
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "packet-statistics")
     {
@@ -2687,26 +2687,26 @@ std::shared_ptr<Entity> Pmipv6::Lma::Statistics::Global::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::Global::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::Global::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(packet_statistics != nullptr)
     {
-        children["packet-statistics"] = packet_statistics;
+        _children["packet-statistics"] = packet_statistics;
     }
 
     if(protocol_statistics != nullptr)
     {
-        children["protocol-statistics"] = protocol_statistics;
+        _children["protocol-statistics"] = protocol_statistics;
     }
 
     if(accounting_statistics != nullptr)
     {
-        children["accounting-statistics"] = accounting_statistics;
+        _children["accounting-statistics"] = accounting_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2854,16 +2854,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Global::
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::Global::PacketStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::Global::PacketStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::Global::PacketStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::Global::PacketStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::Global::PacketStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3039,7 +3039,7 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Global::
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pbu-receive-statistics")
     {
@@ -3098,41 +3098,41 @@ std::shared_ptr<Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pbu_receive_statistics != nullptr)
     {
-        children["pbu-receive-statistics"] = pbu_receive_statistics;
+        _children["pbu-receive-statistics"] = pbu_receive_statistics;
     }
 
     if(pba_send_statistics != nullptr)
     {
-        children["pba-send-statistics"] = pba_send_statistics;
+        _children["pba-send-statistics"] = pba_send_statistics;
     }
 
     if(pbri_send_statistics != nullptr)
     {
-        children["pbri-send-statistics"] = pbri_send_statistics;
+        _children["pbri-send-statistics"] = pbri_send_statistics;
     }
 
     if(pbri_receive_statistics != nullptr)
     {
-        children["pbri-receive-statistics"] = pbri_receive_statistics;
+        _children["pbri-receive-statistics"] = pbri_receive_statistics;
     }
 
     if(pbra_send_statistics != nullptr)
     {
-        children["pbra-send-statistics"] = pbra_send_statistics;
+        _children["pbra-send-statistics"] = pbra_send_statistics;
     }
 
     if(pbra_receive_statistics != nullptr)
     {
-        children["pbra-receive-statistics"] = pbra_receive_statistics;
+        _children["pbra-receive-statistics"] = pbra_receive_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::Global::ProtocolStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3202,16 +3202,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Global::
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbuReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbuReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbuReceiveStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbuReceiveStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbuReceiveStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3405,16 +3405,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Global::
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbaSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbaSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbaSendStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbaSendStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbaSendStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3804,16 +3804,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Global::
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriSendStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriSendStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriSendStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4043,16 +4043,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Global::
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriReceiveStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriReceiveStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriReceiveStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4282,16 +4282,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Global::
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraSendStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraSendStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraSendStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4521,16 +4521,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Global::
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraReceiveStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraReceiveStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraReceiveStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4724,16 +4724,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::Global::
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::Global::AccountingStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::Global::AccountingStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::Global::AccountingStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::Global::AccountingStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::Global::AccountingStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4837,33 +4837,33 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::MagStati
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::MagStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::MagStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mag-statistic")
     {
-        auto c = std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic>();
-        c->parent = this;
-        mag_statistic.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic>();
+        ent_->parent = this;
+        mag_statistic.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::MagStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::MagStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mag_statistic.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mag_statistic.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::MagStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4939,7 +4939,7 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::MagStati
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocol-statistics")
     {
@@ -4953,16 +4953,16 @@ std::shared_ptr<Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(protocol_statistics != nullptr)
     {
-        children["protocol-statistics"] = protocol_statistics;
+        _children["protocol-statistics"] = protocol_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5061,7 +5061,7 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::MagStati
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pbu-receive-statistics")
     {
@@ -5120,41 +5120,41 @@ std::shared_ptr<Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::Pr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(pbu_receive_statistics != nullptr)
     {
-        children["pbu-receive-statistics"] = pbu_receive_statistics;
+        _children["pbu-receive-statistics"] = pbu_receive_statistics;
     }
 
     if(pba_send_statistics != nullptr)
     {
-        children["pba-send-statistics"] = pba_send_statistics;
+        _children["pba-send-statistics"] = pba_send_statistics;
     }
 
     if(pbri_send_statistics != nullptr)
     {
-        children["pbri-send-statistics"] = pbri_send_statistics;
+        _children["pbri-send-statistics"] = pbri_send_statistics;
     }
 
     if(pbri_receive_statistics != nullptr)
     {
-        children["pbri-receive-statistics"] = pbri_receive_statistics;
+        _children["pbri-receive-statistics"] = pbri_receive_statistics;
     }
 
     if(pbra_send_statistics != nullptr)
     {
-        children["pbra-send-statistics"] = pbra_send_statistics;
+        _children["pbra-send-statistics"] = pbra_send_statistics;
     }
 
     if(pbra_receive_statistics != nullptr)
     {
-        children["pbra-receive-statistics"] = pbra_receive_statistics;
+        _children["pbra-receive-statistics"] = pbra_receive_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5217,16 +5217,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::MagStati
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbuReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbuReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbuReceiveStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbuReceiveStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbuReceiveStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5413,16 +5413,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::MagStati
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbaSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbaSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbaSendStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbaSendStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbaSendStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5805,16 +5805,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::MagStati
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriSendStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriSendStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriSendStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6037,16 +6037,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::MagStati
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriReceiveStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriReceiveStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriReceiveStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6269,16 +6269,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::MagStati
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraSendStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraSendStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraSendStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraSendStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6501,16 +6501,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Statistics::MagStati
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraReceiveStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraReceiveStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraReceiveStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraReceiveStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6704,33 +6704,33 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Bindings::get_name_l
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Bindings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Bindings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "binding")
     {
-        auto c = std::make_shared<Pmipv6::Lma::Bindings::Binding>();
-        c->parent = this;
-        binding.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pmipv6::Lma::Bindings::Binding>();
+        ent_->parent = this;
+        binding.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Bindings::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Bindings::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : binding.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : binding.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::Bindings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6942,67 +6942,67 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Bindings::Binding::g
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Bindings::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Bindings::Binding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "coa")
     {
-        auto c = std::make_shared<Pmipv6::Lma::Bindings::Binding::Coa>();
-        c->parent = this;
-        coa.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pmipv6::Lma::Bindings::Binding::Coa>();
+        ent_->parent = this;
+        coa.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "dmnp-v4")
     {
-        auto c = std::make_shared<Pmipv6::Lma::Bindings::Binding::DmnpV4>();
-        c->parent = this;
-        dmnp_v4.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pmipv6::Lma::Bindings::Binding::DmnpV4>();
+        ent_->parent = this;
+        dmnp_v4.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "dmnp-v6")
     {
-        auto c = std::make_shared<Pmipv6::Lma::Bindings::Binding::DmnpV6>();
-        c->parent = this;
-        dmnp_v6.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pmipv6::Lma::Bindings::Binding::DmnpV6>();
+        ent_->parent = this;
+        dmnp_v6.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Bindings::Binding::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Bindings::Binding::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : coa.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : coa.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : dmnp_v4.entities())
+    count_ = 0;
+    for (auto ent_ : dmnp_v4.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : dmnp_v6.entities())
+    count_ = 0;
+    for (auto ent_ : dmnp_v6.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::Bindings::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7438,16 +7438,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Bindings::Binding::C
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Bindings::Binding::Coa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Bindings::Binding::Coa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Bindings::Binding::Coa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Bindings::Binding::Coa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Bindings::Binding::Coa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7727,16 +7727,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Bindings::Binding::D
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Bindings::Binding::DmnpV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Bindings::Binding::DmnpV4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Bindings::Binding::DmnpV4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Bindings::Binding::DmnpV4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Bindings::Binding::DmnpV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7826,16 +7826,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Bindings::Binding::D
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Bindings::Binding::DmnpV6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Bindings::Binding::DmnpV6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Bindings::Binding::DmnpV6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Bindings::Binding::DmnpV6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Bindings::Binding::DmnpV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7929,33 +7929,33 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Heartbeats::get_name
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Heartbeats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Heartbeats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "heartbeat")
     {
-        auto c = std::make_shared<Pmipv6::Lma::Heartbeats::Heartbeat>();
-        c->parent = this;
-        heartbeat.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pmipv6::Lma::Heartbeats::Heartbeat>();
+        ent_->parent = this;
+        heartbeat.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Heartbeats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Heartbeats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : heartbeat.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : heartbeat.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::Heartbeats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8062,16 +8062,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::Heartbeats::Heartbea
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::Heartbeats::Heartbeat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::Heartbeats::Heartbeat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Heartbeats::Heartbeat::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::Heartbeats::Heartbeat::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::Heartbeats::Heartbeat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8251,7 +8251,7 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::ConfigVariables::get
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::ConfigVariables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "customer-variables")
     {
@@ -8274,21 +8274,21 @@ std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::ConfigVariables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(customer_variables != nullptr)
     {
-        children["customer-variables"] = customer_variables;
+        _children["customer-variables"] = customer_variables;
     }
 
     if(global_variables != nullptr)
     {
-        children["global-variables"] = global_variables;
+        _children["global-variables"] = global_variables;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::ConfigVariables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8362,33 +8362,33 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::ConfigVariables::Cus
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::CustomerVariables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::ConfigVariables::CustomerVariables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "customer-variable")
     {
-        auto c = std::make_shared<Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable>();
-        c->parent = this;
-        customer_variable.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable>();
+        ent_->parent = this;
+        customer_variable.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::CustomerVariables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::ConfigVariables::CustomerVariables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : customer_variable.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : customer_variable.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::ConfigVariables::CustomerVariables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8472,7 +8472,7 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::ConfigVariables::Cus
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mll-service")
     {
@@ -8486,16 +8486,16 @@ std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::CustomerVariables::Custome
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mll_service != nullptr)
     {
-        children["mll-service"] = mll_service;
+        _children["mll-service"] = mll_service;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8626,16 +8626,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::ConfigVariables::Cus
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::MllService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::MllService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::MllService::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::MllService::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::MllService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8920,7 +8920,7 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::ConfigVariables::Glo
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "parameters")
     {
@@ -8942,90 +8942,90 @@ std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::get_child
 
     if(child_yang_name == "intf")
     {
-        auto c = std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf>();
-        c->parent = this;
-        intf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf>();
+        ent_->parent = this;
+        intf.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "peer")
     {
-        auto c = std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer>();
-        c->parent = this;
-        peer.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer>();
+        ent_->parent = this;
+        peer.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "network")
     {
-        auto c = std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Network>();
-        c->parent = this;
-        network.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Network>();
+        ent_->parent = this;
+        network.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "cust")
     {
-        auto c = std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust>();
-        c->parent = this;
-        cust.append(c);
-        return c;
+        auto ent_ = std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust>();
+        ent_->parent = this;
+        cust.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(parameters != nullptr)
     {
-        children["parameters"] = parameters;
+        _children["parameters"] = parameters;
     }
 
     if(mll_service != nullptr)
     {
-        children["mll-service"] = mll_service;
+        _children["mll-service"] = mll_service;
     }
 
-    count = 0;
-    for (auto c : intf.entities())
+    count_ = 0;
+    for (auto ent_ : intf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : peer.entities())
+    count_ = 0;
+    for (auto ent_ : peer.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : network.entities())
+    count_ = 0;
+    for (auto ent_ : network.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : cust.entities())
+    count_ = 0;
+    for (auto ent_ : cust.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::ConfigVariables::GlobalVariables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9360,7 +9360,7 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::ConfigVariables::Glo
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "self-id")
     {
@@ -9374,16 +9374,16 @@ std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameter
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(self_id != nullptr)
     {
-        children["self-id"] = self_id;
+        _children["self-id"] = self_id;
     }
 
-    return children;
+    return _children;
 }
 
 void Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9631,16 +9631,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::ConfigVariables::Glo
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::SelfId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::SelfId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::SelfId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::SelfId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::SelfId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9778,16 +9778,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::ConfigVariables::Glo
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::MllService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::MllService::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::MllService::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::MllService::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::ConfigVariables::GlobalVariables::MllService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9951,16 +9951,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::ConfigVariables::Glo
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10080,16 +10080,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::ConfigVariables::Glo
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10253,16 +10253,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::ConfigVariables::Glo
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::Network::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::ConfigVariables::GlobalVariables::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10440,16 +10440,16 @@ std::vector<std::pair<std::string, LeafData> > Pmipv6::Lma::ConfigVariables::Glo
 
 }
 
-std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

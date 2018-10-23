@@ -56,7 +56,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPMROUTEMIB::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> CISCOIPMROUTEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPMROUTEMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoIpMRoute")
     {
@@ -79,21 +79,21 @@ std::shared_ptr<Entity> CISCOIPMROUTEMIB::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPMROUTEMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPMROUTEMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ciscoipmroute != nullptr)
     {
-        children["ciscoIpMRoute"] = ciscoipmroute;
+        _children["ciscoIpMRoute"] = ciscoipmroute;
     }
 
     if(ciscoipmrouteheartbeattable != nullptr)
     {
-        children["ciscoIpMRouteHeartBeatTable"] = ciscoipmrouteheartbeattable;
+        _children["ciscoIpMRouteHeartBeatTable"] = ciscoipmrouteheartbeattable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPMROUTEMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -104,7 +104,7 @@ void CISCOIPMROUTEMIB::set_filter(const std::string & value_path, YFilter yfilte
 {
 }
 
-std::shared_ptr<Entity> CISCOIPMROUTEMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOIPMROUTEMIB::clone_ptr() const
 {
     return std::make_shared<CISCOIPMROUTEMIB>();
 }
@@ -184,16 +184,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPMROUTEMIB::CiscoIpMRoute::
 
 }
 
-std::shared_ptr<Entity> CISCOIPMROUTEMIB::CiscoIpMRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPMROUTEMIB::CiscoIpMRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPMROUTEMIB::CiscoIpMRoute::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPMROUTEMIB::CiscoIpMRoute::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPMROUTEMIB::CiscoIpMRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -277,33 +277,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPMROUTEMIB::CiscoIpMRouteHe
 
 }
 
-std::shared_ptr<Entity> CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoIpMRouteHeartBeatEntry")
     {
-        auto c = std::make_shared<CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::CiscoIpMRouteHeartBeatEntry>();
-        c->parent = this;
-        ciscoipmrouteheartbeatentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::CiscoIpMRouteHeartBeatEntry>();
+        ent_->parent = this;
+        ciscoipmrouteheartbeatentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ciscoipmrouteheartbeatentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ciscoipmrouteheartbeatentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -398,16 +398,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOIPMROUTEMIB::CiscoIpMRouteHe
 
 }
 
-std::shared_ptr<Entity> CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::CiscoIpMRouteHeartBeatEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::CiscoIpMRouteHeartBeatEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::CiscoIpMRouteHeartBeatEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::CiscoIpMRouteHeartBeatEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::CiscoIpMRouteHeartBeatEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

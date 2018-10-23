@@ -59,16 +59,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Static::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Static::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Static::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Static::LispIpRouteImport::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Static::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -153,7 +153,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lisp-ip-route-import")
     {
@@ -167,16 +167,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Rip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Rip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lisp_ip_route_import != nullptr)
     {
-        children["lisp-ip-route-import"] = lisp_ip_route_import;
+        _children["lisp-ip-route-import"] = lisp_ip_route_import;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -249,16 +249,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::Database::Rip::LispIpRouteImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -397,7 +397,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "application")
     {
@@ -410,10 +410,10 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
 
     if(child_yang_name == "bgp")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Bgp>();
-        c->parent = this;
-        bgp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Bgp>();
+        ent_->parent = this;
+        bgp.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "connected")
@@ -427,10 +427,10 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
 
     if(child_yang_name == "eigrp")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Eigrp>();
-        c->parent = this;
-        eigrp.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Eigrp>();
+        ent_->parent = this;
+        eigrp.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "isis")
@@ -462,10 +462,10 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
 
     if(child_yang_name == "ospf")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Ospf>();
-        c->parent = this;
-        ospf.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Ospf>();
+        ent_->parent = this;
+        ospf.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "static")
@@ -479,86 +479,86 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
 
     if(child_yang_name == "rip")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Rip>();
-        c->parent = this;
-        rip.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Rip>();
+        ent_->parent = this;
+        rip.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(application != nullptr)
     {
-        children["application"] = application;
+        _children["application"] = application;
     }
 
-    count = 0;
-    for (auto c : bgp.entities())
+    count_ = 0;
+    for (auto ent_ : bgp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(connected != nullptr)
     {
-        children["connected"] = connected;
+        _children["connected"] = connected;
     }
 
-    count = 0;
-    for (auto c : eigrp.entities())
+    count_ = 0;
+    for (auto ent_ : eigrp.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(isis != nullptr)
     {
-        children["isis"] = isis;
+        _children["isis"] = isis;
     }
 
     if(maximum_prefix != nullptr)
     {
-        children["maximum-prefix"] = maximum_prefix;
+        _children["maximum-prefix"] = maximum_prefix;
     }
 
     if(nd != nullptr)
     {
-        children["nd"] = nd;
+        _children["nd"] = nd;
     }
 
-    count = 0;
-    for (auto c : ospf.entities())
+    count_ = 0;
+    for (auto ent_ : ospf.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(static_ != nullptr)
     {
-        children["static"] = static_;
+        _children["static"] = static_;
     }
 
-    count = 0;
-    for (auto c : rip.entities())
+    count_ = 0;
+    for (auto ent_ : rip.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -616,7 +616,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Application::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
@@ -630,16 +630,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Application::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Application::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(map_cache_container != nullptr)
     {
-        children["map-cache-container"] = map_cache_container;
+        _children["map-cache-container"] = map_cache_container;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Application::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -698,16 +698,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Application::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Application::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Application::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Application::MapCacheContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Application::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -781,7 +781,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
@@ -795,16 +795,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Bgp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(map_cache_container != nullptr)
     {
-        children["map-cache-container"] = map_cache_container;
+        _children["map-cache-container"] = map_cache_container;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -873,16 +873,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Bgp::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -950,7 +950,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
@@ -964,16 +964,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Connected::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Connected::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(map_cache_container != nullptr)
     {
-        children["map-cache-container"] = map_cache_container;
+        _children["map-cache-container"] = map_cache_container;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1032,16 +1032,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Connected::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1115,7 +1115,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
@@ -1129,16 +1129,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Eigrp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Eigrp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(map_cache_container != nullptr)
     {
-        children["map-cache-container"] = map_cache_container;
+        _children["map-cache-container"] = map_cache_container;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1207,16 +1207,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Eigrp::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1289,7 +1289,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
@@ -1303,16 +1303,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Isis::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Isis::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(map_cache_container != nullptr)
     {
-        children["map-cache-container"] = map_cache_container;
+        _children["map-cache-container"] = map_cache_container;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1381,16 +1381,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Isis::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1475,16 +1475,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::MaximumPrefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::MaximumPrefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::MaximumPrefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::MaximumPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1592,7 +1592,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Nd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Nd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
@@ -1606,16 +1606,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Nd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Nd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(map_cache_container != nullptr)
     {
-        children["map-cache-container"] = map_cache_container;
+        _children["map-cache-container"] = map_cache_container;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Nd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1674,16 +1674,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Nd::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Nd::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Nd::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Nd::MapCacheContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Nd::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1757,7 +1757,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
@@ -1771,16 +1771,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Ospf::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(map_cache_container != nullptr)
     {
-        children["map-cache-container"] = map_cache_container;
+        _children["map-cache-container"] = map_cache_container;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1849,16 +1849,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Ospf::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1926,7 +1926,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
@@ -1940,16 +1940,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Static::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Static::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(map_cache_container != nullptr)
     {
-        children["map-cache-container"] = map_cache_container;
+        _children["map-cache-container"] = map_cache_container;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2008,16 +2008,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Static::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Static::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Static::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Static::MapCacheContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Static::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2091,7 +2091,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-cache-container")
     {
@@ -2105,16 +2105,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Rip::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Rip::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(map_cache_container != nullptr)
     {
-        children["map-cache-container"] = map_cache_container;
+        _children["map-cache-container"] = map_cache_container;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2183,16 +2183,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2310,50 +2310,50 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bgp-id")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::BgpId>();
-        c->parent = this;
-        bgp_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::BgpId>();
+        ent_->parent = this;
+        bgp_id.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "eigrp-or-ospf-id")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::EigrpOrOspfId>();
-        c->parent = this;
-        eigrp_or_ospf_id.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::EigrpOrOspfId>();
+        ent_->parent = this;
+        eigrp_or_ospf_id.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : bgp_id.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : bgp_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : eigrp_or_ospf_id.entities())
+    count_ = 0;
+    for (auto ent_ : eigrp_or_ospf_id.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2487,16 +2487,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::BgpId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::BgpId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::BgpId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::BgpId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::BgpId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2580,16 +2580,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::EigrpOrOspfId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::EigrpOrOspfId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::EigrpOrOspfId::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::EigrpOrOspfId::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::RouteImport::PrefixListProto::EigrpOrOspfId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2679,14 +2679,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eid-cont")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont>();
-        c->parent = this;
-        eid_cont.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont>();
+        ent_->parent = this;
+        eid_cont.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "limit")
@@ -2701,25 +2701,25 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : eid_cont.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : eid_cont.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(limit != nullptr)
     {
-        children["limit"] = limit;
+        _children["limit"] = limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2832,7 +2832,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "locator-set-container")
     {
@@ -2845,85 +2845,85 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
 
     if(child_yang_name == "ipv4-addrees")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv4Addrees>();
-        c->parent = this;
-        ipv4_addrees.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv4Addrees>();
+        ent_->parent = this;
+        ipv4_addrees.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ipv6-addrees")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv6Addrees>();
-        c->parent = this;
-        ipv6_addrees.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv6Addrees>();
+        ent_->parent = this;
+        ipv6_addrees.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "IPv4-interface")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv4Interface>();
-        c->parent = this;
-        ipv4_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv4Interface>();
+        ent_->parent = this;
+        ipv4_interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "IPv6-interface")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv6Interface>();
-        c->parent = this;
-        ipv6_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv6Interface>();
+        ent_->parent = this;
+        ipv6_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(locator_set_container != nullptr)
     {
-        children["locator-set-container"] = locator_set_container;
+        _children["locator-set-container"] = locator_set_container;
     }
 
-    count = 0;
-    for (auto c : ipv4_addrees.entities())
+    count_ = 0;
+    for (auto ent_ : ipv4_addrees.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipv6_addrees.entities())
+    count_ = 0;
+    for (auto ent_ : ipv6_addrees.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipv4_interface.entities())
+    count_ = 0;
+    for (auto ent_ : ipv4_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipv6_interface.entities())
+    count_ = 0;
+    for (auto ent_ : ipv6_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3006,16 +3006,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::LocatorSetContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::LocatorSetContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::LocatorSetContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::LocatorSetContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::LocatorSetContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3100,7 +3100,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv4Addrees::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv4Addrees::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping-option")
     {
@@ -3114,16 +3114,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv4Addrees::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv4Addrees::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_mapping_option != nullptr)
     {
-        children["database-mapping-option"] = database_mapping_option;
+        _children["database-mapping-option"] = database_mapping_option;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv4Addrees::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3200,16 +3200,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3304,7 +3304,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv6Addrees::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv6Addrees::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping-option")
     {
@@ -3318,16 +3318,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv6Addrees::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv6Addrees::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_mapping_option != nullptr)
     {
-        children["database-mapping-option"] = database_mapping_option;
+        _children["database-mapping-option"] = database_mapping_option;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv6Addrees::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3404,16 +3404,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3508,7 +3508,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv4Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv4Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping-option")
     {
@@ -3522,16 +3522,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv4Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv4Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_mapping_option != nullptr)
     {
-        children["database-mapping-option"] = database_mapping_option;
+        _children["database-mapping-option"] = database_mapping_option;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv4Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3608,16 +3608,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3712,7 +3712,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv6Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv6Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping-option")
     {
@@ -3726,16 +3726,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv6Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv6Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_mapping_option != nullptr)
     {
-        children["database-mapping-option"] = database_mapping_option;
+        _children["database-mapping-option"] = database_mapping_option;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv6Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3812,16 +3812,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3914,16 +3914,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::Limit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::Limit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ipv6::DatabaseMapping::Limit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4055,7 +4055,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default")
     {
@@ -4177,76 +4177,76 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_ != nullptr)
     {
-        children["default"] = default_;
+        _children["default"] = default_;
     }
 
     if(eid_table != nullptr)
     {
-        children["eid-table"] = eid_table;
+        _children["eid-table"] = eid_table;
     }
 
     if(broadcast_underlay != nullptr)
     {
-        children["broadcast-underlay"] = broadcast_underlay;
+        _children["broadcast-underlay"] = broadcast_underlay;
     }
 
     if(flood != nullptr)
     {
-        children["flood"] = flood;
+        _children["flood"] = flood;
     }
 
     if(database_mapping != nullptr)
     {
-        children["database-mapping"] = database_mapping;
+        _children["database-mapping"] = database_mapping;
     }
 
     if(itr != nullptr)
     {
-        children["itr"] = itr;
+        _children["itr"] = itr;
     }
 
     if(itr_enable != nullptr)
     {
-        children["itr-enable"] = itr_enable;
+        _children["itr-enable"] = itr_enable;
     }
 
     if(etr_enable != nullptr)
     {
-        children["etr-enable"] = etr_enable;
+        _children["etr-enable"] = etr_enable;
     }
 
     if(etr != nullptr)
     {
-        children["etr"] = etr;
+        _children["etr"] = etr;
     }
 
     if(map_cache_limit != nullptr)
     {
-        children["map-cache-limit"] = map_cache_limit;
+        _children["map-cache-limit"] = map_cache_limit;
     }
 
     if(site_registration != nullptr)
     {
-        children["site-registration"] = site_registration;
+        _children["site-registration"] = site_registration;
     }
 
     if(solicit_map_request != nullptr)
     {
-        children["solicit-map-request"] = solicit_map_request;
+        _children["solicit-map-request"] = solicit_map_request;
     }
 
     if(map_cache != nullptr)
     {
-        children["map-cache"] = map_cache;
+        _children["map-cache"] = map_cache;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4364,7 +4364,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eid-table")
     {
@@ -4477,71 +4477,71 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(eid_table != nullptr)
     {
-        children["eid-table"] = eid_table;
+        _children["eid-table"] = eid_table;
     }
 
     if(broadcast_underlay != nullptr)
     {
-        children["broadcast-underlay"] = broadcast_underlay;
+        _children["broadcast-underlay"] = broadcast_underlay;
     }
 
     if(flood != nullptr)
     {
-        children["flood"] = flood;
+        _children["flood"] = flood;
     }
 
     if(database_mapping != nullptr)
     {
-        children["database-mapping"] = database_mapping;
+        _children["database-mapping"] = database_mapping;
     }
 
     if(itr != nullptr)
     {
-        children["itr"] = itr;
+        _children["itr"] = itr;
     }
 
     if(itr_enable != nullptr)
     {
-        children["itr-enable"] = itr_enable;
+        _children["itr-enable"] = itr_enable;
     }
 
     if(etr_enable != nullptr)
     {
-        children["etr-enable"] = etr_enable;
+        _children["etr-enable"] = etr_enable;
     }
 
     if(etr != nullptr)
     {
-        children["etr"] = etr;
+        _children["etr"] = etr;
     }
 
     if(map_cache_limit != nullptr)
     {
-        children["map-cache-limit"] = map_cache_limit;
+        _children["map-cache-limit"] = map_cache_limit;
     }
 
     if(site_registration != nullptr)
     {
-        children["site-registration"] = site_registration;
+        _children["site-registration"] = site_registration;
     }
 
     if(solicit_map_request != nullptr)
     {
-        children["solicit-map-request"] = solicit_map_request;
+        _children["solicit-map-request"] = solicit_map_request;
     }
 
     if(map_cache != nullptr)
     {
-        children["map-cache"] = map_cache;
+        _children["map-cache"] = map_cache;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4610,16 +4610,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::EidTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::EidTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::EidTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::EidTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::EidTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4692,16 +4692,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::BroadcastUnderlay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::BroadcastUnderlay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::BroadcastUnderlay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::BroadcastUnderlay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::BroadcastUnderlay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4784,16 +4784,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Flood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Flood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Flood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Flood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Flood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4886,14 +4886,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eid-cont")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont>();
-        c->parent = this;
-        eid_cont.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont>();
+        ent_->parent = this;
+        eid_cont.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "mac")
@@ -4917,30 +4917,30 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : eid_cont.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : eid_cont.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
     if(limit != nullptr)
     {
-        children["limit"] = limit;
+        _children["limit"] = limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5049,7 +5049,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "locator-set-container")
     {
@@ -5062,85 +5062,85 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
 
     if(child_yang_name == "ipv4-addrees")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv4Addrees>();
-        c->parent = this;
-        ipv4_addrees.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv4Addrees>();
+        ent_->parent = this;
+        ipv4_addrees.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ipv6-addrees")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv6Addrees>();
-        c->parent = this;
-        ipv6_addrees.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv6Addrees>();
+        ent_->parent = this;
+        ipv6_addrees.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "IPv4-interface")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv4Interface>();
-        c->parent = this;
-        ipv4_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv4Interface>();
+        ent_->parent = this;
+        ipv4_interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "IPv6-interface")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv6Interface>();
-        c->parent = this;
-        ipv6_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv6Interface>();
+        ent_->parent = this;
+        ipv6_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(locator_set_container != nullptr)
     {
-        children["locator-set-container"] = locator_set_container;
+        _children["locator-set-container"] = locator_set_container;
     }
 
-    count = 0;
-    for (auto c : ipv4_addrees.entities())
+    count_ = 0;
+    for (auto ent_ : ipv4_addrees.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipv6_addrees.entities())
+    count_ = 0;
+    for (auto ent_ : ipv6_addrees.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipv4_interface.entities())
+    count_ = 0;
+    for (auto ent_ : ipv4_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipv6_interface.entities())
+    count_ = 0;
+    for (auto ent_ : ipv6_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5213,16 +5213,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::LocatorSetContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::LocatorSetContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::LocatorSetContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::LocatorSetContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::LocatorSetContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5307,7 +5307,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv4Addrees::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv4Addrees::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping-option")
     {
@@ -5321,16 +5321,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv4Addrees::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv4Addrees::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_mapping_option != nullptr)
     {
-        children["database-mapping-option"] = database_mapping_option;
+        _children["database-mapping-option"] = database_mapping_option;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv4Addrees::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5407,16 +5407,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5511,7 +5511,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv6Addrees::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv6Addrees::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping-option")
     {
@@ -5525,16 +5525,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv6Addrees::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv6Addrees::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_mapping_option != nullptr)
     {
-        children["database-mapping-option"] = database_mapping_option;
+        _children["database-mapping-option"] = database_mapping_option;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv6Addrees::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5611,16 +5611,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5715,7 +5715,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv4Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv4Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping-option")
     {
@@ -5729,16 +5729,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv4Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv4Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_mapping_option != nullptr)
     {
-        children["database-mapping-option"] = database_mapping_option;
+        _children["database-mapping-option"] = database_mapping_option;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv4Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5815,16 +5815,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -5919,7 +5919,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv6Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv6Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping-option")
     {
@@ -5933,16 +5933,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv6Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv6Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_mapping_option != nullptr)
     {
-        children["database-mapping-option"] = database_mapping_option;
+        _children["database-mapping-option"] = database_mapping_option;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv6Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6019,16 +6019,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6117,16 +6117,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6199,16 +6199,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::Limit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::Limit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::DatabaseMapping::Limit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6299,33 +6299,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Itr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Itr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-resolver")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Itr::MapResolver>();
-        c->parent = this;
-        map_resolver.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Itr::MapResolver>();
+        ent_->parent = this;
+        map_resolver.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Itr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Itr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : map_resolver.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : map_resolver.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Itr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6399,16 +6399,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Itr::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Itr::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Itr::MapResolver::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Itr::MapResolver::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Itr::MapResolver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6487,16 +6487,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::ItrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::ItrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::ItrEnable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::ItrEnable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::ItrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6565,16 +6565,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::EtrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::EtrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::EtrEnable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::EtrEnable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::EtrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6659,14 +6659,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-server")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer>();
-        c->parent = this;
-        map_server.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer>();
+        ent_->parent = this;
+        map_server.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "accept-map-request-mapping")
@@ -6681,25 +6681,25 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : map_server.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : map_server.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(accept_map_request_mapping != nullptr)
     {
-        children["accept-map-request-mapping"] = accept_map_request_mapping;
+        _children["accept-map-request-mapping"] = accept_map_request_mapping;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6778,7 +6778,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key")
     {
@@ -6792,16 +6792,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key != nullptr)
     {
-        children["key"] = key;
+        _children["key"] = key;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -6892,7 +6892,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-pwd")
     {
@@ -6933,31 +6933,31 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_pwd != nullptr)
     {
-        children["key-pwd"] = key_pwd;
+        _children["key-pwd"] = key_pwd;
     }
 
     if(key_0 != nullptr)
     {
-        children["key-0"] = key_0;
+        _children["key-0"] = key_0;
     }
 
     if(key_6 != nullptr)
     {
-        children["key-6"] = key_6;
+        _children["key-6"] = key_6;
     }
 
     if(key_7 != nullptr)
     {
-        children["key-7"] = key_7;
+        _children["key-7"] = key_7;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7024,16 +7024,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::KeyPwd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::KeyPwd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::KeyPwd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::KeyPwd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::KeyPwd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7130,16 +7130,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key0::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key0::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key0::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7236,16 +7236,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7342,16 +7342,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key7::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key7::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::MapServer::Key::Key7::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7444,16 +7444,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::AcceptMapRequestMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::AcceptMapRequestMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::AcceptMapRequestMapping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::AcceptMapRequestMapping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::Etr::AcceptMapRequestMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7540,16 +7540,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCacheLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCacheLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCacheLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCacheLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCacheLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7642,16 +7642,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::SiteRegistration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::SiteRegistration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::SiteRegistration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::SiteRegistration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::SiteRegistration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7738,16 +7738,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::SolicitMapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::SolicitMapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::SolicitMapRequest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::SolicitMapRequest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::SolicitMapRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7844,33 +7844,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eid-cont")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::EidCont>();
-        c->parent = this;
-        eid_cont.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::EidCont>();
+        ent_->parent = this;
+        eid_cont.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : eid_cont.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : eid_cont.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -7935,7 +7935,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::EidCont::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::EidCont::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "etr-interface-ip")
     {
@@ -7949,16 +7949,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::EidCont::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::EidCont::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(etr_interface_ip != nullptr)
     {
-        children["etr-interface-ip"] = etr_interface_ip;
+        _children["etr-interface-ip"] = etr_interface_ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::EidCont::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8035,16 +8035,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::EidCont::EtrInterfaceIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::EidCont::EtrInterfaceIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::EidCont::EtrInterfaceIp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::EidCont::EtrInterfaceIp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Default_::MapCache::EidCont::EtrInterfaceIp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8133,16 +8133,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::EidTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::EidTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::EidTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::EidTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::EidTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8215,16 +8215,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::BroadcastUnderlay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::BroadcastUnderlay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::BroadcastUnderlay::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::BroadcastUnderlay::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::BroadcastUnderlay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8307,16 +8307,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Flood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Flood::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Flood::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Flood::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Flood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8409,14 +8409,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eid-cont")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont>();
-        c->parent = this;
-        eid_cont.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont>();
+        ent_->parent = this;
+        eid_cont.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "mac")
@@ -8440,30 +8440,30 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : eid_cont.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : eid_cont.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(mac != nullptr)
     {
-        children["mac"] = mac;
+        _children["mac"] = mac;
     }
 
     if(limit != nullptr)
     {
-        children["limit"] = limit;
+        _children["limit"] = limit;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8572,7 +8572,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "locator-set-container")
     {
@@ -8585,85 +8585,85 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
 
     if(child_yang_name == "ipv4-addrees")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv4Addrees>();
-        c->parent = this;
-        ipv4_addrees.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv4Addrees>();
+        ent_->parent = this;
+        ipv4_addrees.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ipv6-addrees")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv6Addrees>();
-        c->parent = this;
-        ipv6_addrees.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv6Addrees>();
+        ent_->parent = this;
+        ipv6_addrees.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "IPv4-interface")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv4Interface>();
-        c->parent = this;
-        ipv4_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv4Interface>();
+        ent_->parent = this;
+        ipv4_interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "IPv6-interface")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv6Interface>();
-        c->parent = this;
-        ipv6_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv6Interface>();
+        ent_->parent = this;
+        ipv6_interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(locator_set_container != nullptr)
     {
-        children["locator-set-container"] = locator_set_container;
+        _children["locator-set-container"] = locator_set_container;
     }
 
-    count = 0;
-    for (auto c : ipv4_addrees.entities())
+    count_ = 0;
+    for (auto ent_ : ipv4_addrees.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipv6_addrees.entities())
+    count_ = 0;
+    for (auto ent_ : ipv6_addrees.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipv4_interface.entities())
+    count_ = 0;
+    for (auto ent_ : ipv4_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : ipv6_interface.entities())
+    count_ = 0;
+    for (auto ent_ : ipv6_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8736,16 +8736,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::LocatorSetContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::LocatorSetContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::LocatorSetContainer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::LocatorSetContainer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::LocatorSetContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8830,7 +8830,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv4Addrees::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv4Addrees::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping-option")
     {
@@ -8844,16 +8844,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv4Addrees::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv4Addrees::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_mapping_option != nullptr)
     {
-        children["database-mapping-option"] = database_mapping_option;
+        _children["database-mapping-option"] = database_mapping_option;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv4Addrees::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -8930,16 +8930,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv4Addrees::DatabaseMappingOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9034,7 +9034,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv6Addrees::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv6Addrees::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping-option")
     {
@@ -9048,16 +9048,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv6Addrees::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv6Addrees::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_mapping_option != nullptr)
     {
-        children["database-mapping-option"] = database_mapping_option;
+        _children["database-mapping-option"] = database_mapping_option;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv6Addrees::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9134,16 +9134,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::Ipv6Addrees::DatabaseMappingOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9238,7 +9238,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv4Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv4Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping-option")
     {
@@ -9252,16 +9252,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv4Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv4Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_mapping_option != nullptr)
     {
-        children["database-mapping-option"] = database_mapping_option;
+        _children["database-mapping-option"] = database_mapping_option;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv4Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9338,16 +9338,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv4Interface::DatabaseMappingOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9442,7 +9442,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv6Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv6Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping-option")
     {
@@ -9456,16 +9456,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv6Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv6Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_mapping_option != nullptr)
     {
-        children["database-mapping-option"] = database_mapping_option;
+        _children["database-mapping-option"] = database_mapping_option;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv6Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9542,16 +9542,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::EidCont::IPv6Interface::DatabaseMappingOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9640,16 +9640,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::Mac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::Mac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9722,16 +9722,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::Limit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::Limit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::DatabaseMapping::Limit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9822,33 +9822,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Itr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Itr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-resolver")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Itr::MapResolver>();
-        c->parent = this;
-        map_resolver.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Itr::MapResolver>();
+        ent_->parent = this;
+        map_resolver.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Itr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Itr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : map_resolver.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : map_resolver.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Itr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -9922,16 +9922,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Itr::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Itr::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Itr::MapResolver::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Itr::MapResolver::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Itr::MapResolver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10010,16 +10010,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::ItrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::ItrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::ItrEnable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::ItrEnable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::ItrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10088,16 +10088,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::EtrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::EtrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::EtrEnable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::EtrEnable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::EtrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10182,14 +10182,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-server")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer>();
-        c->parent = this;
-        map_server.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer>();
+        ent_->parent = this;
+        map_server.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "accept-map-request-mapping")
@@ -10204,25 +10204,25 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : map_server.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : map_server.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(accept_map_request_mapping != nullptr)
     {
-        children["accept-map-request-mapping"] = accept_map_request_mapping;
+        _children["accept-map-request-mapping"] = accept_map_request_mapping;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10301,7 +10301,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key")
     {
@@ -10315,16 +10315,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key != nullptr)
     {
-        children["key"] = key;
+        _children["key"] = key;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10415,7 +10415,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-pwd")
     {
@@ -10456,31 +10456,31 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_pwd != nullptr)
     {
-        children["key-pwd"] = key_pwd;
+        _children["key-pwd"] = key_pwd;
     }
 
     if(key_0 != nullptr)
     {
-        children["key-0"] = key_0;
+        _children["key-0"] = key_0;
     }
 
     if(key_6 != nullptr)
     {
-        children["key-6"] = key_6;
+        _children["key-6"] = key_6;
     }
 
     if(key_7 != nullptr)
     {
-        children["key-7"] = key_7;
+        _children["key-7"] = key_7;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10547,16 +10547,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::KeyPwd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::KeyPwd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::KeyPwd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::KeyPwd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::KeyPwd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10653,16 +10653,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key0::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key0::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key0::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10759,16 +10759,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10865,16 +10865,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key7::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key7::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::MapServer::Key::Key7::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -10967,16 +10967,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::AcceptMapRequestMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::AcceptMapRequestMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::AcceptMapRequestMapping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::AcceptMapRequestMapping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::Etr::AcceptMapRequestMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11063,16 +11063,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCacheLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCacheLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCacheLimit::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCacheLimit::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCacheLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11165,16 +11165,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::SiteRegistration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::SiteRegistration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::SiteRegistration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::SiteRegistration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::SiteRegistration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11261,16 +11261,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::SolicitMapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::SolicitMapRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::SolicitMapRequest::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::SolicitMapRequest::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::SolicitMapRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11367,33 +11367,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eid-cont")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::EidCont>();
-        c->parent = this;
-        eid_cont.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::EidCont>();
+        ent_->parent = this;
+        eid_cont.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : eid_cont.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : eid_cont.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11458,7 +11458,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::EidCont::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::EidCont::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "etr-interface-ip")
     {
@@ -11472,16 +11472,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::EidCont::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::EidCont::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(etr_interface_ip != nullptr)
     {
-        children["etr-interface-ip"] = etr_interface_ip;
+        _children["etr-interface-ip"] = etr_interface_ip;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::EidCont::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11558,16 +11558,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::EidCont::EtrInterfaceIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::EidCont::EtrInterfaceIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::EidCont::EtrInterfaceIp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::EidCont::EtrInterfaceIp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Default_::Service::Ethernet::MapCache::EidCont::EtrInterfaceIp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11656,7 +11656,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "filter")
     {
@@ -11670,16 +11670,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(filter != nullptr)
     {
-        children["filter"] = filter;
+        _children["filter"] = filter;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11738,7 +11738,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rloc")
     {
@@ -11752,16 +11752,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rloc != nullptr)
     {
-        children["rloc"] = rloc;
+        _children["rloc"] = rloc;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11820,7 +11820,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::Rloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::Rloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
@@ -11834,16 +11834,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::Rloc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::Rloc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(source != nullptr)
     {
-        children["source"] = source;
+        _children["source"] = source;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::Rloc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -11906,16 +11906,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::Rloc::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::Rloc::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::Rloc::Source::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::Rloc::Source::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Decapsulation::Filter::Rloc::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12019,7 +12019,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "database-mapping")
     {
@@ -12041,39 +12041,39 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
 
     if(child_yang_name == "map-server")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer>();
-        c->parent = this;
-        map_server.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer>();
+        ent_->parent = this;
+        map_server.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(database_mapping != nullptr)
     {
-        children["database-mapping"] = database_mapping;
+        _children["database-mapping"] = database_mapping;
     }
 
     if(eid_notify != nullptr)
     {
-        children["eid-notify"] = eid_notify;
+        _children["eid-notify"] = eid_notify;
     }
 
-    count = 0;
-    for (auto c : map_server.entities())
+    count_ = 0;
+    for (auto ent_ : map_server.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12160,33 +12160,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::DatabaseMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::DatabaseMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4-prefix")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::DatabaseMapping::Ipv4Prefix>();
-        c->parent = this;
-        ipv4_prefix.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::DatabaseMapping::Ipv4Prefix>();
+        ent_->parent = this;
+        ipv4_prefix.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::DatabaseMapping::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::DatabaseMapping::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ipv4_prefix.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ipv4_prefix.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::DatabaseMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12250,16 +12250,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::DatabaseMapping::Ipv4Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::DatabaseMapping::Ipv4Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::DatabaseMapping::Ipv4Prefix::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::DatabaseMapping::Ipv4Prefix::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::DatabaseMapping::Ipv4Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12349,7 +12349,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication-key")
     {
@@ -12362,34 +12362,34 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
 
     if(child_yang_name == "gateway-key")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey>();
-        c->parent = this;
-        gateway_key.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey>();
+        ent_->parent = this;
+        gateway_key.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(authentication_key != nullptr)
     {
-        children["authentication-key"] = authentication_key;
+        _children["authentication-key"] = authentication_key;
     }
 
-    count = 0;
-    for (auto c : gateway_key.entities())
+    count_ = 0;
+    for (auto ent_ : gateway_key.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12460,16 +12460,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::AuthenticationKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::AuthenticationKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::AuthenticationKey::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::AuthenticationKey::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::AuthenticationKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12574,7 +12574,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key")
     {
@@ -12588,16 +12588,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key != nullptr)
     {
-        children["key"] = key;
+        _children["key"] = key;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12674,7 +12674,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-pwd")
     {
@@ -12706,26 +12706,26 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_pwd != nullptr)
     {
-        children["key-pwd"] = key_pwd;
+        _children["key-pwd"] = key_pwd;
     }
 
     if(key_0 != nullptr)
     {
-        children["key-0"] = key_0;
+        _children["key-0"] = key_0;
     }
 
     if(key_6 != nullptr)
     {
-        children["key-6"] = key_6;
+        _children["key-6"] = key_6;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12788,16 +12788,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::KeyPwd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::KeyPwd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::KeyPwd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::KeyPwd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::KeyPwd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12880,16 +12880,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::Key0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::Key0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::Key0::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::Key0::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::Key0::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -12972,16 +12972,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::Key6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::Key6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::Key6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::Key6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::EidNotify::GatewayKey::Key::Key6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13070,7 +13070,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key")
     {
@@ -13084,16 +13084,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key != nullptr)
     {
-        children["key"] = key;
+        _children["key"] = key;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13184,7 +13184,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-pwd")
     {
@@ -13225,31 +13225,31 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_pwd != nullptr)
     {
-        children["key-pwd"] = key_pwd;
+        _children["key-pwd"] = key_pwd;
     }
 
     if(key_0 != nullptr)
     {
-        children["key-0"] = key_0;
+        _children["key-0"] = key_0;
     }
 
     if(key_6 != nullptr)
     {
-        children["key-6"] = key_6;
+        _children["key-6"] = key_6;
     }
 
     if(key_7 != nullptr)
     {
-        children["key-7"] = key_7;
+        _children["key-7"] = key_7;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13316,16 +13316,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::KeyPwd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::KeyPwd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::KeyPwd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::KeyPwd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::KeyPwd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13422,16 +13422,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key0::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key0::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key0::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13528,16 +13528,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13634,16 +13634,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key7::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key7::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::DynamicEid::MapServer::Key::Key7::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13737,7 +13737,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::LocReachAlgorithm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::LocReachAlgorithm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "lsb-reports")
     {
@@ -13751,16 +13751,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::LocReachAlgorithm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::LocReachAlgorithm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(lsb_reports != nullptr)
     {
-        children["lsb-reports"] = lsb_reports;
+        _children["lsb-reports"] = lsb_reports;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::LocReachAlgorithm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13833,16 +13833,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::LocReachAlgorithm::LsbReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::LocReachAlgorithm::LsbReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::LocReachAlgorithm::LsbReports::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::LocReachAlgorithm::LsbReports::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::LocReachAlgorithm::LsbReports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -13925,7 +13925,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rloc")
     {
@@ -13948,21 +13948,21 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(rloc != nullptr)
     {
-        children["rloc"] = rloc;
+        _children["rloc"] = rloc;
     }
 
     if(site_registration != nullptr)
     {
-        children["site-registration"] = site_registration;
+        _children["site-registration"] = site_registration;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14021,7 +14021,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "members")
     {
@@ -14035,16 +14035,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(members != nullptr)
     {
-        children["members"] = members;
+        _children["members"] = members;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14108,7 +14108,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::Members::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::Members::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "modify-discovered")
     {
@@ -14122,16 +14122,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::Members::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::Members::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(modify_discovered != nullptr)
     {
-        children["modify-discovered"] = modify_discovered;
+        _children["modify-discovered"] = modify_discovered;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::Members::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14204,16 +14204,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14296,16 +14296,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::SiteRegistration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::SiteRegistration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::SiteRegistration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::SiteRegistration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::MapServer::SiteRegistration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14384,16 +14384,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::OtherXtrProbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::OtherXtrProbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::OtherXtrProbe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::OtherXtrProbe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::OtherXtrProbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14466,16 +14466,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::RemoteRlocProbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::RemoteRlocProbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::RemoteRlocProbe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::RemoteRlocProbe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::RemoteRlocProbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14559,7 +14559,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
@@ -14591,26 +14591,26 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(ethernet != nullptr)
     {
-        children["ethernet"] = ethernet;
+        _children["ethernet"] = ethernet;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -14765,7 +14765,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default")
     {
@@ -14904,10 +14904,10 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
 
     if(child_yang_name == "use-petr")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::UsePetr>();
-        c->parent = this;
-        use_petr.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::UsePetr>();
+        ent_->parent = this;
+        use_petr.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "import")
@@ -14940,110 +14940,110 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(default_ != nullptr)
     {
-        children["default"] = default_;
+        _children["default"] = default_;
     }
 
     if(eid_table != nullptr)
     {
-        children["eid-table"] = eid_table;
+        _children["eid-table"] = eid_table;
     }
 
     if(itr != nullptr)
     {
-        children["itr"] = itr;
+        _children["itr"] = itr;
     }
 
     if(itr_enable != nullptr)
     {
-        children["itr-enable"] = itr_enable;
+        _children["itr-enable"] = itr_enable;
     }
 
     if(etr_enable != nullptr)
     {
-        children["etr-enable"] = etr_enable;
+        _children["etr-enable"] = etr_enable;
     }
 
     if(etr != nullptr)
     {
-        children["etr"] = etr;
+        _children["etr"] = etr;
     }
 
     if(map_cache_limit != nullptr)
     {
-        children["map-cache-limit"] = map_cache_limit;
+        _children["map-cache-limit"] = map_cache_limit;
     }
 
     if(site_registration != nullptr)
     {
-        children["site-registration"] = site_registration;
+        _children["site-registration"] = site_registration;
     }
 
     if(solicit_map_request != nullptr)
     {
-        children["solicit-map-request"] = solicit_map_request;
+        _children["solicit-map-request"] = solicit_map_request;
     }
 
     if(alt != nullptr)
     {
-        children["alt"] = alt;
+        _children["alt"] = alt;
     }
 
     if(distance != nullptr)
     {
-        children["distance"] = distance;
+        _children["distance"] = distance;
     }
 
     if(map_cache != nullptr)
     {
-        children["map-cache"] = map_cache;
+        _children["map-cache"] = map_cache;
     }
 
     if(map_cache_persistent != nullptr)
     {
-        children["map-cache-persistent"] = map_cache_persistent;
+        _children["map-cache-persistent"] = map_cache_persistent;
     }
 
     if(proxy_itr != nullptr)
     {
-        children["proxy-itr"] = proxy_itr;
+        _children["proxy-itr"] = proxy_itr;
     }
 
     if(route_export != nullptr)
     {
-        children["route-export"] = route_export;
+        _children["route-export"] = route_export;
     }
 
-    count = 0;
-    for (auto c : use_petr.entities())
+    count_ = 0;
+    for (auto ent_ : use_petr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(import != nullptr)
     {
-        children["import"] = import;
+        _children["import"] = import;
     }
 
     if(route_import != nullptr)
     {
-        children["route-import"] = route_import;
+        _children["route-import"] = route_import;
     }
 
     if(database_mapping != nullptr)
     {
-        children["database-mapping"] = database_mapping;
+        _children["database-mapping"] = database_mapping;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15234,7 +15234,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eid-table")
     {
@@ -15364,10 +15364,10 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
 
     if(child_yang_name == "use-petr")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::UsePetr>();
-        c->parent = this;
-        use_petr.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::UsePetr>();
+        ent_->parent = this;
+        use_petr.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "import")
@@ -15400,105 +15400,105 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(eid_table != nullptr)
     {
-        children["eid-table"] = eid_table;
+        _children["eid-table"] = eid_table;
     }
 
     if(itr != nullptr)
     {
-        children["itr"] = itr;
+        _children["itr"] = itr;
     }
 
     if(itr_enable != nullptr)
     {
-        children["itr-enable"] = itr_enable;
+        _children["itr-enable"] = itr_enable;
     }
 
     if(etr_enable != nullptr)
     {
-        children["etr-enable"] = etr_enable;
+        _children["etr-enable"] = etr_enable;
     }
 
     if(etr != nullptr)
     {
-        children["etr"] = etr;
+        _children["etr"] = etr;
     }
 
     if(map_cache_limit != nullptr)
     {
-        children["map-cache-limit"] = map_cache_limit;
+        _children["map-cache-limit"] = map_cache_limit;
     }
 
     if(site_registration != nullptr)
     {
-        children["site-registration"] = site_registration;
+        _children["site-registration"] = site_registration;
     }
 
     if(solicit_map_request != nullptr)
     {
-        children["solicit-map-request"] = solicit_map_request;
+        _children["solicit-map-request"] = solicit_map_request;
     }
 
     if(alt != nullptr)
     {
-        children["alt"] = alt;
+        _children["alt"] = alt;
     }
 
     if(distance != nullptr)
     {
-        children["distance"] = distance;
+        _children["distance"] = distance;
     }
 
     if(map_cache != nullptr)
     {
-        children["map-cache"] = map_cache;
+        _children["map-cache"] = map_cache;
     }
 
     if(map_cache_persistent != nullptr)
     {
-        children["map-cache-persistent"] = map_cache_persistent;
+        _children["map-cache-persistent"] = map_cache_persistent;
     }
 
     if(proxy_itr != nullptr)
     {
-        children["proxy-itr"] = proxy_itr;
+        _children["proxy-itr"] = proxy_itr;
     }
 
     if(route_export != nullptr)
     {
-        children["route-export"] = route_export;
+        _children["route-export"] = route_export;
     }
 
-    count = 0;
-    for (auto c : use_petr.entities())
+    count_ = 0;
+    for (auto ent_ : use_petr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(import != nullptr)
     {
-        children["import"] = import;
+        _children["import"] = import;
     }
 
     if(route_import != nullptr)
     {
-        children["route-import"] = route_import;
+        _children["route-import"] = route_import;
     }
 
     if(database_mapping != nullptr)
     {
-        children["database-mapping"] = database_mapping;
+        _children["database-mapping"] = database_mapping;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15605,16 +15605,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::EidTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::EidTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::EidTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::EidTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::EidTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15715,33 +15715,33 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Itr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Itr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-resolver")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Itr::MapResolver>();
-        c->parent = this;
-        map_resolver.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Itr::MapResolver>();
+        ent_->parent = this;
+        map_resolver.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Itr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Itr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : map_resolver.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : map_resolver.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Itr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15815,16 +15815,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Itr::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Itr::MapResolver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Itr::MapResolver::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Itr::MapResolver::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Itr::MapResolver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15903,16 +15903,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::ItrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::ItrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::ItrEnable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::ItrEnable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::ItrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -15981,16 +15981,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::EtrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::EtrEnable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::EtrEnable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::EtrEnable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::EtrEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16075,14 +16075,14 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "map-server")
     {
-        auto c = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer>();
-        c->parent = this;
-        map_server.append(c);
-        return c;
+        auto ent_ = std::make_shared<Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer>();
+        ent_->parent = this;
+        map_server.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "accept-map-request-mapping")
@@ -16097,25 +16097,25 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : map_server.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : map_server.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(accept_map_request_mapping != nullptr)
     {
-        children["accept-map-request-mapping"] = accept_map_request_mapping;
+        _children["accept-map-request-mapping"] = accept_map_request_mapping;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16194,7 +16194,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key")
     {
@@ -16208,16 +16208,16 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key != nullptr)
     {
-        children["key"] = key;
+        _children["key"] = key;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16308,7 +16308,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "key-pwd")
     {
@@ -16349,31 +16349,31 @@ std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::In
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(key_pwd != nullptr)
     {
-        children["key-pwd"] = key_pwd;
+        _children["key-pwd"] = key_pwd;
     }
 
     if(key_0 != nullptr)
     {
-        children["key-0"] = key_0;
+        _children["key-0"] = key_0;
     }
 
     if(key_6 != nullptr)
     {
-        children["key-6"] = key_6;
+        _children["key-6"] = key_6;
     }
 
     if(key_7 != nullptr)
     {
-        children["key-7"] = key_7;
+        _children["key-7"] = key_7;
     }
 
-    return children;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16440,16 +16440,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::KeyPwd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::KeyPwd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::KeyPwd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::KeyPwd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::KeyPwd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -16546,16 +16546,16 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::LispList::Default
 
 }
 
-std::shared_ptr<Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::Key0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::Key0::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::Key0::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::Key0::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Native::Router::LispList::Default::InstanceContainer::InstanceList::Service::Ipv4::Default_::Etr::MapServer::Key::Key0::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

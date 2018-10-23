@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCDPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdpGlobal")
     {
@@ -118,36 +118,36 @@ std::shared_ptr<Entity> CISCOCDPMIB::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCDPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cdpglobal != nullptr)
     {
-        children["cdpGlobal"] = cdpglobal;
+        _children["cdpGlobal"] = cdpglobal;
     }
 
     if(cdpinterfacetable != nullptr)
     {
-        children["cdpInterfaceTable"] = cdpinterfacetable;
+        _children["cdpInterfaceTable"] = cdpinterfacetable;
     }
 
     if(cdpinterfaceexttable != nullptr)
     {
-        children["cdpInterfaceExtTable"] = cdpinterfaceexttable;
+        _children["cdpInterfaceExtTable"] = cdpinterfaceexttable;
     }
 
     if(cdpcachetable != nullptr)
     {
-        children["cdpCacheTable"] = cdpcachetable;
+        _children["cdpCacheTable"] = cdpcachetable;
     }
 
     if(cdpctaddresstable != nullptr)
     {
-        children["cdpCtAddressTable"] = cdpctaddresstable;
+        _children["cdpCtAddressTable"] = cdpctaddresstable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCDPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -158,7 +158,7 @@ void CISCOCDPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOCDPMIB::clone_ptr() const
 {
     return std::make_shared<CISCOCDPMIB>();
 }
@@ -262,16 +262,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpGlobal::get_name_
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::CdpGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCDPMIB::CdpGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpGlobal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCDPMIB::CdpGlobal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCDPMIB::CdpGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -413,33 +413,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpInterfaceTable::g
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::CdpInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCDPMIB::CdpInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdpInterfaceEntry")
     {
-        auto c = std::make_shared<CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry>();
-        c->parent = this;
-        cdpinterfaceentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry>();
+        ent_->parent = this;
+        cdpinterfaceentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpInterfaceTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCDPMIB::CdpInterfaceTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdpinterfaceentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdpinterfaceentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCDPMIB::CdpInterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -526,16 +526,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpInterfaceTable::C
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCDPMIB::CdpInterfaceTable::CdpInterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -669,33 +669,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpInterfaceExtTable
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::CdpInterfaceExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCDPMIB::CdpInterfaceExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdpInterfaceExtEntry")
     {
-        auto c = std::make_shared<CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry>();
-        c->parent = this;
-        cdpinterfaceextentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry>();
+        ent_->parent = this;
+        cdpinterfaceextentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpInterfaceExtTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCDPMIB::CdpInterfaceExtTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdpinterfaceextentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdpinterfaceextentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCDPMIB::CdpInterfaceExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -770,16 +770,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpInterfaceExtTable
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCDPMIB::CdpInterfaceExtTable::CdpInterfaceExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -883,33 +883,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpCacheTable::get_n
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::CdpCacheTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCDPMIB::CdpCacheTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdpCacheEntry")
     {
-        auto c = std::make_shared<CISCOCDPMIB::CdpCacheTable::CdpCacheEntry>();
-        c->parent = this;
-        cdpcacheentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCDPMIB::CdpCacheTable::CdpCacheEntry>();
+        ent_->parent = this;
+        cdpcacheentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpCacheTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCDPMIB::CdpCacheTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdpcacheentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdpcacheentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCDPMIB::CdpCacheTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1069,16 +1069,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpCacheTable::CdpCa
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCDPMIB::CdpCacheTable::CdpCacheEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1392,33 +1392,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpCtAddressTable::g
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::CdpCtAddressTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCDPMIB::CdpCtAddressTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdpCtAddressEntry")
     {
-        auto c = std::make_shared<CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry>();
-        c->parent = this;
-        cdpctaddressentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry>();
+        ent_->parent = this;
+        cdpctaddressentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpCtAddressTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCDPMIB::CdpCtAddressTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdpctaddressentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdpctaddressentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOCDPMIB::CdpCtAddressTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1503,16 +1503,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOCDPMIB::CdpCtAddressTable::C
 
 }
 
-std::shared_ptr<Entity> CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOCDPMIB::CdpCtAddressTable::CdpCtAddressEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

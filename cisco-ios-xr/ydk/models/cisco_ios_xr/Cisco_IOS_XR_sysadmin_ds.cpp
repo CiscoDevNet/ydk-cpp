@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > Services::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> Services::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Services::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-locations")
     {
-        auto c = std::make_shared<Services::AllLocations>();
-        c->parent = this;
-        all_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<Services::AllLocations>();
+        ent_->parent = this;
+        all_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Services::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Services::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Services::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void Services::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Services::clone_ptr() const
+std::shared_ptr<ydk::Entity> Services::clone_ptr() const
 {
     return std::make_shared<Services>();
 }
@@ -190,33 +190,33 @@ std::vector<std::pair<std::string, LeafData> > Services::AllLocations::get_name_
 
 }
 
-std::shared_ptr<Entity> Services::AllLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Services::AllLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "services")
     {
-        auto c = std::make_shared<Services::AllLocations::Services_>();
-        c->parent = this;
-        services.append(c);
-        return c;
+        auto ent_ = std::make_shared<Services::AllLocations::Services_>();
+        ent_->parent = this;
+        services.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Services::AllLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Services::AllLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : services.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : services.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Services::AllLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -309,50 +309,50 @@ std::vector<std::pair<std::string, LeafData> > Services::AllLocations::Services_
 
 }
 
-std::shared_ptr<Entity> Services::AllLocations::Services_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Services::AllLocations::Services_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "endpoint")
     {
-        auto c = std::make_shared<Services::AllLocations::Services_::Endpoint>();
-        c->parent = this;
-        endpoint.append(c);
-        return c;
+        auto ent_ = std::make_shared<Services::AllLocations::Services_::Endpoint>();
+        ent_->parent = this;
+        endpoint.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "registrations")
     {
-        auto c = std::make_shared<Services::AllLocations::Services_::Registrations>();
-        c->parent = this;
-        registrations.append(c);
-        return c;
+        auto ent_ = std::make_shared<Services::AllLocations::Services_::Registrations>();
+        ent_->parent = this;
+        registrations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Services::AllLocations::Services_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Services::AllLocations::Services_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : endpoint.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : endpoint.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    count = 0;
-    for (auto c : registrations.entities())
+    count_ = 0;
+    for (auto ent_ : registrations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Services::AllLocations::Services_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -441,16 +441,16 @@ std::vector<std::pair<std::string, LeafData> > Services::AllLocations::Services_
 
 }
 
-std::shared_ptr<Entity> Services::AllLocations::Services_::Endpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Services::AllLocations::Services_::Endpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Services::AllLocations::Services_::Endpoint::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Services::AllLocations::Services_::Endpoint::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Services::AllLocations::Services_::Endpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -573,16 +573,16 @@ std::vector<std::pair<std::string, LeafData> > Services::AllLocations::Services_
 
 }
 
-std::shared_ptr<Entity> Services::AllLocations::Services_::Registrations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Services::AllLocations::Services_::Registrations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Services::AllLocations::Services_::Registrations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Services::AllLocations::Services_::Registrations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Services::AllLocations::Services_::Registrations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -672,7 +672,7 @@ std::vector<std::pair<std::string, LeafData> > ServicesStats::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> ServicesStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ServicesStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ds")
     {
@@ -685,34 +685,34 @@ std::shared_ptr<Entity> ServicesStats::get_child_by_name(const std::string & chi
 
     if(child_yang_name == "all-locations")
     {
-        auto c = std::make_shared<ServicesStats::AllLocations>();
-        c->parent = this;
-        all_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<ServicesStats::AllLocations>();
+        ent_->parent = this;
+        all_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ServicesStats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ServicesStats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ds != nullptr)
     {
-        children["ds"] = ds;
+        _children["ds"] = ds;
     }
 
-    count = 0;
-    for (auto c : all_locations.entities())
+    count_ = 0;
+    for (auto ent_ : all_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ServicesStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -723,7 +723,7 @@ void ServicesStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ServicesStats::clone_ptr() const
+std::shared_ptr<ydk::Entity> ServicesStats::clone_ptr() const
 {
     return std::make_shared<ServicesStats>();
 }
@@ -811,33 +811,33 @@ std::vector<std::pair<std::string, LeafData> > ServicesStats::Ds::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> ServicesStats::Ds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ServicesStats::Ds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace")
     {
-        auto c = std::make_shared<ServicesStats::Ds::Trace>();
-        c->parent = this;
-        trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<ServicesStats::Ds::Trace>();
+        ent_->parent = this;
+        trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ServicesStats::Ds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ServicesStats::Ds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ServicesStats::Ds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -916,33 +916,33 @@ std::vector<std::pair<std::string, LeafData> > ServicesStats::Ds::Trace::get_nam
 
 }
 
-std::shared_ptr<Entity> ServicesStats::Ds::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ServicesStats::Ds::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<ServicesStats::Ds::Trace::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<ServicesStats::Ds::Trace::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ServicesStats::Ds::Trace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ServicesStats::Ds::Trace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ServicesStats::Ds::Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1024,33 +1024,33 @@ std::vector<std::pair<std::string, LeafData> > ServicesStats::Ds::Trace::Locatio
 
 }
 
-std::shared_ptr<Entity> ServicesStats::Ds::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ServicesStats::Ds::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-options")
     {
-        auto c = std::make_shared<ServicesStats::Ds::Trace::Location::AllOptions>();
-        c->parent = this;
-        all_options.append(c);
-        return c;
+        auto ent_ = std::make_shared<ServicesStats::Ds::Trace::Location::AllOptions>();
+        ent_->parent = this;
+        all_options.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ServicesStats::Ds::Trace::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ServicesStats::Ds::Trace::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_options.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_options.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ServicesStats::Ds::Trace::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1132,33 +1132,33 @@ std::vector<std::pair<std::string, LeafData> > ServicesStats::Ds::Trace::Locatio
 
 }
 
-std::shared_ptr<Entity> ServicesStats::Ds::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ServicesStats::Ds::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace-blocks")
     {
-        auto c = std::make_shared<ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks>();
-        c->parent = this;
-        trace_blocks.append(c);
-        return c;
+        auto ent_ = std::make_shared<ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks>();
+        ent_->parent = this;
+        trace_blocks.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ServicesStats::Ds::Trace::Location::AllOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ServicesStats::Ds::Trace::Location::AllOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace_blocks.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace_blocks.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ServicesStats::Ds::Trace::Location::AllOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1227,16 +1227,16 @@ std::vector<std::pair<std::string, LeafData> > ServicesStats::Ds::Trace::Locatio
 
 }
 
-std::shared_ptr<Entity> ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1325,33 +1325,33 @@ std::vector<std::pair<std::string, LeafData> > ServicesStats::AllLocations::get_
 
 }
 
-std::shared_ptr<Entity> ServicesStats::AllLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ServicesStats::AllLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "stats")
     {
-        auto c = std::make_shared<ServicesStats::AllLocations::Stats>();
-        c->parent = this;
-        stats.append(c);
-        return c;
+        auto ent_ = std::make_shared<ServicesStats::AllLocations::Stats>();
+        ent_->parent = this;
+        stats.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ServicesStats::AllLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ServicesStats::AllLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : stats.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : stats.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ServicesStats::AllLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1453,16 +1453,16 @@ std::vector<std::pair<std::string, LeafData> > ServicesStats::AllLocations::Stat
 
 }
 
-std::shared_ptr<Entity> ServicesStats::AllLocations::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ServicesStats::AllLocations::Stats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ServicesStats::AllLocations::Stats::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ServicesStats::AllLocations::Stats::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ServicesStats::AllLocations::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

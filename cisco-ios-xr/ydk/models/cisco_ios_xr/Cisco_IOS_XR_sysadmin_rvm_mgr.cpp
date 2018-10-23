@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > RVM::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> RVM::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RVM::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-locations")
     {
-        auto c = std::make_shared<RVM::AllLocations>();
-        c->parent = this;
-        all_locations.append(c);
-        return c;
+        auto ent_ = std::make_shared<RVM::AllLocations>();
+        ent_->parent = this;
+        all_locations.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RVM::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RVM::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_locations.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_locations.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RVM::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void RVM::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> RVM::clone_ptr() const
+std::shared_ptr<ydk::Entity> RVM::clone_ptr() const
 {
     return std::make_shared<RVM>();
 }
@@ -191,7 +191,7 @@ std::vector<std::pair<std::string, LeafData> > RVM::AllLocations::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> RVM::AllLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RVM::AllLocations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "objects")
     {
@@ -223,26 +223,26 @@ std::shared_ptr<Entity> RVM::AllLocations::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RVM::AllLocations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RVM::AllLocations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(objects != nullptr)
     {
-        children["objects"] = objects;
+        _children["objects"] = objects;
     }
 
     if(node != nullptr)
     {
-        children["node"] = node;
+        _children["node"] = node;
     }
 
     if(card != nullptr)
     {
-        children["card"] = card;
+        _children["card"] = card;
     }
 
-    return children;
+    return _children;
 }
 
 void RVM::AllLocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -319,33 +319,33 @@ std::vector<std::pair<std::string, LeafData> > RVM::AllLocations::Objects::get_n
 
 }
 
-std::shared_ptr<Entity> RVM::AllLocations::Objects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RVM::AllLocations::Objects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-objs")
     {
-        auto c = std::make_shared<RVM::AllLocations::Objects::AllObjs>();
-        c->parent = this;
-        all_objs.append(c);
-        return c;
+        auto ent_ = std::make_shared<RVM::AllLocations::Objects::AllObjs>();
+        ent_->parent = this;
+        all_objs.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RVM::AllLocations::Objects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RVM::AllLocations::Objects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_objs.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_objs.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RVM::AllLocations::Objects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -417,16 +417,16 @@ std::vector<std::pair<std::string, LeafData> > RVM::AllLocations::Objects::AllOb
 
 }
 
-std::shared_ptr<Entity> RVM::AllLocations::Objects::AllObjs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RVM::AllLocations::Objects::AllObjs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RVM::AllLocations::Objects::AllObjs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RVM::AllLocations::Objects::AllObjs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RVM::AllLocations::Objects::AllObjs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -533,33 +533,33 @@ std::vector<std::pair<std::string, LeafData> > RVM::AllLocations::Node::get_name
 
 }
 
-std::shared_ptr<Entity> RVM::AllLocations::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RVM::AllLocations::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-nodes")
     {
-        auto c = std::make_shared<RVM::AllLocations::Node::AllNodes>();
-        c->parent = this;
-        all_nodes.append(c);
-        return c;
+        auto ent_ = std::make_shared<RVM::AllLocations::Node::AllNodes>();
+        ent_->parent = this;
+        all_nodes.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RVM::AllLocations::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RVM::AllLocations::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_nodes.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_nodes.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RVM::AllLocations::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -635,16 +635,16 @@ std::vector<std::pair<std::string, LeafData> > RVM::AllLocations::Node::AllNodes
 
 }
 
-std::shared_ptr<Entity> RVM::AllLocations::Node::AllNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RVM::AllLocations::Node::AllNodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RVM::AllLocations::Node::AllNodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RVM::AllLocations::Node::AllNodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RVM::AllLocations::Node::AllNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -761,33 +761,33 @@ std::vector<std::pair<std::string, LeafData> > RVM::AllLocations::Card::get_name
 
 }
 
-std::shared_ptr<Entity> RVM::AllLocations::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RVM::AllLocations::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-cards")
     {
-        auto c = std::make_shared<RVM::AllLocations::Card::AllCards>();
-        c->parent = this;
-        all_cards.append(c);
-        return c;
+        auto ent_ = std::make_shared<RVM::AllLocations::Card::AllCards>();
+        ent_->parent = this;
+        all_cards.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RVM::AllLocations::Card::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RVM::AllLocations::Card::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_cards.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_cards.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void RVM::AllLocations::Card::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -863,16 +863,16 @@ std::vector<std::pair<std::string, LeafData> > RVM::AllLocations::Card::AllCards
 
 }
 
-std::shared_ptr<Entity> RVM::AllLocations::Card::AllCards::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> RVM::AllLocations::Card::AllCards::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RVM::AllLocations::Card::AllCards::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> RVM::AllLocations::Card::AllCards::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void RVM::AllLocations::Card::AllCards::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

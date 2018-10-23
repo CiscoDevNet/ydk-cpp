@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > MPLSLDPGENERICSTDMIB::get_name_le
 
 }
 
-std::shared_ptr<Entity> MPLSLDPGENERICSTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSLDPGENERICSTDMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsLdpEntityGenericLRTable")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> MPLSLDPGENERICSTDMIB::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSLDPGENERICSTDMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSLDPGENERICSTDMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mplsldpentitygenericlrtable != nullptr)
     {
-        children["mplsLdpEntityGenericLRTable"] = mplsldpentitygenericlrtable;
+        _children["mplsLdpEntityGenericLRTable"] = mplsldpentitygenericlrtable;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSLDPGENERICSTDMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void MPLSLDPGENERICSTDMIB::set_filter(const std::string & value_path, YFilter yf
 {
 }
 
-std::shared_ptr<Entity> MPLSLDPGENERICSTDMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> MPLSLDPGENERICSTDMIB::clone_ptr() const
 {
     return std::make_shared<MPLSLDPGENERICSTDMIB>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > MPLSLDPGENERICSTDMIB::MplsLdpEnti
 
 }
 
-std::shared_ptr<Entity> MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mplsLdpEntityGenericLREntry")
     {
-        auto c = std::make_shared<MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::MplsLdpEntityGenericLREntry>();
-        c->parent = this;
-        mplsldpentitygenericlrentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::MplsLdpEntityGenericLREntry>();
+        ent_->parent = this;
+        mplsldpentitygenericlrentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mplsldpentitygenericlrentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mplsldpentitygenericlrentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -298,16 +298,16 @@ std::vector<std::pair<std::string, LeafData> > MPLSLDPGENERICSTDMIB::MplsLdpEnti
 
 }
 
-std::shared_ptr<Entity> MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::MplsLdpEntityGenericLREntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::MplsLdpEntityGenericLREntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::MplsLdpEntityGenericLREntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::MplsLdpEntityGenericLREntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MPLSLDPGENERICSTDMIB::MplsLdpEntityGenericLRTable::MplsLdpEntityGenericLREntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

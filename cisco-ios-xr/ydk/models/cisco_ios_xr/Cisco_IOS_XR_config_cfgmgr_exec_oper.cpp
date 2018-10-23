@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > CfgHistGl::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> CfgHistGl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CfgHistGl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "record-type")
     {
-        auto c = std::make_shared<CfgHistGl::RecordType>();
-        c->parent = this;
-        record_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<CfgHistGl::RecordType>();
+        ent_->parent = this;
+        record_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CfgHistGl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : record_type.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : record_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CfgHistGl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void CfgHistGl::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CfgHistGl::clone_ptr() const
+std::shared_ptr<ydk::Entity> CfgHistGl::clone_ptr() const
 {
     return std::make_shared<CfgHistGl>();
 }
@@ -190,33 +190,33 @@ std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::get_name_l
 
 }
 
-std::shared_ptr<Entity> CfgHistGl::RecordType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CfgHistGl::RecordType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "record")
     {
-        auto c = std::make_shared<CfgHistGl::RecordType::Record>();
-        c->parent = this;
-        record.append(c);
-        return c;
+        auto ent_ = std::make_shared<CfgHistGl::RecordType::Record>();
+        ent_->parent = this;
+        record.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CfgHistGl::RecordType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : record.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : record.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CfgHistGl::RecordType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -299,7 +299,7 @@ std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::ge
 
 }
 
-std::shared_ptr<Entity> CfgHistGl::RecordType::Record::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CfgHistGl::RecordType::Record::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "info")
     {
@@ -313,16 +313,16 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::Record::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CfgHistGl::RecordType::Record::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(info != nullptr)
     {
-        children["info"] = info;
+        _children["info"] = info;
     }
 
-    return children;
+    return _children;
 }
 
 void CfgHistGl::RecordType::Record::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -444,7 +444,7 @@ std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::In
 
 }
 
-std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CfgHistGl::RecordType::Record::Info::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alarm-info")
     {
@@ -512,46 +512,46 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CfgHistGl::RecordType::Record::Info::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(alarm_info != nullptr)
     {
-        children["alarm-info"] = alarm_info;
+        _children["alarm-info"] = alarm_info;
     }
 
     if(cfscheck_info != nullptr)
     {
-        children["cfscheck-info"] = cfscheck_info;
+        _children["cfscheck-info"] = cfscheck_info;
     }
 
     if(commit_info != nullptr)
     {
-        children["commit-info"] = commit_info;
+        _children["commit-info"] = commit_info;
     }
 
     if(oir_info != nullptr)
     {
-        children["oir-info"] = oir_info;
+        _children["oir-info"] = oir_info;
     }
 
     if(shutdown_info != nullptr)
     {
-        children["shutdown-info"] = shutdown_info;
+        _children["shutdown-info"] = shutdown_info;
     }
 
     if(startup_info != nullptr)
     {
-        children["startup-info"] = startup_info;
+        _children["startup-info"] = startup_info;
     }
 
     if(backup_info != nullptr)
     {
-        children["backup-info"] = backup_info;
+        _children["backup-info"] = backup_info;
     }
 
-    return children;
+    return _children;
 }
 
 void CfgHistGl::RecordType::Record::Info::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -634,16 +634,16 @@ std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::In
 
 }
 
-std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::AlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CfgHistGl::RecordType::Record::Info::AlarmInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::AlarmInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CfgHistGl::RecordType::Record::Info::AlarmInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CfgHistGl::RecordType::Record::Info::AlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -726,16 +726,16 @@ std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::In
 
 }
 
-std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CfgHistGl::RecordType::Record::Info::CfscheckInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -834,16 +834,16 @@ std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::In
 
 }
 
-std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::CommitInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CfgHistGl::RecordType::Record::Info::CommitInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::CommitInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CfgHistGl::RecordType::Record::Info::CommitInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CfgHistGl::RecordType::Record::Info::CommitInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -970,16 +970,16 @@ std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::In
 
 }
 
-std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::OirInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CfgHistGl::RecordType::Record::Info::OirInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::OirInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CfgHistGl::RecordType::Record::Info::OirInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CfgHistGl::RecordType::Record::Info::OirInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1068,16 +1068,16 @@ std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::In
 
 }
 
-std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CfgHistGl::RecordType::Record::Info::ShutdownInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1150,16 +1150,16 @@ std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::In
 
 }
 
-std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::StartupInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CfgHistGl::RecordType::Record::Info::StartupInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::StartupInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CfgHistGl::RecordType::Record::Info::StartupInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CfgHistGl::RecordType::Record::Info::StartupInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1238,16 +1238,16 @@ std::vector<std::pair<std::string, LeafData> > CfgHistGl::RecordType::Record::In
 
 }
 
-std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::BackupInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CfgHistGl::RecordType::Record::Info::BackupInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::BackupInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CfgHistGl::RecordType::Record::Info::BackupInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CfgHistGl::RecordType::Record::Info::BackupInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

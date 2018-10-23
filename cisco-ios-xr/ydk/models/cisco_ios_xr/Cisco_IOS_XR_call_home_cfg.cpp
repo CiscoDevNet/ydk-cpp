@@ -133,7 +133,7 @@ std::vector<std::pair<std::string, LeafData> > CallHome::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> CallHome::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mail-servers")
     {
@@ -210,51 +210,51 @@ std::shared_ptr<Entity> CallHome::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mail_servers != nullptr)
     {
-        children["mail-servers"] = mail_servers;
+        _children["mail-servers"] = mail_servers;
     }
 
     if(syslog_throttling != nullptr)
     {
-        children["syslog-throttling"] = syslog_throttling;
+        _children["syslog-throttling"] = syslog_throttling;
     }
 
     if(http_proxy != nullptr)
     {
-        children["http-proxy"] = http_proxy;
+        _children["http-proxy"] = http_proxy;
     }
 
     if(profiles != nullptr)
     {
-        children["profiles"] = profiles;
+        _children["profiles"] = profiles;
     }
 
     if(alert_groups != nullptr)
     {
-        children["alert-groups"] = alert_groups;
+        _children["alert-groups"] = alert_groups;
     }
 
     if(data_privacies != nullptr)
     {
-        children["data-privacies"] = data_privacies;
+        _children["data-privacies"] = data_privacies;
     }
 
     if(alert_group_config != nullptr)
     {
-        children["alert-group-config"] = alert_group_config;
+        _children["alert-group-config"] = alert_group_config;
     }
 
     if(authorization != nullptr)
     {
-        children["authorization"] = authorization;
+        _children["authorization"] = authorization;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -395,7 +395,7 @@ void CallHome::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> CallHome::clone_ptr() const
+std::shared_ptr<ydk::Entity> CallHome::clone_ptr() const
 {
     return std::make_shared<CallHome>();
 }
@@ -483,33 +483,33 @@ std::vector<std::pair<std::string, LeafData> > CallHome::MailServers::get_name_l
 
 }
 
-std::shared_ptr<Entity> CallHome::MailServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::MailServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mail-server")
     {
-        auto c = std::make_shared<CallHome::MailServers::MailServer>();
-        c->parent = this;
-        mail_server.append(c);
-        return c;
+        auto ent_ = std::make_shared<CallHome::MailServers::MailServer>();
+        ent_->parent = this;
+        mail_server.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::MailServers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::MailServers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : mail_server.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : mail_server.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::MailServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -580,16 +580,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::MailServers::MailServer
 
 }
 
-std::shared_ptr<Entity> CallHome::MailServers::MailServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::MailServers::MailServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::MailServers::MailServer::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::MailServers::MailServer::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::MailServers::MailServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -675,16 +675,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::SyslogThrottling::get_n
 
 }
 
-std::shared_ptr<Entity> CallHome::SyslogThrottling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::SyslogThrottling::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::SyslogThrottling::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::SyslogThrottling::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::SyslogThrottling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -764,16 +764,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::HttpProxy::get_name_lea
 
 }
 
-std::shared_ptr<Entity> CallHome::HttpProxy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::HttpProxy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::HttpProxy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::HttpProxy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::HttpProxy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -867,33 +867,33 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "profile")
     {
-        auto c = std::make_shared<CallHome::Profiles::Profile>();
-        c->parent = this;
-        profile.append(c);
-        return c;
+        auto ent_ = std::make_shared<CallHome::Profiles::Profile>();
+        ent_->parent = this;
+        profile.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : profile.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : profile.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::Profiles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -997,7 +997,7 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::get_
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "report-type")
     {
@@ -1038,31 +1038,31 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(report_type != nullptr)
     {
-        children["report-type"] = report_type;
+        _children["report-type"] = report_type;
     }
 
     if(methods != nullptr)
     {
-        children["methods"] = methods;
+        _children["methods"] = methods;
     }
 
     if(addresses != nullptr)
     {
-        children["addresses"] = addresses;
+        _children["addresses"] = addresses;
     }
 
     if(subscribe_alert_group != nullptr)
     {
-        children["subscribe-alert-group"] = subscribe_alert_group;
+        _children["subscribe-alert-group"] = subscribe_alert_group;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1185,7 +1185,7 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Repo
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::ReportType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::ReportType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reporting-callhome-data")
     {
@@ -1208,21 +1208,21 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::ReportType::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::ReportType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::ReportType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(reporting_callhome_data != nullptr)
     {
-        children["reporting-callhome-data"] = reporting_callhome_data;
+        _children["reporting-callhome-data"] = reporting_callhome_data;
     }
 
     if(reporting_licensing_data != nullptr)
     {
-        children["reporting-licensing-data"] = reporting_licensing_data;
+        _children["reporting-licensing-data"] = reporting_licensing_data;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::ReportType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1281,16 +1281,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Repo
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::ReportType::ReportingCallhomeData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::ReportType::ReportingCallhomeData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::ReportType::ReportingCallhomeData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::ReportType::ReportingCallhomeData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::ReportType::ReportingCallhomeData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1359,16 +1359,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Repo
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::ReportType::ReportingLicensingData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::ReportType::ReportingLicensingData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::ReportType::ReportingLicensingData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::ReportType::ReportingLicensingData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::ReportType::ReportingLicensingData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1445,33 +1445,33 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Meth
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::Methods::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::Methods::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "method")
     {
-        auto c = std::make_shared<CallHome::Profiles::Profile::Methods::Method>();
-        c->parent = this;
-        method.append(c);
-        return c;
+        auto ent_ = std::make_shared<CallHome::Profiles::Profile::Methods::Method>();
+        ent_->parent = this;
+        method.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::Methods::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::Methods::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : method.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : method.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::Methods::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1535,16 +1535,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Meth
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::Methods::Method::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::Methods::Method::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::Methods::Method::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::Methods::Method::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::Methods::Method::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1631,33 +1631,33 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Addr
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
-        auto c = std::make_shared<CallHome::Profiles::Profile::Addresses::Address>();
-        c->parent = this;
-        address.append(c);
-        return c;
+        auto ent_ = std::make_shared<CallHome::Profiles::Profile::Addresses::Address>();
+        ent_->parent = this;
+        address.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::Addresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::Addresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : address.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : address.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1726,16 +1726,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Addr
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::Addresses::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::Addresses::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::Addresses::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::Addresses::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1844,7 +1844,7 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Subs
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "environment")
     {
@@ -1903,41 +1903,41 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(environment != nullptr)
     {
-        children["environment"] = environment;
+        _children["environment"] = environment;
     }
 
     if(configuration != nullptr)
     {
-        children["configuration"] = configuration;
+        _children["configuration"] = configuration;
     }
 
     if(snapshot != nullptr)
     {
-        children["snapshot"] = snapshot;
+        _children["snapshot"] = snapshot;
     }
 
     if(inventory != nullptr)
     {
-        children["inventory"] = inventory;
+        _children["inventory"] = inventory;
     }
 
     if(crash != nullptr)
     {
-        children["crash"] = crash;
+        _children["crash"] = crash;
     }
 
     if(syslogs != nullptr)
     {
-        children["syslogs"] = syslogs;
+        _children["syslogs"] = syslogs;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::SubscribeAlertGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1996,16 +1996,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Subs
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Environment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Environment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Environment::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Environment::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::SubscribeAlertGroup::Environment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2079,7 +2079,7 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Subs
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "periodic")
     {
@@ -2093,16 +2093,16 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Config
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(periodic != nullptr)
     {
-        children["periodic"] = periodic;
+        _children["periodic"] = periodic;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2187,16 +2187,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Subs
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::Periodic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::Periodic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::Periodic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::Periodic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::Periodic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2305,7 +2305,7 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Subs
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "periodic")
     {
@@ -2319,16 +2319,16 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Snapsh
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(periodic != nullptr)
     {
-        children["periodic"] = periodic;
+        _children["periodic"] = periodic;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2403,16 +2403,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Subs
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::Periodic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::Periodic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::Periodic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::Periodic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::Periodic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2526,7 +2526,7 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Subs
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "periodic")
     {
@@ -2540,16 +2540,16 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Invent
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(periodic != nullptr)
     {
-        children["periodic"] = periodic;
+        _children["periodic"] = periodic;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2634,16 +2634,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Subs
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::Periodic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::Periodic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::Periodic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::Periodic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::Periodic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2752,16 +2752,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Subs
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Crash::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Crash::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Crash::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Crash::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::SubscribeAlertGroup::Crash::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2838,33 +2838,33 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Subs
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "syslog")
     {
-        auto c = std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog>();
-        c->parent = this;
-        syslog.append(c);
-        return c;
+        auto ent_ = std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog>();
+        ent_->parent = this;
+        syslog.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : syslog.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : syslog.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2928,16 +2928,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Profiles::Profile::Subs
 
 }
 
-std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3031,33 +3031,33 @@ std::vector<std::pair<std::string, LeafData> > CallHome::AlertGroups::get_name_l
 
 }
 
-std::shared_ptr<Entity> CallHome::AlertGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::AlertGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alert-group")
     {
-        auto c = std::make_shared<CallHome::AlertGroups::AlertGroup>();
-        c->parent = this;
-        alert_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<CallHome::AlertGroups::AlertGroup>();
+        ent_->parent = this;
+        alert_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::AlertGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::AlertGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : alert_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : alert_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::AlertGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3132,16 +3132,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::AlertGroups::AlertGroup
 
 }
 
-std::shared_ptr<Entity> CallHome::AlertGroups::AlertGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::AlertGroups::AlertGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::AlertGroups::AlertGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::AlertGroups::AlertGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::AlertGroups::AlertGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3245,33 +3245,33 @@ std::vector<std::pair<std::string, LeafData> > CallHome::DataPrivacies::get_name
 
 }
 
-std::shared_ptr<Entity> CallHome::DataPrivacies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::DataPrivacies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "data-privacy")
     {
-        auto c = std::make_shared<CallHome::DataPrivacies::DataPrivacy>();
-        c->parent = this;
-        data_privacy.append(c);
-        return c;
+        auto ent_ = std::make_shared<CallHome::DataPrivacies::DataPrivacy>();
+        ent_->parent = this;
+        data_privacy.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::DataPrivacies::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::DataPrivacies::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : data_privacy.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : data_privacy.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::DataPrivacies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3342,16 +3342,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::DataPrivacies::DataPriv
 
 }
 
-std::shared_ptr<Entity> CallHome::DataPrivacies::DataPrivacy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::DataPrivacies::DataPrivacy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::DataPrivacies::DataPrivacy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::DataPrivacies::DataPrivacy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::DataPrivacies::DataPrivacy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3437,7 +3437,7 @@ std::vector<std::pair<std::string, LeafData> > CallHome::AlertGroupConfig::get_n
 
 }
 
-std::shared_ptr<Entity> CallHome::AlertGroupConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::AlertGroupConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snapshot-commands")
     {
@@ -3451,16 +3451,16 @@ std::shared_ptr<Entity> CallHome::AlertGroupConfig::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::AlertGroupConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::AlertGroupConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(snapshot_commands != nullptr)
     {
-        children["snapshot-commands"] = snapshot_commands;
+        _children["snapshot-commands"] = snapshot_commands;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::AlertGroupConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3534,33 +3534,33 @@ std::vector<std::pair<std::string, LeafData> > CallHome::AlertGroupConfig::Snaps
 
 }
 
-std::shared_ptr<Entity> CallHome::AlertGroupConfig::SnapshotCommands::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::AlertGroupConfig::SnapshotCommands::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "snapshot-command")
     {
-        auto c = std::make_shared<CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand>();
-        c->parent = this;
-        snapshot_command.append(c);
-        return c;
+        auto ent_ = std::make_shared<CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand>();
+        ent_->parent = this;
+        snapshot_command.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::AlertGroupConfig::SnapshotCommands::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::AlertGroupConfig::SnapshotCommands::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : snapshot_command.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : snapshot_command.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CallHome::AlertGroupConfig::SnapshotCommands::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3631,16 +3631,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::AlertGroupConfig::Snaps
 
 }
 
-std::shared_ptr<Entity> CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3730,16 +3730,16 @@ std::vector<std::pair<std::string, LeafData> > CallHome::Authorization::get_name
 
 }
 
-std::shared_ptr<Entity> CallHome::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CallHome::Authorization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CallHome::Authorization::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CallHome::Authorization::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CallHome::Authorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> SdrConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sdr")
     {
-        auto c = std::make_shared<SdrConfig::Sdr>();
-        c->parent = this;
-        sdr.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrConfig::Sdr>();
+        ent_->parent = this;
+        sdr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sdr.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sdr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void SdrConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> SdrConfig::clone_ptr() const
+std::shared_ptr<ydk::Entity> SdrConfig::clone_ptr() const
 {
     return std::make_shared<SdrConfig>();
 }
@@ -241,7 +241,7 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "resources")
     {
@@ -254,10 +254,10 @@ std::shared_ptr<Entity> SdrConfig::Sdr::get_child_by_name(const std::string & ch
 
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<SdrConfig::Sdr::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrConfig::Sdr::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "Action")
@@ -307,68 +307,68 @@ std::shared_ptr<Entity> SdrConfig::Sdr::get_child_by_name(const std::string & ch
 
     if(child_yang_name == "pairing")
     {
-        auto c = std::make_shared<SdrConfig::Sdr::Pairing>();
-        c->parent = this;
-        pairing.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrConfig::Sdr::Pairing>();
+        ent_->parent = this;
+        pairing.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(resources != nullptr)
     {
-        children["resources"] = resources;
+        _children["resources"] = resources;
     }
 
-    count = 0;
-    for (auto c : location.entities())
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(action != nullptr)
     {
-        children["Action"] = action;
+        _children["Action"] = action;
     }
 
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
     if(reboot_history != nullptr)
     {
-        children["reboot-history"] = reboot_history;
+        _children["reboot-history"] = reboot_history;
     }
 
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
     if(pairing2 != nullptr)
     {
-        children["pairing2"] = pairing2;
+        _children["pairing2"] = pairing2;
     }
 
-    count = 0;
-    for (auto c : pairing.entities())
+    count_ = 0;
+    for (auto ent_ : pairing.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrConfig::Sdr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -497,33 +497,33 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Resources::get_na
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "card-type")
     {
-        auto c = std::make_shared<SdrConfig::Sdr::Resources::CardType>();
-        c->parent = this;
-        card_type.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrConfig::Sdr::Resources::CardType>();
+        ent_->parent = this;
+        card_type.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Resources::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Resources::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : card_type.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : card_type.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrConfig::Sdr::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -621,16 +621,16 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Resources::CardTy
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Resources::CardType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Resources::CardType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Resources::CardType::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Resources::CardType::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrConfig::Sdr::Resources::CardType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -720,16 +720,16 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Location::get_nam
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrConfig::Sdr::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -806,33 +806,33 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Action::get_name_
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<SdrConfig::Sdr::Action::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrConfig::Sdr::Action::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Action::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Action::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrConfig::Sdr::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -892,16 +892,16 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Action::Location:
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Action::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Action::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Action::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Action::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrConfig::Sdr::Action::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -978,33 +978,33 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Detail::get_name_
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<SdrConfig::Sdr::Detail::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrConfig::Sdr::Detail::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrConfig::Sdr::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1152,33 +1152,33 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Detail::Location:
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Detail::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Detail::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reboot_hist1")
     {
-        auto c = std::make_shared<SdrConfig::Sdr::Detail::Location::RebootHist1>();
-        c->parent = this;
-        reboot_hist1.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrConfig::Sdr::Detail::Location::RebootHist1>();
+        ent_->parent = this;
+        reboot_hist1.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Detail::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Detail::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : reboot_hist1.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : reboot_hist1.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrConfig::Sdr::Detail::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1446,16 +1446,16 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Detail::Location:
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Detail::Location::RebootHist1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Detail::Location::RebootHist1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Detail::Location::RebootHist1::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Detail::Location::RebootHist1::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrConfig::Sdr::Detail::Location::RebootHist1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1548,7 +1548,7 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::RebootHistory::ge
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::RebootHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::RebootHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reverse")
     {
@@ -1571,21 +1571,21 @@ std::shared_ptr<Entity> SdrConfig::Sdr::RebootHistory::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::RebootHistory::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::RebootHistory::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(reverse != nullptr)
     {
-        children["reverse"] = reverse;
+        _children["reverse"] = reverse;
     }
 
     if(default_disp != nullptr)
     {
-        children["default-disp"] = default_disp;
+        _children["default-disp"] = default_disp;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrConfig::Sdr::RebootHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1652,33 +1652,33 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::RebootHistory::Re
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::RebootHistory::Reverse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::RebootHistory::Reverse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<SdrConfig::Sdr::RebootHistory::Reverse::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrConfig::Sdr::RebootHistory::Reverse::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::RebootHistory::Reverse::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::RebootHistory::Reverse::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrConfig::Sdr::RebootHistory::Reverse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1758,33 +1758,33 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::RebootHistory::Re
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::RebootHistory::Reverse::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::RebootHistory::Reverse::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reboot_hist2")
     {
-        auto c = std::make_shared<SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2>();
-        c->parent = this;
-        reboot_hist2.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2>();
+        ent_->parent = this;
+        reboot_hist2.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::RebootHistory::Reverse::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::RebootHistory::Reverse::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : reboot_hist2.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : reboot_hist2.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrConfig::Sdr::RebootHistory::Reverse::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1882,16 +1882,16 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::RebootHistory::Re
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1988,33 +1988,33 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::RebootHistory::De
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::RebootHistory::DefaultDisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::RebootHistory::DefaultDisp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<SdrConfig::Sdr::RebootHistory::DefaultDisp::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrConfig::Sdr::RebootHistory::DefaultDisp::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::RebootHistory::DefaultDisp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::RebootHistory::DefaultDisp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrConfig::Sdr::RebootHistory::DefaultDisp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2094,33 +2094,33 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::RebootHistory::De
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reboot_hist2")
     {
-        auto c = std::make_shared<SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2>();
-        c->parent = this;
-        reboot_hist2.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2>();
+        ent_->parent = this;
+        reboot_hist2.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : reboot_hist2.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : reboot_hist2.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2218,16 +2218,16 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::RebootHistory::De
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2324,33 +2324,33 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Nodes::get_name_l
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<SdrConfig::Sdr::Nodes::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrConfig::Sdr::Nodes::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrConfig::Sdr::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2442,16 +2442,16 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Nodes::Location::
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Nodes::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Nodes::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Nodes::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Nodes::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrConfig::Sdr::Nodes::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2616,7 +2616,7 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Pairing2::get_nam
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Pairing2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Pairing2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sdrlead")
     {
@@ -2629,34 +2629,34 @@ std::shared_ptr<Entity> SdrConfig::Sdr::Pairing2::get_child_by_name(const std::s
 
     if(child_yang_name == "pairing")
     {
-        auto c = std::make_shared<SdrConfig::Sdr::Pairing2::Pairing>();
-        c->parent = this;
-        pairing.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrConfig::Sdr::Pairing2::Pairing>();
+        ent_->parent = this;
+        pairing.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Pairing2::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Pairing2::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sdrlead != nullptr)
     {
-        children["sdrlead"] = sdrlead;
+        _children["sdrlead"] = sdrlead;
     }
 
-    count = 0;
-    for (auto c : pairing.entities())
+    count_ = 0;
+    for (auto ent_ : pairing.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrConfig::Sdr::Pairing2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2729,16 +2729,16 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Pairing2::Sdrlead
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Pairing2::Sdrlead::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Pairing2::Sdrlead::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Pairing2::Sdrlead::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Pairing2::Sdrlead::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrConfig::Sdr::Pairing2::Sdrlead::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2826,16 +2826,16 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Pairing2::Pairing
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Pairing2::Pairing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Pairing2::Pairing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Pairing2::Pairing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Pairing2::Pairing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrConfig::Sdr::Pairing2::Pairing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2933,16 +2933,16 @@ std::vector<std::pair<std::string, LeafData> > SdrConfig::Sdr::Pairing::get_name
 
 }
 
-std::shared_ptr<Entity> SdrConfig::Sdr::Pairing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrConfig::Sdr::Pairing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Pairing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrConfig::Sdr::Pairing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrConfig::Sdr::Pairing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3031,7 +3031,7 @@ std::vector<std::pair<std::string, LeafData> > SdrManager::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> SdrManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrManager::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sdr_mgr")
     {
@@ -3045,16 +3045,16 @@ std::shared_ptr<Entity> SdrManager::get_child_by_name(const std::string & child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrManager::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrManager::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sdr_mgr != nullptr)
     {
-        children["sdr_mgr"] = sdr_mgr;
+        _children["sdr_mgr"] = sdr_mgr;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3065,7 +3065,7 @@ void SdrManager::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> SdrManager::clone_ptr() const
+std::shared_ptr<ydk::Entity> SdrManager::clone_ptr() const
 {
     return std::make_shared<SdrManager>();
 }
@@ -3153,33 +3153,33 @@ std::vector<std::pair<std::string, LeafData> > SdrManager::SdrMgr::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> SdrManager::SdrMgr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrManager::SdrMgr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace")
     {
-        auto c = std::make_shared<SdrManager::SdrMgr::Trace>();
-        c->parent = this;
-        trace.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrManager::SdrMgr::Trace>();
+        ent_->parent = this;
+        trace.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrManager::SdrMgr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrManager::SdrMgr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrManager::SdrMgr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3258,33 +3258,33 @@ std::vector<std::pair<std::string, LeafData> > SdrManager::SdrMgr::Trace::get_na
 
 }
 
-std::shared_ptr<Entity> SdrManager::SdrMgr::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrManager::SdrMgr::Trace::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<SdrManager::SdrMgr::Trace::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrManager::SdrMgr::Trace::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrManager::SdrMgr::Trace::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrManager::SdrMgr::Trace::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrManager::SdrMgr::Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3366,33 +3366,33 @@ std::vector<std::pair<std::string, LeafData> > SdrManager::SdrMgr::Trace::Locati
 
 }
 
-std::shared_ptr<Entity> SdrManager::SdrMgr::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrManager::SdrMgr::Trace::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all-options")
     {
-        auto c = std::make_shared<SdrManager::SdrMgr::Trace::Location::AllOptions>();
-        c->parent = this;
-        all_options.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrManager::SdrMgr::Trace::Location::AllOptions>();
+        ent_->parent = this;
+        all_options.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrManager::SdrMgr::Trace::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrManager::SdrMgr::Trace::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : all_options.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : all_options.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrManager::SdrMgr::Trace::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3474,33 +3474,33 @@ std::vector<std::pair<std::string, LeafData> > SdrManager::SdrMgr::Trace::Locati
 
 }
 
-std::shared_ptr<Entity> SdrManager::SdrMgr::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrManager::SdrMgr::Trace::Location::AllOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trace-blocks")
     {
-        auto c = std::make_shared<SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks>();
-        c->parent = this;
-        trace_blocks.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks>();
+        ent_->parent = this;
+        trace_blocks.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrManager::SdrMgr::Trace::Location::AllOptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrManager::SdrMgr::Trace::Location::AllOptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : trace_blocks.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : trace_blocks.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrManager::SdrMgr::Trace::Location::AllOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3569,16 +3569,16 @@ std::vector<std::pair<std::string, LeafData> > SdrManager::SdrMgr::Trace::Locati
 
 }
 
-std::shared_ptr<Entity> SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3655,33 +3655,33 @@ std::vector<std::pair<std::string, LeafData> > SdrOperation::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> SdrOperation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrOperation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sdr")
     {
-        auto c = std::make_shared<SdrOperation::Sdr>();
-        c->parent = this;
-        sdr.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrOperation::Sdr>();
+        ent_->parent = this;
+        sdr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrOperation::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrOperation::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sdr.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sdr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrOperation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3692,7 +3692,7 @@ void SdrOperation::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> SdrOperation::clone_ptr() const
+std::shared_ptr<ydk::Entity> SdrOperation::clone_ptr() const
 {
     return std::make_shared<SdrOperation>();
 }
@@ -3778,7 +3778,7 @@ std::vector<std::pair<std::string, LeafData> > SdrOperation::Sdr::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> SdrOperation::Sdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrOperation::Sdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -3792,16 +3792,16 @@ std::shared_ptr<Entity> SdrOperation::Sdr::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrOperation::Sdr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrOperation::Sdr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrOperation::Sdr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3878,33 +3878,33 @@ std::vector<std::pair<std::string, LeafData> > SdrOperation::Sdr::Nodes::get_nam
 
 }
 
-std::shared_ptr<Entity> SdrOperation::Sdr::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrOperation::Sdr::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "location")
     {
-        auto c = std::make_shared<SdrOperation::Sdr::Nodes::Location>();
-        c->parent = this;
-        location.append(c);
-        return c;
+        auto ent_ = std::make_shared<SdrOperation::Sdr::Nodes::Location>();
+        ent_->parent = this;
+        location.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrOperation::Sdr::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrOperation::Sdr::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : location.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : location.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void SdrOperation::Sdr::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3977,16 +3977,16 @@ std::vector<std::pair<std::string, LeafData> > SdrOperation::Sdr::Nodes::Locatio
 
 }
 
-std::shared_ptr<Entity> SdrOperation::Sdr::Nodes::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> SdrOperation::Sdr::Nodes::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SdrOperation::Sdr::Nodes::Location::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> SdrOperation::Sdr::Nodes::Location::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void SdrOperation::Sdr::Nodes::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4093,33 +4093,33 @@ std::vector<std::pair<std::string, LeafData> > PrivateSdr::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> PrivateSdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PrivateSdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sdr-name")
     {
-        auto c = std::make_shared<PrivateSdr::SdrName>();
-        c->parent = this;
-        sdr_name.append(c);
-        return c;
+        auto ent_ = std::make_shared<PrivateSdr::SdrName>();
+        ent_->parent = this;
+        sdr_name.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PrivateSdr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PrivateSdr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sdr_name.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sdr_name.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PrivateSdr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4130,7 +4130,7 @@ void PrivateSdr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> PrivateSdr::clone_ptr() const
+std::shared_ptr<ydk::Entity> PrivateSdr::clone_ptr() const
 {
     return std::make_shared<PrivateSdr>();
 }
@@ -4235,33 +4235,33 @@ std::vector<std::pair<std::string, LeafData> > PrivateSdr::SdrName::get_name_lea
 
 }
 
-std::shared_ptr<Entity> PrivateSdr::SdrName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PrivateSdr::SdrName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pairing")
     {
-        auto c = std::make_shared<PrivateSdr::SdrName::Pairing>();
-        c->parent = this;
-        pairing.append(c);
-        return c;
+        auto ent_ = std::make_shared<PrivateSdr::SdrName::Pairing>();
+        ent_->parent = this;
+        pairing.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PrivateSdr::SdrName::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PrivateSdr::SdrName::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pairing.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pairing.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PrivateSdr::SdrName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -4381,16 +4381,16 @@ std::vector<std::pair<std::string, LeafData> > PrivateSdr::SdrName::Pairing::get
 
 }
 
-std::shared_ptr<Entity> PrivateSdr::SdrName::Pairing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PrivateSdr::SdrName::Pairing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PrivateSdr::SdrName::Pairing::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PrivateSdr::SdrName::Pairing::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PrivateSdr::SdrName::Pairing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

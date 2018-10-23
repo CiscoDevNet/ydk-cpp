@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > Cdp::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Cdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nodes")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> Cdp::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(nodes != nullptr)
     {
-        children["nodes"] = nodes;
+        _children["nodes"] = nodes;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void Cdp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Cdp::clone_ptr() const
+std::shared_ptr<ydk::Entity> Cdp::clone_ptr() const
 {
     return std::make_shared<Cdp>();
 }
@@ -174,33 +174,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -280,7 +280,7 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "neighbors")
     {
@@ -312,26 +312,26 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(neighbors != nullptr)
     {
-        children["neighbors"] = neighbors;
+        _children["neighbors"] = neighbors;
     }
 
     if(statistics != nullptr)
     {
-        children["statistics"] = statistics;
+        _children["statistics"] = statistics;
     }
 
     if(interfaces != nullptr)
     {
-        children["interfaces"] = interfaces;
+        _children["interfaces"] = interfaces;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -408,7 +408,7 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::get_
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "details")
     {
@@ -440,26 +440,26 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(details != nullptr)
     {
-        children["details"] = details;
+        _children["details"] = details;
     }
 
     if(devices != nullptr)
     {
-        children["devices"] = devices;
+        _children["devices"] = devices;
     }
 
     if(summaries != nullptr)
     {
-        children["summaries"] = summaries;
+        _children["summaries"] = summaries;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -526,33 +526,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Deta
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail>();
-        c->parent = this;
-        detail.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail>();
+        ent_->parent = this;
+        detail.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Details::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : detail.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : detail.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -627,33 +627,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Deta
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdp-neighbor")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor>();
-        c->parent = this;
-        cdp_neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor>();
+        ent_->parent = this;
+        cdp_neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdp_neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdp_neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Details::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -761,7 +761,7 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Deta
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
@@ -775,16 +775,16 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -938,7 +938,7 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Deta
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-addresses")
     {
@@ -961,21 +961,21 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network_addresses != nullptr)
     {
-        children["network-addresses"] = network_addresses;
+        _children["network-addresses"] = network_addresses;
     }
 
     if(protocol_hello_list != nullptr)
     {
-        children["protocol-hello-list"] = protocol_hello_list;
+        _children["protocol-hello-list"] = protocol_hello_list;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1092,33 +1092,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Deta
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdp-addr-entry")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry>();
-        c->parent = this;
-        cdp_addr_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry>();
+        ent_->parent = this;
+        cdp_addr_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdp_addr_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdp_addr_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1177,7 +1177,7 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Deta
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -1191,16 +1191,16 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1267,16 +1267,16 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Deta
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::NetworkAddresses::CdpAddrEntry::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1373,33 +1373,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Deta
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdp-prot-hello-entry")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry>();
-        c->parent = this;
-        cdp_prot_hello_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry>();
+        ent_->parent = this;
+        cdp_prot_hello_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdp_prot_hello_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdp_prot_hello_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1458,16 +1458,16 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Deta
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::ProtocolHelloList::CdpProtHelloEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1544,33 +1544,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devi
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Devices::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "device")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device>();
-        c->parent = this;
-        device.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device>();
+        ent_->parent = this;
+        device.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Devices::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : device.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : device.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Devices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1642,33 +1642,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devi
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdp-neighbor")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor>();
-        c->parent = this;
-        cdp_neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor>();
+        ent_->parent = this;
+        cdp_neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdp_neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdp_neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Devices::Device::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1766,7 +1766,7 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devi
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
@@ -1780,16 +1780,16 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1943,7 +1943,7 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devi
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-addresses")
     {
@@ -1966,21 +1966,21 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network_addresses != nullptr)
     {
-        children["network-addresses"] = network_addresses;
+        _children["network-addresses"] = network_addresses;
     }
 
     if(protocol_hello_list != nullptr)
     {
-        children["protocol-hello-list"] = protocol_hello_list;
+        _children["protocol-hello-list"] = protocol_hello_list;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2097,33 +2097,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devi
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdp-addr-entry")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry>();
-        c->parent = this;
-        cdp_addr_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry>();
+        ent_->parent = this;
+        cdp_addr_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdp_addr_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdp_addr_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2182,7 +2182,7 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devi
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -2196,16 +2196,16 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2272,16 +2272,16 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devi
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2378,33 +2378,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devi
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdp-prot-hello-entry")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry>();
-        c->parent = this;
-        cdp_prot_hello_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry>();
+        ent_->parent = this;
+        cdp_prot_hello_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdp_prot_hello_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdp_prot_hello_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2463,16 +2463,16 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Devi
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2549,33 +2549,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summ
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Summaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "summary")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary>();
-        c->parent = this;
-        summary.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary>();
+        ent_->parent = this;
+        summary.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Summaries::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : summary.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : summary.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Summaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2650,33 +2650,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summ
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdp-neighbor")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor>();
-        c->parent = this;
-        cdp_neighbor.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor>();
+        ent_->parent = this;
+        cdp_neighbor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdp_neighbor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdp_neighbor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Summaries::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2784,7 +2784,7 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summ
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "detail")
     {
@@ -2798,16 +2798,16 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(detail != nullptr)
     {
-        children["detail"] = detail;
+        _children["detail"] = detail;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2961,7 +2961,7 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summ
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network-addresses")
     {
@@ -2984,21 +2984,21 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(network_addresses != nullptr)
     {
-        children["network-addresses"] = network_addresses;
+        _children["network-addresses"] = network_addresses;
     }
 
     if(protocol_hello_list != nullptr)
     {
-        children["protocol-hello-list"] = protocol_hello_list;
+        _children["protocol-hello-list"] = protocol_hello_list;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3115,33 +3115,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summ
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdp-addr-entry")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry>();
-        c->parent = this;
-        cdp_addr_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry>();
+        ent_->parent = this;
+        cdp_addr_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdp_addr_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdp_addr_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3200,7 +3200,7 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summ
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
@@ -3214,16 +3214,16 @@ std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeig
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(address != nullptr)
     {
-        children["address"] = address;
+        _children["address"] = address;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3290,16 +3290,16 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summ
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::NetworkAddresses::CdpAddrEntry::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3396,33 +3396,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summ
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdp-prot-hello-entry")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry>();
-        c->parent = this;
-        cdp_prot_hello_entry.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry>();
+        ent_->parent = this;
+        cdp_prot_hello_entry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cdp_prot_hello_entry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cdp_prot_hello_entry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3481,16 +3481,16 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Neighbors::Summ
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail::ProtocolHelloList::CdpProtHelloEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3611,16 +3611,16 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Statistics::get
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Statistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3827,33 +3827,33 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Interfaces::get
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Cdp::Nodes::Node::Interfaces::Interface>();
-        c->parent = this;
-        interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<Cdp::Nodes::Node::Interfaces::Interface>();
+        ent_->parent = this;
+        interface.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Interfaces::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3929,16 +3929,16 @@ std::vector<std::pair<std::string, LeafData> > Cdp::Nodes::Node::Interfaces::Int
 
 }
 
-std::shared_ptr<Entity> Cdp::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Cdp::Nodes::Node::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cdp::Nodes::Node::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Cdp::Nodes::Node::Interfaces::Interface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Cdp::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > ChannelMonitors::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> ChannelMonitors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ChannelMonitors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "channel-monitor")
     {
-        auto c = std::make_shared<ChannelMonitors::ChannelMonitor>();
-        c->parent = this;
-        channel_monitor.append(c);
-        return c;
+        auto ent_ = std::make_shared<ChannelMonitors::ChannelMonitor>();
+        ent_->parent = this;
+        channel_monitor.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ChannelMonitors::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : channel_monitor.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : channel_monitor.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ChannelMonitors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void ChannelMonitors::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> ChannelMonitors::clone_ptr() const
+std::shared_ptr<ydk::Entity> ChannelMonitors::clone_ptr() const
 {
     return std::make_shared<ChannelMonitors>();
 }
@@ -191,7 +191,7 @@ std::vector<std::pair<std::string, LeafData> > ChannelMonitors::ChannelMonitor::
 
 }
 
-std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ChannelMonitors::ChannelMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -223,26 +223,26 @@ std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ChannelMonitors::ChannelMonitor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(channels != nullptr)
     {
-        children["channels"] = channels;
+        _children["channels"] = channels;
     }
 
-    return children;
+    return _children;
 }
 
 void ChannelMonitors::ChannelMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -315,16 +315,16 @@ std::vector<std::pair<std::string, LeafData> > ChannelMonitors::ChannelMonitor::
 
 }
 
-std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ChannelMonitors::ChannelMonitor::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ChannelMonitors::ChannelMonitor::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ChannelMonitors::ChannelMonitor::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -407,16 +407,16 @@ std::vector<std::pair<std::string, LeafData> > ChannelMonitors::ChannelMonitor::
 
 }
 
-std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ChannelMonitors::ChannelMonitor::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ChannelMonitors::ChannelMonitor::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ChannelMonitors::ChannelMonitor::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -503,33 +503,33 @@ std::vector<std::pair<std::string, LeafData> > ChannelMonitors::ChannelMonitor::
 
 }
 
-std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::Channels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ChannelMonitors::ChannelMonitor::Channels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "channel")
     {
-        auto c = std::make_shared<ChannelMonitors::ChannelMonitor::Channels::Channel>();
-        c->parent = this;
-        channel.append(c);
-        return c;
+        auto ent_ = std::make_shared<ChannelMonitors::ChannelMonitor::Channels::Channel>();
+        ent_->parent = this;
+        channel.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::Channels::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ChannelMonitors::ChannelMonitor::Channels::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : channel.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : channel.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void ChannelMonitors::ChannelMonitor::Channels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -599,7 +599,7 @@ std::vector<std::pair<std::string, LeafData> > ChannelMonitors::ChannelMonitor::
 
 }
 
-std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::Channels::Channel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ChannelMonitors::ChannelMonitor::Channels::Channel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -613,16 +613,16 @@ std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::Channels::Channel::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::Channels::Channel::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ChannelMonitors::ChannelMonitor::Channels::Channel::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void ChannelMonitors::ChannelMonitor::Channels::Channel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -709,16 +709,16 @@ std::vector<std::pair<std::string, LeafData> > ChannelMonitors::ChannelMonitor::
 
 }
 
-std::shared_ptr<Entity> ChannelMonitors::ChannelMonitor::Channels::Channel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> ChannelMonitors::ChannelMonitor::Channels::Channel::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ChannelMonitors::ChannelMonitor::Channels::Channel::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> ChannelMonitors::ChannelMonitor::Channels::Channel::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void ChannelMonitors::ChannelMonitor::Channels::Channel::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

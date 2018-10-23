@@ -77,7 +77,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLsd::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> MplsLsd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLsd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv6")
     {
@@ -109,26 +109,26 @@ std::shared_ptr<Entity> MplsLsd::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsd::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLsd::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ipv6 != nullptr)
     {
-        children["ipv6"] = ipv6;
+        _children["ipv6"] = ipv6;
     }
 
     if(ipv4 != nullptr)
     {
-        children["ipv4"] = ipv4;
+        _children["ipv4"] = ipv4;
     }
 
     if(label_databases != nullptr)
     {
-        children["label-databases"] = label_databases;
+        _children["label-databases"] = label_databases;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLsd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -179,7 +179,7 @@ void MplsLsd::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> MplsLsd::clone_ptr() const
+std::shared_ptr<ydk::Entity> MplsLsd::clone_ptr() const
 {
     return std::make_shared<MplsLsd>();
 }
@@ -259,16 +259,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLsd::Ipv6::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> MplsLsd::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLsd::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Ipv6::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLsd::Ipv6::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLsd::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -344,16 +344,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLsd::Ipv4::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> MplsLsd::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLsd::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLsd::Ipv4::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLsd::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -437,33 +437,33 @@ std::vector<std::pair<std::string, LeafData> > MplsLsd::LabelDatabases::get_name
 
 }
 
-std::shared_ptr<Entity> MplsLsd::LabelDatabases::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLsd::LabelDatabases::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "label-database")
     {
-        auto c = std::make_shared<MplsLsd::LabelDatabases::LabelDatabase>();
-        c->parent = this;
-        label_database.append(c);
-        return c;
+        auto ent_ = std::make_shared<MplsLsd::LabelDatabases::LabelDatabase>();
+        ent_->parent = this;
+        label_database.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelDatabases::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLsd::LabelDatabases::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : label_database.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : label_database.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLsd::LabelDatabases::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -535,7 +535,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLsd::LabelDatabases::LabelDat
 
 }
 
-std::shared_ptr<Entity> MplsLsd::LabelDatabases::LabelDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLsd::LabelDatabases::LabelDatabase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "label-range")
     {
@@ -549,16 +549,16 @@ std::shared_ptr<Entity> MplsLsd::LabelDatabases::LabelDatabase::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelDatabases::LabelDatabase::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLsd::LabelDatabases::LabelDatabase::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(label_range != nullptr)
     {
-        children["label-range"] = label_range;
+        _children["label-range"] = label_range;
     }
 
-    return children;
+    return _children;
 }
 
 void MplsLsd::LabelDatabases::LabelDatabase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -639,16 +639,16 @@ std::vector<std::pair<std::string, LeafData> > MplsLsd::LabelDatabases::LabelDat
 
 }
 
-std::shared_ptr<Entity> MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void MplsLsd::LabelDatabases::LabelDatabase::LabelRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -60,33 +60,33 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> HardwareModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "node")
     {
-        auto c = std::make_shared<HardwareModule::Node>();
-        c->parent = this;
-        node.append(c);
-        return c;
+        auto ent_ = std::make_shared<HardwareModule::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : node.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -97,7 +97,7 @@ void HardwareModule::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> HardwareModule::clone_ptr() const
+std::shared_ptr<ydk::Entity> HardwareModule::clone_ptr() const
 {
     return std::make_shared<HardwareModule>();
 }
@@ -190,33 +190,33 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::get_name_le
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "slot")
     {
-        auto c = std::make_shared<HardwareModule::Node::Slot>();
-        c->parent = this;
-        slot.append(c);
-        return c;
+        auto ent_ = std::make_shared<HardwareModule::Node::Slot>();
+        ent_->parent = this;
+        slot.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Node::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : slot.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : slot.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -303,7 +303,7 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::get_n
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Node::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Node::Slot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otdrs")
     {
@@ -344,31 +344,31 @@ std::shared_ptr<Entity> HardwareModule::Node::Slot::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Node::Slot::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(otdrs != nullptr)
     {
-        children["otdrs"] = otdrs;
+        _children["otdrs"] = otdrs;
     }
 
     if(otdr_thresholds != nullptr)
     {
-        children["otdr-thresholds"] = otdr_thresholds;
+        _children["otdr-thresholds"] = otdr_thresholds;
     }
 
     if(amplifier != nullptr)
     {
-        children["amplifier"] = amplifier;
+        _children["amplifier"] = amplifier;
     }
 
     if(psm != nullptr)
     {
-        children["psm"] = psm;
+        _children["psm"] = psm;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Node::Slot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -445,33 +445,33 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::Otdrs
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Node::Slot::Otdrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Node::Slot::Otdrs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otdr")
     {
-        auto c = std::make_shared<HardwareModule::Node::Slot::Otdrs::Otdr>();
-        c->parent = this;
-        otdr.append(c);
-        return c;
+        auto ent_ = std::make_shared<HardwareModule::Node::Slot::Otdrs::Otdr>();
+        ent_->parent = this;
+        otdr.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::Otdrs::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Node::Slot::Otdrs::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otdr.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otdr.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Node::Slot::Otdrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -549,7 +549,7 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::Otdrs
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Node::Slot::Otdrs::Otdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Node::Slot::Otdrs::Otdr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mode-auto")
     {
@@ -572,21 +572,21 @@ std::shared_ptr<Entity> HardwareModule::Node::Slot::Otdrs::Otdr::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::Otdrs::Otdr::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Node::Slot::Otdrs::Otdr::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(mode_auto != nullptr)
     {
-        children["mode-auto"] = mode_auto;
+        _children["mode-auto"] = mode_auto;
     }
 
     if(mode_expert != nullptr)
     {
-        children["mode-expert"] = mode_expert;
+        _children["mode-expert"] = mode_expert;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Node::Slot::Otdrs::Otdr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -679,16 +679,16 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::Otdrs
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Node::Slot::Otdrs::Otdr::ModeAuto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Node::Slot::Otdrs::Otdr::ModeAuto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::Otdrs::Otdr::ModeAuto::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Node::Slot::Otdrs::Otdr::ModeAuto::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HardwareModule::Node::Slot::Otdrs::Otdr::ModeAuto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -795,16 +795,16 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::Otdrs
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Node::Slot::Otdrs::Otdr::ModeExpert::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Node::Slot::Otdrs::Otdr::ModeExpert::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::Otdrs::Otdr::ModeExpert::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Node::Slot::Otdrs::Otdr::ModeExpert::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HardwareModule::Node::Slot::Otdrs::Otdr::ModeExpert::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -951,33 +951,33 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::OtdrT
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Node::Slot::OtdrThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Node::Slot::OtdrThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otdr-threshold")
     {
-        auto c = std::make_shared<HardwareModule::Node::Slot::OtdrThresholds::OtdrThreshold>();
-        c->parent = this;
-        otdr_threshold.append(c);
-        return c;
+        auto ent_ = std::make_shared<HardwareModule::Node::Slot::OtdrThresholds::OtdrThreshold>();
+        ent_->parent = this;
+        otdr_threshold.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::OtdrThresholds::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Node::Slot::OtdrThresholds::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : otdr_threshold.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : otdr_threshold.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Node::Slot::OtdrThresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1049,16 +1049,16 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::OtdrT
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Node::Slot::OtdrThresholds::OtdrThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Node::Slot::OtdrThresholds::OtdrThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::OtdrThresholds::OtdrThreshold::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Node::Slot::OtdrThresholds::OtdrThreshold::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HardwareModule::Node::Slot::OtdrThresholds::OtdrThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1174,7 +1174,7 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::Ampli
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Node::Slot::Amplifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Node::Slot::Amplifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "remote-node")
     {
@@ -1188,16 +1188,16 @@ std::shared_ptr<Entity> HardwareModule::Node::Slot::Amplifier::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::Amplifier::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Node::Slot::Amplifier::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(remote_node != nullptr)
     {
-        children["remote-node"] = remote_node;
+        _children["remote-node"] = remote_node;
     }
 
-    return children;
+    return _children;
 }
 
 void HardwareModule::Node::Slot::Amplifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1304,16 +1304,16 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::Ampli
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Node::Slot::Amplifier::RemoteNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Node::Slot::Amplifier::RemoteNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::Amplifier::RemoteNode::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Node::Slot::Amplifier::RemoteNode::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HardwareModule::Node::Slot::Amplifier::RemoteNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1418,16 +1418,16 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Node::Slot::Psm::
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Node::Slot::Psm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> HardwareModule::Node::Slot::Psm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slot::Psm::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModule::Node::Slot::Psm::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void HardwareModule::Node::Slot::Psm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > CopySrcLocal::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> CopySrcLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CopySrcLocal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> CopySrcLocal::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopySrcLocal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CopySrcLocal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
-    return children;
+    return _children;
 }
 
 void CopySrcLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void CopySrcLocal::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CopySrcLocal::clone_ptr() const
+std::shared_ptr<ydk::Entity> CopySrcLocal::clone_ptr() const
 {
     return std::make_shared<CopySrcLocal>();
 }
@@ -202,16 +202,16 @@ std::vector<std::pair<std::string, LeafData> > CopySrcLocal::Input::get_name_lea
 
 }
 
-std::shared_ptr<Entity> CopySrcLocal::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CopySrcLocal::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopySrcLocal::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CopySrcLocal::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CopySrcLocal::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -370,7 +370,7 @@ std::vector<std::pair<std::string, LeafData> > CopySrcRemote::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> CopySrcRemote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CopySrcRemote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -384,16 +384,16 @@ std::shared_ptr<Entity> CopySrcRemote::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopySrcRemote::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CopySrcRemote::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
-    return children;
+    return _children;
 }
 
 void CopySrcRemote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -404,7 +404,7 @@ void CopySrcRemote::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CopySrcRemote::clone_ptr() const
+std::shared_ptr<ydk::Entity> CopySrcRemote::clone_ptr() const
 {
     return std::make_shared<CopySrcRemote>();
 }
@@ -512,16 +512,16 @@ std::vector<std::pair<std::string, LeafData> > CopySrcRemote::Input::get_name_le
 
 }
 
-std::shared_ptr<Entity> CopySrcRemote::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CopySrcRemote::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopySrcRemote::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CopySrcRemote::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CopySrcRemote::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -660,7 +660,7 @@ std::vector<std::pair<std::string, LeafData> > CopySrcCore::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> CopySrcCore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CopySrcCore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -674,16 +674,16 @@ std::shared_ptr<Entity> CopySrcCore::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopySrcCore::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CopySrcCore::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
-    return children;
+    return _children;
 }
 
 void CopySrcCore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -694,7 +694,7 @@ void CopySrcCore::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CopySrcCore::clone_ptr() const
+std::shared_ptr<ydk::Entity> CopySrcCore::clone_ptr() const
 {
     return std::make_shared<CopySrcCore>();
 }
@@ -790,16 +790,16 @@ std::vector<std::pair<std::string, LeafData> > CopySrcCore::Input::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> CopySrcCore::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CopySrcCore::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopySrcCore::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CopySrcCore::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CopySrcCore::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -908,7 +908,7 @@ std::vector<std::pair<std::string, LeafData> > CopyRunningConfigSrc::get_name_le
 
 }
 
-std::shared_ptr<Entity> CopyRunningConfigSrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CopyRunningConfigSrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -922,16 +922,16 @@ std::shared_ptr<Entity> CopyRunningConfigSrc::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopyRunningConfigSrc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CopyRunningConfigSrc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
-    return children;
+    return _children;
 }
 
 void CopyRunningConfigSrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -942,7 +942,7 @@ void CopyRunningConfigSrc::set_filter(const std::string & value_path, YFilter yf
 {
 }
 
-std::shared_ptr<Entity> CopyRunningConfigSrc::clone_ptr() const
+std::shared_ptr<ydk::Entity> CopyRunningConfigSrc::clone_ptr() const
 {
     return std::make_shared<CopyRunningConfigSrc>();
 }
@@ -1046,16 +1046,16 @@ std::vector<std::pair<std::string, LeafData> > CopyRunningConfigSrc::Input::get_
 
 }
 
-std::shared_ptr<Entity> CopyRunningConfigSrc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CopyRunningConfigSrc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopyRunningConfigSrc::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CopyRunningConfigSrc::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CopyRunningConfigSrc::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1184,7 +1184,7 @@ std::vector<std::pair<std::string, LeafData> > CopyStartupConfigSrc::get_name_le
 
 }
 
-std::shared_ptr<Entity> CopyStartupConfigSrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CopyStartupConfigSrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -1198,16 +1198,16 @@ std::shared_ptr<Entity> CopyStartupConfigSrc::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopyStartupConfigSrc::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CopyStartupConfigSrc::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
-    return children;
+    return _children;
 }
 
 void CopyStartupConfigSrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1218,7 +1218,7 @@ void CopyStartupConfigSrc::set_filter(const std::string & value_path, YFilter yf
 {
 }
 
-std::shared_ptr<Entity> CopyStartupConfigSrc::clone_ptr() const
+std::shared_ptr<ydk::Entity> CopyStartupConfigSrc::clone_ptr() const
 {
     return std::make_shared<CopyStartupConfigSrc>();
 }
@@ -1322,16 +1322,16 @@ std::vector<std::pair<std::string, LeafData> > CopyStartupConfigSrc::Input::get_
 
 }
 
-std::shared_ptr<Entity> CopyStartupConfigSrc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CopyStartupConfigSrc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopyStartupConfigSrc::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CopyStartupConfigSrc::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CopyStartupConfigSrc::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1460,7 +1460,7 @@ std::vector<std::pair<std::string, LeafData> > CopyLicenses::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> CopyLicenses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CopyLicenses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -1474,16 +1474,16 @@ std::shared_ptr<Entity> CopyLicenses::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopyLicenses::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CopyLicenses::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
-    return children;
+    return _children;
 }
 
 void CopyLicenses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1494,7 +1494,7 @@ void CopyLicenses::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> CopyLicenses::clone_ptr() const
+std::shared_ptr<ydk::Entity> CopyLicenses::clone_ptr() const
 {
     return std::make_shared<CopyLicenses>();
 }
@@ -1574,16 +1574,16 @@ std::vector<std::pair<std::string, LeafData> > CopyLicenses::Input::get_name_lea
 
 }
 
-std::shared_ptr<Entity> CopyLicenses::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CopyLicenses::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopyLicenses::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CopyLicenses::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CopyLicenses::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1652,7 +1652,7 @@ std::vector<std::pair<std::string, LeafData> > Delete::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> Delete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Delete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -1666,16 +1666,16 @@ std::shared_ptr<Entity> Delete::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Delete::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Delete::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
-    return children;
+    return _children;
 }
 
 void Delete::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1686,7 +1686,7 @@ void Delete::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Delete::clone_ptr() const
+std::shared_ptr<ydk::Entity> Delete::clone_ptr() const
 {
     return std::make_shared<Delete>();
 }
@@ -1766,16 +1766,16 @@ std::vector<std::pair<std::string, LeafData> > Delete::Input::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> Delete::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Delete::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Delete::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Delete::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Delete::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1840,16 +1840,16 @@ std::vector<std::pair<std::string, LeafData> > DeleteCaCertificate::get_name_lea
 
 }
 
-std::shared_ptr<Entity> DeleteCaCertificate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DeleteCaCertificate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DeleteCaCertificate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DeleteCaCertificate::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DeleteCaCertificate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1860,7 +1860,7 @@ void DeleteCaCertificate::set_filter(const std::string & value_path, YFilter yfi
 {
 }
 
-std::shared_ptr<Entity> DeleteCaCertificate::clone_ptr() const
+std::shared_ptr<ydk::Entity> DeleteCaCertificate::clone_ptr() const
 {
     return std::make_shared<DeleteCaCertificate>();
 }
@@ -1927,16 +1927,16 @@ std::vector<std::pair<std::string, LeafData> > DeleteCrl::get_name_leaf_data() c
 
 }
 
-std::shared_ptr<Entity> DeleteCrl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DeleteCrl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DeleteCrl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DeleteCrl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void DeleteCrl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1947,7 +1947,7 @@ void DeleteCrl::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> DeleteCrl::clone_ptr() const
+std::shared_ptr<ydk::Entity> DeleteCrl::clone_ptr() const
 {
     return std::make_shared<DeleteCrl>();
 }
@@ -2018,7 +2018,7 @@ std::vector<std::pair<std::string, LeafData> > BootNxos::get_name_leaf_data() co
 
 }
 
-std::shared_ptr<Entity> BootNxos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BootNxos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -2032,16 +2032,16 @@ std::shared_ptr<Entity> BootNxos::get_child_by_name(const std::string & child_ya
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BootNxos::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BootNxos::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
-    return children;
+    return _children;
 }
 
 void BootNxos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2052,7 +2052,7 @@ void BootNxos::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> BootNxos::clone_ptr() const
+std::shared_ptr<ydk::Entity> BootNxos::clone_ptr() const
 {
     return std::make_shared<BootNxos>();
 }
@@ -2132,16 +2132,16 @@ std::vector<std::pair<std::string, LeafData> > BootNxos::Input::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> BootNxos::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> BootNxos::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> BootNxos::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> BootNxos::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void BootNxos::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2206,16 +2206,16 @@ std::vector<std::pair<std::string, LeafData> > Reload::get_name_leaf_data() cons
 
 }
 
-std::shared_ptr<Entity> Reload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Reload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Reload::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Reload::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Reload::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2226,7 +2226,7 @@ void Reload::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Reload::clone_ptr() const
+std::shared_ptr<ydk::Entity> Reload::clone_ptr() const
 {
     return std::make_shared<Reload>();
 }
@@ -2301,7 +2301,7 @@ std::vector<std::pair<std::string, LeafData> > Dir::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Dir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
@@ -2324,21 +2324,21 @@ std::shared_ptr<Entity> Dir::get_child_by_name(const std::string & child_yang_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dir::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dir::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(input != nullptr)
     {
-        children["input"] = input;
+        _children["input"] = input;
     }
 
     if(output != nullptr)
     {
-        children["output"] = output;
+        _children["output"] = output;
     }
 
-    return children;
+    return _children;
 }
 
 void Dir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2349,7 +2349,7 @@ void Dir::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Dir::clone_ptr() const
+std::shared_ptr<ydk::Entity> Dir::clone_ptr() const
 {
     return std::make_shared<Dir>();
 }
@@ -2429,16 +2429,16 @@ std::vector<std::pair<std::string, LeafData> > Dir::Input::get_name_leaf_data() 
 
 }
 
-std::shared_ptr<Entity> Dir::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dir::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dir::Input::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dir::Input::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dir::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2514,16 +2514,16 @@ std::vector<std::pair<std::string, LeafData> > Dir::Output::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Dir::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Dir::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dir::Output::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Dir::Output::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void Dir::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

@@ -60,7 +60,7 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::get_name_leaf_da
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sensor-groups")
     {
@@ -92,26 +92,26 @@ std::shared_ptr<Entity> TelemetrySystem::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(sensor_groups != nullptr)
     {
-        children["sensor-groups"] = sensor_groups;
+        _children["sensor-groups"] = sensor_groups;
     }
 
     if(destination_groups != nullptr)
     {
-        children["destination-groups"] = destination_groups;
+        _children["destination-groups"] = destination_groups;
     }
 
     if(subscriptions != nullptr)
     {
-        children["subscriptions"] = subscriptions;
+        _children["subscriptions"] = subscriptions;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -122,7 +122,7 @@ void TelemetrySystem::set_filter(const std::string & value_path, YFilter yfilter
 {
 }
 
-std::shared_ptr<Entity> TelemetrySystem::clone_ptr() const
+std::shared_ptr<ydk::Entity> TelemetrySystem::clone_ptr() const
 {
     return std::make_shared<TelemetrySystem>();
 }
@@ -210,33 +210,33 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::SensorGroups::ge
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::SensorGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::SensorGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sensor-group")
     {
-        auto c = std::make_shared<TelemetrySystem::SensorGroups::SensorGroup>();
-        c->parent = this;
-        sensor_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<TelemetrySystem::SensorGroups::SensorGroup>();
+        ent_->parent = this;
+        sensor_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::SensorGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::SensorGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -316,7 +316,7 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::SensorGroups::Se
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::SensorGroups::SensorGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -348,26 +348,26 @@ std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::SensorGroups::SensorGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(sensor_paths != nullptr)
     {
-        children["sensor-paths"] = sensor_paths;
+        _children["sensor-paths"] = sensor_paths;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::SensorGroups::SensorGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -436,16 +436,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::SensorGroups::Se
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::SensorGroups::SensorGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::SensorGroups::SensorGroup::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::SensorGroups::SensorGroup::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -514,16 +514,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::SensorGroups::Se
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::SensorGroups::SensorGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::SensorGroups::SensorGroup::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::SensorGroups::SensorGroup::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -600,33 +600,33 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::SensorGroups::Se
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sensor-path")
     {
-        auto c = std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath>();
-        c->parent = this;
-        sensor_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath>();
+        ent_->parent = this;
+        sensor_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -695,7 +695,7 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::SensorGroups::Se
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -718,21 +718,21 @@ std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -805,16 +805,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::SensorGroups::Se
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -897,16 +897,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::SensorGroups::Se
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1000,33 +1000,33 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::DestinationGroup
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::DestinationGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination-group")
     {
-        auto c = std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup>();
-        c->parent = this;
-        destination_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup>();
+        ent_->parent = this;
+        destination_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::DestinationGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : destination_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : destination_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::DestinationGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1106,7 +1106,7 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::DestinationGroup
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::DestinationGroups::DestinationGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1138,26 +1138,26 @@ std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(destinations != nullptr)
     {
-        children["destinations"] = destinations;
+        _children["destinations"] = destinations;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::DestinationGroups::DestinationGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1226,16 +1226,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::DestinationGroup
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::DestinationGroups::DestinationGroup::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1304,16 +1304,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::DestinationGroup
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::DestinationGroups::DestinationGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::DestinationGroups::DestinationGroup::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1390,33 +1390,33 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::DestinationGroup
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination")
     {
-        auto c = std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination>();
-        c->parent = this;
-        destination.append(c);
-        return c;
+        auto ent_ = std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination>();
+        ent_->parent = this;
+        destination.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : destination.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : destination.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1490,7 +1490,7 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::DestinationGroup
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -1513,21 +1513,21 @@ std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::De
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1614,16 +1614,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::DestinationGroup
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1720,16 +1720,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::DestinationGroup
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1829,7 +1829,7 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::g
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "persistent")
     {
@@ -1852,21 +1852,21 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(persistent != nullptr)
     {
-        children["persistent"] = persistent;
+        _children["persistent"] = persistent;
     }
 
     if(dynamic != nullptr)
     {
-        children["dynamic"] = dynamic;
+        _children["dynamic"] = dynamic;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1940,33 +1940,33 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::P
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Persistent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subscription")
     {
-        auto c = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription>();
-        c->parent = this;
-        subscription.append(c);
-        return c;
+        auto ent_ = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription>();
+        ent_->parent = this;
+        subscription.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Persistent::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : subscription.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : subscription.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Persistent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2050,7 +2050,7 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::P
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2091,31 +2091,31 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(sensor_profiles != nullptr)
     {
-        children["sensor-profiles"] = sensor_profiles;
+        _children["sensor-profiles"] = sensor_profiles;
     }
 
     if(destination_groups != nullptr)
     {
-        children["destination-groups"] = destination_groups;
+        _children["destination-groups"] = destination_groups;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Persistent::Subscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2192,16 +2192,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::P
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Persistent::Subscription::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2298,16 +2298,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::P
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Persistent::Subscription::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2404,33 +2404,33 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::P
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sensor-profile")
     {
-        auto c = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile>();
-        c->parent = this;
-        sensor_profile.append(c);
-        return c;
+        auto ent_ = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile>();
+        ent_->parent = this;
+        sensor_profile.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_profile.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_profile.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2499,7 +2499,7 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::P
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2522,21 +2522,21 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2617,16 +2617,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::P
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2737,16 +2737,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::P
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2853,33 +2853,33 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::P
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "destination-group")
     {
-        auto c = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup>();
-        c->parent = this;
-        destination_group.append(c);
-        return c;
+        auto ent_ = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup>();
+        ent_->parent = this;
+        destination_group.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : destination_group.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : destination_group.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -2948,7 +2948,7 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::P
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
@@ -2971,21 +2971,21 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(config != nullptr)
     {
-        children["config"] = config;
+        _children["config"] = config;
     }
 
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3054,16 +3054,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::P
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3132,16 +3132,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::P
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3225,33 +3225,33 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::D
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "subscription")
     {
-        auto c = std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription>();
-        c->parent = this;
-        subscription.append(c);
-        return c;
+        auto ent_ = std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription>();
+        ent_->parent = this;
+        subscription.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Dynamic::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Dynamic::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : subscription.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : subscription.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3327,7 +3327,7 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::D
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -3350,21 +3350,21 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
     if(sensor_paths != nullptr)
     {
-        children["sensor-paths"] = sensor_paths;
+        _children["sensor-paths"] = sensor_paths;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Dynamic::Subscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3461,16 +3461,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::D
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Dynamic::Subscription::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3617,33 +3617,33 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::D
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sensor-path")
     {
-        auto c = std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath>();
-        c->parent = this;
-        sensor_path.append(c);
-        return c;
+        auto ent_ = std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath>();
+        ent_->parent = this;
+        sensor_path.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : sensor_path.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sensor_path.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3708,7 +3708,7 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::D
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
@@ -3722,16 +3722,16 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::S
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(state != nullptr)
     {
-        children["state"] = state;
+        _children["state"] = state;
     }
 
-    return children;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -3804,16 +3804,16 @@ std::vector<std::pair<std::string, LeafData> > TelemetrySystem::Subscriptions::D
 
 }
 
-std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

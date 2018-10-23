@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > OSPFTRAPMIB::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> OSPFTRAPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFTRAPMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ospfTrapControl")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> OSPFTRAPMIB::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFTRAPMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFTRAPMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(ospftrapcontrol != nullptr)
     {
-        children["ospfTrapControl"] = ospftrapcontrol;
+        _children["ospfTrapControl"] = ospftrapcontrol;
     }
 
-    return children;
+    return _children;
 }
 
 void OSPFTRAPMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void OSPFTRAPMIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> OSPFTRAPMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> OSPFTRAPMIB::clone_ptr() const
 {
     return std::make_shared<OSPFTRAPMIB>();
 }
@@ -178,16 +178,16 @@ std::vector<std::pair<std::string, LeafData> > OSPFTRAPMIB::OspfTrapControl::get
 
 }
 
-std::shared_ptr<Entity> OSPFTRAPMIB::OspfTrapControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OSPFTRAPMIB::OspfTrapControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OSPFTRAPMIB::OspfTrapControl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OSPFTRAPMIB::OspfTrapControl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void OSPFTRAPMIB::OspfTrapControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

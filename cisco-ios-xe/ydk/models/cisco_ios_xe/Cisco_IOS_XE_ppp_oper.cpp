@@ -65,14 +65,14 @@ std::vector<std::pair<std::string, LeafData> > PppData::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> PppData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ppp-interface")
     {
-        auto c = std::make_shared<PppData::PppInterface>();
-        c->parent = this;
-        ppp_interface.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppData::PppInterface>();
+        ent_->parent = this;
+        ppp_interface.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "ppp-statistics")
@@ -96,30 +96,30 @@ std::shared_ptr<Entity> PppData::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppData::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppData::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ppp_interface.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ppp_interface.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(ppp_statistics != nullptr)
     {
-        children["ppp-statistics"] = ppp_statistics;
+        _children["ppp-statistics"] = ppp_statistics;
     }
 
     if(pppoe != nullptr)
     {
-        children["pppoe"] = pppoe;
+        _children["pppoe"] = pppoe;
     }
 
-    return children;
+    return _children;
 }
 
 void PppData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -130,7 +130,7 @@ void PppData::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> PppData::clone_ptr() const
+std::shared_ptr<ydk::Entity> PppData::clone_ptr() const
 {
     return std::make_shared<PppData>();
 }
@@ -223,33 +223,33 @@ std::vector<std::pair<std::string, LeafData> > PppData::PppInterface::get_name_l
 
 }
 
-std::shared_ptr<Entity> PppData::PppInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppData::PppInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ppp-va")
     {
-        auto c = std::make_shared<PppData::PppInterface::PppVa>();
-        c->parent = this;
-        ppp_va.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppData::PppInterface::PppVa>();
+        ent_->parent = this;
+        ppp_va.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppData::PppInterface::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppData::PppInterface::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : ppp_va.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ppp_va.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PppData::PppInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -346,16 +346,16 @@ std::vector<std::pair<std::string, LeafData> > PppData::PppInterface::PppVa::get
 
 }
 
-std::shared_ptr<Entity> PppData::PppInterface::PppVa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppData::PppInterface::PppVa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppData::PppInterface::PppVa::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppData::PppInterface::PppVa::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppData::PppInterface::PppVa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -509,16 +509,16 @@ std::vector<std::pair<std::string, LeafData> > PppData::PppStatistics::get_name_
 
 }
 
-std::shared_ptr<Entity> PppData::PppStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppData::PppStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppData::PppStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppData::PppStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppData::PppStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -629,14 +629,14 @@ std::vector<std::pair<std::string, LeafData> > PppData::Pppoe::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> PppData::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppData::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pppoe-session-list")
     {
-        auto c = std::make_shared<PppData::Pppoe::PppoeSessionList>();
-        c->parent = this;
-        pppoe_session_list.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppData::Pppoe::PppoeSessionList>();
+        ent_->parent = this;
+        pppoe_session_list.append(ent_);
+        return ent_;
     }
 
     if(child_yang_name == "pppoe-statistics")
@@ -651,25 +651,25 @@ std::shared_ptr<Entity> PppData::Pppoe::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppData::Pppoe::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppData::Pppoe::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : pppoe_session_list.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pppoe_session_list.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
     if(pppoe_statistics != nullptr)
     {
-        children["pppoe-statistics"] = pppoe_statistics;
+        _children["pppoe-statistics"] = pppoe_statistics;
     }
 
-    return children;
+    return _children;
 }
 
 void PppData::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -758,33 +758,33 @@ std::vector<std::pair<std::string, LeafData> > PppData::Pppoe::PppoeSessionList:
 
 }
 
-std::shared_ptr<Entity> PppData::Pppoe::PppoeSessionList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppData::Pppoe::PppoeSessionList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
-        auto c = std::make_shared<PppData::Pppoe::PppoeSessionList::Session>();
-        c->parent = this;
-        session.append(c);
-        return c;
+        auto ent_ = std::make_shared<PppData::Pppoe::PppoeSessionList::Session>();
+        ent_->parent = this;
+        session.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppData::Pppoe::PppoeSessionList::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppData::Pppoe::PppoeSessionList::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : session.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : session.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void PppData::Pppoe::PppoeSessionList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -897,16 +897,16 @@ std::vector<std::pair<std::string, LeafData> > PppData::Pppoe::PppoeSessionList:
 
 }
 
-std::shared_ptr<Entity> PppData::Pppoe::PppoeSessionList::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppData::Pppoe::PppoeSessionList::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppData::Pppoe::PppoeSessionList::Session::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppData::Pppoe::PppoeSessionList::Session::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppData::Pppoe::PppoeSessionList::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1112,16 +1112,16 @@ std::vector<std::pair<std::string, LeafData> > PppData::Pppoe::PppoeStatistics::
 
 }
 
-std::shared_ptr<Entity> PppData::Pppoe::PppoeStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> PppData::Pppoe::PppoeStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PppData::Pppoe::PppoeStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> PppData::Pppoe::PppoeStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void PppData::Pppoe::PppoeStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

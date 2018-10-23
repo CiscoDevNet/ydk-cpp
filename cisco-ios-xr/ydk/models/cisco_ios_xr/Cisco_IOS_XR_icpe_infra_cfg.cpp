@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > NvSatelliteGlobal::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> NvSatelliteGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NvSatelliteGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "chassis-mac")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> NvSatelliteGlobal::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatelliteGlobal::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NvSatelliteGlobal::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(chassis_mac != nullptr)
     {
-        children["chassis-mac"] = chassis_mac;
+        _children["chassis-mac"] = chassis_mac;
     }
 
-    return children;
+    return _children;
 }
 
 void NvSatelliteGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void NvSatelliteGlobal::set_filter(const std::string & value_path, YFilter yfilt
 {
 }
 
-std::shared_ptr<Entity> NvSatelliteGlobal::clone_ptr() const
+std::shared_ptr<ydk::Entity> NvSatelliteGlobal::clone_ptr() const
 {
     return std::make_shared<NvSatelliteGlobal>();
 }
@@ -174,16 +174,16 @@ std::vector<std::pair<std::string, LeafData> > NvSatelliteGlobal::ChassisMac::ge
 
 }
 
-std::shared_ptr<Entity> NvSatelliteGlobal::ChassisMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NvSatelliteGlobal::ChassisMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatelliteGlobal::ChassisMac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NvSatelliteGlobal::ChassisMac::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NvSatelliteGlobal::ChassisMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -280,33 +280,33 @@ std::vector<std::pair<std::string, LeafData> > NvSatellites::get_name_leaf_data(
 
 }
 
-std::shared_ptr<Entity> NvSatellites::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NvSatellites::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nv-satellite")
     {
-        auto c = std::make_shared<NvSatellites::NvSatellite>();
-        c->parent = this;
-        nv_satellite.append(c);
-        return c;
+        auto ent_ = std::make_shared<NvSatellites::NvSatellite>();
+        ent_->parent = this;
+        nv_satellite.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatellites::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NvSatellites::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : nv_satellite.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : nv_satellite.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NvSatellites::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -317,7 +317,7 @@ void NvSatellites::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> NvSatellites::clone_ptr() const
+std::shared_ptr<ydk::Entity> NvSatellites::clone_ptr() const
 {
     return std::make_shared<NvSatellites>();
 }
@@ -459,7 +459,7 @@ std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::get_na
 
 }
 
-std::shared_ptr<Entity> NvSatellites::NvSatellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NvSatellites::NvSatellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "upgrade-on-connect")
     {
@@ -500,31 +500,31 @@ std::shared_ptr<Entity> NvSatellites::NvSatellite::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NvSatellites::NvSatellite::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(upgrade_on_connect != nullptr)
     {
-        children["upgrade-on-connect"] = upgrade_on_connect;
+        _children["upgrade-on-connect"] = upgrade_on_connect;
     }
 
     if(candidate_fabric_ports != nullptr)
     {
-        children["candidate-fabric-ports"] = candidate_fabric_ports;
+        _children["candidate-fabric-ports"] = candidate_fabric_ports;
     }
 
     if(connection_info != nullptr)
     {
-        children["connection-info"] = connection_info;
+        _children["connection-info"] = connection_info;
     }
 
     if(redundancy != nullptr)
     {
-        children["redundancy"] = redundancy;
+        _children["redundancy"] = redundancy;
     }
 
-    return children;
+    return _children;
 }
 
 void NvSatellites::NvSatellite::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -711,16 +711,16 @@ std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::Upgrad
 
 }
 
-std::shared_ptr<Entity> NvSatellites::NvSatellite::UpgradeOnConnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NvSatellites::NvSatellite::UpgradeOnConnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::UpgradeOnConnect::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NvSatellites::NvSatellite::UpgradeOnConnect::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NvSatellites::NvSatellite::UpgradeOnConnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -817,33 +817,33 @@ std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::Candid
 
 }
 
-std::shared_ptr<Entity> NvSatellites::NvSatellite::CandidateFabricPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NvSatellites::NvSatellite::CandidateFabricPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "candidate-fabric-port")
     {
-        auto c = std::make_shared<NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort>();
-        c->parent = this;
-        candidate_fabric_port.append(c);
-        return c;
+        auto ent_ = std::make_shared<NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort>();
+        ent_->parent = this;
+        candidate_fabric_port.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::CandidateFabricPorts::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NvSatellites::NvSatellite::CandidateFabricPorts::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : candidate_fabric_port.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : candidate_fabric_port.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void NvSatellites::NvSatellite::CandidateFabricPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -917,16 +917,16 @@ std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::Candid
 
 }
 
-std::shared_ptr<Entity> NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1029,16 +1029,16 @@ std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::Connec
 
 }
 
-std::shared_ptr<Entity> NvSatellites::NvSatellite::ConnectionInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NvSatellites::NvSatellite::ConnectionInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::ConnectionInfo::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NvSatellites::NvSatellite::ConnectionInfo::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NvSatellites::NvSatellite::ConnectionInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1117,16 +1117,16 @@ std::vector<std::pair<std::string, LeafData> > NvSatellites::NvSatellite::Redund
 
 }
 
-std::shared_ptr<Entity> NvSatellites::NvSatellite::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> NvSatellites::NvSatellite::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::Redundancy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> NvSatellites::NvSatellite::Redundancy::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void NvSatellites::NvSatellite::Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

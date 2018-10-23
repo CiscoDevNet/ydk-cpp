@@ -68,7 +68,7 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::get_nam
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPOWERETHERNETEXTMIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpeExtMIBObjects")
     {
@@ -118,36 +118,36 @@ std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPOWERETHERNETEXTMIB::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(cpeextmibobjects != nullptr)
     {
-        children["cpeExtMIBObjects"] = cpeextmibobjects;
+        _children["cpeExtMIBObjects"] = cpeextmibobjects;
     }
 
     if(cpeextpdstatistics != nullptr)
     {
-        children["cpeExtPdStatistics"] = cpeextpdstatistics;
+        _children["cpeExtPdStatistics"] = cpeextpdstatistics;
     }
 
     if(cpeextmainpsetable != nullptr)
     {
-        children["cpeExtMainPseTable"] = cpeextmainpsetable;
+        _children["cpeExtMainPseTable"] = cpeextmainpsetable;
     }
 
     if(cpeextpdstatstable != nullptr)
     {
-        children["cpeExtPdStatsTable"] = cpeextpdstatstable;
+        _children["cpeExtPdStatsTable"] = cpeextpdstatstable;
     }
 
     if(cpeextpseportlldptable != nullptr)
     {
-        children["cpeExtPsePortLldpTable"] = cpeextpseportlldptable;
+        _children["cpeExtPsePortLldpTable"] = cpeextpseportlldptable;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPOWERETHERNETEXTMIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -158,7 +158,7 @@ void CISCOPOWERETHERNETEXTMIB::set_filter(const std::string & value_path, YFilte
 {
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::clone_ptr() const
+std::shared_ptr<ydk::Entity> CISCOPOWERETHERNETEXTMIB::clone_ptr() const
 {
     return std::make_shared<CISCOPOWERETHERNETEXTMIB>();
 }
@@ -246,16 +246,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtM
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPOWERETHERNETEXTMIB::CpeExtMIBObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -351,16 +351,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtP
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPOWERETHERNETEXTMIB::CpeExtPdStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -444,33 +444,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtM
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpeExtMainPseEntry")
     {
-        auto c = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry>();
-        c->parent = this;
-        cpeextmainpseentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry>();
+        ent_->parent = this;
+        cpeextmainpseentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpeextmainpseentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpeextmainpseentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -557,16 +557,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtM
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPOWERETHERNETEXTMIB::CpeExtMainPseTable::CpeExtMainPseEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -700,33 +700,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtP
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpeExtPdStatsEntry")
     {
-        auto c = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry>();
-        c->parent = this;
-        cpeextpdstatsentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry>();
+        ent_->parent = this;
+        cpeextpdstatsentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpeextpdstatsentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpeextpdstatsentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -797,16 +797,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtP
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -900,33 +900,33 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtP
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cpeExtPsePortLldpEntry")
     {
-        auto c = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry>();
-        c->parent = this;
-        cpeextpseportlldpentry.append(c);
-        return c;
+        auto ent_ = std::make_shared<CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry>();
+        ent_->parent = this;
+        cpeextpseportlldpentry.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : cpeextpseportlldpentry.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : cpeextpseportlldpentry.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1054,16 +1054,16 @@ std::vector<std::pair<std::string, LeafData> > CISCOPOWERETHERNETEXTMIB::CpeExtP
 
 }
 
-std::shared_ptr<Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void CISCOPOWERETHERNETEXTMIB::CpeExtPsePortLldpTable::CpeExtPsePortLldpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)

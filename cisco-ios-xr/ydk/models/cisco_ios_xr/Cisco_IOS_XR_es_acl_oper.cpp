@@ -52,7 +52,7 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> EsAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active")
     {
@@ -66,16 +66,16 @@ std::shared_ptr<Entity> EsAcl::get_child_by_name(const std::string & child_yang_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(active != nullptr)
     {
-        children["active"] = active;
+        _children["active"] = active;
     }
 
-    return children;
+    return _children;
 }
 
 void EsAcl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -86,7 +86,7 @@ void EsAcl::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> EsAcl::clone_ptr() const
+std::shared_ptr<ydk::Entity> EsAcl::clone_ptr() const
 {
     return std::make_shared<EsAcl>();
 }
@@ -178,7 +178,7 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::get_name_leaf_data
 
 }
 
-std::shared_ptr<Entity> EsAcl::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::Active::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oor")
     {
@@ -219,31 +219,31 @@ std::shared_ptr<Entity> EsAcl::Active::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::Active::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(oor != nullptr)
     {
-        children["oor"] = oor;
+        _children["oor"] = oor;
     }
 
     if(list != nullptr)
     {
-        children["list"] = list;
+        _children["list"] = list;
     }
 
     if(oor_acls != nullptr)
     {
-        children["oor-acls"] = oor_acls;
+        _children["oor-acls"] = oor_acls;
     }
 
     if(usages != nullptr)
     {
-        children["usages"] = usages;
+        _children["usages"] = usages;
     }
 
-    return children;
+    return _children;
 }
 
 void EsAcl::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -309,7 +309,7 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Oor::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> EsAcl::Active::Oor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::Active::Oor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "acl-summary")
     {
@@ -323,16 +323,16 @@ std::shared_ptr<Entity> EsAcl::Active::Oor::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::Active::Oor::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(acl_summary != nullptr)
     {
-        children["acl-summary"] = acl_summary;
+        _children["acl-summary"] = acl_summary;
     }
 
-    return children;
+    return _children;
 }
 
 void EsAcl::Active::Oor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -398,7 +398,7 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Oor::AclSummary::g
 
 }
 
-std::shared_ptr<Entity> EsAcl::Active::Oor::AclSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::Active::Oor::AclSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "details")
     {
@@ -412,16 +412,16 @@ std::shared_ptr<Entity> EsAcl::Active::Oor::AclSummary::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::AclSummary::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::Active::Oor::AclSummary::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(details != nullptr)
     {
-        children["details"] = details;
+        _children["details"] = details;
     }
 
-    return children;
+    return _children;
 }
 
 void EsAcl::Active::Oor::AclSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -499,16 +499,16 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Oor::AclSummary::D
 
 }
 
-std::shared_ptr<Entity> EsAcl::Active::Oor::AclSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::Active::Oor::AclSummary::Details::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Oor::AclSummary::Details::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::Active::Oor::AclSummary::Details::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EsAcl::Active::Oor::AclSummary::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -614,7 +614,7 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::List::get_name_lea
 
 }
 
-std::shared_ptr<Entity> EsAcl::Active::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::Active::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "acls")
     {
@@ -628,16 +628,16 @@ std::shared_ptr<Entity> EsAcl::Active::List::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::List::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::Active::List::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(acls != nullptr)
     {
-        children["acls"] = acls;
+        _children["acls"] = acls;
     }
 
-    return children;
+    return _children;
 }
 
 void EsAcl::Active::List::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -711,33 +711,33 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::List::Acls::get_na
 
 }
 
-std::shared_ptr<Entity> EsAcl::Active::List::Acls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::Active::List::Acls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "acl")
     {
-        auto c = std::make_shared<EsAcl::Active::List::Acls::Acl>();
-        c->parent = this;
-        acl.append(c);
-        return c;
+        auto ent_ = std::make_shared<EsAcl::Active::List::Acls::Acl>();
+        ent_->parent = this;
+        acl.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::List::Acls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::Active::List::Acls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : acl.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : acl.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EsAcl::Active::List::Acls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -809,7 +809,7 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::List::Acls::Acl::g
 
 }
 
-std::shared_ptr<Entity> EsAcl::Active::List::Acls::Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::Active::List::Acls::Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "acl-sequence-numbers")
     {
@@ -823,16 +823,16 @@ std::shared_ptr<Entity> EsAcl::Active::List::Acls::Acl::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::List::Acls::Acl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::Active::List::Acls::Acl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
     if(acl_sequence_numbers != nullptr)
     {
-        children["acl-sequence-numbers"] = acl_sequence_numbers;
+        _children["acl-sequence-numbers"] = acl_sequence_numbers;
     }
 
-    return children;
+    return _children;
 }
 
 void EsAcl::Active::List::Acls::Acl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -909,33 +909,33 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::List::Acls::Acl::A
 
 }
 
-std::shared_ptr<Entity> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "acl-sequence-number")
     {
-        auto c = std::make_shared<EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber>();
-        c->parent = this;
-        acl_sequence_number.append(c);
-        return c;
+        auto ent_ = std::make_shared<EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber>();
+        ent_->parent = this;
+        acl_sequence_number.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : acl_sequence_number.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : acl_sequence_number.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1083,16 +1083,16 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::List::Acls::Acl::A
 
 }
 
-std::shared_ptr<Entity> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1396,33 +1396,33 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::OorAcls::get_name_
 
 }
 
-std::shared_ptr<Entity> EsAcl::Active::OorAcls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::Active::OorAcls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oor-acl")
     {
-        auto c = std::make_shared<EsAcl::Active::OorAcls::OorAcl>();
-        c->parent = this;
-        oor_acl.append(c);
-        return c;
+        auto ent_ = std::make_shared<EsAcl::Active::OorAcls::OorAcl>();
+        ent_->parent = this;
+        oor_acl.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::OorAcls::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::Active::OorAcls::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : oor_acl.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : oor_acl.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EsAcl::Active::OorAcls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1505,16 +1505,16 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::OorAcls::OorAcl::g
 
 }
 
-std::shared_ptr<Entity> EsAcl::Active::OorAcls::OorAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::Active::OorAcls::OorAcl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::OorAcls::OorAcl::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::Active::OorAcls::OorAcl::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EsAcl::Active::OorAcls::OorAcl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1638,33 +1638,33 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Usages::get_name_l
 
 }
 
-std::shared_ptr<Entity> EsAcl::Active::Usages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::Active::Usages::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "usage")
     {
-        auto c = std::make_shared<EsAcl::Active::Usages::Usage>();
-        c->parent = this;
-        usage.append(c);
-        return c;
+        auto ent_ = std::make_shared<EsAcl::Active::Usages::Usage>();
+        ent_->parent = this;
+        usage.append(ent_);
+        return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Usages::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::Active::Usages::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto c : usage.entities())
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : usage.entities())
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
         else
-            children[c->get_segment_path()+count++] = c;
+            _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    return children;
+    return _children;
 }
 
 void EsAcl::Active::Usages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
@@ -1742,16 +1742,16 @@ std::vector<std::pair<std::string, LeafData> > EsAcl::Active::Usages::Usage::get
 
 }
 
-std::shared_ptr<Entity> EsAcl::Active::Usages::Usage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> EsAcl::Active::Usages::Usage::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Usages::Usage::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> EsAcl::Active::Usages::Usage::get_children() const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
 }
 
 void EsAcl::Active::Usages::Usage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
